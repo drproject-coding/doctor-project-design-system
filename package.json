@@ -1,0 +1,19 @@
+{
+  "name": "bruddle-design-system",
+  "version": "1.0.0",
+  "description": "A brutalist, framework-agnostic design system with offset shadows, high contrast, and a 4px grid.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "puppeteer": "^24.37.5"
+  }
+}
