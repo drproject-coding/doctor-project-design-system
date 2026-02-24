@@ -269,3 +269,34 @@ body.dark-mode .bru-btn--ghost {
 body.dark-mode .bru-btn--ghost:hover {
   background: rgba(255, 255, 255, 0.06);
 }
+
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE — BUTTONS
+   ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .bru-btn-group {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 390px) {
+  .bru-btn {
+    padding: 10px 16px;
+    font-size: var(--bru-text-sm);
+  }
+
+  .bru-btn--lg {
+    padding: 12px 20px;
+    font-size: var(--bru-text-md);
+  }
+
+  .bru-btn-group {
+    width: 100%;
+  }
+
+  .bru-btn-group .bru-btn {
+    flex: 1;
+  }
+}

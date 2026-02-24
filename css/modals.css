@@ -77,3 +77,50 @@
   padding: var(--bru-space-4) var(--bru-space-6);
   border-top: var(--bru-border-dotted);
 }
+
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE — MODALS
+   ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .bru-modal {
+    max-width: calc(100vw - 32px);
+    max-height: 85vh;
+  }
+
+  .bru-modal__header {
+    padding: var(--bru-space-3) var(--bru-space-4);
+  }
+
+  .bru-modal__body {
+    padding: var(--bru-space-4);
+  }
+
+  .bru-modal__footer {
+    padding: var(--bru-space-3) var(--bru-space-4);
+  }
+}
+
+@media (max-width: 390px) {
+  .bru-overlay {
+    padding: var(--bru-space-2);
+  }
+
+  .bru-modal {
+    max-width: 100%;
+    max-height: 90vh;
+  }
+
+  .bru-modal__title {
+    font-size: var(--bru-text-md);
+  }
+
+  .bru-modal__footer {
+    flex-direction: column;
+  }
+
+  .bru-modal__footer .bru-btn {
+    width: 100%;
+  }
+}

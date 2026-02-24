@@ -45,3 +45,26 @@
 body.dark-mode .bru-table th {
   background: rgba(255, 255, 255, 0.04);
 }
+
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE — TABLES
+   ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .bru-table th,
+  .bru-table td {
+    padding: var(--bru-space-2) var(--bru-space-3);
+  }
+}
+
+@media (max-width: 390px) {
+  .bru-table {
+    font-size: var(--bru-text-xs);
+  }
+
+  .bru-table th,
+  .bru-table td {
+    padding: var(--bru-space-2);
+  }
+}

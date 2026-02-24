@@ -459,3 +459,29 @@ body.dark-mode .bru-label--inv {
   background: #FFFFFF;
   color: #000000;
 }
+
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE — FORMS
+   ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .bru-form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .bru-form-group label {
+    font-size: var(--bru-text-sm);
+  }
+}
+
+@media (max-width: 390px) {
+  .bru-input,
+  .bru-select {
+    font-size: 16px; /* Prevent iOS zoom on focus */
+  }
+
+  .bru-form-group {
+    margin-bottom: var(--bru-space-3);
+  }
+}

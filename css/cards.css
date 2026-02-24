@@ -72,3 +72,46 @@
 .bru-card--mint   { border-left: 4px solid var(--bru-mint); }
 .bru-card--pink   { border-left: 4px solid var(--bru-pink); }
 .bru-card--yellow { border-left: 4px solid var(--bru-yellow); }
+
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE — CARDS
+   ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .bru-card {
+    padding: var(--bru-space-4);
+  }
+
+  .bru-card__header {
+    padding: var(--bru-space-3) var(--bru-space-4);
+  }
+
+  .bru-card__body {
+    padding: var(--bru-space-4);
+  }
+
+  .bru-card__footer {
+    padding: var(--bru-space-3) var(--bru-space-4);
+  }
+}
+
+@media (max-width: 390px) {
+  .bru-card {
+    padding: var(--bru-space-3);
+  }
+
+  .bru-card__header {
+    padding: var(--bru-space-2) var(--bru-space-3);
+  }
+
+  .bru-card__body {
+    padding: var(--bru-space-3);
+  }
+
+  .bru-card__footer {
+    padding: var(--bru-space-2) var(--bru-space-3);
+    flex-direction: column;
+    gap: var(--bru-space-2);
+  }
+}

@@ -201,3 +201,40 @@
 .bru-toast--error   { border-left: 4px solid var(--bru-pink); }
 .bru-toast--warning { border-left: 4px solid var(--bru-yellow); }
 .bru-toast--info    { border-left: 4px solid var(--bru-purple); }
+
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE — UTILITIES
+   ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .bru-toast {
+    max-width: calc(100vw - 32px);
+  }
+
+  .bru-dropzone {
+    padding: var(--bru-space-6) var(--bru-space-4);
+  }
+
+  .bru-empty {
+    padding: var(--bru-space-8) var(--bru-space-4);
+  }
+}
+
+@media (max-width: 390px) {
+  .bru-toast {
+    max-width: 100%;
+  }
+
+  .bru-dropzone__text {
+    font-size: var(--bru-text-sm);
+  }
+
+  .bru-empty__icon {
+    font-size: 36px;
+  }
+
+  .bru-empty__title {
+    font-size: var(--bru-text-md);
+  }
+}

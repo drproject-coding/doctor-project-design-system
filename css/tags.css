@@ -381,3 +381,37 @@ body.dark-mode .bru-progress {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
 }
+
+
+/* ──────────────────────────────────────────────
+   RESPONSIVE — TABS & TAGS
+   ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .bru-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .bru-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bru-tab {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 390px) {
+  .bru-tab {
+    padding: 8px 12px;
+    font-size: var(--bru-text-xs);
+  }
+
+  .bru-tag {
+    font-size: 11px;
+    padding: 2px 8px;
+  }
+}
