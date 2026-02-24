@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colors — Bruddle Design System</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <div class="app-layout">
+    <nav class="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-dot"></span>
+      </div>
+      <div class="sidebar-nav">
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Documentation</div>
+          <a href="index.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Overview</span>
+          </a>
+          <a href="colors.html" class="sidebar-nav-item docs-nav-active">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Colors</span>
+          </a>
+          <a href="typography.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Typography</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Components</div>
+          <a href="buttons.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Buttons</span>
+          </a>
+          <a href="forms.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Forms</span>
+          </a>
+          <a href="tags.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tags & Badges</span>
+          </a>
+          <a href="cards.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Cards</span>
+          </a>
+          <a href="tables.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tables</span>
+          </a>
+          <a href="modals.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Modals</span>
+          </a>
+          <a href="pagination.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Pagination</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Layout</div>
+          <a href="layout.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">App Shell</span>
+          </a>
+          <a href="utilities.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Utilities</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-backdrop"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="topbar-menu-btn">&#9776;</button>
+          <h1 class="topbar-title">Colors</h1>
+        </div>
+        <div class="topbar-right">
+          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="container">
+
+          <div class="docs-page-header">
+            <h2 class="bru-h2">Color Palette</h2>
+            <p class="bru-text bru-mt-2">All colors are defined as CSS custom properties in <code>tokens.css</code> with the <code>--bru-</code> prefix.</p>
+          </div>
+
+          <!-- Primary -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Primary</h3>
+            <div class="docs-swatch-grid">
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #AE7AFF;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-purple</div>
+                  <div class="docs-swatch-value">#AE7AFF</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #9B5FF5;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-purple-hover</div>
+                  <div class="docs-swatch-value">#9B5FF5</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #8A4AE8;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-purple-active</div>
+                  <div class="docs-swatch-value">#8A4AE8</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: rgba(174, 122, 255, 0.20); border: 1px dashed #AE7AFF;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-purple-20</div>
+                  <div class="docs-swatch-value">rgba(174,122,255,0.2)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Secondary -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Secondary</h3>
+            <div class="docs-swatch-grid">
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #FAE8A4;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-yellow</div>
+                  <div class="docs-swatch-value">#FAE8A4</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: rgba(250, 232, 164, 0.80);"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-yellow-80</div>
+                  <div class="docs-swatch-value">rgba(250,232,164,0.8)</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #E99898;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-pink</div>
+                  <div class="docs-swatch-value">#E99898</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: rgba(233, 152, 152, 0.80);"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-pink-80</div>
+                  <div class="docs-swatch-value">rgba(233,152,152,0.8)</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #98E9AB;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-mint</div>
+                  <div class="docs-swatch-value">#98E9AB</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: rgba(152, 233, 171, 0.80);"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-mint-80</div>
+                  <div class="docs-swatch-value">rgba(152,233,171,0.8)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Neutrals -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Neutrals</h3>
+            <div class="docs-swatch-grid">
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #000000;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-black</div>
+                  <div class="docs-swatch-value">#000000</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: rgba(0, 0, 0, 0.75);"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-black-75</div>
+                  <div class="docs-swatch-value">rgba(0,0,0,0.75)</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #FFFFFF; border: 1px solid #ccc;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-white</div>
+                  <div class="docs-swatch-value">#FFFFFF</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #5F646D;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-grey</div>
+                  <div class="docs-swatch-value">#5F646D</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: rgba(95, 100, 109, 0.85);"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-grey-85</div>
+                  <div class="docs-swatch-value">rgba(95,100,109,0.85)</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #FAF4F0;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-cream</div>
+                  <div class="docs-swatch-value">#FAF4F0</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #FEFCFA; border: 1px solid #eee;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-surface</div>
+                  <div class="docs-swatch-value">#FEFCFA</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Semantic -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Semantic</h3>
+            <div class="docs-swatch-grid">
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #98E9AB;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-success</div>
+                  <div class="docs-swatch-value">#98E9AB</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #166534;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-success-dark</div>
+                  <div class="docs-swatch-value">#166534</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #E99898;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-error</div>
+                  <div class="docs-swatch-value">#E99898</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #991B1B;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-error-dark</div>
+                  <div class="docs-swatch-value">#991B1B</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #FAE8A4;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-warning</div>
+                  <div class="docs-swatch-value">#FAE8A4</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #92400E;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-warning-dark</div>
+                  <div class="docs-swatch-value">#92400E</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #AE7AFF;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-info</div>
+                  <div class="docs-swatch-value">#AE7AFF</div>
+                </div>
+              </div>
+              <div class="docs-swatch">
+                <div class="docs-swatch-color" style="background: #5B21B6;"></div>
+                <div class="docs-swatch-info">
+                  <div class="docs-swatch-name">--bru-info-dark</div>
+                  <div class="docs-swatch-value">#5B21B6</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Usage -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Usage</h3>
+<pre class="docs-code">/* Reference any token in your CSS */
+.my-element {
+  color: var(--bru-purple);
+  background: var(--bru-cream);
+  border: 2px solid var(--bru-black);
+}
+
+/* Dark mode overrides happen automatically via tokens.css */
+body.dark-mode {
+  --bru-cream: #1A1A1A;
+  --bru-black: #FFFFFF;
+  /* ... all tokens swap */
+}</pre>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/dark-mode.js"></script>
+  <script src="docs.js"></script>
+</body>
+</html>

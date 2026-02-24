@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cards — Bruddle Design System</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <div class="app-layout">
+    <nav class="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-dot"></span>
+      </div>
+      <div class="sidebar-nav">
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Documentation</div>
+          <a href="index.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Overview</span>
+          </a>
+          <a href="colors.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Colors</span>
+          </a>
+          <a href="typography.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Typography</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Components</div>
+          <a href="buttons.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Buttons</span>
+          </a>
+          <a href="forms.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Forms</span>
+          </a>
+          <a href="tags.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tags & Badges</span>
+          </a>
+          <a href="cards.html" class="sidebar-nav-item docs-nav-active">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Cards</span>
+          </a>
+          <a href="tables.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tables</span>
+          </a>
+          <a href="modals.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Modals</span>
+          </a>
+          <a href="pagination.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Pagination</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Layout</div>
+          <a href="layout.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">App Shell</span>
+          </a>
+          <a href="utilities.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Utilities</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-backdrop"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="topbar-menu-btn">&#9776;</button>
+          <h1 class="topbar-title">Cards</h1>
+        </div>
+        <div class="topbar-right">
+          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="container">
+
+          <div class="docs-page-header">
+            <h2 class="bru-h2">Cards</h2>
+            <p class="bru-text bru-mt-2">Content containers with border, shadow, and accent variants. Cards are the primary surface for grouping related information.</p>
+          </div>
+
+          <!-- Base + Shadow Variants -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Shadow Variants</h3>
+            <div class="docs-demo">
+              <div class="bru-card" style="min-width: 180px;">
+                <h4 class="bru-card__title">Base</h4>
+                <p class="bru-card__subtitle">No shadow, border only.</p>
+              </div>
+              <div class="bru-card bru-card--raised" style="min-width: 180px;">
+                <h4 class="bru-card__title">Raised</h4>
+                <p class="bru-card__subtitle">Large offset shadow.</p>
+              </div>
+              <div class="bru-card bru-card--sm" style="min-width: 180px;">
+                <h4 class="bru-card__title">Small Shadow</h4>
+                <p class="bru-card__subtitle">Subtle offset shadow.</p>
+              </div>
+              <div class="bru-card bru-card--flat" style="min-width: 180px;">
+                <h4 class="bru-card__title">Flat</h4>
+                <p class="bru-card__subtitle">No border, no shadow.</p>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-card"&gt;Base&lt;/div&gt;
+&lt;div class="bru-card bru-card--raised"&gt;Raised&lt;/div&gt;
+&lt;div class="bru-card bru-card--sm"&gt;Small shadow&lt;/div&gt;
+&lt;div class="bru-card bru-card--flat"&gt;Flat&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Interactive -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Interactive Card</h3>
+            <div class="docs-demo">
+              <div class="bru-card bru-card--raised bru-card--interactive" style="min-width: 220px;">
+                <h4 class="bru-card__title">Click Me</h4>
+                <p class="bru-card__subtitle">Hover and press to see the shadow animation.</p>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-card bru-card--raised bru-card--interactive"&gt;
+  &lt;h4 class="bru-card__title"&gt;Clickable&lt;/h4&gt;
+  &lt;p class="bru-card__subtitle"&gt;Press effect on click.&lt;/p&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Color Accents -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Color Accent Cards</h3>
+            <div class="bru-grid-2">
+              <div class="bru-card bru-card--purple">
+                <h4 class="bru-card__title">Purple</h4>
+                <p class="bru-card__subtitle">Left border accent in purple.</p>
+              </div>
+              <div class="bru-card bru-card--mint">
+                <h4 class="bru-card__title">Mint</h4>
+                <p class="bru-card__subtitle">Left border accent in mint.</p>
+              </div>
+              <div class="bru-card bru-card--pink">
+                <h4 class="bru-card__title">Pink</h4>
+                <p class="bru-card__subtitle">Left border accent in pink.</p>
+              </div>
+              <div class="bru-card bru-card--yellow">
+                <h4 class="bru-card__title">Yellow</h4>
+                <p class="bru-card__subtitle">Left border accent in yellow.</p>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-card bru-card--purple"&gt;Purple accent&lt;/div&gt;
+&lt;div class="bru-card bru-card--mint"&gt;Mint accent&lt;/div&gt;
+&lt;div class="bru-card bru-card--pink"&gt;Pink accent&lt;/div&gt;
+&lt;div class="bru-card bru-card--yellow"&gt;Yellow accent&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Card with Header Structure -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Card with Header Structure</h3>
+            <div class="docs-demo">
+              <div class="bru-card bru-card--raised" style="min-width: 300px;">
+                <div class="bru-card__header">
+                  <h4 class="bru-card__title">Product Stats</h4>
+                  <span class="bru-badge bru-badge--filled">12</span>
+                </div>
+                <p class="bru-card__subtitle">Use <code>__header</code> for a flex row with space-between alignment. Great for titles with action buttons or badges.</p>
+                <div class="bru-mt-4">
+                  <button class="bru-btn bru-btn--primary bru-btn--sm">View All</button>
+                </div>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-card bru-card--raised"&gt;
+  &lt;div class="bru-card__header"&gt;
+    &lt;h4 class="bru-card__title"&gt;Title&lt;/h4&gt;
+    &lt;span class="bru-badge bru-badge--filled"&gt;12&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;p class="bru-card__subtitle"&gt;Description&lt;/p&gt;
+  &lt;button class="bru-btn bru-btn--primary bru-btn--sm"&gt;Action&lt;/button&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/dark-mode.js"></script>
+  <script src="docs.js"></script>
+</body>
+</html>

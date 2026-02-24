@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utilities — Bruddle Design System</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <div class="app-layout">
+    <nav class="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-dot"></span>
+      </div>
+      <div class="sidebar-nav">
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Documentation</div>
+          <a href="index.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Overview</span>
+          </a>
+          <a href="colors.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Colors</span>
+          </a>
+          <a href="typography.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Typography</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Components</div>
+          <a href="buttons.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Buttons</span>
+          </a>
+          <a href="forms.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Forms</span>
+          </a>
+          <a href="tags.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tags & Badges</span>
+          </a>
+          <a href="cards.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Cards</span>
+          </a>
+          <a href="tables.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tables</span>
+          </a>
+          <a href="modals.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Modals</span>
+          </a>
+          <a href="pagination.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Pagination</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Layout</div>
+          <a href="layout.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">App Shell</span>
+          </a>
+          <a href="utilities.html" class="sidebar-nav-item docs-nav-active">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Utilities</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-backdrop"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="topbar-menu-btn">&#9776;</button>
+          <h1 class="topbar-title">Utilities</h1>
+        </div>
+        <div class="topbar-right">
+          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="container">
+
+          <div class="docs-page-header">
+            <h2 class="bru-h2">Utilities</h2>
+            <p class="bru-text bru-mt-2">Helper classes for flex, grid, spacing, text alignment, backgrounds, dividers, empty states, dropzones, and toasts.</p>
+          </div>
+
+          <!-- Flex -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Flex Utilities</h3>
+            <div class="docs-demo">
+              <div class="bru-flex bru-items-center bru-gap-3" style="border: var(--bru-border-thin); padding: 12px;">
+                <span class="bru-tag bru-tag--purple">Item 1</span>
+                <span class="bru-tag bru-tag--mint">Item 2</span>
+                <span class="bru-tag bru-tag--pink">Item 3</span>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-flex bru-items-center bru-gap-3"&gt;
+  ...children
+&lt;/div&gt;
+
+/* Available classes */
+.bru-flex            display: flex
+.bru-flex-col        flex-direction: column
+.bru-flex-wrap       flex-wrap: wrap
+.bru-items-center    align-items: center
+.bru-justify-between justify-content: space-between
+.bru-gap-1 ... .bru-gap-6</pre>
+          </div>
+
+          <!-- Grid -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Grid Utilities</h3>
+            <div class="docs-demo docs-demo--col">
+              <p class="bru-label bru-mb-2">2 columns</p>
+              <div class="bru-grid-2">
+                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">1</p></div>
+                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">2</p></div>
+              </div>
+              <p class="bru-label bru-mt-4 bru-mb-2">3 columns</p>
+              <div class="bru-grid-3">
+                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">1</p></div>
+                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">2</p></div>
+                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">3</p></div>
+              </div>
+              <p class="bru-label bru-mt-4 bru-mb-2">4 columns</p>
+              <div class="bru-grid-4">
+                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">1</p></div>
+                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">2</p></div>
+                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">3</p></div>
+                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">4</p></div>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-grid-2"&gt;...&lt;/div&gt;
+&lt;div class="bru-grid-3"&gt;...&lt;/div&gt;
+&lt;div class="bru-grid-4"&gt;...&lt;/div&gt;
+
+/* All collapse to 1-column at 600px */</pre>
+          </div>
+
+          <!-- Spacing -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Spacing Utilities</h3>
+<pre class="docs-code">.bru-mt-2   margin-top: 8px
+.bru-mt-4   margin-top: 16px
+.bru-mt-6   margin-top: 24px
+.bru-mb-2   margin-bottom: 8px
+.bru-mb-4   margin-bottom: 16px
+.bru-mb-6   margin-bottom: 24px</pre>
+          </div>
+
+          <!-- Text -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Text Utilities</h3>
+            <div class="docs-demo docs-demo--col" style="max-width: 400px;">
+              <p class="bru-text bru-text-center" style="border: var(--bru-border-thin); padding: 8px;">Centered text</p>
+              <p class="bru-text bru-text-right" style="border: var(--bru-border-thin); padding: 8px;">Right-aligned text</p>
+              <p class="bru-text bru-truncate" style="border: var(--bru-border-thin); padding: 8px; max-width: 200px;">This is very long truncated text that will be cut off with an ellipsis</p>
+            </div>
+<pre class="docs-code">.bru-text-center   text-align: center
+.bru-text-right    text-align: right
+.bru-truncate      overflow: hidden; text-overflow: ellipsis</pre>
+          </div>
+
+          <!-- Backgrounds -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Background Colors</h3>
+            <div class="docs-demo">
+              <span class="bru-bg-cream" style="padding: 8px 16px; border: var(--bru-border-thin);">cream</span>
+              <span class="bru-bg-surface" style="padding: 8px 16px; border: var(--bru-border-thin);">surface</span>
+              <span class="bru-bg-purple" style="padding: 8px 16px;">purple</span>
+              <span class="bru-bg-mint" style="padding: 8px 16px;">mint</span>
+              <span class="bru-bg-pink" style="padding: 8px 16px;">pink</span>
+              <span class="bru-bg-yellow" style="padding: 8px 16px;">yellow</span>
+              <span class="bru-bg-black" style="padding: 8px 16px;">black</span>
+            </div>
+<pre class="docs-code">.bru-bg-cream   .bru-bg-surface
+.bru-bg-purple  .bru-bg-mint
+.bru-bg-pink    .bru-bg-yellow
+.bru-bg-black</pre>
+          </div>
+
+          <!-- Dividers -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Dividers</h3>
+            <div class="docs-demo docs-demo--col" style="max-width: 400px;">
+              <p class="bru-label">Solid (default)</p>
+              <hr class="bru-divider">
+              <p class="bru-label">Dashed</p>
+              <hr class="bru-divider bru-divider--dashed">
+              <p class="bru-label">Dotted</p>
+              <hr class="bru-divider bru-divider--dotted">
+              <p class="bru-label">Thick</p>
+              <hr class="bru-divider bru-divider--thick">
+            </div>
+<pre class="docs-code">&lt;hr class="bru-divider"&gt;
+&lt;hr class="bru-divider bru-divider--dashed"&gt;
+&lt;hr class="bru-divider bru-divider--dotted"&gt;
+&lt;hr class="bru-divider bru-divider--thick"&gt;</pre>
+          </div>
+
+          <!-- Empty State -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Empty State</h3>
+            <div class="docs-demo">
+              <div class="bru-empty" style="border: var(--bru-border-dashed);">
+                <div class="bru-empty__icon">&#128230;</div>
+                <p class="bru-empty__title">No products yet</p>
+                <p class="bru-empty__text">Sync your AppSumo account to see your purchases here.</p>
+                <button class="bru-btn bru-btn--primary bru-mt-4">Sync Now</button>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-empty"&gt;
+  &lt;div class="bru-empty__icon"&gt;&amp;#128230;&lt;/div&gt;
+  &lt;p class="bru-empty__title"&gt;No products yet&lt;/p&gt;
+  &lt;p class="bru-empty__text"&gt;Description text.&lt;/p&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Dropzone -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Dropzone</h3>
+            <div class="docs-demo docs-demo--col" style="max-width: 500px;">
+              <div class="bru-dropzone">
+                <div class="bru-dropzone__icon">&#128194;</div>
+                <p class="bru-dropzone__text">Drop files here or click to browse</p>
+                <p class="bru-dropzone__hint">PDF, CSV, or JSON up to 10MB</p>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-dropzone"&gt;
+  &lt;div class="bru-dropzone__icon"&gt;&amp;#128194;&lt;/div&gt;
+  &lt;p class="bru-dropzone__text"&gt;Drop files here&lt;/p&gt;
+  &lt;p class="bru-dropzone__hint"&gt;PDF, CSV, or JSON up to 10MB&lt;/p&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Toasts -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Toasts</h3>
+            <div class="docs-demo docs-demo--col">
+              <div class="bru-toast bru-toast--success">
+                <span class="bru-dot bru-dot--mint"></span>
+                <span>Products synced successfully.</span>
+              </div>
+              <div class="bru-toast bru-toast--error">
+                <span class="bru-dot bru-dot--pink"></span>
+                <span>Sync failed. Please try again.</span>
+              </div>
+              <div class="bru-toast bru-toast--warning">
+                <span class="bru-dot bru-dot--yellow"></span>
+                <span>Refund deadline is approaching.</span>
+              </div>
+              <div class="bru-toast bru-toast--info">
+                <span class="bru-dot bru-dot--purple"></span>
+                <span>New version available.</span>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-toast bru-toast--success"&gt;
+  &lt;span class="bru-dot bru-dot--mint"&gt;&lt;/span&gt;
+  &lt;span&gt;Success message.&lt;/span&gt;
+&lt;/div&gt;
+
+/* Variants: --success, --error, --warning, --info */</pre>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/dark-mode.js"></script>
+  <script src="docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms — Bruddle Design System</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <div class="app-layout">
+    <nav class="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-dot"></span>
+      </div>
+      <div class="sidebar-nav">
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Documentation</div>
+          <a href="index.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Overview</span>
+          </a>
+          <a href="colors.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Colors</span>
+          </a>
+          <a href="typography.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Typography</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Components</div>
+          <a href="buttons.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Buttons</span>
+          </a>
+          <a href="forms.html" class="sidebar-nav-item docs-nav-active">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Forms</span>
+          </a>
+          <a href="tags.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tags & Badges</span>
+          </a>
+          <a href="cards.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Cards</span>
+          </a>
+          <a href="tables.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tables</span>
+          </a>
+          <a href="modals.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Modals</span>
+          </a>
+          <a href="pagination.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Pagination</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Layout</div>
+          <a href="layout.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">App Shell</span>
+          </a>
+          <a href="utilities.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Utilities</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-backdrop"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="topbar-menu-btn">&#9776;</button>
+          <h1 class="topbar-title">Forms</h1>
+        </div>
+        <div class="topbar-right">
+          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="container">
+
+          <div class="docs-page-header">
+            <h2 class="bru-h2">Forms</h2>
+            <p class="bru-text bru-mt-2">Inputs, selects, textareas, checkboxes, radios, switches, and counters. All form controls feature purple focus highlights and offset shadows.</p>
+          </div>
+
+          <!-- Text Input -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Text Input</h3>
+            <div class="docs-demo docs-demo--col" style="max-width: 400px;">
+              <div class="bru-field">
+                <label class="bru-field__label">Default</label>
+                <input type="text" class="bru-input" placeholder="Type something...">
+              </div>
+              <div class="bru-field">
+                <label class="bru-field__label">Error</label>
+                <input type="text" class="bru-input bru-input--error" value="Invalid value">
+              </div>
+              <div class="bru-field">
+                <label class="bru-field__label">Success</label>
+                <input type="text" class="bru-input bru-input--success" value="Looks good">
+              </div>
+              <div class="bru-field">
+                <label class="bru-field__label">Disabled</label>
+                <input type="text" class="bru-input" disabled value="Cannot edit">
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-field"&gt;
+  &lt;label class="bru-field__label"&gt;Email&lt;/label&gt;
+  &lt;input type="text" class="bru-input" placeholder="..."&gt;
+&lt;/div&gt;
+
+&lt;!-- Error / Success states --&gt;
+&lt;input class="bru-input bru-input--error"&gt;
+&lt;input class="bru-input bru-input--success"&gt;</pre>
+          </div>
+
+          <!-- Textarea -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Textarea</h3>
+            <div class="docs-demo docs-demo--col" style="max-width: 400px;">
+              <div class="bru-field">
+                <label class="bru-field__label">Message</label>
+                <textarea class="bru-input" placeholder="Write your message..."></textarea>
+              </div>
+            </div>
+<pre class="docs-code">&lt;textarea class="bru-input" placeholder="..."&gt;&lt;/textarea&gt;</pre>
+          </div>
+
+          <!-- Select -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Select</h3>
+            <div class="docs-demo docs-demo--col" style="max-width: 400px;">
+              <div class="bru-field">
+                <label class="bru-field__label">Choose option</label>
+                <select class="bru-select">
+                  <option>Option A</option>
+                  <option>Option B</option>
+                  <option>Option C</option>
+                </select>
+              </div>
+            </div>
+<pre class="docs-code">&lt;select class="bru-select"&gt;
+  &lt;option&gt;Option A&lt;/option&gt;
+  &lt;option&gt;Option B&lt;/option&gt;
+&lt;/select&gt;</pre>
+          </div>
+
+          <!-- Checkbox -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Checkbox</h3>
+            <div class="docs-demo">
+              <label class="bru-checkbox">
+                <input type="checkbox"> Unchecked
+              </label>
+              <label class="bru-checkbox">
+                <input type="checkbox" checked> Checked
+              </label>
+              <label class="bru-checkbox bru-checkbox--dark">
+                <input type="checkbox" checked> Dark
+              </label>
+            </div>
+<pre class="docs-code">&lt;label class="bru-checkbox"&gt;
+  &lt;input type="checkbox"&gt; Label
+&lt;/label&gt;
+
+&lt;label class="bru-checkbox bru-checkbox--dark"&gt;
+  &lt;input type="checkbox" checked&gt; Dark variant
+&lt;/label&gt;</pre>
+          </div>
+
+          <!-- Radio -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Radio Buttons</h3>
+            <div class="docs-demo">
+              <label class="bru-radio">
+                <input type="radio" name="demo-radio" checked> Default (mint)
+              </label>
+              <label class="bru-radio bru-radio--pink">
+                <input type="radio" name="demo-radio"> Pink
+              </label>
+              <label class="bru-radio bru-radio--purple">
+                <input type="radio" name="demo-radio"> Purple
+              </label>
+              <label class="bru-radio bru-radio--dark">
+                <input type="radio" name="demo-radio-dark" checked> Dark
+              </label>
+            </div>
+<pre class="docs-code">&lt;label class="bru-radio"&gt;
+  &lt;input type="radio" name="group"&gt; Default
+&lt;/label&gt;
+&lt;label class="bru-radio bru-radio--pink"&gt;
+  &lt;input type="radio" name="group"&gt; Pink
+&lt;/label&gt;
+&lt;label class="bru-radio bru-radio--purple"&gt;
+  &lt;input type="radio" name="group"&gt; Purple
+&lt;/label&gt;
+&lt;label class="bru-radio bru-radio--dark"&gt;
+  &lt;input type="radio" name="group2"&gt; Dark
+&lt;/label&gt;</pre>
+          </div>
+
+          <!-- Switch -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Switch / Toggle</h3>
+            <div class="docs-demo">
+              <label class="bru-switch">
+                <input type="checkbox">
+                <span class="bru-switch__track">
+                  <span class="bru-switch__knob"></span>
+                </span>
+                <span class="bru-text bru-text--bold">Off</span>
+              </label>
+              <label class="bru-switch">
+                <input type="checkbox" checked>
+                <span class="bru-switch__track">
+                  <span class="bru-switch__knob"></span>
+                </span>
+                <span class="bru-text bru-text--bold">On</span>
+              </label>
+            </div>
+<pre class="docs-code">&lt;label class="bru-switch"&gt;
+  &lt;input type="checkbox"&gt;
+  &lt;span class="bru-switch__track"&gt;
+    &lt;span class="bru-switch__knob"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;span&gt;Label&lt;/span&gt;
+&lt;/label&gt;</pre>
+          </div>
+
+          <!-- Counter -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Counter</h3>
+            <div class="docs-demo">
+              <div class="bru-counter">
+                <button class="bru-counter__btn">&minus;</button>
+                <input type="number" class="bru-counter__value" value="3" min="0" max="99">
+                <button class="bru-counter__btn">+</button>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-counter"&gt;
+  &lt;button class="bru-counter__btn"&gt;&amp;minus;&lt;/button&gt;
+  &lt;input type="number" class="bru-counter__value" value="3"&gt;
+  &lt;button class="bru-counter__btn"&gt;+&lt;/button&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Form Layout -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Form Layout</h3>
+            <div class="docs-demo docs-demo--col" style="max-width: 500px;">
+              <div class="bru-form-stack">
+                <div class="bru-form-row">
+                  <div class="bru-field">
+                    <label class="bru-field__label">First Name</label>
+                    <input type="text" class="bru-input" placeholder="Jane">
+                  </div>
+                  <div class="bru-field">
+                    <label class="bru-field__label">Last Name</label>
+                    <input type="text" class="bru-input" placeholder="Doe">
+                  </div>
+                </div>
+                <div class="bru-field">
+                  <label class="bru-field__label">Email</label>
+                  <input type="email" class="bru-input" placeholder="jane@example.com">
+                </div>
+                <div class="bru-form-actions">
+                  <button class="bru-btn bru-btn--primary">Submit</button>
+                  <button class="bru-btn bru-btn--ghost">Cancel</button>
+                </div>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-form-stack"&gt;
+  &lt;div class="bru-form-row"&gt;
+    &lt;div class="bru-field"&gt;...&lt;/div&gt;
+    &lt;div class="bru-field"&gt;...&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="bru-field"&gt;...&lt;/div&gt;
+  &lt;div class="bru-form-actions"&gt;
+    &lt;button class="bru-btn bru-btn--primary"&gt;Submit&lt;/button&gt;
+    &lt;button class="bru-btn bru-btn--ghost"&gt;Cancel&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/dark-mode.js"></script>
+  <script src="docs.js"></script>
+</body>
+</html>

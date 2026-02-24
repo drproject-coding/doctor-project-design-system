@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modals — Bruddle Design System</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <div class="app-layout">
+    <nav class="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-dot"></span>
+      </div>
+      <div class="sidebar-nav">
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Documentation</div>
+          <a href="index.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Overview</span>
+          </a>
+          <a href="colors.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Colors</span>
+          </a>
+          <a href="typography.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Typography</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Components</div>
+          <a href="buttons.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Buttons</span>
+          </a>
+          <a href="forms.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Forms</span>
+          </a>
+          <a href="tags.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tags & Badges</span>
+          </a>
+          <a href="cards.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Cards</span>
+          </a>
+          <a href="tables.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tables</span>
+          </a>
+          <a href="modals.html" class="sidebar-nav-item docs-nav-active">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Modals</span>
+          </a>
+          <a href="pagination.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Pagination</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Layout</div>
+          <a href="layout.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">App Shell</span>
+          </a>
+          <a href="utilities.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Utilities</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-backdrop"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="topbar-menu-btn">&#9776;</button>
+          <h1 class="topbar-title">Modals</h1>
+        </div>
+        <div class="topbar-right">
+          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="container">
+
+          <div class="docs-page-header">
+            <h2 class="bru-h2">Modals</h2>
+            <p class="bru-text bru-mt-2">Full-screen overlay with a centered dialog. Features a purple header, body content area, and footer with action buttons.</p>
+          </div>
+
+          <!-- Modal Demo -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Demo</h3>
+            <div class="docs-demo">
+              <button class="bru-btn bru-btn--primary" id="openModal">Open Modal</button>
+            </div>
+
+            <!-- The modal itself -->
+            <div class="bru-overlay" id="demoOverlay" hidden>
+              <div class="bru-modal">
+                <div class="bru-modal__header">
+                  <h3 class="bru-modal__title">Confirm Action</h3>
+                  <button class="bru-modal__close" id="closeModal">&times;</button>
+                </div>
+                <div class="bru-modal__body">
+                  <p class="bru-text">Are you sure you want to proceed? This action will sync all products from your AppSumo account.</p>
+                  <div class="bru-field bru-mt-4">
+                    <label class="bru-field__label">Notes (optional)</label>
+                    <textarea class="bru-input" placeholder="Add a note..." rows="3"></textarea>
+                  </div>
+                </div>
+                <div class="bru-modal__footer">
+                  <button class="bru-btn bru-btn--ghost" id="cancelModal">Cancel</button>
+                  <button class="bru-btn bru-btn--primary">Confirm</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Code -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Markup</h3>
+<pre class="docs-code">&lt;div class="bru-overlay" id="demoOverlay" hidden&gt;
+  &lt;div class="bru-modal"&gt;
+    &lt;div class="bru-modal__header"&gt;
+      &lt;h3 class="bru-modal__title"&gt;Title&lt;/h3&gt;
+      &lt;button class="bru-modal__close"&gt;&amp;times;&lt;/button&gt;
+    &lt;/div&gt;
+    &lt;div class="bru-modal__body"&gt;
+      &lt;p class="bru-text"&gt;Body content here.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="bru-modal__footer"&gt;
+      &lt;button class="bru-btn bru-btn--ghost"&gt;Cancel&lt;/button&gt;
+      &lt;button class="bru-btn bru-btn--primary"&gt;Confirm&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <!-- JavaScript -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">JavaScript</h3>
+<pre class="docs-code">const overlay = document.getElementById('demoOverlay');
+
+// Open
+document.getElementById('openModal').addEventListener('click', () =&gt; {
+  overlay.removeAttribute('hidden');
+});
+
+// Close via X button
+document.getElementById('closeModal').addEventListener('click', () =&gt; {
+  overlay.setAttribute('hidden', '');
+});
+
+// Close via backdrop click
+overlay.addEventListener('click', (e) =&gt; {
+  if (e.target === e.currentTarget) {
+    e.currentTarget.setAttribute('hidden', '');
+  }
+});</pre>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/dark-mode.js"></script>
+  <script src="docs.js"></script>
+  <script>
+    document.getElementById('openModal').addEventListener('click', () => {
+      document.getElementById('demoOverlay').removeAttribute('hidden');
+    });
+    document.getElementById('closeModal').addEventListener('click', () => {
+      document.getElementById('demoOverlay').setAttribute('hidden', '');
+    });
+    document.getElementById('cancelModal').addEventListener('click', () => {
+      document.getElementById('demoOverlay').setAttribute('hidden', '');
+    });
+    document.getElementById('demoOverlay').addEventListener('click', (e) => {
+      if (e.target === e.currentTarget) e.currentTarget.setAttribute('hidden', '');
+    });
+  </script>
+</body>
+</html>

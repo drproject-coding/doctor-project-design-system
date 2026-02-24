@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App Shell — Bruddle Design System</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <div class="app-layout">
+    <nav class="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-dot"></span>
+      </div>
+      <div class="sidebar-nav">
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Documentation</div>
+          <a href="index.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Overview</span>
+          </a>
+          <a href="colors.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Colors</span>
+          </a>
+          <a href="typography.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Typography</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Components</div>
+          <a href="buttons.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Buttons</span>
+          </a>
+          <a href="forms.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Forms</span>
+          </a>
+          <a href="tags.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tags & Badges</span>
+          </a>
+          <a href="cards.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Cards</span>
+          </a>
+          <a href="tables.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tables</span>
+          </a>
+          <a href="modals.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Modals</span>
+          </a>
+          <a href="pagination.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Pagination</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Layout</div>
+          <a href="layout.html" class="sidebar-nav-item docs-nav-active">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">App Shell</span>
+          </a>
+          <a href="utilities.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Utilities</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-backdrop"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="topbar-menu-btn">&#9776;</button>
+          <h1 class="topbar-title">App Shell</h1>
+        </div>
+        <div class="topbar-right">
+          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="container">
+
+          <div class="docs-page-header">
+            <h2 class="bru-h2">App Shell Layout</h2>
+            <p class="bru-text bru-mt-2">The layout system provides a fixed dark sidebar, sticky topbar, scrollable content area, and optional footer. You are looking at it right now -- this docs site uses the exact same layout.</p>
+          </div>
+
+          <!-- Layout Description -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Structure</h3>
+            <div class="bru-card bru-card--raised bru-mb-4">
+              <div class="bru-grid-2">
+                <div>
+                  <p class="bru-text bru-text--bold bru-mb-2">Sidebar</p>
+                  <ul class="bru-text" style="padding-left: 20px; list-style: disc;">
+                    <li>280px wide (fixed left)</li>
+                    <li>Dark background (#1A1A1A)</li>
+                    <li>Collapsible to 68px</li>
+                    <li>Brand, nav sections, user profile</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="bru-text bru-text--bold bru-mb-2">Main Content</p>
+                  <ul class="bru-text" style="padding-left: 20px; list-style: disc;">
+                    <li>Fills remaining width</li>
+                    <li>Cream background</li>
+                    <li>Sticky topbar (68px tall)</li>
+                    <li>Scrollable content area</li>
+                    <li>Optional footer bar (52px)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Full Shell Markup -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Full Shell Markup</h3>
+<pre class="docs-code">&lt;div class="app-layout"&gt;
+
+  &lt;!-- SIDEBAR (fixed left, dark) --&gt;
+  &lt;nav class="sidebar"&gt;
+    &lt;div class="sidebar-brand"&gt;
+      &lt;span class="sidebar-brand-name"&gt;App Name&lt;/span&gt;
+      &lt;span class="sidebar-brand-dot"&gt;&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class="sidebar-nav"&gt;
+      &lt;div class="sidebar-nav-section"&gt;
+        &lt;div class="sidebar-nav-label"&gt;Section&lt;/div&gt;
+        &lt;a href="#" class="sidebar-nav-item active"&gt;
+          &lt;span class="sidebar-nav-icon"&gt;&lt;/span&gt;
+          &lt;span class="sidebar-nav-text"&gt;Dashboard&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;!-- BACKDROP (mobile sidebar overlay) --&gt;
+  &lt;div class="sidebar-backdrop"&gt;&lt;/div&gt;
+
+  &lt;!-- MAIN --&gt;
+  &lt;main class="main-content"&gt;
+
+    &lt;!-- TOPBAR (sticky) --&gt;
+    &lt;header class="topbar"&gt;
+      &lt;div class="topbar-left"&gt;
+        &lt;button class="topbar-menu-btn"&gt;&amp;#9776;&lt;/button&gt;
+        &lt;h1 class="topbar-title"&gt;Page Title&lt;/h1&gt;
+      &lt;/div&gt;
+      &lt;div class="topbar-right"&gt;
+        &lt;!-- action buttons --&gt;
+      &lt;/div&gt;
+    &lt;/header&gt;
+
+    &lt;!-- CONTENT --&gt;
+    &lt;div class="content"&gt;
+      &lt;div class="container"&gt;
+        &lt;!-- Your page content --&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;!-- FOOTER (optional) --&gt;
+    &lt;footer class="footer-bar"&gt;
+      &lt;div class="footer-links"&gt;
+        &lt;a class="footer-link"&gt;Help&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/footer&gt;
+
+  &lt;/main&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Breakpoints -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Responsive Breakpoints</h3>
+            <table class="bru-table">
+              <thead>
+                <tr>
+                  <th>Breakpoint</th>
+                  <th>Max Width</th>
+                  <th>Behavior</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Desktop large</td>
+                  <td>> 1200px</td>
+                  <td>Full sidebar (280px), 32px content padding</td>
+                </tr>
+                <tr>
+                  <td>Desktop</td>
+                  <td>&le; 1200px</td>
+                  <td>Reduced padding (28px)</td>
+                </tr>
+                <tr>
+                  <td>Tablet</td>
+                  <td>&le; 1024px</td>
+                  <td>Sidebar narrows to 260px, 24px padding</td>
+                </tr>
+                <tr>
+                  <td>Tablet small</td>
+                  <td>&le; 768px</td>
+                  <td>Sidebar collapses to icon-only (68px), hamburger menu appears, sidebar can overlay</td>
+                </tr>
+                <tr>
+                  <td>Mobile</td>
+                  <td>&le; 390px</td>
+                  <td>Sidebar hidden, mobile tab bar appears, footer hidden</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- CSS Variables -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Layout Variables</h3>
+<pre class="docs-code">--bru-sidebar-width:           280px;
+--bru-sidebar-collapsed-width: 68px;
+--bru-topbar-height:           68px;
+--bru-footer-height:           52px;</pre>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/dark-mode.js"></script>
+  <script src="docs.js"></script>
+</body>
+</html>

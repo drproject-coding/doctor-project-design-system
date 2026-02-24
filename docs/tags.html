@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tags & Badges — Bruddle Design System</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <div class="app-layout">
+    <nav class="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-dot"></span>
+      </div>
+      <div class="sidebar-nav">
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Documentation</div>
+          <a href="index.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Overview</span>
+          </a>
+          <a href="colors.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Colors</span>
+          </a>
+          <a href="typography.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Typography</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Components</div>
+          <a href="buttons.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Buttons</span>
+          </a>
+          <a href="forms.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Forms</span>
+          </a>
+          <a href="tags.html" class="sidebar-nav-item docs-nav-active">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tags & Badges</span>
+          </a>
+          <a href="cards.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Cards</span>
+          </a>
+          <a href="tables.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tables</span>
+          </a>
+          <a href="modals.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Modals</span>
+          </a>
+          <a href="pagination.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Pagination</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Layout</div>
+          <a href="layout.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">App Shell</span>
+          </a>
+          <a href="utilities.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Utilities</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-backdrop"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="topbar-menu-btn">&#9776;</button>
+          <h1 class="topbar-title">Tags & Badges</h1>
+        </div>
+        <div class="topbar-right">
+          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="container">
+
+          <div class="docs-page-header">
+            <h2 class="bru-h2">Tags, Badges, Tabs & Progress</h2>
+            <p class="bru-text bru-mt-2">Inline labels, status indicators, navigation tabs, and progress bars.</p>
+          </div>
+
+          <!-- Tabs -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Tabs &mdash; Connected</h3>
+            <div class="docs-demo">
+              <div class="bru-tabs" id="connectedTabs">
+                <button class="bru-tab bru-tab--active" data-tab="0">Overview</button>
+                <button class="bru-tab" data-tab="1">Details</button>
+                <button class="bru-tab" data-tab="2">History</button>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-tabs"&gt;
+  &lt;button class="bru-tab bru-tab--active"&gt;Overview&lt;/button&gt;
+  &lt;button class="bru-tab"&gt;Details&lt;/button&gt;
+  &lt;button class="bru-tab"&gt;History&lt;/button&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Underline Tabs -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Tabs &mdash; Underline</h3>
+            <div class="docs-demo">
+              <div class="bru-tabs bru-tabs--underline" id="underlineTabs">
+                <button class="bru-tab bru-tab--active" data-tab="0">Products</button>
+                <button class="bru-tab" data-tab="1">Invoices</button>
+                <button class="bru-tab" data-tab="2">Settings</button>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-tabs bru-tabs--underline"&gt;
+  &lt;button class="bru-tab bru-tab--active"&gt;Products&lt;/button&gt;
+  &lt;button class="bru-tab"&gt;Invoices&lt;/button&gt;
+  &lt;button class="bru-tab"&gt;Settings&lt;/button&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Tags Outlined -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Tags &mdash; Outlined</h3>
+            <div class="docs-demo">
+              <span class="bru-tag">Default</span>
+              <span class="bru-tag bru-tag--purple">Purple</span>
+              <span class="bru-tag bru-tag--mint">Mint</span>
+              <span class="bru-tag bru-tag--pink">Pink</span>
+              <span class="bru-tag bru-tag--yellow">Yellow</span>
+              <span class="bru-tag bru-tag--grey">Grey</span>
+            </div>
+<pre class="docs-code">&lt;span class="bru-tag"&gt;Default&lt;/span&gt;
+&lt;span class="bru-tag bru-tag--purple"&gt;Purple&lt;/span&gt;
+&lt;span class="bru-tag bru-tag--mint"&gt;Mint&lt;/span&gt;
+&lt;span class="bru-tag bru-tag--pink"&gt;Pink&lt;/span&gt;
+&lt;span class="bru-tag bru-tag--yellow"&gt;Yellow&lt;/span&gt;
+&lt;span class="bru-tag bru-tag--grey"&gt;Grey&lt;/span&gt;</pre>
+          </div>
+
+          <!-- Tags Filled -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Tags &mdash; Filled</h3>
+            <div class="docs-demo">
+              <span class="bru-tag bru-tag--filled">Filled</span>
+              <span class="bru-tag bru-tag--filled bru-tag--purple">Purple</span>
+              <span class="bru-tag bru-tag--filled bru-tag--mint">Mint</span>
+              <span class="bru-tag bru-tag--filled bru-tag--pink">Pink</span>
+              <span class="bru-tag bru-tag--filled bru-tag--yellow">Yellow</span>
+            </div>
+<pre class="docs-code">&lt;span class="bru-tag bru-tag--filled"&gt;Filled&lt;/span&gt;
+&lt;span class="bru-tag bru-tag--filled bru-tag--purple"&gt;Purple&lt;/span&gt;</pre>
+          </div>
+
+          <!-- Tags Dark -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Tags &mdash; Dark</h3>
+            <div class="docs-demo">
+              <span class="bru-tag bru-tag--dark">Dark</span>
+              <span class="bru-tag bru-tag--dark bru-tag--purple">Purple</span>
+              <span class="bru-tag bru-tag--dark bru-tag--mint">Mint</span>
+              <span class="bru-tag bru-tag--dark bru-tag--pink">Pink</span>
+            </div>
+<pre class="docs-code">&lt;span class="bru-tag bru-tag--dark"&gt;Dark&lt;/span&gt;
+&lt;span class="bru-tag bru-tag--dark bru-tag--purple"&gt;Purple&lt;/span&gt;</pre>
+          </div>
+
+          <!-- Tags with Dot + Closeable -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Tags &mdash; Dot Indicator & Closeable</h3>
+            <div class="docs-demo">
+              <span class="bru-tag bru-tag--dot bru-tag--purple">Active</span>
+              <span class="bru-tag bru-tag--dot bru-tag--mint">Synced</span>
+              <span class="bru-tag bru-tag--dot bru-tag--pink">Error</span>
+              <span class="bru-tag bru-tag--dot bru-tag--yellow">Pending</span>
+              <span class="bru-tag bru-tag--closeable bru-tag--purple">Removable <button class="bru-tag__close">&times;</button></span>
+              <span class="bru-tag bru-tag--closeable bru-tag--mint">Filter <button class="bru-tag__close">&times;</button></span>
+            </div>
+<pre class="docs-code">&lt;!-- Dot indicator --&gt;
+&lt;span class="bru-tag bru-tag--dot bru-tag--mint"&gt;Synced&lt;/span&gt;
+
+&lt;!-- Closeable --&gt;
+&lt;span class="bru-tag bru-tag--closeable bru-tag--purple"&gt;
+  Removable &lt;button class="bru-tag__close"&gt;&amp;times;&lt;/button&gt;
+&lt;/span&gt;</pre>
+          </div>
+
+          <!-- Badges -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Badges</h3>
+            <div class="docs-demo">
+              <span class="bru-badge">3</span>
+              <span class="bru-badge bru-badge--filled">12</span>
+              <span class="bru-badge bru-badge--mint">OK</span>
+              <span class="bru-badge bru-badge--pink">5</span>
+            </div>
+<pre class="docs-code">&lt;span class="bru-badge"&gt;3&lt;/span&gt;
+&lt;span class="bru-badge bru-badge--filled"&gt;12&lt;/span&gt;
+&lt;span class="bru-badge bru-badge--mint"&gt;OK&lt;/span&gt;
+&lt;span class="bru-badge bru-badge--pink"&gt;5&lt;/span&gt;</pre>
+          </div>
+
+          <!-- Progress Bars -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Progress Bars</h3>
+            <div class="docs-demo docs-demo--col" style="max-width: 500px;">
+              <div class="bru-progress">
+                <div class="bru-progress__bar" style="width: 65%;"></div>
+              </div>
+              <div class="bru-progress bru-progress--mint">
+                <div class="bru-progress__bar" style="width: 80%;"></div>
+              </div>
+              <div class="bru-progress bru-progress--pink">
+                <div class="bru-progress__bar" style="width: 30%;"></div>
+              </div>
+              <div class="bru-progress bru-progress--yellow">
+                <div class="bru-progress__bar" style="width: 50%;"></div>
+              </div>
+              <div class="bru-progress bru-progress--sm">
+                <div class="bru-progress__bar" style="width: 45%;"></div>
+              </div>
+              <div class="bru-progress bru-progress--lg">
+                <div class="bru-progress__bar" style="width: 70%;"></div>
+              </div>
+              <div class="bru-progress-group">
+                <div class="bru-progress-group__label">
+                  <span>Sync Progress</span>
+                  <span>42 / 60</span>
+                </div>
+                <div class="bru-progress">
+                  <div class="bru-progress__bar" style="width: 70%;"></div>
+                </div>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-progress"&gt;
+  &lt;div class="bru-progress__bar" style="width: 65%;"&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Color variants --&gt;
+&lt;div class="bru-progress bru-progress--mint"&gt;...&lt;/div&gt;
+&lt;div class="bru-progress bru-progress--pink"&gt;...&lt;/div&gt;
+
+&lt;!-- Sizes --&gt;
+&lt;div class="bru-progress bru-progress--sm"&gt;...&lt;/div&gt;
+&lt;div class="bru-progress bru-progress--lg"&gt;...&lt;/div&gt;
+
+&lt;!-- With label --&gt;
+&lt;div class="bru-progress-group"&gt;
+  &lt;div class="bru-progress-group__label"&gt;
+    &lt;span&gt;Label&lt;/span&gt;&lt;span&gt;70%&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class="bru-progress"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Status Dots -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Status Dots</h3>
+            <div class="docs-demo">
+              <span class="bru-flex bru-items-center bru-gap-2"><span class="bru-dot"></span> <span class="bru-text bru-text--sm">Grey</span></span>
+              <span class="bru-flex bru-items-center bru-gap-2"><span class="bru-dot bru-dot--purple"></span> <span class="bru-text bru-text--sm">Purple</span></span>
+              <span class="bru-flex bru-items-center bru-gap-2"><span class="bru-dot bru-dot--mint"></span> <span class="bru-text bru-text--sm">Mint</span></span>
+              <span class="bru-flex bru-items-center bru-gap-2"><span class="bru-dot bru-dot--pink"></span> <span class="bru-text bru-text--sm">Pink</span></span>
+              <span class="bru-flex bru-items-center bru-gap-2"><span class="bru-dot bru-dot--yellow"></span> <span class="bru-text bru-text--sm">Yellow</span></span>
+              <span class="bru-flex bru-items-center bru-gap-2"><span class="bru-dot bru-dot--mint bru-dot--pulse"></span> <span class="bru-text bru-text--sm">Pulse</span></span>
+            </div>
+<pre class="docs-code">&lt;span class="bru-dot"&gt;&lt;/span&gt;
+&lt;span class="bru-dot bru-dot--purple"&gt;&lt;/span&gt;
+&lt;span class="bru-dot bru-dot--mint bru-dot--pulse"&gt;&lt;/span&gt;</pre>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/dark-mode.js"></script>
+  <script src="docs.js"></script>
+  <script>
+    // Tab switching for demo
+    document.querySelectorAll('.bru-tabs').forEach(tabGroup => {
+      tabGroup.addEventListener('click', (e) => {
+        const tab = e.target.closest('.bru-tab');
+        if (!tab) return;
+        tabGroup.querySelectorAll('.bru-tab').forEach(t => t.classList.remove('bru-tab--active'));
+        tab.classList.add('bru-tab--active');
+      });
+    });
+  </script>
+</body>
+</html>

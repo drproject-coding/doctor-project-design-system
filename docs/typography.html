@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typography — Bruddle Design System</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <div class="app-layout">
+    <nav class="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-dot"></span>
+      </div>
+      <div class="sidebar-nav">
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Documentation</div>
+          <a href="index.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Overview</span>
+          </a>
+          <a href="colors.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Colors</span>
+          </a>
+          <a href="typography.html" class="sidebar-nav-item docs-nav-active">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Typography</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Components</div>
+          <a href="buttons.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Buttons</span>
+          </a>
+          <a href="forms.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Forms</span>
+          </a>
+          <a href="tags.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tags & Badges</span>
+          </a>
+          <a href="cards.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Cards</span>
+          </a>
+          <a href="tables.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tables</span>
+          </a>
+          <a href="modals.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Modals</span>
+          </a>
+          <a href="pagination.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Pagination</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Layout</div>
+          <a href="layout.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">App Shell</span>
+          </a>
+          <a href="utilities.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Utilities</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-backdrop"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="topbar-menu-btn">&#9776;</button>
+          <h1 class="topbar-title">Typography</h1>
+        </div>
+        <div class="topbar-right">
+          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="container">
+
+          <div class="docs-page-header">
+            <h2 class="bru-h2">Typography</h2>
+            <p class="bru-text bru-mt-2">Visby is the primary brand font. Roboto Flex serves as a system fallback. All weights are defined in <code>typography.css</code>.</p>
+          </div>
+
+          <!-- Font Specimens -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Font Family &mdash; Visby</h3>
+            <div class="docs-demo docs-demo--col">
+              <p style="font-family: var(--bru-font-primary); font-weight: 400; font-size: 20px;">Regular (400) &mdash; The quick brown fox jumps over the lazy dog.</p>
+              <p style="font-family: var(--bru-font-primary); font-weight: 500; font-size: 20px;">Medium (500) &mdash; The quick brown fox jumps over the lazy dog.</p>
+              <p style="font-family: var(--bru-font-primary); font-weight: 600; font-size: 20px;">Semibold (600) &mdash; The quick brown fox jumps over the lazy dog.</p>
+              <p style="font-family: var(--bru-font-primary); font-weight: 700; font-size: 20px;">Bold (700) &mdash; The quick brown fox jumps over the lazy dog.</p>
+            </div>
+          </div>
+
+          <!-- Heading Scale -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Heading Scale</h3>
+            <div class="docs-demo docs-demo--col">
+              <h1 class="bru-h1">Heading 1 &mdash; 48px</h1>
+              <h2 class="bru-h2">Heading 2 &mdash; 36px</h2>
+              <h3 class="bru-h3">Heading 3 &mdash; 28px</h3>
+              <h4 class="bru-h4">Heading 4 &mdash; 24px</h4>
+              <h5 class="bru-h5">Heading 5 &mdash; 20px</h5>
+              <h6 class="bru-h6">Heading 6 &mdash; 18px</h6>
+            </div>
+<pre class="docs-code">&lt;h1 class="bru-h1"&gt;Heading 1&lt;/h1&gt;
+&lt;h2 class="bru-h2"&gt;Heading 2&lt;/h2&gt;
+&lt;h3 class="bru-h3"&gt;Heading 3&lt;/h3&gt;
+&lt;h4 class="bru-h4"&gt;Heading 4&lt;/h4&gt;
+&lt;h5 class="bru-h5"&gt;Heading 5&lt;/h5&gt;
+&lt;h6 class="bru-h6"&gt;Heading 6&lt;/h6&gt;</pre>
+          </div>
+
+          <!-- Inverted Headings -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Inverted Headings</h3>
+            <div class="docs-demo docs-demo--col">
+              <p><span class="bru-h1--inv">Heading 1 Inverted</span></p>
+              <p><span class="bru-h2--inv">Heading 2 Inverted</span></p>
+              <p><span class="bru-h3--inv">Heading 3 Inverted</span></p>
+              <p><span class="bru-h4--inv">Heading 4 Inverted</span></p>
+              <p><span class="bru-h5--inv">Heading 5 Inverted</span></p>
+              <p><span class="bru-h6--inv">Heading 6 Inverted</span></p>
+            </div>
+<pre class="docs-code">&lt;span class="bru-h2--inv"&gt;White text on black highlight&lt;/span&gt;</pre>
+          </div>
+
+          <!-- Body Text -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Body Text</h3>
+            <div class="docs-demo docs-demo--col">
+              <p class="bru-text bru-text--sm">Small text (12px) &mdash; .bru-text .bru-text--sm</p>
+              <p class="bru-text">Default text (14px) &mdash; .bru-text</p>
+              <p class="bru-text bru-text--lg">Large text (16px) &mdash; .bru-text .bru-text--lg</p>
+              <p class="bru-text bru-text--medium">Medium weight &mdash; .bru-text .bru-text--medium</p>
+              <p class="bru-text bru-text--semibold">Semibold weight &mdash; .bru-text .bru-text--semibold</p>
+              <p class="bru-text bru-text--bold">Bold weight &mdash; .bru-text .bru-text--bold</p>
+            </div>
+<pre class="docs-code">&lt;p class="bru-text"&gt;Default body text&lt;/p&gt;
+&lt;p class="bru-text bru-text--sm"&gt;Small text&lt;/p&gt;
+&lt;p class="bru-text bru-text--lg"&gt;Large text&lt;/p&gt;
+&lt;p class="bru-text bru-text--bold"&gt;Bold text&lt;/p&gt;</pre>
+          </div>
+
+          <!-- Text Colors -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Text Colors</h3>
+            <div class="docs-demo docs-demo--col">
+              <p class="bru-text bru-text--muted">Muted text &mdash; .bru-text--muted</p>
+              <p class="bru-text bru-text--purple">Purple text &mdash; .bru-text--purple</p>
+              <p class="bru-text bru-text--mint">Mint text &mdash; .bru-text--mint</p>
+              <p class="bru-text bru-text--pink">Pink text &mdash; .bru-text--pink</p>
+              <p class="bru-text bru-text--yellow" style="background: #333; padding: 4px 8px;">Yellow text &mdash; .bru-text--yellow</p>
+              <p class="bru-text bru-text--error">Error text &mdash; .bru-text--error</p>
+              <p class="bru-text bru-text--success">Success text &mdash; .bru-text--success</p>
+              <p><span class="bru-text--inv">Inverted text &mdash; .bru-text--inv</span></p>
+              <p><span class="bru-text--inv-50">Inverted 50% &mdash; .bru-text--inv-50</span></p>
+            </div>
+          </div>
+
+          <!-- Labels -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Labels</h3>
+            <div class="docs-demo">
+              <span class="bru-label">Default Label</span>
+              <span class="bru-label bru-label--purple">Purple Label</span>
+              <span class="bru-label bru-label--inv">Inverted Label</span>
+            </div>
+<pre class="docs-code">&lt;span class="bru-label"&gt;Default Label&lt;/span&gt;
+&lt;span class="bru-label bru-label--purple"&gt;Purple Label&lt;/span&gt;
+&lt;span class="bru-label bru-label--inv"&gt;Inverted Label&lt;/span&gt;</pre>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/dark-mode.js"></script>
+  <script src="docs.js"></script>
+</body>
+</html>

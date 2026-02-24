@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tables — Bruddle Design System</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <div class="app-layout">
+    <nav class="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-dot"></span>
+      </div>
+      <div class="sidebar-nav">
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Documentation</div>
+          <a href="index.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Overview</span>
+          </a>
+          <a href="colors.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Colors</span>
+          </a>
+          <a href="typography.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Typography</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Components</div>
+          <a href="buttons.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Buttons</span>
+          </a>
+          <a href="forms.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Forms</span>
+          </a>
+          <a href="tags.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tags & Badges</span>
+          </a>
+          <a href="cards.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Cards</span>
+          </a>
+          <a href="tables.html" class="sidebar-nav-item docs-nav-active">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tables</span>
+          </a>
+          <a href="modals.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Modals</span>
+          </a>
+          <a href="pagination.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Pagination</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Layout</div>
+          <a href="layout.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">App Shell</span>
+          </a>
+          <a href="utilities.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Utilities</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-backdrop"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="topbar-menu-btn">&#9776;</button>
+          <h1 class="topbar-title">Tables</h1>
+        </div>
+        <div class="topbar-right">
+          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="container">
+
+          <div class="docs-page-header">
+            <h2 class="bru-h2">Tables</h2>
+            <p class="bru-text bru-mt-2">Data tables with uppercase headers, hover rows, and a responsive wrapper for horizontal scrolling on small screens.</p>
+          </div>
+
+          <!-- Basic Table -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Basic Table</h3>
+            <div class="docs-demo docs-demo--col">
+              <table class="bru-table">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Status</th>
+                    <th>Purchase Date</th>
+                    <th>Refund Deadline</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>AI2sql</td>
+                    <td><span class="bru-tag bru-tag--mint bru-tag--dot">Active</span></td>
+                    <td>2024-08-15</td>
+                    <td>2024-10-14</td>
+                    <td>$69.00</td>
+                  </tr>
+                  <tr>
+                    <td>Pulsetic</td>
+                    <td><span class="bru-tag bru-tag--mint bru-tag--dot">Active</span></td>
+                    <td>2024-09-02</td>
+                    <td>2024-11-01</td>
+                    <td>$49.00</td>
+                  </tr>
+                  <tr>
+                    <td>Writesonic</td>
+                    <td><span class="bru-tag bru-tag--pink bru-tag--dot">Refunded</span></td>
+                    <td>2024-07-20</td>
+                    <td>2024-09-18</td>
+                    <td>$59.00</td>
+                  </tr>
+                  <tr>
+                    <td>Bardeen</td>
+                    <td><span class="bru-tag bru-tag--yellow bru-tag--dot">Expiring</span></td>
+                    <td>2024-10-01</td>
+                    <td>2024-11-30</td>
+                    <td>$49.00</td>
+                  </tr>
+                  <tr>
+                    <td>Durable</td>
+                    <td><span class="bru-tag bru-tag--grey bru-tag--dot">Expired</span></td>
+                    <td>2024-05-10</td>
+                    <td>2024-07-09</td>
+                    <td>$39.00</td>
+                  </tr>
+                  <tr>
+                    <td>TidyCal</td>
+                    <td><span class="bru-tag bru-tag--mint bru-tag--dot">Active</span></td>
+                    <td>2024-10-15</td>
+                    <td>2024-12-14</td>
+                    <td>$29.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+<pre class="docs-code">&lt;table class="bru-table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Product&lt;/th&gt;
+      &lt;th&gt;Status&lt;/th&gt;
+      &lt;th&gt;Amount&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;AI2sql&lt;/td&gt;
+      &lt;td&gt;&lt;span class="bru-tag bru-tag--mint"&gt;Active&lt;/span&gt;&lt;/td&gt;
+      &lt;td&gt;$69.00&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</pre>
+          </div>
+
+          <!-- Responsive Table -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Responsive Table Wrapper</h3>
+            <p class="bru-text bru-mb-4">Wrap tables in <code>.responsive-table-wrapper</code> to enable horizontal scrolling on narrow viewports.</p>
+            <div class="docs-demo docs-demo--col">
+              <div class="responsive-table-wrapper">
+                <table class="bru-table">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Invoice UUID</th>
+                      <th>Product</th>
+                      <th>Status</th>
+                      <th>Plan</th>
+                      <th>Stacks</th>
+                      <th>Purchase Date</th>
+                      <th>Refund Deadline</th>
+                      <th>Amount</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>1</td>
+                      <td>7d6ce438-a1b2-4c3d</td>
+                      <td>AI2sql</td>
+                      <td><span class="bru-tag bru-tag--mint">Active</span></td>
+                      <td>Tier 2</td>
+                      <td>3</td>
+                      <td>2024-08-15</td>
+                      <td>2024-10-14</td>
+                      <td>$69.00</td>
+                    </tr>
+                    <tr>
+                      <td>2</td>
+                      <td>b3f9e721-d4e5-6f7g</td>
+                      <td>Pulsetic</td>
+                      <td><span class="bru-tag bru-tag--mint">Active</span></td>
+                      <td>Tier 1</td>
+                      <td>1</td>
+                      <td>2024-09-02</td>
+                      <td>2024-11-01</td>
+                      <td>$49.00</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="responsive-table-wrapper"&gt;
+  &lt;table class="bru-table"&gt;
+    &lt;!-- table content --&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/dark-mode.js"></script>
+  <script src="docs.js"></script>
+</body>
+</html>
