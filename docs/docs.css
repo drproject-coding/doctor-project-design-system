@@ -1,0 +1,116 @@
+/* Docs-only styles — DO NOT put design system styles here */
+
+/* Code snippet blocks */
+.docs-code {
+  position: relative;
+  background: #1A1A1A;
+  color: #F2F2F2;
+  padding: 16px 20px;
+  font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+  border: 2px solid #000;
+  margin: 12px 0 24px;
+  white-space: pre;
+}
+
+body.dark-mode .docs-code {
+  background: #111;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.docs-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.docs-copy-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.docs-section {
+  margin-bottom: 48px;
+}
+
+.docs-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--bru-grey);
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: var(--bru-border-thin);
+}
+
+.docs-demo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 24px;
+  background: var(--bru-surface);
+  border: var(--bru-border);
+  margin-bottom: 4px;
+}
+
+.docs-demo--col {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.docs-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.docs-swatch {
+  border: var(--bru-border);
+  overflow: hidden;
+}
+
+.docs-swatch-color {
+  height: 64px;
+}
+
+.docs-swatch-info {
+  padding: 8px 12px;
+  font-size: 12px;
+}
+
+.docs-swatch-name {
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.docs-swatch-value {
+  color: var(--bru-grey);
+  font-family: var(--bru-font-mono);
+}
+
+.docs-page-header {
+  margin-bottom: 40px;
+}
+
+.docs-nav-active {
+  background: var(--sidebar-active-bg) !important;
+  color: var(--sidebar-active-text) !important;
+}
+
+.docs-nav-active .sidebar-nav-icon {
+  opacity: 1 !important;
+}
