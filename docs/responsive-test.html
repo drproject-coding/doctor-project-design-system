@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Test — Bruddle Design System</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="docs.css">
+  <style>
+    /* Test-page only styles */
+    .test-screen-info {
+      position: fixed;
+      top: 0;
+      right: 0;
+      background: #AE7AFF;
+      color: #fff;
+      padding: 8px 16px;
+      font-family: 'SF Mono', monospace;
+      font-size: 12px;
+      font-weight: 700;
+      z-index: 9999;
+      border: 2px solid #000;
+      border-top: none;
+      border-right: none;
+    }
+    .test-breakpoint {
+      display: inline-block;
+      padding: 2px 8px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 3px;
+      margin-left: 8px;
+    }
+    .test-section {
+      margin-bottom: 48px;
+      padding-bottom: 24px;
+      border-bottom: 2px dashed var(--bru-grey-85, #ccc);
+    }
+    .test-section:last-child {
+      border-bottom: none;
+    }
+    .test-section h2 {
+      font-family: var(--bru-font-primary);
+      font-size: var(--bru-text-xl);
+      font-weight: var(--bru-weight-bold);
+      margin: 0 0 24px;
+      color: var(--bru-purple);
+    }
+    .test-subsection {
+      margin-bottom: 24px;
+    }
+    .test-subsection h3 {
+      font-family: var(--bru-font-primary);
+      font-size: var(--bru-text-md);
+      font-weight: var(--bru-weight-bold);
+      margin: 0 0 12px;
+      color: var(--bru-black);
+    }
+    .test-note {
+      font-size: 12px;
+      color: var(--bru-grey);
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+    /* No sidebar for this test page — full viewport testing */
+    .test-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 24px 40px;
+    }
+    @media (max-width: 390px) {
+      .test-content {
+        padding: 52px 12px 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="test-screen-info">
+  <span id="screenWidth"></span>
+  <span class="test-breakpoint" id="breakpointLabel"></span>
+</div>
+
+<div class="test-content">
+  <div class="docs-page-header">
+    <h1 class="bru-heading-xl">Responsive Test</h1>
+    <p class="bru-text-md" style="color: var(--bru-grey); max-width: 600px;">
+      Test all components across 6 target screens: iPhone (390px), Android (412px),
+      iPad (820px), Android Tablet (800px), Desktop Chrome (1440px), Desktop Safari (1440px).
+    </p>
+  </div>
+
+  <!-- ═══════════════════════════════════════ BUTTONS ═══════════════════════════════════════ -->
+  <div class="test-section">
+    <h2>Buttons</h2>
+
+    <div class="test-subsection">
+      <h3>Button Variants</h3>
+      <div class="docs-demo">
+        <button class="bru-btn">Default</button>
+        <button class="bru-btn bru-btn--primary">Primary</button>
+        <button class="bru-btn bru-btn--success">Success</button>
+        <button class="bru-btn bru-btn--danger">Danger</button>
+        <button class="bru-btn bru-btn--outline">Outline</button>
+        <button class="bru-btn bru-btn--ghost">Ghost</button>
+      </div>
+    </div>
+
+    <div class="test-subsection">
+      <h3>Button Sizes</h3>
+      <div class="docs-demo">
+        <button class="bru-btn bru-btn--primary bru-btn--sm">Small</button>
+        <button class="bru-btn bru-btn--primary">Default</button>
+        <button class="bru-btn bru-btn--primary bru-btn--lg">Large</button>
+      </div>
+    </div>
+
+    <div class="test-subsection">
+      <h3>Button Group</h3>
+      <p class="test-note">Should wrap on tablet, go full-width on mobile</p>
+      <div class="docs-demo">
+        <div class="bru-btn-group">
+          <button class="bru-btn bru-btn--primary">Save</button>
+          <button class="bru-btn bru-btn--outline">Cancel</button>
+          <button class="bru-btn bru-btn--danger">Delete</button>
+          <button class="bru-btn">Draft</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ FORMS ═══════════════════════════════════════ -->
+  <div class="test-section">
+    <h2>Forms</h2>
+
+    <div class="test-subsection">
+      <h3>Form Row (2-column → 1-column on mobile)</h3>
+      <p class="test-note">Should stack to single column at 768px</p>
+      <div class="docs-demo docs-demo--col">
+        <div class="bru-form-row" style="width: 100%;">
+          <div class="bru-form-group">
+            <label class="bru-label">First Name</label>
+            <input type="text" class="bru-input" placeholder="John">
+          </div>
+          <div class="bru-form-group">
+            <label class="bru-label">Last Name</label>
+            <input type="text" class="bru-input" placeholder="Doe">
+          </div>
+        </div>
+        <div class="bru-form-row" style="width: 100%;">
+          <div class="bru-form-group">
+            <label class="bru-label">Email</label>
+            <input type="email" class="bru-input" placeholder="john@example.com">
+          </div>
+          <div class="bru-form-group">
+            <label class="bru-label">Phone</label>
+            <input type="tel" class="bru-input" placeholder="+1 (555) 000-0000">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-subsection">
+      <h3>Select & Inputs</h3>
+      <p class="test-note">Inputs should be 16px on mobile (prevent iOS zoom)</p>
+      <div class="docs-demo docs-demo--col">
+        <div class="bru-form-group" style="width: 100%; max-width: 400px;">
+          <label class="bru-label">Country</label>
+          <select class="bru-select">
+            <option>United States</option>
+            <option>Canada</option>
+            <option>United Kingdom</option>
+          </select>
+        </div>
+        <div class="bru-form-group" style="width: 100%; max-width: 400px;">
+          <label class="bru-label">Message</label>
+          <textarea class="bru-input" rows="3" placeholder="Type your message..."></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-subsection">
+      <h3>Checkboxes & Radios</h3>
+      <div class="docs-demo docs-demo--col">
+        <label class="bru-checkbox">
+          <input type="checkbox" checked>
+          <span class="bru-checkbox__mark"></span>
+          Accept terms and conditions
+        </label>
+        <label class="bru-checkbox">
+          <input type="checkbox">
+          <span class="bru-checkbox__mark"></span>
+          Subscribe to newsletter
+        </label>
+        <label class="bru-radio">
+          <input type="radio" name="test-plan" checked>
+          <span class="bru-radio__mark"></span>
+          Monthly Plan
+        </label>
+        <label class="bru-radio">
+          <input type="radio" name="test-plan">
+          <span class="bru-radio__mark"></span>
+          Annual Plan
+        </label>
+      </div>
+    </div>
+
+    <div class="test-subsection">
+      <h3>Toggle Switches</h3>
+      <div class="docs-demo">
+        <label class="bru-switch">
+          <input type="checkbox" checked>
+          <span class="bru-switch__slider"></span>
+        </label>
+        <label class="bru-switch">
+          <input type="checkbox">
+          <span class="bru-switch__slider"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ CARDS ═══════════════════════════════════════ -->
+  <div class="test-section">
+    <h2>Cards</h2>
+
+    <div class="test-subsection">
+      <h3>Card Grid (4-col → 2-col → 1-col)</h3>
+      <div class="bru-grid-4">
+        <div class="bru-card">
+          <div class="bru-card__header">
+            <h4 class="bru-card__title">Card Title 1</h4>
+          </div>
+          <div class="bru-card__body">
+            <p class="bru-text-sm">Card body content that demonstrates responsive padding adjustments.</p>
+          </div>
+          <div class="bru-card__footer">
+            <button class="bru-btn bru-btn--sm bru-btn--outline">Cancel</button>
+            <button class="bru-btn bru-btn--sm bru-btn--primary">Save</button>
+          </div>
+        </div>
+        <div class="bru-card">
+          <div class="bru-card__header">
+            <h4 class="bru-card__title">Card Title 2</h4>
+          </div>
+          <div class="bru-card__body">
+            <p class="bru-text-sm">Another card to test grid responsiveness and spacing.</p>
+          </div>
+          <div class="bru-card__footer">
+            <button class="bru-btn bru-btn--sm bru-btn--primary">View</button>
+          </div>
+        </div>
+        <div class="bru-card">
+          <div class="bru-card__header">
+            <h4 class="bru-card__title">Card Title 3</h4>
+          </div>
+          <div class="bru-card__body">
+            <p class="bru-text-sm">Third card for testing grid breakpoints.</p>
+          </div>
+          <div class="bru-card__footer">
+            <button class="bru-btn bru-btn--sm bru-btn--outline">Details</button>
+          </div>
+        </div>
+        <div class="bru-card">
+          <div class="bru-card__header">
+            <h4 class="bru-card__title">Card Title 4</h4>
+          </div>
+          <div class="bru-card__body">
+            <p class="bru-text-sm">Fourth card to complete the 4-column grid test.</p>
+          </div>
+          <div class="bru-card__footer">
+            <button class="bru-btn bru-btn--sm bru-btn--danger">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-subsection">
+      <h3>Card Variants</h3>
+      <div class="bru-grid-2">
+        <div class="bru-card bru-card--flat">
+          <div class="bru-card__body">
+            <p class="bru-text-sm">Flat card without shadow</p>
+          </div>
+        </div>
+        <div class="bru-card bru-card--hover">
+          <div class="bru-card__body">
+            <p class="bru-text-sm">Hover card — try hovering</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ TABS & TAGS ═══════════════════════════════════════ -->
+  <div class="test-section">
+    <h2>Tabs &amp; Tags</h2>
+
+    <div class="test-subsection">
+      <h3>Tabs (scrollable on mobile)</h3>
+      <p class="test-note">Should horizontally scroll on mobile without showing scrollbar</p>
+      <div class="bru-tabs">
+        <button class="bru-tab bru-tab--active">Dashboard</button>
+        <button class="bru-tab">Products</button>
+        <button class="bru-tab">Analytics</button>
+        <button class="bru-tab">Settings</button>
+        <button class="bru-tab">Notifications</button>
+        <button class="bru-tab">Account</button>
+        <button class="bru-tab">Help</button>
+      </div>
+    </div>
+
+    <div class="test-subsection">
+      <h3>Tags</h3>
+      <div class="docs-demo">
+        <span class="bru-tag">Default</span>
+        <span class="bru-tag bru-tag--purple">Purple</span>
+        <span class="bru-tag bru-tag--mint">Active</span>
+        <span class="bru-tag bru-tag--pink">Refunded</span>
+        <span class="bru-tag bru-tag--yellow">Pending</span>
+      </div>
+    </div>
+
+    <div class="test-subsection">
+      <h3>Badges</h3>
+      <div class="docs-demo">
+        <span class="bru-badge">5</span>
+        <span class="bru-badge bru-badge--purple">12</span>
+        <span class="bru-badge bru-badge--mint">3</span>
+        <span class="bru-badge bru-badge--pink">!</span>
+      </div>
+    </div>
+
+    <div class="test-subsection">
+      <h3>Progress Bar</h3>
+      <div style="max-width: 400px;">
+        <div class="bru-progress">
+          <div class="bru-progress__fill" style="width: 65%;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ TABLES ═══════════════════════════════════════ -->
+  <div class="test-section">
+    <h2>Tables</h2>
+
+    <div class="test-subsection">
+      <h3>Responsive Table (in scroll wrapper)</h3>
+      <p class="test-note">Should scroll horizontally on narrow screens</p>
+      <div class="responsive-table-wrapper">
+        <table class="bru-table">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Status</th>
+              <th>Purchase Date</th>
+              <th>Refund Deadline</th>
+              <th>Amount</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>AI2sql Pro</td>
+              <td><span class="bru-tag bru-tag--mint">Active</span></td>
+              <td>2026-01-15</td>
+              <td>2026-03-16</td>
+              <td>$49.00</td>
+              <td><button class="bru-btn bru-btn--sm bru-btn--outline">View</button></td>
+            </tr>
+            <tr>
+              <td>DesignJoy Ultra</td>
+              <td><span class="bru-tag bru-tag--yellow">Pending</span></td>
+              <td>2026-02-01</td>
+              <td>2026-04-02</td>
+              <td>$79.00</td>
+              <td><button class="bru-btn bru-btn--sm bru-btn--outline">View</button></td>
+            </tr>
+            <tr>
+              <td>Writerly AI</td>
+              <td><span class="bru-tag bru-tag--pink">Refunded</span></td>
+              <td>2025-12-20</td>
+              <td>2026-02-18</td>
+              <td>$59.00</td>
+              <td><button class="bru-btn bru-btn--sm bru-btn--ghost">View</button></td>
+            </tr>
+            <tr>
+              <td>MailMaestro Enterprise</td>
+              <td><span class="bru-tag bru-tag--mint">Active</span></td>
+              <td>2026-02-10</td>
+              <td>2026-04-11</td>
+              <td>$129.00</td>
+              <td><button class="bru-btn bru-btn--sm bru-btn--outline">View</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ MODALS ═══════════════════════════════════════ -->
+  <div class="test-section">
+    <h2>Modals</h2>
+
+    <div class="test-subsection">
+      <h3>Modal Demo</h3>
+      <p class="test-note">Click to open — should adapt to screen size</p>
+      <button class="bru-btn bru-btn--primary" onclick="document.getElementById('testModal').removeAttribute('hidden')">
+        Open Modal
+      </button>
+
+      <div class="bru-overlay" id="testModal" hidden>
+        <div class="bru-modal">
+          <div class="bru-modal__header">
+            <h3 class="bru-modal__title">Confirm Action</h3>
+            <button class="bru-modal__close" onclick="document.getElementById('testModal').setAttribute('hidden', '')">&times;</button>
+          </div>
+          <div class="bru-modal__body">
+            <p class="bru-text-md">Are you sure you want to proceed with this action? This will update your product configuration.</p>
+            <div class="bru-form-group" style="margin-top: 16px;">
+              <label class="bru-label">Confirmation</label>
+              <input type="text" class="bru-input" placeholder="Type 'confirm' to proceed">
+            </div>
+          </div>
+          <div class="bru-modal__footer">
+            <button class="bru-btn bru-btn--outline" onclick="document.getElementById('testModal').setAttribute('hidden', '')">Cancel</button>
+            <button class="bru-btn bru-btn--primary">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ PAGINATION ═══════════════════════════════════════ -->
+  <div class="test-section">
+    <h2>Pagination</h2>
+
+    <div class="test-subsection">
+      <h3>Standard Pagination</h3>
+      <p class="test-note">Should wrap and shrink on mobile</p>
+      <div class="docs-demo">
+        <div class="bru-pagination">
+          <button class="bru-pagination__btn bru-pagination__btn--nav">&laquo;</button>
+          <button class="bru-pagination__btn bru-pagination__btn--nav">&lsaquo;</button>
+          <button class="bru-pagination__btn">1</button>
+          <button class="bru-pagination__btn bru-pagination__btn--active">2</button>
+          <button class="bru-pagination__btn">3</button>
+          <button class="bru-pagination__btn">4</button>
+          <button class="bru-pagination__btn">5</button>
+          <button class="bru-pagination__btn">...</button>
+          <button class="bru-pagination__btn">20</button>
+          <button class="bru-pagination__btn bru-pagination__btn--nav">&rsaquo;</button>
+          <button class="bru-pagination__btn bru-pagination__btn--nav">&raquo;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ UTILITIES ═══════════════════════════════════════ -->
+  <div class="test-section">
+    <h2>Utilities</h2>
+
+    <div class="test-subsection">
+      <h3>Toast Notifications</h3>
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div class="bru-toast bru-toast--success">
+          <span>&#10003;</span> Product synced successfully
+        </div>
+        <div class="bru-toast bru-toast--error">
+          <span>&#10007;</span> Failed to fetch invoice data
+        </div>
+        <div class="bru-toast bru-toast--warning">
+          <span>&#9888;</span> Refund deadline approaching in 3 days
+        </div>
+        <div class="bru-toast bru-toast--info">
+          <span>&#8505;</span> New version available — click to update
+        </div>
+      </div>
+    </div>
+
+    <div class="test-subsection">
+      <h3>Empty State</h3>
+      <div class="bru-card">
+        <div class="bru-empty">
+          <div class="bru-empty__icon">&#128230;</div>
+          <h3 class="bru-empty__title">No products found</h3>
+          <p class="bru-empty__text">Sync your AppSumo account to see your products here. Click the button below to get started.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-subsection">
+      <h3>Drop Zone</h3>
+      <div class="bru-dropzone">
+        <div class="bru-dropzone__icon">&#128193;</div>
+        <div class="bru-dropzone__text">Drop files here or click to browse</div>
+        <div class="bru-dropzone__hint">Supports CSV, JSON, PDF (max 10MB)</div>
+      </div>
+    </div>
+
+    <div class="test-subsection">
+      <h3>Dividers</h3>
+      <hr class="bru-divider">
+      <hr class="bru-divider bru-divider--dashed">
+      <hr class="bru-divider bru-divider--dotted">
+    </div>
+
+    <div class="test-subsection">
+      <h3>Grid Layouts</h3>
+      <p class="test-note">4-col → 2-col (768px) → 1-col (390px)</p>
+      <div class="bru-grid-4">
+        <div class="bru-card" style="text-align:center;"><div class="bru-card__body">1</div></div>
+        <div class="bru-card" style="text-align:center;"><div class="bru-card__body">2</div></div>
+        <div class="bru-card" style="text-align:center;"><div class="bru-card__body">3</div></div>
+        <div class="bru-card" style="text-align:center;"><div class="bru-card__body">4</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════ DARK MODE ═══════════════════════════════════════ -->
+  <div class="test-section">
+    <h2>Dark Mode Toggle</h2>
+    <div class="docs-demo">
+      <button class="bru-btn bru-btn--outline" id="darkModeToggle">Toggle Dark Mode</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Screen size indicator
+  function updateScreenInfo() {
+    const w = window.innerWidth;
+    document.getElementById('screenWidth').textContent = w + 'px × ' + window.innerHeight + 'px';
+
+    let label = 'Desktop';
+    if (w <= 390) label = 'Mobile (iPhone)';
+    else if (w <= 412) label = 'Mobile (Android)';
+    else if (w <= 600) label = 'Grid Collapse';
+    else if (w <= 768) label = 'Tablet Small';
+    else if (w <= 820) label = 'Tablet (iPad)';
+    else if (w <= 1024) label = 'Tablet';
+    else if (w <= 1200) label = 'Desktop';
+    else label = 'Desktop Large';
+
+    document.getElementById('breakpointLabel').textContent = label;
+  }
+  updateScreenInfo();
+  window.addEventListener('resize', updateScreenInfo);
+
+  // Dark mode toggle
+  document.getElementById('darkModeToggle').addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+  });
+</script>
+
+</body>
+</html>
