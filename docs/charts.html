@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Charts — Bruddle Design System</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="docs.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="../js/bru-charts.js"></script>
+</head>
+<body>
+  <div class="app-layout">
+    <nav class="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-dot"></span>
+      </div>
+      <div class="sidebar-nav">
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Documentation</div>
+          <a href="index.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Overview</span>
+          </a>
+          <a href="colors.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Colors</span>
+          </a>
+          <a href="typography.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Typography</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Components</div>
+          <a href="buttons.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Buttons</span>
+          </a>
+          <a href="forms.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Forms</span>
+          </a>
+          <a href="tags.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tags & Badges</span>
+          </a>
+          <a href="cards.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Cards</span>
+          </a>
+          <a href="tables.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tables</span>
+          </a>
+          <a href="modals.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Modals</span>
+          </a>
+          <a href="pagination.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Pagination</span>
+          </a>
+          <a href="charts.html" class="sidebar-nav-item docs-nav-active">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Charts</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Layout</div>
+          <a href="layout.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">App Shell</span>
+          </a>
+          <a href="utilities.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Utilities</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-backdrop"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="topbar-menu-btn">&#9776;</button>
+          <h1 class="topbar-title">Charts & Graphs</h1>
+        </div>
+        <div class="topbar-right">
+          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="docs-page-header">
+          <h1 class="bru-heading-xl">Charts & Graphs</h1>
+          <p class="bru-text-md" style="color: var(--bru-grey); max-width: 560px;">
+            Pre-themed Chart.js components with brutalist styling. Includes chart cards, containers,
+            custom legends, stat cards, donut overlays, and a helper library.
+          </p>
+        </div>
+
+        <!-- ═══════════ STAT CARDS ═══════════ -->
+        <div class="docs-section">
+          <div class="docs-section-title">Stat Cards</div>
+
+          <div class="bru-stat-grid bru-stat-grid--4">
+            <div class="bru-stat-card">
+              <div class="bru-stat-card__label">Total Revenue</div>
+              <div class="bru-stat-card__value">$12,489</div>
+              <span class="bru-stat-card__badge bru-stat-card__badge--up">+12.5%</span>
+            </div>
+            <div class="bru-stat-card">
+              <div class="bru-stat-card__label">Products</div>
+              <div class="bru-stat-card__value">84</div>
+              <span class="bru-stat-card__badge bru-stat-card__badge--up">+6</span>
+            </div>
+            <div class="bru-stat-card">
+              <div class="bru-stat-card__label">Refund Rate</div>
+              <div class="bru-stat-card__value">8.2%</div>
+              <span class="bru-stat-card__badge bru-stat-card__badge--down">+1.3%</span>
+            </div>
+            <div class="bru-stat-card">
+              <div class="bru-stat-card__label">Avg. Spend</div>
+              <div class="bru-stat-card__value">$148</div>
+            </div>
+          </div>
+
+<div class="docs-code">&lt;div class="bru-stat-grid bru-stat-grid--4"&gt;
+  &lt;div class="bru-stat-card"&gt;
+    &lt;div class="bru-stat-card__label"&gt;Total Revenue&lt;/div&gt;
+    &lt;div class="bru-stat-card__value"&gt;$12,489&lt;/div&gt;
+    &lt;span class="bru-stat-card__badge bru-stat-card__badge--up"&gt;+12.5%&lt;/span&gt;
+  &lt;/div&gt;
+  ...
+&lt;/div&gt;</div>
+        </div>
+
+        <!-- ═══════════ BAR CHART ═══════════ -->
+        <div class="docs-section">
+          <div class="docs-section-title">Bar Chart</div>
+
+          <div class="bru-chart-card">
+            <div class="bru-chart-header">
+              <h3 class="bru-chart-title">Monthly Spending</h3>
+              <div class="bru-chart-legend" id="barLegend"></div>
+            </div>
+            <div class="bru-chart-container">
+              <canvas id="barChart"></canvas>
+            </div>
+          </div>
+
+<div class="docs-code">const chart = BruCharts.bar('#barChart', {
+  labels: ['Jan', 'Feb', 'Mar', ...],
+  datasets: [{
+    label: 'Spending',
+    data: [420, 380, 510, ...],
+    backgroundColor: '#AE7AFF'
+  }]
+});</div>
+        </div>
+
+        <!-- ═══════════ LINE CHART ═══════════ -->
+        <div class="docs-section">
+          <div class="docs-section-title">Line Chart</div>
+
+          <div class="bru-chart-card">
+            <div class="bru-chart-header">
+              <h3 class="bru-chart-title">Spending Trend</h3>
+              <div class="bru-chart-legend" id="lineLegend"></div>
+            </div>
+            <div class="bru-chart-container">
+              <canvas id="lineChart"></canvas>
+            </div>
+          </div>
+
+<div class="docs-code">const chart = BruCharts.line('#lineChart', {
+  labels: ['Jan', 'Feb', ...],
+  datasets: [
+    { label: 'Spending', data: [...], borderColor: '#AE7AFF' },
+    { label: 'Refunds', data: [...], borderColor: '#98E9AB' }
+  ]
+});</div>
+        </div>
+
+        <!-- ═══════════ MIXED CHART ═══════════ -->
+        <div class="docs-section">
+          <div class="docs-section-title">Mixed Chart (Bar + Line)</div>
+
+          <div class="bru-chart-card">
+            <div class="bru-chart-header">
+              <h3 class="bru-chart-title">Purchases vs Spending</h3>
+              <div class="bru-chart-legend" id="mixedLegend"></div>
+            </div>
+            <div class="bru-chart-container">
+              <canvas id="mixedChart"></canvas>
+            </div>
+          </div>
+
+<div class="docs-code">const chart = BruCharts.mixed('#mixedChart', {
+  labels: [...],
+  datasets: [
+    { type: 'bar', label: 'Purchases', data: [...] },
+    { type: 'bar', label: 'Refunds', data: [...], backgroundColor: '#98E9AB' },
+    { type: 'line', label: 'Spending', data: [...], borderColor: '#FAE8A4' }
+  ]
+});</div>
+        </div>
+
+        <!-- ═══════════ DOUGHNUT + DONUT CENTER ═══════════ -->
+        <div class="docs-section">
+          <div class="docs-section-title">Doughnut Chart</div>
+
+          <div class="bru-chart-grid bru-chart-grid--2">
+            <!-- Doughnut with center overlay -->
+            <div class="bru-chart-card">
+              <div class="bru-chart-header">
+                <h3 class="bru-chart-title">Product Status</h3>
+              </div>
+              <div class="bru-chart-donut-wrap">
+                <div class="bru-chart-container--sm">
+                  <canvas id="donutChart"></canvas>
+                </div>
+                <div class="bru-chart-donut-center">
+                  <div class="bru-chart-donut-value">84</div>
+                  <div class="bru-chart-donut-label">total products</div>
+                </div>
+              </div>
+              <div class="bru-chart-legend bru-chart-legend--center bru-chart-legend--bordered" id="donutLegend"></div>
+            </div>
+
+            <!-- Simple doughnut -->
+            <div class="bru-chart-card">
+              <div class="bru-chart-header">
+                <h3 class="bru-chart-title">Spending Breakdown</h3>
+              </div>
+              <div class="bru-chart-container--sm">
+                <canvas id="donutChart2"></canvas>
+              </div>
+              <div class="bru-chart-legend bru-chart-legend--center bru-chart-legend--bordered" id="donutLegend2"></div>
+            </div>
+          </div>
+
+<div class="docs-code">&lt;div class="bru-chart-donut-wrap"&gt;
+  &lt;div class="bru-chart-container--sm"&gt;
+    &lt;canvas id="donutChart"&gt;&lt;/canvas&gt;
+  &lt;/div&gt;
+  &lt;div class="bru-chart-donut-center"&gt;
+    &lt;div class="bru-chart-donut-value"&gt;84&lt;/div&gt;
+    &lt;div class="bru-chart-donut-label"&gt;total products&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+const chart = BruCharts.doughnut('#donutChart', {
+  labels: ['Active', 'Refunded', 'Unredeemed', 'Other'],
+  datasets: [{ data: [52, 12, 14, 6] }]
+});</div>
+        </div>
+
+        <!-- ═══════════ HORIZONTAL BAR ═══════════ -->
+        <div class="docs-section">
+          <div class="docs-section-title">Horizontal Bar</div>
+
+          <div class="bru-chart-card">
+            <div class="bru-chart-header">
+              <h3 class="bru-chart-title">Top Products by Spend</h3>
+            </div>
+            <div class="bru-chart-container">
+              <canvas id="hBarChart"></canvas>
+            </div>
+          </div>
+
+<div class="docs-code">const chart = BruCharts.horizontalBar('#hBarChart', {
+  labels: ['Product A', 'Product B', ...],
+  datasets: [{ label: 'Spend', data: [299, 249, ...] }]
+});</div>
+        </div>
+
+        <!-- ═══════════ POLAR + RADAR ═══════════ -->
+        <div class="docs-section">
+          <div class="docs-section-title">Polar Area &amp; Radar</div>
+
+          <div class="bru-chart-grid bru-chart-grid--2">
+            <div class="bru-chart-card">
+              <div class="bru-chart-header">
+                <h3 class="bru-chart-title">Category Distribution</h3>
+              </div>
+              <div class="bru-chart-container--sm">
+                <canvas id="polarChart"></canvas>
+              </div>
+              <div class="bru-chart-legend bru-chart-legend--center bru-chart-legend--bordered" id="polarLegend"></div>
+            </div>
+
+            <div class="bru-chart-card">
+              <div class="bru-chart-header">
+                <h3 class="bru-chart-title">Portfolio Analysis</h3>
+              </div>
+              <div class="bru-chart-container--sm">
+                <canvas id="radarChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+<div class="docs-code">BruCharts.polarArea('#polarChart', {
+  labels: ['AI Tools', 'Design', 'Marketing', ...],
+  datasets: [{ data: [320, 180, 240, ...] }]
+});
+
+BruCharts.radar('#radarChart', {
+  labels: ['AI', 'Design', 'SEO', 'Email', 'Dev'],
+  datasets: [{ label: 'Products', data: [12, 8, 6, 4, 10] }]
+});</div>
+        </div>
+
+        <!-- ═══════════ CHART GRID LAYOUTS ═══════════ -->
+        <div class="docs-section">
+          <div class="docs-section-title">Chart Grid Layouts</div>
+
+          <div class="bru-chart-grid bru-chart-grid--3">
+            <div class="bru-chart-card">
+              <div class="bru-chart-header">
+                <h3 class="bru-chart-title">Q1</h3>
+              </div>
+              <div class="bru-chart-container--sm">
+                <canvas id="miniChart1"></canvas>
+              </div>
+            </div>
+            <div class="bru-chart-card">
+              <div class="bru-chart-header">
+                <h3 class="bru-chart-title">Q2</h3>
+              </div>
+              <div class="bru-chart-container--sm">
+                <canvas id="miniChart2"></canvas>
+              </div>
+            </div>
+            <div class="bru-chart-card">
+              <div class="bru-chart-header">
+                <h3 class="bru-chart-title">Q3</h3>
+              </div>
+              <div class="bru-chart-container--sm">
+                <canvas id="miniChart3"></canvas>
+              </div>
+            </div>
+          </div>
+
+<div class="docs-code">&lt;div class="bru-chart-grid bru-chart-grid--3"&gt;
+  &lt;div class="bru-chart-card"&gt;...&lt;/div&gt;
+  &lt;div class="bru-chart-card"&gt;...&lt;/div&gt;
+  &lt;div class="bru-chart-card"&gt;...&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- Other grid variants: --&gt;
+&lt;div class="bru-chart-grid bru-chart-grid--2"&gt;...&lt;/div&gt;
+&lt;div class="bru-chart-grid bru-chart-grid--2-1"&gt;...&lt;/div&gt;</div>
+        </div>
+
+        <!-- ═══════════ COLOR PALETTE ═══════════ -->
+        <div class="docs-section">
+          <div class="docs-section-title">Color Palette</div>
+          <p class="bru-text-sm" style="color: var(--bru-grey); margin-bottom: 16px;">
+            BruCharts.PALETTE — 10 curated colors auto-applied to datasets.
+          </p>
+
+          <div class="docs-demo" id="paletteDemo"></div>
+
+<div class="docs-code">BruCharts.PALETTE
+// ['#AE7AFF', '#98E9AB', '#E99898', '#FAE8A4', '#FF6C01',
+//  '#17a2b8', '#6f42c1', '#20c997', '#fd7e14', '#6c757d']
+
+// Auto-applied by index:
+BruCharts.bar('#el', {
+  datasets: [
+    { label: 'A', data: [...] },  // → #AE7AFF (purple)
+    { label: 'B', data: [...] },  // → #98E9AB (mint)
+  ]
+});</div>
+        </div>
+
+        <!-- ═══════════ API REFERENCE ═══════════ -->
+        <div class="docs-section">
+          <div class="docs-section-title">BruCharts API</div>
+
+          <div class="responsive-table-wrapper">
+            <table class="bru-table">
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Description</th>
+                  <th>Returns</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><code>BruCharts.bar(el, data, opts?)</code></td><td>Vertical bar chart</td><td>Chart instance</td></tr>
+                <tr><td><code>BruCharts.line(el, data, opts?)</code></td><td>Line chart with fill</td><td>Chart instance</td></tr>
+                <tr><td><code>BruCharts.doughnut(el, data, opts?)</code></td><td>Doughnut (60% cutout)</td><td>Chart instance</td></tr>
+                <tr><td><code>BruCharts.pie(el, data, opts?)</code></td><td>Pie chart</td><td>Chart instance</td></tr>
+                <tr><td><code>BruCharts.polarArea(el, data, opts?)</code></td><td>Polar area chart</td><td>Chart instance</td></tr>
+                <tr><td><code>BruCharts.radar(el, data, opts?)</code></td><td>Radar / spider chart</td><td>Chart instance</td></tr>
+                <tr><td><code>BruCharts.mixed(el, data, opts?)</code></td><td>Multi-type (bar + line)</td><td>Chart instance</td></tr>
+                <tr><td><code>BruCharts.horizontalBar(el, data, opts?)</code></td><td>Horizontal bar chart</td><td>Chart instance</td></tr>
+                <tr><td><code>BruCharts.buildLegend(items, opts?)</code></td><td>Generate legend HTML</td><td>HTML string</td></tr>
+                <tr><td><code>BruCharts.currencyTicks(prefix?)</code></td><td>Y-axis $ formatter</td><td>Tick config</td></tr>
+                <tr><td><code>BruCharts.themeColors()</code></td><td>Current theme palette</td><td>Color object</td></tr>
+                <tr><td><code>BruCharts.PALETTE</code></td><td>10-color array</td><td>string[]</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/dark-mode.js"></script>
+  <script src="docs.js"></script>
+  <script>
+    // ── Sample data ──
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const spending = [420, 380, 510, 290, 640, 430, 580, 720, 490, 610, 340, 550];
+    const refunds  = [40, 20, 80, 30, 110, 50, 60, 90, 40, 70, 20, 45];
+
+    // ── Bar Chart ──
+    BruCharts.bar('#barChart', {
+      labels: months,
+      datasets: [{ label: 'Spending', data: spending, backgroundColor: '#AE7AFF' }],
+    }, {
+      scales: { y: { ticks: BruCharts.currencyTicks() } },
+    });
+    document.getElementById('barLegend').innerHTML = BruCharts.buildLegend([
+      { color: '#AE7AFF', label: 'Monthly Spending' },
+    ]);
+
+    // ── Line Chart ──
+    BruCharts.line('#lineChart', {
+      labels: months,
+      datasets: [
+        { label: 'Spending', data: spending, borderColor: '#AE7AFF' },
+        { label: 'Refunds', data: refunds, borderColor: '#98E9AB' },
+      ],
+    }, {
+      scales: { y: { ticks: BruCharts.currencyTicks() } },
+    });
+    document.getElementById('lineLegend').innerHTML = BruCharts.buildLegend([
+      { color: '#AE7AFF', label: 'Spending' },
+      { color: '#98E9AB', label: 'Refunds' },
+    ]);
+
+    // ── Mixed Chart ──
+    const purchases = [5, 3, 7, 2, 9, 4, 6, 8, 5, 7, 3, 6];
+    const refundCounts = [1, 0, 2, 0, 3, 1, 1, 2, 1, 2, 0, 1];
+    BruCharts.mixed('#mixedChart', {
+      labels: months,
+      datasets: [
+        { type: 'bar', label: 'Purchases', data: purchases, backgroundColor: '#AE7AFF' },
+        { type: 'bar', label: 'Refunds', data: refundCounts, backgroundColor: '#98E9AB' },
+        { type: 'line', label: 'Spending', data: spending, borderColor: '#FAE8A4' },
+      ],
+    }, {
+      scales: {
+        y: { position: 'left', title: { display: true, text: 'Count', color: BruCharts.themeColors().text } },
+        y1: { position: 'right', grid: { drawOnChartArea: false }, ticks: BruCharts.currencyTicks() },
+      },
+    });
+    document.getElementById('mixedLegend').innerHTML = BruCharts.buildLegend([
+      { color: '#AE7AFF', label: 'Purchases' },
+      { color: '#98E9AB', label: 'Refunds' },
+      { color: '#FAE8A4', label: 'Spending' },
+    ]);
+
+    // ── Doughnut — Product Status ──
+    const statusLabels = ['Active', 'Refunded', 'Unredeemed', 'Other'];
+    const statusData = [52, 12, 14, 6];
+    const statusColors = ['#98E9AB', '#E99898', '#FAE8A4', '#6c757d'];
+    BruCharts.doughnut('#donutChart', {
+      labels: statusLabels,
+      datasets: [{ data: statusData, backgroundColor: statusColors }],
+    }, { cutout: '65%' });
+    document.getElementById('donutLegend').innerHTML = BruCharts.buildLegend(
+      statusLabels.map((l, i) => ({ color: statusColors[i], label: l })),
+      { round: true }
+    );
+
+    // ── Doughnut — Spending Breakdown ──
+    const catLabels = ['AI Tools', 'Design', 'Marketing', 'SEO', 'Dev Tools'];
+    const catData = [320, 180, 240, 120, 200];
+    BruCharts.doughnut('#donutChart2', {
+      labels: catLabels,
+      datasets: [{ data: catData }],
+    });
+    document.getElementById('donutLegend2').innerHTML = BruCharts.buildLegend(
+      catLabels.map((l, i) => ({ color: BruCharts.PALETTE[i], label: l }))
+    );
+
+    // ── Horizontal Bar ──
+    const products = ['DesignJoy Ultra', 'AI2sql Pro', 'MailMaestro', 'WriterlyAI', 'SEO Pilot'];
+    const productSpend = [299, 249, 199, 149, 129];
+    BruCharts.horizontalBar('#hBarChart', {
+      labels: products,
+      datasets: [{ label: 'Spend', data: productSpend }],
+    }, {
+      scales: { x: { ticks: BruCharts.currencyTicks() } },
+    });
+
+    // ── Polar Area ──
+    BruCharts.polarArea('#polarChart', {
+      labels: catLabels,
+      datasets: [{
+        data: catData,
+        backgroundColor: BruCharts.PALETTE.slice(0, 5).map(c => c + '99'),
+      }],
+    });
+    document.getElementById('polarLegend').innerHTML = BruCharts.buildLegend(
+      catLabels.map((l, i) => ({ color: BruCharts.PALETTE[i], label: l })),
+      { round: true }
+    );
+
+    // ── Radar ──
+    BruCharts.radar('#radarChart', {
+      labels: ['AI', 'Design', 'SEO', 'Email', 'Dev Tools'],
+      datasets: [{ label: 'Products', data: [12, 8, 6, 4, 10], borderColor: '#AE7AFF' }],
+    });
+
+    // ── Mini Charts (3-col grid) ──
+    BruCharts.bar('#miniChart1', {
+      labels: ['Jan', 'Feb', 'Mar'],
+      datasets: [{ data: [420, 380, 510], backgroundColor: '#AE7AFF' }],
+    }, { plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false } } });
+
+    BruCharts.line('#miniChart2', {
+      labels: ['Apr', 'May', 'Jun'],
+      datasets: [{ data: [290, 640, 430], borderColor: '#98E9AB' }],
+    }, { plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false } } });
+
+    BruCharts.bar('#miniChart3', {
+      labels: ['Jul', 'Aug', 'Sep'],
+      datasets: [{ data: [580, 720, 490], backgroundColor: '#FAE8A4' }],
+    }, { plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { display: false } } });
+
+    // ── Palette Demo ──
+    document.getElementById('paletteDemo').innerHTML = BruCharts.PALETTE.map((c, i) =>
+      `<div style="display:flex;align-items:center;gap:8px;">` +
+        `<div style="width:32px;height:32px;background:${c};border:2px solid #282828;"></div>` +
+        `<code style="font-size:12px;">${c}</code>` +
+      `</div>`
+    ).join('');
+  </script>
+</body>
+</html>
