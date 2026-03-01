@@ -70,6 +70,7 @@
 .bru-input:focus {
   border-color: var(--bru-purple);
   box-shadow: 3px 3px 0 0 var(--bru-purple);
+  background: #F5F0FF;
 }
 
 .bru-input:disabled {
@@ -81,6 +82,7 @@
 /* Error state */
 .bru-input--error {
   border-color: var(--bru-pink);
+  background: #FFF0F0;
 }
 
 .bru-input--error:focus {
@@ -90,6 +92,7 @@
 /* Success state */
 .bru-input--success {
   border-color: var(--bru-mint);
+  background: #F0FFF0;
 }
 
 .bru-input--success:focus {
@@ -144,7 +147,7 @@ textarea.bru-input {
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23631DED' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
   transition:

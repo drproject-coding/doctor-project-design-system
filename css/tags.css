@@ -307,6 +307,29 @@ body.dark-mode .bru-tag--filled {
 
 
 /* ──────────────────────────────────────────────
+   BADGE VARIANTS (DP-style)
+   ────────────────────────────────────────────── */
+
+.bru-badge--primary {
+  background: var(--bru-purple);
+  color: #FFFFFF;
+  border-color: var(--bru-purple);
+}
+
+.bru-badge--secondary {
+  background: var(--bru-orange);
+  color: #FFFFFF;
+  border-color: var(--bru-orange);
+}
+
+.bru-badge--outline {
+  background: transparent;
+  color: var(--bru-black);
+  border-color: var(--bru-black);
+}
+
+
+/* ──────────────────────────────────────────────
    PROGRESS BARS
    Thin colored bars with Bruddle styling.
    ────────────────────────────────────────────── */
