@@ -1,0 +1,1531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bruddle Design System — Complete Showcase</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <style>
+    /* ── Page-Level Styles ── */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--bru-font-primary);
+      background: var(--bru-cream);
+      color: var(--bru-text-primary);
+      line-height: 1.5;
+    }
+
+    /* Page Header */
+    .page-header {
+      background: var(--bru-black);
+      color: var(--bru-white);
+      padding: var(--bru-space-12) var(--bru-space-8);
+      text-align: center;
+      border-bottom: 4px solid var(--bru-purple);
+    }
+    .page-title {
+      font-family: var(--bru-font-primary);
+      font-size: 3.5rem;
+      font-weight: var(--bru-weight-heavy);
+      text-transform: uppercase;
+      letter-spacing: var(--bru-tracking-tight);
+      margin-bottom: var(--bru-space-3);
+    }
+    .page-subtitle {
+      font-family: var(--bru-font-mono);
+      font-size: var(--bru-text-sm);
+      opacity: 0.7;
+    }
+
+    /* Dark Mode Toggle */
+    .dark-mode-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      background: var(--bru-black);
+      color: var(--bru-white);
+      border: 2px solid var(--bru-white);
+      padding: var(--bru-space-2) var(--bru-space-4);
+      font-family: var(--bru-font-mono);
+      font-size: var(--bru-text-sm);
+      font-weight: var(--bru-weight-semibold);
+      cursor: pointer;
+      text-transform: uppercase;
+      box-shadow: var(--bru-shadow-sm);
+      transition: all var(--bru-duration-fast) var(--bru-ease);
+    }
+    .dark-mode-btn:hover {
+      background: var(--bru-purple);
+      border-color: var(--bru-purple);
+    }
+
+    /* TOC Navigation */
+    .toc {
+      background: var(--bru-white);
+      border-bottom: var(--bru-border);
+      padding: var(--bru-space-4) var(--bru-space-6);
+      position: sticky;
+      top: 0;
+      z-index: var(--bru-z-sticky);
+    }
+    .toc-title {
+      font-family: var(--bru-font-mono);
+      font-size: var(--bru-text-xs);
+      text-transform: uppercase;
+      letter-spacing: var(--bru-tracking-widest);
+      color: var(--bru-text-muted);
+      margin-bottom: var(--bru-space-2);
+    }
+    .toc-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--bru-space-1);
+      list-style: none;
+    }
+    .toc-link {
+      font-family: var(--bru-font-mono);
+      font-size: var(--bru-text-xs);
+      font-weight: var(--bru-weight-semibold);
+      text-decoration: none;
+      color: var(--bru-text-primary);
+      padding: var(--bru-space-1) var(--bru-space-3);
+      border: 2px solid transparent;
+      text-transform: uppercase;
+      transition: all var(--bru-duration-fast) var(--bru-ease);
+    }
+    .toc-link:hover {
+      background: var(--bru-orange);
+      color: #FFFFFF;
+      border-color: var(--bru-black);
+    }
+
+    /* Section Layout */
+    .section {
+      padding: var(--bru-space-16) var(--bru-space-8);
+      border-bottom: var(--bru-border-chunk);
+    }
+    .section-title {
+      font-family: var(--bru-font-primary);
+      font-size: 2.5rem;
+      font-weight: var(--bru-weight-heavy);
+      text-transform: uppercase;
+      margin-bottom: var(--bru-space-2);
+    }
+    .section-subtitle {
+      font-family: var(--bru-font-mono);
+      font-size: var(--bru-text-sm);
+      color: var(--bru-text-muted);
+      text-transform: uppercase;
+      letter-spacing: var(--bru-tracking-wide);
+      margin-bottom: var(--bru-space-8);
+    }
+    .subsection {
+      margin-bottom: var(--bru-space-10);
+    }
+    .subsection-title {
+      font-family: var(--bru-font-primary);
+      font-size: 1.25rem;
+      font-weight: var(--bru-weight-bold);
+      margin-bottom: var(--bru-space-4);
+      padding-bottom: var(--bru-space-2);
+      border-bottom: var(--bru-border-thin);
+    }
+
+    /* Showcase helpers */
+    .showcase-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--bru-space-4);
+      align-items: flex-start;
+      margin-bottom: var(--bru-space-6);
+    }
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--bru-space-4);
+      margin-bottom: var(--bru-space-6);
+    }
+    .showcase-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--bru-space-6);
+      margin-bottom: var(--bru-space-6);
+    }
+    .showcase-label {
+      font-family: var(--bru-font-mono);
+      font-size: var(--bru-text-xs);
+      color: var(--bru-text-muted);
+      text-transform: uppercase;
+      letter-spacing: var(--bru-tracking-widest);
+      margin-bottom: var(--bru-space-3);
+      display: block;
+    }
+
+    /* Color Swatches */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: var(--bru-space-4);
+    }
+    .color-swatch {
+      border: 2px solid var(--bru-black);
+      overflow: hidden;
+      transition: transform var(--bru-duration-fast) var(--bru-ease);
+    }
+    .color-swatch:hover { transform: translate(-2px, -2px); }
+    .color-preview {
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .color-info {
+      padding: var(--bru-space-2) var(--bru-space-3);
+      background: var(--bru-white);
+      border-top: 2px solid var(--bru-black);
+    }
+    .color-name {
+      font-family: var(--bru-font-mono);
+      font-size: var(--bru-text-xs);
+      font-weight: var(--bru-weight-semibold);
+    }
+    .color-value {
+      font-family: var(--bru-font-mono);
+      font-size: 10px;
+      color: var(--bru-text-muted);
+    }
+
+    /* Font showcase */
+    .font-card {
+      padding: var(--bru-space-6);
+      background: var(--bru-white);
+      border: 2px solid var(--bru-black);
+    }
+    .font-name {
+      font-family: var(--bru-font-mono);
+      font-size: var(--bru-text-xs);
+      text-transform: uppercase;
+      letter-spacing: var(--bru-tracking-widest);
+      color: var(--bru-text-muted);
+      margin-bottom: var(--bru-space-2);
+    }
+
+    /* Type scale */
+    .type-sample {
+      display: flex;
+      align-items: baseline;
+      gap: var(--bru-space-4);
+      padding: var(--bru-space-3) 0;
+      border-bottom: 1px solid var(--bru-grey-light);
+    }
+    .type-label {
+      font-family: var(--bru-font-mono);
+      font-size: var(--bru-text-xs);
+      color: var(--bru-text-muted);
+      min-width: 120px;
+      flex-shrink: 0;
+    }
+
+    /* Input/Form showcase */
+    .input-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--bru-space-6);
+    }
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--bru-space-2);
+    }
+    .input-label {
+      font-family: var(--bru-font-mono);
+      font-size: var(--bru-text-xs);
+      font-weight: var(--bru-weight-semibold);
+      text-transform: uppercase;
+      letter-spacing: var(--bru-tracking-wide);
+    }
+
+    /* Card grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--bru-space-6);
+    }
+
+    /* Feedback grid */
+    .feedback-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--bru-space-4);
+    }
+
+    /* Animation demos */
+    .animation-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--bru-space-4);
+    }
+    .animation-demo {
+      background: var(--bru-white);
+      border: 2px solid var(--bru-black);
+      padding: var(--bru-space-6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--bru-space-3);
+    }
+    .animation-box {
+      width: 60px;
+      height: 60px;
+      background: var(--bru-purple);
+      border: 2px solid var(--bru-black);
+    }
+    .animation-label {
+      font-family: var(--bru-font-mono);
+      font-size: var(--bru-text-xs);
+      font-weight: var(--bru-weight-semibold);
+      text-transform: uppercase;
+    }
+
+    /* Spacing demo */
+    .spacing-demo {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--bru-space-4);
+      align-items: flex-end;
+    }
+    .spacing-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--bru-space-2);
+    }
+    .spacing-box {
+      background: var(--bru-purple);
+      border: 2px solid var(--bru-black);
+    }
+    .spacing-label {
+      font-family: var(--bru-font-mono);
+      font-size: 10px;
+      color: var(--bru-text-muted);
+    }
+
+    /* Grid demo */
+    .grid-12-demo {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 2px;
+      margin-bottom: var(--bru-space-4);
+    }
+    .grid-col-demo {
+      padding: var(--bru-space-3);
+      background: var(--bru-grey-light);
+      border: 1px solid var(--bru-black);
+      text-align: center;
+      font-family: var(--bru-font-mono);
+      font-size: var(--bru-text-xs);
+    }
+
+    /* Nav showcase */
+    .nav-showcase {
+      background: var(--bru-white);
+      border: 2px solid var(--bru-black);
+      padding: var(--bru-space-4);
+      margin-bottom: var(--bru-space-6);
+    }
+
+    /* Footer */
+    .page-footer {
+      background: var(--bru-black);
+      color: var(--bru-white);
+      padding: var(--bru-space-8);
+      text-align: center;
+      border-top: 4px solid var(--bru-purple);
+    }
+    .page-footer h3 {
+      font-family: var(--bru-font-primary);
+      font-size: 1.5rem;
+      font-weight: var(--bru-weight-heavy);
+      text-transform: uppercase;
+      margin-bottom: var(--bru-space-2);
+    }
+    .page-footer p {
+      font-family: var(--bru-font-mono);
+      font-size: var(--bru-text-xs);
+      opacity: 0.6;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .card-grid, .showcase-grid-3 { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .section { padding: var(--bru-space-8) var(--bru-space-4); }
+      .section-title { font-size: 2rem; }
+      .page-title { font-size: 2rem; }
+      .input-grid, .feedback-grid, .card-grid, .showcase-grid-3 { grid-template-columns: 1fr; }
+      .grid-12-demo { grid-template-columns: repeat(4, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Dark Mode Toggle -->
+<button class="dark-mode-btn" id="darkModeToggle" title="Toggle dark mode">
+  <span id="darkIcon">&#9789; Dark</span>
+  <span id="lightIcon" style="display:none;">&#9788; Light</span>
+</button>
+
+<!-- Page Header -->
+<header class="page-header">
+  <h1 class="page-title">Bruddle Design System</h1>
+  <p class="page-subtitle">Brutalist Edition &mdash; Doctor Project Brand Identity</p>
+</header>
+
+<!-- TOC Navigation -->
+<nav class="toc" id="toc">
+  <div class="toc-title">Components Index</div>
+  <ul class="toc-list">
+    <li><a href="#colors" class="toc-link">Colors</a></li>
+    <li><a href="#typography" class="toc-link">Typography</a></li>
+    <li><a href="#buttons" class="toc-link">Buttons</a></li>
+    <li><a href="#inputs" class="toc-link">Inputs</a></li>
+    <li><a href="#navigation" class="toc-link">Navigation</a></li>
+    <li><a href="#cards" class="toc-link">Cards</a></li>
+    <li><a href="#feedback" class="toc-link">Feedback</a></li>
+    <li><a href="#overlays" class="toc-link">Overlays</a></li>
+    <li><a href="#media" class="toc-link">Media</a></li>
+    <li><a href="#composite" class="toc-link">Composite</a></li>
+    <li><a href="#marquee" class="toc-link">Marquee</a></li>
+    <li><a href="#layout" class="toc-link">Layout</a></li>
+    <li><a href="#animation" class="toc-link">Animation</a></li>
+  </ul>
+</nav>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 1: COLORS
+     ════════════════════════════════════════════════ -->
+<section class="section" id="colors">
+  <h2 class="section-title">Color System</h2>
+  <p class="section-subtitle">Brand identity &amp; semantic palette</p>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Brand Colors</h3>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#631DED;"></div>
+        <div class="color-info"><div class="color-name">Purple</div><div class="color-value">#631DED</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#4A14B8;"></div>
+        <div class="color-info"><div class="color-name">Purple Hover</div><div class="color-value">#4A14B8</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#8B4FF5;"></div>
+        <div class="color-info"><div class="color-name">Purple Active</div><div class="color-value">#8B4FF5</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#FF6C01;"></div>
+        <div class="color-info"><div class="color-name">Orange</div><div class="color-value">#FF6C01</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#CC5500;"></div>
+        <div class="color-info"><div class="color-name">Orange Dark</div><div class="color-value">#CC5500</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#FF9A4D;"></div>
+        <div class="color-info"><div class="color-name">Orange Light</div><div class="color-value">#FF9A4D</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#121212;"></div>
+        <div class="color-info"><div class="color-name">Black</div><div class="color-value">#121212</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#282828;"></div>
+        <div class="color-info"><div class="color-name">Charcoal</div><div class="color-value">#282828</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#FFFFFF; border-bottom: 1px solid #E0E0E0;"></div>
+        <div class="color-info"><div class="color-name">White</div><div class="color-value">#FFFFFF</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#F2F2F2;"></div>
+        <div class="color-info"><div class="color-name">Cream</div><div class="color-value">#F2F2F2</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Accent Colors</h3>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#FAE8A4;"></div>
+        <div class="color-info"><div class="color-name">Yellow</div><div class="color-value">#FAE8A4</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#E99898;"></div>
+        <div class="color-info"><div class="color-name">Pink</div><div class="color-value">#E99898</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#98E9AB;"></div>
+        <div class="color-info"><div class="color-name">Mint</div><div class="color-value">#98E9AB</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#666666;"></div>
+        <div class="color-info"><div class="color-name">Grey</div><div class="color-value">#666666</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#E0E0E0;"></div>
+        <div class="color-info"><div class="color-name">Grey Light</div><div class="color-value">#E0E0E0</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Semantic Colors</h3>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#00AA00; color:#fff;">Success</div>
+        <div class="color-info"><div class="color-name">Success</div><div class="color-value">#00AA00</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#FFAA00;">Warning</div>
+        <div class="color-info"><div class="color-name">Warning</div><div class="color-value">#FFAA00</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#FF4444; color:#fff;">Error</div>
+        <div class="color-info"><div class="color-name">Error</div><div class="color-value">#FF4444</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#0066FF; color:#fff;">Info</div>
+        <div class="color-info"><div class="color-name">Info</div><div class="color-value">#0066FF</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Text Colors</h3>
+    <div class="color-grid">
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#121212; color:#fff;">Primary</div>
+        <div class="color-info"><div class="color-name">Text Primary</div><div class="color-value">#121212</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#444444; color:#fff;">Secondary</div>
+        <div class="color-info"><div class="color-name">Text Secondary</div><div class="color-value">#444444</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#888888; color:#fff;">Muted</div>
+        <div class="color-info"><div class="color-name">Text Muted</div><div class="color-value">#888888</div></div>
+      </div>
+      <div class="color-swatch">
+        <div class="color-preview" style="background:#121212; color:#fff;">Inverse</div>
+        <div class="color-info"><div class="color-name">Text Inverse</div><div class="color-value">#FFFFFF</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 2: TYPOGRAPHY
+     ════════════════════════════════════════════════ -->
+<section class="section" id="typography">
+  <h2 class="section-title">Typography</h2>
+  <p class="section-subtitle">Font families, scale &amp; weights</p>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Font Families</h3>
+    <div class="showcase-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="font-card">
+        <div class="font-name">Display</div>
+        <div style="font-family:var(--bru-font-primary); font-weight:800; font-size:2rem; text-transform:uppercase;">Visby Heavy</div>
+      </div>
+      <div class="font-card">
+        <div class="font-name">Heading</div>
+        <div style="font-family:var(--bru-font-primary); font-weight:700; font-size:2rem;">Visby Bold</div>
+      </div>
+      <div class="font-card">
+        <div class="font-name">Body</div>
+        <div style="font-family:var(--bru-font-primary); font-weight:500; font-size:1.25rem;">Visby Medium</div>
+      </div>
+      <div class="font-card">
+        <div class="font-name">Mono</div>
+        <div style="font-family:var(--bru-font-mono); font-size:1.25rem;">Space Mono</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Type Scale</h3>
+    <div class="type-sample"><span class="type-label">Display XL</span><span class="bru-display-xl">BRUDDLE</span></div>
+    <div class="type-sample"><span class="type-label">Display LG</span><span class="bru-display-lg">BRUDDLE</span></div>
+    <div class="type-sample"><span class="type-label">Display MD</span><span class="bru-display-md">BRUDDLE</span></div>
+    <div class="type-sample"><span class="type-label">H1</span><span class="bru-h1">Heading One</span></div>
+    <div class="type-sample"><span class="type-label">H2</span><span class="bru-h2">Heading Two</span></div>
+    <div class="type-sample"><span class="type-label">H3</span><span class="bru-h3">Heading Three</span></div>
+    <div class="type-sample"><span class="type-label">H4</span><span class="bru-h4">Heading Four</span></div>
+    <div class="type-sample"><span class="type-label">H5</span><span class="bru-h5">Heading Five</span></div>
+    <div class="type-sample"><span class="type-label">H6</span><span class="bru-h6">Heading Six</span></div>
+    <div class="type-sample"><span class="type-label">Body LG</span><span class="bru-body-lg">The quick brown fox jumps over the lazy dog.</span></div>
+    <div class="type-sample"><span class="type-label">Body MD</span><span class="bru-body-md">The quick brown fox jumps over the lazy dog.</span></div>
+    <div class="type-sample"><span class="type-label">Body SM</span><span class="bru-body-sm">The quick brown fox jumps over the lazy dog.</span></div>
+    <div class="type-sample"><span class="type-label">Caption</span><span class="bru-caption">Caption text &mdash; Space Mono uppercase</span></div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Text Colors &amp; Weights</h3>
+    <div class="showcase-row">
+      <span class="bru-text--purple" style="font-size:1rem;">Purple text</span>
+      <span class="bru-text--mint" style="font-size:1rem;">Mint text</span>
+      <span class="bru-text--pink" style="font-size:1rem;">Pink text</span>
+      <span class="bru-text--muted" style="font-size:1rem;">Muted text</span>
+      <span class="bru-text--bold" style="font-size:1rem;">Bold weight</span>
+      <span class="bru-text--semibold" style="font-size:1rem;">Semibold weight</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 3: BUTTONS
+     ════════════════════════════════════════════════ -->
+<section class="section" id="buttons">
+  <h2 class="section-title">Buttons</h2>
+  <p class="section-subtitle">All variants, sizes &amp; states</p>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Variants</h3>
+    <div class="showcase-row">
+      <button class="bru-btn bru-btn--primary">Primary</button>
+      <button class="bru-btn bru-btn--secondary">Secondary</button>
+      <button class="bru-btn bru-btn--outline">Outline</button>
+      <button class="bru-btn bru-btn--ghost">Ghost</button>
+      <button class="bru-btn bru-btn--ghost-bordered">Ghost Bordered</button>
+      <button class="bru-btn bru-btn--danger">Danger</button>
+      <button class="bru-btn bru-btn--dark">Dark</button>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Sizes</h3>
+    <div class="showcase-row" style="align-items: center;">
+      <button class="bru-btn bru-btn--primary bru-btn--sm">Small</button>
+      <button class="bru-btn bru-btn--primary">Default</button>
+      <button class="bru-btn bru-btn--primary bru-btn--lg">Large</button>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Icon Buttons</h3>
+    <div class="showcase-row" style="align-items: center;">
+      <button class="bru-btn bru-btn--primary bru-btn--icon">+</button>
+      <button class="bru-btn bru-btn--secondary bru-btn--icon">&#9998;</button>
+      <button class="bru-btn bru-btn--outline bru-btn--icon">&#215;</button>
+      <button class="bru-btn bru-btn--danger bru-btn--icon">&#128465;</button>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Disabled State</h3>
+    <div class="showcase-row">
+      <button class="bru-btn bru-btn--primary" disabled>Disabled Primary</button>
+      <button class="bru-btn bru-btn--secondary" disabled>Disabled Secondary</button>
+      <button class="bru-btn bru-btn--outline" disabled>Disabled Outline</button>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Button Group</h3>
+    <div class="bru-btn-group">
+      <button class="bru-btn bru-btn--outline">Left</button>
+      <button class="bru-btn bru-btn--outline">Center</button>
+      <button class="bru-btn bru-btn--outline">Right</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 4: INPUTS & FORMS
+     ════════════════════════════════════════════════ -->
+<section class="section" id="inputs">
+  <h2 class="section-title">Inputs &amp; Forms</h2>
+  <p class="section-subtitle">Text inputs, selects, checkboxes, radios &amp; toggles</p>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Text Inputs</h3>
+    <div class="input-grid">
+      <div class="input-group">
+        <label class="input-label">Default</label>
+        <input type="text" class="bru-input" placeholder="Enter your name...">
+      </div>
+      <div class="input-group">
+        <label class="input-label">Focused</label>
+        <input type="text" class="bru-input" placeholder="Click to focus" value="Focused input">
+      </div>
+      <div class="input-group">
+        <label class="input-label">Error</label>
+        <input type="text" class="bru-input bru-input--error" placeholder="Invalid input" value="Bad value">
+      </div>
+      <div class="input-group">
+        <label class="input-label">Success</label>
+        <input type="text" class="bru-input bru-input--success" placeholder="Valid input" value="Good value">
+      </div>
+      <div class="input-group">
+        <label class="input-label">Disabled</label>
+        <input type="text" class="bru-input" placeholder="Disabled" disabled>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Textarea</h3>
+    <div style="max-width: 600px;">
+      <textarea class="bru-input" rows="4" placeholder="Write your message here..."></textarea>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Select Dropdown</h3>
+    <div style="max-width: 300px;">
+      <select class="bru-select">
+        <option>Choose an option...</option>
+        <option>Option Alpha</option>
+        <option>Option Beta</option>
+        <option>Option Gamma</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Checkboxes</h3>
+    <div class="showcase-row" style="gap: var(--bru-space-6);">
+      <label class="bru-checkbox">
+        <input type="checkbox" checked>
+        <span>Checked</span>
+      </label>
+      <label class="bru-checkbox">
+        <input type="checkbox">
+        <span>Unchecked</span>
+      </label>
+      <label class="bru-checkbox bru-checkbox--dark">
+        <input type="checkbox" checked>
+        <span>Dark variant</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Radio Buttons</h3>
+    <div class="showcase-row" style="gap: var(--bru-space-6);">
+      <label class="bru-radio">
+        <input type="radio" name="demo-radio" checked>
+        <span>Option A</span>
+      </label>
+      <label class="bru-radio">
+        <input type="radio" name="demo-radio">
+        <span>Option B</span>
+      </label>
+      <label class="bru-radio bru-radio--purple">
+        <input type="radio" name="demo-radio2" checked>
+        <span>Purple</span>
+      </label>
+      <label class="bru-radio bru-radio--pink">
+        <input type="radio" name="demo-radio2">
+        <span>Pink</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Toggle Switches</h3>
+    <div class="showcase-row" style="gap: var(--bru-space-6); align-items: center;">
+      <label class="bru-switch">
+        <input type="checkbox" checked>
+        <span class="bru-switch__track"><span class="bru-switch__knob"></span></span>
+        <span>Enabled</span>
+      </label>
+      <label class="bru-switch">
+        <input type="checkbox">
+        <span class="bru-switch__track"><span class="bru-switch__knob"></span></span>
+        <span>Disabled</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Counter Input</h3>
+    <div class="showcase-row" style="align-items: center;">
+      <div class="bru-counter">
+        <button class="bru-counter__btn" onclick="this.nextElementSibling.textContent = Math.max(0, parseInt(this.nextElementSibling.textContent) - 1)">−</button>
+        <span class="bru-counter__value">5</span>
+        <button class="bru-counter__btn" onclick="this.previousElementSibling.textContent = parseInt(this.previousElementSibling.textContent) + 1">+</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 5: NAVIGATION
+     ════════════════════════════════════════════════ -->
+<section class="section" id="navigation">
+  <h2 class="section-title">Navigation</h2>
+  <p class="section-subtitle">Navbar, tabs, breadcrumbs &amp; pagination</p>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Navbar</h3>
+    <div class="nav-showcase">
+      <nav class="bru-navbar" style="position: relative;">
+        <a href="#" class="bru-nav-brand">BRUDDLE</a>
+        <ul class="bru-nav-links">
+          <li><a href="#" class="bru-nav-link active">Dashboard</a></li>
+          <li><a href="#" class="bru-nav-link">Projects</a></li>
+          <li><a href="#" class="bru-nav-link">Reports</a></li>
+          <li><a href="#" class="bru-nav-link">Settings</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Tabs</h3>
+    <div class="showcase-row">
+      <div class="bru-tabs">
+        <button class="bru-tab active">Overview</button>
+        <button class="bru-tab">Analytics</button>
+        <button class="bru-tab">Reports</button>
+        <button class="bru-tab">Export</button>
+      </div>
+    </div>
+    <span class="showcase-label" style="margin-top: var(--bru-space-4);">Underline Variant</span>
+    <div class="showcase-row">
+      <div class="bru-tabs bru-tabs--underline">
+        <button class="bru-tab active">Overview</button>
+        <button class="bru-tab">Analytics</button>
+        <button class="bru-tab">Reports</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Breadcrumbs</h3>
+    <nav class="bru-breadcrumbs">
+      <a href="#" class="bru-breadcrumb-item">Home</a>
+      <span class="bru-breadcrumb-separator">/</span>
+      <a href="#" class="bru-breadcrumb-item">Projects</a>
+      <span class="bru-breadcrumb-separator">/</span>
+      <a href="#" class="bru-breadcrumb-item">Doctor Project</a>
+      <span class="bru-breadcrumb-separator">/</span>
+      <span class="bru-breadcrumb-current">Design System</span>
+    </nav>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Pagination</h3>
+    <div class="showcase-row">
+      <nav class="bru-pagination">
+        <button class="bru-pagination__btn">&larr;</button>
+        <button class="bru-pagination__page active">1</button>
+        <button class="bru-pagination__page">2</button>
+        <button class="bru-pagination__page">3</button>
+        <button class="bru-pagination__page">4</button>
+        <button class="bru-pagination__page">5</button>
+        <button class="bru-pagination__btn">&rarr;</button>
+      </nav>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 6: CARDS
+     ════════════════════════════════════════════════ -->
+<section class="section" id="cards">
+  <h2 class="section-title">Cards</h2>
+  <p class="section-subtitle">Basic, article, stat &amp; color-accented</p>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Basic Cards</h3>
+    <div class="card-grid">
+      <div class="bru-card">
+        <div class="bru-card__header">
+          <h4 class="bru-card__title">Project Alpha</h4>
+          <p class="bru-card__subtitle">Clinical study results</p>
+        </div>
+        <p style="padding: var(--bru-space-4); font-size: var(--bru-text-sm); color: var(--bru-text-secondary);">Comprehensive analysis of phase 3 clinical trials with measurable outcomes and patient data.</p>
+      </div>
+      <div class="bru-card bru-card--raised">
+        <div class="bru-card__header">
+          <h4 class="bru-card__title">Raised Card</h4>
+          <p class="bru-card__subtitle">With larger shadow</p>
+        </div>
+        <p style="padding: var(--bru-space-4); font-size: var(--bru-text-sm); color: var(--bru-text-secondary);">This card uses the raised variant for more visual emphasis and depth.</p>
+      </div>
+      <div class="bru-card bru-card--interactive">
+        <div class="bru-card__header">
+          <h4 class="bru-card__title">Interactive Card</h4>
+          <p class="bru-card__subtitle">Hover to see effect</p>
+        </div>
+        <p style="padding: var(--bru-space-4); font-size: var(--bru-text-sm); color: var(--bru-text-secondary);">Cards with interaction feedback — translates and shadow lifts on hover, presses on click.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Color-Accented Cards</h3>
+    <div class="card-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="bru-card bru-card--purple">
+        <div class="bru-card__header"><h4 class="bru-card__title">Purple</h4></div>
+        <p style="padding: var(--bru-space-4); font-size: var(--bru-text-sm);">Left border accent</p>
+      </div>
+      <div class="bru-card bru-card--mint">
+        <div class="bru-card__header"><h4 class="bru-card__title">Mint</h4></div>
+        <p style="padding: var(--bru-space-4); font-size: var(--bru-text-sm);">Left border accent</p>
+      </div>
+      <div class="bru-card bru-card--pink">
+        <div class="bru-card__header"><h4 class="bru-card__title">Pink</h4></div>
+        <p style="padding: var(--bru-space-4); font-size: var(--bru-text-sm);">Left border accent</p>
+      </div>
+      <div class="bru-card bru-card--yellow">
+        <div class="bru-card__header"><h4 class="bru-card__title">Yellow</h4></div>
+        <p style="padding: var(--bru-space-4); font-size: var(--bru-text-sm);">Left border accent</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Stat Cards</h3>
+    <div class="bru-stat-grid bru-stat-grid--4">
+      <div class="bru-stat-card">
+        <div class="bru-stat-card__label">Total Users</div>
+        <div class="bru-stat-card__value">12,847</div>
+        <span class="bru-stat-card__badge bru-stat-card__badge--up">+12.5%</span>
+      </div>
+      <div class="bru-stat-card">
+        <div class="bru-stat-card__label">Revenue</div>
+        <div class="bru-stat-card__value">$84.2K</div>
+        <span class="bru-stat-card__badge bru-stat-card__badge--up">+8.3%</span>
+      </div>
+      <div class="bru-stat-card">
+        <div class="bru-stat-card__label">Bounce Rate</div>
+        <div class="bru-stat-card__value">32.1%</div>
+        <span class="bru-stat-card__badge bru-stat-card__badge--down">-2.4%</span>
+      </div>
+      <div class="bru-stat-card">
+        <div class="bru-stat-card__label">Avg. Session</div>
+        <div class="bru-stat-card__value">4m 22s</div>
+        <span class="bru-stat-card__badge bru-stat-card__badge--up">+15%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 7: FEEDBACK
+     ════════════════════════════════════════════════ -->
+<section class="section" id="feedback">
+  <h2 class="section-title">Feedback Components</h2>
+  <p class="section-subtitle">Alerts, toast, spinner, progress &amp; skeleton</p>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Alerts</h3>
+    <div style="display: flex; flex-direction: column; gap: var(--bru-space-4); max-width: 700px;">
+      <div class="bru-alert bru-alert--success">
+        <span class="bru-alert__icon">[&#10003;]</span>
+        <div class="bru-alert__content">
+          <div class="bru-alert__title">Success</div>
+          <div class="bru-alert__text">Operation completed successfully. All data has been saved.</div>
+        </div>
+      </div>
+      <div class="bru-alert bru-alert--warning">
+        <span class="bru-alert__icon">[!]</span>
+        <div class="bru-alert__content">
+          <div class="bru-alert__title">Warning</div>
+          <div class="bru-alert__text">Your session will expire in 5 minutes. Save your work now.</div>
+        </div>
+      </div>
+      <div class="bru-alert bru-alert--error">
+        <span class="bru-alert__icon">[&#10005;]</span>
+        <div class="bru-alert__content">
+          <div class="bru-alert__title">Error</div>
+          <div class="bru-alert__text">Failed to connect to server. Please check your connection.</div>
+        </div>
+      </div>
+      <div class="bru-alert bru-alert--info">
+        <span class="bru-alert__icon">[?]</span>
+        <div class="bru-alert__content">
+          <div class="bru-alert__title">Information</div>
+          <div class="bru-alert__text">A new version is available. Update to get the latest features.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Toast Notifications</h3>
+    <div class="showcase-row">
+      <div class="bru-toast bru-toast--success" style="position: relative;">
+        <strong>&#10003; Success</strong> &mdash; Changes saved
+      </div>
+      <div class="bru-toast bru-toast--error" style="position: relative;">
+        <strong>&#10005; Error</strong> &mdash; Upload failed
+      </div>
+      <div class="bru-toast bru-toast--warning" style="position: relative;">
+        <strong>! Warning</strong> &mdash; Low disk space
+      </div>
+      <div class="bru-toast bru-toast--info" style="position: relative;">
+        <strong>? Info</strong> &mdash; 3 new messages
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Progress Bars</h3>
+    <div style="display: flex; flex-direction: column; gap: var(--bru-space-4); max-width: 500px;">
+      <div>
+        <span class="showcase-label">Default (Purple)</span>
+        <div class="bru-progress"><div class="bru-progress__bar" style="width: 72%;"></div></div>
+      </div>
+      <div>
+        <span class="showcase-label">Mint</span>
+        <div class="bru-progress bru-progress--mint"><div class="bru-progress__bar" style="width: 45%;"></div></div>
+      </div>
+      <div>
+        <span class="showcase-label">Pink</span>
+        <div class="bru-progress bru-progress--pink"><div class="bru-progress__bar" style="width: 88%;"></div></div>
+      </div>
+      <div>
+        <span class="showcase-label">Small</span>
+        <div class="bru-progress bru-progress--sm"><div class="bru-progress__bar" style="width: 60%;"></div></div>
+      </div>
+      <div>
+        <span class="showcase-label">Large</span>
+        <div class="bru-progress bru-progress--lg"><div class="bru-progress__bar" style="width: 35%;"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Loading Spinner</h3>
+    <div class="showcase-row" style="align-items: center;">
+      <div class="bru-spinner"></div>
+      <span style="font-family: var(--bru-font-mono); font-size: var(--bru-text-sm);">Loading data...</span>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Skeleton Loading</h3>
+    <div style="display: flex; flex-direction: column; gap: var(--bru-space-3); max-width: 400px;">
+      <div class="bru-skeleton" style="height: 24px; width: 60%;"></div>
+      <div class="bru-skeleton" style="height: 16px; width: 100%;"></div>
+      <div class="bru-skeleton" style="height: 16px; width: 80%;"></div>
+      <div class="bru-skeleton" style="height: 120px; width: 100%;"></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 8: OVERLAYS
+     ════════════════════════════════════════════════ -->
+<section class="section" id="overlays">
+  <h2 class="section-title">Overlays</h2>
+  <p class="section-subtitle">Modal &amp; tooltip</p>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Modal (Static Preview)</h3>
+    <div style="position: relative; background: rgba(0,0,0,0.15); padding: var(--bru-space-8); display: flex; justify-content: center;">
+      <div class="bru-modal" style="position: relative; max-width: 500px; width: 100%;">
+        <div class="bru-modal__header">
+          <h3 class="bru-modal__title">Confirm Action</h3>
+          <button class="bru-modal__close">&times;</button>
+        </div>
+        <div class="bru-modal__body">
+          <p>Are you sure you want to proceed? This action cannot be undone and all associated data will be permanently removed.</p>
+        </div>
+        <div class="bru-modal__footer">
+          <button class="bru-btn bru-btn--outline">Cancel</button>
+          <button class="bru-btn bru-btn--danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Tooltips</h3>
+    <div class="showcase-row" style="gap: var(--bru-space-8); padding-top: var(--bru-space-10);">
+      <span class="bru-tooltip">
+        <button class="bru-btn bru-btn--primary">Hover me</button>
+        <span class="bru-tooltip-text">This is a tooltip</span>
+      </span>
+      <span class="bru-tooltip">
+        <button class="bru-btn bru-btn--outline">More info</button>
+        <span class="bru-tooltip-text">Additional context here</span>
+      </span>
+      <span class="bru-tooltip">
+        <span style="text-decoration: underline; cursor: help;">Underlined text</span>
+        <span class="bru-tooltip-text">Tooltips work on any element</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 9: MEDIA
+     ════════════════════════════════════════════════ -->
+<section class="section" id="media">
+  <h2 class="section-title">Media</h2>
+  <p class="section-subtitle">Avatar, badges &amp; carousel</p>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Avatars</h3>
+    <div class="showcase-row" style="align-items: center;">
+      <div>
+        <span class="showcase-label">Small (40px)</span>
+        <div class="bru-avatar bru-avatar--sm" style="background: var(--bru-purple); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700;">AB</div>
+      </div>
+      <div>
+        <span class="showcase-label">Default (64px)</span>
+        <div class="bru-avatar" style="background: var(--bru-orange); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 1.25rem;">CD</div>
+      </div>
+      <div>
+        <span class="showcase-label">Large (96px)</span>
+        <div class="bru-avatar bru-avatar--lg" style="background: var(--bru-mint); display: flex; align-items: center; justify-content: center; color: var(--bru-black); font-weight: 700; font-size: 1.5rem;">EF</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Badges &amp; Tags</h3>
+    <div class="showcase-row">
+      <span class="bru-badge bru-badge--primary">Primary</span>
+      <span class="bru-badge bru-badge--secondary">Secondary</span>
+      <span class="bru-badge bru-badge--outline">Outline</span>
+      <span class="bru-badge bru-badge--filled">Filled</span>
+      <span class="bru-badge bru-badge--mint">Mint</span>
+      <span class="bru-badge bru-badge--pink">Pink</span>
+    </div>
+    <span class="showcase-label" style="margin-top: var(--bru-space-4);">Tags</span>
+    <div class="showcase-row">
+      <span class="bru-tag">Default</span>
+      <span class="bru-tag bru-tag--filled bru-tag--purple">Purple</span>
+      <span class="bru-tag bru-tag--filled bru-tag--mint">Mint</span>
+      <span class="bru-tag bru-tag--filled bru-tag--pink">Pink</span>
+      <span class="bru-tag bru-tag--filled bru-tag--yellow">Yellow</span>
+      <span class="bru-tag bru-tag--dark">Dark</span>
+      <span class="bru-tag bru-tag--closeable">Closeable <button class="bru-tag__close">&times;</button></span>
+      <span class="bru-tag bru-tag--dot">With dot</span>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Status Dots</h3>
+    <div class="showcase-row" style="align-items: center; gap: var(--bru-space-6);">
+      <span style="display:flex;align-items:center;gap:var(--bru-space-2);"><span class="bru-dot bru-dot--purple"></span> Active</span>
+      <span style="display:flex;align-items:center;gap:var(--bru-space-2);"><span class="bru-dot bru-dot--mint"></span> Online</span>
+      <span style="display:flex;align-items:center;gap:var(--bru-space-2);"><span class="bru-dot bru-dot--pink"></span> Busy</span>
+      <span style="display:flex;align-items:center;gap:var(--bru-space-2);"><span class="bru-dot bru-dot--yellow"></span> Away</span>
+      <span style="display:flex;align-items:center;gap:var(--bru-space-2);"><span class="bru-dot bru-dot--pulse bru-dot--mint"></span> Pulsing</span>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Carousel</h3>
+    <div style="max-width: 600px;">
+      <div class="bru-carousel" id="demoCarousel">
+        <div class="bru-carousel__track">
+          <div class="bru-carousel__slide" style="background: var(--bru-purple); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-weight: 800;">SLIDE 1</div>
+          <div class="bru-carousel__slide" style="background: var(--bru-orange); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-weight: 800;">SLIDE 2</div>
+          <div class="bru-carousel__slide" style="background: var(--bru-black); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-weight: 800;">SLIDE 3</div>
+        </div>
+        <div class="bru-carousel__nav">
+          <button class="bru-carousel__dot active" data-slide="0"></button>
+          <button class="bru-carousel__dot" data-slide="1"></button>
+          <button class="bru-carousel__dot" data-slide="2"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 10: COMPOSITE COMPONENTS
+     ════════════════════════════════════════════════ -->
+<section class="section" id="composite">
+  <h2 class="section-title">Composite Components</h2>
+  <p class="section-subtitle">Hero, features, pricing, testimonial &amp; CTA</p>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Hero Section</h3>
+    <div class="bru-hero">
+      <div class="bru-hero__content">
+        <h2 class="bru-hero__title">Built for <span>Digital Shift</span></h2>
+        <p class="bru-hero__text">A brutalist design system crafted for the think tank driving digital transformation with clarity, speed, and precision.</p>
+        <div class="showcase-row">
+          <button class="bru-btn bru-btn--primary">Get Started</button>
+          <button class="bru-btn bru-btn--outline">Learn More</button>
+        </div>
+      </div>
+      <div class="bru-hero__image" style="min-height: 300px; background: var(--bru-purple); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 3rem; font-weight: 800;">
+        DP
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Feature Grid</h3>
+    <div class="bru-features">
+      <div class="bru-feature">
+        <div class="bru-feature__icon">01</div>
+        <h4 class="bru-feature__title">Strategy</h4>
+        <p class="bru-feature__text">Strategic consulting for organizations navigating digital transformation and operational change.</p>
+      </div>
+      <div class="bru-feature">
+        <div class="bru-feature__icon">02</div>
+        <h4 class="bru-feature__title">Innovation</h4>
+        <p class="bru-feature__text">Research-driven insights and frameworks to accelerate digital adoption across industries.</p>
+      </div>
+      <div class="bru-feature">
+        <div class="bru-feature__icon">03</div>
+        <h4 class="bru-feature__title">Execution</h4>
+        <p class="bru-feature__text">End-to-end project management turning digital strategy into measurable business outcomes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Pricing Cards</h3>
+    <div class="showcase-grid-3">
+      <div class="bru-pricing-card">
+        <div class="bru-pricing-card__title">Starter</div>
+        <div class="bru-pricing-card__price">$29</div>
+        <div class="bru-pricing-card__period">per month</div>
+        <ul class="bru-pricing-card__features">
+          <li class="bru-pricing-card__feature">5 Projects</li>
+          <li class="bru-pricing-card__feature">Basic Analytics</li>
+          <li class="bru-pricing-card__feature">Email Support</li>
+        </ul>
+        <button class="bru-btn bru-btn--outline" style="width: 100%;">Choose Plan</button>
+      </div>
+      <div class="bru-pricing-card featured">
+        <div class="bru-pricing-card__title">Professional</div>
+        <div class="bru-pricing-card__price">$79</div>
+        <div class="bru-pricing-card__period">per month</div>
+        <ul class="bru-pricing-card__features">
+          <li class="bru-pricing-card__feature">Unlimited Projects</li>
+          <li class="bru-pricing-card__feature">Advanced Analytics</li>
+          <li class="bru-pricing-card__feature">Priority Support</li>
+          <li class="bru-pricing-card__feature">AI Insights</li>
+        </ul>
+        <button class="bru-btn bru-btn--secondary" style="width: 100%;">Choose Plan</button>
+      </div>
+      <div class="bru-pricing-card">
+        <div class="bru-pricing-card__title">Enterprise</div>
+        <div class="bru-pricing-card__price">$199</div>
+        <div class="bru-pricing-card__period">per month</div>
+        <ul class="bru-pricing-card__features">
+          <li class="bru-pricing-card__feature">Everything in Pro</li>
+          <li class="bru-pricing-card__feature">Custom Integrations</li>
+          <li class="bru-pricing-card__feature">Dedicated Manager</li>
+          <li class="bru-pricing-card__feature">SLA Guarantee</li>
+        </ul>
+        <button class="bru-btn bru-btn--outline" style="width: 100%;">Contact Sales</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Testimonial</h3>
+    <div style="max-width: 600px;">
+      <div class="bru-testimonial">
+        <blockquote class="bru-testimonial__quote">
+          &ldquo;Doctor Project gave us the strategic clarity to lead our digital shift. The brutalist design approach mirrors the directness we bring to every engagement.&rdquo;
+        </blockquote>
+        <div class="bru-testimonial__author">
+          <div class="bru-testimonial__avatar" style="background: var(--bru-orange); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700;">JL</div>
+          <div>
+            <div class="bru-testimonial__name">Julia Lang</div>
+            <div class="bru-testimonial__role">Head of Digital Strategy, Shift Corp.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Call to Action</h3>
+    <div class="bru-cta">
+      <h3 class="bru-cta__title">Ready to Lead Your Digital Shift?</h3>
+      <p class="bru-cta__text">Join forward-thinking organizations already partnering with Doctor Project to drive digital transformation.</p>
+      <button class="bru-btn bru-btn--secondary bru-btn--lg">Start Free Trial</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 11: MARQUEE
+     ════════════════════════════════════════════════ -->
+<section class="section" id="marquee" style="padding: 0; border: none;">
+  <div style="padding: var(--bru-space-16) var(--bru-space-8); background: var(--bru-black); color: var(--bru-white); border-bottom: 3px solid var(--bru-black);">
+    <h2 class="section-title" style="color: var(--bru-white);">Marquee Banner</h2>
+    <p class="section-subtitle" style="margin-bottom: var(--bru-space-8);">Infinite scrolling text</p>
+    <div class="bru-marquee">
+      <div class="bru-marquee__track">
+        <span class="bru-marquee__item">AI Solutions ///</span>
+        <span class="bru-marquee__item">Strategic Consulting +++</span>
+        <span class="bru-marquee__item">Project Management ***</span>
+        <span class="bru-marquee__item">Change Management &bull;&bull;&bull;</span>
+        <span class="bru-marquee__item">AI Solutions ///</span>
+        <span class="bru-marquee__item">Strategic Consulting +++</span>
+        <span class="bru-marquee__item">Project Management ***</span>
+        <span class="bru-marquee__item">Change Management &bull;&bull;&bull;</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 12: LAYOUT SYSTEM
+     ════════════════════════════════════════════════ -->
+<section class="section" id="layout">
+  <h2 class="section-title">Layout System</h2>
+  <p class="section-subtitle">Grid, containers &amp; spacing</p>
+
+  <div class="subsection">
+    <h3 class="subsection-title">12-Column Grid</h3>
+    <div class="grid-12-demo">
+      <div class="grid-col-demo">1</div>
+      <div class="grid-col-demo">2</div>
+      <div class="grid-col-demo">3</div>
+      <div class="grid-col-demo">4</div>
+      <div class="grid-col-demo">5</div>
+      <div class="grid-col-demo">6</div>
+      <div class="grid-col-demo">7</div>
+      <div class="grid-col-demo">8</div>
+      <div class="grid-col-demo">9</div>
+      <div class="grid-col-demo">10</div>
+      <div class="grid-col-demo">11</div>
+      <div class="grid-col-demo">12</div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Utility Grids</h3>
+    <div class="showcase-row" style="flex-direction: column; gap: var(--bru-space-4);">
+      <span class="showcase-label">2-Column Grid</span>
+      <div class="bru-grid-2" style="gap: var(--bru-space-3);">
+        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 1</div>
+        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 2</div>
+      </div>
+      <span class="showcase-label">3-Column Grid</span>
+      <div class="bru-grid-3" style="gap: var(--bru-space-3);">
+        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 1</div>
+        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 2</div>
+        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 3</div>
+      </div>
+      <span class="showcase-label">4-Column Grid</span>
+      <div class="bru-grid-4" style="gap: var(--bru-space-3);">
+        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 1</div>
+        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 2</div>
+        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 3</div>
+        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 4</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Spacing Scale</h3>
+    <div class="spacing-demo">
+      <div class="spacing-item"><div class="spacing-box" style="width:4px;height:4px;"></div><div class="spacing-label">1 (4px)</div></div>
+      <div class="spacing-item"><div class="spacing-box" style="width:8px;height:8px;"></div><div class="spacing-label">2 (8px)</div></div>
+      <div class="spacing-item"><div class="spacing-box" style="width:12px;height:12px;"></div><div class="spacing-label">3 (12px)</div></div>
+      <div class="spacing-item"><div class="spacing-box" style="width:16px;height:16px;"></div><div class="spacing-label">4 (16px)</div></div>
+      <div class="spacing-item"><div class="spacing-box" style="width:24px;height:24px;"></div><div class="spacing-label">6 (24px)</div></div>
+      <div class="spacing-item"><div class="spacing-box" style="width:32px;height:32px;"></div><div class="spacing-label">8 (32px)</div></div>
+      <div class="spacing-item"><div class="spacing-box" style="width:48px;height:48px;"></div><div class="spacing-label">12 (48px)</div></div>
+      <div class="spacing-item"><div class="spacing-box" style="width:64px;height:64px;"></div><div class="spacing-label">16 (64px)</div></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Dividers</h3>
+    <div style="display: flex; flex-direction: column; gap: var(--bru-space-4); max-width: 500px;">
+      <span class="showcase-label">Default</span>
+      <div class="bru-divider"></div>
+      <span class="showcase-label">Dashed</span>
+      <div class="bru-divider bru-divider--dashed"></div>
+      <span class="showcase-label">Dotted</span>
+      <div class="bru-divider bru-divider--dotted"></div>
+      <span class="showcase-label">Thick</span>
+      <div class="bru-divider bru-divider--thick"></div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Empty State</h3>
+    <div style="max-width: 400px;">
+      <div class="bru-empty">
+        <div class="bru-empty__icon">&#128269;</div>
+        <h4 class="bru-empty__title">No results found</h4>
+        <p class="bru-empty__text">Try adjusting your search terms or filters to find what you're looking for.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="subsection">
+    <h3 class="subsection-title">Dropzone</h3>
+    <div style="max-width: 400px;">
+      <div class="bru-dropzone">
+        <div class="bru-dropzone__icon">&#128228;</div>
+        <div class="bru-dropzone__text">Drop files here or click to upload</div>
+        <div class="bru-dropzone__hint">SVG, PNG, JPG (max. 10MB)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════
+     SECTION 13: ANIMATION & MOTION
+     ════════════════════════════════════════════════ -->
+<section class="section" id="animation">
+  <h2 class="section-title">Animation &amp; Motion</h2>
+  <p class="section-subtitle">Keyframe animations &amp; transitions</p>
+
+  <div class="animation-grid">
+    <div class="animation-demo">
+      <div class="animation-box bru-anim-slide-up"></div>
+      <div class="animation-label">Slide Up</div>
+    </div>
+    <div class="animation-demo">
+      <div class="animation-box bru-anim-slide-down"></div>
+      <div class="animation-label">Slide Down</div>
+    </div>
+    <div class="animation-demo">
+      <div class="animation-box bru-anim-scale-in"></div>
+      <div class="animation-label">Scale In</div>
+    </div>
+    <div class="animation-demo">
+      <div class="animation-box bru-anim-glitch"></div>
+      <div class="animation-label">Glitch</div>
+    </div>
+    <div class="animation-demo">
+      <div class="animation-box bru-anim-bounce"></div>
+      <div class="animation-label">Bounce</div>
+    </div>
+    <div class="animation-demo">
+      <div class="animation-box bru-anim-pulse"></div>
+      <div class="animation-label">Pulse</div>
+    </div>
+    <div class="animation-demo">
+      <div class="animation-box bru-anim-shake"></div>
+      <div class="animation-label">Shake</div>
+    </div>
+  </div>
+
+  <div class="subsection" style="margin-top: var(--bru-space-8);">
+    <h3 class="subsection-title">Shadows</h3>
+    <div class="showcase-row" style="gap: var(--bru-space-8);">
+      <div style="width:80px;height:80px;background:var(--bru-white);border:2px solid var(--bru-black);box-shadow:var(--bru-shadow-xs);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--bru-font-mono);font-size:10px;">XS</span></div>
+      <div style="width:80px;height:80px;background:var(--bru-white);border:2px solid var(--bru-black);box-shadow:var(--bru-shadow-sm);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--bru-font-mono);font-size:10px;">SM</span></div>
+      <div style="width:80px;height:80px;background:var(--bru-white);border:2px solid var(--bru-black);box-shadow:var(--bru-shadow-md);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--bru-font-mono);font-size:10px;">MD</span></div>
+      <div style="width:80px;height:80px;background:var(--bru-white);border:2px solid var(--bru-black);box-shadow:var(--bru-shadow-lg);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--bru-font-mono);font-size:10px;">LG</span></div>
+      <div style="width:80px;height:80px;background:var(--bru-white);border:2px solid var(--bru-black);box-shadow:var(--bru-shadow-xl);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--bru-font-mono);font-size:10px;">XL</span></div>
+      <div style="width:80px;height:80px;background:var(--bru-white);border:2px solid var(--bru-black);box-shadow:var(--bru-shadow-hover);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--bru-font-mono);font-size:10px;">HOVER</span></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="page-footer">
+  <h3>BRUDDLE DESIGN SYSTEM</h3>
+  <p>Doctor Project &mdash; Think Tank for Digital Shift &copy; 2026</p>
+</footer>
+
+
+<!-- ════════════════════════════════════════════════
+     JAVASCRIPT
+     ════════════════════════════════════════════════ -->
+<script>
+  // Dark Mode Toggle
+  const darkBtn = document.getElementById('darkModeToggle');
+  const darkIcon = document.getElementById('darkIcon');
+  const lightIcon = document.getElementById('lightIcon');
+
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    darkIcon.style.display = isDark ? 'none' : 'inline';
+    lightIcon.style.display = isDark ? 'inline' : 'none';
+    localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+  }
+
+  darkBtn.addEventListener('click', toggleDarkMode);
+
+  // Restore dark mode preference
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    toggleDarkMode();
+  }
+
+  // Tabs interaction
+  document.querySelectorAll('.bru-tabs').forEach(tabGroup => {
+    tabGroup.querySelectorAll('.bru-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabGroup.querySelectorAll('.bru-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+      });
+    });
+  });
+
+  // Pagination interaction
+  document.querySelectorAll('.bru-pagination').forEach(pagination => {
+    pagination.querySelectorAll('.bru-pagination__page').forEach(page => {
+      page.addEventListener('click', () => {
+        pagination.querySelectorAll('.bru-pagination__page').forEach(p => p.classList.remove('active'));
+        page.classList.add('active');
+      });
+    });
+  });
+
+  // Carousel
+  const carousel = document.getElementById('demoCarousel');
+  if (carousel) {
+    const track = carousel.querySelector('.bru-carousel__track');
+    const dots = carousel.querySelectorAll('.bru-carousel__dot');
+    let currentSlide = 0;
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        currentSlide = parseInt(dot.dataset.slide);
+        track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        dots.forEach(d => d.classList.remove('active'));
+        dot.classList.add('active');
+      });
+    });
+  }
+
+  // Smooth scroll for TOC links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
