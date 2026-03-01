@@ -54,7 +54,7 @@
   color: var(--bru-black);
   background: var(--bru-white);
   border: var(--bru-border);
-  border-radius: var(--bru-radius-md);
+  border-radius: 0;
   box-shadow: var(--bru-shadow-sm);
   outline: none;
   transition:
@@ -141,7 +141,7 @@ textarea.bru-input {
   color: var(--bru-black);
   background: var(--bru-white);
   border: var(--bru-border);
-  border-radius: var(--bru-radius-md);
+  border-radius: 0;
   box-shadow: var(--bru-shadow-sm);
   outline: none;
   cursor: pointer;
@@ -190,7 +190,7 @@ textarea.bru-input {
   width: 20px;
   height: 20px;
   border: var(--bru-border);
-  border-radius: 2px;
+  border-radius: 0;
   background: var(--bru-white);
   cursor: pointer;
   position: relative;
@@ -254,7 +254,7 @@ textarea.bru-input {
   width: 20px;
   height: 20px;
   border: var(--bru-border);
-  border-radius: var(--bru-radius-full);
+  border-radius: 0;
   background: var(--bru-white);
   cursor: pointer;
   position: relative;
@@ -269,7 +269,7 @@ textarea.bru-input {
   left: 50%;
   width: 10px;
   height: 10px;
-  border-radius: var(--bru-radius-full);
+  border-radius: 0;
   background: var(--bru-mint);
   transform: translate(-50%, -50%);
 }
@@ -283,7 +283,7 @@ textarea.bru-input {
   background: #000000;
   color: #FFFFFF;
   padding: 4px 10px;
-  border-radius: 2px;
+  border-radius: 0;
 }
 
 .bru-radio--dark input[type="radio"] {
@@ -315,7 +315,7 @@ textarea.bru-input {
   width: 40px;
   height: 22px;
   border: var(--bru-border);
-  border-radius: 2px;
+  border-radius: 0;
   background: var(--bru-purple-20);
   transition: background var(--bru-duration-normal) var(--bru-ease);
 }
@@ -328,7 +328,7 @@ textarea.bru-input {
   height: 14px;
   background: var(--bru-purple);
   border: 1px solid var(--bru-black);
-  border-radius: 1px;
+  border-radius: 0;
   transition: transform var(--bru-duration-normal) var(--bru-ease);
 }
 
@@ -363,7 +363,7 @@ textarea.bru-input {
   display: inline-flex;
   align-items: center;
   border: var(--bru-border);
-  border-radius: var(--bru-radius-md);
+  border-radius: 0;
   box-shadow: var(--bru-shadow-sm);
   overflow: hidden;
   background: var(--bru-white);

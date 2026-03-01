@@ -42,7 +42,7 @@
   color: var(--bru-black);
   background: var(--bru-white);
   border: var(--bru-border);
-  border-radius: var(--bru-radius-md);
+  border-radius: 0;
   box-shadow: var(--bru-shadow-sm);
   cursor: pointer;
   user-select: none;
@@ -197,7 +197,7 @@ body.dark-mode .bru-btn--dark {
 .bru-btn--sm {
   padding: 6px 14px;
   font-size: var(--bru-text-sm);
-  border-radius: var(--bru-radius-sm);
+  border-radius: 0;
   box-shadow: var(--bru-shadow-xs);
 }
 
@@ -206,7 +206,7 @@ body.dark-mode .bru-btn--dark {
 .bru-btn--lg {
   padding: 14px 32px;
   font-size: var(--bru-text-lg);
-  border-radius: var(--bru-radius-lg);
+  border-radius: 0;
   box-shadow: var(--bru-shadow-md);
 }
 
@@ -261,11 +261,11 @@ body.dark-mode .bru-btn--dark {
 }
 
 .bru-btn-group .bru-btn:first-child {
-  border-radius: var(--bru-radius-md) 0 0 var(--bru-radius-md);
+  border-radius: 0;
 }
 
 .bru-btn-group .bru-btn:last-child {
-  border-radius: 0 var(--bru-radius-md) var(--bru-radius-md) 0;
+  border-radius: 0;
 }
 
 .bru-btn-group .bru-btn + .bru-btn {

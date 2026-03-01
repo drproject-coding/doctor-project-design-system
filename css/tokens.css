@@ -141,12 +141,12 @@
   --bru-border-dashed:   2px dashed var(--bru-black);
   --bru-border-dotted:   2px dotted rgba(0, 0, 0, 0.15);
 
-  /* Radii */
+  /* Radii — STRICTLY 0 FOR BRUTALIST */
   --bru-radius-none:     0;
-  --bru-radius-sm:       4px;
-  --bru-radius-md:       6px;
-  --bru-radius-lg:       8px;
-  --bru-radius-full:     9999px;
+  --bru-radius-sm:       0;
+  --bru-radius-md:       0;
+  --bru-radius-lg:       0;
+  --bru-radius-full:     0;
 
 
   /* ──────────────────────────────────────────────
