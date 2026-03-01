@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animations — Bruddle Design System</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <div class="app-layout">
+    <nav class="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-dot"></span>
+      </div>
+      <div class="sidebar-nav">
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Documentation</div>
+          <a href="index.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Overview</span>
+          </a>
+          <a href="colors.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Colors</span>
+          </a>
+          <a href="typography.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Typography</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Components</div>
+          <a href="buttons.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Buttons</span>
+          </a>
+          <a href="forms.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Forms</span>
+          </a>
+          <a href="tags.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tags & Badges</span>
+          </a>
+          <a href="cards.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Cards</span>
+          </a>
+          <a href="tables.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tables</span>
+          </a>
+          <a href="modals.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Modals</span>
+          </a>
+          <a href="pagination.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Pagination</span>
+          </a>
+          <a href="charts.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Charts</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Layout</div>
+          <a href="layout.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">App Shell</span>
+          </a>
+          <a href="utilities.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Utilities</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">New Components</div>
+          <a href="media.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Media</span>
+          </a>
+          <a href="composites.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Composites</span>
+          </a>
+          <a href="animations.html" class="sidebar-nav-item docs-nav-active">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Animations</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-backdrop"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="topbar-menu-btn">&#9776;</button>
+          <h1 class="topbar-title">Animations</h1>
+        </div>
+        <div class="topbar-right">
+          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="container">
+
+          <div class="docs-page-header">
+            <h2 class="bru-h2">Animations</h2>
+            <p class="bru-text bru-mt-2">Utility animation classes for adding motion to any element. Apply a class to trigger the animation. Looping animations (bounce, pulse, shake) run infinitely; entrance animations (slide, scale) play once.</p>
+          </div>
+
+          <!-- Animation Demos -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Animation Demos</h3>
+            <div class="docs-demo" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: var(--bru-space-6); align-items: end;">
+
+              <div style="text-align: center;">
+                <div class="bru-anim-slide-up" style="width: 60px; height: 60px; background: var(--bru-purple); border: 2px solid var(--bru-black); margin: 0 auto var(--bru-space-2);"></div>
+                <code style="font-size: var(--bru-text-xs);">.bru-anim-slide-up</code>
+              </div>
+
+              <div style="text-align: center;">
+                <div class="bru-anim-slide-down" style="width: 60px; height: 60px; background: var(--bru-purple); border: 2px solid var(--bru-black); margin: 0 auto var(--bru-space-2);"></div>
+                <code style="font-size: var(--bru-text-xs);">.bru-anim-slide-down</code>
+              </div>
+
+              <div style="text-align: center;">
+                <div class="bru-anim-scale-in" style="width: 60px; height: 60px; background: var(--bru-purple); border: 2px solid var(--bru-black); margin: 0 auto var(--bru-space-2);"></div>
+                <code style="font-size: var(--bru-text-xs);">.bru-anim-scale-in</code>
+              </div>
+
+              <div style="text-align: center;">
+                <div class="bru-anim-glitch" style="width: 60px; height: 60px; background: var(--bru-purple); border: 2px solid var(--bru-black); margin: 0 auto var(--bru-space-2);"></div>
+                <code style="font-size: var(--bru-text-xs);">.bru-anim-glitch</code>
+              </div>
+
+              <div style="text-align: center;">
+                <div class="bru-anim-bounce" style="width: 60px; height: 60px; background: var(--bru-purple); border: 2px solid var(--bru-black); margin: 0 auto var(--bru-space-2);"></div>
+                <code style="font-size: var(--bru-text-xs);">.bru-anim-bounce</code>
+              </div>
+
+              <div style="text-align: center;">
+                <div class="bru-anim-pulse" style="width: 60px; height: 60px; background: var(--bru-purple); border: 2px solid var(--bru-black); margin: 0 auto var(--bru-space-2);"></div>
+                <code style="font-size: var(--bru-text-xs);">.bru-anim-pulse</code>
+              </div>
+
+              <div style="text-align: center;">
+                <div class="bru-anim-shake" style="width: 60px; height: 60px; background: var(--bru-purple); border: 2px solid var(--bru-black); margin: 0 auto var(--bru-space-2);"></div>
+                <code style="font-size: var(--bru-text-xs);">.bru-anim-shake</code>
+              </div>
+
+            </div>
+<pre class="docs-code">&lt;div class="bru-anim-slide-up"&gt;...&lt;/div&gt;
+&lt;div class="bru-anim-slide-down"&gt;...&lt;/div&gt;
+&lt;div class="bru-anim-scale-in"&gt;...&lt;/div&gt;
+&lt;div class="bru-anim-glitch"&gt;...&lt;/div&gt;
+&lt;div class="bru-anim-bounce"&gt;...&lt;/div&gt;
+&lt;div class="bru-anim-pulse"&gt;...&lt;/div&gt;
+&lt;div class="bru-anim-shake"&gt;...&lt;/div&gt;</pre>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/dark-mode.js"></script>
+  <script src="docs.js"></script>
+</body>
+</html>

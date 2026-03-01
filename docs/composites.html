@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Composites — Bruddle Design System</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+  <div class="app-layout">
+    <nav class="sidebar">
+      <div class="sidebar-brand">
+        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-dot"></span>
+      </div>
+      <div class="sidebar-nav">
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Documentation</div>
+          <a href="index.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Overview</span>
+          </a>
+          <a href="colors.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Colors</span>
+          </a>
+          <a href="typography.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Typography</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Components</div>
+          <a href="buttons.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Buttons</span>
+          </a>
+          <a href="forms.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Forms</span>
+          </a>
+          <a href="tags.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tags & Badges</span>
+          </a>
+          <a href="cards.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Cards</span>
+          </a>
+          <a href="tables.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Tables</span>
+          </a>
+          <a href="modals.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Modals</span>
+          </a>
+          <a href="pagination.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Pagination</span>
+          </a>
+          <a href="charts.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Charts</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">Layout</div>
+          <a href="layout.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">App Shell</span>
+          </a>
+          <a href="utilities.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Utilities</span>
+          </a>
+        </div>
+        <div class="sidebar-nav-section">
+          <div class="sidebar-nav-label">New Components</div>
+          <a href="media.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Media</span>
+          </a>
+          <a href="composites.html" class="sidebar-nav-item docs-nav-active">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Composites</span>
+          </a>
+          <a href="animations.html" class="sidebar-nav-item">
+            <span class="sidebar-nav-icon">&#9632;</span>
+            <span class="sidebar-nav-text">Animations</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="sidebar-backdrop"></div>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="topbar-menu-btn">&#9776;</button>
+          <h1 class="topbar-title">Composites</h1>
+        </div>
+        <div class="topbar-right">
+          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+        </div>
+      </header>
+
+      <div class="content">
+        <div class="container">
+
+          <div class="docs-page-header">
+            <h2 class="bru-h2">Composites</h2>
+            <p class="bru-text bru-mt-2">Higher-level composed components for building complete page sections: navigation, heroes, features, pricing, testimonials, CTAs, and marquees.</p>
+          </div>
+
+          <!-- Navbar -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Navbar</h3>
+            <div class="docs-demo docs-demo--col">
+              <div class="bru-navbar" style="position: relative;">
+                <a href="#" class="bru-nav-brand">Bruddle</a>
+                <ul class="bru-nav-links">
+                  <li><a href="#" class="bru-nav-link active">Home</a></li>
+                  <li><a href="#" class="bru-nav-link">Features</a></li>
+                  <li><a href="#" class="bru-nav-link">Pricing</a></li>
+                  <li><a href="#" class="bru-nav-link">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-navbar"&gt;
+  &lt;a href="#" class="bru-nav-brand"&gt;Bruddle&lt;/a&gt;
+  &lt;ul class="bru-nav-links"&gt;
+    &lt;li&gt;&lt;a href="#" class="bru-nav-link active"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" class="bru-nav-link"&gt;Features&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" class="bru-nav-link"&gt;Pricing&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#" class="bru-nav-link"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Breadcrumbs -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Breadcrumbs</h3>
+            <div class="docs-demo">
+              <nav class="bru-breadcrumbs">
+                <a href="#" class="bru-breadcrumb-item">Home</a>
+                <span class="bru-breadcrumb-separator">/</span>
+                <a href="#" class="bru-breadcrumb-item">Components</a>
+                <span class="bru-breadcrumb-separator">/</span>
+                <span class="bru-breadcrumb-current">Composites</span>
+              </nav>
+            </div>
+<pre class="docs-code">&lt;nav class="bru-breadcrumbs"&gt;
+  &lt;a href="#" class="bru-breadcrumb-item"&gt;Home&lt;/a&gt;
+  &lt;span class="bru-breadcrumb-separator"&gt;/&lt;/span&gt;
+  &lt;a href="#" class="bru-breadcrumb-item"&gt;Components&lt;/a&gt;
+  &lt;span class="bru-breadcrumb-separator"&gt;/&lt;/span&gt;
+  &lt;span class="bru-breadcrumb-current"&gt;Composites&lt;/span&gt;
+&lt;/nav&gt;</pre>
+          </div>
+
+          <!-- Hero -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Hero</h3>
+            <div class="docs-demo docs-demo--col">
+              <div class="bru-hero">
+                <div class="bru-hero__content">
+                  <h2 class="bru-hero__title">Build bold interfaces with <span>Bruddle</span></h2>
+                  <p class="bru-hero__text">A neobrutalist design system with chunky borders, offset shadows, and high-contrast layouts.</p>
+                  <div>
+                    <button class="bru-btn bru-btn--primary">Get Started</button>
+                  </div>
+                </div>
+                <div class="bru-hero__image" style="background: var(--bru-purple); min-height: 300px;">
+                </div>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-hero"&gt;
+  &lt;div class="bru-hero__content"&gt;
+    &lt;h2 class="bru-hero__title"&gt;Build bold interfaces with &lt;span&gt;Bruddle&lt;/span&gt;&lt;/h2&gt;
+    &lt;p class="bru-hero__text"&gt;A neobrutalist design system...&lt;/p&gt;
+    &lt;button class="bru-btn bru-btn--primary"&gt;Get Started&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class="bru-hero__image"&gt;
+    &lt;img src="hero.jpg" alt="Hero image"&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Feature Grid -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Feature Grid</h3>
+            <div class="docs-demo docs-demo--col">
+              <div class="bru-features">
+                <div class="bru-feature">
+                  <div class="bru-feature__icon">&#9733;</div>
+                  <h4 class="bru-feature__title">Bold Design</h4>
+                  <p class="bru-feature__text">Chunky borders and offset shadows create striking visual hierarchy.</p>
+                </div>
+                <div class="bru-feature">
+                  <div class="bru-feature__icon">&#9881;</div>
+                  <h4 class="bru-feature__title">Customizable</h4>
+                  <p class="bru-feature__text">CSS custom properties make theming fast and straightforward.</p>
+                </div>
+                <div class="bru-feature">
+                  <div class="bru-feature__icon">&#9889;</div>
+                  <h4 class="bru-feature__title">Lightweight</h4>
+                  <p class="bru-feature__text">Zero dependencies. Pure CSS with optional JS helpers.</p>
+                </div>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-features"&gt;
+  &lt;div class="bru-feature"&gt;
+    &lt;div class="bru-feature__icon"&gt;&amp;#9733;&lt;/div&gt;
+    &lt;h4 class="bru-feature__title"&gt;Bold Design&lt;/h4&gt;
+    &lt;p class="bru-feature__text"&gt;Chunky borders and offset shadows...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="bru-feature"&gt;...&lt;/div&gt;
+  &lt;div class="bru-feature"&gt;...&lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Pricing Cards -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Pricing Cards</h3>
+            <div class="docs-demo docs-demo--col">
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--bru-space-4);">
+                <div class="bru-pricing-card">
+                  <div class="bru-pricing-card__title">Basic</div>
+                  <div class="bru-pricing-card__price">$9</div>
+                  <div class="bru-pricing-card__period">per month</div>
+                  <ul class="bru-pricing-card__features">
+                    <li class="bru-pricing-card__feature">5 Projects</li>
+                    <li class="bru-pricing-card__feature">Basic Support</li>
+                    <li class="bru-pricing-card__feature">1 GB Storage</li>
+                  </ul>
+                  <button class="bru-btn bru-btn--outline bru-btn--block">Choose Plan</button>
+                </div>
+                <div class="bru-pricing-card featured">
+                  <div class="bru-pricing-card__title">Pro</div>
+                  <div class="bru-pricing-card__price">$29</div>
+                  <div class="bru-pricing-card__period">per month</div>
+                  <ul class="bru-pricing-card__features">
+                    <li class="bru-pricing-card__feature">Unlimited Projects</li>
+                    <li class="bru-pricing-card__feature">Priority Support</li>
+                    <li class="bru-pricing-card__feature">50 GB Storage</li>
+                  </ul>
+                  <button class="bru-btn bru-btn--dark bru-btn--block">Choose Plan</button>
+                </div>
+                <div class="bru-pricing-card">
+                  <div class="bru-pricing-card__title">Enterprise</div>
+                  <div class="bru-pricing-card__price">$99</div>
+                  <div class="bru-pricing-card__period">per month</div>
+                  <ul class="bru-pricing-card__features">
+                    <li class="bru-pricing-card__feature">Unlimited Everything</li>
+                    <li class="bru-pricing-card__feature">Dedicated Support</li>
+                    <li class="bru-pricing-card__feature">500 GB Storage</li>
+                  </ul>
+                  <button class="bru-btn bru-btn--outline bru-btn--block">Contact Sales</button>
+                </div>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-pricing-card"&gt;
+  &lt;div class="bru-pricing-card__title"&gt;Basic&lt;/div&gt;
+  &lt;div class="bru-pricing-card__price"&gt;$9&lt;/div&gt;
+  &lt;div class="bru-pricing-card__period"&gt;per month&lt;/div&gt;
+  &lt;ul class="bru-pricing-card__features"&gt;
+    &lt;li class="bru-pricing-card__feature"&gt;5 Projects&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;button class="bru-btn bru-btn--outline bru-btn--block"&gt;Choose Plan&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;!-- Featured variant --&gt;
+&lt;div class="bru-pricing-card featured"&gt;...&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Testimonial -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Testimonial</h3>
+            <div class="docs-demo docs-demo--col" style="max-width: 600px;">
+              <div class="bru-testimonial">
+                <p class="bru-testimonial__quote">"Bruddle made our landing page stand out instantly. The neobrutalist style is exactly what we needed to grab attention."</p>
+                <div class="bru-testimonial__author">
+                  <div class="bru-testimonial__avatar" style="background: var(--bru-purple);"></div>
+                  <div>
+                    <div class="bru-testimonial__name">Alex Johnson</div>
+                    <div class="bru-testimonial__role">Product Designer at StartupCo</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-testimonial"&gt;
+  &lt;p class="bru-testimonial__quote"&gt;"Quote text here."&lt;/p&gt;
+  &lt;div class="bru-testimonial__author"&gt;
+    &lt;img class="bru-testimonial__avatar" src="avatar.jpg" alt=""&gt;
+    &lt;div&gt;
+      &lt;div class="bru-testimonial__name"&gt;Alex Johnson&lt;/div&gt;
+      &lt;div class="bru-testimonial__role"&gt;Product Designer&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <!-- CTA Banner -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">CTA Banner</h3>
+            <div class="docs-demo docs-demo--col">
+              <div class="bru-cta">
+                <h3 class="bru-cta__title">Ready to build something bold?</h3>
+                <p class="bru-cta__text">Get started with Bruddle today and create interfaces that demand attention.</p>
+                <button class="bru-btn bru-btn--dark">Get Started Now</button>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-cta"&gt;
+  &lt;h3 class="bru-cta__title"&gt;Ready to build something bold?&lt;/h3&gt;
+  &lt;p class="bru-cta__text"&gt;Get started with Bruddle today...&lt;/p&gt;
+  &lt;button class="bru-btn bru-btn--dark"&gt;Get Started Now&lt;/button&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+          <!-- Marquee -->
+          <div class="docs-section">
+            <h3 class="docs-section-title">Marquee</h3>
+            <div class="docs-demo docs-demo--col">
+              <div class="bru-marquee">
+                <div class="bru-marquee__track">
+                  <span class="bru-marquee__item">Bruddle</span>
+                  <span class="bru-marquee__item">Neobrutalism</span>
+                  <span class="bru-marquee__item">Design System</span>
+                  <span class="bru-marquee__item">Bold UI</span>
+                  <span class="bru-marquee__item">Bruddle</span>
+                  <span class="bru-marquee__item">Neobrutalism</span>
+                  <span class="bru-marquee__item">Design System</span>
+                  <span class="bru-marquee__item">Bold UI</span>
+                </div>
+              </div>
+            </div>
+<pre class="docs-code">&lt;div class="bru-marquee"&gt;
+  &lt;div class="bru-marquee__track"&gt;
+    &lt;span class="bru-marquee__item"&gt;Bruddle&lt;/span&gt;
+    &lt;span class="bru-marquee__item"&gt;Neobrutalism&lt;/span&gt;
+    &lt;span class="bru-marquee__item"&gt;Design System&lt;/span&gt;
+    &lt;span class="bru-marquee__item"&gt;Bold UI&lt;/span&gt;
+    &lt;!-- Duplicate items for seamless loop --&gt;
+    &lt;span class="bru-marquee__item"&gt;Bruddle&lt;/span&gt;
+    &lt;span class="bru-marquee__item"&gt;...&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+          </div>
+
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="../js/dark-mode.js"></script>
+  <script src="docs.js"></script>
+</body>
+</html>
