@@ -45,6 +45,13 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Visby';
+  src: url('../fonts/VisbyHeavy.otf') format('opentype');
+  font-weight: 800;
+  font-display: swap;
+}
+
 
 /* ──────────────────────────────────────────────
    HEADINGS
@@ -99,6 +106,43 @@
 .bru-h4--inv { font-size: var(--bru-text-h4); }
 .bru-h5--inv { font-size: var(--bru-text-h5); }
 .bru-h6--inv { font-size: var(--bru-text-h6); }
+
+
+/* ──────────────────────────────────────────────
+   DISPLAY HEADINGS
+   Extra large for hero/splash usage.
+   ────────────────────────────────────────────── */
+
+.bru-display-xl {
+  font-family: var(--bru-font-primary);
+  font-size: 4.5rem;
+  font-weight: var(--bru-weight-heavy);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  color: var(--bru-black);
+  margin: 0;
+}
+
+.bru-display-lg {
+  font-family: var(--bru-font-primary);
+  font-size: 3.5rem;
+  font-weight: var(--bru-weight-heavy);
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--bru-black);
+  margin: 0;
+}
+
+.bru-display-md {
+  font-family: var(--bru-font-primary);
+  font-size: 2.5rem;
+  font-weight: var(--bru-weight-heavy);
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--bru-black);
+  margin: 0;
+}
 
 
 /* ──────────────────────────────────────────────
@@ -171,4 +215,44 @@
   background: #000000;
   display: inline;
   padding: 1px 4px;
+}
+
+
+/* ──────────────────────────────────────────────
+   BODY TEXT SIZES
+   ────────────────────────────────────────────── */
+
+.bru-body-lg {
+  font-family: var(--bru-font-primary);
+  font-size: var(--bru-text-lg);
+  line-height: var(--bru-leading-loose);
+  color: var(--bru-black);
+}
+
+.bru-body-md {
+  font-family: var(--bru-font-primary);
+  font-size: var(--bru-text-md);
+  line-height: var(--bru-leading-normal);
+  color: var(--bru-black);
+}
+
+.bru-body-sm {
+  font-family: var(--bru-font-primary);
+  font-size: var(--bru-text-sm);
+  line-height: var(--bru-leading-normal);
+  color: var(--bru-black);
+}
+
+
+/* ──────────────────────────────────────────────
+   CAPTION
+   Monospace, small, uppercase — for metadata.
+   ────────────────────────────────────────────── */
+
+.bru-caption {
+  font-family: var(--bru-font-mono);
+  font-size: var(--bru-text-xs);
+  text-transform: uppercase;
+  letter-spacing: var(--bru-tracking-widest);
+  color: var(--bru-text-muted);
 }
