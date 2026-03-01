@@ -1,0 +1,33 @@
+import type { InputHTMLAttributes } from "react";
+
+export interface RadioProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "type"
+> {
+  label: string;
+  color?: "pink" | "purple";
+  dark?: boolean;
+}
+
+export function Radio({
+  label,
+  color,
+  dark,
+  className = "",
+  ...props
+}: RadioProps) {
+  const classes = [
+    "bru-radio",
+    color && `bru-radio--${color}`,
+    dark && "bru-radio--dark",
+    className,
+  ]
+    .filter(Boolean)
+    .join(" ");
+  return (
+    <label className={classes}>
+      <input type="radio" {...props} />
+      {label}
+    </label>
+  );
+}
