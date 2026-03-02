@@ -1,0 +1,89 @@
+import type { ReactNode } from "react";
+
+type AlertVariant = "info" | "success" | "warning" | "error";
+
+export interface AlertProps {
+  variant?: AlertVariant;
+  title?: string;
+  children: ReactNode;
+  onClose?: () => void;
+  className?: string;
+}
+
+const variantStyles: Record<
+  AlertVariant,
+  { bg: string; border: string; icon: string }
+> = {
+  info: {
+    bg: "rgba(0,102,255,0.08)",
+    border: "var(--bru-info, #0066FF)",
+    icon: "ℹ",
+  },
+  success: { bg: "rgba(0,170,0,0.08)", border: "var(--bru-mint)", icon: "✓" },
+  warning: {
+    bg: "rgba(255,170,0,0.08)",
+    border: "var(--bru-yellow)",
+    icon: "⚠",
+  },
+  error: { bg: "rgba(255,68,68,0.08)", border: "var(--bru-pink)", icon: "✕" },
+};
+
+export function Alert({
+  variant = "info",
+  title,
+  children,
+  onClose,
+  className = "",
+}: AlertProps) {
+  const styles = variantStyles[variant];
+  return (
+    <div
+      className={className}
+      style={{
+        padding: "16px 20px",
+        background: styles.bg,
+        border: `2px solid var(--bru-black)`,
+        borderLeft: `4px solid ${styles.border}`,
+        display: "flex",
+        gap: "12px",
+        alignItems: "flex-start",
+      }}
+    >
+      <span style={{ fontWeight: 700, fontSize: "16px", flexShrink: 0 }}>
+        {styles.icon}
+      </span>
+      <div style={{ flex: 1 }}>
+        {title && (
+          <p
+            style={{
+              fontFamily: "var(--bru-font-primary)",
+              fontWeight: 700,
+              fontSize: "14px",
+              marginBottom: "4px",
+              margin: title ? "0 0 4px" : "0",
+            }}
+          >
+            {title}
+          </p>
+        )}
+        <div style={{ fontSize: "13px", lineHeight: 1.5 }}>{children}</div>
+      </div>
+      {onClose && (
+        <button
+          onClick={onClose}
+          style={{
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            fontSize: "16px",
+            opacity: 0.5,
+            padding: 0,
+            flexShrink: 0,
+          }}
+        >
+          ×
+        </button>
+      )}
+    </div>
+  );
+}
