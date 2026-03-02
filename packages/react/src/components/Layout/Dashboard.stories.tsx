@@ -349,7 +349,7 @@ export const DashboardPage: StoryObj = {
                   },
                   { key: "joinDate", header: "Joined" },
                 ]}
-                data={pagedUsers as Record<string, unknown>[]}
+                data={pagedUsers}
               />
               <div
                 style={{
@@ -610,12 +610,7 @@ export const UserListPage: StoryObj = {
                   { key: "joinDate", header: "Joined" },
                   { key: "lastActive", header: "Last Active" },
                 ]}
-                data={
-                  users.slice((page - 1) * 6, page * 6) as Record<
-                    string,
-                    unknown
-                  >[]
-                }
+                data={users.slice((page - 1) * 6, page * 6)}
               />
               <div
                 style={{

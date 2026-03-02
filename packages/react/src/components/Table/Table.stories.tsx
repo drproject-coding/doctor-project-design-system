@@ -19,7 +19,7 @@ export const Default: Story = {
       { key: "status", header: "Status" },
       { key: "joinDate", header: "Joined" },
     ],
-    data: users.slice(0, 8) as Record<string, unknown>[],
+    data: users.slice(0, 8),
   },
 };
 
@@ -63,7 +63,7 @@ export const WithCustomRender: Story = {
           },
         },
       ]}
-      data={users.slice(0, 6) as Record<string, unknown>[]}
+      data={users.slice(0, 6)}
     />
   ),
 };
