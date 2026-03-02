@@ -40,7 +40,16 @@ const SidebarContent = () => (
             fontWeight: 600,
           }}
         >
-          <span>{item.icon}</span>
+          <span
+            style={{
+              width: 20,
+              height: 20,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            dangerouslySetInnerHTML={{ __html: item.iconSvg }}
+          />
           <span>{item.label}</span>
           {item.badge && (
             <span

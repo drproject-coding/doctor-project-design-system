@@ -56,7 +56,16 @@ const SidebarNav = () => (
               i === 0 ? "3px solid var(--bru-purple)" : "3px solid transparent",
           }}
         >
-          <span style={{ fontSize: "16px" }}>{item.icon}</span>
+          <span
+            style={{
+              width: 20,
+              height: 20,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            dangerouslySetInnerHTML={{ __html: item.iconSvg }}
+          />
           <span>{item.label}</span>
           {item.badge && (
             <Badge variant="filled" className="bru-badge--filled">
