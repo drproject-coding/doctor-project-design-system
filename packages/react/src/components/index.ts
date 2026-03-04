@@ -99,3 +99,6 @@ export type { EmptyStateProps } from "./EmptyState";
 
 export { Divider } from "./Divider";
 export type { DividerProps } from "./Divider";
+
+export { TopBar } from "./TopBar";
+export type { TopBarProps } from "./TopBar";
