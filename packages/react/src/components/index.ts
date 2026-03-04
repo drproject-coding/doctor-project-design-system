@@ -102,3 +102,6 @@ export type { DividerProps } from "./Divider";
 
 export { TopBar } from "./TopBar";
 export type { TopBarProps } from "./TopBar";
+
+export { Sidebar } from "./Sidebar";
+export type { SidebarProps, SidebarItem } from "./Sidebar";
