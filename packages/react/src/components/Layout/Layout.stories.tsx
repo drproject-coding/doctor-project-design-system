@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { AppShell, Sidebar, Topbar } from "./Layout";
+import { DashboardLayout } from "./DashboardLayout";
 import { menuItems, stats } from "../../data/fake";
 
 const meta: Meta<typeof AppShell> = {
@@ -203,5 +204,31 @@ export const Default: Story = {
         </div>
       </AppShell>
     </div>
+  ),
+};
+
+export const Dashboard: Story = {
+  render: () => (
+    <DashboardLayout
+      sidebarProps={{
+        items: [
+          { id: "dashboard", label: "Dashboard", icon: "📊", active: true },
+          { id: "products", label: "Products", icon: "📦" },
+          { id: "customers", label: "Customers", icon: "👥" },
+          { id: "payments", label: "Payments", icon: "💳" },
+        ],
+      }}
+      topBarProps={{
+        title: "Dashboard",
+        breadcrumbs: [{ label: "Home", href: "/" }],
+      }}
+    >
+      <div style={{ padding: "24px" }}>
+        <h2 style={{ marginTop: 0 }}>Welcome to Dashboard</h2>
+        <p>
+          This is the DashboardLayout component combining TopBar and Sidebar.
+        </p>
+      </div>
+    </DashboardLayout>
   ),
 };

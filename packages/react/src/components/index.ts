@@ -52,8 +52,13 @@ export type { TabsProps, TabItem } from "./Tabs";
 export { Pagination } from "./Pagination";
 export type { PaginationProps } from "./Pagination";
 
-export { AppShell, Sidebar, Topbar } from "./Layout";
-export type { AppShellProps, SidebarProps, TopbarProps } from "./Layout";
+export { AppShell, Sidebar, Topbar, DashboardLayout } from "./Layout";
+export type {
+  AppShellProps,
+  SidebarProps,
+  TopbarProps,
+  DashboardLayoutProps,
+} from "./Layout";
 
 export { Navbar } from "./Navbar";
 export type { NavbarProps } from "./Navbar";
