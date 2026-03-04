@@ -71,7 +71,14 @@ export const ListScreen: React.FC<ListScreenProps> = ({
           />
         )}
 
-        <Table columns={columns} data={paginatedData} onRowClick={onRowClick} />
+        <Table
+          columns={columns.map((col) => ({
+            key: col.key,
+            header: col.label,
+            render: col.render,
+          }))}
+          data={paginatedData}
+        />
 
         {totalPages > 1 && (
           <Pagination

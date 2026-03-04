@@ -1,0 +1,542 @@
+import * as react_jsx_runtime from 'react/jsx-runtime';
+import React, { ButtonHTMLAttributes, ReactNode, InputHTMLAttributes, SelectHTMLAttributes, HTMLAttributes, TextareaHTMLAttributes } from 'react';
+
+type ButtonVariant = "primary" | "outline" | "ghost" | "ghost-bordered" | "danger" | "secondary" | "dark";
+type ButtonSize = "sm" | "lg";
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+    variant?: ButtonVariant;
+    size?: ButtonSize;
+    block?: boolean;
+    icon?: boolean;
+    children: ReactNode;
+}
+declare function Button({ variant, size, block, icon, className, children, ...props }: ButtonProps): react_jsx_runtime.JSX.Element;
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+    label?: string;
+    error?: boolean;
+    success?: boolean;
+}
+declare function Input({ label, error, success, className, ...props }: InputProps): react_jsx_runtime.JSX.Element;
+
+interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
+    label?: string;
+    children: ReactNode;
+}
+declare function Select({ label, className, children, ...props }: SelectProps): react_jsx_runtime.JSX.Element;
+
+interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
+    label: string;
+    dark?: boolean;
+}
+declare function Checkbox({ label, dark, className, ...props }: CheckboxProps): react_jsx_runtime.JSX.Element;
+
+interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
+    label: string;
+    color?: "pink" | "purple";
+    dark?: boolean;
+}
+declare function Radio({ label, color, dark, className, ...props }: RadioProps): react_jsx_runtime.JSX.Element;
+
+interface SwitchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
+    label?: string;
+}
+declare function Switch({ label, ...props }: SwitchProps): react_jsx_runtime.JSX.Element;
+
+interface CounterProps {
+    value?: number;
+    min?: number;
+    max?: number;
+    onChange?: (value: number) => void;
+}
+declare function Counter({ value: controlledValue, min, max, onChange, }: CounterProps): react_jsx_runtime.JSX.Element;
+
+type TagColor = "purple" | "mint" | "pink" | "yellow" | "grey";
+interface TagProps {
+    children: ReactNode;
+    color?: TagColor;
+    filled?: boolean;
+    dark?: boolean;
+    dot?: boolean;
+    closeable?: boolean;
+    onClose?: () => void;
+    className?: string;
+}
+declare function Tag({ children, color, filled, dark, dot, closeable, onClose, className, }: TagProps): react_jsx_runtime.JSX.Element;
+
+type BadgeVariant = "filled" | "primary" | "secondary" | "outline" | "mint" | "pink";
+interface BadgeProps {
+    children: ReactNode;
+    variant?: BadgeVariant;
+    className?: string;
+}
+declare function Badge({ children, variant, className }: BadgeProps): react_jsx_runtime.JSX.Element;
+
+type DotColor = "purple" | "mint" | "pink" | "yellow";
+interface StatusDotProps {
+    color?: DotColor;
+    pulse?: boolean;
+    className?: string;
+}
+declare function StatusDot({ color, pulse, className }: StatusDotProps): react_jsx_runtime.JSX.Element;
+
+type ProgressColor = "mint" | "pink" | "yellow" | "grey";
+type ProgressSize = "sm" | "lg";
+interface ProgressBarProps {
+    value: number;
+    color?: ProgressColor;
+    size?: ProgressSize;
+    label?: string;
+    className?: string;
+}
+declare function ProgressBar({ value, color, size, label, className, }: ProgressBarProps): react_jsx_runtime.JSX.Element;
+
+type AvatarSize = "sm" | "lg";
+interface AvatarProps {
+    src?: string;
+    alt?: string;
+    size?: AvatarSize;
+    initials?: string;
+    className?: string;
+}
+declare function Avatar({ src, alt, size, initials, className, }: AvatarProps): react_jsx_runtime.JSX.Element;
+
+interface TooltipProps {
+    text: string;
+    children: ReactNode;
+    className?: string;
+}
+declare function Tooltip({ text, children, className }: TooltipProps): react_jsx_runtime.JSX.Element;
+
+type CardVariant = "raised" | "flat" | "interactive" | "sm";
+type CardAccent = "purple" | "mint" | "pink" | "yellow";
+interface CardProps extends HTMLAttributes<HTMLDivElement> {
+    variant?: CardVariant;
+    accent?: CardAccent;
+    children: ReactNode;
+}
+interface CardHeaderProps {
+    title: string;
+    subtitle?: string;
+    action?: ReactNode;
+}
+declare function Card({ variant, accent, className, children, ...props }: CardProps): react_jsx_runtime.JSX.Element;
+declare function CardHeader({ title, subtitle, action }: CardHeaderProps): react_jsx_runtime.JSX.Element;
+
+interface TableColumn<T> {
+    key: string;
+    header: string;
+    render?: (row: T) => ReactNode;
+}
+interface TableProps<T> {
+    columns: TableColumn<T>[];
+    data: T[];
+    className?: string;
+}
+declare function Table<T extends Record<string, any>>({ columns, data, className, }: TableProps<T>): react_jsx_runtime.JSX.Element;
+
+interface ModalProps {
+    open: boolean;
+    onClose: () => void;
+    title: string;
+    children: ReactNode;
+    footer?: ReactNode;
+}
+declare function Modal({ open, onClose, title, children, footer }: ModalProps): react_jsx_runtime.JSX.Element | null;
+
+interface TabItem {
+    label: string;
+    key: string;
+}
+interface TabsProps {
+    items: TabItem[];
+    activeKey?: string;
+    onChange?: (key: string) => void;
+    variant?: "underline";
+    className?: string;
+}
+declare function Tabs({ items, activeKey, onChange, variant, className, }: TabsProps): react_jsx_runtime.JSX.Element;
+
+type PaginationVariant = "dark" | "transparent";
+interface PaginationProps {
+    currentPage: number;
+    totalPages: number;
+    onPageChange: (page: number) => void;
+    variant?: PaginationVariant;
+    className?: string;
+}
+declare function Pagination({ currentPage, totalPages, onPageChange, variant, className, }: PaginationProps): react_jsx_runtime.JSX.Element;
+
+interface AppShellProps {
+    sidebar: ReactNode;
+    topbar: ReactNode;
+    children: ReactNode;
+    footer?: ReactNode;
+}
+interface TopbarProps {
+    children: ReactNode;
+}
+declare function AppShell({ sidebar, topbar, children, footer }: AppShellProps): react_jsx_runtime.JSX.Element;
+declare function Topbar({ children }: TopbarProps): react_jsx_runtime.JSX.Element;
+
+interface TopBarProps {
+    title?: string;
+    showIcon?: boolean;
+    theme?: "light" | "dark";
+    actions?: React.ReactNode;
+    breadcrumbs?: Array<{
+        label: string;
+        href?: string;
+    }>;
+}
+declare const TopBar: React.FC<TopBarProps>;
+
+interface SidebarItem {
+    id: string;
+    label: string;
+    icon?: React.ReactNode;
+    href?: string;
+    children?: SidebarItem[];
+    active?: boolean;
+}
+interface SidebarProps {
+    items: SidebarItem[];
+    theme?: "light" | "dark";
+    collapsed?: boolean;
+    onItemClick?: (id: string) => void;
+}
+declare const Sidebar: React.FC<SidebarProps>;
+
+interface DashboardLayoutProps {
+    children: React.ReactNode;
+    sidebarProps?: SidebarProps;
+    topBarProps?: TopBarProps;
+    showSidebar?: boolean;
+    theme?: "light" | "dark";
+}
+declare const DashboardLayout: React.FC<DashboardLayoutProps>;
+
+interface NavbarProps {
+    brand: ReactNode;
+    children: ReactNode;
+    actions?: ReactNode;
+    className?: string;
+}
+declare function Navbar({ brand, children, actions, className, }: NavbarProps): react_jsx_runtime.JSX.Element;
+
+interface BreadcrumbItem {
+    label: string;
+    href?: string;
+}
+interface BreadcrumbsProps {
+    items: BreadcrumbItem[];
+    className?: string;
+}
+declare function Breadcrumbs({ items, className }: BreadcrumbsProps): react_jsx_runtime.JSX.Element;
+
+type ChartSize = "sm" | "md" | "lg" | "xl";
+interface ChartCardProps {
+    title: string;
+    subtitle?: string;
+    size?: ChartSize;
+    children: ReactNode;
+    legend?: ReactNode;
+    action?: ReactNode;
+    className?: string;
+}
+declare function ChartCard({ title, subtitle, size, children, legend, action, className, }: ChartCardProps): react_jsx_runtime.JSX.Element;
+
+interface HeroProps {
+    badge?: ReactNode;
+    title: ReactNode;
+    subtitle?: string;
+    actions?: ReactNode;
+    visual?: ReactNode;
+    className?: string;
+}
+declare function Hero({ badge, title, subtitle, actions, visual, className, }: HeroProps): react_jsx_runtime.JSX.Element;
+
+interface MarqueeProps {
+    items: string[];
+    separator?: string;
+    speed?: number;
+    className?: string;
+}
+declare function Marquee({ items, separator, speed, className, }: MarqueeProps): react_jsx_runtime.JSX.Element;
+
+interface StatCardProps {
+    value: string;
+    label: string;
+    className?: string;
+}
+
+interface PricingCardProps {
+    title: string;
+    price: string;
+    period?: string;
+    features: string[];
+    featured?: boolean;
+    badge?: string;
+    action?: ReactNode;
+    className?: string;
+}
+declare function PricingCard({ title, price, period, features, featured, badge, action, className, }: PricingCardProps): react_jsx_runtime.JSX.Element;
+
+interface CaseCardProps {
+    image?: ReactNode;
+    imageLabel?: string;
+    imageColor?: string;
+    stat: string;
+    statLabel: string;
+    title: string;
+    description: string;
+    className?: string;
+}
+declare function CaseCard({ image, imageLabel, imageColor, stat, statLabel, title, description, className, }: CaseCardProps): react_jsx_runtime.JSX.Element;
+
+interface FooterColumn {
+    title: string;
+    links: {
+        label: string;
+        href: string;
+    }[];
+}
+interface FooterProps {
+    brand: string;
+    tagline?: string;
+    columns: FooterColumn[];
+    copyright?: string;
+    bottomLinks?: {
+        label: string;
+        href: string;
+    }[];
+    className?: string;
+}
+declare function Footer({ brand, tagline, columns, copyright, bottomLinks, className, }: FooterProps): react_jsx_runtime.JSX.Element;
+
+interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+    label?: string;
+    error?: boolean;
+    success?: boolean;
+}
+declare function Textarea({ label, error, success, className, ...props }: TextareaProps): react_jsx_runtime.JSX.Element;
+
+type LoaderSize = "sm" | "lg";
+interface LoaderProps {
+    size?: LoaderSize;
+    label?: string;
+    className?: string;
+}
+declare function Loader({ size, label, className }: LoaderProps): react_jsx_runtime.JSX.Element;
+
+interface SkeletonProps {
+    width?: string | number;
+    height?: string | number;
+    variant?: "text" | "rectangular" | "circular";
+    className?: string;
+}
+declare function Skeleton({ width, height, variant, className, }: SkeletonProps): react_jsx_runtime.JSX.Element;
+
+type AlertVariant = "info" | "success" | "warning" | "error";
+interface AlertProps {
+    variant?: AlertVariant;
+    title?: string;
+    children: ReactNode;
+    onClose?: () => void;
+    className?: string;
+}
+declare function Alert({ variant, title, children, onClose, className, }: AlertProps): react_jsx_runtime.JSX.Element;
+
+interface EmptyStateProps {
+    icon?: string;
+    title: string;
+    description?: string;
+    action?: ReactNode;
+    className?: string;
+}
+declare function EmptyState({ icon, title, description, action, className, }: EmptyStateProps): react_jsx_runtime.JSX.Element;
+
+interface DividerProps {
+    label?: string;
+    className?: string;
+}
+declare function Divider({ label, className }: DividerProps): react_jsx_runtime.JSX.Element;
+
+declare const SignIn: React.FC;
+
+declare const SignUp: React.FC;
+
+interface PasswordResetProps {
+    mode?: "request" | "reset";
+}
+declare const PasswordReset: React.FC<PasswordResetProps>;
+
+interface ListScreenProps extends Omit<DashboardLayoutProps, "children"> {
+    title: string;
+    subtitle?: string;
+    data: any[];
+    columns: Array<{
+        key: string;
+        label: string;
+        render?: (value: any) => React.ReactNode;
+    }>;
+    onAddClick?: () => void;
+    onRowClick?: (row: any) => void;
+    showSearch?: boolean;
+    itemsPerPage?: number;
+}
+declare const ListScreen: React.FC<ListScreenProps>;
+
+interface Product {
+    id: string;
+    name: string;
+    category: string;
+    price: number;
+    stock: number;
+    status: "Active" | "Inactive";
+    createdDate: string;
+}
+declare const ProductsList: React.FC;
+
+interface Customer {
+    id: string;
+    name: string;
+    email: string;
+    phone: string;
+    status: "Active" | "Inactive";
+    joinDate: string;
+    totalPurchases: number;
+}
+declare const CustomersList: React.FC;
+
+interface Account {
+    id: string;
+    accountName: string;
+    accountType: string;
+    balance: number;
+    status: "Active" | "Inactive";
+    lastUpdate: string;
+}
+declare const AccountsList: React.FC;
+
+interface Transaction {
+    id: string;
+    description: string;
+    amount: number;
+    date: string;
+    status: "Completed" | "Pending" | "Failed";
+    type: "Income" | "Expense";
+}
+declare const TransactionsList: React.FC;
+
+interface Contact {
+    id: string;
+    name: string;
+    email: string;
+    company: string;
+    phone: string;
+    lastContact: string;
+    status: "Active" | "Inactive";
+}
+declare const ContactsList: React.FC;
+
+interface Sale {
+    id: string;
+    customer: string;
+    amount: number;
+    date: string;
+    status: "Completed" | "Pending" | "Cancelled";
+    salesperson: string;
+}
+declare const SalesList: React.FC;
+
+declare const InboxList: React.FC;
+
+interface Payment {
+    id: string;
+    method: string;
+    amount: number;
+    date: string;
+    recipient: string;
+    status: "Completed" | "Pending" | "Failed";
+}
+declare const PaymentsList: React.FC;
+
+interface Course {
+    id: string;
+    title: string;
+    instructor: string;
+    progress: number;
+    status: "In Progress" | "Completed" | "Not Started";
+}
+declare const EducationCourses: React.FC;
+
+declare const CalendarEvent: React.FC;
+
+declare const SupportHome: React.FC;
+
+declare const ProfileAccount: React.FC;
+
+declare const ProfileNotifications: React.FC;
+
+declare const ProfileSecurity: React.FC;
+
+declare const ProfileSocial: React.FC;
+
+interface ChartContainerProps {
+    title: string;
+    subtitle?: string;
+    children?: React.ReactNode;
+}
+declare const ChartContainer: React.FC<ChartContainerProps>;
+declare const ChartBarVariant: React.FC;
+declare const ChartPolarVariant: React.FC;
+declare const ChartWaveVariant: React.FC;
+declare const ChartGeometricVariant: React.FC;
+declare const ChartHorizontalBarsVariant: React.FC;
+declare const ChartDoubleBarsVariant: React.FC;
+declare const ChartMiscVariant: React.FC;
+
+interface User {
+    id: string;
+    name: string;
+    email: string;
+    role: "Admin" | "Editor" | "Viewer";
+    status: "Active" | "Inactive" | "Pending";
+    avatar: string;
+    joinDate: string;
+    lastActive: string;
+}
+interface StatCard {
+    label: string;
+    value: string;
+    change: string;
+    trend: "up" | "down";
+}
+interface MenuItem {
+    label: string;
+    href: string;
+    badge?: number;
+    icon: string;
+    iconSvg: string;
+}
+declare function generateUsers(count?: number): User[];
+declare function generateStats(): StatCard[];
+declare function generateChartData(): {
+    labels: string[];
+    revenue: number[];
+    users: number[];
+    orders: number[];
+};
+declare function generateMenuItems(): MenuItem[];
+declare const users: User[];
+declare const stats: StatCard[];
+declare const chartData: {
+    labels: string[];
+    revenue: number[];
+    users: number[];
+    orders: number[];
+};
+declare const menuItems: MenuItem[];
+
+export { type Account, AccountsList, Alert, type AlertProps, AppShell, type AppShellProps, Avatar, type AvatarProps, Badge, type BadgeProps, type BreadcrumbItem, Breadcrumbs, type BreadcrumbsProps, Button, type ButtonProps, CalendarEvent, Card, CardHeader, type CardHeaderProps, type CardProps, CaseCard, type CaseCardProps, ChartBarVariant, ChartCard, type ChartCardProps, ChartContainer, type ChartContainerProps, ChartDoubleBarsVariant, ChartGeometricVariant, ChartHorizontalBarsVariant, ChartMiscVariant, ChartPolarVariant, ChartWaveVariant, Checkbox, type CheckboxProps, type Contact, ContactsList, Counter, type CounterProps, type Course, type Customer, CustomersList, DashboardLayout, type DashboardLayoutProps, Divider, type DividerProps, EducationCourses, EmptyState, type EmptyStateProps, Footer, type FooterColumn, type FooterProps, Hero, type HeroProps, InboxList, Input, type InputProps, ListScreen, type ListScreenProps, Loader, type LoaderProps, Marquee, type MarqueeProps, type MenuItem, Modal, type ModalProps, Navbar, type NavbarProps, Pagination, type PaginationProps, PasswordReset, type PasswordResetProps, type Payment, PaymentsList, PricingCard, type PricingCardProps, type Product, ProductsList, ProfileAccount, ProfileNotifications, ProfileSecurity, ProfileSocial, ProgressBar, type ProgressBarProps, Radio, type RadioProps, type Sale, SalesList, Select, type SelectProps, Sidebar, type SidebarItem, type SidebarProps, SignIn, SignUp, Skeleton, type SkeletonProps, type StatCard, type StatCardProps, StatusDot, type StatusDotProps, SupportHome, Switch, type SwitchProps, type TabItem, Table, type TableColumn, type TableProps, Tabs, type TabsProps, Tag, type TagProps, Textarea, type TextareaProps, Tooltip, type TooltipProps, TopBar, type TopBarProps, Topbar, type TopbarProps, type Transaction, TransactionsList, type User, chartData, generateChartData, generateMenuItems, generateStats, generateUsers, menuItems, stats, users };

@@ -50,7 +50,7 @@ export const EducationCourses: React.FC = () => {
                 by {course.instructor}
               </p>
               <Badge
-                variant={course.status === "Completed" ? "success" : "default"}
+                variant={course.status === "Completed" ? "mint" : "secondary"}
               >
                 {course.status}
               </Badge>

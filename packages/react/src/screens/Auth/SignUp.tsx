@@ -83,7 +83,7 @@ export const SignUp: React.FC = () => {
           <Checkbox
             label="I agree to Terms & Privacy Policy"
             checked={agreed}
-            onChange={setAgreed}
+            onChange={(e) => setAgreed(e.target.checked)}
           />
 
           <Button type="submit" className="w-full">

@@ -58,7 +58,7 @@ export const TransactionsList: React.FC = () => {
           key: "status",
           label: "Status",
           render: (value) => (
-            <Badge variant={value === "Completed" ? "success" : "default"}>
+            <Badge variant={value === "Completed" ? "mint" : "secondary"}>
               {value}
             </Badge>
           ),

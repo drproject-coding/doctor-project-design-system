@@ -59,7 +59,7 @@ export const ContactsList: React.FC = () => {
           key: "status",
           label: "Status",
           render: (value) => (
-            <Badge variant={value === "Active" ? "success" : "default"}>
+            <Badge variant={value === "Active" ? "mint" : "secondary"}>
               {value}
             </Badge>
           ),

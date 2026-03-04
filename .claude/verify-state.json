@@ -1,0 +1,32 @@
+{
+  "session_id": "verify-2026-03-02-0145",
+  "execute_session_id": "direct-build",
+  "branch": "main",
+  "started_at": "2026-03-02T01:45:00Z",
+  "status": "completed",
+  "phases": {
+    "type_check": {
+      "status": "PASS"
+    },
+    "build": {
+      "status": "PASS"
+    },
+    "output_verification": {
+      "status": "PASS"
+    },
+    "code_simplification": {
+      "status": "skipped"
+    }
+  },
+  "all_checks_passed": true,
+  "human_checkpoint": {
+    "prompted_at": "2026-03-02T01:54:00Z",
+    "decision": "ready_to_ship",
+    "caveats": []
+  },
+  "unlock_ship": true,
+  "verified_at": "2026-03-04T21:28:24+01:00",
+  "verified_manifest": "efc7f613d8f380c3a651e06ff2bb0195df6ff10e7ae9b4629394cdc2c495ac92",
+  "verified_commit_sha": "5ebeacf8f93f2a3347987cb2e402a94bf3b1eee5",
+  "verified_file_count": 173
+}
