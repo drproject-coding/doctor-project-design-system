@@ -110,3 +110,66 @@ export type { TopBarProps } from "./TopBar";
 
 export { Sidebar } from "./Sidebar";
 export type { SidebarProps, SidebarItem } from "./Sidebar";
+
+// ============================================================================
+// ALL SCREENS EXPORTED FOR EASY DISCOVERY
+// ============================================================================
+// Import all screens from the screens index
+export {
+  // Auth
+  SignIn,
+  SignUp,
+  PasswordReset,
+  // Templates
+  ListScreen,
+  // Products
+  ProductsList,
+  // Customers
+  CustomersList,
+  // Accounts
+  AccountsList,
+  // Transactions
+  TransactionsList,
+  // Contacts
+  ContactsList,
+  // Sales
+  SalesList,
+  // Inbox
+  InboxList,
+  // Payments
+  PaymentsList,
+  // Education
+  EducationCourses,
+  // Calendar
+  CalendarEvent,
+  // Support
+  SupportHome,
+  // Profile Settings
+  ProfileAccount,
+  ProfileNotifications,
+  ProfileSecurity,
+  ProfileSocial,
+  // Charts
+  ChartContainer,
+  ChartBarVariant,
+  ChartPolarVariant,
+  ChartWaveVariant,
+  ChartGeometricVariant,
+  ChartHorizontalBarsVariant,
+  ChartDoubleBarsVariant,
+  ChartMiscVariant,
+} from "../screens";
+
+export type {
+  ListScreenProps,
+  PasswordResetProps,
+  Product,
+  Customer,
+  Account,
+  Transaction,
+  Contact,
+  Sale,
+  Payment,
+  Course,
+  ChartContainerProps,
+} from "../screens";
