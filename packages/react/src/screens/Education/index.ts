@@ -1,2 +1,2 @@
 export { EducationCourses } from "./EducationCourses";
-export type { Course } from "./EducationCourses";
+export type { EducationCoursesProps, EducationView } from "./EducationCourses";

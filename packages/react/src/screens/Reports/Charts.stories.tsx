@@ -1,69 +1,65 @@
 import { Meta, StoryObj } from "@storybook/react";
 import {
-  ChartContainer,
-  ChartBarVariant,
-  ChartPolarVariant,
-  ChartWaveVariant,
-  ChartGeometricVariant,
-  ChartHorizontalBarsVariant,
-  ChartDoubleBarsVariant,
-  ChartMiscVariant,
+  BarsScreen,
+  BarsHorizontalScreen,
+  ChartGeometricScreen,
+  ChartWaveScreen,
+  DoubleBarsScreen,
+  MiscScreen,
+  PolarChartScreen,
 } from "./ChartContainer";
 
-const meta: Meta<typeof ChartContainer> = {
-  component: ChartContainer,
-  title: "Screens/Reports/Charts",
+// ─── Bars ─────────────────────────────────────────────────────────────────────
+
+const barsMeta: Meta<typeof BarsScreen> = {
+  component: BarsScreen,
+  title: "Screens/Reports/Bars",
+  parameters: { layout: "fullscreen" },
 };
 
-export default meta;
-type Story = StoryObj<typeof ChartContainer>;
+export default barsMeta;
+type BarsStory = StoryObj<typeof BarsScreen>;
 
-export const BarChart: Story = {
-  args: {
-    title: "Bar Charts",
-    subtitle: "Revenue and sales data visualization",
-    children: <ChartBarVariant />,
-  },
-};
+export const Bars: BarsStory = {};
 
-export const PolarChart: Story = {
-  args: {
-    title: "Polar Charts",
-    children: <ChartPolarVariant />,
-  },
-};
+// ─── Bars Horizontal ──────────────────────────────────────────────────────────
 
-export const WaveChart: Story = {
-  args: {
-    title: "Wave Charts",
-    children: <ChartWaveVariant />,
-  },
+export const BarsHorizontal: StoryObj<typeof BarsHorizontalScreen> = {
+  render: () => <BarsHorizontalScreen />,
 };
+BarsHorizontal.parameters = { layout: "fullscreen" };
 
-export const GeometricChart: Story = {
-  args: {
-    title: "Geometric Charts",
-    children: <ChartGeometricVariant />,
-  },
-};
+// ─── Chart Geometric ──────────────────────────────────────────────────────────
 
-export const HorizontalBars: Story = {
-  args: {
-    title: "Horizontal Bar Charts",
-    children: <ChartHorizontalBarsVariant />,
-  },
+export const ChartGeometric: StoryObj<typeof ChartGeometricScreen> = {
+  render: () => <ChartGeometricScreen />,
 };
+ChartGeometric.parameters = { layout: "fullscreen" };
 
-export const DoubleBars: Story = {
-  args: {
-    title: "Double Bar Charts",
-    children: <ChartDoubleBarsVariant />,
-  },
-};
+// ─── Chart Wave ───────────────────────────────────────────────────────────────
 
-export const MiscChart: Story = {
-  args: {
-    title: "Miscellaneous Charts",
-    children: <ChartMiscVariant />,
-  },
+export const ChartWave: StoryObj<typeof ChartWaveScreen> = {
+  render: () => <ChartWaveScreen />,
 };
+ChartWave.parameters = { layout: "fullscreen" };
+
+// ─── Double Bars ──────────────────────────────────────────────────────────────
+
+export const DoubleBars: StoryObj<typeof DoubleBarsScreen> = {
+  render: () => <DoubleBarsScreen />,
+};
+DoubleBars.parameters = { layout: "fullscreen" };
+
+// ─── Misc ─────────────────────────────────────────────────────────────────────
+
+export const Misc: StoryObj<typeof MiscScreen> = {
+  render: () => <MiscScreen />,
+};
+Misc.parameters = { layout: "fullscreen" };
+
+// ─── Polar Chart ──────────────────────────────────────────────────────────────
+
+export const PolarChart: StoryObj<typeof PolarChartScreen> = {
+  render: () => <PolarChartScreen />,
+};
+PolarChart.parameters = { layout: "fullscreen" };

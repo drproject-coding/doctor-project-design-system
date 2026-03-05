@@ -1,103 +1,319 @@
 import React, { useState } from "react";
-import { Button } from "../../components/Button";
-import { Input } from "../../components/Input";
-import { Checkbox } from "../../components/Checkbox";
+import { AuthLayout } from "./AuthLayout";
 
 export const SignUp: React.FC = () => {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
-  });
-  const [agreed, setAgreed] = useState(false);
-  const [errors, setErrors] = useState<Record<string, string>>({});
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  const [country, setCountry] = useState("United States");
+  const [countryBusiness, setCountryBusiness] = useState("");
+  const [email, setEmail] = useState("catherine.shaw4");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [receiveUpdates, setReceiveUpdates] = useState(false);
+  const [agreeTerms, setAgreeTerms] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const newErrors: Record<string, string> = {};
+    console.log("Sign up:", { country, countryBusiness, email, password });
+  };
 
-    if (!formData.fullName) newErrors.fullName = "Name required";
-    if (!formData.email) newErrors.email = "Email required";
-    if (formData.password.length < 8) newErrors.password = "Min 8 characters";
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
-    }
-    if (!agreed) newErrors.agreed = "Must agree to terms";
+  const inputStyle: React.CSSProperties = {
+    width: "100%",
+    padding: "11px 14px",
+    border: "1.5px solid #E0E0E0",
+    borderRadius: "8px",
+    fontSize: "13px",
+    color: "#121212",
+    background: "#fff",
+    outline: "none",
+    boxSizing: "border-box",
+    appearance: "none" as const,
+  };
 
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
+  const labelStyle: React.CSSProperties = {
+    display: "block",
+    fontSize: "12px",
+    fontWeight: 600,
+    color: "#444",
+    marginBottom: "6px",
+  };
 
-    setErrors({});
-    console.log("Sign up:", formData);
+  const fieldStyle: React.CSSProperties = {
+    marginBottom: "14px",
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4">
-      <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
-        <h1 className="text-3xl font-bold mb-2">Create Account</h1>
-        <p className="text-gray-600 mb-6">Join us today</p>
+    <AuthLayout>
+      <div>
+        <h1
+          style={{
+            fontSize: "36px",
+            fontWeight: 800,
+            color: "#121212",
+            lineHeight: 1.1,
+            marginBottom: "8px",
+            letterSpacing: "-0.5px",
+          }}
+        >
+          Sign up
+        </h1>
+        <p
+          style={{
+            fontSize: "13px",
+            color: "#888",
+            marginBottom: "28px",
+          }}
+        >
+          Fill out the form below using your current location
+        </p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <Input
-            label="Full Name"
-            name="fullName"
-            value={formData.fullName}
-            onChange={handleChange}
-            placeholder="John Doe"
-          />
-          <Input
-            label="Email"
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="you@example.com"
-          />
-          <Input
-            label="Password"
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            placeholder="••••••••"
-          />
-          <Input
-            label="Confirm Password"
-            type="password"
-            name="confirmPassword"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            placeholder="••••••••"
-          />
+        <form onSubmit={handleSubmit}>
+          {/* Country/Region of Residence */}
+          <div style={fieldStyle}>
+            <label style={labelStyle}>Country/Region of Residence</label>
+            <div style={{ position: "relative" }}>
+              <select
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                style={{
+                  ...inputStyle,
+                  paddingRight: "36px",
+                  cursor: "pointer",
+                }}
+              >
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Canada">Canada</option>
+                <option value="Australia">Australia</option>
+                <option value="Germany">Germany</option>
+                <option value="France">France</option>
+              </select>
+              <svg
+                style={{
+                  position: "absolute",
+                  right: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  pointerEvents: "none",
+                  color: "#888",
+                }}
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </div>
+          </div>
 
-          <Checkbox
-            label="I agree to Terms & Privacy Policy"
-            checked={agreed}
-            onChange={(e) => setAgreed(e.target.checked)}
-          />
+          {/* Email */}
+          <div style={fieldStyle}>
+            <label style={labelStyle}>Email</label>
+            <div style={{ position: "relative" }}>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="catherine.shaw@gmail.com"
+                style={{ ...inputStyle, paddingRight: "40px" }}
+              />
+              {/* Mail icon */}
+              <svg
+                style={{
+                  position: "absolute",
+                  right: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  color: "#888",
+                  pointerEvents: "none",
+                }}
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+            </div>
+          </div>
 
-          <Button type="submit" className="w-full">
-            Create Account
-          </Button>
+          {/* Password */}
+          <div style={fieldStyle}>
+            <label style={labelStyle}>Password</label>
+            <div style={{ position: "relative" }}>
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                style={{ ...inputStyle, paddingRight: "40px" }}
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                style={{
+                  position: "absolute",
+                  right: "12px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: 0,
+                  color: "#888",
+                }}
+              >
+                {showPassword ? (
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                    <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                    <line x1="1" y1="1" x2="23" y2="23" />
+                  </svg>
+                ) : (
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                  </svg>
+                )}
+              </button>
+            </div>
+          </div>
+
+          {/* Checkboxes */}
+          <div style={{ marginBottom: "20px" }}>
+            <label
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "8px",
+                fontSize: "12px",
+                color: "#444",
+                cursor: "pointer",
+                marginBottom: "10px",
+                lineHeight: 1.4,
+              }}
+            >
+              <input
+                type="checkbox"
+                checked={receiveUpdates}
+                onChange={(e) => setReceiveUpdates(e.target.checked)}
+                style={{
+                  width: "15px",
+                  height: "15px",
+                  accentColor: "#631DED",
+                  cursor: "pointer",
+                  flexShrink: 0,
+                  marginTop: "1px",
+                }}
+              />
+              I agree to receive email updates
+            </label>
+            <label
+              style={{
+                display: "flex",
+                alignItems: "flex-start",
+                gap: "8px",
+                fontSize: "12px",
+                color: "#444",
+                cursor: "pointer",
+                lineHeight: 1.4,
+              }}
+            >
+              <input
+                type="checkbox"
+                checked={agreeTerms}
+                onChange={(e) => setAgreeTerms(e.target.checked)}
+                style={{
+                  width: "15px",
+                  height: "15px",
+                  accentColor: "#631DED",
+                  cursor: "pointer",
+                  flexShrink: 0,
+                  marginTop: "1px",
+                }}
+              />
+              I have read and agree to{" "}
+              <a
+                href="#"
+                style={{
+                  color: "#631DED",
+                  textDecoration: "none",
+                  fontWeight: 500,
+                }}
+              >
+                Terms of Service
+              </a>
+            </label>
+          </div>
+
+          {/* Create account button */}
+          <button
+            type="submit"
+            style={{
+              width: "100%",
+              padding: "13px",
+              background: "#631DED",
+              color: "#fff",
+              border: "none",
+              borderRadius: "8px",
+              fontSize: "14px",
+              fontWeight: 700,
+              cursor: "pointer",
+              letterSpacing: "0.2px",
+            }}
+          >
+            Create account
+          </button>
         </form>
 
-        <p className="text-center text-gray-600 mt-6">
-          Already have an account?{" "}
-          <a href="#" className="text-blue-600 hover:underline">
-            Sign in
+        {/* Sign in link */}
+        <p
+          style={{
+            marginTop: "24px",
+            fontSize: "12px",
+            color: "#888",
+            textAlign: "center",
+          }}
+        >
+          Already registered?{" "}
+          <a
+            href="#"
+            style={{
+              color: "#631DED",
+              fontWeight: 600,
+              textDecoration: "none",
+            }}
+          >
+            Sign in to your account
           </a>
         </p>
       </div>
-    </div>
+    </AuthLayout>
   );
 };

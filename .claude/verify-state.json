@@ -25,8 +25,8 @@
     "caveats": []
   },
   "unlock_ship": true,
-  "verified_at": "2026-03-04T21:28:24+01:00",
-  "verified_manifest": "efc7f613d8f380c3a651e06ff2bb0195df6ff10e7ae9b4629394cdc2c495ac92",
-  "verified_commit_sha": "5ebeacf8f93f2a3347987cb2e402a94bf3b1eee5",
-  "verified_file_count": 173
+  "verified_at": "2026-03-05T00:58:00+01:00",
+  "verified_manifest": "2dea1603df554854774f523b985fb69095b06dd285b539a4cec06786a666b484",
+  "verified_commit_sha": "0e9facf1f3f30a5cee033e0dcdf63dc92749eeac",
+  "verified_file_count": 176
 }

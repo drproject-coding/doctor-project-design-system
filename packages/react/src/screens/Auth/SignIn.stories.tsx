@@ -4,6 +4,9 @@ import { SignIn } from "./SignIn";
 const meta: Meta<typeof SignIn> = {
   component: SignIn,
   title: "Screens/Auth/SignIn",
+  parameters: {
+    layout: "fullscreen",
+  },
 };
 
 export default meta;

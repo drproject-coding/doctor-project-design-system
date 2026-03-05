@@ -75,7 +75,9 @@ export const ListScreen: React.FC<ListScreenProps> = ({
           columns={columns.map((col) => ({
             key: col.key,
             header: col.label,
-            render: col.render,
+            render: col.render
+              ? (row: any) => col.render!(row[col.key])
+              : undefined,
           }))}
           data={paginatedData}
         />

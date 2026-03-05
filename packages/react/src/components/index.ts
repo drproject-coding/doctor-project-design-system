@@ -164,11 +164,11 @@ export type {
   PasswordResetProps,
   Product,
   Customer,
-  Account,
   Transaction,
   Contact,
   Sale,
   Payment,
-  Course,
+  EducationCoursesProps,
+  EducationView,
   ChartContainerProps,
 } from "../screens";

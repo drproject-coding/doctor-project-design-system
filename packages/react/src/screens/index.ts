@@ -23,7 +23,6 @@ export type { Customer } from "./Customers";
 
 // PHASE 5: ACCOUNTS DOMAIN
 export { AccountsList } from "./Accounts";
-export type { Account } from "./Accounts";
 
 // PHASE 6: TRANSACTIONS DOMAIN
 export { TransactionsList } from "./Transactions";
@@ -46,7 +45,7 @@ export type { Payment } from "./Payments";
 
 // PHASE 11: EDUCATION DOMAIN
 export { EducationCourses } from "./Education";
-export type { Course } from "./Education";
+export type { EducationCoursesProps, EducationView } from "./Education";
 
 // PHASE 12: CALENDAR DOMAIN
 export { CalendarEvent } from "./Calendar";

@@ -4,6 +4,9 @@ import { PasswordReset } from "./PasswordReset";
 const meta: Meta<typeof PasswordReset> = {
   component: PasswordReset,
   title: "Screens/Auth/PasswordReset",
+  parameters: {
+    layout: "fullscreen",
+  },
 };
 
 export default meta;
