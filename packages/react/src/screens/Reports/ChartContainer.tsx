@@ -663,19 +663,35 @@ const WaveChartSVG: React.FC<WaveChartSVGProps> = ({
   const n = dataBlue.length;
 
   const toPoint = (val: number, i: number) => ({
-    x: padLeft + (i / (n - 1)) * chartW,
+    x: n > 1 ? padLeft + (i / (n - 1)) * chartW : padLeft,
     y: padTop + chartH - (val / maxValue) * chartH,
   });
 
   const bluePoints = dataBlue.map(toPoint);
   const greenPoints = dataGreen.map(toPoint);
 
-  const bluePath = smooth ? smoothPath(bluePoints) : linePath(bluePoints);
-  const greenPath = smooth ? smoothPath(greenPoints) : linePath(greenPoints);
+  const bluePath =
+    bluePoints.length > 1
+      ? smooth
+        ? smoothPath(bluePoints)
+        : linePath(bluePoints)
+      : "";
+  const greenPath =
+    greenPoints.length > 1
+      ? smooth
+        ? smoothPath(greenPoints)
+        : linePath(greenPoints)
+      : "";
 
   // Area fill
-  const blueAreaClose = `L ${bluePoints[n - 1].x} ${padTop + chartH} L ${bluePoints[0].x} ${padTop + chartH} Z`;
-  const greenAreaClose = `L ${greenPoints[n - 1].x} ${padTop + chartH} L ${greenPoints[0].x} ${padTop + chartH} Z`;
+  const blueAreaClose =
+    bluePoints.length > 1
+      ? `L ${bluePoints[bluePoints.length - 1].x} ${padTop + chartH} L ${bluePoints[0].x} ${padTop + chartH} Z`
+      : "";
+  const greenAreaClose =
+    greenPoints.length > 1
+      ? `L ${greenPoints[greenPoints.length - 1].x} ${padTop + chartH} L ${greenPoints[0].x} ${padTop + chartH} Z`
+      : "";
 
   // Tooltip at middle point
   const tooltipIdx = Math.floor(n / 2);
