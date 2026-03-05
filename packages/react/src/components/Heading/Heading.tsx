@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, CSSProperties } from "react";
 
 export interface HeadingProps {
   level?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -17,11 +17,11 @@ export function Heading({
 
   const classes = [`drp-h${level}`, className].filter(Boolean).join(" ");
 
-  const style: React.CSSProperties = uppercase
+  const style: CSSProperties = uppercase
     ? {
         textTransform: "uppercase",
         letterSpacing: "var(--drp-tracking-caps)",
-        fontWeight: "var(--drp-weight-heavy)" as unknown as number,
+        fontWeight: "var(--drp-weight-heavy)",
       }
     : {};
 
