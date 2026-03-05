@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Overview — Bruddle Design System</title>
+  <title>Overview — DoctorProject Design System</title>
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="docs.css">
 </head>
@@ -11,7 +11,7 @@
   <div class="app-layout">
     <nav class="sidebar">
       <div class="sidebar-brand">
-        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-name">DoctorProject</span>
         <span class="sidebar-brand-dot"></span>
       </div>
       <div class="sidebar-nav">
@@ -88,7 +88,7 @@
           <h1 class="topbar-title">Overview</h1>
         </div>
         <div class="topbar-right">
-          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+          <button id="darkModeToggle" class="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm" title="Toggle dark mode">&#9790;</button>
         </div>
       </header>
 
@@ -96,8 +96,8 @@
         <div class="container">
 
           <div class="docs-page-header">
-            <h2 class="bru-h1">Bruddle Design System</h2>
-            <p class="bru-text bru-text--lg bru-mt-2" style="max-width: 640px;">
+            <h2 class="drp-h1">DoctorProject Design System</h2>
+            <p class="drp-text drp-text--lg drp-mt-2" style="max-width: 640px;">
               A brutalist, framework-agnostic design system with offset shadows, high contrast, and 4px grid spacing.
             </p>
           </div>
@@ -105,62 +105,62 @@
           <!-- Getting Started -->
           <div class="docs-section">
             <h3 class="docs-section-title">Getting Started</h3>
-            <p class="bru-text bru-mb-4">Include the single CSS entry point to load all components:</p>
-<pre class="docs-code">&lt;link rel="stylesheet" href="bruddle-design-system/css/index.css"&gt;</pre>
-            <p class="bru-text bru-mb-4">Or import selectively in your CSS:</p>
-<pre class="docs-code">@import 'bruddle-design-system/css/tokens.css';
-@import 'bruddle-design-system/css/buttons.css';
-@import 'bruddle-design-system/css/cards.css';</pre>
+            <p class="drp-text drp-mb-4">Include the single CSS entry point to load all components:</p>
+<pre class="docs-code">&lt;link rel="stylesheet" href="doctorproject-design-system/css/index.css"&gt;</pre>
+            <p class="drp-text drp-mb-4">Or import selectively in your CSS:</p>
+<pre class="docs-code">@import 'doctorproject-design-system/css/tokens.css';
+@import 'doctorproject-design-system/css/buttons.css';
+@import 'doctorproject-design-system/css/cards.css';</pre>
           </div>
 
           <!-- Quick Example -->
           <div class="docs-section">
             <h3 class="docs-section-title">Quick Example</h3>
             <div class="docs-demo">
-              <div class="bru-card bru-card--raised" style="max-width: 320px;">
-                <div class="bru-card__header">
-                  <h4 class="bru-card__title">Welcome</h4>
+              <div class="drp-card drp-card--raised" style="max-width: 320px;">
+                <div class="drp-card__header">
+                  <h4 class="drp-card__title">Welcome</h4>
                 </div>
-                <p class="bru-text bru-mb-4">This card uses <code>.bru-card--raised</code> with a button inside.</p>
-                <button class="bru-btn bru-btn--primary">Get Started</button>
+                <p class="drp-text drp-mb-4">This card uses <code>.drp-card--raised</code> with a button inside.</p>
+                <button class="drp-btn drp-btn--primary">Get Started</button>
               </div>
             </div>
-<pre class="docs-code">&lt;div class="bru-card bru-card--raised"&gt;
-  &lt;div class="bru-card__header"&gt;
-    &lt;h4 class="bru-card__title"&gt;Welcome&lt;/h4&gt;
+<pre class="docs-code">&lt;div class="drp-card drp-card--raised"&gt;
+  &lt;div class="drp-card__header"&gt;
+    &lt;h4 class="drp-card__title"&gt;Welcome&lt;/h4&gt;
   &lt;/div&gt;
-  &lt;p class="bru-text"&gt;Card content here.&lt;/p&gt;
-  &lt;button class="bru-btn bru-btn--primary"&gt;Get Started&lt;/button&gt;
+  &lt;p class="drp-text"&gt;Card content here.&lt;/p&gt;
+  &lt;button class="drp-btn drp-btn--primary"&gt;Get Started&lt;/button&gt;
 &lt;/div&gt;</pre>
           </div>
 
           <!-- Design Principles -->
           <div class="docs-section">
             <h3 class="docs-section-title">Design Principles</h3>
-            <div class="bru-grid-2">
-              <div class="bru-card bru-card--purple">
-                <h4 class="bru-card__title">Brutalist Aesthetics</h4>
-                <p class="bru-card__subtitle">Bold borders, sharp edges, and unapologetic contrast. No soft gradients or rounded blobs.</p>
+            <div class="drp-grid-2">
+              <div class="drp-card drp-card--purple">
+                <h4 class="drp-card__title">Brutalist Aesthetics</h4>
+                <p class="drp-card__subtitle">Bold borders, sharp edges, and unapologetic contrast. No soft gradients or rounded blobs.</p>
               </div>
-              <div class="bru-card bru-card--mint">
-                <h4 class="bru-card__title">Offset Shadows</h4>
-                <p class="bru-card__subtitle">Signature solid black offset shadows at multiple scales (xs through xl) give depth without blur.</p>
+              <div class="drp-card drp-card--mint">
+                <h4 class="drp-card__title">Offset Shadows</h4>
+                <p class="drp-card__subtitle">Signature solid black offset shadows at multiple scales (xs through xl) give depth without blur.</p>
               </div>
-              <div class="bru-card bru-card--pink">
-                <h4 class="bru-card__title">High Contrast</h4>
-                <p class="bru-card__subtitle">Black on cream, white on black. Every element demands attention and passes accessibility checks.</p>
+              <div class="drp-card drp-card--pink">
+                <h4 class="drp-card__title">High Contrast</h4>
+                <p class="drp-card__subtitle">Black on cream, white on black. Every element demands attention and passes accessibility checks.</p>
               </div>
-              <div class="bru-card bru-card--yellow">
-                <h4 class="bru-card__title">4px Grid</h4>
-                <p class="bru-card__subtitle">All spacing derives from a 4px base unit (4, 8, 12, 16, 20, 24, 32, 40, 48, 64).</p>
+              <div class="drp-card drp-card--yellow">
+                <h4 class="drp-card__title">4px Grid</h4>
+                <p class="drp-card__subtitle">All spacing derives from a 4px base unit (4, 8, 12, 16, 20, 24, 32, 40, 48, 64).</p>
               </div>
-              <div class="bru-card bru-card--sm">
-                <h4 class="bru-card__title">Dark Mode Built-in</h4>
-                <p class="bru-card__subtitle">Every component supports dark mode through CSS variable overrides. Add <code>dark-mode</code> class to body.</p>
+              <div class="drp-card drp-card--sm">
+                <h4 class="drp-card__title">Dark Mode Built-in</h4>
+                <p class="drp-card__subtitle">Every component supports dark mode through CSS variable overrides. Add <code>dark-mode</code> class to body.</p>
               </div>
-              <div class="bru-card bru-card--sm">
-                <h4 class="bru-card__title">Framework Agnostic</h4>
-                <p class="bru-card__subtitle">Pure CSS with zero dependencies. Works with React, Vue, Svelte, vanilla HTML, or anything else.</p>
+              <div class="drp-card drp-card--sm">
+                <h4 class="drp-card__title">Framework Agnostic</h4>
+                <p class="drp-card__subtitle">Pure CSS with zero dependencies. Works with React, Vue, Svelte, vanilla HTML, or anything else.</p>
               </div>
             </div>
           </div>

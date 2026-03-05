@@ -362,7 +362,7 @@ export interface AuthLayoutProps {
 export const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => (
   <div
     className="min-h-screen flex"
-    style={{ fontFamily: "var(--bru-font-primary, sans-serif)" }}
+    style={{ fontFamily: "var(--drp-font-primary, sans-serif)" }}
   >
     {/* Left panel */}
     <div

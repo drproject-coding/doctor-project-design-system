@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Responsive Test — Bruddle Design System</title>
+  <title>Responsive Test — DoctorProject Design System</title>
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="docs.css">
   <style>
@@ -33,31 +33,31 @@
     .test-section {
       margin-bottom: 48px;
       padding-bottom: 24px;
-      border-bottom: 2px dashed var(--bru-grey-85, #ccc);
+      border-bottom: 2px dashed var(--drp-grey-85, #ccc);
     }
     .test-section:last-child {
       border-bottom: none;
     }
     .test-section h2 {
-      font-family: var(--bru-font-primary);
-      font-size: var(--bru-text-xl);
-      font-weight: var(--bru-weight-bold);
+      font-family: var(--drp-font-primary);
+      font-size: var(--drp-text-xl);
+      font-weight: var(--drp-weight-bold);
       margin: 0 0 24px;
-      color: var(--bru-purple);
+      color: var(--drp-purple);
     }
     .test-subsection {
       margin-bottom: 24px;
     }
     .test-subsection h3 {
-      font-family: var(--bru-font-primary);
-      font-size: var(--bru-text-md);
-      font-weight: var(--bru-weight-bold);
+      font-family: var(--drp-font-primary);
+      font-size: var(--drp-text-md);
+      font-weight: var(--drp-weight-bold);
       margin: 0 0 12px;
-      color: var(--bru-black);
+      color: var(--drp-black);
     }
     .test-note {
       font-size: 12px;
-      color: var(--bru-grey);
+      color: var(--drp-grey);
       margin-bottom: 8px;
       font-style: italic;
     }
@@ -83,8 +83,8 @@
 
 <div class="test-content">
   <div class="docs-page-header">
-    <h1 class="bru-heading-xl">Responsive Test</h1>
-    <p class="bru-text-md" style="color: var(--bru-grey); max-width: 600px;">
+    <h1 class="drp-heading-xl">Responsive Test</h1>
+    <p class="drp-text-md" style="color: var(--drp-grey); max-width: 600px;">
       Test all components across 6 target screens: iPhone (390px), Android (412px),
       iPad (820px), Android Tablet (800px), Desktop Chrome (1440px), Desktop Safari (1440px).
     </p>
@@ -97,21 +97,21 @@
     <div class="test-subsection">
       <h3>Button Variants</h3>
       <div class="docs-demo">
-        <button class="bru-btn">Default</button>
-        <button class="bru-btn bru-btn--primary">Primary</button>
-        <button class="bru-btn bru-btn--success">Success</button>
-        <button class="bru-btn bru-btn--danger">Danger</button>
-        <button class="bru-btn bru-btn--outline">Outline</button>
-        <button class="bru-btn bru-btn--ghost">Ghost</button>
+        <button class="drp-btn">Default</button>
+        <button class="drp-btn drp-btn--primary">Primary</button>
+        <button class="drp-btn drp-btn--success">Success</button>
+        <button class="drp-btn drp-btn--danger">Danger</button>
+        <button class="drp-btn drp-btn--outline">Outline</button>
+        <button class="drp-btn drp-btn--ghost">Ghost</button>
       </div>
     </div>
 
     <div class="test-subsection">
       <h3>Button Sizes</h3>
       <div class="docs-demo">
-        <button class="bru-btn bru-btn--primary bru-btn--sm">Small</button>
-        <button class="bru-btn bru-btn--primary">Default</button>
-        <button class="bru-btn bru-btn--primary bru-btn--lg">Large</button>
+        <button class="drp-btn drp-btn--primary drp-btn--sm">Small</button>
+        <button class="drp-btn drp-btn--primary">Default</button>
+        <button class="drp-btn drp-btn--primary drp-btn--lg">Large</button>
       </div>
     </div>
 
@@ -119,11 +119,11 @@
       <h3>Button Group</h3>
       <p class="test-note">Should wrap on tablet, go full-width on mobile</p>
       <div class="docs-demo">
-        <div class="bru-btn-group">
-          <button class="bru-btn bru-btn--primary">Save</button>
-          <button class="bru-btn bru-btn--outline">Cancel</button>
-          <button class="bru-btn bru-btn--danger">Delete</button>
-          <button class="bru-btn">Draft</button>
+        <div class="drp-btn-group">
+          <button class="drp-btn drp-btn--primary">Save</button>
+          <button class="drp-btn drp-btn--outline">Cancel</button>
+          <button class="drp-btn drp-btn--danger">Delete</button>
+          <button class="drp-btn">Draft</button>
         </div>
       </div>
     </div>
@@ -137,24 +137,24 @@
       <h3>Form Row (2-column → 1-column on mobile)</h3>
       <p class="test-note">Should stack to single column at 768px</p>
       <div class="docs-demo docs-demo--col">
-        <div class="bru-form-row" style="width: 100%;">
-          <div class="bru-form-group">
-            <label class="bru-label">First Name</label>
-            <input type="text" class="bru-input" placeholder="John">
+        <div class="drp-form-row" style="width: 100%;">
+          <div class="drp-form-group">
+            <label class="drp-label">First Name</label>
+            <input type="text" class="drp-input" placeholder="John">
           </div>
-          <div class="bru-form-group">
-            <label class="bru-label">Last Name</label>
-            <input type="text" class="bru-input" placeholder="Doe">
+          <div class="drp-form-group">
+            <label class="drp-label">Last Name</label>
+            <input type="text" class="drp-input" placeholder="Doe">
           </div>
         </div>
-        <div class="bru-form-row" style="width: 100%;">
-          <div class="bru-form-group">
-            <label class="bru-label">Email</label>
-            <input type="email" class="bru-input" placeholder="john@example.com">
+        <div class="drp-form-row" style="width: 100%;">
+          <div class="drp-form-group">
+            <label class="drp-label">Email</label>
+            <input type="email" class="drp-input" placeholder="john@example.com">
           </div>
-          <div class="bru-form-group">
-            <label class="bru-label">Phone</label>
-            <input type="tel" class="bru-input" placeholder="+1 (555) 000-0000">
+          <div class="drp-form-group">
+            <label class="drp-label">Phone</label>
+            <input type="tel" class="drp-input" placeholder="+1 (555) 000-0000">
           </div>
         </div>
       </div>
@@ -164,17 +164,17 @@
       <h3>Select & Inputs</h3>
       <p class="test-note">Inputs should be 16px on mobile (prevent iOS zoom)</p>
       <div class="docs-demo docs-demo--col">
-        <div class="bru-form-group" style="width: 100%; max-width: 400px;">
-          <label class="bru-label">Country</label>
-          <select class="bru-select">
+        <div class="drp-form-group" style="width: 100%; max-width: 400px;">
+          <label class="drp-label">Country</label>
+          <select class="drp-select">
             <option>United States</option>
             <option>Canada</option>
             <option>United Kingdom</option>
           </select>
         </div>
-        <div class="bru-form-group" style="width: 100%; max-width: 400px;">
-          <label class="bru-label">Message</label>
-          <textarea class="bru-input" rows="3" placeholder="Type your message..."></textarea>
+        <div class="drp-form-group" style="width: 100%; max-width: 400px;">
+          <label class="drp-label">Message</label>
+          <textarea class="drp-input" rows="3" placeholder="Type your message..."></textarea>
         </div>
       </div>
     </div>
@@ -182,24 +182,24 @@
     <div class="test-subsection">
       <h3>Checkboxes & Radios</h3>
       <div class="docs-demo docs-demo--col">
-        <label class="bru-checkbox">
+        <label class="drp-checkbox">
           <input type="checkbox" checked>
-          <span class="bru-checkbox__mark"></span>
+          <span class="drp-checkbox__mark"></span>
           Accept terms and conditions
         </label>
-        <label class="bru-checkbox">
+        <label class="drp-checkbox">
           <input type="checkbox">
-          <span class="bru-checkbox__mark"></span>
+          <span class="drp-checkbox__mark"></span>
           Subscribe to newsletter
         </label>
-        <label class="bru-radio">
+        <label class="drp-radio">
           <input type="radio" name="test-plan" checked>
-          <span class="bru-radio__mark"></span>
+          <span class="drp-radio__mark"></span>
           Monthly Plan
         </label>
-        <label class="bru-radio">
+        <label class="drp-radio">
           <input type="radio" name="test-plan">
-          <span class="bru-radio__mark"></span>
+          <span class="drp-radio__mark"></span>
           Annual Plan
         </label>
       </div>
@@ -208,13 +208,13 @@
     <div class="test-subsection">
       <h3>Toggle Switches</h3>
       <div class="docs-demo">
-        <label class="bru-switch">
+        <label class="drp-switch">
           <input type="checkbox" checked>
-          <span class="bru-switch__slider"></span>
+          <span class="drp-switch__slider"></span>
         </label>
-        <label class="bru-switch">
+        <label class="drp-switch">
           <input type="checkbox">
-          <span class="bru-switch__slider"></span>
+          <span class="drp-switch__slider"></span>
         </label>
       </div>
     </div>
@@ -226,50 +226,50 @@
 
     <div class="test-subsection">
       <h3>Card Grid (4-col → 2-col → 1-col)</h3>
-      <div class="bru-grid-4">
-        <div class="bru-card">
-          <div class="bru-card__header">
-            <h4 class="bru-card__title">Card Title 1</h4>
+      <div class="drp-grid-4">
+        <div class="drp-card">
+          <div class="drp-card__header">
+            <h4 class="drp-card__title">Card Title 1</h4>
           </div>
-          <div class="bru-card__body">
-            <p class="bru-text-sm">Card body content that demonstrates responsive padding adjustments.</p>
+          <div class="drp-card__body">
+            <p class="drp-text-sm">Card body content that demonstrates responsive padding adjustments.</p>
           </div>
-          <div class="bru-card__footer">
-            <button class="bru-btn bru-btn--sm bru-btn--outline">Cancel</button>
-            <button class="bru-btn bru-btn--sm bru-btn--primary">Save</button>
-          </div>
-        </div>
-        <div class="bru-card">
-          <div class="bru-card__header">
-            <h4 class="bru-card__title">Card Title 2</h4>
-          </div>
-          <div class="bru-card__body">
-            <p class="bru-text-sm">Another card to test grid responsiveness and spacing.</p>
-          </div>
-          <div class="bru-card__footer">
-            <button class="bru-btn bru-btn--sm bru-btn--primary">View</button>
+          <div class="drp-card__footer">
+            <button class="drp-btn drp-btn--sm drp-btn--outline">Cancel</button>
+            <button class="drp-btn drp-btn--sm drp-btn--primary">Save</button>
           </div>
         </div>
-        <div class="bru-card">
-          <div class="bru-card__header">
-            <h4 class="bru-card__title">Card Title 3</h4>
+        <div class="drp-card">
+          <div class="drp-card__header">
+            <h4 class="drp-card__title">Card Title 2</h4>
           </div>
-          <div class="bru-card__body">
-            <p class="bru-text-sm">Third card for testing grid breakpoints.</p>
+          <div class="drp-card__body">
+            <p class="drp-text-sm">Another card to test grid responsiveness and spacing.</p>
           </div>
-          <div class="bru-card__footer">
-            <button class="bru-btn bru-btn--sm bru-btn--outline">Details</button>
+          <div class="drp-card__footer">
+            <button class="drp-btn drp-btn--sm drp-btn--primary">View</button>
           </div>
         </div>
-        <div class="bru-card">
-          <div class="bru-card__header">
-            <h4 class="bru-card__title">Card Title 4</h4>
+        <div class="drp-card">
+          <div class="drp-card__header">
+            <h4 class="drp-card__title">Card Title 3</h4>
           </div>
-          <div class="bru-card__body">
-            <p class="bru-text-sm">Fourth card to complete the 4-column grid test.</p>
+          <div class="drp-card__body">
+            <p class="drp-text-sm">Third card for testing grid breakpoints.</p>
           </div>
-          <div class="bru-card__footer">
-            <button class="bru-btn bru-btn--sm bru-btn--danger">Remove</button>
+          <div class="drp-card__footer">
+            <button class="drp-btn drp-btn--sm drp-btn--outline">Details</button>
+          </div>
+        </div>
+        <div class="drp-card">
+          <div class="drp-card__header">
+            <h4 class="drp-card__title">Card Title 4</h4>
+          </div>
+          <div class="drp-card__body">
+            <p class="drp-text-sm">Fourth card to complete the 4-column grid test.</p>
+          </div>
+          <div class="drp-card__footer">
+            <button class="drp-btn drp-btn--sm drp-btn--danger">Remove</button>
           </div>
         </div>
       </div>
@@ -277,15 +277,15 @@
 
     <div class="test-subsection">
       <h3>Card Variants</h3>
-      <div class="bru-grid-2">
-        <div class="bru-card bru-card--flat">
-          <div class="bru-card__body">
-            <p class="bru-text-sm">Flat card without shadow</p>
+      <div class="drp-grid-2">
+        <div class="drp-card drp-card--flat">
+          <div class="drp-card__body">
+            <p class="drp-text-sm">Flat card without shadow</p>
           </div>
         </div>
-        <div class="bru-card bru-card--hover">
-          <div class="bru-card__body">
-            <p class="bru-text-sm">Hover card — try hovering</p>
+        <div class="drp-card drp-card--hover">
+          <div class="drp-card__body">
+            <p class="drp-text-sm">Hover card — try hovering</p>
           </div>
         </div>
       </div>
@@ -299,43 +299,43 @@
     <div class="test-subsection">
       <h3>Tabs (scrollable on mobile)</h3>
       <p class="test-note">Should horizontally scroll on mobile without showing scrollbar</p>
-      <div class="bru-tabs">
-        <button class="bru-tab bru-tab--active">Dashboard</button>
-        <button class="bru-tab">Products</button>
-        <button class="bru-tab">Analytics</button>
-        <button class="bru-tab">Settings</button>
-        <button class="bru-tab">Notifications</button>
-        <button class="bru-tab">Account</button>
-        <button class="bru-tab">Help</button>
+      <div class="drp-tabs">
+        <button class="drp-tab drp-tab--active">Dashboard</button>
+        <button class="drp-tab">Products</button>
+        <button class="drp-tab">Analytics</button>
+        <button class="drp-tab">Settings</button>
+        <button class="drp-tab">Notifications</button>
+        <button class="drp-tab">Account</button>
+        <button class="drp-tab">Help</button>
       </div>
     </div>
 
     <div class="test-subsection">
       <h3>Tags</h3>
       <div class="docs-demo">
-        <span class="bru-tag">Default</span>
-        <span class="bru-tag bru-tag--purple">Purple</span>
-        <span class="bru-tag bru-tag--mint">Active</span>
-        <span class="bru-tag bru-tag--pink">Refunded</span>
-        <span class="bru-tag bru-tag--yellow">Pending</span>
+        <span class="drp-tag">Default</span>
+        <span class="drp-tag drp-tag--purple">Purple</span>
+        <span class="drp-tag drp-tag--mint">Active</span>
+        <span class="drp-tag drp-tag--pink">Refunded</span>
+        <span class="drp-tag drp-tag--yellow">Pending</span>
       </div>
     </div>
 
     <div class="test-subsection">
       <h3>Badges</h3>
       <div class="docs-demo">
-        <span class="bru-badge">5</span>
-        <span class="bru-badge bru-badge--purple">12</span>
-        <span class="bru-badge bru-badge--mint">3</span>
-        <span class="bru-badge bru-badge--pink">!</span>
+        <span class="drp-badge">5</span>
+        <span class="drp-badge drp-badge--purple">12</span>
+        <span class="drp-badge drp-badge--mint">3</span>
+        <span class="drp-badge drp-badge--pink">!</span>
       </div>
     </div>
 
     <div class="test-subsection">
       <h3>Progress Bar</h3>
       <div style="max-width: 400px;">
-        <div class="bru-progress">
-          <div class="bru-progress__fill" style="width: 65%;"></div>
+        <div class="drp-progress">
+          <div class="drp-progress__fill" style="width: 65%;"></div>
         </div>
       </div>
     </div>
@@ -349,7 +349,7 @@
       <h3>Responsive Table (in scroll wrapper)</h3>
       <p class="test-note">Should scroll horizontally on narrow screens</p>
       <div class="responsive-table-wrapper">
-        <table class="bru-table">
+        <table class="drp-table">
           <thead>
             <tr>
               <th>Product</th>
@@ -363,35 +363,35 @@
           <tbody>
             <tr>
               <td>AI2sql Pro</td>
-              <td><span class="bru-tag bru-tag--mint">Active</span></td>
+              <td><span class="drp-tag drp-tag--mint">Active</span></td>
               <td>2026-01-15</td>
               <td>2026-03-16</td>
               <td>$49.00</td>
-              <td><button class="bru-btn bru-btn--sm bru-btn--outline">View</button></td>
+              <td><button class="drp-btn drp-btn--sm drp-btn--outline">View</button></td>
             </tr>
             <tr>
               <td>DesignJoy Ultra</td>
-              <td><span class="bru-tag bru-tag--yellow">Pending</span></td>
+              <td><span class="drp-tag drp-tag--yellow">Pending</span></td>
               <td>2026-02-01</td>
               <td>2026-04-02</td>
               <td>$79.00</td>
-              <td><button class="bru-btn bru-btn--sm bru-btn--outline">View</button></td>
+              <td><button class="drp-btn drp-btn--sm drp-btn--outline">View</button></td>
             </tr>
             <tr>
               <td>Writerly AI</td>
-              <td><span class="bru-tag bru-tag--pink">Refunded</span></td>
+              <td><span class="drp-tag drp-tag--pink">Refunded</span></td>
               <td>2025-12-20</td>
               <td>2026-02-18</td>
               <td>$59.00</td>
-              <td><button class="bru-btn bru-btn--sm bru-btn--ghost">View</button></td>
+              <td><button class="drp-btn drp-btn--sm drp-btn--ghost">View</button></td>
             </tr>
             <tr>
               <td>MailMaestro Enterprise</td>
-              <td><span class="bru-tag bru-tag--mint">Active</span></td>
+              <td><span class="drp-tag drp-tag--mint">Active</span></td>
               <td>2026-02-10</td>
               <td>2026-04-11</td>
               <td>$129.00</td>
-              <td><button class="bru-btn bru-btn--sm bru-btn--outline">View</button></td>
+              <td><button class="drp-btn drp-btn--sm drp-btn--outline">View</button></td>
             </tr>
           </tbody>
         </table>
@@ -406,26 +406,26 @@
     <div class="test-subsection">
       <h3>Modal Demo</h3>
       <p class="test-note">Click to open — should adapt to screen size</p>
-      <button class="bru-btn bru-btn--primary" onclick="document.getElementById('testModal').removeAttribute('hidden')">
+      <button class="drp-btn drp-btn--primary" onclick="document.getElementById('testModal').removeAttribute('hidden')">
         Open Modal
       </button>
 
-      <div class="bru-overlay" id="testModal" hidden>
-        <div class="bru-modal">
-          <div class="bru-modal__header">
-            <h3 class="bru-modal__title">Confirm Action</h3>
-            <button class="bru-modal__close" onclick="document.getElementById('testModal').setAttribute('hidden', '')">&times;</button>
+      <div class="drp-overlay" id="testModal" hidden>
+        <div class="drp-modal">
+          <div class="drp-modal__header">
+            <h3 class="drp-modal__title">Confirm Action</h3>
+            <button class="drp-modal__close" onclick="document.getElementById('testModal').setAttribute('hidden', '')">&times;</button>
           </div>
-          <div class="bru-modal__body">
-            <p class="bru-text-md">Are you sure you want to proceed with this action? This will update your product configuration.</p>
-            <div class="bru-form-group" style="margin-top: 16px;">
-              <label class="bru-label">Confirmation</label>
-              <input type="text" class="bru-input" placeholder="Type 'confirm' to proceed">
+          <div class="drp-modal__body">
+            <p class="drp-text-md">Are you sure you want to proceed with this action? This will update your product configuration.</p>
+            <div class="drp-form-group" style="margin-top: 16px;">
+              <label class="drp-label">Confirmation</label>
+              <input type="text" class="drp-input" placeholder="Type 'confirm' to proceed">
             </div>
           </div>
-          <div class="bru-modal__footer">
-            <button class="bru-btn bru-btn--outline" onclick="document.getElementById('testModal').setAttribute('hidden', '')">Cancel</button>
-            <button class="bru-btn bru-btn--primary">Confirm</button>
+          <div class="drp-modal__footer">
+            <button class="drp-btn drp-btn--outline" onclick="document.getElementById('testModal').setAttribute('hidden', '')">Cancel</button>
+            <button class="drp-btn drp-btn--primary">Confirm</button>
           </div>
         </div>
       </div>
@@ -440,18 +440,18 @@
       <h3>Standard Pagination</h3>
       <p class="test-note">Should wrap and shrink on mobile</p>
       <div class="docs-demo">
-        <div class="bru-pagination">
-          <button class="bru-pagination__btn bru-pagination__btn--nav">&laquo;</button>
-          <button class="bru-pagination__btn bru-pagination__btn--nav">&lsaquo;</button>
-          <button class="bru-pagination__btn">1</button>
-          <button class="bru-pagination__btn bru-pagination__btn--active">2</button>
-          <button class="bru-pagination__btn">3</button>
-          <button class="bru-pagination__btn">4</button>
-          <button class="bru-pagination__btn">5</button>
-          <button class="bru-pagination__btn">...</button>
-          <button class="bru-pagination__btn">20</button>
-          <button class="bru-pagination__btn bru-pagination__btn--nav">&rsaquo;</button>
-          <button class="bru-pagination__btn bru-pagination__btn--nav">&raquo;</button>
+        <div class="drp-pagination">
+          <button class="drp-pagination__btn drp-pagination__btn--nav">&laquo;</button>
+          <button class="drp-pagination__btn drp-pagination__btn--nav">&lsaquo;</button>
+          <button class="drp-pagination__btn">1</button>
+          <button class="drp-pagination__btn drp-pagination__btn--active">2</button>
+          <button class="drp-pagination__btn">3</button>
+          <button class="drp-pagination__btn">4</button>
+          <button class="drp-pagination__btn">5</button>
+          <button class="drp-pagination__btn">...</button>
+          <button class="drp-pagination__btn">20</button>
+          <button class="drp-pagination__btn drp-pagination__btn--nav">&rsaquo;</button>
+          <button class="drp-pagination__btn drp-pagination__btn--nav">&raquo;</button>
         </div>
       </div>
     </div>
@@ -464,16 +464,16 @@
     <div class="test-subsection">
       <h3>Toast Notifications</h3>
       <div style="display: flex; flex-direction: column; gap: 12px;">
-        <div class="bru-toast bru-toast--success">
+        <div class="drp-toast drp-toast--success">
           <span>&#10003;</span> Product synced successfully
         </div>
-        <div class="bru-toast bru-toast--error">
+        <div class="drp-toast drp-toast--error">
           <span>&#10007;</span> Failed to fetch invoice data
         </div>
-        <div class="bru-toast bru-toast--warning">
+        <div class="drp-toast drp-toast--warning">
           <span>&#9888;</span> Refund deadline approaching in 3 days
         </div>
-        <div class="bru-toast bru-toast--info">
+        <div class="drp-toast drp-toast--info">
           <span>&#8505;</span> New version available — click to update
         </div>
       </div>
@@ -481,39 +481,39 @@
 
     <div class="test-subsection">
       <h3>Empty State</h3>
-      <div class="bru-card">
-        <div class="bru-empty">
-          <div class="bru-empty__icon">&#128230;</div>
-          <h3 class="bru-empty__title">No products found</h3>
-          <p class="bru-empty__text">Sync your AppSumo account to see your products here. Click the button below to get started.</p>
+      <div class="drp-card">
+        <div class="drp-empty">
+          <div class="drp-empty__icon">&#128230;</div>
+          <h3 class="drp-empty__title">No products found</h3>
+          <p class="drp-empty__text">Sync your AppSumo account to see your products here. Click the button below to get started.</p>
         </div>
       </div>
     </div>
 
     <div class="test-subsection">
       <h3>Drop Zone</h3>
-      <div class="bru-dropzone">
-        <div class="bru-dropzone__icon">&#128193;</div>
-        <div class="bru-dropzone__text">Drop files here or click to browse</div>
-        <div class="bru-dropzone__hint">Supports CSV, JSON, PDF (max 10MB)</div>
+      <div class="drp-dropzone">
+        <div class="drp-dropzone__icon">&#128193;</div>
+        <div class="drp-dropzone__text">Drop files here or click to browse</div>
+        <div class="drp-dropzone__hint">Supports CSV, JSON, PDF (max 10MB)</div>
       </div>
     </div>
 
     <div class="test-subsection">
       <h3>Dividers</h3>
-      <hr class="bru-divider">
-      <hr class="bru-divider bru-divider--dashed">
-      <hr class="bru-divider bru-divider--dotted">
+      <hr class="drp-divider">
+      <hr class="drp-divider drp-divider--dashed">
+      <hr class="drp-divider drp-divider--dotted">
     </div>
 
     <div class="test-subsection">
       <h3>Grid Layouts</h3>
       <p class="test-note">4-col → 2-col (768px) → 1-col (390px)</p>
-      <div class="bru-grid-4">
-        <div class="bru-card" style="text-align:center;"><div class="bru-card__body">1</div></div>
-        <div class="bru-card" style="text-align:center;"><div class="bru-card__body">2</div></div>
-        <div class="bru-card" style="text-align:center;"><div class="bru-card__body">3</div></div>
-        <div class="bru-card" style="text-align:center;"><div class="bru-card__body">4</div></div>
+      <div class="drp-grid-4">
+        <div class="drp-card" style="text-align:center;"><div class="drp-card__body">1</div></div>
+        <div class="drp-card" style="text-align:center;"><div class="drp-card__body">2</div></div>
+        <div class="drp-card" style="text-align:center;"><div class="drp-card__body">3</div></div>
+        <div class="drp-card" style="text-align:center;"><div class="drp-card__body">4</div></div>
       </div>
     </div>
   </div>
@@ -522,7 +522,7 @@
   <div class="test-section">
     <h2>Dark Mode Toggle</h2>
     <div class="docs-demo">
-      <button class="bru-btn bru-btn--outline" id="darkModeToggle">Toggle Dark Mode</button>
+      <button class="drp-btn drp-btn--outline" id="darkModeToggle">Toggle Dark Mode</button>
     </div>
   </div>
 

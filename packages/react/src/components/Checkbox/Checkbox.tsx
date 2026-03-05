@@ -14,7 +14,7 @@ export function Checkbox({
   className = "",
   ...props
 }: CheckboxProps) {
-  const classes = ["bru-checkbox", dark && "bru-checkbox--dark", className]
+  const classes = ["drp-checkbox", dark && "drp-checkbox--dark", className]
     .filter(Boolean)
     .join(" ");
   return (

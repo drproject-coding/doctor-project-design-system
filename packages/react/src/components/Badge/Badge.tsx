@@ -15,7 +15,7 @@ export interface BadgeProps {
 }
 
 export function Badge({ children, variant, className = "" }: BadgeProps) {
-  const classes = ["bru-badge", variant && `bru-badge--${variant}`, className]
+  const classes = ["drp-badge", variant && `drp-badge--${variant}`, className]
     .filter(Boolean)
     .join(" ");
   return <span className={classes}>{children}</span>;

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Utilities — Bruddle Design System</title>
+  <title>Utilities — DoctorProject Design System</title>
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="docs.css">
 </head>
@@ -11,7 +11,7 @@
   <div class="app-layout">
     <nav class="sidebar">
       <div class="sidebar-brand">
-        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-name">DoctorProject</span>
         <span class="sidebar-brand-dot"></span>
       </div>
       <div class="sidebar-nav">
@@ -88,7 +88,7 @@
           <h1 class="topbar-title">Utilities</h1>
         </div>
         <div class="topbar-right">
-          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+          <button id="darkModeToggle" class="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm" title="Toggle dark mode">&#9790;</button>
         </div>
       </header>
 
@@ -96,59 +96,59 @@
         <div class="container">
 
           <div class="docs-page-header">
-            <h2 class="bru-h2">Utilities</h2>
-            <p class="bru-text bru-mt-2">Helper classes for flex, grid, spacing, text alignment, backgrounds, dividers, empty states, dropzones, and toasts.</p>
+            <h2 class="drp-h2">Utilities</h2>
+            <p class="drp-text drp-mt-2">Helper classes for flex, grid, spacing, text alignment, backgrounds, dividers, empty states, dropzones, and toasts.</p>
           </div>
 
           <!-- Flex -->
           <div class="docs-section">
             <h3 class="docs-section-title">Flex Utilities</h3>
             <div class="docs-demo">
-              <div class="bru-flex bru-items-center bru-gap-3" style="border: var(--bru-border-thin); padding: 12px;">
-                <span class="bru-tag bru-tag--purple">Item 1</span>
-                <span class="bru-tag bru-tag--mint">Item 2</span>
-                <span class="bru-tag bru-tag--pink">Item 3</span>
+              <div class="drp-flex drp-items-center drp-gap-3" style="border: var(--drp-border-thin); padding: 12px;">
+                <span class="drp-tag drp-tag--purple">Item 1</span>
+                <span class="drp-tag drp-tag--mint">Item 2</span>
+                <span class="drp-tag drp-tag--pink">Item 3</span>
               </div>
             </div>
-<pre class="docs-code">&lt;div class="bru-flex bru-items-center bru-gap-3"&gt;
+<pre class="docs-code">&lt;div class="drp-flex drp-items-center drp-gap-3"&gt;
   ...children
 &lt;/div&gt;
 
 /* Available classes */
-.bru-flex            display: flex
-.bru-flex-col        flex-direction: column
-.bru-flex-wrap       flex-wrap: wrap
-.bru-items-center    align-items: center
-.bru-justify-between justify-content: space-between
-.bru-gap-1 ... .bru-gap-6</pre>
+.drp-flex            display: flex
+.drp-flex-col        flex-direction: column
+.drp-flex-wrap       flex-wrap: wrap
+.drp-items-center    align-items: center
+.drp-justify-between justify-content: space-between
+.drp-gap-1 ... .drp-gap-6</pre>
           </div>
 
           <!-- Grid -->
           <div class="docs-section">
             <h3 class="docs-section-title">Grid Utilities</h3>
             <div class="docs-demo docs-demo--col">
-              <p class="bru-label bru-mb-2">2 columns</p>
-              <div class="bru-grid-2">
-                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">1</p></div>
-                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">2</p></div>
+              <p class="drp-label drp-mb-2">2 columns</p>
+              <div class="drp-grid-2">
+                <div class="drp-card drp-card--sm"><p class="drp-text drp-text-center">1</p></div>
+                <div class="drp-card drp-card--sm"><p class="drp-text drp-text-center">2</p></div>
               </div>
-              <p class="bru-label bru-mt-4 bru-mb-2">3 columns</p>
-              <div class="bru-grid-3">
-                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">1</p></div>
-                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">2</p></div>
-                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">3</p></div>
+              <p class="drp-label drp-mt-4 drp-mb-2">3 columns</p>
+              <div class="drp-grid-3">
+                <div class="drp-card drp-card--sm"><p class="drp-text drp-text-center">1</p></div>
+                <div class="drp-card drp-card--sm"><p class="drp-text drp-text-center">2</p></div>
+                <div class="drp-card drp-card--sm"><p class="drp-text drp-text-center">3</p></div>
               </div>
-              <p class="bru-label bru-mt-4 bru-mb-2">4 columns</p>
-              <div class="bru-grid-4">
-                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">1</p></div>
-                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">2</p></div>
-                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">3</p></div>
-                <div class="bru-card bru-card--sm"><p class="bru-text bru-text-center">4</p></div>
+              <p class="drp-label drp-mt-4 drp-mb-2">4 columns</p>
+              <div class="drp-grid-4">
+                <div class="drp-card drp-card--sm"><p class="drp-text drp-text-center">1</p></div>
+                <div class="drp-card drp-card--sm"><p class="drp-text drp-text-center">2</p></div>
+                <div class="drp-card drp-card--sm"><p class="drp-text drp-text-center">3</p></div>
+                <div class="drp-card drp-card--sm"><p class="drp-text drp-text-center">4</p></div>
               </div>
             </div>
-<pre class="docs-code">&lt;div class="bru-grid-2"&gt;...&lt;/div&gt;
-&lt;div class="bru-grid-3"&gt;...&lt;/div&gt;
-&lt;div class="bru-grid-4"&gt;...&lt;/div&gt;
+<pre class="docs-code">&lt;div class="drp-grid-2"&gt;...&lt;/div&gt;
+&lt;div class="drp-grid-3"&gt;...&lt;/div&gt;
+&lt;div class="drp-grid-4"&gt;...&lt;/div&gt;
 
 /* All collapse to 1-column at 600px */</pre>
           </div>
@@ -156,79 +156,79 @@
           <!-- Spacing -->
           <div class="docs-section">
             <h3 class="docs-section-title">Spacing Utilities</h3>
-<pre class="docs-code">.bru-mt-2   margin-top: 8px
-.bru-mt-4   margin-top: 16px
-.bru-mt-6   margin-top: 24px
-.bru-mb-2   margin-bottom: 8px
-.bru-mb-4   margin-bottom: 16px
-.bru-mb-6   margin-bottom: 24px</pre>
+<pre class="docs-code">.drp-mt-2   margin-top: 8px
+.drp-mt-4   margin-top: 16px
+.drp-mt-6   margin-top: 24px
+.drp-mb-2   margin-bottom: 8px
+.drp-mb-4   margin-bottom: 16px
+.drp-mb-6   margin-bottom: 24px</pre>
           </div>
 
           <!-- Text -->
           <div class="docs-section">
             <h3 class="docs-section-title">Text Utilities</h3>
             <div class="docs-demo docs-demo--col" style="max-width: 400px;">
-              <p class="bru-text bru-text-center" style="border: var(--bru-border-thin); padding: 8px;">Centered text</p>
-              <p class="bru-text bru-text-right" style="border: var(--bru-border-thin); padding: 8px;">Right-aligned text</p>
-              <p class="bru-text bru-truncate" style="border: var(--bru-border-thin); padding: 8px; max-width: 200px;">This is very long truncated text that will be cut off with an ellipsis</p>
+              <p class="drp-text drp-text-center" style="border: var(--drp-border-thin); padding: 8px;">Centered text</p>
+              <p class="drp-text drp-text-right" style="border: var(--drp-border-thin); padding: 8px;">Right-aligned text</p>
+              <p class="drp-text drp-truncate" style="border: var(--drp-border-thin); padding: 8px; max-width: 200px;">This is very long truncated text that will be cut off with an ellipsis</p>
             </div>
-<pre class="docs-code">.bru-text-center   text-align: center
-.bru-text-right    text-align: right
-.bru-truncate      overflow: hidden; text-overflow: ellipsis</pre>
+<pre class="docs-code">.drp-text-center   text-align: center
+.drp-text-right    text-align: right
+.drp-truncate      overflow: hidden; text-overflow: ellipsis</pre>
           </div>
 
           <!-- Backgrounds -->
           <div class="docs-section">
             <h3 class="docs-section-title">Background Colors</h3>
             <div class="docs-demo">
-              <span class="bru-bg-cream" style="padding: 8px 16px; border: var(--bru-border-thin);">cream</span>
-              <span class="bru-bg-surface" style="padding: 8px 16px; border: var(--bru-border-thin);">surface</span>
-              <span class="bru-bg-purple" style="padding: 8px 16px;">purple</span>
-              <span class="bru-bg-mint" style="padding: 8px 16px;">mint</span>
-              <span class="bru-bg-pink" style="padding: 8px 16px;">pink</span>
-              <span class="bru-bg-yellow" style="padding: 8px 16px;">yellow</span>
-              <span class="bru-bg-black" style="padding: 8px 16px;">black</span>
+              <span class="drp-bg-cream" style="padding: 8px 16px; border: var(--drp-border-thin);">cream</span>
+              <span class="drp-bg-surface" style="padding: 8px 16px; border: var(--drp-border-thin);">surface</span>
+              <span class="drp-bg-purple" style="padding: 8px 16px;">purple</span>
+              <span class="drp-bg-mint" style="padding: 8px 16px;">mint</span>
+              <span class="drp-bg-pink" style="padding: 8px 16px;">pink</span>
+              <span class="drp-bg-yellow" style="padding: 8px 16px;">yellow</span>
+              <span class="drp-bg-black" style="padding: 8px 16px;">black</span>
             </div>
-<pre class="docs-code">.bru-bg-cream   .bru-bg-surface
-.bru-bg-purple  .bru-bg-mint
-.bru-bg-pink    .bru-bg-yellow
-.bru-bg-black</pre>
+<pre class="docs-code">.drp-bg-cream   .drp-bg-surface
+.drp-bg-purple  .drp-bg-mint
+.drp-bg-pink    .drp-bg-yellow
+.drp-bg-black</pre>
           </div>
 
           <!-- Dividers -->
           <div class="docs-section">
             <h3 class="docs-section-title">Dividers</h3>
             <div class="docs-demo docs-demo--col" style="max-width: 400px;">
-              <p class="bru-label">Solid (default)</p>
-              <hr class="bru-divider">
-              <p class="bru-label">Dashed</p>
-              <hr class="bru-divider bru-divider--dashed">
-              <p class="bru-label">Dotted</p>
-              <hr class="bru-divider bru-divider--dotted">
-              <p class="bru-label">Thick</p>
-              <hr class="bru-divider bru-divider--thick">
+              <p class="drp-label">Solid (default)</p>
+              <hr class="drp-divider">
+              <p class="drp-label">Dashed</p>
+              <hr class="drp-divider drp-divider--dashed">
+              <p class="drp-label">Dotted</p>
+              <hr class="drp-divider drp-divider--dotted">
+              <p class="drp-label">Thick</p>
+              <hr class="drp-divider drp-divider--thick">
             </div>
-<pre class="docs-code">&lt;hr class="bru-divider"&gt;
-&lt;hr class="bru-divider bru-divider--dashed"&gt;
-&lt;hr class="bru-divider bru-divider--dotted"&gt;
-&lt;hr class="bru-divider bru-divider--thick"&gt;</pre>
+<pre class="docs-code">&lt;hr class="drp-divider"&gt;
+&lt;hr class="drp-divider drp-divider--dashed"&gt;
+&lt;hr class="drp-divider drp-divider--dotted"&gt;
+&lt;hr class="drp-divider drp-divider--thick"&gt;</pre>
           </div>
 
           <!-- Empty State -->
           <div class="docs-section">
             <h3 class="docs-section-title">Empty State</h3>
             <div class="docs-demo">
-              <div class="bru-empty" style="border: var(--bru-border-dashed);">
-                <div class="bru-empty__icon">&#128230;</div>
-                <p class="bru-empty__title">No products yet</p>
-                <p class="bru-empty__text">Sync your AppSumo account to see your purchases here.</p>
-                <button class="bru-btn bru-btn--primary bru-mt-4">Sync Now</button>
+              <div class="drp-empty" style="border: var(--drp-border-dashed);">
+                <div class="drp-empty__icon">&#128230;</div>
+                <p class="drp-empty__title">No products yet</p>
+                <p class="drp-empty__text">Sync your AppSumo account to see your purchases here.</p>
+                <button class="drp-btn drp-btn--primary drp-mt-4">Sync Now</button>
               </div>
             </div>
-<pre class="docs-code">&lt;div class="bru-empty"&gt;
-  &lt;div class="bru-empty__icon"&gt;&amp;#128230;&lt;/div&gt;
-  &lt;p class="bru-empty__title"&gt;No products yet&lt;/p&gt;
-  &lt;p class="bru-empty__text"&gt;Description text.&lt;/p&gt;
+<pre class="docs-code">&lt;div class="drp-empty"&gt;
+  &lt;div class="drp-empty__icon"&gt;&amp;#128230;&lt;/div&gt;
+  &lt;p class="drp-empty__title"&gt;No products yet&lt;/p&gt;
+  &lt;p class="drp-empty__text"&gt;Description text.&lt;/p&gt;
 &lt;/div&gt;</pre>
           </div>
 
@@ -236,16 +236,16 @@
           <div class="docs-section">
             <h3 class="docs-section-title">Dropzone</h3>
             <div class="docs-demo docs-demo--col" style="max-width: 500px;">
-              <div class="bru-dropzone">
-                <div class="bru-dropzone__icon">&#128194;</div>
-                <p class="bru-dropzone__text">Drop files here or click to browse</p>
-                <p class="bru-dropzone__hint">PDF, CSV, or JSON up to 10MB</p>
+              <div class="drp-dropzone">
+                <div class="drp-dropzone__icon">&#128194;</div>
+                <p class="drp-dropzone__text">Drop files here or click to browse</p>
+                <p class="drp-dropzone__hint">PDF, CSV, or JSON up to 10MB</p>
               </div>
             </div>
-<pre class="docs-code">&lt;div class="bru-dropzone"&gt;
-  &lt;div class="bru-dropzone__icon"&gt;&amp;#128194;&lt;/div&gt;
-  &lt;p class="bru-dropzone__text"&gt;Drop files here&lt;/p&gt;
-  &lt;p class="bru-dropzone__hint"&gt;PDF, CSV, or JSON up to 10MB&lt;/p&gt;
+<pre class="docs-code">&lt;div class="drp-dropzone"&gt;
+  &lt;div class="drp-dropzone__icon"&gt;&amp;#128194;&lt;/div&gt;
+  &lt;p class="drp-dropzone__text"&gt;Drop files here&lt;/p&gt;
+  &lt;p class="drp-dropzone__hint"&gt;PDF, CSV, or JSON up to 10MB&lt;/p&gt;
 &lt;/div&gt;</pre>
           </div>
 
@@ -253,25 +253,25 @@
           <div class="docs-section">
             <h3 class="docs-section-title">Toasts</h3>
             <div class="docs-demo docs-demo--col">
-              <div class="bru-toast bru-toast--success">
-                <span class="bru-dot bru-dot--mint"></span>
+              <div class="drp-toast drp-toast--success">
+                <span class="drp-dot drp-dot--mint"></span>
                 <span>Products synced successfully.</span>
               </div>
-              <div class="bru-toast bru-toast--error">
-                <span class="bru-dot bru-dot--pink"></span>
+              <div class="drp-toast drp-toast--error">
+                <span class="drp-dot drp-dot--pink"></span>
                 <span>Sync failed. Please try again.</span>
               </div>
-              <div class="bru-toast bru-toast--warning">
-                <span class="bru-dot bru-dot--yellow"></span>
+              <div class="drp-toast drp-toast--warning">
+                <span class="drp-dot drp-dot--yellow"></span>
                 <span>Refund deadline is approaching.</span>
               </div>
-              <div class="bru-toast bru-toast--info">
-                <span class="bru-dot bru-dot--purple"></span>
+              <div class="drp-toast drp-toast--info">
+                <span class="drp-dot drp-dot--purple"></span>
                 <span>New version available.</span>
               </div>
             </div>
-<pre class="docs-code">&lt;div class="bru-toast bru-toast--success"&gt;
-  &lt;span class="bru-dot bru-dot--mint"&gt;&lt;/span&gt;
+<pre class="docs-code">&lt;div class="drp-toast drp-toast--success"&gt;
+  &lt;span class="drp-dot drp-dot--mint"&gt;&lt;/span&gt;
   &lt;span&gt;Success message.&lt;/span&gt;
 &lt;/div&gt;
 

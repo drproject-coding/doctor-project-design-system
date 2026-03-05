@@ -19,7 +19,7 @@ const SidebarContent = () => (
         fontSize: "18px",
         fontWeight: 800,
         marginBottom: "24px",
-        fontFamily: "var(--bru-font-primary)",
+        fontFamily: "var(--drp-font-primary)",
       }}
     >
       DOCTOR PROJECT
@@ -36,7 +36,7 @@ const SidebarContent = () => (
             padding: "10px 12px",
             textDecoration: "none",
             color: "inherit",
-            fontFamily: "var(--bru-font-primary)",
+            fontFamily: "var(--drp-font-primary)",
             fontSize: "14px",
             fontWeight: 600,
           }}
@@ -54,7 +54,7 @@ const SidebarContent = () => (
           <span>{item.label}</span>
           {item.badge && (
             <span
-              className="bru-badge bru-badge--filled"
+              className="drp-badge drp-badge--filled"
               style={{ marginLeft: "auto" }}
             >
               {item.badge}
@@ -80,7 +80,7 @@ const TopbarContent = () => (
       style={{
         fontSize: "16px",
         fontWeight: 700,
-        fontFamily: "var(--bru-font-primary)",
+        fontFamily: "var(--drp-font-primary)",
         textTransform: "uppercase",
         letterSpacing: "0.05em",
       }}
@@ -88,16 +88,16 @@ const TopbarContent = () => (
       Dashboard
     </h1>
     <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-      <span className="bru-badge bru-badge--filled">3</span>
+      <span className="drp-badge drp-badge--filled">3</span>
       <div
-        className="bru-avatar bru-avatar--sm"
+        className="drp-avatar drp-avatar--sm"
         style={{
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           fontWeight: 700,
-          background: "var(--bru-purple-20)",
-          color: "var(--bru-purple)",
+          background: "var(--drp-purple-20)",
+          color: "var(--drp-purple)",
           fontSize: "14px",
         }}
       >
@@ -125,7 +125,7 @@ export const Default: Story = {
           <span
             style={{
               padding: "0 24px",
-              fontFamily: "var(--bru-font-primary)",
+              fontFamily: "var(--drp-font-primary)",
               fontSize: "12px",
               color: "#666",
             }}
@@ -146,7 +146,7 @@ export const Default: Story = {
             {stats.map((s) => (
               <div
                 key={s.label}
-                className="bru-card bru-card--sm"
+                className="drp-card drp-card--sm"
                 style={{ padding: "16px" }}
               >
                 <p
@@ -156,7 +156,7 @@ export const Default: Story = {
                     textTransform: "uppercase",
                     letterSpacing: "0.05em",
                     color: "#666",
-                    fontFamily: "var(--bru-font-primary)",
+                    fontFamily: "var(--drp-font-primary)",
                     fontWeight: 600,
                   }}
                 >
@@ -167,7 +167,7 @@ export const Default: Story = {
                     margin: "4px 0",
                     fontSize: "28px",
                     fontWeight: 700,
-                    fontFamily: "var(--bru-font-primary)",
+                    fontFamily: "var(--drp-font-primary)",
                   }}
                 >
                   {s.value}
@@ -185,10 +185,10 @@ export const Default: Story = {
               </div>
             ))}
           </div>
-          <div className="bru-card" style={{ padding: "24px" }}>
+          <div className="drp-card" style={{ padding: "24px" }}>
             <h3
               style={{
-                fontFamily: "var(--bru-font-primary)",
+                fontFamily: "var(--drp-font-primary)",
                 fontWeight: 700,
                 fontSize: "16px",
                 marginBottom: "16px",
@@ -196,7 +196,7 @@ export const Default: Story = {
             >
               Recent Activity
             </h3>
-            <p style={{ color: "#666", fontFamily: "var(--bru-font-primary)" }}>
+            <p style={{ color: "#666", fontFamily: "var(--drp-font-primary)" }}>
               Dashboard content would go here — charts, tables, activity
               feeds...
             </p>

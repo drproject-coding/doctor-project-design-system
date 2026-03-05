@@ -14,10 +14,10 @@ export function Navbar({
   className = "",
 }: NavbarProps) {
   return (
-    <nav className={`bru-navbar ${className}`}>
-      <div className="bru-navbar__brand">{brand}</div>
-      <div className="bru-navbar__links">{children}</div>
-      {actions && <div className="bru-navbar__actions">{actions}</div>}
+    <nav className={`drp-navbar ${className}`}>
+      <div className="drp-navbar__brand">{brand}</div>
+      <div className="drp-navbar__links">{children}</div>
+      {actions && <div className="drp-navbar__actions">{actions}</div>}
     </nav>
   );
 }

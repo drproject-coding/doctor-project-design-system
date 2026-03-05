@@ -21,7 +21,7 @@ export const WithAction: Story = {
     icon: "📦",
     title: "No products",
     description: "Get started by adding your first product.",
-    action: <button className="bru-btn bru-btn--primary">Add Product</button>,
+    action: <button className="drp-btn drp-btn--primary">Add Product</button>,
   },
 };
 
@@ -30,6 +30,6 @@ export const NoResults: Story = {
     icon: "🔍",
     title: "No results",
     description: "Try adjusting your search or filter criteria.",
-    action: <button className="bru-btn bru-btn--outline">Clear Filters</button>,
+    action: <button className="drp-btn drp-btn--outline">Clear Filters</button>,
   },
 };

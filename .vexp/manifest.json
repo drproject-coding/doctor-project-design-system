@@ -1,7 +1,7 @@
 {
   "file_hashes": {
     "docs/docs.js": "7276d3cc9fb49bfab191e4c55798d974b2a7faab0aed73ac1708fb95e9fed0c6",
-    "js/bru-charts.js": "2e5c35c820a39d71e4502e81b65adebda8648385faa62c02ebda8b7fc12174d6",
+    "js/drp-charts.js": "2e5c35c820a39d71e4502e81b65adebda8648385faa62c02ebda8b7fc12174d6",
     "js/dark-mode.js": "1d921a0b9f68fcbe7ac48ceda2d0b5d57256fb15e7e9d407660a0c9770c068a0",
     "packages/react/.storybook/main.ts": "ea5b0a9ebfcc6852287ab34c532f57424253164810cb765e859aa15f16de1156",
     "packages/react/.storybook/preview.ts": "cca5df517b20a4b323468c98f1d9de5d33953c59416ddbbf41699ddecb2564cd",

@@ -2,7 +2,7 @@
   "mcpServers": {
     "vexp": {
       "command": "vexp-core",
-      "args": ["mcp", "--workspace", "/Users/y/Desktop/bruddle-design-system"]
+      "args": ["mcp", "--workspace", "/Users/y/Desktop/doctorproject-design-system"]
     }
   }
 }

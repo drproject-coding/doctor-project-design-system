@@ -23,16 +23,16 @@ export function Counter({
   };
 
   return (
-    <div className="bru-counter">
+    <div className="drp-counter">
       <button
-        className="bru-counter__btn"
+        className="drp-counter__btn"
         onClick={() => update(value - 1)}
         disabled={value <= min}
       >
         −
       </button>
       <input
-        className="bru-counter__value"
+        className="drp-counter__value"
         type="number"
         value={value}
         min={min}
@@ -41,7 +41,7 @@ export function Counter({
         readOnly
       />
       <button
-        className="bru-counter__btn"
+        className="drp-counter__btn"
         onClick={() => update(value + 1)}
         disabled={value >= max}
       >

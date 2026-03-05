@@ -1,4 +1,4 @@
-# Bruddle Design System
+# DoctorProject Design System
 
 A brutalist, framework-agnostic design system with offset shadows, high contrast, and a 4px grid.
 

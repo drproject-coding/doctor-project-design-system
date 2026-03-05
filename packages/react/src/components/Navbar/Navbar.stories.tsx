@@ -15,7 +15,7 @@ export const Default: Story = {
     brand: (
       <strong
         style={{
-          fontFamily: "var(--bru-font-primary)",
+          fontFamily: "var(--drp-font-primary)",
           fontSize: "18px",
           fontWeight: 800,
         }}
@@ -52,7 +52,7 @@ export const Default: Story = {
       </>
     ),
     actions: (
-      <button className="bru-btn bru-btn--primary bru-btn--sm">Sign Up</button>
+      <button className="drp-btn drp-btn--primary drp-btn--sm">Sign Up</button>
     ),
   },
 };

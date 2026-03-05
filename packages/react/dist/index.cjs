@@ -119,11 +119,11 @@ function Button({
   ...props
 }) {
   const classes = [
-    "bru-btn",
-    variant && `bru-btn--${variant}`,
-    size && `bru-btn--${size}`,
-    block && "bru-btn--block",
-    icon && "bru-btn--icon",
+    "drp-btn",
+    variant && `drp-btn--${variant}`,
+    size && `drp-btn--${size}`,
+    block && "drp-btn--block",
+    icon && "drp-btn--icon",
     className
   ].filter(Boolean).join(" ");
   return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { className: classes, ...props, children });
@@ -139,14 +139,14 @@ function Input({
   ...props
 }) {
   const inputClasses = [
-    "bru-input",
-    error && "bru-input--error",
-    success && "bru-input--success",
+    "drp-input",
+    error && "drp-input--error",
+    success && "drp-input--success",
     className
   ].filter(Boolean).join(" ");
   if (label) {
-    return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "bru-field", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("label", { className: "bru-field__label", children: label }),
+    return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "drp-field", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("label", { className: "drp-field__label", children: label }),
       /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("input", { className: inputClasses, ...props })
     ] });
   }
@@ -161,10 +161,10 @@ function Select({
   children,
   ...props
 }) {
-  const selectEl = /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("select", { className: `bru-select ${className}`, ...props, children });
+  const selectEl = /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("select", { className: `drp-select ${className}`, ...props, children });
   if (label) {
-    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "bru-field", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("label", { className: "bru-field__label", children: label }),
+    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "drp-field", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("label", { className: "drp-field__label", children: label }),
       selectEl
     ] });
   }
@@ -179,7 +179,7 @@ function Checkbox({
   className = "",
   ...props
 }) {
-  const classes = ["bru-checkbox", dark && "bru-checkbox--dark", className].filter(Boolean).join(" ");
+  const classes = ["drp-checkbox", dark && "drp-checkbox--dark", className].filter(Boolean).join(" ");
   return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("label", { className: classes, children: [
     /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("input", { type: "checkbox", ...props }),
     label
@@ -196,9 +196,9 @@ function Radio({
   ...props
 }) {
   const classes = [
-    "bru-radio",
-    color && `bru-radio--${color}`,
-    dark && "bru-radio--dark",
+    "drp-radio",
+    color && `drp-radio--${color}`,
+    dark && "drp-radio--dark",
     className
   ].filter(Boolean).join(" ");
   return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("label", { className: classes, children: [
@@ -210,9 +210,9 @@ function Radio({
 // src/components/Switch/Switch.tsx
 var import_jsx_runtime6 = require("react/jsx-runtime");
 function Switch({ label, ...props }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { className: "bru-switch", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { className: "drp-switch", children: [
     /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { type: "checkbox", ...props }),
-    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "bru-switch__track", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "bru-switch__knob" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "drp-switch__track", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "drp-switch__knob" }) }),
     label && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: label })
   ] });
 }
@@ -233,11 +233,11 @@ function Counter({
     setInternalValue(clamped);
     onChange?.(clamped);
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "bru-counter", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "drp-counter", children: [
     /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
       "button",
       {
-        className: "bru-counter__btn",
+        className: "drp-counter__btn",
         onClick: () => update(value - 1),
         disabled: value <= min,
         children: "\u2212"
@@ -246,7 +246,7 @@ function Counter({
     /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
       "input",
       {
-        className: "bru-counter__value",
+        className: "drp-counter__value",
         type: "number",
         value,
         min,
@@ -258,7 +258,7 @@ function Counter({
     /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
       "button",
       {
-        className: "bru-counter__btn",
+        className: "drp-counter__btn",
         onClick: () => update(value + 1),
         disabled: value >= max,
         children: "+"
@@ -280,24 +280,24 @@ function Tag({
   className = ""
 }) {
   const classes = [
-    "bru-tag",
-    color && `bru-tag--${color}`,
-    filled && "bru-tag--filled",
-    dark && "bru-tag--dark",
-    dot && "bru-tag--dot",
-    closeable && "bru-tag--closeable",
+    "drp-tag",
+    color && `drp-tag--${color}`,
+    filled && "drp-tag--filled",
+    dark && "drp-tag--dark",
+    dot && "drp-tag--dot",
+    closeable && "drp-tag--closeable",
     className
   ].filter(Boolean).join(" ");
   return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("span", { className: classes, children: [
     children,
-    closeable && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { className: "bru-tag__close", onClick: onClose, children: "\xD7" })
+    closeable && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { className: "drp-tag__close", onClick: onClose, children: "\xD7" })
   ] });
 }
 
 // src/components/Badge/Badge.tsx
 var import_jsx_runtime9 = require("react/jsx-runtime");
 function Badge({ children, variant, className = "" }) {
-  const classes = ["bru-badge", variant && `bru-badge--${variant}`, className].filter(Boolean).join(" ");
+  const classes = ["drp-badge", variant && `drp-badge--${variant}`, className].filter(Boolean).join(" ");
   return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: classes, children });
 }
 
@@ -305,9 +305,9 @@ function Badge({ children, variant, className = "" }) {
 var import_jsx_runtime10 = require("react/jsx-runtime");
 function StatusDot({ color, pulse, className = "" }) {
   const classes = [
-    "bru-dot",
-    color && `bru-dot--${color}`,
-    pulse && "bru-dot--pulse",
+    "drp-dot",
+    color && `drp-dot--${color}`,
+    pulse && "drp-dot--pulse",
     className
   ].filter(Boolean).join(" ");
   return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: classes });
@@ -323,21 +323,21 @@ function ProgressBar({
   className = ""
 }) {
   const progressClasses = [
-    "bru-progress",
-    color && `bru-progress--${color}`,
-    size && `bru-progress--${size}`,
+    "drp-progress",
+    color && `drp-progress--${color}`,
+    size && `drp-progress--${size}`,
     className
   ].filter(Boolean).join(" ");
   const bar = /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: progressClasses, children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
     "div",
     {
-      className: "bru-progress__bar",
+      className: "drp-progress__bar",
       style: { width: `${Math.min(100, Math.max(0, value))}%` }
     }
   ) });
   if (label) {
-    return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bru-progress-group", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "bru-progress-group__label", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "drp-progress-group", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "drp-progress-group__label", children: [
         /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { children: label }),
         /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("span", { children: [
           value,
@@ -359,7 +359,7 @@ function Avatar({
   initials,
   className = ""
 }) {
-  const classes = ["bru-avatar", size && `bru-avatar--${size}`, className].filter(Boolean).join(" ");
+  const classes = ["drp-avatar", size && `drp-avatar--${size}`, className].filter(Boolean).join(" ");
   if (src) {
     return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("img", { className: classes, src, alt });
   }
@@ -371,11 +371,11 @@ function Avatar({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        fontFamily: "var(--bru-font-primary)",
+        fontFamily: "var(--drp-font-primary)",
         fontWeight: 700,
         fontSize: size === "sm" ? "14px" : size === "lg" ? "32px" : "20px",
-        background: "var(--bru-purple-20)",
-        color: "var(--bru-purple)"
+        background: "var(--drp-purple-20)",
+        color: "var(--drp-purple)"
       },
       children: initials || "?"
     }
@@ -385,9 +385,9 @@ function Avatar({
 // src/components/Tooltip/Tooltip.tsx
 var import_jsx_runtime13 = require("react/jsx-runtime");
 function Tooltip({ text, children, className = "" }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: `bru-tooltip ${className}`, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: `drp-tooltip ${className}`, children: [
     children,
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "bru-tooltip-text", children: text })
+    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "drp-tooltip-text", children: text })
   ] });
 }
 
@@ -401,18 +401,18 @@ function Card({
   ...props
 }) {
   const classes = [
-    "bru-card",
-    variant && `bru-card--${variant}`,
-    accent && `bru-card--${accent}`,
+    "drp-card",
+    variant && `drp-card--${variant}`,
+    accent && `drp-card--${accent}`,
     className
   ].filter(Boolean).join(" ");
   return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: classes, ...props, children });
 }
 function CardHeader({ title, subtitle, action }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "bru-card__header", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "drp-card__header", children: [
     /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { className: "bru-card__title", children: title }),
-      subtitle && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "bru-card__subtitle", children: subtitle })
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { className: "drp-card__title", children: title }),
+      subtitle && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "drp-card__subtitle", children: subtitle })
     ] }),
     action
   ] });
@@ -425,7 +425,7 @@ function Table({
   data,
   className = ""
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "bru-table-scroll", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("table", { className: `bru-table ${className}`, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "drp-table-scroll", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("table", { className: `drp-table ${className}`, children: [
     /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("tr", { children: columns.map((col) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("th", { children: col.header }, col.key)) }) }),
     /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("tbody", { children: data.map((row, i2) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("tr", { children: columns.map((col) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("td", { children: col.render ? col.render(row) : String(row[col.key] ?? "") }, col.key)) }, i2)) })
   ] }) });
@@ -435,13 +435,13 @@ function Table({
 var import_jsx_runtime16 = require("react/jsx-runtime");
 function Modal({ open, onClose, title, children, footer }) {
   if (!open) return null;
-  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "bru-overlay", onClick: onClose, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bru-modal", onClick: (e2) => e2.stopPropagation(), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "bru-modal__header", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h2", { className: "bru-modal__title", children: title }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("button", { className: "bru-modal__close", onClick: onClose, children: "\xD7" })
+  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "drp-overlay", onClick: onClose, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "drp-modal", onClick: (e2) => e2.stopPropagation(), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "drp-modal__header", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h2", { className: "drp-modal__title", children: title }),
+      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("button", { className: "drp-modal__close", onClick: onClose, children: "\xD7" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "bru-modal__body", children }),
-    footer && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "bru-modal__footer", children: footer })
+    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "drp-modal__body", children }),
+    footer && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "drp-modal__footer", children: footer })
   ] }) });
 }
 
@@ -458,14 +458,14 @@ function Tabs({
   const [internalKey, setInternalKey] = (0, import_react2.useState)(items[0]?.key);
   const current = activeKey ?? internalKey;
   const containerClasses = [
-    "bru-tabs",
-    variant && `bru-tabs--${variant}`,
+    "drp-tabs",
+    variant && `drp-tabs--${variant}`,
     className
   ].filter(Boolean).join(" ");
   return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: containerClasses, children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
     "button",
     {
-      className: `bru-tab ${current === item.key ? "bru-tab--active" : ""}`,
+      className: `drp-tab ${current === item.key ? "drp-tab--active" : ""}`,
       onClick: () => {
         setInternalKey(item.key);
         onChange?.(item.key);
@@ -486,8 +486,8 @@ function Pagination({
   className = ""
 }) {
   const containerClasses = [
-    "bru-pagination",
-    variant && `bru-pagination--${variant}`,
+    "drp-pagination",
+    variant && `drp-pagination--${variant}`,
     className
   ].filter(Boolean).join(" ");
   const pages = Array.from({ length: totalPages }, (_3, i2) => i2 + 1);
@@ -495,7 +495,7 @@ function Pagination({
     /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
       "button",
       {
-        className: "bru-pagination__btn",
+        className: "drp-pagination__btn",
         onClick: () => onPageChange(currentPage - 1),
         disabled: currentPage <= 1,
         children: "\u2039"
@@ -504,7 +504,7 @@ function Pagination({
     pages.map((page) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
       "button",
       {
-        className: `bru-pagination__page ${page === currentPage ? "bru-pagination__page--active" : ""}`,
+        className: `drp-pagination__page ${page === currentPage ? "drp-pagination__page--active" : ""}`,
         onClick: () => onPageChange(page),
         children: page
       },
@@ -513,7 +513,7 @@ function Pagination({
     /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
       "button",
       {
-        className: "bru-pagination__btn",
+        className: "drp-pagination__btn",
         onClick: () => onPageChange(currentPage + 1),
         disabled: currentPage >= totalPages,
         children: "\u203A"
@@ -525,17 +525,17 @@ function Pagination({
 // src/components/Layout/Layout.tsx
 var import_jsx_runtime19 = require("react/jsx-runtime");
 function AppShell({ sidebar, topbar, children, footer }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "bru-app", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "drp-app", children: [
     sidebar,
-    /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "bru-main-wrapper", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "drp-main-wrapper", children: [
       topbar,
-      /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("main", { className: "bru-main", children }),
-      footer && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("footer", { className: "bru-footer", children: footer })
+      /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("main", { className: "drp-main", children }),
+      footer && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("footer", { className: "drp-footer", children: footer })
     ] })
   ] });
 }
 function Topbar({ children }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("header", { className: "bru-topbar", children });
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("header", { className: "drp-topbar", children });
 }
 
 // src/components/TopBar/TopBar.tsx
@@ -629,19 +629,19 @@ function Navbar({
   actions,
   className = ""
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("nav", { className: `bru-navbar ${className}`, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "bru-navbar__brand", children: brand }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "bru-navbar__links", children }),
-    actions && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "bru-navbar__actions", children: actions })
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("nav", { className: `drp-navbar ${className}`, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "drp-navbar__brand", children: brand }),
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "drp-navbar__links", children }),
+    actions && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "drp-navbar__actions", children: actions })
   ] });
 }
 
 // src/components/Breadcrumbs/Breadcrumbs.tsx
 var import_jsx_runtime24 = require("react/jsx-runtime");
 function Breadcrumbs({ items, className = "" }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("nav", { className: `bru-breadcrumbs ${className}`, children: items.map((item, i2) => /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { children: [
-    i2 > 0 && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "bru-breadcrumbs__sep", children: "/" }),
-    item.href ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("a", { className: "bru-breadcrumbs__link", href: item.href, children: item.label }) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "bru-breadcrumbs__current", children: item.label })
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("nav", { className: `drp-breadcrumbs ${className}`, children: items.map((item, i2) => /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { children: [
+    i2 > 0 && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "drp-breadcrumbs__sep", children: "/" }),
+    item.href ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("a", { className: "drp-breadcrumbs__link", href: item.href, children: item.label }) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "drp-breadcrumbs__current", children: item.label })
   ] }, i2)) });
 }
 
@@ -656,21 +656,21 @@ function ChartCard({
   action,
   className = ""
 }) {
-  const containerClasses = ["bru-chart-card", className].filter(Boolean).join(" ");
+  const containerClasses = ["drp-chart-card", className].filter(Boolean).join(" ");
   const bodyClasses = [
-    "bru-chart-container",
-    size && `bru-chart-container--${size}`
+    "drp-chart-container",
+    size && `drp-chart-container--${size}`
   ].filter(Boolean).join(" ");
   return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: containerClasses, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "bru-chart-header", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "drp-chart-header", children: [
       /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h3", { className: "bru-card__title", children: title }),
-        subtitle && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "bru-card__subtitle", children: subtitle })
+        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h3", { className: "drp-card__title", children: title }),
+        subtitle && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "drp-card__subtitle", children: subtitle })
       ] }),
       action
     ] }),
     /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: bodyClasses, children }),
-    legend && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "bru-chart-legend", children: legend })
+    legend && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "drp-chart-legend", children: legend })
   ] });
 }
 
@@ -684,14 +684,14 @@ function Hero({
   visual,
   className = ""
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("section", { className: `bru-hero ${className}`, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "bru-hero__content", children: [
-      badge && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "bru-hero__badge", children: badge }),
-      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("h1", { className: "bru-hero__title", children: title }),
-      subtitle && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("p", { className: "bru-hero__subtitle", children: subtitle }),
-      actions && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "bru-hero__actions", children: actions })
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("section", { className: `drp-hero ${className}`, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "drp-hero__content", children: [
+      badge && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "drp-hero__badge", children: badge }),
+      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("h1", { className: "drp-hero__title", children: title }),
+      subtitle && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("p", { className: "drp-hero__subtitle", children: subtitle }),
+      actions && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "drp-hero__actions", children: actions })
     ] }),
-    visual && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "bru-hero__visual", children: visual })
+    visual && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "drp-hero__visual", children: visual })
   ] });
 }
 
@@ -707,12 +707,12 @@ function Marquee({
     (item, i2) => i2 < items.length - 1 ? [item, separator] : [item]
   );
   const doubled = [...track, ...track];
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { className: `bru-marquee ${className}`, children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { className: `drp-marquee ${className}`, children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
     "div",
     {
-      className: "bru-marquee__track",
+      className: "drp-marquee__track",
       style: { animationDuration: `${speed}s` },
-      children: doubled.map((text, i2) => /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: "bru-marquee__item", children: text }, i2))
+      children: doubled.map((text, i2) => /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: "drp-marquee__item", children: text }, i2))
     }
   ) });
 }
@@ -723,22 +723,22 @@ function StatCard({ value, label, className = "" }) {
   return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
     "div",
     {
-      className: `bru-stat-card ${className}`,
+      className: `drp-stat-card ${className}`,
       style: {
         textAlign: "center",
-        padding: "var(--bru-space-8)",
-        border: "var(--bru-border-chunk)",
-        background: "var(--bru-surface)"
+        padding: "var(--drp-space-8)",
+        border: "var(--drp-border-chunk)",
+        background: "var(--drp-surface)"
       },
       children: [
         /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
           "p",
           {
             style: {
-              fontFamily: "var(--bru-font-primary)",
+              fontFamily: "var(--drp-font-primary)",
               fontSize: "3.5rem",
               fontWeight: 800,
-              color: "var(--bru-purple)",
+              color: "var(--drp-purple)",
               lineHeight: 1
             },
             children: value
@@ -748,12 +748,12 @@ function StatCard({ value, label, className = "" }) {
           "p",
           {
             style: {
-              fontFamily: "var(--bru-font-primary)",
-              fontSize: "var(--bru-text-sm)",
+              fontFamily: "var(--drp-font-primary)",
+              fontSize: "var(--drp-text-sm)",
               fontWeight: 600,
               textTransform: "uppercase",
               letterSpacing: "0.1em",
-              marginTop: "var(--bru-space-2)"
+              marginTop: "var(--drp-space-2)"
             },
             children: label
           }
@@ -776,8 +776,8 @@ function PricingCard({
   className = ""
 }) {
   const classes = [
-    "bru-pricing",
-    featured && "bru-pricing--featured",
+    "drp-pricing",
+    featured && "drp-pricing--featured",
     className
   ].filter(Boolean).join(" ");
   return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(
@@ -785,9 +785,9 @@ function PricingCard({
     {
       className: classes,
       style: {
-        padding: "var(--bru-space-8)",
-        border: "3px solid var(--bru-black)",
-        background: featured ? "var(--bru-purple)" : "var(--bru-surface)",
+        padding: "var(--drp-space-8)",
+        border: "3px solid var(--drp-black)",
+        background: featured ? "var(--drp-purple)" : "var(--drp-surface)",
         color: featured ? "#FFFFFF" : "inherit",
         textAlign: "center",
         position: "relative"
@@ -802,13 +802,13 @@ function PricingCard({
               left: "50%",
               transform: "translateX(-50%)",
               padding: "2px 16px",
-              background: "var(--bru-orange)",
+              background: "var(--drp-orange)",
               color: "#FFFFFF",
-              fontFamily: "var(--bru-font-primary)",
+              fontFamily: "var(--drp-font-primary)",
               fontSize: "11px",
               fontWeight: 700,
               textTransform: "uppercase",
-              border: "2px solid var(--bru-black)"
+              border: "2px solid var(--drp-black)"
             },
             children: badge
           }
@@ -817,7 +817,7 @@ function PricingCard({
           "p",
           {
             style: {
-              fontFamily: "var(--bru-font-primary)",
+              fontFamily: "var(--drp-font-primary)",
               fontSize: "12px",
               fontWeight: 700,
               textTransform: "uppercase",
@@ -831,7 +831,7 @@ function PricingCard({
           "p",
           {
             style: {
-              fontFamily: "var(--bru-font-primary)",
+              fontFamily: "var(--drp-font-primary)",
               fontSize: "2.5rem",
               fontWeight: 800,
               marginBottom: "8px"
@@ -843,7 +843,7 @@ function PricingCard({
           "p",
           {
             style: {
-              fontFamily: "var(--bru-font-mono)",
+              fontFamily: "var(--drp-font-mono)",
               fontSize: "11px",
               opacity: 0.7,
               marginBottom: "24px"
@@ -864,7 +864,7 @@ function PricingCard({
               "li",
               {
                 style: {
-                  fontFamily: "var(--bru-font-mono)",
+                  fontFamily: "var(--drp-font-mono)",
                   fontSize: "13px",
                   padding: "8px 0",
                   borderBottom: "1px solid rgba(128,128,128,0.3)",
@@ -878,7 +878,7 @@ function PricingCard({
                     {
                       style: {
                         fontWeight: 700,
-                        color: featured ? "#FFFFFF" : "var(--bru-success)"
+                        color: featured ? "#FFFFFF" : "var(--drp-success)"
                       },
                       children: "\u2713"
                     }
@@ -901,7 +901,7 @@ var import_jsx_runtime30 = require("react/jsx-runtime");
 function CaseCard({
   image,
   imageLabel,
-  imageColor = "var(--bru-purple)",
+  imageColor = "var(--drp-purple)",
   stat,
   statLabel,
   title,
@@ -913,8 +913,8 @@ function CaseCard({
     {
       className,
       style: {
-        border: "3px solid var(--bru-black)",
-        background: "var(--bru-surface)",
+        border: "3px solid var(--drp-black)",
+        background: "var(--drp-surface)",
         overflow: "hidden"
       },
       children: [
@@ -924,11 +924,11 @@ function CaseCard({
             style: {
               height: "200px",
               background: imageColor,
-              borderBottom: "2px solid var(--bru-black)",
+              borderBottom: "2px solid var(--drp-black)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontFamily: "var(--bru-font-primary)",
+              fontFamily: "var(--drp-font-primary)",
               fontSize: "2rem",
               fontWeight: 800,
               color: "#FFFFFF"
@@ -936,15 +936,15 @@ function CaseCard({
             children: image || imageLabel
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { style: { padding: "var(--bru-space-6)" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { style: { padding: "var(--drp-space-6)" }, children: [
           /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
             "p",
             {
               style: {
-                fontFamily: "var(--bru-font-primary)",
+                fontFamily: "var(--drp-font-primary)",
                 fontSize: "2.5rem",
                 fontWeight: 800,
-                color: "var(--bru-orange)",
+                color: "var(--drp-orange)",
                 marginBottom: "8px"
               },
               children: stat
@@ -955,7 +955,7 @@ function CaseCard({
             "h3",
             {
               style: {
-                fontFamily: "var(--bru-font-primary)",
+                fontFamily: "var(--drp-font-primary)",
                 fontSize: "18px",
                 fontWeight: 700,
                 marginBottom: "8px"
@@ -985,10 +985,10 @@ function Footer({
     {
       className,
       style: {
-        background: "var(--bru-black)",
+        background: "var(--drp-black)",
         color: "#FFFFFF",
-        padding: "var(--bru-space-16, 64px) 0",
-        borderTop: "3px solid var(--bru-purple)"
+        padding: "var(--drp-space-16, 64px) 0",
+        borderTop: "3px solid var(--drp-purple)"
       },
       children: /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { style: { maxWidth: "1440px", margin: "0 auto", padding: "0 24px" }, children: [
         /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
@@ -1005,7 +1005,7 @@ function Footer({
                   "p",
                   {
                     style: {
-                      fontFamily: "var(--bru-font-primary)",
+                      fontFamily: "var(--drp-font-primary)",
                       fontSize: "2rem",
                       fontWeight: 800,
                       marginBottom: "16px"
@@ -1020,13 +1020,13 @@ function Footer({
                   "p",
                   {
                     style: {
-                      fontFamily: "var(--bru-font-primary)",
+                      fontFamily: "var(--drp-font-primary)",
                       fontSize: "12px",
                       fontWeight: 700,
                       textTransform: "uppercase",
                       letterSpacing: "0.05em",
                       marginBottom: "16px",
-                      color: "var(--bru-orange)"
+                      color: "var(--drp-orange)"
                     },
                     children: col.title
                   }
@@ -1076,7 +1076,7 @@ function Footer({
                 "p",
                 {
                   style: {
-                    fontFamily: "var(--bru-font-mono)",
+                    fontFamily: "var(--drp-font-mono)",
                     fontSize: "11px",
                     opacity: 0.5
                   },
@@ -1115,14 +1115,14 @@ function Textarea({
   ...props
 }) {
   const classes = [
-    "bru-input",
-    error && "bru-input--error",
-    success && "bru-input--success",
+    "drp-input",
+    error && "drp-input--error",
+    success && "drp-input--success",
     className
   ].filter(Boolean).join(" ");
   if (label) {
-    return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)("div", { className: "bru-field", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("label", { className: "bru-field__label", children: label }),
+    return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)("div", { className: "drp-field", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("label", { className: "drp-field__label", children: label }),
       /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("textarea", { className: classes, ...props })
     ] });
   }
@@ -1146,9 +1146,9 @@ function Loader({ size, label, className = "" }) {
             style: {
               width: dimension,
               height: dimension,
-              border: `${borderWidth}px solid var(--bru-light-grey, #E0E0E0)`,
-              borderTop: `${borderWidth}px solid var(--bru-purple)`,
-              animation: "bru-spin 0.8s linear infinite"
+              border: `${borderWidth}px solid var(--drp-light-grey, #E0E0E0)`,
+              borderTop: `${borderWidth}px solid var(--drp-purple)`,
+              animation: "drp-spin 0.8s linear infinite"
             }
           }
         ),
@@ -1156,8 +1156,8 @@ function Loader({ size, label, className = "" }) {
           "span",
           {
             style: {
-              fontFamily: "var(--bru-font-primary)",
-              fontSize: "var(--bru-text-sm)",
+              fontFamily: "var(--drp-font-primary)",
+              fontSize: "var(--drp-text-sm)",
               fontWeight: 600,
               textTransform: "uppercase",
               letterSpacing: "0.05em"
@@ -1165,7 +1165,7 @@ function Loader({ size, label, className = "" }) {
             children: label
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("style", { children: `@keyframes bru-spin { to { transform: rotate(360deg); } }` })
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("style", { children: `@keyframes drp-spin { to { transform: rotate(360deg); } }` })
       ]
     }
   );
@@ -1182,7 +1182,7 @@ function Skeleton({
   const baseStyle = {
     background: "linear-gradient(90deg, rgba(0,0,0,0.06) 25%, rgba(0,0,0,0.12) 50%, rgba(0,0,0,0.06) 75%)",
     backgroundSize: "200% 100%",
-    animation: "bru-shimmer 1.5s ease-in-out infinite",
+    animation: "drp-shimmer 1.5s ease-in-out infinite",
     border: "1px solid rgba(0,0,0,0.08)"
   };
   if (variant === "text") {
@@ -1201,7 +1201,7 @@ function Skeleton({
   }
   return /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(import_jsx_runtime34.Fragment, { children: [
     /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("div", { className, style: baseStyle }),
-    /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("style", { children: `@keyframes bru-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }` })
+    /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("style", { children: `@keyframes drp-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }` })
   ] });
 }
 
@@ -1210,16 +1210,16 @@ var import_jsx_runtime35 = require("react/jsx-runtime");
 var variantStyles = {
   info: {
     bg: "rgba(0,102,255,0.08)",
-    border: "var(--bru-info, #0066FF)",
+    border: "var(--drp-info, #0066FF)",
     icon: "\u2139"
   },
-  success: { bg: "rgba(0,170,0,0.08)", border: "var(--bru-mint)", icon: "\u2713" },
+  success: { bg: "rgba(0,170,0,0.08)", border: "var(--drp-mint)", icon: "\u2713" },
   warning: {
     bg: "rgba(255,170,0,0.08)",
-    border: "var(--bru-yellow)",
+    border: "var(--drp-yellow)",
     icon: "\u26A0"
   },
-  error: { bg: "rgba(255,68,68,0.08)", border: "var(--bru-pink)", icon: "\u2715" }
+  error: { bg: "rgba(255,68,68,0.08)", border: "var(--drp-pink)", icon: "\u2715" }
 };
 function Alert({
   variant = "info",
@@ -1236,7 +1236,7 @@ function Alert({
       style: {
         padding: "16px 20px",
         background: styles.bg,
-        border: `2px solid var(--bru-black)`,
+        border: `2px solid var(--drp-black)`,
         borderLeft: `4px solid ${styles.border}`,
         display: "flex",
         gap: "12px",
@@ -1249,7 +1249,7 @@ function Alert({
             "p",
             {
               style: {
-                fontFamily: "var(--bru-font-primary)",
+                fontFamily: "var(--drp-font-primary)",
                 fontWeight: 700,
                 fontSize: "14px",
                 marginBottom: "4px",
@@ -1293,7 +1293,7 @@ function EmptyState({
   return /* @__PURE__ */ (0, import_jsx_runtime36.jsxs)(
     "div",
     {
-      className: `bru-empty ${className}`,
+      className: `drp-empty ${className}`,
       style: {
         textAlign: "center",
         padding: "48px 24px",
@@ -1307,7 +1307,7 @@ function EmptyState({
               fontSize: "48px",
               marginBottom: "16px",
               opacity: 0.3,
-              fontFamily: "var(--bru-font-primary)",
+              fontFamily: "var(--drp-font-primary)",
               fontWeight: 800
             },
             children: icon
@@ -1317,7 +1317,7 @@ function EmptyState({
           "h3",
           {
             style: {
-              fontFamily: "var(--bru-font-primary)",
+              fontFamily: "var(--drp-font-primary)",
               fontSize: "18px",
               fontWeight: 700,
               marginBottom: "8px",
@@ -1351,7 +1351,7 @@ function Divider({ label, className = "" }) {
     return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(
       "div",
       {
-        className: `bru-divider ${className}`,
+        className: `drp-divider ${className}`,
         style: {
           display: "flex",
           alignItems: "center",
@@ -1361,14 +1361,14 @@ function Divider({ label, className = "" }) {
           /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
             "div",
             {
-              style: { flex: 1, height: "2px", background: "var(--bru-black)" }
+              style: { flex: 1, height: "2px", background: "var(--drp-black)" }
             }
           ),
           /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
             "span",
             {
               style: {
-                fontFamily: "var(--bru-font-primary)",
+                fontFamily: "var(--drp-font-primary)",
                 fontSize: "11px",
                 fontWeight: 700,
                 textTransform: "uppercase",
@@ -1381,7 +1381,7 @@ function Divider({ label, className = "" }) {
           /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
             "div",
             {
-              style: { flex: 1, height: "2px", background: "var(--bru-black)" }
+              style: { flex: 1, height: "2px", background: "var(--drp-black)" }
             }
           )
         ]
@@ -1391,11 +1391,11 @@ function Divider({ label, className = "" }) {
   return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
     "hr",
     {
-      className: `bru-divider ${className}`,
+      className: `drp-divider ${className}`,
       style: {
         border: "none",
         height: "2px",
-        background: "var(--bru-black)",
+        background: "var(--drp-black)",
         margin: 0
       }
     }
@@ -1404,165 +1404,1147 @@ function Divider({ label, className = "" }) {
 
 // src/screens/Auth/SignIn.tsx
 var import_react4 = require("react");
+
+// src/screens/Auth/AuthLayout.tsx
 var import_jsx_runtime38 = require("react/jsx-runtime");
+var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+  "div",
+  {
+    className: "hidden lg:flex flex-1 relative overflow-hidden",
+    style: { background: "#F2F2F2" },
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+        "div",
+        {
+          style: {
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            width: "520px",
+            height: "520px",
+            background: "radial-gradient(ellipse at 40% 40%, #a78bfa 0%, #7c3aed 35%, #631DED 60%, #c4b5fd 100%)",
+            borderRadius: "50% 60% 55% 45% / 45% 55% 60% 50%",
+            filter: "blur(2px)",
+            opacity: 0.85
+          }
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+        "div",
+        {
+          style: {
+            position: "absolute",
+            top: "8%",
+            right: "12%",
+            background: "#fff",
+            borderRadius: "12px",
+            padding: "14px 16px",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+            minWidth: "180px",
+            zIndex: 10
+          },
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { style: { fontSize: "11px", color: "#888", marginBottom: "8px" }, children: "NM Tasks" }),
+            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+              "div",
+              {
+                style: {
+                  display: "flex",
+                  alignItems: "flex-end",
+                  gap: "4px",
+                  height: "36px",
+                  marginBottom: "8px"
+                },
+                children: [14, 22, 18, 30, 24, 20, 28].map((h2, i2) => /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+                  "div",
+                  {
+                    style: {
+                      width: "10px",
+                      height: `${h2}px`,
+                      background: i2 === 3 ? "#631DED" : "#e5e7eb",
+                      borderRadius: "2px"
+                    }
+                  },
+                  i2
+                ))
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { style: { fontSize: "10px", color: "#888" }, children: "Mon \u2013 Sun" })
+          ]
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+        "div",
+        {
+          style: {
+            position: "absolute",
+            top: "30%",
+            left: "8%",
+            background: "#fff",
+            borderRadius: "14px",
+            padding: "14px 16px",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.14)",
+            minWidth: "200px",
+            zIndex: 10
+          },
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+              "div",
+              {
+                style: {
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "10px",
+                  marginBottom: "10px"
+                },
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+                    "div",
+                    {
+                      style: {
+                        width: "36px",
+                        height: "36px",
+                        borderRadius: "50%",
+                        background: "linear-gradient(135deg, #a78bfa, #631DED)",
+                        flexShrink: 0
+                      }
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { style: { fontSize: "12px", fontWeight: 600, color: "#121212" }, children: "Delafaran Sorgato" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { style: { fontSize: "10px", color: "#888" }, children: "in progress" })
+                  ] })
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+              "div",
+              {
+                style: {
+                  background: "#631DED",
+                  color: "#fff",
+                  fontSize: "11px",
+                  fontWeight: 600,
+                  borderRadius: "6px",
+                  padding: "5px 12px",
+                  display: "inline-block",
+                  marginBottom: "10px"
+                },
+                children: "Task"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { style: { display: "flex", gap: "12px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { style: { textAlign: "center" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { style: { fontSize: "13px", fontWeight: 700, color: "#121212" }, children: "$123.20" }),
+                /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { style: { fontSize: "10px", color: "#888" }, children: "Est." })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { style: { textAlign: "center" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { style: { fontSize: "13px", fontWeight: 700, color: "#121212" }, children: "14" }),
+                /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { style: { fontSize: "10px", color: "#888" }, children: "hrs" })
+              ] })
+            ] })
+          ]
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+        "div",
+        {
+          style: {
+            position: "absolute",
+            top: "18%",
+            right: "4%",
+            background: "#fff",
+            borderRadius: "10px",
+            padding: "10px 14px",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.10)",
+            fontSize: "11px",
+            fontWeight: 600,
+            color: "#121212",
+            zIndex: 10,
+            whiteSpace: "nowrap"
+          },
+          children: "Update design system"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+        "div",
+        {
+          style: {
+            position: "absolute",
+            top: "52%",
+            left: "10%",
+            background: "#fff",
+            borderRadius: "14px",
+            padding: "14px 16px",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+            minWidth: "180px",
+            zIndex: 10
+          },
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { style: { fontSize: "11px", color: "#888", marginBottom: "4px" }, children: "Total revenue" }),
+            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+              "div",
+              {
+                style: {
+                  fontSize: "18px",
+                  fontWeight: 700,
+                  color: "#121212",
+                  marginBottom: "8px"
+                },
+                children: "$68,310.28"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { style: { display: "flex", alignItems: "center", gap: "6px" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+                "span",
+                {
+                  style: {
+                    background: "#f3f4f6",
+                    borderRadius: "6px",
+                    padding: "3px 8px",
+                    fontSize: "11px",
+                    color: "#631DED",
+                    fontWeight: 600
+                  },
+                  children: "7,384"
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { style: { fontSize: "10px", color: "#888" }, children: "transactions" })
+            ] })
+          ]
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+        "div",
+        {
+          style: {
+            position: "absolute",
+            top: "58%",
+            right: "5%",
+            background: "#fff",
+            borderRadius: "10px",
+            padding: "10px 14px",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.10)",
+            zIndex: 10,
+            minWidth: "190px"
+          },
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+              "div",
+              {
+                style: {
+                  fontSize: "11px",
+                  fontWeight: 600,
+                  color: "#121212",
+                  marginBottom: "6px"
+                },
+                children: "Photobook for family move"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+              "div",
+              {
+                style: {
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  background: "#f3f4f6",
+                  borderRadius: "6px",
+                  padding: "4px 8px",
+                  fontSize: "10px",
+                  color: "#631DED",
+                  fontWeight: 600
+                },
+                children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { children: "Due on 15 Aug 2025" })
+              }
+            )
+          ]
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+        "div",
+        {
+          style: {
+            position: "absolute",
+            bottom: "22%",
+            left: "6%",
+            background: "#fff",
+            borderRadius: "8px",
+            padding: "8px 12px",
+            boxShadow: "0 4px 16px rgba(0,0,0,0.10)",
+            fontSize: "11px",
+            fontWeight: 600,
+            color: "#121212",
+            zIndex: 10
+          },
+          children: "Design tasks"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+        "div",
+        {
+          style: {
+            position: "absolute",
+            bottom: "14%",
+            left: "18%",
+            background: "#fff",
+            borderRadius: "8px",
+            padding: "8px 14px",
+            boxShadow: "0 4px 16px rgba(0,0,0,0.10)",
+            fontSize: "11px",
+            color: "#121212",
+            zIndex: 10
+          },
+          children: "Mockup for task app"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+        "div",
+        {
+          style: {
+            position: "absolute",
+            top: "10%",
+            left: "30%",
+            width: "12px",
+            height: "12px",
+            background: "#121212",
+            borderRadius: "50%",
+            zIndex: 10
+          }
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+        "div",
+        {
+          style: {
+            position: "absolute",
+            top: "22%",
+            left: "55%",
+            width: "8px",
+            height: "8px",
+            background: "#121212",
+            borderRadius: "50%",
+            zIndex: 10
+          }
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+        "div",
+        {
+          style: {
+            position: "absolute",
+            bottom: "20%",
+            right: "30%",
+            width: "10px",
+            height: "10px",
+            background: "#121212",
+            borderRadius: "50%",
+            zIndex: 10
+          }
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+        "svg",
+        {
+          style: { position: "absolute", top: "5%", right: "28%", zIndex: 10 },
+          width: "60",
+          height: "40",
+          viewBox: "0 0 60 40",
+          fill: "none",
+          children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+            "path",
+            {
+              d: "M2 20 Q10 5 20 20 Q30 35 40 20 Q50 5 58 20",
+              stroke: "#121212",
+              strokeWidth: "2.5",
+              fill: "none",
+              strokeLinecap: "round"
+            }
+          )
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+        "svg",
+        {
+          style: { position: "absolute", bottom: "28%", right: "18%", zIndex: 10 },
+          width: "50",
+          height: "34",
+          viewBox: "0 0 50 34",
+          fill: "none",
+          children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+            "path",
+            {
+              d: "M2 17 Q10 4 18 17 Q26 30 34 17 Q42 4 48 17",
+              stroke: "#121212",
+              strokeWidth: "2.5",
+              fill: "none",
+              strokeLinecap: "round"
+            }
+          )
+        }
+      )
+    ]
+  }
+);
+var AuthLayout = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+  "div",
+  {
+    className: "min-h-screen flex",
+    style: { fontFamily: "var(--drp-font-primary, sans-serif)" },
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+        "div",
+        {
+          className: "flex flex-col w-full lg:w-[480px] xl:w-[520px] min-h-screen px-10 py-10",
+          style: { background: "#F2F2F2", flexShrink: 0 },
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "mb-12", children: /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+              "span",
+              {
+                style: {
+                  fontWeight: 800,
+                  fontSize: "20px",
+                  color: "#121212",
+                  letterSpacing: "-0.5px"
+                },
+                children: [
+                  "Doctor Project",
+                  /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { style: { color: "#631DED" }, children: "." })
+                ]
+              }
+            ) }),
+            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "flex-1 flex flex-col justify-center max-w-sm", children })
+          ]
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(DecorativePanel, {})
+    ]
+  }
+);
+
+// src/screens/Auth/SignIn.tsx
+var import_jsx_runtime39 = require("react/jsx-runtime");
 var SignIn = () => {
-  const [email, setEmail] = (0, import_react4.useState)("");
+  const [email, setEmail] = (0, import_react4.useState)("catherine.shaw@gmail.com");
   const [password, setPassword] = (0, import_react4.useState)("");
-  const [error, setError] = (0, import_react4.useState)("");
+  const [showPassword, setShowPassword] = (0, import_react4.useState)(false);
+  const [rememberMe, setRememberMe] = (0, import_react4.useState)(false);
   const handleSubmit = (e2) => {
     e2.preventDefault();
-    if (!email || !password) {
-      setError("Please fill in all fields");
-      return;
-    }
-    setError("");
-    console.log("Sign in:", { email, password });
+    console.log("Sign in:", { email, password, rememberMe });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4", children: /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { className: "bg-white rounded-lg shadow-lg p-8 w-full max-w-md", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("h1", { className: "text-3xl font-bold mb-2", children: "Welcome Back" }),
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("p", { className: "text-gray-600 mb-6", children: "Sign in to your account" }),
-    error && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-4", children: error }),
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("form", { onSubmit: handleSubmit, className: "space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
-        Input,
+  return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(AuthLayout, { children: /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+      "h1",
+      {
+        style: {
+          fontSize: "36px",
+          fontWeight: 800,
+          color: "#121212",
+          lineHeight: 1.1,
+          marginBottom: "8px",
+          letterSpacing: "-0.5px"
+        },
+        children: "Sign in"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+      "p",
+      {
+        style: {
+          fontSize: "13px",
+          color: "#888",
+          marginBottom: "32px"
+        },
+        children: "Enter your account details or use QR code"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("form", { onSubmit: handleSubmit, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { style: { marginBottom: "16px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+          "label",
+          {
+            style: {
+              display: "block",
+              fontSize: "12px",
+              fontWeight: 600,
+              color: "#444",
+              marginBottom: "6px"
+            },
+            children: "Email"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { style: { position: "relative" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+            "input",
+            {
+              type: "email",
+              value: email,
+              onChange: (e2) => setEmail(e2.target.value),
+              placeholder: "catherine.shaw@gmail.com",
+              style: {
+                width: "100%",
+                padding: "11px 40px 11px 14px",
+                border: "1.5px solid #E0E0E0",
+                borderRadius: "8px",
+                fontSize: "13px",
+                color: "#121212",
+                background: "#fff",
+                outline: "none",
+                boxSizing: "border-box"
+              }
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+            "svg",
+            {
+              style: {
+                position: "absolute",
+                right: "12px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                color: "#888"
+              },
+              width: "16",
+              height: "16",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: "2",
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
+                /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
+              ]
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { style: { marginBottom: "16px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+          "label",
+          {
+            style: {
+              display: "block",
+              fontSize: "12px",
+              fontWeight: 600,
+              color: "#444",
+              marginBottom: "6px"
+            },
+            children: "Password"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { style: { position: "relative" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+            "input",
+            {
+              type: showPassword ? "text" : "password",
+              value: password,
+              onChange: (e2) => setPassword(e2.target.value),
+              placeholder: "Enter your password",
+              style: {
+                width: "100%",
+                padding: "11px 40px 11px 14px",
+                border: "1.5px solid #E0E0E0",
+                borderRadius: "8px",
+                fontSize: "13px",
+                color: "#121212",
+                background: "#fff",
+                outline: "none",
+                boxSizing: "border-box"
+              }
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setShowPassword(!showPassword),
+              style: {
+                position: "absolute",
+                right: "12px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                color: "#888"
+              },
+              children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+                "svg",
+                {
+                  width: "16",
+                  height: "16",
+                  viewBox: "0 0 24 24",
+                  fill: "none",
+                  stroke: "currentColor",
+                  strokeWidth: "2",
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("path", { d: "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("path", { d: "M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("line", { x1: "1", y1: "1", x2: "23", y2: "23" })
+                  ]
+                }
+              ) : /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+                "svg",
+                {
+                  width: "16",
+                  height: "16",
+                  viewBox: "0 0 24 24",
+                  fill: "none",
+                  stroke: "currentColor",
+                  strokeWidth: "2",
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("circle", { cx: "12", cy: "12", r: "3" })
+                  ]
+                }
+              )
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+        "div",
         {
-          label: "Email",
-          type: "email",
-          value: email,
-          onChange: (e2) => setEmail(e2.target.value),
-          placeholder: "you@example.com"
+          style: {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: "24px"
+          },
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+              "label",
+              {
+                style: {
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  fontSize: "12px",
+                  color: "#444",
+                  cursor: "pointer"
+                },
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+                    "input",
+                    {
+                      type: "checkbox",
+                      checked: rememberMe,
+                      onChange: (e2) => setRememberMe(e2.target.checked),
+                      style: {
+                        width: "15px",
+                        height: "15px",
+                        accentColor: "#631DED",
+                        cursor: "pointer"
+                      }
+                    }
+                  ),
+                  "Remember me"
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+              "a",
+              {
+                href: "#",
+                style: {
+                  fontSize: "12px",
+                  color: "#631DED",
+                  textDecoration: "none",
+                  fontWeight: 500
+                },
+                children: "Recover password"
+              }
+            )
+          ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
-        Input,
+      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+        "button",
         {
-          label: "Password",
-          type: "password",
-          value: password,
-          onChange: (e2) => setPassword(e2.target.value),
-          placeholder: "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"
+          type: "submit",
+          style: {
+            width: "100%",
+            padding: "13px",
+            background: "#121212",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            fontSize: "14px",
+            fontWeight: 700,
+            cursor: "pointer",
+            marginBottom: "16px",
+            letterSpacing: "0.2px"
+          },
+          children: "Log in"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(Button, { type: "submit", className: "w-full", children: "Sign In" })
+      /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+        "div",
+        {
+          style: {
+            display: "flex",
+            alignItems: "center",
+            gap: "12px",
+            marginBottom: "16px"
+          },
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("div", { style: { flex: 1, height: "1px", background: "#E0E0E0" } }),
+            /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { style: { fontSize: "12px", color: "#888" }, children: "or" }),
+            /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("div", { style: { flex: 1, height: "1px", background: "#E0E0E0" } })
+          ]
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+        "button",
+        {
+          type: "button",
+          style: {
+            width: "100%",
+            padding: "12px",
+            background: "transparent",
+            color: "#121212",
+            border: "1.5px solid #E0E0E0",
+            borderRadius: "8px",
+            fontSize: "13px",
+            fontWeight: 600,
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: "8px"
+          },
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+              "svg",
+              {
+                width: "16",
+                height: "16",
+                viewBox: "0 0 24 24",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("rect", { x: "3", y: "3", width: "7", height: "7" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("rect", { x: "14", y: "3", width: "7", height: "7" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("rect", { x: "3", y: "14", width: "7", height: "7" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+                    "path",
+                    {
+                      d: "M14 14h1v1h-1zM17 14h1v1h-1zM20 14h1v1h-1zM14 17h1v1h-1zM17 17h1v1h-1zM20 17h1v1h-1zM14 20h1v1h-1zM17 20h1v1h-1zM20 20h1v1h-1z",
+                      fill: "currentColor",
+                      stroke: "none"
+                    }
+                  )
+                ]
+              }
+            ),
+            "Log in with QR code"
+          ]
+        }
+      )
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("p", { className: "text-center text-gray-600 mt-6", children: [
-      "Don't have an account?",
-      " ",
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("a", { href: "#", className: "text-blue-600 hover:underline", children: "Sign up" })
-    ] })
+    /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+      "p",
+      {
+        style: {
+          marginTop: "32px",
+          fontSize: "12px",
+          color: "#888",
+          textAlign: "center"
+        },
+        children: [
+          "You don't have an account?",
+          " ",
+          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+            "a",
+            {
+              href: "#",
+              style: {
+                color: "#631DED",
+                fontWeight: 600,
+                textDecoration: "none"
+              },
+              children: "Create an account"
+            }
+          )
+        ]
+      }
+    )
   ] }) });
 };
 
 // src/screens/Auth/SignUp.tsx
 var import_react5 = require("react");
-var import_jsx_runtime39 = require("react/jsx-runtime");
+var import_jsx_runtime40 = require("react/jsx-runtime");
 var SignUp = () => {
-  const [formData, setFormData] = (0, import_react5.useState)({
-    fullName: "",
-    email: "",
-    password: "",
-    confirmPassword: ""
-  });
-  const [agreed, setAgreed] = (0, import_react5.useState)(false);
-  const [errors, setErrors] = (0, import_react5.useState)({});
-  const handleChange = (e2) => {
-    setFormData({
-      ...formData,
-      [e2.target.name]: e2.target.value
-    });
-  };
+  const [country, setCountry] = (0, import_react5.useState)("United States");
+  const [countryBusiness, setCountryBusiness] = (0, import_react5.useState)("");
+  const [email, setEmail] = (0, import_react5.useState)("catherine.shaw4");
+  const [password, setPassword] = (0, import_react5.useState)("");
+  const [showPassword, setShowPassword] = (0, import_react5.useState)(false);
+  const [receiveUpdates, setReceiveUpdates] = (0, import_react5.useState)(false);
+  const [agreeTerms, setAgreeTerms] = (0, import_react5.useState)(false);
   const handleSubmit = (e2) => {
     e2.preventDefault();
-    const newErrors = {};
-    if (!formData.fullName) newErrors.fullName = "Name required";
-    if (!formData.email) newErrors.email = "Email required";
-    if (formData.password.length < 8) newErrors.password = "Min 8 characters";
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match";
-    }
-    if (!agreed) newErrors.agreed = "Must agree to terms";
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-    setErrors({});
-    console.log("Sign up:", formData);
+    console.log("Sign up:", { country, countryBusiness, email, password });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("div", { className: "min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4", children: /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { className: "bg-white rounded-lg shadow-lg p-8 w-full max-w-md", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("h1", { className: "text-3xl font-bold mb-2", children: "Create Account" }),
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("p", { className: "text-gray-600 mb-6", children: "Join us today" }),
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("form", { onSubmit: handleSubmit, className: "space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
-        Input,
+  const inputStyle = {
+    width: "100%",
+    padding: "11px 14px",
+    border: "1.5px solid #E0E0E0",
+    borderRadius: "8px",
+    fontSize: "13px",
+    color: "#121212",
+    background: "#fff",
+    outline: "none",
+    boxSizing: "border-box",
+    appearance: "none"
+  };
+  const labelStyle = {
+    display: "block",
+    fontSize: "12px",
+    fontWeight: 600,
+    color: "#444",
+    marginBottom: "6px"
+  };
+  const fieldStyle = {
+    marginBottom: "14px"
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(AuthLayout, { children: /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+      "h1",
+      {
+        style: {
+          fontSize: "36px",
+          fontWeight: 800,
+          color: "#121212",
+          lineHeight: 1.1,
+          marginBottom: "8px",
+          letterSpacing: "-0.5px"
+        },
+        children: "Sign up"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+      "p",
+      {
+        style: {
+          fontSize: "13px",
+          color: "#888",
+          marginBottom: "28px"
+        },
+        children: "Fill out the form below using your current location"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("form", { onSubmit: handleSubmit, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { style: fieldStyle, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("label", { style: labelStyle, children: "Country/Region of Residence" }),
+        /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { style: { position: "relative" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+            "select",
+            {
+              value: country,
+              onChange: (e2) => setCountry(e2.target.value),
+              style: {
+                ...inputStyle,
+                paddingRight: "36px",
+                cursor: "pointer"
+              },
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("option", { value: "United States", children: "United States" }),
+                /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("option", { value: "United Kingdom", children: "United Kingdom" }),
+                /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("option", { value: "Canada", children: "Canada" }),
+                /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("option", { value: "Australia", children: "Australia" }),
+                /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("option", { value: "Germany", children: "Germany" }),
+                /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("option", { value: "France", children: "France" })
+              ]
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+            "svg",
+            {
+              style: {
+                position: "absolute",
+                right: "12px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                pointerEvents: "none",
+                color: "#888"
+              },
+              width: "14",
+              height: "14",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: "2",
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("polyline", { points: "6 9 12 15 18 9" })
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { style: fieldStyle, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("label", { style: labelStyle, children: "Email" }),
+        /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { style: { position: "relative" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+            "input",
+            {
+              type: "email",
+              value: email,
+              onChange: (e2) => setEmail(e2.target.value),
+              placeholder: "catherine.shaw@gmail.com",
+              style: { ...inputStyle, paddingRight: "40px" }
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+            "svg",
+            {
+              style: {
+                position: "absolute",
+                right: "12px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                color: "#888",
+                pointerEvents: "none"
+              },
+              width: "16",
+              height: "16",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: "2",
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
+                /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
+              ]
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { style: fieldStyle, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("label", { style: labelStyle, children: "Password" }),
+        /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { style: { position: "relative" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+            "input",
+            {
+              type: showPassword ? "text" : "password",
+              value: password,
+              onChange: (e2) => setPassword(e2.target.value),
+              placeholder: "Enter your password",
+              style: { ...inputStyle, paddingRight: "40px" }
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setShowPassword(!showPassword),
+              style: {
+                position: "absolute",
+                right: "12px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                color: "#888"
+              },
+              children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+                "svg",
+                {
+                  width: "16",
+                  height: "16",
+                  viewBox: "0 0 24 24",
+                  fill: "none",
+                  stroke: "currentColor",
+                  strokeWidth: "2",
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("path", { d: "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("path", { d: "M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("line", { x1: "1", y1: "1", x2: "23", y2: "23" })
+                  ]
+                }
+              ) : /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+                "svg",
+                {
+                  width: "16",
+                  height: "16",
+                  viewBox: "0 0 24 24",
+                  fill: "none",
+                  stroke: "currentColor",
+                  strokeWidth: "2",
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("circle", { cx: "12", cy: "12", r: "3" })
+                  ]
+                }
+              )
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { style: { marginBottom: "20px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+          "label",
+          {
+            style: {
+              display: "flex",
+              alignItems: "flex-start",
+              gap: "8px",
+              fontSize: "12px",
+              color: "#444",
+              cursor: "pointer",
+              marginBottom: "10px",
+              lineHeight: 1.4
+            },
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+                "input",
+                {
+                  type: "checkbox",
+                  checked: receiveUpdates,
+                  onChange: (e2) => setReceiveUpdates(e2.target.checked),
+                  style: {
+                    width: "15px",
+                    height: "15px",
+                    accentColor: "#631DED",
+                    cursor: "pointer",
+                    flexShrink: 0,
+                    marginTop: "1px"
+                  }
+                }
+              ),
+              "I agree to receive email updates"
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+          "label",
+          {
+            style: {
+              display: "flex",
+              alignItems: "flex-start",
+              gap: "8px",
+              fontSize: "12px",
+              color: "#444",
+              cursor: "pointer",
+              lineHeight: 1.4
+            },
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+                "input",
+                {
+                  type: "checkbox",
+                  checked: agreeTerms,
+                  onChange: (e2) => setAgreeTerms(e2.target.checked),
+                  style: {
+                    width: "15px",
+                    height: "15px",
+                    accentColor: "#631DED",
+                    cursor: "pointer",
+                    flexShrink: 0,
+                    marginTop: "1px"
+                  }
+                }
+              ),
+              "I have read and agree to",
+              " ",
+              /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+                "a",
+                {
+                  href: "#",
+                  style: {
+                    color: "#631DED",
+                    textDecoration: "none",
+                    fontWeight: 500
+                  },
+                  children: "Terms of Service"
+                }
+              )
+            ]
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+        "button",
         {
-          label: "Full Name",
-          name: "fullName",
-          value: formData.fullName,
-          onChange: handleChange,
-          placeholder: "John Doe"
+          type: "submit",
+          style: {
+            width: "100%",
+            padding: "13px",
+            background: "#631DED",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            fontSize: "14px",
+            fontWeight: 700,
+            cursor: "pointer",
+            letterSpacing: "0.2px"
+          },
+          children: "Create account"
         }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
-        Input,
-        {
-          label: "Email",
-          type: "email",
-          name: "email",
-          value: formData.email,
-          onChange: handleChange,
-          placeholder: "you@example.com"
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
-        Input,
-        {
-          label: "Password",
-          type: "password",
-          name: "password",
-          value: formData.password,
-          onChange: handleChange,
-          placeholder: "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
-        Input,
-        {
-          label: "Confirm Password",
-          type: "password",
-          name: "confirmPassword",
-          value: formData.confirmPassword,
-          onChange: handleChange,
-          placeholder: "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
-        Checkbox,
-        {
-          label: "I agree to Terms & Privacy Policy",
-          checked: agreed,
-          onChange: (e2) => setAgreed(e2.target.checked)
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(Button, { type: "submit", className: "w-full", children: "Create Account" })
+      )
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("p", { className: "text-center text-gray-600 mt-6", children: [
-      "Already have an account?",
-      " ",
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("a", { href: "#", className: "text-blue-600 hover:underline", children: "Sign in" })
-    ] })
+    /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+      "p",
+      {
+        style: {
+          marginTop: "24px",
+          fontSize: "12px",
+          color: "#888",
+          textAlign: "center"
+        },
+        children: [
+          "Already registered?",
+          " ",
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+            "a",
+            {
+              href: "#",
+              style: {
+                color: "#631DED",
+                fontWeight: 600,
+                textDecoration: "none"
+              },
+              children: "Sign in to your account"
+            }
+          )
+        ]
+      }
+    )
   ] }) });
 };
 
 // src/screens/Auth/PasswordReset.tsx
 var import_react6 = require("react");
-var import_jsx_runtime40 = require("react/jsx-runtime");
+var import_jsx_runtime41 = require("react/jsx-runtime");
 var PasswordReset = ({
   mode = "request"
 }) => {
-  const [email, setEmail] = (0, import_react6.useState)("");
-  const [submitted, setSubmitted] = (0, import_react6.useState)(false);
+  const [email, setEmail] = (0, import_react6.useState)("catherine.shaw@gmail.com");
   const [newPassword, setNewPassword] = (0, import_react6.useState)("");
   const [confirmPassword, setConfirmPassword] = (0, import_react6.useState)("");
+  const [showPassword, setShowPassword] = (0, import_react6.useState)(false);
+  const [submitted, setSubmitted] = (0, import_react6.useState)(false);
   const handleRequestReset = (e2) => {
     e2.preventDefault();
     if (email) {
@@ -1575,54 +2557,337 @@ var PasswordReset = ({
       console.log("Password reset successful");
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("div", { className: "min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 px-4", children: /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("div", { className: "bg-white rounded-lg shadow-lg p-8 w-full max-w-md", children: mode === "request" ? /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_jsx_runtime40.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("h1", { className: "text-3xl font-bold mb-2", children: "Forgot Password?" }),
-    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("p", { className: "text-gray-600 mb-6", children: "Enter your email to receive reset instructions" }),
-    submitted ? /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("div", { className: "bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded", children: "Check your email for reset instructions" }) : /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("form", { onSubmit: handleRequestReset, className: "space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
-        Input,
+  const inputStyle = {
+    width: "100%",
+    padding: "11px 40px 11px 14px",
+    border: "1.5px solid #E0E0E0",
+    borderRadius: "8px",
+    fontSize: "13px",
+    color: "#121212",
+    background: "#fff",
+    outline: "none",
+    boxSizing: "border-box"
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(AuthLayout, { children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { children: mode === "request" ? /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+      "h1",
+      {
+        style: {
+          fontSize: "40px",
+          fontWeight: 800,
+          color: "#121212",
+          lineHeight: 1.05,
+          marginBottom: "12px",
+          letterSpacing: "-0.5px"
+        },
+        children: "Forgot password?"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+      "p",
+      {
+        style: {
+          fontSize: "13px",
+          color: "#888",
+          marginBottom: "28px",
+          lineHeight: 1.6,
+          maxWidth: "320px"
+        },
+        children: "Enter your email address and we'll send you instructions on how to reset your password in a few minutes. You can also add a recovery email if you've never set one before."
+      }
+    ),
+    submitted ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+      "div",
+      {
+        style: {
+          background: "#f0fdf4",
+          border: "1.5px solid #86efac",
+          color: "#166534",
+          padding: "12px 16px",
+          borderRadius: "8px",
+          fontSize: "13px"
+        },
+        children: "Check your email for reset instructions."
+      }
+    ) : /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("form", { onSubmit: handleRequestReset, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { style: { marginBottom: "24px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+          "label",
+          {
+            style: {
+              display: "block",
+              fontSize: "12px",
+              fontWeight: 600,
+              color: "#444",
+              marginBottom: "6px"
+            },
+            children: "Email"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { style: { position: "relative" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+            "input",
+            {
+              type: "email",
+              value: email,
+              onChange: (e2) => setEmail(e2.target.value),
+              placeholder: "catherine.shaw@gmail.com",
+              style: inputStyle
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+            "svg",
+            {
+              style: {
+                position: "absolute",
+                right: "12px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                color: "#888"
+              },
+              width: "16",
+              height: "16",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: "2",
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
+                /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
+              ]
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+        "button",
         {
-          label: "Email",
-          type: "email",
-          value: email,
-          onChange: (e2) => setEmail(e2.target.value),
-          placeholder: "you@example.com"
+          type: "submit",
+          style: {
+            width: "100%",
+            padding: "13px",
+            background: "#631DED",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            fontSize: "14px",
+            fontWeight: 700,
+            cursor: "pointer",
+            letterSpacing: "0.2px"
+          },
+          children: "Start recovery"
         }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Button, { type: "submit", className: "w-full", children: "Send Reset Link" })
-    ] })
-  ] }) : /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(import_jsx_runtime40.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("h1", { className: "text-3xl font-bold mb-2", children: "Reset Password" }),
-    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("p", { className: "text-gray-600 mb-6", children: "Enter your new password" }),
-    /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("form", { onSubmit: handleResetPassword, className: "space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
-        Input,
+      )
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+      "p",
+      {
+        style: {
+          marginTop: "24px",
+          fontSize: "12px",
+          color: "#888",
+          textAlign: "center"
+        },
+        children: [
+          "Already registered?",
+          " ",
+          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+            "a",
+            {
+              href: "#",
+              style: {
+                color: "#631DED",
+                fontWeight: 600,
+                textDecoration: "none"
+              },
+              children: "Sign in to your account"
+            }
+          )
+        ]
+      }
+    )
+  ] }) : /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+      "h1",
+      {
+        style: {
+          fontSize: "36px",
+          fontWeight: 800,
+          color: "#121212",
+          lineHeight: 1.1,
+          marginBottom: "8px",
+          letterSpacing: "-0.5px"
+        },
+        children: "Reset Password"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+      "p",
+      {
+        style: {
+          fontSize: "13px",
+          color: "#888",
+          marginBottom: "28px"
+        },
+        children: "Enter your new password below"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("form", { onSubmit: handleResetPassword, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { style: { marginBottom: "16px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+          "label",
+          {
+            style: {
+              display: "block",
+              fontSize: "12px",
+              fontWeight: 600,
+              color: "#444",
+              marginBottom: "6px"
+            },
+            children: "New Password"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { style: { position: "relative" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+            "input",
+            {
+              type: showPassword ? "text" : "password",
+              value: newPassword,
+              onChange: (e2) => setNewPassword(e2.target.value),
+              placeholder: "Enter new password",
+              style: inputStyle
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setShowPassword(!showPassword),
+              style: {
+                position: "absolute",
+                right: "12px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                color: "#888"
+              },
+              children: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+                "svg",
+                {
+                  width: "16",
+                  height: "16",
+                  viewBox: "0 0 24 24",
+                  fill: "none",
+                  stroke: "currentColor",
+                  strokeWidth: "2",
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("circle", { cx: "12", cy: "12", r: "3" })
+                  ]
+                }
+              )
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { style: { marginBottom: "24px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+          "label",
+          {
+            style: {
+              display: "block",
+              fontSize: "12px",
+              fontWeight: 600,
+              color: "#444",
+              marginBottom: "6px"
+            },
+            children: "Confirm Password"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { style: { position: "relative" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+            "input",
+            {
+              type: showPassword ? "text" : "password",
+              value: confirmPassword,
+              onChange: (e2) => setConfirmPassword(e2.target.value),
+              placeholder: "Confirm new password",
+              style: inputStyle
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+            "button",
+            {
+              type: "button",
+              onClick: () => setShowPassword(!showPassword),
+              style: {
+                position: "absolute",
+                right: "12px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+                color: "#888"
+              },
+              children: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+                "svg",
+                {
+                  width: "16",
+                  height: "16",
+                  viewBox: "0 0 24 24",
+                  fill: "none",
+                  stroke: "currentColor",
+                  strokeWidth: "2",
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("circle", { cx: "12", cy: "12", r: "3" })
+                  ]
+                }
+              )
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+        "button",
         {
-          label: "New Password",
-          type: "password",
-          value: newPassword,
-          onChange: (e2) => setNewPassword(e2.target.value),
-          placeholder: "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"
+          type: "submit",
+          style: {
+            width: "100%",
+            padding: "13px",
+            background: "#631DED",
+            color: "#fff",
+            border: "none",
+            borderRadius: "8px",
+            fontSize: "14px",
+            fontWeight: 700,
+            cursor: "pointer",
+            letterSpacing: "0.2px"
+          },
+          children: "Reset Password"
         }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
-        Input,
-        {
-          label: "Confirm Password",
-          type: "password",
-          value: confirmPassword,
-          onChange: (e2) => setConfirmPassword(e2.target.value),
-          placeholder: "\u2022\u2022\u2022\u2022\u2022\u2022\u2022\u2022"
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(Button, { type: "submit", className: "w-full", children: "Reset Password" })
+      )
     ] })
   ] }) }) });
 };
 
+// src/screens/Auth/SignInWithQR.tsx
+var import_jsx_runtime42 = require("react/jsx-runtime");
+
 // src/screens/Common/ListScreen.tsx
 var import_react7 = require("react");
-var import_jsx_runtime41 = require("react/jsx-runtime");
+var import_jsx_runtime43 = require("react/jsx-runtime");
 var ListScreen = ({
   title,
   subtitle,
@@ -1642,18 +2907,18 @@ var ListScreen = ({
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
   const startIdx = (currentPage - 1) * itemsPerPage;
   const paginatedData = filteredData.slice(startIdx, startIdx + itemsPerPage);
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
     DashboardLayout,
     {
       ...layoutProps,
       topBarProps: {
         title,
-        actions: onAddClick && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(Button, { onClick: onAddClick, children: "+ Add New" }),
+        actions: onAddClick && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(Button, { onClick: onAddClick, children: "+ Add New" }),
         ...layoutProps.topBarProps
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "space-y-6", children: [
-        subtitle && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { className: "text-gray-600", children: subtitle }),
-        showSearch && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: "space-y-6", children: [
+        subtitle && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "text-gray-600", children: subtitle }),
+        showSearch && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
           Input,
           {
             placeholder: "Search...",
@@ -1664,18 +2929,18 @@ var ListScreen = ({
             }
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
           Table,
           {
             columns: columns.map((col) => ({
               key: col.key,
               header: col.label,
-              render: col.render
+              render: col.render ? (row) => col.render(row[col.key]) : void 0
             })),
             data: paginatedData
           }
         ),
-        totalPages > 1 && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+        totalPages > 1 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
           Pagination,
           {
             currentPage,
@@ -1689,812 +2954,14846 @@ var ListScreen = ({
 };
 
 // src/screens/Products/ProductsList.tsx
-var import_react8 = require("react");
-var import_jsx_runtime42 = require("react/jsx-runtime");
-var ProductsList = () => {
-  const [version, setVersion] = (0, import_react8.useState)(1);
-  const products = [
-    {
-      id: "1",
-      name: "Wireless Headphones",
-      category: "Electronics",
-      price: 199.99,
-      stock: 45,
-      status: "Active",
-      createdDate: "2024-01-15"
-    },
-    {
-      id: "2",
-      name: "USB-C Cable",
-      category: "Accessories",
-      price: 12.99,
-      stock: 200,
-      status: "Active",
-      createdDate: "2024-01-10"
-    },
-    {
-      id: "3",
-      name: "Laptop Stand",
-      category: "Office",
-      price: 49.99,
-      stock: 0,
-      status: "Inactive",
-      createdDate: "2023-12-20"
-    }
-  ];
-  return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
-    ListScreen,
-    {
-      title: "Products",
-      subtitle: `Showing version ${version} of products list`,
-      data: products,
-      columns: [
-        { key: "id", label: "ID" },
-        { key: "name", label: "Product Name" },
-        { key: "category", label: "Category" },
-        {
-          key: "price",
-          label: "Price",
-          render: (value) => `$${value.toFixed(2)}`
-        },
-        { key: "stock", label: "Stock" },
-        {
-          key: "status",
-          label: "Status",
-          render: (value) => /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(Badge, { variant: value === "Active" ? "mint" : "secondary", children: value })
-        }
-      ],
-      showSearch: true,
-      sidebarProps: {
-        items: [
-          { id: "dashboard", label: "Dashboard", icon: "\u{1F4CA}" },
-          { id: "products", label: "Products", icon: "\u{1F4E6}", active: true },
-          { id: "customers", label: "Customers", icon: "\u{1F465}" },
-          { id: "payments", label: "Payments", icon: "\u{1F4B3}" }
-        ]
-      }
-    }
-  );
-};
-
-// src/screens/Customers/CustomersList.tsx
-var import_jsx_runtime43 = require("react/jsx-runtime");
-var CustomersList = () => {
-  const customers = [
-    {
-      id: "1",
-      name: "Alice Johnson",
-      email: "alice@example.com",
-      phone: "+1 (555) 123-4567",
-      status: "Active",
-      joinDate: "2023-06-15",
-      totalPurchases: 12
-    },
-    {
-      id: "2",
-      name: "Bob Smith",
-      email: "bob@example.com",
-      phone: "+1 (555) 234-5678",
-      status: "Active",
-      joinDate: "2023-08-20",
-      totalPurchases: 8
-    },
-    {
-      id: "3",
-      name: "Carol Davis",
-      email: "carol@example.com",
-      phone: "+1 (555) 345-6789",
-      status: "Inactive",
-      joinDate: "2023-03-10",
-      totalPurchases: 3
-    }
-  ];
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
-    ListScreen,
-    {
-      title: "Customers",
-      subtitle: "Manage customer relationships and interactions",
-      data: customers,
-      columns: [
-        { key: "id", label: "ID" },
-        { key: "name", label: "Name" },
-        { key: "email", label: "Email" },
-        { key: "phone", label: "Phone" },
-        { key: "joinDate", label: "Join Date" },
-        { key: "totalPurchases", label: "Purchases" },
-        {
-          key: "status",
-          label: "Status",
-          render: (value) => /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(Badge, { variant: value === "Active" ? "mint" : "secondary", children: value })
-        }
-      ],
-      showSearch: true,
-      sidebarProps: {
-        items: [
-          { id: "dashboard", label: "Dashboard", icon: "\u{1F4CA}" },
-          { id: "products", label: "Products", icon: "\u{1F4E6}" },
-          { id: "customers", label: "Customers", icon: "\u{1F465}", active: true },
-          { id: "payments", label: "Payments", icon: "\u{1F4B3}" }
-        ]
-      }
-    }
-  );
-};
-
-// src/screens/Accounts/AccountsList.tsx
 var import_jsx_runtime44 = require("react/jsx-runtime");
-var AccountsList = () => {
-  const accounts = [
+var DoctorProjectSidebar = ({ activeItem }) => {
+  const navItems = [
+    { id: "dashboard", label: "Dashboard" },
+    { id: "products", label: "Products" },
+    { id: "contacts", label: "Contacts" },
     {
-      id: "1",
-      accountName: "Checking Account",
-      accountType: "Checking",
-      balance: 5234.5,
-      status: "Active",
-      lastUpdate: "2024-01-20"
+      id: "customers",
+      label: "Customers",
+      badge: 15,
+      badgeColor: "bg-purple-600"
     },
-    {
-      id: "2",
-      accountName: "Savings Account",
-      accountType: "Savings",
-      balance: 25e3,
-      status: "Active",
-      lastUpdate: "2024-01-19"
-    },
-    {
-      id: "3",
-      accountName: "Investment Account",
-      accountType: "Investment",
-      balance: 5e4,
-      status: "Inactive",
-      lastUpdate: "2023-12-15"
-    }
+    { id: "sales", label: "Sales", badge: 14, badgeColor: "bg-green-500" },
+    { id: "analytics", label: "Analytics" }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
-    ListScreen,
-    {
-      title: "Accounts",
-      subtitle: "Manage your financial accounts",
-      data: accounts,
-      columns: [
-        { key: "id", label: "ID" },
-        { key: "accountName", label: "Account Name" },
-        { key: "accountType", label: "Type" },
-        {
-          key: "balance",
-          label: "Balance",
-          render: (value) => `$${value.toFixed(2)}`
-        },
-        { key: "lastUpdate", label: "Last Update" },
-        {
-          key: "status",
-          label: "Status",
-          render: (value) => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(Badge, { variant: value === "Active" ? "mint" : "secondary", children: value })
-        }
-      ],
-      showSearch: true,
-      sidebarProps: {
-        items: [
-          { id: "accounts", label: "Accounts", icon: "\u{1F3E6}", active: true },
-          { id: "transactions", label: "Transactions", icon: "\u{1F4B9}" },
-          { id: "payments", label: "Payments", icon: "\u{1F4B3}" }
-        ]
-      }
-    }
-  );
-};
-
-// src/screens/Transactions/TransactionsList.tsx
-var import_jsx_runtime45 = require("react/jsx-runtime");
-var TransactionsList = () => {
-  const transactions = [
-    {
-      id: "1",
-      description: "Salary Deposit",
-      amount: 5e3,
-      date: "2024-01-20",
-      status: "Completed",
-      type: "Income"
-    },
-    {
-      id: "2",
-      description: "Grocery Shopping",
-      amount: 125.5,
-      date: "2024-01-19",
-      status: "Completed",
-      type: "Expense"
-    },
-    {
-      id: "3",
-      description: "Pending Transfer",
-      amount: 500,
-      date: "2024-01-20",
-      status: "Pending",
-      type: "Expense"
-    }
+  const teamMembers = [
+    { name: "Alexandre Paiva", initials: "AP", color: "bg-orange-400" },
+    { name: "Thanawan Chadee", initials: "TC", color: "bg-teal-500" },
+    { name: "Justine Robinson", initials: "JR", color: "bg-purple-500" }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
-    ListScreen,
-    {
-      title: "Transactions",
-      subtitle: "View all transaction history",
-      data: transactions,
-      columns: [
-        { key: "id", label: "ID" },
-        { key: "description", label: "Description" },
-        {
-          key: "amount",
-          label: "Amount",
-          render: (value) => `$${value.toFixed(2)}`
-        },
-        { key: "date", label: "Date" },
-        { key: "type", label: "Type" },
-        {
-          key: "status",
-          label: "Status",
-          render: (value) => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(Badge, { variant: value === "Completed" ? "mint" : "secondary", children: value })
-        }
-      ],
-      showSearch: true,
-      sidebarProps: {
-        items: [
-          { id: "accounts", label: "Accounts", icon: "\u{1F3E6}" },
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "w-[200px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "px-5 py-5", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-1", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "text-xl font-bold text-white", children: "Doctor Project" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500 mb-3 flex-shrink-0" })
+    ] }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex-1 overflow-y-auto px-3 pb-4 space-y-5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("p", { className: "text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("nav", { className: "space-y-0.5", children: navItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+          "button",
           {
-            id: "transactions",
-            label: "Transactions",
-            icon: "\u{1F4B9}",
-            active: true
+            className: `w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${item.id === activeItem ? "bg-white/10 text-white font-medium" : "text-gray-400 hover:text-white hover:bg-white/5"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-2.5", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                  "svg",
+                  {
+                    className: "w-3.5 h-3.5 flex-shrink-0",
+                    fill: "none",
+                    viewBox: "0 0 24 24",
+                    stroke: "currentColor",
+                    children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                      "path",
+                      {
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeWidth: 1.5,
+                        d: "M13 7l5 5m0 0l-5 5m5-5H6"
+                      }
+                    )
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { children: item.label })
+              ] }),
+              item.badge && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                "span",
+                {
+                  className: `text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                  children: item.badge
+                }
+              )
+            ]
           },
-          { id: "payments", label: "Payments", icon: "\u{1F4B3}" }
-        ]
-      }
-    }
-  );
-};
-
-// src/screens/Contacts/ContactsList.tsx
-var import_jsx_runtime46 = require("react/jsx-runtime");
-var ContactsList = () => {
-  const contacts = [
-    {
-      id: "1",
-      name: "John Doe",
-      email: "john@company.com",
-      company: "Tech Corp",
-      phone: "+1 (555) 123-4567",
-      lastContact: "2024-01-15",
-      status: "Active"
-    },
-    {
-      id: "2",
-      name: "Jane Smith",
-      email: "jane@startup.com",
-      company: "StartUp Inc",
-      phone: "+1 (555) 234-5678",
-      lastContact: "2024-01-10",
-      status: "Active"
-    },
-    {
-      id: "3",
-      name: "Mike Johnson",
-      email: "mike@oldco.com",
-      company: "Old Company",
-      phone: "+1 (555) 345-6789",
-      lastContact: "2023-11-20",
-      status: "Inactive"
-    }
-  ];
-  return /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
-    ListScreen,
-    {
-      title: "Contacts",
-      subtitle: "Manage your business contacts",
-      data: contacts,
-      columns: [
-        { key: "id", label: "ID" },
-        { key: "name", label: "Name" },
-        { key: "email", label: "Email" },
-        { key: "company", label: "Company" },
-        { key: "phone", label: "Phone" },
-        { key: "lastContact", label: "Last Contact" },
-        {
-          key: "status",
-          label: "Status",
-          render: (value) => /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(Badge, { variant: value === "Active" ? "mint" : "secondary", children: value })
-        }
-      ],
-      showSearch: true,
-      sidebarProps: {
-        items: [
-          { id: "contacts", label: "Contacts", icon: "\u{1F4C7}", active: true },
-          { id: "sales", label: "Sales", icon: "\u{1F4C8}" }
-        ]
-      }
-    }
-  );
-};
-
-// src/screens/Sales/SalesList.tsx
-var import_jsx_runtime47 = require("react/jsx-runtime");
-var SalesList = () => {
-  const sales = [
-    {
-      id: "1",
-      customer: "Tech Corp",
-      amount: 15e3,
-      date: "2024-01-20",
-      status: "Completed",
-      salesperson: "Alice Chen"
-    },
-    {
-      id: "2",
-      customer: "StartUp Inc",
-      amount: 8500,
-      date: "2024-01-18",
-      status: "Completed",
-      salesperson: "Bob Wilson"
-    },
-    {
-      id: "3",
-      customer: "Enterprise Ltd",
-      amount: 25e3,
-      date: "2024-01-20",
-      status: "Pending",
-      salesperson: "Carol Davis"
-    }
-  ];
-  return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
-    ListScreen,
-    {
-      title: "Sales",
-      subtitle: "Track sales pipeline and performance",
-      data: sales,
-      columns: [
-        { key: "id", label: "ID" },
-        { key: "customer", label: "Customer" },
-        {
-          key: "amount",
-          label: "Amount",
-          render: (value) => `$${value.toFixed(2)}`
-        },
-        { key: "date", label: "Date" },
-        { key: "salesperson", label: "Salesperson" },
-        {
-          key: "status",
-          label: "Status",
-          render: (value) => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(Badge, { variant: value === "Completed" ? "mint" : "secondary", children: value })
-        }
-      ],
-      showSearch: true,
-      sidebarProps: {
-        items: [
-          { id: "contacts", label: "Contacts", icon: "\u{1F4C7}" },
-          { id: "sales", label: "Sales", icon: "\u{1F4C8}", active: true }
-        ]
-      }
-    }
-  );
-};
-
-// src/screens/Inbox/InboxList.tsx
-var import_jsx_runtime48 = require("react/jsx-runtime");
-var InboxList = () => {
-  const messages = [
-    {
-      id: "1",
-      from: "John Doe",
-      subject: "Project Update",
-      preview: "Here is the latest update on the project...",
-      date: "2024-01-20",
-      unread: true
-    },
-    {
-      id: "2",
-      from: "Jane Smith",
-      subject: "Meeting Scheduled",
-      preview: "We have a meeting scheduled for tomorrow at 2 PM",
-      date: "2024-01-19",
-      unread: false
-    }
-  ];
-  return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "max-w-4xl mx-auto p-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("h1", { className: "text-3xl font-bold mb-6", children: "Inbox" }),
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "space-y-4", children: messages.map((msg) => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
-      Card,
-      {
-        className: "p-4 cursor-pointer hover:shadow-lg transition-shadow",
-        children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-start justify-between", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex-1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center gap-3 mb-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("h3", { className: "font-semibold", children: msg.from }),
-              msg.unread && /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Badge, { children: "New" })
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("p", { className: "font-medium mb-1", children: msg.subject }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("p", { className: "text-gray-600 text-sm", children: msg.preview })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "text-gray-500 text-sm ml-4", children: msg.date })
+          item.id
+        )) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("p", { className: "text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "space-y-0.5", children: [
+          teamMembers.map((m3) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+            "button",
+            {
+              className: "w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                  "div",
+                  {
+                    className: `w-6 h-6 rounded-full ${m3.color} flex items-center justify-center text-[10px] text-white font-bold flex-shrink-0`,
+                    children: m3.initials[0]
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "truncate", children: m3.name })
+              ]
+            },
+            m3.name
+          )),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "w-full flex items-center gap-2.5 px-3 py-2 text-sm text-gray-500 hover:text-gray-300", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              "svg",
+              {
+                className: "w-3 h-3",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M19 9l-7 7-7-7"
+                  }
+                )
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { children: "See More" })
+          ] })
         ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "px-3 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center justify-between px-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex-shrink-0" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "text-sm text-gray-200 truncate", children: "Henry Richardson" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "text-gray-500 hover:text-white text-xs", children: "\xB7\xB7\xB7" })
+    ] }) })
+  ] });
+};
+var TopBar2 = ({
+  title = "Products",
+  showBack
+}) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center justify-between px-6 py-3 bg-[#f5efe6]", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-3", children: [
+    showBack && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "w-8 h-8 flex items-center justify-center rounded-lg border border-black/10 text-gray-500 hover:bg-black/5", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M15 19l-7-7 7-7"
+          }
+        )
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("h1", { className: "text-2xl font-bold text-black", children: title })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600", children: "\xB7\xB7\xB7" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600", children: "\xB7\xB7\xB7" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-600 hover:bg-black/5 rounded-lg", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
+            }
+          )
+        }
+      ),
+      "Apps"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "flex items-center gap-1.5 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "text-base leading-none", children: "+" }),
+      "Create new"
+    ] })
+  ] })
+] });
+var Footer2 = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center justify-between px-6 py-3 border-t border-black/10 bg-[#f5efe6] text-sm text-gray-500", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "flex items-center gap-1.5 hover:opacity-80", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeWidth: 2,
+                d: "M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+              }
+            )
+          ]
+        }
+      ),
+      "English"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "hover:opacity-80", children: "API" })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "p-1.5 rounded bg-black/10 hover:bg-black/20", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            }
+          )
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "p-1.5 rounded bg-black/10 hover:bg-black/20", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          }
+        )
+      }
+    ) })
+  ] })
+] });
+var SortIcon = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+  "svg",
+  {
+    className: "w-3 h-3 inline-block ml-1 text-gray-400",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    stroke: "currentColor",
+    children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      "path",
+      {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: 2,
+        d: "M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"
+      }
+    )
+  }
+);
+var TablePagination = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center justify-between px-4 py-3 border-t border-black/10", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "flex items-center gap-1 px-3 py-1.5 rounded-lg border border-black/10 text-sm text-gray-600 hover:bg-black/5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M15 19l-7-7 7-7"
+          }
+        )
+      }
+    ),
+    "Prev"
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "text-sm text-gray-500", children: "Page 1 of 10" }),
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "flex items-center gap-1 px-3 py-1.5 rounded-lg border border-black/10 text-sm text-gray-600 hover:bg-black/5", children: [
+    "Next",
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M9 5l7 7-7 7"
+          }
+        )
+      }
+    )
+  ] })
+] });
+var StockBar = ({
+  value,
+  max,
+  color
+}) => {
+  const pct = Math.min(100, Math.round(value / max * 100));
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "w-20 h-1.5 rounded-full bg-gray-200", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+    "div",
+    {
+      className: `h-full rounded-full ${color}`,
+      style: { width: `${pct}%` }
+    }
+  ) });
+};
+var ProductThumb = ({
+  color = "bg-gray-200"
+}) => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+  "div",
+  {
+    className: `w-10 h-10 rounded-lg ${color} flex items-center justify-center flex-shrink-0`,
+    children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      "svg",
+      {
+        className: "w-5 h-5 text-gray-400",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 1.5,
+            d: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+          }
+        )
+      }
+    )
+  }
+);
+var v1Products = [
+  {
+    id: "1",
+    name: "MacBook Pro 16, 2021",
+    description: "We become what we think about. Winning isn't everything, but wanting to win is.",
+    sold: 1313,
+    stock: 2168,
+    stockMax: 3e3,
+    stockColor: "bg-green-400",
+    price: "$4,140",
+    thumb: "bg-gray-200"
+  },
+  {
+    id: "2",
+    name: "MacBook Pro 13, 2021",
+    description: "Either you run the day, or the day runs you. It does not matter how slowly you go.",
+    sold: 4531,
+    stock: 5506,
+    stockMax: 6e3,
+    stockColor: "bg-yellow-400",
+    price: "$2,148",
+    thumb: "bg-blue-100"
+  },
+  {
+    id: "3",
+    name: "Dell XPS, 2021",
+    description: "Remember that not getting what you want is sometimes a wonderful stroke of luck.",
+    sold: 3632,
+    stock: 8522,
+    stockMax: 1e4,
+    stockColor: "bg-green-400",
+    price: "$3,680",
+    thumb: "bg-slate-100"
+  },
+  {
+    id: "4",
+    name: "MacBook Pro 17, 2020",
+    description: "I didn't fail the test. I just found 100 ways to do it wrong. When one door of happiness closes.",
+    sold: 6818,
+    stock: 6656,
+    stockMax: 8e3,
+    stockColor: "bg-green-400",
+    price: "$3,250",
+    thumb: "bg-gray-100"
+  },
+  {
+    id: "5",
+    name: "IBM Workstation 2020",
+    description: "Fall seven times and stand up eight. There is only one way to avoid criticism: do nothing.",
+    sold: 6183,
+    stock: 3678,
+    stockMax: 8e3,
+    stockColor: "bg-red-400",
+    price: "$1,800",
+    thumb: "bg-amber-100"
+  },
+  {
+    id: "6",
+    name: "MacBook Air, 2021",
+    description: "Winning isn't everything, but wanting to win is. Either write something worth reading.",
+    sold: 1728,
+    stock: 6619,
+    stockMax: 8e3,
+    stockColor: "bg-yellow-400",
+    price: "$2,900",
+    thumb: "bg-indigo-100"
+  }
+];
+var V1Content = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "flex-1 overflow-auto p-5", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "bg-white rounded-xl border border-black/10 overflow-hidden", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "grid grid-cols-[2fr_3fr_1fr_1.5fr_1fr_40px] items-center px-4 py-3 border-b border-black/10 text-sm font-medium text-gray-600", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+      "Name ",
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+      "Details ",
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+      "Sold ",
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+      "Stock ",
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+      "Price ",
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", {})
+  ] }),
+  v1Products.map((p3) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+    "div",
+    {
+      className: "grid grid-cols-[2fr_3fr_1fr_1.5fr_1fr_40px] items-center px-4 py-3 border-b border-black/5 hover:bg-gray-50 transition-colors",
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(ProductThumb, { color: p3.thumb }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "text-sm font-medium text-black", children: p3.name })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "text-sm text-gray-500 leading-snug pr-4", children: p3.description }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "text-sm text-gray-700", children: p3.sold }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex flex-col gap-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(StockBar, { value: p3.stock, max: p3.stockMax, color: p3.stockColor }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "text-xs text-gray-500", children: p3.stock.toLocaleString() })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "text-sm font-semibold text-black", children: p3.price }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "w-8 h-8 flex items-center justify-center rounded-lg border border-black/10 text-gray-400 hover:text-gray-600 text-xs", children: "\xB7\xB7\xB7" })
+      ]
+    },
+    p3.id
+  )),
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(TablePagination, {})
+] }) });
+var v2Products = [
+  {
+    id: "1",
+    name: "Camera",
+    category: "Technology",
+    sku: "8XXP",
+    avl: "Tag",
+    avlColor: "text-gray-500",
+    color: "Black",
+    sales: 140,
+    price: "$25,00"
+  },
+  {
+    id: "2",
+    name: "Package",
+    category: "Marketing",
+    sku: "KSXU",
+    avl: "Here",
+    avlColor: "text-green-600",
+    color: "Neutral",
+    sales: 96,
+    price: "$137,50"
+  },
+  {
+    id: "3",
+    name: "Architecture",
+    category: "Marketing",
+    sku: "BA2S",
+    avl: "Low",
+    avlColor: "text-red-500",
+    color: "White",
+    sales: 14,
+    price: "$245,80"
+  },
+  {
+    id: "4",
+    name: "Sneakers",
+    category: "Clothing",
+    sku: "XG42",
+    avl: "Tag",
+    avlColor: "text-gray-500",
+    color: "Multicolor",
+    sales: 239,
+    price: "$105,50"
+  },
+  {
+    id: "5",
+    name: "Watches",
+    category: "Smart Wear",
+    sku: "5WHL",
+    avl: "Here",
+    avlColor: "text-green-600",
+    color: "White",
+    sales: 38,
+    price: "$295,00"
+  },
+  {
+    id: "6",
+    name: "Headphones",
+    category: "Technology",
+    sku: "VVD3",
+    avl: "Tag",
+    avlColor: "text-gray-500",
+    color: "Black",
+    sales: 155,
+    price: "$95,00"
+  },
+  {
+    id: "7",
+    name: "Playstation",
+    category: "Gifts & Toys",
+    sku: "3L85",
+    avl: "Low",
+    avlColor: "text-red-500",
+    color: "White",
+    sales: 198,
+    price: "$164,40"
+  },
+  {
+    id: "8",
+    name: "Gaming",
+    category: "Gifts & Toys",
+    sku: "QQ44",
+    avl: "Tag",
+    avlColor: "text-gray-500",
+    color: "Multicolor",
+    sales: 36,
+    price: "$350,00"
+  },
+  {
+    id: "9",
+    name: "Clothing",
+    category: "Clothing",
+    sku: "XG42",
+    avl: "Tag",
+    avlColor: "text-gray-500",
+    color: "Multicolor",
+    sales: 239,
+    price: "$105,50"
+  }
+];
+var V2Content = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex-1 overflow-auto p-5", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center justify-between mb-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 bg-purple-100 text-purple-700 text-sm rounded-lg font-medium", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "svg",
+          {
+            className: "w-3.5 h-3.5",
+            fill: "none",
+            viewBox: "0 0 24 24",
+            stroke: "currentColor",
+            children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707l-6.414 6.414A1 1 0 0014 14v4a1 1 0 01-.553.894l-4 2A1 1 0 018 20v-6a1 1 0 01.293-.707L14.586 6.7A1 1 0 0015 6V5H9v1a1 1 0 01-.293.707L2.293 13.12A1 1 0 002 13.828V19a1 1 0 001 1h0"
+              }
+            )
+          }
+        ),
+        "All Filters"
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "flex items-center gap-1 px-3 py-1.5 bg-white border border-black/10 text-sm rounded-lg text-gray-600 hover:bg-gray-50", children: [
+        "All Customers",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "svg",
+          {
+            className: "w-3 h-3 text-gray-400",
+            fill: "none",
+            viewBox: "0 0 24 24",
+            stroke: "currentColor",
+            children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M6 18L18 6M6 6l12 12"
+              }
+            )
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "flex items-center gap-1 px-3 py-1.5 bg-white border border-black/10 text-sm rounded-lg text-gray-600 hover:bg-gray-50", children: [
+        "A-Z",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "svg",
+          {
+            className: "w-3 h-3 text-gray-400",
+            fill: "none",
+            viewBox: "0 0 24 24",
+            stroke: "currentColor",
+            children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M6 18L18 6M6 6l12 12"
+              }
+            )
+          }
+        )
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "flex items-center gap-2 px-4 py-1.5 bg-white border border-black/10 text-sm rounded-lg text-gray-600 hover:bg-gray-50 min-w-[100px]", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4 text-gray-400",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            }
+          )
+        }
+      ),
+      "Search"
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "bg-white rounded-xl border border-black/10 overflow-hidden", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "grid grid-cols-[40px_2fr_1.5fr_1fr_1fr_1fr_1fr_1fr_40px] items-center px-4 py-3 border-b border-black/10 text-sm font-medium text-gray-600", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("input", { type: "checkbox", className: "rounded" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        "Product ",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        "Category ",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        "Id ",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        "Avl ",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        "Color ",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        "Sales ",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        "Price ",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", {})
+    ] }),
+    v2Products.map((p3) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+      "div",
+      {
+        className: "grid grid-cols-[40px_2fr_1.5fr_1fr_1fr_1fr_1fr_1fr_40px] items-center px-4 py-3 border-b border-black/5 hover:bg-gray-50 transition-colors",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("input", { type: "checkbox", className: "rounded" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(ProductThumb, {}),
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "text-sm font-medium text-black", children: p3.name })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "px-3 py-1 border border-black/15 rounded-lg text-sm text-gray-700 bg-white", children: p3.category }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "text-sm text-gray-600", children: p3.sku }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+            "span",
+            {
+              className: `px-2.5 py-1 border rounded-lg text-xs font-medium border-black/10 ${p3.avlColor}`,
+              children: p3.avl
+            }
+          ) }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "text-sm text-gray-600", children: p3.color }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "text-sm text-gray-700", children: p3.sales }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "text-sm font-semibold text-black", children: p3.price }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "text-gray-400 hover:text-gray-600 text-xs", children: "\xB7\xB7\xB7" })
+        ]
       },
-      msg.id
-    )) })
+      p3.id
+    )),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(TablePagination, {})
+  ] })
+] });
+var v3Products = [
+  {
+    id: "1",
+    name: "Darius Cummings",
+    amount: "$2,344",
+    status: "Paid",
+    rate: "$25,00",
+    service: "Tag",
+    date: "08 / 10 / 2022",
+    source: "upwork.com"
+  },
+  {
+    id: "2",
+    name: "Sampson Totton",
+    amount: "$5,220",
+    status: "Pending",
+    rate: "$35,00",
+    service: "Design",
+    date: "14 / 10 / 2022",
+    source: "freelance.com"
+  },
+  {
+    id: "3",
+    name: "Jaroslav Brabec",
+    amount: "$3,891",
+    status: "Pending",
+    rate: "$20,00",
+    service: "Marketing",
+    date: "15 / 10 / 2022",
+    source: "fiverr.com"
+  },
+  {
+    id: "4",
+    name: "Olivia Eklund",
+    amount: "$3,151",
+    status: "Paid",
+    rate: "$15,00",
+    service: "Tag",
+    date: "16 / 10 / 2022",
+    source: "toptal.com"
+  },
+  {
+    id: "5",
+    name: "Leo Knight",
+    amount: "$7,574",
+    status: "Paid",
+    rate: "$45,00",
+    service: "Management",
+    date: "16 / 10 / 2022",
+    source: "jooble.com"
+  },
+  {
+    id: "6",
+    name: "Siri Jakobsson",
+    amount: "$3,053",
+    status: "Pending",
+    rate: "$30,00",
+    service: "Promotion",
+    date: "18 / 10 / 2022",
+    source: "upwork.com"
+  },
+  {
+    id: "7",
+    name: "Mariano Rasgado",
+    amount: "$5,312",
+    status: "Paid",
+    rate: "$35,00",
+    service: "Marketing",
+    date: "19 / 10 / 2022",
+    source: "flexjobs.com"
+  },
+  {
+    id: "8",
+    name: "Hugo Assun\xE7\xE3o",
+    amount: "$6,366",
+    status: "Paid",
+    rate: "$25,00",
+    service: "Tag",
+    date: "23 / 10 / 2022",
+    source: "toptal.com"
+  },
+  {
+    id: "9",
+    name: "Olivia Arribas",
+    amount: "$1,432",
+    status: "Paid",
+    rate: "$15,00",
+    service: "Marketing",
+    date: "24 / 10 / 2022",
+    source: "fiverr.com"
+  }
+];
+var V3Content = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex-1 overflow-auto p-5", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center justify-between mb-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 bg-purple-100 text-purple-700 text-sm rounded-lg font-medium", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "svg",
+          {
+            className: "w-3.5 h-3.5",
+            fill: "none",
+            viewBox: "0 0 24 24",
+            stroke: "currentColor",
+            children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707l-6.414 6.414A1 1 0 0014 14v4a1 1 0 01-.553.894l-4 2A1 1 0 018 20v-6a1 1 0 01.293-.707L2.293 13.12A1 1 0 002 13.828V19a1 1 0 001 1h0"
+              }
+            )
+          }
+        ),
+        "All Filters"
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 bg-white border border-black/10 text-sm rounded-lg text-gray-600 hover:bg-gray-50", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "svg",
+          {
+            className: "w-4 h-4 text-gray-400",
+            fill: "none",
+            viewBox: "0 0 24 24",
+            stroke: "currentColor",
+            children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+              }
+            )
+          }
+        ),
+        "Group"
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 bg-white border border-black/10 text-sm rounded-lg text-gray-600 hover:bg-gray-50", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "svg",
+          {
+            className: "w-3.5 h-3.5 text-gray-400",
+            fill: "none",
+            viewBox: "0 0 24 24",
+            stroke: "currentColor",
+            children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"
+              }
+            )
+          }
+        ),
+        "Sort"
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "w-8 h-8 flex items-center justify-center bg-white border border-black/10 rounded-lg text-gray-500 hover:bg-gray-50 text-xs", children: "\xB7\xB7\xB7" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "w-8 h-8 flex items-center justify-center bg-white border border-black/10 rounded-lg text-gray-500 hover:bg-gray-50", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          }
+        )
+      }
+    ) })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "bg-white rounded-xl border border-black/10 overflow-hidden", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "grid grid-cols-[40px_2fr_1fr_1fr_1fr_1.5fr_1.5fr_1.5fr_40px] items-center px-4 py-3 border-b border-black/10 text-sm font-medium text-gray-600", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("input", { type: "checkbox", className: "rounded" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        "Name ",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        "Amount ",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        "Status ",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        "Rate ",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        "Service ",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        "Date ",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        "Source ",
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", {})
+    ] }),
+    v3Products.map((p3) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+      "div",
+      {
+        className: "grid grid-cols-[40px_2fr_1fr_1fr_1fr_1.5fr_1.5fr_1.5fr_40px] items-center px-4 py-3 border-b border-black/5 hover:bg-gray-50 transition-colors",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("input", { type: "checkbox", className: "rounded" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "text-sm font-medium text-black", children: p3.name }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "text-sm font-semibold text-black", children: p3.amount }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+            "span",
+            {
+              className: `px-3 py-1 rounded-md text-sm font-medium text-white ${p3.status === "Paid" ? "bg-black" : "bg-black"}`,
+              children: p3.status
+            }
+          ) }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "text-sm font-semibold text-black", children: p3.rate }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "px-3 py-1 border border-black/15 rounded-lg text-sm text-gray-700 bg-white", children: p3.service }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "text-sm text-gray-600", children: p3.date }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "text-sm text-gray-600", children: p3.source }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "text-gray-400 hover:text-gray-600 text-xs", children: "\xB7\xB7\xB7" })
+        ]
+      },
+      p3.id
+    )),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(TablePagination, {})
+  ] })
+] });
+var DetailsContent = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex-1 overflow-auto p-5 flex gap-6", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "w-[220px] flex-shrink-0", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "w-full aspect-square rounded-xl bg-gradient-to-br from-pink-200 to-purple-200 mb-4 flex items-center justify-center overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "w-full h-full bg-gradient-to-br from-violet-100 to-pink-100" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("h2", { className: "text-lg font-bold text-black leading-snug mb-1", children: "Neoft UI Kit for NFT Marketplaces" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("p", { className: "text-xs text-gray-500 mb-3", children: "250 Pages and 320 symbols for NFT Marketplace UI design" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "px-3 py-1 border border-black/15 rounded-lg text-sm text-gray-700 bg-white", children: "Template" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "mt-5 space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "border-b border-dashed border-black/10 pb-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-2 mb-0.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "text-2xl font-bold text-black", children: "296" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "px-1.5 py-0.5 bg-red-100 text-red-600 text-xs font-bold rounded", children: "8+" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "text-xs text-gray-500", children: "New sales" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+            "svg",
+            {
+              className: "w-3.5 h-3.5 text-green-500",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M5 13l4 4L19 7"
+                }
+              )
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "border-b border-dashed border-black/10 pb-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-2 mb-0.5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "text-2xl font-bold text-black", children: "18" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "px-1.5 py-0.5 bg-green-100 text-green-600 text-xs font-bold rounded", children: "5" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "text-xs text-gray-500", children: "Followers" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+            "svg",
+            {
+              className: "w-3.5 h-3.5 text-gray-400",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M7 17L17 7M17 7H7M17 7v10"
+                }
+              )
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "text-lg font-bold text-black", children: "$36" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "text-xs text-gray-500", children: "Regular price" })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "mt-4 flex items-center gap-2 px-3 py-2 border border-black/10 rounded-lg text-sm text-gray-600 hover:bg-gray-50 w-full", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4 text-purple-500",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M12 4v16m8-8H4"
+            }
+          )
+        }
+      ),
+      "Add an update",
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("span", { className: "ml-auto flex gap-1", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "svg",
+          {
+            className: "w-4 h-4 text-gray-400",
+            fill: "none",
+            viewBox: "0 0 24 24",
+            stroke: "currentColor",
+            children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M4 6h16M4 10h16M4 14h16M4 18h16"
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "svg",
+          {
+            className: "w-4 h-4 text-gray-400",
+            fill: "none",
+            viewBox: "0 0 24 24",
+            stroke: "currentColor",
+            children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M7 17L17 7M17 7H7M17 7v10"
+              }
+            )
+          }
+        )
+      ] })
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-1 mb-5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "px-4 py-2 bg-black text-white text-sm font-medium rounded-lg", children: "General information" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "px-4 py-2 text-sm text-gray-500 hover:text-gray-700", children: "Pricing" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "px-4 py-2 text-sm text-gray-500 hover:text-gray-700", children: "Delivery" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "px-4 py-2 text-sm text-gray-500 hover:text-gray-700", children: "Returns" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "ml-auto", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "flex items-center gap-1 px-3 py-2 border border-black/15 rounded-lg text-sm text-gray-600 hover:bg-gray-50", children: "--- Actions" }) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "bg-white rounded-xl border border-black/10 p-5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("h3", { className: "text-base font-semibold text-black mb-5", children: "General information" }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "mb-5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("label", { className: "text-sm text-gray-500 mb-2 block", children: "Images" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "flex gap-2", children: [
+          "bg-pink-100",
+          "bg-purple-100",
+          "bg-blue-100",
+          "bg-green-100",
+          "bg-orange-100"
+        ].map((c2, i2) => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "div",
+          {
+            className: `w-16 h-16 rounded-lg ${c2} relative flex items-center justify-center flex-shrink-0`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "absolute top-1 right-1 w-4 h-4 bg-black/20 rounded-full flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              "svg",
+              {
+                className: "w-2.5 h-2.5 text-white",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M6 18L18 6M6 6l12 12"
+                  }
+                )
+              }
+            ) })
+          },
+          i2
+        )) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "grid grid-cols-2 gap-4 mb-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("label", { className: "text-sm text-gray-500 mb-1.5 block", children: "Product title" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+            "input",
+            {
+              type: "text",
+              defaultValue: "Dell XPS, 2021",
+              className: "w-full px-3 py-2 border border-black/15 rounded-lg text-sm text-black focus:outline-none focus:ring-1 focus:ring-purple-500"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("label", { className: "text-sm text-gray-500 mb-1.5 block", children: "Category" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "relative", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("select", { className: "w-full px-3 py-2 border border-black/15 rounded-lg text-sm text-black focus:outline-none focus:ring-1 focus:ring-purple-500 appearance-none bg-white", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("option", { children: "Laptops" }),
+              /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("option", { children: "Electronics" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              "svg",
+              {
+                className: "w-4 h-4 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M19 9l-7 7-7-7"
+                  }
+                )
+              }
+            )
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "grid grid-cols-2 gap-4 mb-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("label", { className: "text-sm text-gray-500 mb-1.5 block", children: "SKU" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+            "input",
+            {
+              type: "text",
+              defaultValue: "SKU: 34589-123",
+              className: "w-full px-3 py-2 border border-black/15 rounded-lg text-sm text-black focus:outline-none focus:ring-1 focus:ring-purple-500"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("label", { className: "text-sm text-gray-500 mb-1.5 block", children: "Available" }),
+          /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center border border-black/15 rounded-lg overflow-hidden", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "px-3 py-2 text-sm text-gray-600 bg-white flex-1", children: "Primary warehouse" }),
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "px-2 py-2 text-gray-400 hover:text-gray-600 border-l border-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M20 12H4"
+                  }
+                )
+              }
+            ) }),
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "px-2 py-2 text-sm font-medium text-black", children: "248" }),
+            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "px-2 py-2 text-gray-400 hover:text-gray-600 border-l border-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M12 4v16m8-8H4"
+                  }
+                )
+              }
+            ) })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "mb-6", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("label", { className: "text-sm text-gray-500 mb-1.5 block", children: "Specifications" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "flex flex-wrap gap-2 p-3 border border-black/15 rounded-lg min-h-[48px]", children: ["Digital", "UI / UX", "Web", "Theme"].map((tag) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+          "span",
+          {
+            className: "flex items-center gap-1 px-2 py-1 bg-gray-100 rounded-md text-sm text-gray-700",
+            children: [
+              tag,
+              /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                "svg",
+                {
+                  className: "w-3 h-3 text-gray-400 cursor-pointer hover:text-gray-600",
+                  fill: "none",
+                  viewBox: "0 0 24 24",
+                  stroke: "currentColor",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M6 18L18 6M6 6l12 12"
+                    }
+                  )
+                }
+              )
+            ]
+          },
+          tag
+        )) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex items-center gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "px-6 py-2.5 border border-black/15 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50", children: "Reset Changes" }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "px-6 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: "Update Settings" })
+      ] })
+    ] })
+  ] })
+] });
+var ProductsList = ({
+  theme = "light",
+  variant = "v1"
+}) => {
+  const isDetails = variant === "details";
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex h-screen bg-[#f5efe6]", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(DoctorProjectSidebar, { activeItem: "products" }),
+    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        TopBar2,
+        {
+          title: isDetails ? "Product details" : "Products",
+          showBack: isDetails
+        }
+      ),
+      variant === "v1" && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(V1Content, {}),
+      variant === "v2" && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(V2Content, {}),
+      variant === "v3" && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(V3Content, {}),
+      variant === "details" && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(DetailsContent, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(Footer2, {})
+    ] })
   ] });
 };
 
-// src/screens/Payments/PaymentsList.tsx
-var import_jsx_runtime49 = require("react/jsx-runtime");
-var PaymentsList = () => {
-  const payments = [
+// src/screens/Customers/CustomersList.tsx
+var import_jsx_runtime45 = require("react/jsx-runtime");
+var DoctorProjectSidebar2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "w-[160px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "px-5 py-5", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "text-lg font-bold text-white", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-purple-500 mb-3" })
+  ] }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex-1 overflow-y-auto px-3 py-2 space-y-5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("p", { className: "text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("nav", { className: "space-y-0.5", children: [
+        { label: "Dashboard", icon: "dashboard" },
+        { label: "Products", icon: "products" },
+        { label: "Contacts", icon: "contacts" },
+        {
+          label: "Customers",
+          icon: "customers",
+          active: true,
+          badge: 15,
+          badgeColor: "bg-purple-600"
+        },
+        {
+          label: "Sales",
+          icon: "sales",
+          badge: 14,
+          badgeColor: "bg-green-500"
+        },
+        { label: "Analytics", icon: "analytics" }
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+        "button",
+        {
+          className: `w-full flex items-center justify-between px-2 py-2 rounded-lg text-xs transition-colors ${item.active ? "bg-white/10 text-white font-medium" : "text-gray-400 hover:text-white hover:bg-white/5"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(NavIcon, { name: item.icon }),
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { children: item.label })
+            ] }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "span",
+              {
+                className: `text-[10px] text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                children: item.badge
+              }
+            )
+          ]
+        },
+        item.label
+      )) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("p", { className: "text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "space-y-0.5", children: [
+        [
+          { name: "Alexandre Paiva", color: "bg-orange-400" },
+          { name: "Thanawan Chadee", color: "bg-blue-400" },
+          { name: "Justine Robinson", color: "bg-pink-400" }
+        ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+          "button",
+          {
+            className: "w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "div",
+                {
+                  className: `w-5 h-5 rounded-full ${member.color} flex-shrink-0`
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "truncate", children: member.name })
+            ]
+          },
+          member.name
+        )),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("button", { className: "w-full flex items-center gap-2 px-2 py-1.5 text-xs text-gray-500 hover:text-gray-300", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+            "svg",
+            {
+              className: "w-3 h-3",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M19 9l-7 7-7-7"
+                }
+              )
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { children: "See More" })
+        ] })
+      ] })
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "px-3 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center justify-between px-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "w-6 h-6 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex-shrink-0" }),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "text-xs text-gray-200 truncate", children: "Henry Richardson" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "text-gray-500 hover:text-white text-xs", children: "\xB7\xB7\xB7" })
+  ] }) })
+] });
+var NavIcon = ({ name }) => {
+  const cls = "w-3.5 h-3.5 flex-shrink-0";
+  switch (name) {
+    case "dashboard":
+      return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+            }
+          )
+        }
+      );
+    case "products":
+      return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+            }
+          )
+        }
+      );
+    case "contacts":
+      return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"
+            }
+          )
+        }
+      );
+    case "customers":
+      return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+            }
+          )
+        }
+      );
+    case "sales":
+      return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+            }
+          )
+        }
+      );
+    default:
+      return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+            }
+          )
+        }
+      );
+  }
+};
+var TopBar3 = ({ title = "Customers", theme, showBack = false }) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+  "div",
+  {
+    className: `flex items-center justify-between px-6 py-4 ${theme === "dark" ? "bg-[#111111]" : "bg-[#f5efe6]"}`,
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-3", children: [
+        showBack && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+          "button",
+          {
+            className: `w-8 h-8 flex items-center justify-center rounded-lg border ${theme === "dark" ? "border-white/20 text-white" : "border-black/20 text-black"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M15 19l-7-7 7-7"
+                  }
+                )
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+          "h1",
+          {
+            className: `text-2xl font-bold ${theme === "dark" ? "text-white" : "text-black"}`,
+            children: title
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "text-gray-400 hover:text-gray-600", children: "\xB7\xB7\xB7" }),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "text-gray-400 hover:text-gray-600", children: "\xB7\xB7\xB7" }),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+          "button",
+          {
+            className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium ${theme === "dark" ? "text-gray-200 hover:bg-white/10" : "text-gray-700 hover:bg-black/5"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "svg",
+                {
+                  className: "w-3.5 h-3.5",
+                  fill: "none",
+                  viewBox: "0 0 24 24",
+                  stroke: "currentColor",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M4 6h16M4 10h16M4 14h16M4 18h16"
+                    }
+                  )
+                }
+              ),
+              "Apps"
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-xs font-medium rounded-lg transition-colors", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "text-base leading-none", children: "+" }),
+          "Create new"
+        ] })
+      ] })
+    ]
+  }
+);
+var Footer3 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+  "div",
+  {
+    className: `flex items-center justify-between px-6 py-2.5 border-t text-xs ${theme === "dark" ? "bg-[#111111] border-white/10 text-gray-500" : "bg-[#f5efe6] border-black/10 text-gray-500"}`,
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("button", { className: "flex items-center gap-1.5 hover:opacity-80", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+            "svg",
+            {
+              className: "w-3.5 h-3.5",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+                /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeWidth: 2,
+                    d: "M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+                  }
+                )
+              ]
+            }
+          ),
+          "English"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "hover:opacity-80", children: "API" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+          "button",
+          {
+            className: `p-1.5 rounded ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+              "svg",
+              {
+                className: "w-3 h-3",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    }
+                  )
+                ]
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+          "button",
+          {
+            className: `p-1.5 rounded ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "svg",
+              {
+                className: "w-3 h-3",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                  }
+                )
+              }
+            )
+          }
+        )
+      ] })
+    ]
+  }
+);
+var Pagination2 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+  "div",
+  {
+    className: `flex items-center justify-between px-4 py-3 border-t ${theme === "dark" ? "border-white/10" : "border-black/10"}`,
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+        "button",
+        {
+          className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border ${theme === "dark" ? "border-white/20 text-gray-300 hover:bg-white/5" : "border-black/20 text-gray-600 hover:bg-black/5"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "svg",
+              {
+                className: "w-3.5 h-3.5",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M15 19l-7-7 7-7"
+                  }
+                )
+              }
+            ),
+            "Prev"
+          ]
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        "span",
+        {
+          className: `text-xs ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`,
+          children: "Page 1 of 10"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+        "button",
+        {
+          className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border ${theme === "dark" ? "border-white/20 text-gray-300 hover:bg-white/5" : "border-black/20 text-gray-600 hover:bg-black/5"}`,
+          children: [
+            "Next",
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "svg",
+              {
+                className: "w-3.5 h-3.5",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M9 5l7 7-7 7"
+                  }
+                )
+              }
+            )
+          ]
+        }
+      )
+    ]
+  }
+);
+var CustomerAvatar = ({
+  initials,
+  color
+}) => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+  "div",
+  {
+    className: `w-7 h-7 rounded-full ${color} flex items-center justify-center text-white text-[10px] font-bold flex-shrink-0`,
+    children: initials
+  }
+);
+var StatusBadge = ({
+  status
+}) => {
+  if (status === "Tag") {
+    return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "px-3 py-1 bg-green-400 text-black text-xs font-medium rounded-md", children: "Tag" });
+  }
+  if (status === "Pending") {
+    return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "px-3 py-1 bg-yellow-300 text-black text-xs font-medium rounded-md", children: "Pending" });
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "px-3 py-1 bg-green-400 text-black text-xs font-medium rounded-md", children: "center" });
+};
+var customersV1 = [
+  {
+    id: "1",
+    initials: "DT",
+    color: "bg-gray-500",
+    name: "Donat Twerski",
+    date: "08 Nov 2021",
+    email: "pdbaby@verizon.net",
+    product: "IOTask Web UI Kit",
+    price: "$39.00"
+  },
+  {
+    id: "2",
+    initials: "SA",
+    color: "bg-blue-500",
+    name: "Slawa Antokolskiy",
+    date: "19 Jun 2021",
+    email: "jshirley@yahoo.ca",
+    product: "BetaCRM Web UI Kit",
+    price: "$34.50"
+  },
+  {
+    id: "3",
+    initials: "SM",
+    color: "bg-orange-500",
+    name: "Suhalb Al Minhas",
+    date: "25 Jan 2021",
+    email: "markjug@optonl.net",
+    product: "IOTask Web UI Kit",
+    price: "$28.00"
+  },
+  {
+    id: "4",
+    initials: "FC",
+    color: "bg-pink-500",
+    name: "Fabiana Capmany",
+    date: "17 Dec 2021",
+    email: "tangsh@outlook.com",
+    product: "BetaCRM Web UI Kit",
+    price: "$36.00"
+  },
+  {
+    id: "5",
+    initials: "SV",
+    color: "bg-purple-500",
+    name: "Sanne Viscaal",
+    date: "10 Feb 2021",
+    email: "krueger@yahoo.com",
+    product: "BetaCRM Web UI Kit",
+    price: "$24.40"
+  },
+  {
+    id: "6",
+    initials: "NM",
+    color: "bg-teal-500",
+    name: "Naseema Al Morad",
+    date: "03 Jun 2021",
+    email: "flavell@aol.com",
+    product: "Cardify Landing Pages",
+    price: "$39.00"
+  },
+  {
+    id: "7",
+    initials: "IP",
+    color: "bg-red-500",
+    name: "Iraj Pirdoost",
+    date: "07 Nov 2021",
+    email: "hwestli@yahoo.ca",
+    product: "IOFinance Web UI Kit",
+    price: "$44.90"
+  },
+  {
+    id: "8",
+    initials: "SV",
+    color: "bg-purple-500",
+    name: "Sanne Viscaal",
+    date: "01 Nov 2021",
+    email: "krueger@yahoo.com",
+    product: "IOWallet Mobile App",
+    price: "$24.40"
+  },
+  {
+    id: "9",
+    initials: "LN",
+    color: "bg-green-600",
+    name: "Lungelo Ngcaba",
+    date: "16 Mar 2021",
+    email: "jbryan@icloud.com",
+    product: "IOTask Mobile UI Kit",
+    price: "$39.00"
+  }
+];
+var customersV2 = [
+  {
+    id: "1",
+    initials: "DT",
+    color: "bg-gray-500",
+    name: "Donat Twerski",
+    product: "IOTask Web UI Kit",
+    date: "08 Nov 2023",
+    rate: "$25,00",
+    status: "Tag"
+  },
+  {
+    id: "2",
+    initials: "SA",
+    color: "bg-blue-500",
+    name: "Slawa Antokolskiy",
+    product: "BetaCRM Web UI Kit",
+    date: "19 Jun 2023",
+    rate: "$34.50",
+    status: "Tag"
+  },
+  {
+    id: "3",
+    initials: "SM",
+    color: "bg-orange-500",
+    name: "Suhalb Al Minhas",
+    product: "IOTask Web UI Kit",
+    date: "25 Jan 2023",
+    rate: "$28.00",
+    status: "center"
+  },
+  {
+    id: "4",
+    initials: "FC",
+    color: "bg-pink-500",
+    name: "Fabiana Capmany",
+    product: "BetaCRM Web UI Kit",
+    date: "17 Dec 2023",
+    rate: "$36.00",
+    status: "Pending"
+  },
+  {
+    id: "5",
+    initials: "SV",
+    color: "bg-purple-500",
+    name: "Sanne Viscaal",
+    product: "BetaCRM Web UI Kit",
+    date: "10 Feb 2023",
+    rate: "$24.40",
+    status: "Tag"
+  },
+  {
+    id: "6",
+    initials: "NM",
+    color: "bg-teal-500",
+    name: "Naseema Al Morad",
+    product: "Cardify Landing Pages",
+    date: "03 Jun 2023",
+    rate: "$25,00",
+    status: "Pending"
+  },
+  {
+    id: "7",
+    initials: "IP",
+    color: "bg-red-500",
+    name: "Iraj Pirdoost",
+    product: "IOFinance Web UI Kit",
+    date: "07 Nov 2023",
+    rate: "$44.90",
+    status: "Tag"
+  },
+  {
+    id: "8",
+    initials: "SV",
+    color: "bg-purple-500",
+    name: "Sanne Viscaal",
+    product: "IOWallet Mobile App",
+    date: "01 Nov 2023",
+    rate: "$24.40",
+    status: "Tag"
+  },
+  {
+    id: "9",
+    initials: "LN",
+    color: "bg-green-600",
+    name: "Lungelo Ngcaba",
+    product: "IOTask Mobile UI Kit",
+    date: "16 Mar 2023",
+    rate: "$25,00",
+    status: "Tag"
+  }
+];
+var customersV3 = [
+  {
+    id: "1",
+    initials: "GS",
+    color: "bg-orange-400",
+    name: "Gatsharan Sangrota",
+    email: "mahbub@yahoo.ca",
+    status: "Tag",
+    sales: "$125,00",
+    count: 18
+  },
+  {
+    id: "2",
+    initials: "ZN",
+    color: "bg-purple-500",
+    name: "Zikoranaudo Nkechi",
+    email: "donev@att.net",
+    status: "Tag",
+    sales: "$98,00",
+    count: 3
+  },
+  {
+    id: "3",
+    initials: "FR",
+    color: "bg-teal-500",
+    name: "Faadi Al Rahman",
+    email: "daveewart@comcast.net",
+    status: "Pending",
+    sales: "$350,00",
+    count: 7
+  },
+  {
+    id: "4",
+    initials: "OS",
+    color: "bg-blue-500",
+    name: "Okazaki Suzuko",
+    email: "lcheng@att.net",
+    status: "Tag",
+    sales: "$259,50",
+    count: 14
+  },
+  {
+    id: "5",
+    initials: "AO",
+    color: "bg-gray-600",
+    name: "Afamefuna Okparo",
+    email: "staikos@sbcglobal.net",
+    status: "Tag",
+    sales: "$578,00",
+    count: 24
+  },
+  {
+    id: "6",
+    initials: "CM",
+    color: "bg-brown-500",
+    name: "Conan Matusov",
+    email: "jemarch@gmail.com",
+    status: "Pending",
+    sales: "$625,00",
+    count: 15
+  },
+  {
+    id: "7",
+    initials: "TH",
+    color: "bg-red-400",
+    name: "Trashae Hubbard",
+    email: "joehall@arr.net",
+    status: "Tag",
+    sales: "$49,00",
+    count: 2
+  },
+  {
+    id: "8",
+    initials: "TB",
+    color: "bg-green-500",
+    name: "Tamas Bunce",
+    email: "uncled@optonline.net",
+    status: "Tag",
+    sales: "$280,00",
+    count: 5
+  }
+];
+var V1Content2 = ({ theme }) => {
+  const cardBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10" : "bg-white border-black/10";
+  const headerText = theme === "dark" ? "text-gray-400" : "text-gray-500";
+  const rowText = theme === "dark" ? "text-white" : "text-black";
+  const rowBorder = theme === "dark" ? "border-white/5" : "border-black/5";
+  return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "flex-1 overflow-auto px-6 py-4", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: `rounded-xl border ${cardBg} overflow-hidden`, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+      "div",
+      {
+        className: `flex items-center justify-between px-4 py-3 border-b ${theme === "dark" ? "border-white/10" : "border-black/10"}`,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "px-3 py-1.5 bg-black text-white text-xs font-medium rounded-lg", children: "All Customers" }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "button",
+              {
+                className: `px-3 py-1.5 text-xs font-medium rounded-lg ${theme === "dark" ? "text-gray-400 hover:bg-white/5" : "text-gray-600 hover:bg-black/5"}`,
+                children: "Payment Pending"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "button",
+              {
+                className: `px-3 py-1.5 text-xs font-medium rounded-lg ${theme === "dark" ? "text-gray-400 hover:bg-white/5" : "text-gray-600 hover:bg-black/5"}`,
+                children: "Paid"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "button",
+              {
+                className: `px-3 py-1.5 text-xs font-medium rounded-lg ${theme === "dark" ? "text-gray-400 hover:bg-white/5" : "text-gray-600 hover:bg-black/5"}`,
+                children: "Invoice Sent"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+              "button",
+              {
+                className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border ${theme === "dark" ? "border-white/20 text-gray-300" : "border-black/20 text-gray-600"}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "svg",
+                    {
+                      className: "w-3 h-3",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                        "path",
+                        {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"
+                        }
+                      )
+                    }
+                  ),
+                  "Sort: A-Z"
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "button",
+              {
+                className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium border ${theme === "dark" ? "border-white/20 text-gray-300" : "border-black/20 text-gray-600"}`,
+                children: "\xB7\xB7\xB7 Bulk Actions"
+              }
+            )
+          ] })
+        ]
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("table", { className: "w-full", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+        "tr",
+        {
+          className: `border-b ${theme === "dark" ? "border-white/10" : "border-black/10"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("th", { className: "w-8 px-4 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("input", { type: "checkbox", className: "w-3.5 h-3.5 rounded" }) }),
+            ["Name", "Date", "Email", "Product", "Price"].map((col) => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "th",
+              {
+                className: `text-left text-xs font-medium px-3 py-3 ${headerText}`,
+                children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("span", { className: "flex items-center gap-1", children: [
+                  col,
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "svg",
+                    {
+                      className: "w-3 h-3 opacity-50",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                        "path",
+                        {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M19 9l-7 7-7-7"
+                        }
+                      )
+                    }
+                  )
+                ] })
+              },
+              col
+            )),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("th", { className: "w-8" })
+          ]
+        }
+      ) }),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("tbody", { children: customersV1.map((customer) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+        "tr",
+        {
+          className: `border-b last:border-b-0 ${rowBorder} hover:${theme === "dark" ? "bg-white/5" : "bg-black/2"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { className: "px-4 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("input", { type: "checkbox", className: "w-3.5 h-3.5 rounded" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { className: "px-3 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                CustomerAvatar,
+                {
+                  initials: customer.initials,
+                  color: customer.color
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: `text-xs font-medium ${rowText}`, children: customer.name })
+            ] }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { className: "px-3 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "svg",
+                {
+                  className: "w-3 h-3 text-gray-400",
+                  fill: "none",
+                  viewBox: "0 0 24 24",
+                  stroke: "currentColor",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    }
+                  )
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "span",
+                {
+                  className: `text-xs ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`,
+                  children: customer.date
+                }
+              )
+            ] }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { className: "px-3 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "svg",
+                {
+                  className: "w-3 h-3 text-gray-400",
+                  fill: "none",
+                  viewBox: "0 0 24 24",
+                  stroke: "currentColor",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    }
+                  )
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "span",
+                {
+                  className: `text-xs ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`,
+                  children: customer.email
+                }
+              )
+            ] }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { className: "px-3 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "svg",
+                {
+                  className: "w-3 h-3 text-gray-400",
+                  fill: "none",
+                  viewBox: "0 0 24 24",
+                  stroke: "currentColor",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                    }
+                  )
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "span",
+                {
+                  className: `text-xs ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`,
+                  children: customer.product
+                }
+              )
+            ] }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { className: "px-3 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: `text-xs font-semibold ${rowText}`, children: customer.price }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { className: "px-3 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "text-gray-400 hover:text-gray-600 text-xs", children: "\xB7\xB7\xB7" }) })
+          ]
+        },
+        customer.id
+      )) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(Pagination2, { theme })
+  ] }) });
+};
+var V2Content2 = ({ theme }) => {
+  const cardBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10" : "bg-white border-black/10";
+  const headerText = theme === "dark" ? "text-gray-400" : "text-gray-500";
+  const rowText = theme === "dark" ? "text-white" : "text-black";
+  const rowBorder = theme === "dark" ? "border-white/5" : "border-black/5";
+  const btnBorder = theme === "dark" ? "border-white/20 text-gray-300" : "border-black/20 text-gray-600";
+  return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "flex-1 overflow-auto px-6 py-4", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: `rounded-xl border ${cardBg} overflow-hidden`, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+      "div",
+      {
+        className: `flex items-center justify-between px-4 py-3 border-b ${theme === "dark" ? "border-white/10" : "border-black/10"}`,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+              "button",
+              {
+                className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs border ${btnBorder}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "svg",
+                    {
+                      className: "w-3 h-3",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                        "path",
+                        {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                        }
+                      )
+                    }
+                  ),
+                  "All Filters"
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+              "button",
+              {
+                className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs border ${btnBorder}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "svg",
+                    {
+                      className: "w-3 h-3",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                        "path",
+                        {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M4 6h16M4 10h16M4 14h16M4 18h16"
+                        }
+                      )
+                    }
+                  ),
+                  "Group"
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+              "button",
+              {
+                className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs border ${btnBorder}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "svg",
+                    {
+                      className: "w-3 h-3",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                        "path",
+                        {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"
+                        }
+                      )
+                    }
+                  ),
+                  "Sort"
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "button",
+              {
+                className: `px-2 py-1.5 rounded-lg text-xs border ${btnBorder}`,
+                children: "\xB7\xB7\xB7"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: `p-2 rounded-lg border ${btnBorder}`, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+            "svg",
+            {
+              className: "w-3.5 h-3.5",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                }
+              )
+            }
+          ) })
+        ]
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("table", { className: "w-full", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+        "tr",
+        {
+          className: `border-b ${theme === "dark" ? "border-white/10" : "border-black/10"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("th", { className: "w-8 px-4 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("input", { type: "checkbox", className: "w-3.5 h-3.5 rounded" }) }),
+            ["Name", "Product", "Date", "Rate", "Status"].map((col) => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "th",
+              {
+                className: `text-left text-xs font-medium px-3 py-3 ${headerText}`,
+                children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("span", { className: "flex items-center gap-1", children: [
+                  col,
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "svg",
+                    {
+                      className: "w-3 h-3 opacity-50",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                        "path",
+                        {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M19 9l-7 7-7-7"
+                        }
+                      )
+                    }
+                  )
+                ] })
+              },
+              col
+            )),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("th", { className: "w-8" })
+          ]
+        }
+      ) }),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("tbody", { children: customersV2.map((customer) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+        "tr",
+        {
+          className: `border-b last:border-b-0 ${rowBorder}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { className: "px-4 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("input", { type: "checkbox", className: "w-3.5 h-3.5 rounded" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { className: "px-3 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                CustomerAvatar,
+                {
+                  initials: customer.initials,
+                  color: customer.color
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: `text-xs font-medium ${rowText}`, children: customer.name })
+            ] }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { className: "px-3 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "svg",
+                {
+                  className: "w-3 h-3 text-gray-400",
+                  fill: "none",
+                  viewBox: "0 0 24 24",
+                  stroke: "currentColor",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                    }
+                  )
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "span",
+                {
+                  className: `text-xs ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`,
+                  children: customer.product
+                }
+              )
+            ] }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { className: "px-3 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "span",
+              {
+                className: `text-xs ${theme === "dark" ? "text-gray-300" : "text-gray-700"}`,
+                children: customer.date
+              }
+            ) }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { className: "px-3 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: `text-xs font-semibold ${rowText}`, children: customer.rate }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { className: "px-3 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(StatusBadge, { status: customer.status }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { className: "px-3 py-3", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "text-gray-400 hover:text-gray-600 text-xs", children: "\xB7\xB7\xB7" }) })
+          ]
+        },
+        customer.id
+      )) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(Pagination2, { theme })
+  ] }) });
+};
+var V3Content2 = ({ theme }) => {
+  const cardBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10" : "bg-white border-black/10";
+  const outerBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10" : "bg-white border-black/10";
+  const btnBorder = theme === "dark" ? "border-white/20 text-gray-300" : "border-black/20 text-gray-600";
+  const rowText = theme === "dark" ? "text-white" : "text-black";
+  return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "flex-1 overflow-auto px-6 py-4", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: `rounded-xl border ${outerBg} overflow-hidden`, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+      "div",
+      {
+        className: `flex items-center justify-between px-4 py-3 border-b ${theme === "dark" ? "border-white/10" : "border-black/10"}`,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+              "button",
+              {
+                className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs border ${btnBorder}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "svg",
+                    {
+                      className: "w-3 h-3",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                        "path",
+                        {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                        }
+                      )
+                    }
+                  ),
+                  "All Filters"
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+              "button",
+              {
+                className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs border ${btnBorder}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "svg",
+                    {
+                      className: "w-3 h-3",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                        "path",
+                        {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M4 6h16M4 10h16M4 14h16M4 18h16"
+                        }
+                      )
+                    }
+                  ),
+                  "Group"
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+              "button",
+              {
+                className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs border ${btnBorder}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "svg",
+                    {
+                      className: "w-3 h-3",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                        "path",
+                        {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"
+                        }
+                      )
+                    }
+                  ),
+                  "Sort"
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "button",
+              {
+                className: `px-2 py-1.5 rounded-lg text-xs border ${btnBorder}`,
+                children: "\xB7\xB7\xB7"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: `p-2 rounded-lg border ${btnBorder}`, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+            "svg",
+            {
+              className: "w-3.5 h-3.5",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                }
+              )
+            }
+          ) })
+        ]
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "p-4 grid grid-cols-4 gap-3", children: customersV3.map((customer) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+      "div",
+      {
+        className: `rounded-xl border ${cardBg} overflow-hidden`,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex items-center justify-between px-3 pt-3 pb-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("input", { type: "checkbox", className: "w-3.5 h-3.5 rounded" }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "text-gray-400 hover:text-gray-600 text-xs", children: "\xB7\xB7\xB7" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex flex-col items-center px-3 pb-3 text-center", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "div",
+              {
+                className: `w-14 h-14 rounded-full ${customer.color} flex items-center justify-center text-white text-lg font-bold mb-2`,
+                children: customer.initials
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-xs font-semibold ${rowText} mb-0.5`, children: customer.name }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "text-[10px] text-gray-500 mb-2", children: customer.email }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(StatusBadge, { status: customer.status })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+            "div",
+            {
+              className: `flex border-t ${theme === "dark" ? "border-white/10" : "border-black/10"}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+                  "div",
+                  {
+                    className: `flex-1 px-3 py-2 border-r ${theme === "dark" ? "border-white/10" : "border-black/10"}`,
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-xs font-semibold ${rowText}`, children: customer.sales }),
+                      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "text-[10px] text-gray-500", children: "Sales" })
+                    ]
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex-1 px-3 py-2", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-xs font-semibold ${rowText}`, children: customer.count }),
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "text-[10px] text-gray-500", children: "Count" })
+                ] })
+              ]
+            }
+          )
+        ]
+      },
+      customer.id
+    )) }),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(Pagination2, { theme })
+  ] }) });
+};
+var DetailsContent2 = ({ theme }) => {
+  const cardBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10" : "bg-white border-black/10";
+  const rowText = theme === "dark" ? "text-white" : "text-black";
+  const labelText = "text-gray-500";
+  const rowBorder = theme === "dark" ? "border-white/5" : "border-black/5";
+  const orders = [
     {
       id: "1",
-      method: "Credit Card",
-      amount: 250,
-      date: "2024-01-20",
-      recipient: "Online Store",
-      status: "Completed"
+      initials: "C",
+      color: "bg-gray-400",
+      name: "Camera",
+      date: "03 Oct 2023",
+      amount: "$25,00",
+      status: "Tag"
     },
     {
       id: "2",
-      method: "Bank Transfer",
-      amount: 1500,
-      date: "2024-01-18",
-      recipient: "Company Inc",
-      status: "Completed"
+      initials: "P",
+      color: "bg-pink-400",
+      name: "Package",
+      date: "05 Oct 2023",
+      amount: "$137,50",
+      status: "Tag"
     },
     {
       id: "3",
-      method: "Digital Wallet",
-      amount: 75.5,
-      date: "2024-01-20",
-      recipient: "Service Provider",
+      initials: "A",
+      color: "bg-teal-500",
+      name: "Architecture",
+      date: "16 Nov 2023",
+      amount: "$245,80",
+      status: "Tag"
+    },
+    {
+      id: "4",
+      initials: "S",
+      color: "bg-orange-400",
+      name: "Sneakers",
+      date: "28 Nov 2023",
+      amount: "$105,50",
       status: "Pending"
     }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
-    ListScreen,
-    {
-      title: "Payments",
-      subtitle: "View and manage all payments",
-      data: payments,
-      columns: [
-        { key: "id", label: "ID" },
-        { key: "method", label: "Payment Method" },
+  return /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex-1 overflow-auto px-6 py-4 flex gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "w-[200px] flex-shrink-0", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "w-16 h-16 rounded-full bg-gradient-to-br from-orange-300 to-pink-400 flex items-center justify-center text-white text-xl font-bold mb-3", children: "GS" }),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-base font-bold ${rowText} mb-0.5`, children: "Gabriel Soares" }),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-xs ${labelText} mb-4`, children: "London, UK" }),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        "div",
         {
-          key: "amount",
-          label: "Amount",
-          render: (value) => `$${value.toFixed(2)}`
-        },
-        { key: "date", label: "Date" },
-        { key: "recipient", label: "Recipient" },
-        {
-          key: "status",
-          label: "Status",
-          render: (value) => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(Badge, { variant: value === "Completed" ? "mint" : "secondary", children: value })
+          className: `border-b ${theme === "dark" ? "border-white/10" : "border-black/10"} mb-3`
         }
-      ],
-      showSearch: true,
-      sidebarProps: {
-        items: [
-          { id: "payments", label: "Payments", icon: "\u{1F4B3}", active: true },
-          { id: "send-money", label: "Send Money", icon: "\u{1F4B8}" }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "space-y-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-[10px] ${labelText} mb-0.5`, children: "Email" }),
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-xs ${rowText}`, children: "gab****@gmail.com" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-[10px] ${labelText} mb-0.5`, children: "Payment option" }),
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-xs ${rowText}`, children: "PayPal" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-[10px] ${labelText} mb-0.5`, children: "Address" }),
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-xs ${rowText}`, children: "Ridge Suite 862, St. Rudy, WA 2317" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-[10px] ${labelText} mb-0.5`, children: "Phone" }),
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-xs ${rowText}`, children: "+64 456 869 393" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-[10px] ${labelText} mb-0.5`, children: "Public link" }),
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "text-xs text-blue-500 break-all", children: "http://whiteul.store/l.saunders" })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "mt-4 flex items-center gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-2 bg-purple-600 hover:bg-purple-700 text-white text-xs font-medium rounded-lg", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+            "svg",
+            {
+              className: "w-3 h-3",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M12 4v16m8-8H4"
+                }
+              )
+            }
+          ),
+          "Add new invoice"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+          "button",
+          {
+            className: `p-2 rounded-lg border ${theme === "dark" ? "border-white/20 text-gray-300" : "border-black/20 text-gray-600"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "svg",
+              {
+                className: "w-3 h-3",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  }
+                )
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+          "button",
+          {
+            className: `p-2 rounded-lg border ${theme === "dark" ? "border-white/20 text-gray-300" : "border-black/20 text-gray-600"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+              "svg",
+              {
+                className: "w-3 h-3",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                  }
+                )
+              }
+            )
+          }
+        )
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex-1 space-y-3 min-w-0", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: `rounded-xl border ${cardBg} overflow-hidden`, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+          "div",
+          {
+            className: `px-4 py-3 border-b ${theme === "dark" ? "border-white/10" : "border-black/10"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("h3", { className: `text-sm font-semibold ${rowText}`, children: "Orders history" })
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { children: orders.map((order) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+          "div",
+          {
+            className: `flex items-center gap-3 px-4 py-3 border-b last:border-b-0 ${rowBorder}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(CustomerAvatar, { initials: order.initials, color: order.color }),
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `flex-1 text-xs font-medium ${rowText}`, children: order.name }),
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                "div",
+                {
+                  className: `text-xs ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`,
+                  children: order.date
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-xs font-semibold ${rowText}`, children: order.amount }),
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(StatusBadge, { status: order.status }),
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "text-gray-400 hover:text-gray-600 text-xs", children: "\xB7\xB7\xB7" })
+            ]
+          },
+          order.id
+        )) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: `rounded-xl border ${cardBg} overflow-hidden`, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+          "div",
+          {
+            className: `px-4 py-3 border-b ${theme === "dark" ? "border-white/10" : "border-black/10"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("h3", { className: `text-sm font-semibold ${rowText}`, children: "Delivery and payments" })
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "p-4 space-y-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-xs font-medium ${rowText} mb-2`, children: "Address" }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "grid grid-cols-2 gap-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+                "div",
+                {
+                  className: `rounded-lg border border-dashed p-3 ${theme === "dark" ? "border-white/20" : "border-black/20"}`,
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-[10px] ${labelText} mb-1`, children: "Billing address" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+                      "div",
+                      {
+                        className: `text-xs ${theme === "dark" ? "text-gray-300" : "text-gray-700"} leading-relaxed`,
+                        children: [
+                          "Studio 103",
+                          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("br", {}),
+                          "The Business Centre",
+                          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("br", {}),
+                          "61 Wellfield Road",
+                          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("br", {}),
+                          "Cardiff",
+                          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("br", {}),
+                          "England",
+                          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("br", {}),
+                          "CF24 3DG"
+                        ]
+                      }
+                    )
+                  ]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+                "div",
+                {
+                  className: `rounded-lg border border-dashed p-3 ${theme === "dark" ? "border-white/20" : "border-black/20"}`,
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-[10px] ${labelText} mb-1`, children: "Delivery address" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+                      "div",
+                      {
+                        className: `text-xs ${theme === "dark" ? "text-gray-300" : "text-gray-700"} leading-relaxed`,
+                        children: [
+                          "Box 785",
+                          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("br", {}),
+                          "91 Western Road",
+                          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("br", {}),
+                          "Brighton",
+                          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("br", {}),
+                          "England",
+                          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("br", {}),
+                          "BN1 2NW"
+                        ]
+                      }
+                    )
+                  ]
+                }
+              )
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: `text-xs font-medium ${rowText} mb-2`, children: "Payment" }),
+            /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+              "div",
+              {
+                className: `flex items-center gap-3 py-2 border-b ${rowBorder}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "div",
+                    {
+                      className: `w-8 h-5 rounded flex items-center justify-center ${theme === "dark" ? "bg-blue-900" : "bg-blue-100"}`,
+                      children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "text-blue-600 text-[10px] font-bold", children: "P" })
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: `text-xs font-medium ${rowText}`, children: "PayPal" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "px-2 py-0.5 bg-green-400 text-black text-[10px] rounded-md", children: "center" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: `text-xs ${labelText}`, children: "28 Nov 2023" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                    "span",
+                    {
+                      className: `text-xs ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`,
+                      children: "gab****@gmail.com"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "ml-auto text-gray-400 hover:text-gray-600 text-xs", children: "\xB7\xB7\xB7" })
+                ]
+              }
+            )
+          ] })
+        ] })
+      ] })
+    ] })
+  ] });
+};
+var CustomersList = ({
+  theme = "light",
+  variant = "v1"
+}) => {
+  const bg = theme === "dark" ? "bg-[#0d0d0d]" : "bg-[#f5efe6]";
+  const isDetails = variant === "details";
+  return /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: `flex h-screen ${bg}`, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(DoctorProjectSidebar2, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        TopBar3,
+        {
+          title: isDetails ? "All Customers" : "Customers",
+          theme,
+          showBack: isDetails
+        }
+      ),
+      variant === "v1" && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(V1Content2, { theme }),
+      variant === "v2" && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(V2Content2, { theme }),
+      variant === "v3" && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(V3Content2, { theme }),
+      variant === "details" && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(DetailsContent2, { theme }),
+      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(Footer3, { theme })
+    ] })
+  ] });
+};
+
+// src/screens/Accounts/AccountsList.tsx
+var import_jsx_runtime46 = require("react/jsx-runtime");
+var DoctorProjectSidebar3 = () => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "w-[280px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "px-6 py-5 border-b border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex items-center gap-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "text-xl font-bold text-white", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500 mb-3" })
+  ] }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex-1 overflow-y-auto px-4 py-4 space-y-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("nav", { className: "space-y-1", children: [
+        { label: "Dashboard", icon: "\u25CE" },
+        { label: "Accounts", icon: "\u25A3", active: true },
+        { label: "Transactions", icon: "\u21C4" },
+        {
+          label: "Crypto Assets",
+          icon: "\u25CE",
+          badge: 28,
+          badgeColor: "bg-purple-600"
+        },
+        {
+          label: "Payments",
+          icon: "\u25A6",
+          badge: 14,
+          badgeColor: "bg-green-500"
+        },
+        { label: "Reports", icon: "\u25A4" }
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+        "button",
+        {
+          className: `w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-colors ${item.active ? "bg-white/10 text-white font-medium" : "text-gray-400 hover:text-white hover:bg-white/5"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex items-center gap-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "text-base", children: item.icon }),
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { children: item.label })
+            ] }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              "span",
+              {
+                className: `text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                children: item.badge
+              }
+            )
+          ]
+        },
+        item.label
+      )) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Cards" }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "space-y-1", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-xs font-bold text-white", children: "V" }),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { children: "Debit Card **** 7890" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "w-7 h-7 rounded-full bg-gradient-to-br from-red-500 to-orange-400 flex items-center justify-center text-xs", children: "\u25CF" }),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { children: "Credit Card **** 4340" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "w-7 h-7 rounded-full border border-dashed border-gray-600 flex items-center justify-center text-lg", children: "+" }),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { children: "Open a card" })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Balances" }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "space-y-1", children: [
+        [
+          { flag: "\u{1F1FA}\u{1F1F8}", amount: "100,050.75 USD" },
+          { flag: "\u{1F1EA}\u{1F1FA}", amount: "10.40 EUR" },
+          { flag: "\u{1F1EC}\u{1F1E7}", amount: "95.50 GBP" }
+        ].map((bal) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+          "button",
+          {
+            className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "text-lg", children: bal.flag }),
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { children: bal.amount })
+            ]
+          },
+          bal.amount
+        )),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "w-7 h-7 rounded-full border border-dashed border-gray-600 flex items-center justify-center text-lg", children: "+" }),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { children: "Open a balance" })
+        ] })
+      ] })
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "px-4 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex items-center justify-between px-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex items-center gap-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-500" }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "text-sm text-gray-200", children: "Henry Richardson" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "text-gray-500 hover:text-white", children: "\xB7\xB7\xB7" })
+  ] }) })
+] });
+var TopBar4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+  "div",
+  {
+    className: `flex items-center justify-between px-8 py-4 border-b ${theme === "dark" ? "bg-[#111111] border-white/10" : "bg-[#f5efe6] border-black/10"}`,
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+        "h1",
+        {
+          className: `text-3xl font-bold ${theme === "dark" ? "text-white" : "text-black"}`,
+          children: "Accounts"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex items-center gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          "button",
+          {
+            className: `p-2 rounded-lg hover:bg-white/10 ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              "svg",
+              {
+                className: "w-5 h-5",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  }
+                )
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          "button",
+          {
+            className: `p-2 rounded-lg hover:bg-white/10 ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              "svg",
+              {
+                className: "w-5 h-5",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                  }
+                )
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+          "button",
+          {
+            className: `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium ${theme === "dark" ? "text-gray-200 hover:bg-white/10" : "text-gray-700 hover:bg-black/5"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                "svg",
+                {
+                  className: "w-4 h-4",
+                  fill: "none",
+                  viewBox: "0 0 24 24",
+                  stroke: "currentColor",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
+                    }
+                  )
+                }
+              ),
+              "Apps"
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "text-lg leading-none", children: "+" }),
+          "Create new"
+        ] })
+      ] })
+    ]
+  }
+);
+var Footer4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+  "div",
+  {
+    className: `flex items-center justify-between px-8 py-3 border-t text-sm ${theme === "dark" ? "bg-[#111111] border-white/10 text-gray-500" : "bg-[#f5efe6] border-black/10 text-gray-500"}`,
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex items-center gap-6", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "flex items-center gap-1.5 hover:opacity-80", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeWidth: 2,
+                    d: "M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+                  }
+                )
+              ]
+            }
+          ),
+          "English"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "hover:opacity-80", children: "API" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex items-center gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          "button",
+          {
+            className: `p-1.5 rounded ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    }
+                  )
+                ]
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          "button",
+          {
+            className: `p-1.5 rounded ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                  }
+                )
+              }
+            )
+          }
+        )
+      ] })
+    ]
+  }
+);
+var LineChart = ({ theme }) => {
+  const points = [
+    30,
+    45,
+    35,
+    55,
+    40,
+    60,
+    50,
+    70,
+    55,
+    80,
+    65,
+    90,
+    75,
+    85,
+    95,
+    80,
+    100,
+    85,
+    110,
+    90,
+    120
+  ];
+  const max = Math.max(...points);
+  const width = 900;
+  const height = 160;
+  const padX = 20;
+  const padY = 10;
+  const chartW = width - padX * 2;
+  const chartH = height - padY * 2;
+  const pathD = points.map((p3, i2) => {
+    const x3 = padX + i2 / (points.length - 1) * chartW;
+    const y2 = padY + chartH - p3 / max * chartH;
+    return `${i2 === 0 ? "M" : "L"} ${x3} ${y2}`;
+  }).join(" ");
+  const areaD = `${pathD} L ${padX + chartW} ${padY + chartH} L ${padX} ${padY + chartH} Z`;
+  const lastX = padX + chartW;
+  const lastY = padY + chartH - points[points.length - 1] / max * chartH;
+  return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "relative", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+      "svg",
+      {
+        viewBox: `0 0 ${width} ${height}`,
+        className: "w-full h-32",
+        preserveAspectRatio: "none",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("linearGradient", { id: "areaGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("stop", { offset: "0%", stopColor: "#4ade80", stopOpacity: "0.3" }),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("stop", { offset: "100%", stopColor: "#4ade80", stopOpacity: "0.05" })
+          ] }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("path", { d: areaD, fill: "url(#areaGrad)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("path", { d: pathD, fill: "none", stroke: "#4ade80", strokeWidth: "2.5" }),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("circle", { cx: lastX, cy: lastY, r: "6", fill: "#4ade80" })
         ]
       }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+      "div",
+      {
+        className: `absolute top-4 right-20 px-3 py-2 rounded-lg shadow-lg text-sm ${theme === "dark" ? "bg-[#1e1e1e] text-white border border-white/10" : "bg-white text-black border border-black/10"}`,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-xs text-gray-500 mb-0.5", children: "June 16" }),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "font-bold", children: "$14.800" })
+        ]
+      }
+    )
+  ] });
+};
+var CardRow = ({ icon, cardNumber, balance, blocked, valid, status, theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+  "div",
+  {
+    className: `flex items-center gap-4 px-4 py-3 border-b last:border-b-0 ${theme === "dark" ? "border-white/5" : "border-black/5"}`,
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "w-9 h-9 flex-shrink-0 flex items-center justify-center", children: icon }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex-1 min-w-0", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          "div",
+          {
+            className: `text-sm font-medium ${theme === "dark" ? "text-white" : "text-black"}`,
+            children: cardNumber
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-xs text-gray-500", children: "Card number" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "text-right", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          "div",
+          {
+            className: `text-sm font-semibold ${theme === "dark" ? "text-white" : "text-black"}`,
+            children: balance
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-xs text-gray-500", children: "Balance" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "text-right", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          "div",
+          {
+            className: `text-sm font-semibold ${theme === "dark" ? "text-white" : "text-black"}`,
+            children: blocked
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-xs text-gray-500", children: "Blocked amount" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "text-right", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          "div",
+          {
+            className: `text-sm font-semibold ${theme === "dark" ? "text-white" : "text-black"}`,
+            children: valid
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-xs text-gray-500", children: "Valid" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          "span",
+          {
+            className: `w-2 h-2 rounded-full ${status === "Active" ? "bg-green-400" : "bg-red-400"}`
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          "span",
+          {
+            className: `text-sm ${theme === "dark" ? "text-gray-200" : "text-gray-700"}`,
+            children: status
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "text-gray-400 hover:text-gray-600", children: "\xB7\xB7\xB7" })
+    ]
+  }
+);
+var V1Content3 = ({ theme }) => {
+  const cardBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10" : "bg-white border-black/10";
+  const sectionTitle = theme === "dark" ? "text-white" : "text-black";
+  return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex-1 overflow-auto p-6 space-y-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: `rounded-xl border ${cardBg} overflow-hidden`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex items-center justify-between px-5 py-4 border-b border-inherit", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("h2", { className: `text-base font-semibold ${sectionTitle}`, children: "Your cards" }),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "px-4 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: "Open new deposit" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "px-4 py-2", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(LineChart, { theme }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          CardRow,
+          {
+            theme,
+            icon: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "text-blue-600 font-black text-lg", children: "V" }),
+            cardNumber: "3210 **** **** 7890",
+            balance: "$88,200.00",
+            blocked: "$1,200.00",
+            valid: "06/22",
+            status: "Active"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          CardRow,
+          {
+            theme,
+            icon: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "w-7 h-5 rounded bg-gradient-to-r from-gray-700 to-gray-500 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "text-[10px] text-white", children: "\u25D1" }) }),
+            cardNumber: "8210 **** **** 4340",
+            balance: "$64,120.50",
+            blocked: "$1,960.00",
+            valid: "06/23",
+            status: "Active"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          CardRow,
+          {
+            theme,
+            icon: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "w-7 h-5 rounded bg-gradient-to-r from-gray-700 to-gray-500 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "text-[10px] text-white", children: "\u25D1" }) }),
+            cardNumber: "8210 **** **** 4990",
+            balance: "$0.50",
+            blocked: "$60.00",
+            valid: "06/23",
+            status: "Active"
+          }
+        )
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: `rounded-xl border ${cardBg} overflow-hidden`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex items-center justify-between px-5 py-4 border-b border-inherit", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("h2", { className: `text-base font-semibold ${sectionTitle}`, children: "Your deposits" }),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "px-4 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: "Open new deposit" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { children: [
+        {
+          name: "Cumulative deposit",
+          balance: "$94,800.50",
+          accrued: "$2,530.00",
+          valid: "04/23",
+          status: "Active",
+          initials: "U"
+        },
+        {
+          name: "Cumulative deposit",
+          balance: "$55,400.00",
+          accrued: "$1,500.00",
+          valid: "04/20",
+          status: "Closed",
+          initials: "A"
+        }
+      ].map((dep, i2) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+        "div",
+        {
+          className: `flex items-center gap-4 px-4 py-3 border-b last:border-b-0 ${theme === "dark" ? "border-white/5" : "border-black/5"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              "div",
+              {
+                className: `w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold ${i2 === 0 ? "bg-gray-700" : "bg-gray-500"}`,
+                children: dep.initials
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex-1", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                "div",
+                {
+                  className: `text-sm font-medium ${theme === "dark" ? "text-white" : "text-black"}`,
+                  children: dep.name
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-xs text-gray-500", children: "Name" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "text-right", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                "div",
+                {
+                  className: `text-sm font-semibold ${theme === "dark" ? "text-white" : "text-black"}`,
+                  children: dep.balance
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-xs text-gray-500", children: "Balance" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "text-right", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                "div",
+                {
+                  className: `text-sm font-semibold ${theme === "dark" ? "text-white" : "text-black"}`,
+                  children: dep.accrued
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-xs text-gray-500", children: "Accured" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "text-right", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                "div",
+                {
+                  className: `text-sm font-semibold ${theme === "dark" ? "text-white" : "text-black"}`,
+                  children: dep.valid
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-xs text-gray-500", children: "Valid" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                "span",
+                {
+                  className: `w-2 h-2 rounded-full ${dep.status === "Active" ? "bg-green-400" : "bg-red-400"}`
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                "span",
+                {
+                  className: `text-sm ${theme === "dark" ? "text-gray-200" : "text-gray-700"}`,
+                  children: dep.status
+                }
+              )
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "text-gray-400 hover:text-gray-600", children: "\xB7\xB7\xB7" })
+          ]
+        },
+        i2
+      )) })
+    ] })
+  ] });
+};
+var LimitBar = ({ label, spent, left, color, pct, theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+  "div",
+  {
+    className: `py-4 border-b last:border-b-0 ${theme === "dark" ? "border-white/10" : "border-black/10"}`,
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+        "h3",
+        {
+          className: `text-sm font-semibold mb-2 ${theme === "dark" ? "text-white" : "text-black"}`,
+          children: label
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+        "div",
+        {
+          className: `w-full h-1.5 rounded-full mb-2 ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`,
+          children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+            "div",
+            {
+              className: `h-full rounded-full ${color}`,
+              style: { width: `${pct}%` }
+            }
+          )
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex justify-between text-xs text-gray-500", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("span", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+            "span",
+            {
+              className: `font-medium ${theme === "dark" ? "text-gray-200" : "text-gray-700"}`,
+              children: spent
+            }
+          ),
+          " ",
+          "Spent"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("span", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+            "span",
+            {
+              className: `font-medium ${theme === "dark" ? "text-gray-200" : "text-gray-700"}`,
+              children: left
+            }
+          ),
+          " ",
+          "Left"
+        ] })
+      ] })
+    ]
+  }
+);
+var V2Content3 = ({ theme }) => {
+  const cardBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10" : "bg-white border-black/10";
+  const transfers = [
+    {
+      icon: "A",
+      iconBg: "bg-orange-500",
+      label: "Monthly home rent",
+      sub: "Bank transfer",
+      amount: "- $400.00",
+      time: "8 Aug 1:00 AM",
+      neg: true
+    },
+    {
+      icon: "I",
+      iconBg: "bg-gradient-to-br from-gray-800 to-gray-600",
+      label: "Income payment for provided services",
+      sub: "Bank transfer",
+      amount: "+ $11,400.00",
+      time: "10 Aug 4:50 PM",
+      neg: false
+    },
+    {
+      icon: "E",
+      iconBg: "bg-blue-600",
+      label: "Online purchase at Ebay.com",
+      sub: "Online payment",
+      amount: "- $396.00",
+      time: "12 Aug 3:10 PM",
+      neg: true
+    },
+    {
+      icon: "S",
+      iconBg: "bg-blue-500",
+      label: "IOfinance UI kit purchase",
+      sub: "Online payment",
+      amount: "- $28.00",
+      time: "14 Aug 4:20 AM",
+      neg: true
+    },
+    {
+      icon: "W",
+      iconBg: "bg-cyan-500",
+      label: "Intenet payment",
+      sub: "Utility payment",
+      amount: "- $4.20",
+      time: "14 Aug 7:00 AM",
+      neg: true
+    }
+  ];
+  return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex-1 overflow-auto p-6 flex gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+      "div",
+      {
+        className: `flex-1 rounded-xl border ${cardBg} overflow-hidden flex flex-col`,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex items-center gap-2 px-5 py-4 border-b border-inherit", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              "h2",
+              {
+                className: `text-base font-semibold mr-4 ${theme === "dark" ? "text-white" : "text-black"}`,
+                children: "Your cards"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              "button",
+              {
+                className: `px-4 py-1.5 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-white text-black" : "bg-black text-white"}`,
+                children: "Overview"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "px-4 py-1.5 text-sm text-gray-500 hover:text-gray-700", children: "Currency" }),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "px-4 py-1.5 text-sm text-gray-500 hover:text-gray-700", children: "Statement" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "px-6 py-5 flex gap-6 items-start border-b border-inherit", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "w-[260px] h-[160px] rounded-2xl bg-gradient-to-br from-purple-500 to-purple-700 p-5 flex-shrink-0 relative shadow-lg", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "absolute top-4 right-4", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "w-10 h-6 rounded-full bg-gray-800 flex items-center justify-center", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "w-4 h-4 rounded-full bg-gray-600 -ml-1" }),
+                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "w-4 h-4 rounded-full bg-gray-400 -ml-2" })
+              ] }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "mt-5", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-white font-bold text-lg tracking-widest", children: "3400 5678 9804 3002" }),
+                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-purple-200 text-xs mt-1", children: "Card number" })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex gap-8 mt-4", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-white font-semibold text-sm", children: "Barry Armstrong" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-purple-200 text-xs", children: "Cardholder" })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-white font-semibold text-sm", children: "06 / 26" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-purple-200 text-xs", children: "Valid" })
+                ] })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                "div",
+                {
+                  className: `text-3xl font-bold mb-1 ${theme === "dark" ? "text-white" : "text-black"}`,
+                  children: "42.800 USD"
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-sm text-gray-500 mb-4", children: "Available amount" }),
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                "div",
+                {
+                  className: `text-base font-semibold mb-0.5 ${theme === "dark" ? "text-white" : "text-black"}`,
+                  children: "UK64CT00000010034567"
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-sm text-gray-500 mb-4", children: "Account number" }),
+              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                "button",
+                {
+                  className: `px-4 py-2 border rounded-lg text-sm font-medium transition-colors ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+                  children: "Get card details"
+                }
+              )
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex items-center justify-center gap-2 py-3 border-b border-inherit", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500" }),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              "span",
+              {
+                className: `w-2 h-2 rounded-full ${theme === "dark" ? "bg-white/20" : "bg-black/20"}`
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              "span",
+              {
+                className: `w-2 h-2 rounded-full ${theme === "dark" ? "bg-white/20" : "bg-black/20"}`
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "px-5 py-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              "h3",
+              {
+                className: `text-sm font-semibold mb-3 ${theme === "dark" ? "text-white" : "text-black"}`,
+                children: "Latest transfers"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { children: transfers.map((t2, i2) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+              "div",
+              {
+                className: `flex items-center gap-3 py-3 border-b last:border-b-0 ${theme === "dark" ? "border-white/5" : "border-black/5"}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                    "div",
+                    {
+                      className: `w-9 h-9 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 ${t2.iconBg}`,
+                      children: t2.icon
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex-1 min-w-0", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                      "div",
+                      {
+                        className: `text-sm font-medium truncate ${theme === "dark" ? "text-white" : "text-black"}`,
+                        children: t2.label
+                      }
+                    ),
+                    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-xs text-gray-500", children: t2.sub })
+                  ] }),
+                  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "text-right flex-shrink-0", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                      "div",
+                      {
+                        className: `text-sm font-semibold ${t2.neg ? "text-red-500" : "text-green-500"}`,
+                        children: t2.amount
+                      }
+                    ),
+                    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "text-xs text-gray-500", children: t2.time })
+                  ] }),
+                  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "text-gray-400 hover:text-gray-600 flex-shrink-0", children: "\xB7\xB7\xB7" })
+                ]
+              },
+              i2
+            )) })
+          ] })
+        ]
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+      "div",
+      {
+        className: `w-[280px] flex-shrink-0 rounded-xl border ${cardBg} overflow-hidden flex flex-col`,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "px-5 py-4 border-b border-inherit", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+            "h2",
+            {
+              className: `text-base font-semibold ${theme === "dark" ? "text-white" : "text-black"}`,
+              children: "Your limits"
+            }
+          ) }),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "px-5 flex-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              LimitBar,
+              {
+                theme,
+                label: "ATM Withdrawals",
+                spent: "$5,100.00",
+                left: "$1,800.00",
+                color: "bg-green-400",
+                pct: 75
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              LimitBar,
+              {
+                theme,
+                label: "Daily ATM Withdrawals",
+                spent: "$600.00",
+                left: "$400.00",
+                color: "bg-red-400",
+                pct: 60
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              LimitBar,
+              {
+                theme,
+                label: "Cash In in ATMs",
+                spent: "$1,500.00",
+                left: "$8,500.00",
+                color: "bg-yellow-500",
+                pct: 15
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              LimitBar,
+              {
+                theme,
+                label: "Online Purchase",
+                spent: "$1,500.00",
+                left: "$8,500.00",
+                color: "bg-green-400",
+                pct: 15
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "p-4", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "w-full flex items-center justify-center gap-2 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                  }
+                )
+              }
+            ),
+            "Setup limits"
+          ] }) })
+        ]
+      }
+    )
+  ] });
+};
+var AccountsList = ({
+  theme = "light",
+  variant = "v1"
+}) => {
+  const bg = theme === "dark" ? "bg-[#0d0d0d]" : "bg-[#f5efe6]";
+  return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: `flex h-screen ${bg}`, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(DoctorProjectSidebar3, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(TopBar4, { theme }),
+      variant === "v1" ? /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(V1Content3, { theme }) : /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(V2Content3, { theme }),
+      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(Footer4, { theme })
+    ] })
+  ] });
+};
+
+// src/screens/Transactions/TransactionsList.tsx
+var import_react8 = require("react");
+var import_jsx_runtime47 = require("react/jsx-runtime");
+var DoctorProjectSidebar4 = ({
+  variant
+}) => {
+  const showTeamMembers = variant === "invoice";
+  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "w-[280px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "px-6 py-5 border-b border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center gap-1", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "text-xl font-bold text-white", children: "Doctor Project" }),
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500 mb-3" })
+    ] }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex-1 overflow-y-auto px-4 py-4 space-y-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("nav", { className: "space-y-1", children: [
+          { label: "Dashboard", icon: "\u25CE" },
+          { label: "Accounts", icon: "\u25A3" },
+          { label: "Transactions", icon: "\u21C4", active: true },
+          {
+            label: "Crypto Assets",
+            icon: "\u25CE",
+            badge: 28,
+            badgeColor: "bg-purple-600"
+          },
+          {
+            label: "Payments",
+            icon: "\u25A6",
+            badge: 14,
+            badgeColor: "bg-green-500"
+          },
+          { label: "Reports", icon: "\u25A4" }
+        ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+          "button",
+          {
+            className: `w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-colors ${item.active ? "bg-white/10 text-white font-medium" : "text-gray-400 hover:text-white hover:bg-white/5"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center gap-3", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "text-base", children: item.icon }),
+                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                  "span",
+                  {
+                    className: item.active ? "text-purple-400 font-medium" : "",
+                    children: item.label
+                  }
+                )
+              ] }),
+              item.badge && /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                "span",
+                {
+                  className: `text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                  children: item.badge
+                }
+              )
+            ]
+          },
+          item.label
+        )) })
+      ] }),
+      showTeamMembers ? (
+        /* Team Members section (Invoice variant) */
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "space-y-1", children: [
+            [
+              {
+                name: "Alexandre Paiva",
+                initials: "AP",
+                color: "bg-orange-500"
+              },
+              {
+                name: "Thanawan Chadee",
+                initials: "TC",
+                color: "bg-teal-500"
+              },
+              {
+                name: "Justine Robinson",
+                initials: "JR",
+                color: "bg-gray-500"
+              }
+            ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+              "button",
+              {
+                className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                    "span",
+                    {
+                      className: `w-7 h-7 rounded-full ${member.color} flex items-center justify-center text-xs font-bold text-white flex-shrink-0`,
+                      children: member.initials.charAt(0)
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { children: member.name })
+                ]
+              },
+              member.name
+            )),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "text-xs text-gray-500", children: "\u2193" }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { children: "See More" })
+            ] })
+          ] })
+        ] })
+      ) : /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(import_jsx_runtime47.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Cards" }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "space-y-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-xs font-bold text-white", children: "V" }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { children: "Debit Card **** 7890" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "w-7 h-7 rounded-full bg-gradient-to-br from-red-500 to-orange-400 flex items-center justify-center text-xs", children: "\u25CF" }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { children: "Credit Card **** 4340" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "w-7 h-7 rounded-full border border-dashed border-gray-600 flex items-center justify-center text-lg", children: "+" }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { children: "Open a card" })
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Balances" }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "space-y-1", children: [
+            [
+              { flag: "\u{1F1FA}\u{1F1F8}", amount: "100,050.75 USD" },
+              { flag: "\u{1F1EA}\u{1F1FA}", amount: "10.40 EUR" },
+              { flag: "\u{1F1EC}\u{1F1E7}", amount: "95.50 GBP" }
+            ].map((bal) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+              "button",
+              {
+                className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "text-lg", children: bal.flag }),
+                  /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { children: bal.amount })
+                ]
+              },
+              bal.amount
+            )),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "w-7 h-7 rounded-full border border-dashed border-gray-600 flex items-center justify-center text-lg", children: "+" }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { children: "Open a balance" })
+            ] })
+          ] })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "px-4 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center justify-between px-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 overflow-hidden flex-shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "w-full h-full bg-gradient-to-br from-orange-400 to-pink-500" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "text-sm text-gray-200", children: "Henry Richardson" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "text-gray-500 hover:text-white", children: "\xB7\xB7\xB7" })
+    ] }) })
+  ] });
+};
+var TopBar5 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+  "div",
+  {
+    className: `flex items-center justify-between px-8 py-4 border-b flex-shrink-0 ${theme === "dark" ? "bg-[#111111] border-white/10" : "bg-[#f5efe6] border-black/10"}`,
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+        "h1",
+        {
+          className: `text-3xl font-bold ${theme === "dark" ? "text-white" : "text-black"}`,
+          children: "Transactions"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center gap-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+          "button",
+          {
+            className: `p-2 rounded-lg ${theme === "dark" ? "text-gray-400 hover:bg-white/10" : "text-gray-500 hover:bg-black/5"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              "svg",
+              {
+                className: "w-5 h-5",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  }
+                )
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+          "button",
+          {
+            className: `p-2 rounded-lg ${theme === "dark" ? "text-gray-400 hover:bg-white/10" : "text-gray-500 hover:bg-black/5"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              "svg",
+              {
+                className: "w-5 h-5",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                  }
+                )
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+          "button",
+          {
+            className: `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium ${theme === "dark" ? "text-gray-200 hover:bg-white/10" : "text-gray-700 hover:bg-black/5"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                "svg",
+                {
+                  className: "w-4 h-4",
+                  fill: "none",
+                  viewBox: "0 0 24 24",
+                  stroke: "currentColor",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
+                    }
+                  )
+                }
+              ),
+              "Apps"
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "text-lg leading-none", children: "+" }),
+          "Create new"
+        ] })
+      ] })
+    ]
+  }
+);
+var Footer5 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+  "div",
+  {
+    className: `flex items-center justify-between px-8 py-3 border-t text-sm flex-shrink-0 ${theme === "dark" ? "bg-[#111111] border-white/10 text-gray-500" : "bg-[#f5efe6] border-black/10 text-gray-500"}`,
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center gap-6", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "flex items-center gap-1.5 hover:opacity-80", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeWidth: 2,
+                    d: "M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+                  }
+                )
+              ]
+            }
+          ),
+          "English"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "hover:opacity-80", children: "API" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+          "button",
+          {
+            className: `p-1.5 rounded ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    }
+                  )
+                ]
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+          "button",
+          {
+            className: `p-1.5 rounded ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                  }
+                )
+              }
+            )
+          }
+        )
+      ] })
+    ]
+  }
+);
+var TRANSACTIONS = [
+  {
+    icon: "V",
+    iconBg: "bg-red-600",
+    iconType: "letter",
+    name: "Vodafone account top up  ****04",
+    sub: "Phone payment",
+    date: "4 Aug 1:00 PM",
+    fee: "$2,90",
+    amount: "- $4.20",
+    isPositive: false
+  },
+  {
+    icon: "C",
+    iconBg: "bg-blue-500",
+    iconType: "letter",
+    name: "Money transfer to John Doe",
+    sub: "Bank transfer",
+    date: "5 Aug 3:00 PM",
+    fee: "$6,40",
+    amount: "- $10,480.00",
+    isPositive: false
+  },
+  {
+    icon: "A",
+    iconBg: "bg-red-500",
+    iconType: "letter",
+    name: "ATM Cash withdrawal",
+    sub: "Cash",
+    date: "6 Aug 2:15 AM",
+    fee: "$6,30",
+    amount: "- $201.50",
+    isPositive: false
+  },
+  {
+    icon: "a",
+    iconBg: "bg-orange-400",
+    iconType: "letter",
+    name: "Online purchase on Amazon.com",
+    sub: "Online payment",
+    date: "7 Aug 5:40 PM",
+    fee: "$8,85",
+    amount: "- $184.00",
+    isPositive: false
+  },
+  {
+    icon: "I",
+    iconBg: "bg-gradient-to-br from-gray-800 to-gray-600",
+    iconType: "letter",
+    name: "Income payment for projects",
+    sub: "Bank transfer",
+    date: "7 Aug 6:20 PM",
+    fee: "$4,60",
+    amount: "+ $3.000.00",
+    isPositive: true
+  },
+  {
+    icon: "A",
+    iconBg: "bg-pink-400",
+    iconType: "letter",
+    name: "Monthly home rent",
+    sub: "Bank transfer",
+    date: "8 Aug 1:00 AM",
+    fee: "$6,60",
+    amount: "- $400.00",
+    isPositive: false
+  },
+  {
+    icon: "I",
+    iconBg: "bg-gradient-to-br from-gray-800 to-gray-600",
+    iconType: "letter",
+    name: "Income payment for provided services",
+    sub: "Bank transfer",
+    date: "10 Aug 4:50 PM",
+    fee: "$6,50",
+    amount: "+ $11.400.00",
+    isPositive: true
+  },
+  {
+    icon: "P",
+    iconBg: "bg-blue-600",
+    iconType: "letter",
+    name: "Online purchase at Ebay.com",
+    sub: "Online payment",
+    date: "12 Aug 3:10 PM",
+    fee: "$8,80",
+    amount: "- $396.00",
+    isPositive: false
+  },
+  {
+    icon: "S",
+    iconBg: "bg-purple-500",
+    iconType: "letter",
+    name: "IOfinance UI kit purchase",
+    sub: "Online payment",
+    date: "14 Aug 4:20 AM",
+    fee: "$3,75",
+    amount: "- $28.00",
+    isPositive: false
+  },
+  {
+    icon: "W",
+    iconBg: "bg-cyan-500",
+    iconType: "letter",
+    name: "Intenet payment",
+    sub: "Utility payment",
+    date: "14 Aug 7:00 AM",
+    fee: "$4,20",
+    amount: "- $4.20",
+    isPositive: false
+  }
+];
+var AccountTabBar = ({ theme, filterLabel = "Apply Filter" }) => {
+  const [activeTab, setActiveTab] = (0, import_react8.useState)("All Accounts");
+  const tabs = ["All Accounts", "USD Account", "EUR Account", "GBP Account"];
+  const btnBase = "px-4 py-2 rounded-lg text-sm font-medium transition-colors border";
+  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center justify-between mb-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "flex items-center gap-1", children: tabs.map((tab) => {
+      const isActive = tab === activeTab;
+      if (isActive) {
+        return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+          "button",
+          {
+            onClick: () => setActiveTab(tab),
+            className: `px-4 py-2 rounded-lg text-sm font-medium ${theme === "dark" ? "bg-white text-black" : "bg-black text-white"}`,
+            children: tab
+          },
+          tab
+        );
+      }
+      return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+        "button",
+        {
+          onClick: () => setActiveTab(tab),
+          className: `px-4 py-2 rounded-lg text-sm font-medium transition-colors ${theme === "dark" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-black"}`,
+          children: tab
+        },
+        tab
+      );
+    }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center gap-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+        "button",
+        {
+          className: `flex items-center gap-2 ${btnBase} ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"
+                  }
+                )
+              }
+            ),
+            filterLabel
+          ]
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+        "button",
+        {
+          className: `flex items-center gap-2 ${btnBase} ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  }
+                )
+              }
+            ),
+            "Export to CSV"
+          ]
+        }
+      )
+    ] })
+  ] });
+};
+var TxIcon = ({ tx }) => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+  "div",
+  {
+    className: `w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 ${tx.iconBg}`,
+    children: tx.icon
+  }
+);
+var ListV1Content = ({ theme }) => {
+  const cardBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10" : "bg-white border-black/10";
+  const rowBorder = theme === "dark" ? "border-white/5" : "border-black/5";
+  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex-1 overflow-auto p-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(AccountTabBar, { theme }),
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: `rounded-xl border ${cardBg} overflow-hidden`, children: TRANSACTIONS.map((tx, i2) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+      "div",
+      {
+        className: `flex items-center gap-4 px-5 py-4 border-b last:border-b-0 ${rowBorder}`,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(TxIcon, { tx }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex-1 min-w-0", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              "div",
+              {
+                className: `text-sm font-semibold ${theme === "dark" ? "text-white" : "text-black"}`,
+                children: tx.name
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "text-xs text-gray-500", children: tx.sub })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "text-right flex-shrink-0", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              "div",
+              {
+                className: `text-sm font-semibold ${tx.isPositive ? "text-green-500" : theme === "dark" ? "text-white" : "text-black"}`,
+                children: tx.amount
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "text-xs text-gray-500", children: tx.date })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "text-gray-400 hover:text-gray-600 flex-shrink-0 ml-2", children: "\xB7\xB7\xB7" })
+        ]
+      },
+      i2
+    )) })
+  ] });
+};
+var SortIcon2 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+  "svg",
+  {
+    className: "w-3 h-3 inline ml-1",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    stroke: "currentColor",
+    children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+      "path",
+      {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: 2,
+        d: "M19 9l-7 7-7-7"
+      }
+    )
+  }
+);
+var ListV2Content = ({ theme }) => {
+  const cardBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10" : "bg-white border-black/10";
+  const headerBg = theme === "dark" ? "bg-[#222] text-gray-400" : "bg-gray-50 text-gray-500";
+  const rowBorder = theme === "dark" ? "border-white/5" : "border-black/5";
+  const cellText = theme === "dark" ? "text-white" : "text-black";
+  const rows = TRANSACTIONS.slice(0, 9);
+  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex-1 overflow-auto p-6 flex flex-col", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(AccountTabBar, { theme }),
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: `rounded-xl border ${cardBg} overflow-hidden flex-1`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+        "div",
+        {
+          className: `grid grid-cols-[1fr_2fr_1fr_0.7fr_0.9fr_auto] gap-4 px-5 py-3 text-xs font-medium ${headerBg} border-b ${theme === "dark" ? "border-white/10" : "border-black/10"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
+              "Date & Time ",
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon2, {})
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
+              "Payment ",
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon2, {})
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
+              "Service ",
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon2, {})
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
+              "Fee ",
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon2, {})
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "text-right", children: [
+              "Price ",
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon2, {})
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "w-6" })
+          ]
+        }
+      ),
+      rows.map((tx, i2) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+        "div",
+        {
+          className: `grid grid-cols-[1fr_2fr_1fr_0.7fr_0.9fr_auto] gap-4 px-5 py-4 items-center border-b last:border-b-0 ${rowBorder}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              "div",
+              {
+                className: `text-sm ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`,
+                children: tx.date
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center gap-3 min-w-0", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(TxIcon, { tx }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: `text-sm font-semibold truncate ${cellText}`, children: tx.name })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              "div",
+              {
+                className: `text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`,
+                children: tx.sub
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: `text-sm ${cellText}`, children: tx.fee }),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              "div",
+              {
+                className: `text-sm font-semibold text-right ${tx.isPositive ? "text-green-500" : cellText}`,
+                children: tx.amount
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "text-gray-400 hover:text-gray-600 w-6", children: "\xB7\xB7\xB7" })
+          ]
+        },
+        i2
+      ))
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center justify-between mt-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+        "button",
+        {
+          className: `flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium border ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M15 19l-7-7 7-7"
+                  }
+                )
+              }
+            ),
+            "Prev"
+          ]
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+        "span",
+        {
+          className: `text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`,
+          children: "Page 1 of 10"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+        "button",
+        {
+          className: `flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium border ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+          children: [
+            "Next",
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M9 5l7 7-7 7"
+                  }
+                )
+              }
+            )
+          ]
+        }
+      )
+    ] })
+  ] });
+};
+var InvoiceModal = ({ theme }) => {
+  const modalBg = theme === "dark" ? "bg-[#111111]" : "bg-white";
+  const textPrimary = theme === "dark" ? "text-white" : "text-black";
+  const textMuted = "text-gray-500";
+  const divider = theme === "dark" ? "border-white/10" : "border-black/10";
+  return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "fixed inset-0 flex items-center justify-center z-50 bg-black/50", children: /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+    "div",
+    {
+      className: `w-[480px] rounded-2xl overflow-hidden shadow-2xl ${modalBg}`,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "bg-[#6B47DC] px-6 py-5 flex items-center justify-between relative", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "text-white font-semibold text-base", children: "Transaction details" }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "text-white/80 hover:text-white", children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+            "svg",
+            {
+              className: "w-5 h-5",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M6 18L18 6M6 6l12 12"
+                }
+              )
+            }
+          ) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex flex-col items-center -mt-6 px-8 pt-2 pb-6", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "w-14 h-14 rounded-full bg-white border-4 border-white shadow flex items-center justify-center text-xl font-bold text-gray-800 mb-4", children: "S" }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("h2", { className: `text-2xl font-bold text-center mb-1 ${textPrimary}`, children: "2,702.12 USD to James Dean" }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: `text-sm ${textMuted} mb-3`, children: "Completed Thursday 29 April" }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "px-5 py-1.5 bg-green-400 text-white text-sm font-semibold rounded-full", children: "Paid" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: `px-8 pb-6 border-t ${divider}`, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "grid grid-cols-2 gap-4 pt-5 pb-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: `text-xs ${textMuted} mb-1`, children: "Send To" }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: `text-sm font-semibold ${textPrimary}`, children: "James Dean" }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: `text-sm ${textMuted}`, children: "james.dea89@gmail.com" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "text-right", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: `text-xs ${textMuted} mb-1`, children: "Amount" }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: `text-sm font-semibold ${textPrimary}`, children: "2,702.12 USD" })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: `border-t border-dashed ${divider} my-2` }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "grid grid-cols-2 gap-4 pt-4 pb-6", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: `text-xs ${textMuted} mb-1`, children: "Bank Details" }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: `text-sm ${textPrimary}`, children: "GE91TB77521450317885\u200B98" }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: `text-sm ${textPrimary}`, children: "TBCBGE22" }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: `text-sm ${textPrimary}`, children: "Transfer #241894617" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "text-right", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: `text-xs ${textMuted} mb-1`, children: "Exchange Rate" }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: `text-sm ${textPrimary}`, children: "1.00000" })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "grid grid-cols-2 gap-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+              "button",
+              {
+                className: `flex items-center justify-center gap-2 py-3 rounded-xl border text-sm font-semibold transition-colors ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+                children: [
+                  "Print",
+                  /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                    "svg",
+                    {
+                      className: "w-4 h-4",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                        "path",
+                        {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
+                        }
+                      )
+                    }
+                  )
+                ]
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+              "button",
+              {
+                className: `flex items-center justify-center gap-2 py-3 rounded-xl border text-sm font-semibold transition-colors ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+                children: [
+                  "Issue Refund",
+                  /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                    "svg",
+                    {
+                      className: "w-4 h-4",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                        "path",
+                        {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                        }
+                      )
+                    }
+                  )
+                ]
+              }
+            )
+          ] })
+        ] })
+      ]
+    }
+  ) });
+};
+var InvoiceContent = ({ theme }) => {
+  const cardBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10" : "bg-white border-black/10";
+  const headerBg = theme === "dark" ? "bg-[#222] text-gray-400" : "bg-gray-50 text-gray-500";
+  const rowBorder = theme === "dark" ? "border-white/5" : "border-black/5";
+  const cellText = theme === "dark" ? "text-white" : "text-black";
+  const rows = TRANSACTIONS.slice(0, 9);
+  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(import_jsx_runtime47.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex-1 overflow-auto p-6 flex flex-col", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center justify-between mb-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "flex items-center gap-1", children: ["All Accounts", "USD Account", "EUR Account", "GBP Account"].map(
+          (tab) => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+            "button",
+            {
+              className: `px-4 py-2 rounded-lg text-sm font-medium transition-colors ${tab === "All Accounts" ? theme === "dark" ? "bg-white text-black" : "bg-black text-white" : theme === "dark" ? "text-gray-400 hover:text-white" : "text-gray-600 hover:text-black"}`,
+              children: tab
+            },
+            tab
+          )
+        ) }),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+            "button",
+            {
+              className: `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium border ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                  "svg",
+                  {
+                    className: "w-4 h-4",
+                    fill: "none",
+                    viewBox: "0 0 24 24",
+                    stroke: "currentColor",
+                    children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                      "path",
+                      {
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeWidth: 2,
+                        d: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                      }
+                    )
+                  }
+                ),
+                "August 2023"
+              ]
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+            "button",
+            {
+              className: `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium border ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                  "svg",
+                  {
+                    className: "w-4 h-4",
+                    fill: "none",
+                    viewBox: "0 0 24 24",
+                    stroke: "currentColor",
+                    children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                      "path",
+                      {
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeWidth: 2,
+                        d: "M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      }
+                    )
+                  }
+                ),
+                "Export to CSV"
+              ]
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: `rounded-xl border ${cardBg} overflow-hidden flex-1`, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+          "div",
+          {
+            className: `grid grid-cols-[1fr_2fr_1fr_0.7fr_0.9fr_auto] gap-4 px-5 py-3 text-xs font-medium ${headerBg} border-b ${theme === "dark" ? "border-white/10" : "border-black/10"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
+                "Date & Time ",
+                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon2, {})
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
+                "Payment ",
+                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon2, {})
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
+                "Service ",
+                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon2, {})
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
+                "Fee ",
+                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon2, {})
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "text-right", children: [
+                "Price ",
+                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon2, {})
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "w-6" })
+            ]
+          }
+        ),
+        rows.map((tx, i2) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+          "div",
+          {
+            className: `grid grid-cols-[1fr_2fr_1fr_0.7fr_0.9fr_auto] gap-4 px-5 py-4 items-center border-b last:border-b-0 ${rowBorder}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                "div",
+                {
+                  className: `text-sm ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`,
+                  children: tx.date
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center gap-3 min-w-0", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(TxIcon, { tx }),
+                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: `text-sm font-semibold truncate ${cellText}`, children: tx.name })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                "div",
+                {
+                  className: `text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`,
+                  children: tx.sub
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: `text-sm ${cellText}`, children: tx.fee }),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                "div",
+                {
+                  className: `text-sm font-semibold text-right ${tx.isPositive ? "text-green-500" : cellText}`,
+                  children: tx.amount
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "text-gray-400 hover:text-gray-600 w-6", children: "\xB7\xB7\xB7" })
+            ]
+          },
+          i2
+        ))
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex items-center justify-between mt-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+          "button",
+          {
+            className: `flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium border ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                "svg",
+                {
+                  className: "w-4 h-4",
+                  fill: "none",
+                  viewBox: "0 0 24 24",
+                  stroke: "currentColor",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M15 19l-7-7 7-7"
+                    }
+                  )
+                }
+              ),
+              "Prev"
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+          "span",
+          {
+            className: `text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`,
+            children: "Page 1 of 10"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+          "button",
+          {
+            className: `flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium border ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+            children: [
+              "Prev",
+              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                "svg",
+                {
+                  className: "w-4 h-4",
+                  fill: "none",
+                  viewBox: "0 0 24 24",
+                  stroke: "currentColor",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M9 5l7 7-7 7"
+                    }
+                  )
+                }
+              )
+            ]
+          }
+        )
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(InvoiceModal, { theme })
+  ] });
+};
+var EmptyContent = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex-1 overflow-hidden relative flex items-center justify-center", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "absolute inset-0 overflow-hidden pointer-events-none", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+      "div",
+      {
+        className: "absolute -top-20 right-0 w-[500px] h-[500px] rounded-full opacity-70",
+        style: {
+          background: "radial-gradient(circle, #f0e040 0%, #b8e040 40%, transparent 70%)"
+        }
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+      "div",
+      {
+        className: "absolute top-1/4 left-0 w-[300px] h-[300px] rounded-full opacity-60",
+        style: {
+          background: "radial-gradient(circle, #7c3aed 0%, #a855f7 40%, transparent 70%)"
+        }
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+      "div",
+      {
+        className: "absolute bottom-0 right-1/4 w-[250px] h-[250px] rounded-full opacity-50",
+        style: {
+          background: "radial-gradient(circle, #f97316 0%, #ec4899 50%, transparent 70%)"
+        }
+      }
+    )
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "relative z-10 flex flex-col items-center text-center px-8", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "mb-6", children: /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+      "svg",
+      {
+        className: `w-16 h-16 ${theme === "dark" ? "text-white" : "text-black"}`,
+        fill: "none",
+        viewBox: "0 0 64 64",
+        stroke: "currentColor",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("rect", { x: "8", y: "32", width: "12", height: "24", rx: "2", strokeWidth: 3 }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("rect", { x: "26", y: "20", width: "12", height: "36", rx: "2", strokeWidth: 3 }),
+          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("rect", { x: "44", y: "8", width: "12", height: "48", rx: "2", strokeWidth: 3 })
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+      "h2",
+      {
+        className: `text-4xl font-bold mb-3 ${theme === "dark" ? "text-white" : "text-black"}`,
+        children: "No transactions found?"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+      "p",
+      {
+        className: `text-sm mb-8 max-w-xs ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`,
+        children: "Try to make payments for your bills and products or create a new currency account from scratch."
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-full transition-colors", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M12 4v16m8-8H4"
+            }
+          )
+        }
+      ),
+      "Create a new account"
+    ] })
+  ] })
+] });
+var TransactionsList = ({
+  theme = "light",
+  variant = "listV1"
+}) => {
+  const bg = theme === "dark" ? "bg-[#0d0d0d]" : "bg-[#f5efe6]";
+  const renderContent = () => {
+    switch (variant) {
+      case "listV1":
+        return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ListV1Content, { theme });
+      case "listV2":
+        return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ListV2Content, { theme });
+      case "invoice":
+        return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(InvoiceContent, { theme });
+      case "empty":
+        return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(EmptyContent, { theme });
+      default:
+        return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ListV1Content, { theme });
+    }
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: `flex h-screen ${bg}`, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(DoctorProjectSidebar4, { variant }),
+    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(TopBar5, { theme }),
+      renderContent(),
+      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(Footer5, { theme })
+    ] })
+  ] });
+};
+
+// src/screens/Contacts/ContactsList.tsx
+var import_jsx_runtime48 = require("react/jsx-runtime");
+var Avatar2 = ({ name, color }) => {
+  const initials = name.split(" ").map((n2) => n2[0]).slice(0, 2).join("");
+  return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+    "div",
+    {
+      className: `w-8 h-8 rounded-full flex items-center justify-center text-white text-xs font-semibold flex-shrink-0 ${color}`,
+      children: initials
+    }
+  );
+};
+var ContactsSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "w-[155px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "px-4 pt-5 pb-4", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center gap-0.5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "text-lg font-bold text-white tracking-tight", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "w-1.5 h-1.5 rounded-full bg-purple-500 mb-3 ml-0.5" })
+  ] }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex-1 overflow-y-auto px-3 py-2 space-y-5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("p", { className: "text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("nav", { className: "space-y-0.5", children: [
+        {
+          label: "Dashboard",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                }
+              )
+            }
+          )
+        },
+        {
+          label: "Products",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"
+                }
+              )
+            }
+          )
+        },
+        {
+          label: "Contacts",
+          active: true,
+          icon: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"
+                }
+              )
+            }
+          )
+        },
+        {
+          label: "Customers",
+          badge: 15,
+          badgeColor: "bg-purple-600",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                }
+              )
+            }
+          )
+        },
+        {
+          label: "Sales",
+          badge: 14,
+          badgeColor: "bg-green-500",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                }
+              )
+            }
+          )
+        },
+        {
+          label: "Analytics",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+                }
+              )
+            }
+          )
+        }
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+        "button",
+        {
+          className: `w-full flex items-center justify-between px-2 py-2 rounded-lg text-xs transition-colors ${item.active ? "bg-white/10 text-white font-medium" : "text-gray-400 hover:text-white hover:bg-white/5"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center gap-2", children: [
+              item.icon,
+              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { children: item.label })
+            ] }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+              "span",
+              {
+                className: `text-[10px] text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                children: item.badge
+              }
+            )
+          ]
+        },
+        item.label
+      )) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("p", { className: "text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "space-y-0.5", children: [
+        [
+          { name: "Alexandre Paiva", color: "bg-gray-600" },
+          { name: "Thanawan Chadee", color: "bg-orange-500" },
+          { name: "Justine Robinson", color: "bg-pink-500" }
+        ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+          "button",
+          {
+            className: "w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-white/5",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+                "div",
+                {
+                  className: `w-6 h-6 rounded-full flex items-center justify-center text-white text-[10px] font-semibold flex-shrink-0 ${member.color}`,
+                  children: member.name[0]
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "truncate", children: member.name })
+            ]
+          },
+          member.name
+        )),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "w-full flex items-center gap-2 px-2 py-1.5 rounded-lg text-xs text-gray-500 hover:text-gray-300", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "svg",
+            {
+              className: "w-3.5 h-3.5",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M19 9l-7 7-7-7"
+                }
+              )
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { children: "See More" })
+        ] })
+      ] })
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "px-3 py-3 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center justify-between", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center gap-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex-shrink-0" }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "text-xs text-gray-200 truncate", children: "Henry Richardson" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "text-gray-500 hover:text-white text-xs", children: "\xB7\xB7\xB7" })
+  ] }) })
+] });
+var TopBar6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center justify-between px-8 py-4 bg-[#f5efe6]", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("h1", { className: "text-3xl font-bold text-black", children: "Contacts" }),
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center gap-3", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "p-2 rounded-lg hover:bg-black/5 text-gray-500", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+      "svg",
+      {
+        className: "w-5 h-5",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          }
+        )
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "p-2 rounded-lg hover:bg-black/5 text-gray-500", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+      "svg",
+      {
+        className: "w-5 h-5",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+          }
+        )
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-700 hover:bg-black/5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
+            }
+          )
+        }
+      ),
+      "\xB7\xB7\xB7 Apps"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "text-base leading-none", children: "+" }),
+      "Create new"
+    ] })
+  ] })
+] });
+var Footer6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center justify-between px-8 py-3 border-t border-black/10 bg-[#f5efe6] text-sm text-gray-500", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center gap-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "flex items-center gap-1.5 hover:opacity-80", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeWidth: 2,
+                d: "M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+              }
+            )
+          ]
+        }
+      ),
+      "English"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "hover:opacity-80", children: "API" })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "p-1.5 rounded bg-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            }
+          )
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "p-1.5 rounded bg-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          }
+        )
+      }
+    ) })
+  ] })
+] });
+var SortIcon3 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+  "svg",
+  {
+    className: "w-3.5 h-3.5 inline ml-1",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    stroke: "currentColor",
+    children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+      "path",
+      {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: 2,
+        d: "M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"
+      }
+    )
+  }
+);
+var v1Contacts = [
+  {
+    name: "Darius Cummings",
+    email: "balchen@msn.com",
+    service: "Development",
+    status: "Online",
+    color: "bg-orange-500"
+  },
+  {
+    name: "Sampson Totton",
+    email: "claypool@comcast.net",
+    service: "Design",
+    status: "Away",
+    color: "bg-blue-600"
+  },
+  {
+    name: "Jaroslav Brabec",
+    email: "ehood@comcast.net",
+    service: "Marketing",
+    status: "Away",
+    color: "bg-pink-500"
+  },
+  {
+    name: "Olivia Eklund",
+    email: "hoyer@icloud.com",
+    service: "Development",
+    status: "Online",
+    color: "bg-teal-500"
+  },
+  {
+    name: "Leo Knight",
+    email: "mpiotr@me.com",
+    service: "Management",
+    status: "Offline",
+    color: "bg-purple-600"
+  },
+  {
+    name: "Siri Jakobsson",
+    email: "marnanel@outlook.com",
+    service: "Promotion",
+    status: "Online",
+    color: "bg-green-600"
+  },
+  {
+    name: "Mariano Rasgado",
+    email: "fraterk@me.com",
+    service: "Marketing",
+    status: "Offline",
+    color: "bg-red-500"
+  },
+  {
+    name: "Hugo Assun\xE7\xE3o",
+    email: "jugalator@me.com",
+    service: "Development",
+    status: "Away",
+    color: "bg-indigo-500"
+  },
+  {
+    name: "Olivia Arribas",
+    email: "glenz@outlook.com",
+    service: "Marketing",
+    status: "Online",
+    color: "bg-yellow-600"
+  }
+];
+var v2Contacts = [
+  {
+    name: "Nadine Petrolli",
+    email: "balchen@msn.com",
+    accessOn: true,
+    color: "bg-orange-500"
+  },
+  {
+    name: "Njimoluh Ebua",
+    email: "claypool@comcast.net",
+    accessOn: true,
+    color: "bg-blue-600"
+  },
+  {
+    name: "Laura Sofia Ure\xF1a",
+    email: "ehood@comcast.net",
+    accessOn: true,
+    color: "bg-pink-500"
+  },
+  {
+    name: "Boniface Esanji",
+    email: "hoyer@icloud.com",
+    accessOn: true,
+    color: "bg-teal-500"
+  },
+  {
+    name: "Ph\u1EA1m Qu\u1ED1c H\xF9ng",
+    email: "mpiotr@me.com",
+    accessOn: true,
+    color: "bg-purple-600"
+  },
+  {
+    name: "Anje Keizer",
+    email: "marnanel@outlook.com",
+    accessOn: true,
+    color: "bg-green-600"
+  },
+  {
+    name: "Igor Antonovich",
+    email: "fraterk@me.com",
+    accessOn: false,
+    color: "bg-red-500"
+  },
+  {
+    name: "Pavith Nadal",
+    email: "jugalator@me.com",
+    accessOn: false,
+    color: "bg-indigo-500"
+  },
+  {
+    name: "Gaspar Antunes",
+    email: "glenz@outlook.com",
+    accessOn: false,
+    color: "bg-yellow-600"
+  }
+];
+var StatusDot2 = ({
+  status
+}) => {
+  if (status === "Online") {
+    return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("span", { className: "flex items-center gap-1.5 text-sm text-gray-700", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "w-2 h-2 rounded-full bg-green-500 flex-shrink-0" }),
+      "Online"
+    ] });
+  }
+  if (status === "Offline") {
+    return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("span", { className: "flex items-center gap-1.5 text-sm text-gray-700", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "w-2 h-2 rounded-full bg-red-400 flex-shrink-0" }),
+      "Offline"
+    ] });
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "text-sm text-gray-500", children: "Away" });
+};
+var Toggle = ({ on }) => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+  "div",
+  {
+    className: `relative w-10 h-6 rounded-full transition-colors flex-shrink-0 ${on ? "bg-purple-600" : "bg-gray-300"}`,
+    children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+      "div",
+      {
+        className: `absolute top-1 w-4 h-4 rounded-full bg-white shadow transition-transform ${on ? "translate-x-5" : "translate-x-1"}`
+      }
+    )
+  }
+);
+var TabBar = ({ active }) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center justify-between px-6 py-3 border-b border-black/10", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "flex items-center gap-1", children: ["All Contacts", "Teammates", "Customers"].map((tab) => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+    "button",
+    {
+      className: `px-4 py-2 rounded-lg text-sm font-medium transition-colors ${tab === active ? "bg-black text-white" : "text-gray-500 hover:text-gray-700"}`,
+      children: tab
+    },
+    tab
+  )) }),
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-2 border border-black/15 rounded-lg text-sm text-gray-600 hover:bg-black/5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"
+            }
+          )
+        }
+      ),
+      "Sort: A-Z"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "flex items-center gap-1.5 px-3 py-2 border border-black/15 rounded-lg text-sm text-gray-600 hover:bg-black/5", children: "\xB7\xB7\xB7 Bulk Actions" })
+  ] })
+] });
+var Pagination3 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center justify-between px-6 py-4 border-t border-black/10", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "flex items-center gap-1.5 px-4 py-2 border border-black/15 rounded-lg text-sm text-gray-600 hover:bg-black/5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M15 19l-7-7 7-7"
+          }
+        )
+      }
+    ),
+    "Prev"
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "text-sm text-gray-500", children: "Page 1 of 10" }),
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "flex items-center gap-1.5 px-4 py-2 border border-black/15 rounded-lg text-sm text-gray-600 hover:bg-black/5", children: [
+    "Next",
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M9 5l7 7-7 7"
+          }
+        )
+      }
+    )
+  ] })
+] });
+var V1Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "flex-1 overflow-auto px-6 py-4", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "bg-white rounded-xl border border-black/10 overflow-hidden", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(TabBar, { active: "All Contacts" }),
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "grid grid-cols-[auto_1fr_1fr_1fr_1fr_40px] items-center px-4 py-3 border-b border-black/10 bg-white", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "w-8" }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "text-xs font-medium text-gray-500", children: [
+      "Name ",
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon3, {})
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "text-xs font-medium text-gray-500", children: [
+      "Email ",
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon3, {})
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "text-xs font-medium text-gray-500", children: [
+      "Service ",
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon3, {})
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "text-xs font-medium text-gray-500", children: [
+      "Status ",
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon3, {})
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", {})
+  ] }),
+  v1Contacts.map((contact, i2) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+    "div",
+    {
+      className: `grid grid-cols-[auto_1fr_1fr_1fr_1fr_40px] items-center px-4 py-3 border-b border-black/5 hover:bg-gray-50 transition-colors`,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "w-8", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          "input",
+          {
+            type: "checkbox",
+            className: "w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500"
+          }
+        ) }),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center gap-3 min-w-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Avatar2, { name: contact.name, color: contact.color }),
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "text-sm font-medium text-gray-900 truncate", children: contact.name })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "text-sm text-gray-500 truncate pr-4", children: contact.email }),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "text-sm text-gray-700", children: contact.service }),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(StatusDot2, { status: contact.status }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "text-gray-400 hover:text-gray-600 text-lg leading-none", children: "\xB7\xB7\xB7" })
+      ]
+    },
+    contact.name
+  )),
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Pagination3, {})
+] }) });
+var V2Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "flex-1 overflow-auto px-6 py-4", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "bg-white rounded-xl border border-black/10 overflow-hidden", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(TabBar, { active: "All Contacts" }),
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "grid grid-cols-[auto_1fr_1fr_1fr_40px] items-center px-4 py-3 border-b border-black/10 bg-white", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "w-8" }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "text-xs font-medium text-gray-500", children: [
+      "Name ",
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon3, {})
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "text-xs font-medium text-gray-500", children: [
+      "Email ",
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon3, {})
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "text-xs font-medium text-gray-500", children: [
+      "Access ",
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon3, {})
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", {})
+  ] }),
+  v2Contacts.map((contact) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+    "div",
+    {
+      className: "grid grid-cols-[auto_1fr_1fr_1fr_40px] items-center px-4 py-3 border-b border-black/5 hover:bg-gray-50 transition-colors",
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "w-8", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          "input",
+          {
+            type: "checkbox",
+            className: "w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500"
+          }
+        ) }),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center gap-3 min-w-0", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Avatar2, { name: contact.name, color: contact.color }),
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "text-sm font-medium text-gray-900 truncate", children: contact.name })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "text-sm text-gray-500 truncate pr-4", children: contact.email }),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 border border-black/15 rounded-lg text-sm text-gray-600 hover:bg-gray-50", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+              "svg",
+              {
+                className: "w-3.5 h-3.5",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M19 9l-7 7-7-7"
+                  }
+                )
+              }
+            ),
+            "View and edit"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Toggle, { on: contact.accessOn })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "text-gray-400 hover:text-gray-600 text-lg leading-none", children: "\xB7\xB7\xB7" })
+      ]
+    },
+    contact.name
+  )),
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Pagination3, {})
+] }) });
+var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex-1 overflow-auto px-6 py-4 relative", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "bg-white rounded-xl border border-black/10 overflow-hidden opacity-40 pointer-events-none", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(TabBar, { active: "All Contacts" }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "grid grid-cols-[auto_1fr_1fr_1fr_1fr_40px] items-center px-4 py-3 border-b border-black/10", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "w-8" }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "text-xs font-medium text-gray-500", children: [
+        "Name ",
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon3, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "text-xs font-medium text-gray-500", children: [
+        "Email ",
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon3, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "text-xs font-medium text-gray-500", children: [
+        "Service ",
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon3, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "text-xs font-medium text-gray-500", children: [
+        "Status ",
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon3, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", {})
+    ] }),
+    v1Contacts.slice(0, 6).map((contact) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+      "div",
+      {
+        className: "grid grid-cols-[auto_1fr_1fr_1fr_1fr_40px] items-center px-4 py-3 border-b border-black/5",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "w-8", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "w-4 h-4 rounded border border-gray-300" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: `w-8 h-8 rounded-full ${contact.color}` }),
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "text-sm font-medium text-gray-900", children: contact.name })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "text-sm text-gray-500", children: contact.email }),
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "text-sm text-gray-700", children: contact.service }),
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(StatusDot2, { status: contact.status }),
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "text-gray-400", children: "\xB7\xB7\xB7" })
+        ]
+      },
+      contact.name
+    ))
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "absolute inset-0 flex items-center justify-center z-10", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "bg-white rounded-2xl shadow-2xl w-[480px] max-w-full mx-4 overflow-hidden", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex items-center justify-between px-6 pt-6 pb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("h2", { className: "text-xl font-bold text-gray-900", children: "Latest transactions" }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "w-8 h-8 flex items-center justify-center rounded-full hover:bg-gray-100 text-gray-500", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+        "svg",
+        {
+          className: "w-5 h-5",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M6 18L18 6M6 6l12 12"
+            }
+          )
+        }
+      ) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "px-6 pb-6 space-y-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "w-28 h-28 bg-purple-100 rounded-xl flex items-center justify-center cursor-pointer hover:bg-purple-200 transition-colors", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+        "svg",
+        {
+          className: "w-8 h-8 text-gray-700",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+            }
+          )
+        }
+      ) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("label", { className: "block text-sm font-medium text-gray-700 mb-1.5", children: "Full Name" }),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          "input",
+          {
+            type: "text",
+            placeholder: "Start typing ...",
+            className: "w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("label", { className: "block text-sm font-medium text-gray-700 mb-1.5", children: "Position" }),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          "input",
+          {
+            type: "text",
+            placeholder: "Start typing ...",
+            className: "w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("label", { className: "block text-sm font-medium text-gray-700 mb-1.5", children: "Phone number" }),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          "input",
+          {
+            type: "tel",
+            placeholder: "Start typing ...",
+            className: "w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("label", { className: "block text-sm font-medium text-gray-700 mb-1.5", children: "Email" }),
+        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          "input",
+          {
+            type: "email",
+            placeholder: "Start typing ...",
+            className: "w-full px-4 py-3 border border-gray-200 rounded-xl text-sm text-gray-400 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "w-full py-3.5 bg-purple-500 hover:bg-purple-600 text-white font-semibold rounded-xl transition-colors text-sm", children: "Create contact" })
+    ] })
+  ] }) })
+] });
+var EmptyContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex-1 relative overflow-hidden flex items-center justify-center", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "absolute inset-0 overflow-hidden pointer-events-none", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "absolute -top-20 right-0 w-80 h-80 bg-gradient-to-bl from-yellow-300 via-orange-300 to-transparent rounded-full opacity-60 blur-2xl" }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "absolute bottom-0 -left-10 w-72 h-72 bg-gradient-to-tr from-purple-500 via-purple-400 to-transparent rounded-full opacity-50 blur-2xl" }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "absolute top-1/2 right-20 w-40 h-40 bg-gradient-to-l from-green-400 to-transparent rounded-full opacity-40 blur-2xl" })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "relative z-10 flex flex-col items-center text-center max-w-sm", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "mb-6", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+      "svg",
+      {
+        className: "w-20 h-20 text-gray-400",
+        fill: "none",
+        viewBox: "0 0 80 80",
+        stroke: "currentColor",
+        strokeWidth: 2,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("circle", { cx: "40", cy: "28", r: "14", strokeLinecap: "round" }),
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              d: "M14 68c0-14.36 11.64-26 26-26s26 11.64 26 26"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "line",
+            {
+              x1: "58",
+              y1: "8",
+              x2: "22",
+              y2: "72",
+              strokeWidth: 3,
+              strokeLinecap: "round"
+            }
+          )
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("h2", { className: "text-2xl font-bold text-gray-900 mb-2", children: "No contacts found?" }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("p", { className: "text-sm text-gray-500 mb-8 leading-relaxed", children: [
+      "Try to add more contacts from your personal",
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("br", {}),
+      "account or invite your friends."
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "flex items-center gap-2 px-6 py-3 bg-purple-600/10 hover:bg-purple-600/20 text-purple-700 text-sm font-medium rounded-xl border border-purple-200 transition-colors", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M12 4v16m8-8H4"
+            }
+          )
+        }
+      ),
+      "Create new contact"
+    ] })
+  ] })
+] });
+var ContactsList = ({
+  theme = "light",
+  variant = "v1"
+}) => {
+  const bg = theme === "dark" ? "bg-[#0d0d0d]" : "bg-[#f5efe6]";
+  const renderContent = () => {
+    switch (variant) {
+      case "v2":
+        return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(V2Content4, {});
+      case "new-contact":
+        return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(NewContactModal, {});
+      case "empty":
+        return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(EmptyContent2, {});
+      default:
+        return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(V1Content4, {});
+    }
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: `flex h-screen ${bg}`, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(ContactsSidebar, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(TopBar6, {}),
+      renderContent(),
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Footer6, {})
+    ] })
+  ] });
+};
+
+// src/screens/Sales/SalesList.tsx
+var import_jsx_runtime49 = require("react/jsx-runtime");
+var DoctorProjectSidebar5 = () => {
+  const navItems = [
+    { id: "dashboard", label: "Dashboard" },
+    { id: "products", label: "Products" },
+    { id: "contacts", label: "Contacts" },
+    {
+      id: "customers",
+      label: "Customers",
+      badge: 15,
+      badgeColor: "bg-purple-600"
+    },
+    {
+      id: "sales",
+      label: "Sales",
+      active: true,
+      badge: 14,
+      badgeColor: "bg-green-500"
+    },
+    { id: "analytics", label: "Analytics" }
+  ];
+  const teamMembers = [
+    { name: "Alexandre Paiva", color: "bg-orange-400" },
+    { name: "Thanawan Chadee", color: "bg-teal-500" },
+    { name: "Justine Robinson", color: "bg-purple-500" }
+  ];
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "w-[200px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "px-5 py-5", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex items-center gap-1", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "text-xl font-bold text-white", children: "Doctor Project" }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500 mb-3 flex-shrink-0" })
+    ] }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex-1 overflow-y-auto px-3 pb-4 space-y-5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("p", { className: "text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("nav", { className: "space-y-0.5", children: navItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+          "button",
+          {
+            className: `w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${item.active ? "bg-white/10 text-white font-medium" : "text-gray-400 hover:text-white hover:bg-white/5"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex items-center gap-2.5", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+                  "svg",
+                  {
+                    className: "w-3.5 h-3.5 flex-shrink-0",
+                    fill: "none",
+                    viewBox: "0 0 24 24",
+                    stroke: "currentColor",
+                    children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+                      "path",
+                      {
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeWidth: 1.5,
+                        d: "M13 7l5 5m0 0l-5 5m5-5H6"
+                      }
+                    )
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: item.label })
+              ] }),
+              item.badge && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+                "span",
+                {
+                  className: `text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                  children: item.badge
+                }
+              )
+            ]
+          },
+          item.id
+        )) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("p", { className: "text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "space-y-0.5", children: [
+          teamMembers.map((m3) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+            "button",
+            {
+              className: "w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+                  "div",
+                  {
+                    className: `w-6 h-6 rounded-full ${m3.color} flex items-center justify-center text-[10px] text-white font-bold flex-shrink-0`,
+                    children: m3.name[0]
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "truncate", children: m3.name })
+              ]
+            },
+            m3.name
+          )),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "w-full flex items-center gap-2.5 px-3 py-2 text-sm text-gray-500 hover:text-gray-300", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+              "svg",
+              {
+                className: "w-3 h-3",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M19 9l-7 7-7-7"
+                  }
+                )
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { children: "See More" })
+          ] })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "px-3 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex items-center justify-between px-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex items-center gap-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex-shrink-0" }),
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "text-sm text-gray-200 truncate", children: "Henry Richardson" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "text-gray-500 hover:text-white text-xs", children: "\xB7\xB7\xB7" })
+    ] }) })
+  ] });
+};
+var TopBar7 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex items-center justify-between px-6 py-3 bg-[#f5efe6]", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("h1", { className: "text-2xl font-bold text-black", children: "Sales" }),
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600", children: "\xB7\xB7\xB7" }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600", children: "\xB7\xB7\xB7" }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-600 hover:bg-black/5 rounded-lg", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
+            }
+          )
+        }
+      ),
+      "Apps"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "flex items-center gap-1.5 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "text-base leading-none", children: "+" }),
+      "Create new"
+    ] })
+  ] })
+] });
+var Footer7 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex items-center justify-between px-6 py-3 border-t border-black/10 bg-[#f5efe6] text-sm text-gray-500", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex items-center gap-5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "flex items-center gap-1.5 hover:opacity-80", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeWidth: 2,
+                d: "M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+              }
+            )
+          ]
+        }
+      ),
+      "English"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "hover:opacity-80", children: "API" })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "p-1.5 rounded bg-black/10 hover:bg-black/20", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            }
+          )
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "p-1.5 rounded bg-black/10 hover:bg-black/20", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          }
+        )
+      }
+    ) })
+  ] })
+] });
+var SortIcon4 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+  "svg",
+  {
+    className: "w-3 h-3 inline-block ml-1 text-gray-400",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    stroke: "currentColor",
+    children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      "path",
+      {
+        strokeLinecap: "round",
+        strokeLinejoin: "round",
+        strokeWidth: 2,
+        d: "M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"
+      }
+    )
+  }
+);
+var TablePagination2 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex items-center justify-between px-4 py-3 border-t border-black/10", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "flex items-center gap-1 px-3 py-1.5 rounded-lg border border-black/10 text-sm text-gray-600 hover:bg-black/5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M15 19l-7-7 7-7"
+          }
+        )
+      }
+    ),
+    "Prev"
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "text-sm text-gray-500", children: "Page 1 of 10" }),
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "flex items-center gap-1 px-3 py-1.5 rounded-lg border border-black/10 text-sm text-gray-600 hover:bg-black/5", children: [
+    "Next",
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M9 5l7 7-7 7"
+          }
+        )
+      }
+    )
+  ] })
+] });
+var FilterBar = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex items-center justify-between mb-4", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 bg-purple-100 text-purple-700 text-sm rounded-lg font-medium", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+        "svg",
+        {
+          className: "w-3.5 h-3.5",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707l-6.414 6.414A1 1 0 0014 14v4a1 1 0 01-.553.894l-4 2A1 1 0 018 20v-6a1 1 0 01.293-.707L2.293 13.12A1 1 0 002 13.828V19a1 1 0 001 1h0"
+            }
+          )
+        }
+      ),
+      "All Filters"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "flex items-center gap-1 px-3 py-1.5 bg-white border border-black/10 text-sm rounded-lg text-gray-600 hover:bg-gray-50", children: [
+      "All Customers",
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+        "svg",
+        {
+          className: "w-3 h-3 text-gray-400",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M6 18L18 6M6 6l12 12"
+            }
+          )
+        }
+      )
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "flex items-center gap-1 px-3 py-1.5 bg-white border border-black/10 text-sm rounded-lg text-gray-600 hover:bg-gray-50", children: [
+      "A-Z",
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+        "svg",
+        {
+          className: "w-3 h-3 text-gray-400",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M6 18L18 6M6 6l12 12"
+            }
+          )
+        }
+      )
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "flex items-center gap-2 px-4 py-1.5 bg-white border border-black/10 text-sm rounded-lg text-gray-600 hover:bg-gray-50 min-w-[100px]", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4 text-gray-400",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          }
+        )
+      }
+    ),
+    "Search"
+  ] })
+] });
+var ProductThumb2 = ({
+  color = "bg-gray-200"
+}) => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+  "div",
+  {
+    className: `w-10 h-10 rounded-lg ${color} flex items-center justify-center flex-shrink-0`,
+    children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      "svg",
+      {
+        className: "w-5 h-5 text-gray-400",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 1.5,
+            d: "M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
+          }
+        )
+      }
+    )
+  }
+);
+var v1Sales = [
+  {
+    id: "1",
+    date: "10 Jan 2023",
+    product: "Camera",
+    type: "Black",
+    qty: 3,
+    amount: "$25,00",
+    status: "Tag",
+    statusStyle: "bg-green-100 text-green-700",
+    thumb: "bg-gray-200"
+  },
+  {
+    id: "2",
+    date: "10 Jan 2023",
+    product: "Package",
+    type: "Neutral",
+    qty: 96,
+    amount: "$137,50",
+    status: "Pending",
+    statusStyle: "bg-green-100 text-green-700",
+    thumb: "bg-yellow-100"
+  },
+  {
+    id: "3",
+    date: "12 Jan 2023",
+    product: "Architecture",
+    type: "White",
+    qty: 14,
+    amount: "$245,80",
+    status: "Tag",
+    statusStyle: "bg-green-100 text-green-700",
+    thumb: "bg-slate-200"
+  },
+  {
+    id: "4",
+    date: "13 Jan 2023",
+    product: "Sneakers",
+    type: "Multicolor",
+    qty: 239,
+    amount: "$105,50",
+    status: "Pending",
+    statusStyle: "bg-green-100 text-green-700",
+    thumb: "bg-pink-100"
+  },
+  {
+    id: "5",
+    date: "16 Jan 2023",
+    product: "Watches",
+    type: "White",
+    qty: 38,
+    amount: "$295,00",
+    status: "Pending",
+    statusStyle: "bg-green-100 text-green-700",
+    thumb: "bg-blue-100"
+  },
+  {
+    id: "6",
+    date: "16 Jan 2023",
+    product: "Headphones",
+    type: "Black",
+    qty: 155,
+    amount: "$95,00",
+    status: "Tag",
+    statusStyle: "bg-green-100 text-green-700",
+    thumb: "bg-amber-100"
+  },
+  {
+    id: "7",
+    date: "17 Jan 2023",
+    product: "Playstation",
+    type: "White",
+    qty: 198,
+    amount: "$164,40",
+    status: "Tag",
+    statusStyle: "bg-green-100 text-green-700",
+    thumb: "bg-indigo-100"
+  },
+  {
+    id: "8",
+    date: "19 Jan 2023",
+    product: "Gaming",
+    type: "Multicolor",
+    qty: 36,
+    amount: "$350,00",
+    status: "Tag",
+    statusStyle: "bg-green-100 text-green-700",
+    thumb: "bg-emerald-100"
+  },
+  {
+    id: "9",
+    date: "23 Jan 2023",
+    product: "Clothing",
+    type: "Multicolor",
+    qty: 239,
+    amount: "$105,50",
+    status: "Tag",
+    statusStyle: "bg-green-100 text-green-700",
+    thumb: "bg-rose-100"
+  }
+];
+var V1Content5 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex-1 overflow-auto p-5", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(FilterBar, {}),
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "bg-white rounded-xl border border-black/10 overflow-hidden", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "grid grid-cols-[40px_1.2fr_2fr_1fr_1fr_1fr_1fr_40px] items-center px-4 py-3 border-b border-black/10 text-sm font-medium text-gray-600", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("input", { type: "checkbox", className: "rounded" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+        "Date ",
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon4, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+        "Product ",
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon4, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+        "Type ",
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon4, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+        "Qty. ",
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon4, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+        "Amount ",
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon4, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+        "Status ",
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon4, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", {})
+    ] }),
+    v1Sales.map((s2) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+      "div",
+      {
+        className: "grid grid-cols-[40px_1.2fr_2fr_1fr_1fr_1fr_1fr_40px] items-center px-4 py-3 border-b border-black/5 hover:bg-gray-50 transition-colors",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("input", { type: "checkbox", className: "rounded" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "text-sm text-gray-600", children: s2.date }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex items-center gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(ProductThumb2, { color: s2.thumb }),
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "text-sm font-medium text-black", children: s2.product })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "text-sm text-gray-600", children: s2.type }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "text-sm text-gray-700", children: s2.qty }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "text-sm font-semibold text-black", children: s2.amount }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+            "span",
+            {
+              className: `px-3 py-1 rounded-lg text-xs font-medium ${s2.statusStyle}`,
+              children: s2.status
+            }
+          ) }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "text-gray-400 hover:text-gray-600 text-xs", children: "\xB7\xB7\xB7" })
+        ]
+      },
+      s2.id
+    )),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(TablePagination2, {})
+  ] })
+] });
+var v2Sales = [
+  {
+    id: "1",
+    date: "16 Jan 2023",
+    product: "Camera",
+    order: "Order #: 7697-98",
+    customer: "Benedita Tavares",
+    email: "krueger@yahoo.com",
+    amount: "$2,880,00",
+    tax: "Tax: $79.0",
+    status: "Tag",
+    statusStyle: "bg-green-100 text-green-700",
+    thumb: "bg-gray-200"
+  },
+  {
+    id: "2",
+    date: "16 Jan 2023",
+    product: "Package",
+    order: "Order #: 7690-43",
+    customer: "Balveer Bhadiar",
+    email: "cantu@verizon.net",
+    amount: "$3,600,00",
+    tax: "Tax: $99.0",
+    status: "Tag",
+    statusStyle: "bg-green-100 text-green-700",
+    thumb: "bg-yellow-100"
+  },
+  {
+    id: "3",
+    date: "16 Jan 2023",
+    product: "Architecture",
+    order: "Order #: 3421-77",
+    customer: "Yamaha Toshinobu",
+    email: "cremonini@outlook.com",
+    amount: "$2,860,00",
+    tax: "Tax: $72.9",
+    status: "Tag",
+    statusStyle: "bg-green-100 text-green-700",
+    thumb: "bg-slate-200"
+  },
+  {
+    id: "4",
+    date: "16 Jan 2023",
+    product: "Sneakers",
+    order: "Order #: 8654-55",
+    customer: "Jushawn McDowell",
+    email: "sequin@verizon.net",
+    amount: "$2,880,00",
+    tax: "Tax: $79.0",
+    status: "Tag",
+    statusStyle: "bg-green-100 text-green-700",
+    thumb: "bg-pink-100"
+  },
+  {
+    id: "5",
+    date: "16 Jan 2023",
+    product: "Watches",
+    order: "Order #: 0987-32",
+    customer: "Ivan Magalh\xE3es",
+    email: "hedwig@mac.com",
+    amount: "$3,600,00",
+    tax: "Tax: $99.0",
+    status: "Shipped",
+    statusStyle: "bg-green-400 text-white",
+    thumb: "bg-blue-100"
+  },
+  {
+    id: "6",
+    date: "16 Jan 2023",
+    product: "Headphones",
+    order: "Order #: 6552-70",
+    customer: "Merrile Burgett",
+    email: "pappp@optonline.net",
+    amount: "$2,860,00",
+    tax: "Tax: $72.9",
+    status: "Shipped",
+    statusStyle: "bg-green-400 text-white",
+    thumb: "bg-amber-100"
+  },
+  {
+    id: "7",
+    date: "16 Jan 2023",
+    product: "Gaming",
+    order: "Order #: 6539-90",
+    customer: "Merrile Burgett",
+    email: "pappp@optonline.net",
+    amount: "$2,860,00",
+    tax: "Tax: $72.9",
+    status: "Shipped",
+    statusStyle: "bg-green-400 text-white",
+    thumb: "bg-indigo-100"
+  }
+];
+var V2Content5 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex-1 overflow-auto p-5", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(FilterBar, {}),
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "bg-white rounded-xl border border-black/10 overflow-hidden", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "grid grid-cols-[40px_1.2fr_2fr_2fr_1.5fr_1fr_40px] items-center px-4 py-3 border-b border-black/10 text-sm font-medium text-gray-600", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("input", { type: "checkbox", className: "rounded" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+        "Date ",
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon4, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+        "Product ",
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon4, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+        "Customer ",
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon4, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+        "Amount ",
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon4, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+        "Status ",
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon4, {})
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", {})
+    ] }),
+    v2Sales.map((s2) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+      "div",
+      {
+        className: "grid grid-cols-[40px_1.2fr_2fr_2fr_1.5fr_1fr_40px] items-center px-4 py-3 border-b border-black/5 hover:bg-gray-50 transition-colors",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("input", { type: "checkbox", className: "rounded" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "text-sm text-gray-600", children: s2.date }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex items-center gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(ProductThumb2, { color: s2.thumb }),
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "text-sm font-medium text-black", children: s2.product }),
+              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "text-xs text-gray-400", children: s2.order })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "text-sm font-medium text-black", children: s2.customer }),
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "text-xs text-gray-400", children: s2.email })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "text-sm font-semibold text-black", children: s2.amount }),
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "text-xs text-gray-400", children: s2.tax })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+            "span",
+            {
+              className: `px-3 py-1 rounded-lg text-xs font-medium ${s2.statusStyle}`,
+              children: s2.status
+            }
+          ) }),
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "text-gray-400 hover:text-gray-600 text-xs", children: "\xB7\xB7\xB7" })
+        ]
+      },
+      s2.id
+    )),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(TablePagination2, {})
+  ] })
+] });
+var SalesList = ({
+  theme = "light",
+  variant = "v1"
+}) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex h-screen bg-[#f5efe6]", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(DoctorProjectSidebar5, {}),
+  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(TopBar7, {}),
+    variant === "v1" ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(V1Content5, {}) : /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(V2Content5, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(Footer7, {})
+  ] })
+] });
+
+// src/screens/Inbox/InboxList.tsx
+var import_react9 = require("react");
+var import_jsx_runtime50 = require("react/jsx-runtime");
+var InboxSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "w-[200px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "px-5 py-5 border-b border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-0.5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-xl font-bold text-white", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500 mb-3 flex-shrink-0" })
+  ] }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex-1 overflow-y-auto px-3 py-4 space-y-5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { className: "text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("nav", { className: "space-y-0.5", children: [
+        { label: "Dashboard", badge: 15, badgeColor: "bg-purple-600" },
+        { label: "Projects" },
+        { label: "Tasks" },
+        { label: "Kanban Desk", badge: 28, badgeColor: "bg-purple-600" },
+        { label: "File Manager", badge: 14, badgeColor: "bg-green-500" },
+        { label: "Calendar" },
+        { label: "Inbox", active: true }
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+        "button",
+        {
+          className: `w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs transition-colors ${item.active ? "bg-white/10 text-white font-medium" : "text-gray-400 hover:text-white hover:bg-white/5"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { children: item.label }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              "span",
+              {
+                className: `text-[10px] text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                children: item.badge
+              }
+            )
+          ]
+        },
+        item.label
+      )) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { className: "text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "space-y-0.5", children: [
+        [
+          { name: "Alexandre Paiva", color: "bg-orange-400" },
+          { name: "Thanawan Chadee", color: "bg-purple-500" },
+          { name: "Justine Robinson", color: "bg-blue-400" }
+        ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+          "button",
+          {
+            className: "w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-white/5",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                "span",
+                {
+                  className: `w-6 h-6 rounded-full ${member.color} flex-shrink-0`
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "truncate", children: member.name })
+            ]
+          },
+          member.name
+        )),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { children: "\u2228 See More" }) })
+      ] })
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "px-3 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center justify-between px-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex-shrink-0" }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-xs text-gray-200 truncate", children: "Henry Richardson" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "text-gray-500 hover:text-white text-sm flex-shrink-0", children: "\xB7\xB7\xB7" })
+  ] }) })
+] });
+var InboxTopBar = ({
+  showBack = false
+}) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center justify-between px-6 py-3 border-b bg-[#f5efe6] border-black/10 flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-3", children: [
+    showBack && /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "flex items-center justify-center w-8 h-8 border border-black/15 rounded-lg text-gray-600 hover:bg-black/5 text-sm", children: "\u2190" }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("h1", { className: "text-2xl font-bold text-black", children: "Inbox" })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-3", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "text-gray-500 text-sm hover:text-gray-700", children: "\xB7\xB7\xB7" }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "text-gray-500 text-sm hover:text-gray-700", children: "\xB7\xB7\xB7" }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-700 hover:bg-black/5 border border-black/10", children: "\xB7\xB7\xB7 Apps" }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-xs font-medium rounded-lg", children: "\xB7\xB7\xB7 Create new" })
+  ] })
+] });
+var InboxFooter = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center justify-between px-6 py-2.5 border-t bg-[#f5efe6] border-black/10 text-xs text-gray-500 flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "hover:opacity-80 flex items-center gap-1", children: "\xB7\xB7\xB7 English" }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "hover:opacity-80", children: "API" })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "px-2 py-1 rounded bg-purple-600 text-white text-xs", children: "\xB7\xB7\xB7" }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "px-2 py-1 rounded bg-black/10 text-xs", children: "\xB7\xB7\xB7" })
+  ] })
+] });
+var avatarColors = {
+  "Helena Chavez": "bg-rose-400",
+  "Sallie Wade": "bg-purple-500",
+  "Blake Howard": "bg-green-500",
+  "Devin Williams": "bg-blue-500",
+  "Raymond Gomez": "bg-orange-400",
+  "Daya Chitanis": "bg-teal-500",
+  "Samuil Sadovsky": "bg-orange-400",
+  "Ishaaq El Vohra": "bg-purple-400",
+  "Jaquon Hart": "bg-blue-500",
+  "Sebastian Bennett": "bg-rose-400",
+  "Anaru Hakopa": "bg-green-500",
+  "Rey Milbourne": "bg-teal-500",
+  "Fua Lamba": "bg-yellow-500",
+  "Sang Young-Il": "bg-indigo-500",
+  "Gladys Kanyinda": "bg-teal-400",
+  "Gabriela Pires": "bg-orange-400"
+};
+var Avatar3 = ({
+  name,
+  size = "md"
+}) => {
+  const initials = name.split(" ").slice(0, 2).map((n2) => n2[0]).join("");
+  const color = avatarColors[name] ?? "bg-gray-400";
+  const sizeClass = size === "sm" ? "w-6 h-6 text-[10px]" : size === "lg" ? "w-9 h-9 text-sm" : "w-8 h-8 text-xs";
+  return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+    "div",
+    {
+      className: `${sizeClass} ${color} rounded-full flex items-center justify-center text-white font-semibold flex-shrink-0`,
+      children: initials
+    }
+  );
+};
+var mailItems = [
+  {
+    id: "1",
+    sender: "Samuil Sadovsky",
+    title: "Title",
+    subtitle: "Subtitle",
+    time: "28 days ago",
+    starred: false,
+    attachments: []
+  },
+  {
+    id: "2",
+    sender: "Ishaaq El Vohra",
+    title: "Re: Canada Tries to Turn Ideas Into Dollars",
+    subtitle: "Driver Messages That Drive",
+    time: "23 hours ago",
+    starred: false,
+    attachments: []
+  },
+  {
+    id: "3",
+    sender: "Jaquon Hart",
+    title: "Re: Damaging Your Phone, Accidentally",
+    subtitle: "Daily Report: Silicon Valley Losing",
+    time: "6 days ago",
+    starred: false,
+    attachments: [
+      { name: "app design.sketch", color: "bg-orange-400" },
+      { name: "spendings.pdf", color: "bg-red-400" }
+    ]
+  },
+  {
+    id: "4",
+    sender: "Sebastian Bennett",
+    title: "Re: Tesla, Reporting Bigger Gains in Production",
+    subtitle: "Evidence That Robots",
+    time: "5 months ago",
+    starred: true,
+    attachments: []
+  },
+  {
+    id: "5",
+    sender: "Anaru Hakopa",
+    title: "The New Meaning of Fast Fashion",
+    subtitle: "Detailing Amazon's Custom-Clothing",
+    time: "58 mins ago",
+    starred: true,
+    attachments: []
+  },
+  {
+    id: "6",
+    sender: "Rey Milbourne",
+    title: "Lawyers to Review Mergers",
+    subtitle: "Takes On the Flying Car Detailing Amazon's",
+    time: "7 days ago",
+    starred: false,
+    attachments: [
+      { name: "money transfer.pdf", color: "bg-red-400" },
+      { name: "work scope.xls", color: "bg-green-500" },
+      { name: "content articles.docx", color: "bg-blue-400" }
+    ]
+  },
+  {
+    id: "7",
+    sender: "Fua Lamba",
+    title: "Trump Appoints One of His Lawyers to Review",
+    subtitle: "No Longer a Dream",
+    time: "7 days ago",
+    starred: true,
+    attachments: []
+  },
+  {
+    id: "8",
+    sender: "Sang Young-Il",
+    title: "Re: Sleepy Behind the Wheel?",
+    subtitle: "Changes to Tech Worker Visas Are Cosmetic",
+    time: "2 weeks ago",
+    starred: false,
+    attachments: []
+  }
+];
+var MailListVariant = () => {
+  const [activeTab, setActiveTab] = (0, import_react9.useState)("Incoming");
+  const tabs = ["Incoming", "Sent", "Drafts", "Deleted"];
+  return /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxTopBar, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex-1 overflow-auto px-5 py-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center justify-between mb-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-2 border border-black/15 rounded-lg text-xs font-medium text-gray-700 hover:bg-black/5 bg-white", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              "svg",
+              {
+                className: "w-3 h-3",
+                fill: "none",
+                stroke: "currentColor",
+                viewBox: "0 0 24 24",
+                children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                  }
+                )
+              }
+            ),
+            "Compose Email"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "flex items-center rounded-lg overflow-hidden border border-black/10", children: tabs.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            "button",
+            {
+              onClick: () => setActiveTab(tab),
+              className: `px-4 py-2 text-xs font-medium transition-colors ${activeTab === tab ? "bg-black text-white" : "bg-white text-gray-600 hover:bg-gray-50"}`,
+              children: tab
+            },
+            tab
+          )) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-2 px-3 py-2 border border-black/15 rounded-lg bg-white", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            "svg",
+            {
+              className: "w-3 h-3 text-gray-400",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24",
+              children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                }
+              )
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            "input",
+            {
+              type: "text",
+              placeholder: "Type to search...",
+              className: "text-xs text-gray-400 bg-transparent outline-none w-36",
+              readOnly: true
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "bg-white rounded-xl border border-black/10 overflow-hidden", children: mailItems.map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+        "div",
+        {
+          className: `flex items-center gap-3 px-4 py-3 hover:bg-gray-50 cursor-pointer transition-colors ${idx !== mailItems.length - 1 ? "border-b border-black/5" : ""}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-2 flex-shrink-0", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "w-4 h-4 border border-gray-300 rounded" }),
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "text-gray-300 hover:text-gray-500 text-xs", children: "\xB7\xB7\xB7" })
+            ] }),
+            item.starred ? /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              "svg",
+              {
+                className: "w-3.5 h-3.5 text-yellow-400 flex-shrink-0",
+                fill: "currentColor",
+                viewBox: "0 0 24 24",
+                children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("path", { d: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" })
+              }
+            ) : /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "w-3.5 h-3.5 flex-shrink-0" }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: item.sender, size: "md" }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-sm font-semibold text-gray-900 w-32 flex-shrink-0 truncate", children: item.sender }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-2 flex-1 min-w-0", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-sm text-gray-800 font-medium truncate", children: item.title }),
+              item.subtitle && /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-sm text-gray-400 truncate hidden md:block", children: item.subtitle })
+            ] }),
+            item.attachments.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "flex items-center gap-1 flex-shrink-0", children: item.attachments.map((att) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+              "span",
+              {
+                className: "flex items-center gap-1 px-2 py-0.5 bg-gray-100 rounded text-[10px] text-gray-600",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                    "span",
+                    {
+                      className: `w-1.5 h-1.5 rounded-full ${att.color}`
+                    }
+                  ),
+                  att.name
+                ]
+              },
+              att.name
+            )) }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-xs text-gray-400 flex-shrink-0 w-20 text-right", children: item.time }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "text-gray-300 hover:text-gray-500 text-xs flex-shrink-0", children: "\xB7\xB7\xB7" })
+          ]
+        },
+        item.id
+      )) }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center justify-between mt-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "flex items-center gap-1 px-3 py-1.5 border border-black/15 rounded-lg text-xs text-gray-700 hover:bg-black/5 bg-white", children: "\u2039 Prev" }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-xs text-gray-500", children: "Page 1 of 10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "flex items-center gap-1 px-3 py-1.5 border border-black/15 rounded-lg text-xs text-gray-700 hover:bg-black/5 bg-white", children: "Next \u203A" })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxFooter, {})
+  ] });
+};
+var chatMessages = [
+  {
+    id: "1",
+    sender: "Helena Chavez",
+    subject: "Leaving Fingerprints on the iPhone",
+    preview: "I want to talk about things that are",
+    time: "11:52AM"
+  },
+  {
+    id: "2",
+    sender: "Sallie Wade",
+    subject: "Microsoft Looks to Regain",
+    preview: "I want to talk about things that are",
+    time: "10:04AM"
+  },
+  {
+    id: "3",
+    sender: "Blake Howard",
+    subject: "Tech Roundup: Things Learned",
+    preview: "I want to talk about things that are",
+    time: "08:31AM"
+  },
+  {
+    id: "4",
+    sender: "Devin Williams",
+    subject: "Tesla, Reporting Bigger Loss",
+    preview: "I want to talk about things that are",
+    time: "08:01PM"
+  },
+  {
+    id: "5",
+    sender: "Raymond Gomez",
+    subject: "Just What Was in That System?",
+    preview: "I want to talk about things that are",
+    time: "12:54AM"
+  },
+  {
+    id: "6",
+    sender: "Devin Williams",
+    subject: "Tesla, Reporting Bigger Loss",
+    preview: "I want to talk about things that are",
+    time: "08:01PM"
+  },
+  {
+    id: "7",
+    sender: "Daya Chitanis",
+    subject: "Things Learned",
+    preview: "Leaving Fingerprints on the iPhone",
+    time: "08:01PM"
+  }
+];
+var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxTopBar, {}),
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex-1 flex overflow-hidden px-5 py-4 gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "w-[280px] flex-shrink-0 bg-white rounded-xl border border-black/10 flex flex-col overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center justify-between p-3 border-b border-black/8", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 text-white text-xs font-medium rounded-lg hover:bg-purple-700", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            "svg",
+            {
+              className: "w-3 h-3",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24",
+              children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
+                }
+              )
+            }
+          ),
+          "Compose"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "w-7 h-7 flex items-center justify-center rounded-lg hover:bg-gray-100 text-gray-500", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            "svg",
+            {
+              className: "w-3.5 h-3.5",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24",
+              children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"
+                }
+              )
+            }
+          ) }),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "w-7 h-7 flex items-center justify-center rounded-lg hover:bg-gray-100 text-gray-500", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            "svg",
+            {
+              className: "w-3.5 h-3.5",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24",
+              children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                }
+              )
+            }
+          ) })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "flex-1 overflow-y-auto", children: chatMessages.map((msg, idx) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+        "div",
+        {
+          className: `flex items-start gap-2.5 px-3 py-2.5 cursor-pointer hover:bg-gray-50 transition-colors ${idx !== chatMessages.length - 1 ? "border-b border-black/5" : ""}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: msg.sender, size: "md" }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex-1 min-w-0", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center justify-between mb-0.5", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-xs font-semibold text-gray-900 truncate", children: msg.sender }),
+                /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-[10px] text-gray-400 flex-shrink-0 ml-1", children: msg.time })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { className: "text-xs font-medium text-gray-700 truncate", children: msg.subject }),
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { className: "text-[10px] text-gray-400 truncate", children: msg.preview })
+            ] })
+          ]
+        },
+        msg.id
+      )) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex-1 bg-white rounded-xl border border-black/10 flex flex-col overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center justify-between px-4 py-3 border-b border-black/8", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "w-7 h-7 flex items-center justify-center rounded-lg border border-black/10 hover:bg-gray-50 text-gray-500 text-sm", children: "\u2039" }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Sallie Wade", size: "sm" }),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-sm font-semibold text-gray-900", children: "Sallie Wade" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "w-7 h-7 flex items-center justify-center rounded-lg hover:bg-gray-100 text-gray-500", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            "svg",
+            {
+              className: "w-3.5 h-3.5",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24",
+              children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                }
+              )
+            }
+          ) }),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "w-7 h-7 flex items-center justify-center rounded-lg hover:bg-gray-100 text-gray-500 text-sm", children: "\xB7\xB7\xB7" })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex-1 overflow-y-auto p-4 space-y-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "px-3 py-1 bg-gray-800 text-white text-[10px] rounded-full", children: "48 Messages" }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "flex items-end justify-end gap-2", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex flex-col items-end gap-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-[10px] text-gray-400", children: "8:20 PM Gabriela Pires" }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Gabriela Pires", size: "sm" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "bg-purple-600 text-white text-xs px-3 py-2 rounded-xl rounded-tr-sm max-w-[200px]", children: "Freelance Design Tricks" })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "flex items-start gap-2", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex flex-col gap-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Sallie Wade", size: "sm" }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-[10px] text-gray-400", children: "Sallie Wade 8:35 PM" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "bg-gray-100 text-gray-800 text-xs px-3 py-2 rounded-xl rounded-tl-sm max-w-[250px]", children: "Some graphic designers always manage to produce" }),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex gap-2 mt-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "w-20 h-14 bg-gradient-to-br from-purple-300 to-indigo-400 rounded-lg overflow-hidden flex-shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "w-full h-full opacity-70 bg-gradient-to-tr from-purple-200 to-blue-300" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "w-20 h-14 bg-gradient-to-br from-blue-300 to-cyan-400 rounded-lg overflow-hidden flex-shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "w-full h-full opacity-70 bg-gradient-to-tr from-blue-200 to-teal-300" }) })
+          ] })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "flex items-end justify-end gap-2", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex flex-col items-end gap-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-[10px] text-gray-400", children: "8:40 PM Gabriela Pires" }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Gabriela Pires", size: "sm" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "bg-purple-600 text-white text-xs px-3 py-2 rounded-xl rounded-tr-sm max-w-[260px]", children: "Attending a trade show can be a very effective method" })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "flex items-start gap-2", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex flex-col gap-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Sallie Wade", size: "sm" }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-[10px] text-gray-400", children: "Sallie Wade 8:50 PM" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "bg-gray-100 text-gray-800 text-xs px-3 py-2 rounded-xl rounded-tl-sm max-w-[200px]", children: "Advertising on a budget part" })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-start gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Sallie Wade", size: "sm" }),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "bg-gray-100 text-gray-800 text-xs px-3 py-2 rounded-xl rounded-tl-sm", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              "span",
+              {
+                className: "w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce",
+                style: { animationDelay: "0ms" }
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              "span",
+              {
+                className: "w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce",
+                style: { animationDelay: "150ms" }
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              "span",
+              {
+                className: "w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce",
+                style: { animationDelay: "300ms" }
+              }
+            )
+          ] }) })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "px-4 py-3 border-t border-black/8", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-2 bg-gray-50 border border-black/10 rounded-xl px-3 py-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Gabriela Pires", size: "sm" }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+          "input",
+          {
+            type: "text",
+            placeholder: "Type to add something",
+            className: "flex-1 text-xs text-gray-400 bg-transparent outline-none",
+            readOnly: true
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "text-gray-400 text-sm", children: "\xB7\xB7\xB7" }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "text-gray-400 text-sm", children: "\xB7\xB7\xB7" }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "w-6 h-6 bg-purple-600 rounded-lg flex items-center justify-center text-white", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+          "svg",
+          {
+            className: "w-3 h-3",
+            fill: "none",
+            stroke: "currentColor",
+            viewBox: "0 0 24 24",
+            children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M9 5l7 7-7 7"
+              }
+            )
+          }
+        ) })
+      ] }) })
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxFooter, {})
+] });
+var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxTopBar, { showBack: true }),
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex-1 overflow-auto px-5 py-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center justify-between mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-2 border border-black/15 rounded-lg text-xs font-medium text-gray-700 hover:bg-black/5 bg-white", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+          "svg",
+          {
+            className: "w-3 h-3",
+            fill: "none",
+            stroke: "currentColor",
+            viewBox: "0 0 24 24",
+            children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M8 7H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-3m-1 4l-3 3m0 0l-3-3m3 3V4"
+              }
+            )
+          }
+        ),
+        "Save as draft"
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-2 bg-white border border-black/15 rounded-lg text-xs font-medium text-gray-700 hover:bg-gray-50", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            "svg",
+            {
+              className: "w-3 h-3",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24",
+              children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M13 7l5 5m0 0l-5 5m5-5H6"
+                }
+              )
+            }
+          ),
+          "Forward"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-2 bg-white border border-black/15 rounded-lg text-xs font-medium text-red-600 hover:bg-red-50", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            "svg",
+            {
+              className: "w-3 h-3",
+              fill: "none",
+              stroke: "currentColor",
+              viewBox: "0 0 24 24",
+              children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                }
+              )
+            }
+          ),
+          "Delete"
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "bg-white rounded-xl border border-black/10 overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "px-5 py-4 border-b border-black/8", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("h2", { className: "text-base font-bold text-gray-900", children: "Re: Solar experiment lets trade energy among themselves" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "px-5 py-4 border-b border-black/8", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-start justify-between mb-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Helena Chavez", size: "lg" }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { className: "text-sm font-semibold text-gray-900", children: "Helena Chavez" }),
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("p", { className: "text-xs text-gray-400", children: [
+                "helena.chavez89@outlook.com",
+                " ",
+                /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-gray-300", children: "to" }),
+                " ",
+                /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "text-gray-500", children: "me" })
+              ] })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-2 text-xs text-gray-400 flex-shrink-0", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { children: "18 January 2022" }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { children: "\xB7" }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { children: "11:52AM" })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "text-sm text-gray-700 leading-relaxed mb-4", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { children: "Working outside the office should help de-escalate workplace toxicity. But in reality, dysfunctional workplace culture may actually get worse when you're at home. Instead, her supervisor found new ways to monitor the team virtually" }),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("br", {}),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { children: "Best Regards," }),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { children: "Helena Chavez" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "flex gap-3", children: [
+          "from-purple-300 to-indigo-400",
+          "from-blue-300 to-cyan-400",
+          "from-rose-300 to-pink-400"
+        ].map((gradient, i2) => /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+          "div",
+          {
+            className: `w-28 h-20 bg-gradient-to-br ${gradient} rounded-lg flex-shrink-0`
+          },
+          i2
+        )) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "flex items-center justify-center py-2 border-b border-black/8", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "w-6 h-6 flex items-center justify-center bg-purple-600 text-white text-[10px] rounded-full font-semibold", children: "5" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "px-5 py-4 border-b border-black/8", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-start gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Gladys Kanyinda", size: "lg" }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { className: "text-sm font-semibold text-gray-900", children: "Gladys Kanyinda" }),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-2 text-xs text-gray-400", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { children: "13 January 2022" }),
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { children: "\xB7" }),
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { children: "10:45AM" })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { className: "text-xs text-gray-500 mt-0.5", children: "Toxic work cultures can have major impacts on employee wellbeing" })
+        ] })
+      ] }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "px-5 py-4", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex items-center gap-3 bg-gray-50 border border-black/10 rounded-xl px-4 py-2.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Helena Chavez", size: "sm" }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+          "input",
+          {
+            type: "text",
+            placeholder: "Type to add something",
+            className: "flex-1 text-sm text-gray-400 bg-transparent outline-none",
+            readOnly: true
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "text-gray-400 text-sm", children: "\xB7\xB7\xB7" }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "text-gray-400 text-sm", children: "\xB7\xB7\xB7" }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "w-6 h-6 bg-purple-600 rounded-lg flex items-center justify-center text-white", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+          "svg",
+          {
+            className: "w-3 h-3",
+            fill: "none",
+            stroke: "currentColor",
+            viewBox: "0 0 24 24",
+            children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M9 5l7 7-7 7"
+              }
+            )
+          }
+        ) })
+      ] }) })
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxFooter, {})
+] });
+var EmptyVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxTopBar, {}),
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "flex-1 flex items-center justify-center relative overflow-hidden", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "absolute top-0 left-1/2 -translate-x-1/4 w-64 h-64 bg-gradient-to-br from-yellow-300 to-orange-300 rounded-full opacity-60 blur-3xl" }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "absolute bottom-0 right-1/4 w-56 h-56 bg-gradient-to-br from-purple-400 to-violet-500 rounded-full opacity-50 blur-3xl" }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "absolute top-1/4 right-0 w-48 h-48 bg-gradient-to-br from-rose-300 to-pink-400 rounded-full opacity-40 blur-3xl" }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "relative z-10 flex flex-col items-center text-center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "w-16 h-16 mb-4", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+        "svg",
+        {
+          viewBox: "0 0 64 64",
+          fill: "none",
+          xmlns: "http://www.w3.org/2000/svg",
+          className: "w-full h-full",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              "path",
+              {
+                d: "M12 28 C10 20, 16 12, 24 10 C28 9, 36 10, 40 14 C44 8, 52 8, 56 14 C60 20, 58 28, 52 32 L32 52 L12 32 C8 28, 8 24, 12 28 Z",
+                stroke: "#111",
+                strokeWidth: "2.5",
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                fill: "none"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              "path",
+              {
+                d: "M44 20 C46 16, 50 16, 52 20",
+                stroke: "#111",
+                strokeWidth: "2",
+                strokeLinecap: "round",
+                fill: "none"
+              }
+            )
+          ]
+        }
+      ) }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("h2", { className: "text-2xl font-bold text-gray-900 mb-2", children: "No messages found?" }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { className: "text-sm text-gray-500 mb-6 max-w-xs", children: "Try to add more contacts from your personal account or start new discussion" }),
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("button", { className: "flex items-center gap-2 px-5 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-xl transition-colors", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+          "svg",
+          {
+            className: "w-4 h-4",
+            fill: "none",
+            stroke: "currentColor",
+            viewBox: "0 0 24 24",
+            children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M12 4v16m8-8H4"
+              }
+            )
+          }
+        ),
+        "Create a message"
+      ] })
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxFooter, {})
+] });
+var InboxList = ({
+  theme = "light",
+  variant = "mail-list"
+}) => {
+  const renderContent = () => {
+    switch (variant) {
+      case "chat":
+        return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(ChatVariant, {});
+      case "mail-compose":
+        return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(MailComposeVariant, {});
+      case "empty":
+        return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(EmptyVariant, {});
+      case "mail-list":
+      default:
+        return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(MailListVariant, {});
+    }
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+    "div",
+    {
+      className: `flex h-screen ${theme === "dark" ? "dark" : ""} bg-[#f5efe6]`,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxSidebar, {}),
+        renderContent()
+      ]
     }
   );
 };
 
-// src/screens/Education/EducationCourses.tsx
-var import_jsx_runtime50 = require("react/jsx-runtime");
-var EducationCourses = () => {
-  const courses = [
-    {
-      id: "1",
-      title: "React Advanced",
-      instructor: "John Smith",
-      progress: 65,
-      status: "In Progress"
-    },
-    {
-      id: "2",
-      title: "TypeScript Basics",
-      instructor: "Jane Doe",
-      progress: 100,
-      status: "Completed"
-    },
-    {
-      id: "3",
-      title: "GraphQL Mastery",
-      instructor: "Mike Chen",
-      progress: 0,
-      status: "Not Started"
-    }
-  ];
-  return /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "max-w-6xl mx-auto p-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("h1", { className: "text-3xl font-bold mb-6", children: "Education & Courses" }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6", children: courses.map((course) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
-      Card,
-      {
-        className: "p-6 hover:shadow-lg transition-shadow",
-        children: [
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "mb-4", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("h3", { className: "text-lg font-semibold mb-2", children: course.title }),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("p", { className: "text-gray-600 text-sm mb-3", children: [
-              "by ",
-              course.instructor
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
-              Badge,
+// src/screens/Payments/PaymentsList.tsx
+var import_jsx_runtime51 = require("react/jsx-runtime");
+var DoctorProjectSidebar6 = ({ variant }) => {
+  const showTeamMembers = variant === "details";
+  return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "w-[280px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "px-6 py-5 border-b border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center gap-1", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "text-xl font-bold text-white", children: "Doctor Project" }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500 mb-3" })
+    ] }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex-1 overflow-y-auto px-4 py-4 space-y-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("nav", { className: "space-y-1", children: [
+          { label: "Dashboard", icon: "dashboard" },
+          { label: "Accounts", icon: "accounts" },
+          { label: "Transactions", icon: "transactions" },
+          {
+            label: "Crypto Assets",
+            icon: "crypto",
+            badge: 28,
+            badgeColor: "bg-purple-600"
+          },
+          {
+            label: "Payments",
+            icon: "payments",
+            badge: 14,
+            badgeColor: "bg-green-500",
+            active: true
+          },
+          { label: "Reports", icon: "reports" }
+        ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+          "button",
+          {
+            className: `w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-colors ${item.active ? "bg-white/10 text-white font-medium" : "text-gray-400 hover:text-white hover:bg-white/5"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center gap-3", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(NavIcon2, { icon: item.icon }),
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { children: item.label })
+              ] }),
+              item.badge && /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                "span",
+                {
+                  className: `text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                  children: item.badge
+                }
+              )
+            ]
+          },
+          item.label
+        )) })
+      ] }),
+      showTeamMembers ? (
+        /* Team Members section – shown in Details variant */
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "space-y-1", children: [
+            [
+              { name: "Alexandre Paiva", color: "bg-orange-500" },
+              { name: "Thanawan Chadee", color: "bg-purple-500" },
+              { name: "Justine Robinson", color: "bg-gray-500" }
+            ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+              "button",
               {
-                variant: course.status === "Completed" ? "mint" : "secondary",
-                children: course.status
+                className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                    "div",
+                    {
+                      className: `w-7 h-7 rounded-full ${member.color} flex-shrink-0`
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { children: member.name })
+                ]
+              },
+              member.name
+            )),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "text-gray-500 text-sm", children: "\u2304 See More" }) })
+          ] })
+        ] })
+      ) : /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(import_jsx_runtime51.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Cards" }),
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "space-y-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-xs font-bold text-white flex-shrink-0", children: "V" }),
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { children: "Debit Card **** 7890" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "w-7 h-7 rounded-full bg-gradient-to-br from-red-500 to-orange-400 flex items-center justify-center text-xs flex-shrink-0", children: "\u25CF" }),
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { children: "Credit Card **** 4340" })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "w-7 h-7 rounded-full border border-dashed border-gray-600 flex items-center justify-center text-lg flex-shrink-0", children: "+" }),
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { children: "Open a card" })
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Balances" }),
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "space-y-1", children: [
+            [
+              { flag: "\u{1F1FA}\u{1F1F8}", amount: "100,050.75 USD" },
+              { flag: "\u{1F1EA}\u{1F1FA}", amount: "10.40 EUR" },
+              { flag: "\u{1F1EC}\u{1F1E7}", amount: "95.50 GBP" }
+            ].map((bal) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+              "button",
+              {
+                className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "text-lg", children: bal.flag }),
+                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { children: bal.amount })
+                ]
+              },
+              bal.amount
+            )),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "w-7 h-7 rounded-full border border-dashed border-gray-600 flex items-center justify-center text-lg", children: "+" }),
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { children: "Open a balance" })
+            ] })
+          ] })
+        ] })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "px-4 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center justify-between px-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex-shrink-0" }),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "text-sm text-gray-200", children: "Henry Richardson" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "text-gray-500 hover:text-white", children: "\xB7\xB7\xB7" })
+    ] }) })
+  ] });
+};
+var NavIcon2 = ({ icon }) => {
+  const cls = "w-4 h-4 flex-shrink-0";
+  switch (icon) {
+    case "dashboard":
+      return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("circle", { cx: "12", cy: "12", r: "3", strokeWidth: 2 })
+          ]
+        }
+      );
+    case "accounts":
+      return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("rect", { x: "3", y: "3", width: "7", height: "7", rx: "1", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("rect", { x: "14", y: "3", width: "7", height: "7", rx: "1", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("rect", { x: "14", y: "14", width: "7", height: "7", rx: "1", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("rect", { x: "3", y: "14", width: "7", height: "7", rx: "1", strokeWidth: 2 })
+          ]
+        }
+      );
+    case "transactions":
+      return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M8 7h12m0 0l-4-4m4 4l-4 4M4 17h12m0 0l-4-4m4 4l-4 4"
+            }
+          )
+        }
+      );
+    case "crypto":
+      return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("circle", { cx: "12", cy: "12", r: "4", strokeWidth: 2 })
+          ]
+        }
+      );
+    case "payments":
+      return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("rect", { x: "2", y: "5", width: "20", height: "14", rx: "2", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("path", { strokeLinecap: "round", strokeWidth: 2, d: "M2 10h20" })
+          ]
+        }
+      );
+    case "reports":
+      return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+            }
+          )
+        }
+      );
+    default:
+      return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: cls, children: "\u2022" });
+  }
+};
+var TopBar8 = ({
+  theme,
+  title,
+  showBack = false,
+  showSearch = false
+}) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+  "div",
+  {
+    className: `flex items-center justify-between px-8 py-4 border-b flex-shrink-0 ${theme === "dark" ? "bg-[#111111] border-white/10" : "bg-[#f5efe6] border-black/10"}`,
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center gap-3", children: [
+        showBack && /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          "button",
+          {
+            className: `w-9 h-9 flex items-center justify-center border rounded-lg ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M15 19l-7-7 7-7"
+                  }
+                )
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          "h1",
+          {
+            className: `text-3xl font-bold ${theme === "dark" ? "text-white" : "text-black"}`,
+            children: title
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center gap-4", children: [
+        showSearch && /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          "button",
+          {
+            className: `p-2 rounded-lg ${theme === "dark" ? "text-gray-400 hover:bg-white/10" : "text-gray-500 hover:bg-black/5"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              "svg",
+              {
+                className: "w-5 h-5",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  }
+                )
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          "button",
+          {
+            className: `p-2 rounded-lg ${theme === "dark" ? "text-gray-400 hover:bg-white/10" : "text-gray-500 hover:bg-black/5"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              "svg",
+              {
+                className: "w-5 h-5",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+                  }
+                )
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+          "button",
+          {
+            className: `flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium ${theme === "dark" ? "text-gray-200 hover:bg-white/10" : "text-gray-700 hover:bg-black/5"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                "svg",
+                {
+                  className: "w-4 h-4",
+                  fill: "none",
+                  viewBox: "0 0 24 24",
+                  stroke: "currentColor",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
+                    }
+                  )
+                }
+              ),
+              "Apps"
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "text-lg leading-none", children: "+" }),
+          "Create new"
+        ] })
+      ] })
+    ]
+  }
+);
+var Footer8 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+  "div",
+  {
+    className: `flex items-center justify-between px-8 py-3 border-t text-sm flex-shrink-0 ${theme === "dark" ? "bg-[#111111] border-white/10 text-gray-500" : "bg-[#f5efe6] border-black/10 text-gray-500"}`,
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center gap-6", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("button", { className: "flex items-center gap-1.5 hover:opacity-80", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeWidth: 2,
+                    d: "M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+                  }
+                )
+              ]
+            }
+          ),
+          "English"
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "hover:opacity-80", children: "API" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          "button",
+          {
+            className: `p-1.5 rounded ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                    "path",
+                    {
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round",
+                      strokeWidth: 2,
+                      d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                    }
+                  )
+                ]
+              }
+            )
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          "button",
+          {
+            className: `p-1.5 rounded ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`,
+            children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              "svg",
+              {
+                className: "w-4 h-4",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                  }
+                )
+              }
+            )
+          }
+        )
+      ] })
+    ]
+  }
+);
+var CurrencyFlag = ({
+  currency
+}) => {
+  const flags = { USD: "\u{1F1FA}\u{1F1F8}", EUR: "\u{1F1EA}\u{1F1FA}", GBP: "\u{1F1EC}\u{1F1E7}" };
+  return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("span", { className: "flex items-center gap-1 text-sm", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { children: flags[currency] }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "text-gray-400 font-medium", children: currency })
+  ] });
+};
+var recentTransfers = [
+  {
+    name: "Harrison Phillips",
+    account: "Account ending in 1435",
+    currency: "USD",
+    avatarColor: "bg-gray-400",
+    initials: "HP"
+  },
+  {
+    name: "Rustem Tolstobrov",
+    account: "Account ending in 3456",
+    currency: "USD",
+    avatarColor: "bg-orange-400",
+    initials: "RT"
+  },
+  {
+    name: "Alicia Puma",
+    account: "Account ending in 1223",
+    currency: "USD",
+    avatarColor: "bg-purple-400",
+    initials: "AP"
+  },
+  {
+    name: "Nonkosi Joyi",
+    account: "Account ending in 1156",
+    currency: "EUR",
+    avatarColor: "bg-blue-500",
+    initials: "NJ"
+  },
+  {
+    name: "Evelyn Allen",
+    account: "Account ending in 1439",
+    currency: "EUR",
+    avatarColor: "bg-pink-400",
+    initials: "EA"
+  },
+  {
+    name: "Justine Marshall",
+    account: "Account ending in 1567",
+    currency: "USD",
+    avatarColor: "bg-green-500",
+    initials: "JM"
+  },
+  {
+    name: "Yi Chun-Hwa",
+    account: "Account ending in 1890",
+    currency: "GBP",
+    avatarColor: "bg-yellow-500",
+    initials: "YC"
+  },
+  {
+    name: "Emmy Elsner",
+    account: "Account ending in 1546",
+    currency: "EUR",
+    avatarColor: "bg-indigo-400",
+    initials: "EE"
+  },
+  {
+    name: "Xian Zhou",
+    account: "Account ending in 1498",
+    currency: "USD",
+    avatarColor: "bg-red-400",
+    initials: "XZ"
+  }
+];
+var ListContent = ({ theme }) => {
+  const cardBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10" : "bg-white border-black/10";
+  const textPrimary = theme === "dark" ? "text-white" : "text-black";
+  const textSecondary = "text-gray-500";
+  const divider = theme === "dark" ? "border-white/5" : "border-black/5";
+  const inputBg = theme === "dark" ? "bg-[#2a2a2a] border-white/10 text-white placeholder-gray-500" : "bg-white border-black/15 text-black placeholder-gray-400";
+  return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex-1 overflow-auto p-6 flex gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+      "div",
+      {
+        className: `flex-1 rounded-xl border ${cardBg} overflow-hidden flex flex-col`,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center justify-between px-6 py-5 border-b border-inherit", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("h2", { className: `text-xl font-bold ${textPrimary}`, children: "Make a payment" }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+              "div",
+              {
+                className: `flex items-center gap-2 px-4 py-2 border rounded-lg ${inputBg}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                    "svg",
+                    {
+                      className: "w-4 h-4 text-gray-400",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                        "path",
+                        {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                        }
+                      )
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "text-sm text-gray-400", children: "Search" })
+                ]
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "bg-gray-200 h-2 rounded-full overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
-            "div",
-            {
-              className: "bg-blue-500 h-full rounded-full transition-all",
-              style: { width: `${course.progress}%` }
-            }
-          ) }),
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("p", { className: "text-sm text-gray-600 mt-2", children: [
-            course.progress,
-            "% complete"
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex-1 overflow-auto px-6 py-5 space-y-5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("p", { className: `text-sm mb-3 ${textSecondary}`, children: "Payment categories" }),
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "grid grid-cols-2 gap-3", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                  "button",
+                  {
+                    className: `flex items-center gap-4 p-4 border border-dashed rounded-xl hover:bg-white/5 transition-colors ${theme === "dark" ? "border-white/20" : "border-black/20"}`,
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                        "svg",
+                        {
+                          className: "w-6 h-6 text-white",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          stroke: "currentColor",
+                          children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                            "path",
+                            {
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 2,
+                              d: "M8 7h12m0 0l-4-4m4 4l-4 4M4 17h12m0 0l-4-4m4 4l-4 4"
+                            }
+                          )
+                        }
+                      ) }),
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "text-left", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-sm font-semibold ${textPrimary}`, children: "Transfer to someone" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-xs ${textSecondary}`, children: "156 contacts" })
+                      ] })
+                    ]
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                  "button",
+                  {
+                    className: `flex items-center gap-4 p-4 border border-dashed rounded-xl hover:bg-white/5 transition-colors ${theme === "dark" ? "border-white/20" : "border-black/20"}`,
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                        "svg",
+                        {
+                          className: "w-6 h-6 text-white",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          stroke: "currentColor",
+                          children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                              "rect",
+                              {
+                                x: "3",
+                                y: "3",
+                                width: "7",
+                                height: "7",
+                                rx: "1",
+                                strokeWidth: 2
+                              }
+                            ),
+                            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                              "rect",
+                              {
+                                x: "14",
+                                y: "3",
+                                width: "7",
+                                height: "7",
+                                rx: "1",
+                                strokeWidth: 2
+                              }
+                            ),
+                            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                              "rect",
+                              {
+                                x: "14",
+                                y: "14",
+                                width: "7",
+                                height: "7",
+                                rx: "1",
+                                strokeWidth: 2
+                              }
+                            ),
+                            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                              "rect",
+                              {
+                                x: "3",
+                                y: "14",
+                                width: "7",
+                                height: "7",
+                                rx: "1",
+                                strokeWidth: 2
+                              }
+                            )
+                          ]
+                        }
+                      ) }),
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "text-left", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-sm font-semibold ${textPrimary}`, children: "Pay for utilities" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-xs ${textSecondary}`, children: "98 service providers" })
+                      ] })
+                    ]
+                  }
+                )
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("p", { className: `text-sm mb-3 ${textSecondary}`, children: "Service providers" }),
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "grid grid-cols-2 gap-3", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                  "button",
+                  {
+                    className: `flex items-center gap-4 p-4 border border-dashed rounded-xl hover:bg-white/5 transition-colors ${theme === "dark" ? "border-white/20" : "border-black/20"}`,
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                        "svg",
+                        {
+                          className: "w-6 h-6 text-white",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          stroke: "currentColor",
+                          children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                              "rect",
+                              {
+                                x: "5",
+                                y: "2",
+                                width: "14",
+                                height: "20",
+                                rx: "2",
+                                strokeWidth: 2
+                              }
+                            ),
+                            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                              "path",
+                              {
+                                strokeLinecap: "round",
+                                strokeWidth: 2,
+                                d: "M12 18h.01"
+                              }
+                            )
+                          ]
+                        }
+                      ) }),
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "text-left", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-sm font-semibold ${textPrimary}`, children: "Mobile Networks" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-xs ${textSecondary}`, children: "Top up your balance instantly" })
+                      ] })
+                    ]
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                  "button",
+                  {
+                    className: `flex items-center gap-4 p-4 border border-dashed rounded-xl hover:bg-white/5 transition-colors ${theme === "dark" ? "border-white/20" : "border-black/20"}`,
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                        "svg",
+                        {
+                          className: "w-6 h-6 text-white",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          stroke: "currentColor",
+                          children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                            "path",
+                            {
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 2,
+                              d: "M13 10V3L4 14h7v7l9-11h-7z"
+                            }
+                          )
+                        }
+                      ) }),
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "text-left", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-sm font-semibold ${textPrimary}`, children: "Utilities" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-xs ${textSecondary}`, children: "Check your home utility bills" })
+                      ] })
+                    ]
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                  "button",
+                  {
+                    className: `flex items-center gap-4 p-4 border border-dashed rounded-xl hover:bg-white/5 transition-colors ${theme === "dark" ? "border-white/20" : "border-black/20"}`,
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                        "svg",
+                        {
+                          className: "w-6 h-6 text-white",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          stroke: "currentColor",
+                          children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                            "path",
+                            {
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 2,
+                              d: "M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                            }
+                          )
+                        }
+                      ) }),
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "text-left", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-sm font-semibold ${textPrimary}`, children: "Government" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-xs ${textSecondary}`, children: "Pay car fines, taxes, and service" })
+                      ] })
+                    ]
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                  "button",
+                  {
+                    className: `flex items-center gap-4 p-4 border border-dashed rounded-xl hover:bg-white/5 transition-colors ${theme === "dark" ? "border-white/20" : "border-black/20"}`,
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                        "svg",
+                        {
+                          className: "w-6 h-6 text-white",
+                          fill: "none",
+                          viewBox: "0 0 24 24",
+                          stroke: "currentColor",
+                          children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                            "path",
+                            {
+                              strokeLinecap: "round",
+                              strokeLinejoin: "round",
+                              strokeWidth: 2,
+                              d: "M13 10V3L4 14h7v7l9-11h-7z"
+                            }
+                          )
+                        }
+                      ) }),
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "text-left", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-sm font-semibold ${textPrimary}`, children: "Internet Providers" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-xs ${textSecondary}`, children: "Find Internet provider in your area" })
+                      ] })
+                    ]
+                  }
+                )
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("h3", { className: `text-xl font-bold mb-3 ${textPrimary}`, children: "Latest transfers" }),
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { children: [
+                {
+                  initials: "I",
+                  iconBg: "bg-gradient-to-br from-gray-700 to-gray-900",
+                  label: "Income payment for provided services",
+                  sub: "Bank transfer",
+                  amount: "+ $11,400.00",
+                  time: "10 Aug 4:50 PM",
+                  positive: true
+                },
+                {
+                  initials: "P",
+                  iconBg: "bg-blue-500",
+                  label: "Online purchase at Ebay.com",
+                  sub: "Online payment",
+                  amount: "- $396.00",
+                  time: "12 Aug 3:10 PM",
+                  positive: false
+                },
+                {
+                  initials: "S",
+                  iconBg: "bg-blue-400",
+                  label: "IOfinance UI kit purchase",
+                  sub: "Online payment",
+                  amount: "- $28.00",
+                  time: "14 Aug 4:20 AM",
+                  positive: false
+                }
+              ].map((tx, i2) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                "div",
+                {
+                  className: `flex items-center gap-3 py-3.5 border-b last:border-b-0 ${divider}`,
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      "div",
+                      {
+                        className: `w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 ${tx.iconBg}`,
+                        children: tx.initials
+                      }
+                    ),
+                    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex-1 min-w-0", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-sm font-semibold ${textPrimary}`, children: tx.label }),
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-xs ${textSecondary}`, children: tx.sub })
+                    ] }),
+                    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "text-right flex-shrink-0", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                        "div",
+                        {
+                          className: `text-sm font-semibold ${tx.positive ? "text-green-500" : textPrimary}`,
+                          children: tx.amount
+                        }
+                      ),
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-xs ${textSecondary}`, children: tx.time })
+                    ] }),
+                    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      "button",
+                      {
+                        className: `${textSecondary} hover:opacity-70 flex-shrink-0`,
+                        children: "\xB7\xB7\xB7"
+                      }
+                    )
+                  ]
+                },
+                i2
+              )) }),
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                "button",
+                {
+                  className: `w-full mt-3 py-3 border rounded-xl text-sm font-medium flex items-center justify-center gap-2 transition-colors ${theme === "dark" ? "border-white/10 text-gray-400 hover:bg-white/5" : "border-black/15 text-gray-600 hover:bg-black/5"}`,
+                  children: "\xB7\xB7\xB7 See all transactions"
+                }
+              )
+            ] })
           ] })
         ]
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+      "div",
+      {
+        className: `w-[300px] flex-shrink-0 rounded-xl border ${cardBg} overflow-hidden flex flex-col`,
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "px-5 py-5 border-b border-inherit", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("h2", { className: `text-lg font-bold ${textPrimary}`, children: "Recent transfers" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "flex-1 overflow-auto", children: recentTransfers.map((contact, i2) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+            "div",
+            {
+              className: `flex items-center gap-3 px-5 py-3.5 border-b last:border-b-0 ${divider}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                  "div",
+                  {
+                    className: `w-9 h-9 rounded-full ${contact.avatarColor} flex items-center justify-center text-white text-xs font-bold flex-shrink-0`,
+                    children: contact.initials
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex-1 min-w-0", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                    "div",
+                    {
+                      className: `text-sm font-semibold truncate ${textPrimary}`,
+                      children: contact.name
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `text-xs truncate ${textSecondary}`, children: contact.account })
+                ] }),
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(CurrencyFlag, { currency: contact.currency })
+              ]
+            },
+            i2
+          )) }),
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "p-4 border-t border-inherit", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+            "button",
+            {
+              className: `w-full py-3 border rounded-xl text-sm font-medium flex items-center justify-center gap-2 transition-colors ${theme === "dark" ? "border-white/10 text-gray-400 hover:bg-white/5" : "border-black/15 text-gray-600 hover:bg-black/5"}`,
+              children: "\xB7\xB7\xB7 See all contacts"
+            }
+          ) })
+        ]
+      }
+    )
+  ] });
+};
+var DetailsContent3 = ({ theme }) => {
+  const overlayBg = theme === "dark" ? "bg-black/70" : "bg-black/40";
+  const modalBg = theme === "dark" ? "bg-[#1a1a1a]" : "bg-white";
+  const textPrimary = theme === "dark" ? "text-white" : "text-black";
+  const textSecondary = "text-gray-500";
+  const divider = theme === "dark" ? "border-white/10" : "border-black/10";
+  const rowHover = theme === "dark" ? "hover:bg-white/5" : "hover:bg-black/5";
+  return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import_jsx_runtime51.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex-1 relative overflow-hidden", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "opacity-30 pointer-events-none", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(ListContent, { theme }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+      "div",
+      {
+        className: `absolute inset-0 ${overlayBg} flex items-center justify-center`,
+        children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+          "div",
+          {
+            className: `w-[460px] rounded-2xl shadow-2xl overflow-hidden ${modalBg}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "bg-purple-600 px-6 py-4 flex items-center justify-between", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("h2", { className: "text-white font-bold text-lg", children: "Recipient details" }),
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "text-white/80 hover:text-white", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                  "svg",
+                  {
+                    className: "w-5 h-5",
+                    fill: "none",
+                    viewBox: "0 0 24 24",
+                    stroke: "currentColor",
+                    children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      "path",
+                      {
+                        strokeLinecap: "round",
+                        strokeLinejoin: "round",
+                        strokeWidth: 2,
+                        d: "M6 18L18 6M6 6l12 12"
+                      }
+                    )
+                  }
+                ) })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                "div",
+                {
+                  className: `h-px ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "bg-purple-600 flex justify-center pb-8 pt-2", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "w-16 h-16 rounded-full bg-gray-300 border-4 border-white overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "w-full h-full bg-gradient-to-br from-orange-300 to-amber-500" }) }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: `px-8 py-6 ${modalBg}`, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "text-center mb-6", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("h3", { className: `text-xl font-bold ${textPrimary}`, children: "Rustem Tolstobrov" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("p", { className: `text-sm ${textSecondary}`, children: "Account ending in 3456" })
+                ] }),
+                [
+                  {
+                    icon: "person",
+                    label: "Account holder name",
+                    value: "Rustem Tolstobrov"
+                  },
+                  {
+                    icon: "routing",
+                    label: "Routing number",
+                    value: "017062169"
+                  },
+                  {
+                    icon: "account",
+                    label: "Account number",
+                    value: "8910242076"
+                  },
+                  {
+                    icon: "currency",
+                    label: "Currency",
+                    value: "\u{1F1FA}\u{1F1F8} USD"
+                  },
+                  {
+                    icon: "type",
+                    label: "Account type",
+                    value: "Checking"
+                  }
+                ].map((row, i2) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                  "div",
+                  {
+                    className: `flex items-center justify-between py-3.5 border-b border-dashed ${rowHover} transition-colors ${divider}`,
+                    children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center gap-3", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(DetailIcon, { icon: row.icon, theme }),
+                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm ${textSecondary}`, children: row.label })
+                      ] }),
+                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm font-bold ${textPrimary}`, children: row.value })
+                    ]
+                  },
+                  i2
+                )),
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex gap-4 mt-6", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                    "button",
+                    {
+                      className: `flex-1 py-3 border rounded-xl text-sm font-bold transition-colors ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+                      children: "Send Funds"
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                    "button",
+                    {
+                      className: `flex-1 py-3 border rounded-xl text-sm font-bold transition-colors ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+                      children: "Edit Details"
+                    }
+                  )
+                ] })
+              ] })
+            ]
+          }
+        )
+      }
+    )
+  ] }) });
+};
+var DetailIcon = ({
+  icon
+}) => {
+  const cls = "w-4 h-4 text-gray-400 flex-shrink-0";
+  switch (icon) {
+    case "person":
+      return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+            }
+          )
+        }
+      );
+    case "routing":
+      return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            }
+          )
+        }
+      );
+    case "account":
+      return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+            }
+          )
+        }
+      );
+    case "currency":
+      return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
+            }
+          )
+        }
+      );
+    case "type":
+      return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        "svg",
+        {
+          className: cls,
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            }
+          )
+        }
+      );
+    default:
+      return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "w-4 h-4", children: "\u2022" });
+  }
+};
+var SendMoneyContent = ({ theme }) => {
+  const textPrimary = theme === "dark" ? "text-white" : "text-black";
+  const textSecondary = "text-gray-500";
+  const inputBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10 text-white" : "bg-white border-black/15 text-black";
+  const selectBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10 text-white" : "bg-white border-black/15 text-black";
+  const placeholderColor = theme === "dark" ? "text-gray-600" : "text-gray-400";
+  return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "flex-1 overflow-auto", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "max-w-lg mx-auto py-10 px-4 space-y-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: `block text-sm font-semibold mb-2 ${textPrimary}`, children: "Select recipient" }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        "div",
+        {
+          className: `flex items-center justify-between px-4 py-3.5 border rounded-xl ${selectBg}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm font-medium ${textPrimary}`, children: "Rustem Tolstobrov" }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              "svg",
+              {
+                className: "w-5 h-5 text-gray-400",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M19 9l-7 7-7-7"
+                  }
+                )
+              }
+            )
+          ]
+        }
+      )
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: `block text-sm font-semibold mb-2 ${textPrimary}`, children: "Select payment account" }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        "div",
+        {
+          className: `flex items-center justify-between px-4 py-3.5 border rounded-xl ${selectBg}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm font-medium ${textPrimary}`, children: "Debit Card **** 7890" }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              "div",
+              {
+                className: `w-10 h-5 rounded-full relative ${theme === "dark" ? "bg-gray-700" : "bg-gray-200"}`,
+                children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "w-4 h-4 bg-white rounded-full absolute top-0.5 right-0.5 shadow" })
+              }
+            )
+          ]
+        }
+      )
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: `block text-sm font-semibold mb-2 ${textPrimary}`, children: "You will send" }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        "div",
+        {
+          className: `flex items-center justify-between px-4 py-3.5 border rounded-xl ${inputBg}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm ${placeholderColor}`, children: "1,290.00" }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm font-medium ${textSecondary}`, children: "USD" })
+          ]
+        }
+      )
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "space-y-2 pl-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          "div",
+          {
+            className: `w-2 h-2 rounded-full flex-shrink-0 ${theme === "dark" ? "bg-white" : "bg-black"}`
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm ${textSecondary}`, children: "Conversion fee" }),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm font-semibold ml-1 ${textPrimary}`, children: "9.50 USD" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          "div",
+          {
+            className: `w-2 h-2 rounded-full flex-shrink-0 ${theme === "dark" ? "bg-white" : "bg-black"}`
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm ${textSecondary}`, children: "Transfer fee" }),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm font-semibold ml-1 ${textPrimary}`, children: "5.50 USD" })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: `block text-sm font-semibold mb-2 ${textPrimary}`, children: "Delivery time" }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `px-4 py-3.5 border rounded-xl ${selectBg}`, children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm ${placeholderColor}`, children: "Standard Transfer 1-3 days" }) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("p", { className: `text-xs leading-relaxed ${textSecondary}`, children: "Transfers made on weekends or holidays take longer. All transfers are subject to review and could be delayed or stopped if we identify an issue." }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex gap-4 pt-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        "button",
+        {
+          className: `flex-1 py-4 border rounded-xl text-sm font-bold transition-colors ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+          children: "Cancel"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "flex-1 py-4 bg-purple-600 hover:bg-purple-700 text-white text-sm font-bold rounded-xl transition-colors", children: "Continue" })
+    ] })
+  ] }) });
+};
+var PayUtilitiesContent = ({ theme }) => {
+  const textPrimary = theme === "dark" ? "text-white" : "text-black";
+  const textSecondary = "text-gray-500";
+  const inputBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10 text-white" : "bg-white border-black/15 text-black";
+  const selectBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10 text-white" : "bg-white border-black/15 text-black";
+  const placeholderColor = theme === "dark" ? "text-gray-600" : "text-gray-400";
+  return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "flex-1 overflow-auto", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "max-w-lg mx-auto py-10 px-4 space-y-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: `block text-sm font-semibold mb-2 ${textPrimary}`, children: "Utilities" }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        "div",
+        {
+          className: `flex items-center justify-between px-4 py-3.5 border rounded-xl ${selectBg}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm font-medium ${textPrimary}`, children: "Mobile Networks" }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              "svg",
+              {
+                className: "w-5 h-5 text-gray-400",
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: "M19 9l-7 7-7-7"
+                  }
+                )
+              }
+            )
+          ]
+        }
+      )
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: `block text-sm font-semibold mb-2 ${textPrimary}`, children: "Service provider" }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        "div",
+        {
+          className: `flex items-center justify-between px-4 py-3.5 border rounded-xl ${selectBg}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm font-medium ${textPrimary}`, children: "Vodafone" }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "w-6 h-6 rounded-full bg-red-600 border-2 border-red-400 flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "w-3 h-3 rounded-full border-2 border-white" }) })
+          ]
+        }
+      )
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: `block text-sm font-semibold mb-2 ${textPrimary}`, children: "You will send" }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        "div",
+        {
+          className: `flex items-center justify-between px-4 py-3.5 border rounded-xl ${inputBg}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm ${placeholderColor}`, children: "15.50" }),
+            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm font-medium ${textSecondary}`, children: "USD" })
+          ]
+        }
+      )
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "space-y-2 pl-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          "div",
+          {
+            className: `w-2 h-2 rounded-full flex-shrink-0 ${theme === "dark" ? "bg-white" : "bg-black"}`
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm ${textSecondary}`, children: "Conversion fee" }),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm font-semibold ml-1 ${textPrimary}`, children: "9.50 USD" })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          "div",
+          {
+            className: `w-2 h-2 rounded-full flex-shrink-0 ${theme === "dark" ? "bg-white" : "bg-black"}`
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm ${textSecondary}`, children: "Transfer fee" }),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm font-semibold ml-1 ${textPrimary}`, children: "5.50 USD" })
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: `block text-sm font-semibold mb-2 ${textPrimary}`, children: "Delivery time" }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: `px-4 py-3.5 border rounded-xl ${selectBg}`, children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `text-sm ${placeholderColor}`, children: "Instant" }) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("p", { className: `text-xs leading-relaxed ${textSecondary}`, children: "Transfers made on weekends or holidays take longer. All transfers are subject to review and could be delayed or stopped if we identify an issue." }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex gap-4 pt-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        "button",
+        {
+          className: `flex-1 py-4 border rounded-xl text-sm font-bold transition-colors ${theme === "dark" ? "border-white/20 text-white hover:bg-white/10" : "border-black/20 text-black hover:bg-black/5"}`,
+          children: "Cancel"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "flex-1 py-4 bg-purple-600 hover:bg-purple-700 text-white text-sm font-bold rounded-xl transition-colors", children: "Continue" })
+    ] })
+  ] }) });
+};
+var PaymentsList = ({
+  theme = "light",
+  variant = "list"
+}) => {
+  const bg = theme === "dark" ? "bg-[#0d0d0d]" : "bg-[#f5efe6]";
+  const titleMap = {
+    list: "Payments",
+    details: "Payments",
+    "send-money": "Send Money",
+    "pay-utilities": "Pay for utilities"
+  };
+  const showBack = variant === "send-money" || variant === "pay-utilities";
+  const showSearchIcon = variant === "send-money" || variant === "pay-utilities";
+  return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: `flex h-screen ${bg} overflow-hidden`, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(DoctorProjectSidebar6, { variant }),
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden min-w-0", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        TopBar8,
+        {
+          theme,
+          title: titleMap[variant],
+          showBack,
+          showSearch: showSearchIcon
+        }
+      ),
+      variant === "list" && /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(ListContent, { theme }),
+      variant === "details" && /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(DetailsContent3, { theme }),
+      variant === "send-money" && /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(SendMoneyContent, { theme }),
+      variant === "pay-utilities" && /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(PayUtilitiesContent, { theme }),
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(Footer8, { theme })
+    ] })
+  ] });
+};
+
+// src/screens/Education/EducationCourses.tsx
+var import_jsx_runtime52 = require("react/jsx-runtime");
+var EducationSidebar = ({
+  theme = "light"
+}) => {
+  const bg = theme === "dark" ? "bg-[#111111]" : "bg-[#111111]";
+  return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+    "div",
+    {
+      className: `w-[200px] min-h-screen ${bg} flex flex-col text-white flex-shrink-0`,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "px-5 py-5 border-b border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "flex items-center gap-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "text-lg font-bold text-white", children: "Doctor Project" }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500 mb-3" })
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "flex-1 overflow-y-auto px-3 py-4 space-y-5", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("p", { className: "text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("nav", { className: "space-y-0.5", children: [
+              { label: "Explore Courses", active: true },
+              { label: "Degrees" },
+              { label: "Students" },
+              { label: "Universities" },
+              { label: "Schedule", badge: "PR", badgeColor: "bg-purple-600" },
+              { label: "Knowledge Base" }
+            ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+              "button",
+              {
+                className: `w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs transition-colors ${item.active ? "bg-purple-600 text-white font-medium" : "text-gray-400 hover:text-white hover:bg-white/5"}`,
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { children: item.label }),
+                  item.badge && /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+                    "span",
+                    {
+                      className: `text-[10px] text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                      children: item.badge
+                    }
+                  )
+                ]
+              },
+              item.label
+            )) })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("p", { className: "text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "space-y-0.5", children: [
+              [
+                { name: "Alexandre Paiva", color: "bg-orange-400" },
+                { name: "Thanawan Chadee", color: "bg-purple-500" },
+                { name: "Justine Robinson", color: "bg-blue-400" }
+              ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+                "button",
+                {
+                  className: "w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-white/5",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+                      "span",
+                      {
+                        className: `w-6 h-6 rounded-full ${member.color} flex-shrink-0`
+                      }
+                    ),
+                    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { children: member.name })
+                  ]
+                },
+                member.name
+              )),
+              /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "text-xs", children: "\u2304 See More" }) })
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "px-3 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "flex items-center justify-between px-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-pink-500" }),
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "text-xs text-gray-200", children: "Henry Richardson" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "text-gray-500 hover:text-white text-xs", children: "\xB7\xB7\xB7" })
+        ] }) })
+      ]
+    }
+  );
+};
+var EducationTopBar = ({
+  theme = "light"
+}) => {
+  const bg = theme === "dark" ? "bg-[#0d0d0d] border-white/10" : "bg-white border-black/10";
+  const text = theme === "dark" ? "text-white" : "text-black";
+  const iconColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
+  const appsBtn = theme === "dark" ? "text-gray-300 hover:bg-white/10" : "text-gray-700 hover:bg-black/5";
+  return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+    "div",
+    {
+      className: `flex items-center justify-between px-6 py-3.5 border-b ${bg}`,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("h1", { className: `text-2xl font-bold ${text}`, children: "Courses" }),
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "flex items-center gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: `${iconColor}`, children: /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+            "svg",
+            {
+              width: "18",
+              height: "18",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: "2",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
+                /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "m21 21-4.35-4.35" })
+              ]
+            }
+          ) }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: `${iconColor}`, children: /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+            "svg",
+            {
+              width: "18",
+              height: "18",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: "2",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" }),
+                /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M13.73 21a2 2 0 0 1-3.46 0" })
+              ]
+            }
+          ) }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+            "button",
+            {
+              className: `flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium ${appsBtn}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "currentColor", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("rect", { x: "2", y: "2", width: "9", height: "9", rx: "1" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("rect", { x: "13", y: "2", width: "9", height: "9", rx: "1" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("rect", { x: "2", y: "13", width: "9", height: "9", rx: "1" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("rect", { x: "13", y: "13", width: "9", height: "9", rx: "1" })
+                ] }),
+                "Apps"
+              ]
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+              "svg",
+              {
+                width: "14",
+                height: "14",
+                viewBox: "0 0 24 24",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: "2.5",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("circle", { cx: "12", cy: "12", r: "10" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M12 8v8M8 12h8" })
+                ]
+              }
+            ),
+            "Create new"
+          ] })
+        ] })
+      ]
+    }
+  );
+};
+var EducationFooter = ({
+  theme = "light"
+}) => {
+  const bg = theme === "dark" ? "bg-[#0d0d0d] border-white/10" : "bg-[#f5efe6] border-black/10";
+  const textColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
+  return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+    "div",
+    {
+      className: `flex items-center justify-between px-8 py-3 border-t ${bg} text-sm ${textColor}`,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "flex items-center gap-6", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("button", { className: "flex items-center gap-1.5 hover:opacity-80", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+              "svg",
+              {
+                width: "14",
+                height: "14",
+                viewBox: "0 0 24 24",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("circle", { cx: "12", cy: "12", r: "10" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" })
+                ]
+              }
+            ),
+            "English"
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "hover:opacity-80", children: "API" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "w-7 h-7 rounded flex items-center justify-center bg-purple-600 text-white", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M12 3a9 9 0 1 0 9 9H12z" }) }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "w-7 h-7 rounded flex items-center justify-center bg-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+            "svg",
+            {
+              width: "13",
+              height: "13",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: "2",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("circle", { cx: "12", cy: "12", r: "4" }),
+                /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" })
+              ]
+            }
+          ) })
+        ] })
+      ]
+    }
+  );
+};
+var courseImages = {
+  "data-science": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=70",
+  "business-management": "https://images.unsplash.com/photo-1573497491765-dccce02b29df?w=400&q=70",
+  development: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&q=70",
+  technologies: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=70",
+  "computer-science": "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&q=70",
+  mba: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&q=70",
+  "computer-science-online": "https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&q=70",
+  "global-public-health": "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&q=70"
+};
+var TrendingCard = ({
+  title,
+  duration,
+  courseCount,
+  imageKey,
+  large,
+  theme = "light"
+}) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+    "div",
+    {
+      className: `relative rounded-xl overflow-hidden cursor-pointer ${large ? "row-span-2" : ""}`,
+      style: { minHeight: large ? 220 : 100 },
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+          "img",
+          {
+            src: courseImages[imageKey],
+            alt: title,
+            className: "absolute inset-0 w-full h-full object-cover"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" }),
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "absolute top-2 right-2", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("span", { className: "bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm", children: [
+          courseCount,
+          " Courses"
+        ] }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "absolute bottom-0 left-0 right-0 p-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("p", { className: "text-white font-semibold text-sm leading-tight", children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("p", { className: "text-gray-300 text-[11px] mt-0.5", children: duration })
+        ] })
+      ]
+    }
+  );
+};
+var DegreeCard = ({
+  title,
+  university,
+  mode,
+  icon,
+  imageKey,
+  theme = "light"
+}) => {
+  const cardBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10" : "bg-white border-black/10";
+  const titleColor = theme === "dark" ? "text-white" : "text-black";
+  const subtitleColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
+  const modeBtnBg = theme === "dark" ? "border-white/20 text-gray-300" : "border-black/20 text-gray-600";
+  return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+    "div",
+    {
+      className: `rounded-xl overflow-hidden border ${cardBg} cursor-pointer hover:shadow-md transition-shadow`,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "h-36 overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+          "img",
+          {
+            src: courseImages[imageKey],
+            alt: title,
+            className: "w-full h-full object-cover"
+          }
+        ) }),
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "p-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("p", { className: `font-semibold text-sm leading-tight mb-1 ${titleColor}`, children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("p", { className: `text-[11px] mb-2 ${subtitleColor}`, children: university }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "flex items-center justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+              "button",
+              {
+                className: `text-[11px] px-2.5 py-1 rounded border ${modeBtnBg}`,
+                children: mode
+              }
+            ),
+            icon && /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: `${subtitleColor} text-base`, children: icon })
+          ] })
+        ] })
+      ]
+    }
+  );
+};
+var CoursePagination = ({
+  theme = "light"
+}) => {
+  const btnBase = theme === "dark" ? "border-white/20 text-gray-300 hover:bg-white/10" : "border-black/20 text-gray-600 hover:bg-black/5";
+  const textColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
+  return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+    "div",
+    {
+      className: `flex items-center justify-between py-4 px-1 ${textColor} text-sm`,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+          "button",
+          {
+            className: `flex items-center gap-1.5 px-3 py-1.5 border rounded-lg text-xs ${btnBase}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+                "svg",
+                {
+                  width: "14",
+                  height: "14",
+                  viewBox: "0 0 24 24",
+                  fill: "none",
+                  stroke: "currentColor",
+                  strokeWidth: "2",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M15 18l-6-6 6-6" })
+                }
+              ),
+              "Prev"
+            ]
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "text-xs", children: "Page 1 of 10" }),
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+          "button",
+          {
+            className: `flex items-center gap-1.5 px-3 py-1.5 border rounded-lg text-xs ${btnBase}`,
+            children: [
+              "Next",
+              /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+                "svg",
+                {
+                  width: "14",
+                  height: "14",
+                  viewBox: "0 0 24 24",
+                  fill: "none",
+                  stroke: "currentColor",
+                  strokeWidth: "2",
+                  children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M9 18l6-6-6-6" })
+                }
+              )
+            ]
+          }
+        )
+      ]
+    }
+  );
+};
+var CoursesHero = ({
+  theme = "light"
+}) => {
+  const headingColor = theme === "dark" ? "text-white" : "text-black";
+  const inputBg = theme === "dark" ? "bg-[#1a1a1a] border-white/20 text-white placeholder-gray-500" : "bg-white border-black/20 text-black placeholder-gray-400";
+  const hintColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
+  return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+    "div",
+    {
+      className: "relative mx-6 mt-6 rounded-2xl overflow-hidden px-8 py-10 mb-6",
+      style: {
+        background: theme === "dark" ? "radial-gradient(ellipse at 70% 50%, rgba(120,60,200,0.35) 0%, transparent 65%), #0d0d0d" : "radial-gradient(ellipse at 70% 50%, rgba(180,120,255,0.35) 0%, transparent 65%), #f5efe6"
       },
-      course.id
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+          "h2",
+          {
+            className: `text-4xl font-bold text-center mb-6 ${headingColor}`,
+            style: { letterSpacing: "-0.02em" },
+            children: "Explore Topics and Skills"
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "max-w-lg mx-auto relative mb-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+            "input",
+            {
+              className: `w-full px-4 py-2.5 pr-10 rounded-xl border text-sm outline-none ${inputBg}`,
+              placeholder: "What do you want to learn?",
+              readOnly: true
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "absolute right-2.5 top-1/2 -translate-y-1/2 w-7 h-7 bg-purple-600 rounded-lg flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+            "svg",
+            {
+              width: "13",
+              height: "13",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "white",
+              strokeWidth: "2.5",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
+                /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "m21 21-4.35-4.35" })
+              ]
+            }
+          ) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("p", { className: `text-center text-xs ${hintColor}`, children: "For example: UI and UX development" })
+      ]
+    }
+  );
+};
+var CourseCategoryCard = ({
+  title,
+  university,
+  duration,
+  type,
+  imageKey,
+  theme = "light"
+}) => {
+  const cardBg = theme === "dark" ? "bg-[#1a1a1a] border-white/10" : "bg-white border-black/10";
+  const titleColor = theme === "dark" ? "text-white" : "text-black";
+  const subtitleColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
+  const typeBtnBg = theme === "dark" ? "border-white/20 text-gray-300" : "border-black/20 text-gray-600";
+  return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+    "div",
+    {
+      className: `rounded-xl overflow-hidden border ${cardBg} cursor-pointer hover:shadow-md transition-shadow`,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "h-36 overflow-hidden", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+          "img",
+          {
+            src: courseImages[imageKey],
+            alt: title,
+            className: "w-full h-full object-cover"
+          }
+        ) }),
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "p-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("p", { className: `font-semibold text-sm leading-tight mb-1 ${titleColor}`, children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("p", { className: `text-[11px] mb-2 ${subtitleColor}`, children: university }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+              "span",
+              {
+                className: `text-[10px] px-2 py-0.5 border rounded ${typeBtnBg}`,
+                children: type
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: `text-[10px] ${subtitleColor}`, children: duration })
+          ] })
+        ] })
+      ]
+    }
+  );
+};
+var categorySpecializations = [
+  {
+    title: "Developing Applications with Google Cloud Platform",
+    university: "University of Illinois Urbana-Champaign",
+    duration: "3-6 Weeks",
+    type: "Course",
+    imageKey: "mba"
+  },
+  {
+    title: "Full Stack Web Development with Angular Specialization",
+    university: "The Hong Kong University of Science and Business",
+    duration: "3 Weeks",
+    type: "Course",
+    imageKey: "computer-science-online"
+  },
+  {
+    title: "Web Design for Everybody: Basics of Web Development",
+    university: "University of Michigan",
+    duration: "4-6 Weeks",
+    type: "Course",
+    imageKey: "global-public-health"
+  },
+  {
+    title: "Responsive Development and Design Specialization",
+    university: "University of London",
+    duration: "3-5 Weeks",
+    type: "Course",
+    imageKey: "development"
+  },
+  {
+    title: "Web Applications for Everybody Specialization",
+    university: "University of Illinois Urbana-Champaign",
+    duration: "1 Week",
+    type: "Course",
+    imageKey: "technologies"
+  },
+  {
+    title: "Development and Design Specialization",
+    university: "University of London",
+    duration: "4-6 Weeks",
+    type: "Course",
+    imageKey: "data-science"
+  }
+];
+var SuggestedSearches = ({
+  theme = "light"
+}) => {
+  const labelColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
+  const activePill = "bg-purple-600 text-white";
+  const inactivePill = theme === "dark" ? "bg-[#1a1a1a] border-white/20 text-gray-300 hover:bg-white/10" : "bg-white border-black/15 text-gray-600 hover:bg-black/5";
+  const searches = [
+    { label: "Frontend", active: false },
+    { label: "JavaScript", active: true },
+    { label: "Brand creation", active: false },
+    { label: "Dropshipping in medicine", active: false },
+    { label: "Founding partner", active: false },
+    { label: "Project manager", active: false },
+    { label: "Developer", active: false },
+    { label: "Managing director", active: false }
+  ];
+  return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "mb-5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("p", { className: `text-xs mb-2 ${labelColor}`, children: "Suggested course searches" }),
+    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "flex flex-wrap gap-2", children: searches.map((s2) => /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+      "button",
+      {
+        className: `text-xs px-3 py-1.5 rounded-full border ${s2.active ? activePill : inactivePill}`,
+        children: s2.label
+      },
+      s2.label
     )) })
+  ] });
+};
+var EducationCourses = ({
+  theme = "light",
+  view = "courses"
+}) => {
+  const contentBg = theme === "dark" ? "bg-[#0d0d0d]" : "bg-[#f5efe6]";
+  const sectionTitleColor = theme === "dark" ? "text-white" : "text-black";
+  const subtitleColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
+  const trendingCards = [
+    {
+      title: "Data Science",
+      duration: "14 - 18 months",
+      courseCount: 64,
+      imageKey: "data-science",
+      large: true
+    },
+    {
+      title: "Business Management",
+      duration: "14 - 18 months",
+      courseCount: 56,
+      imageKey: "business-management"
+    },
+    {
+      title: "Development",
+      duration: "17 - 24 months",
+      courseCount: 78,
+      imageKey: "development"
+    },
+    {
+      title: "Technologies",
+      duration: "12 months",
+      courseCount: 35,
+      imageKey: "technologies"
+    },
+    {
+      title: "Computer Science",
+      duration: "12 - 36 months",
+      courseCount: 46,
+      imageKey: "computer-science"
+    }
+  ];
+  const degreeCards = [
+    {
+      title: "Master of Business Administration",
+      university: "University of Urbana-Champaign",
+      mode: "Remote",
+      icon: "G",
+      imageKey: "mba"
+    },
+    {
+      title: "Online Master of Computer Science",
+      university: "Arizona State University",
+      mode: "Remote",
+      icon: "\u2699",
+      imageKey: "computer-science-online"
+    },
+    {
+      title: "Global Master of Public Health and Science",
+      university: "Imperial College London",
+      mode: "Remote",
+      icon: "\u2666",
+      imageKey: "global-public-health"
+    }
+  ];
+  return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "flex h-screen", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(EducationSidebar, { theme }),
+    /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: `flex-1 flex flex-col overflow-hidden ${contentBg}`, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(EducationTopBar, { theme }),
+      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "flex-1 overflow-auto", children: view === "courses" ? /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(import_jsx_runtime52.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(CoursesHero, { theme }),
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "px-6 pb-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "mb-6", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+              "h3",
+              {
+                className: `text-sm font-semibold mb-3 ${sectionTitleColor}`,
+                children: "Trending today"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+              "div",
+              {
+                className: "grid gap-3",
+                style: {
+                  gridTemplateColumns: "1fr 1fr 1fr",
+                  gridTemplateRows: "auto auto"
+                },
+                children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { style: { gridRow: "1 / 3" }, children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(TrendingCard, { ...trendingCards[0], theme, large: true }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(TrendingCard, { ...trendingCards[1], theme }),
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(TrendingCard, { ...trendingCards[2], theme }),
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(TrendingCard, { ...trendingCards[3], theme }),
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(TrendingCard, { ...trendingCards[4], theme })
+                ]
+              }
+            )
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "mb-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+              "h3",
+              {
+                className: `text-sm font-semibold mb-3 ${sectionTitleColor}`,
+                children: "Earn Your Degree"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "grid grid-cols-3 gap-3", children: degreeCards.map((card) => /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(DegreeCard, { ...card, theme }, card.title)) })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(CoursePagination, { theme })
+        ] })
+      ] }) : (
+        /* Category view */
+        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(import_jsx_runtime52.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+            "div",
+            {
+              className: "relative mx-6 mt-6 rounded-2xl overflow-hidden px-8 py-10 mb-6",
+              style: {
+                background: theme === "dark" ? "radial-gradient(ellipse at 70% 50%, rgba(120,60,200,0.35) 0%, transparent 65%), #0d0d0d" : "radial-gradient(ellipse at 70% 50%, rgba(180,120,255,0.35) 0%, transparent 65%), #f5efe6"
+              },
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+                  "h2",
+                  {
+                    className: `text-4xl font-bold text-center mb-6 ${sectionTitleColor}`,
+                    style: { letterSpacing: "-0.02em" },
+                    children: "Software Development"
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "max-w-lg mx-auto relative mb-3", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+                    "input",
+                    {
+                      className: `w-full px-4 py-2.5 pr-10 rounded-xl text-sm outline-none ${theme === "dark" ? "bg-[#1a1a1a] border border-white/20 text-white placeholder-gray-500" : "bg-white border border-black/20 text-black placeholder-gray-400"}`,
+                      placeholder: "Mobile and Web Design",
+                      readOnly: true
+                    }
+                  ),
+                  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "absolute right-2.5 top-1/2 -translate-y-1/2 w-7 h-7 bg-purple-600 rounded-lg flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+                    "svg",
+                    {
+                      width: "13",
+                      height: "13",
+                      viewBox: "0 0 24 24",
+                      fill: "none",
+                      stroke: "white",
+                      strokeWidth: "2.5",
+                      children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "m21 21-4.35-4.35" })
+                      ]
+                    }
+                  ) })
+                ] })
+              ]
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "px-6 pb-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(SuggestedSearches, { theme }),
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "mb-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+                "h3",
+                {
+                  className: `text-sm font-semibold mb-3 ${sectionTitleColor}`,
+                  children: "Earn Your Degree"
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "grid grid-cols-3 gap-3", children: categorySpecializations.map((card) => /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+                CourseCategoryCard,
+                {
+                  ...card,
+                  theme
+                },
+                card.title
+              )) })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(CoursePagination, { theme })
+          ] })
+        ] })
+      ) }),
+      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(EducationFooter, { theme })
+    ] })
   ] });
 };
 
 // src/screens/Calendar/CalendarEvent.tsx
-var import_jsx_runtime51 = require("react/jsx-runtime");
-var CalendarEvent = () => {
-  const events = [
+var import_react10 = require("react");
+var import_jsx_runtime53 = require("react/jsx-runtime");
+var CalendarSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "w-[280px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "px-6 py-5 border-b border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center gap-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "text-xl font-bold text-white", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500 mb-3" })
+  ] }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex-1 overflow-y-auto px-4 py-4 space-y-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("nav", { className: "space-y-1", children: [
+        { label: "Dashboard", badge: 15, badgeColor: "bg-purple-600" },
+        { label: "Projects" },
+        { label: "Tasks" },
+        { label: "Kanban Desk", badge: 28, badgeColor: "bg-purple-600" },
+        { label: "File Manager", badge: 14, badgeColor: "bg-green-500" },
+        { label: "Calendar", active: true },
+        { label: "Inbox" }
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+        "button",
+        {
+          className: `w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-colors ${item.active ? "bg-white/10 text-white font-medium" : "text-gray-400 hover:text-white hover:bg-white/5"}`,
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { children: item.label }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+              "span",
+              {
+                className: `text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                children: item.badge
+              }
+            )
+          ]
+        },
+        item.label
+      )) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+      /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "space-y-1", children: [
+        [
+          { name: "Alexandre Paiva", color: "bg-orange-400" },
+          { name: "Thanawan Chadee", color: "bg-purple-500" },
+          { name: "Justine Robinson", color: "bg-blue-400" }
+        ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+          "button",
+          {
+            className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+                "span",
+                {
+                  className: `w-7 h-7 rounded-full ${member.color} flex-shrink-0`
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { children: member.name })
+            ]
+          },
+          member.name
+        )),
+        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5", children: /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "text-sm", children: "\u2228 See More" }) })
+      ] })
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "px-4 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center justify-between px-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center gap-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-500" }),
+      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "text-sm text-gray-200", children: "Henry Richardson" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "text-gray-500 hover:text-white", children: "\xB7\xB7\xB7" })
+  ] }) })
+] });
+var TopBar9 = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center justify-between px-8 py-4 border-b bg-[#f5efe6] border-black/10", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("h1", { className: "text-3xl font-bold text-black", children: "Calendar" }),
+  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "text-gray-500 text-lg", children: "\xB7\xB7\xB7" }),
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "text-gray-500 text-lg", children: "\xB7\xB7\xB7" }),
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-black/5", children: "\xB7\xB7\xB7 Apps" }),
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg", children: "\xB7\xB7\xB7 Create new" })
+  ] })
+] });
+var CalendarNav = ({ view, onViewChange, dateLabel }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center justify-between px-6 py-4", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center gap-3", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex border border-black/15 rounded-lg overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "px-3 py-1.5 text-sm hover:bg-black/5", children: "\u2039" }),
+      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "px-3 py-1.5 text-sm border-l border-black/15 hover:bg-black/5", children: "\u203A" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "text-lg font-semibold text-black", children: dateLabel })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center gap-3", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "flex items-center", children: ["Month", "Week", "Day"].map((v3) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+      "button",
+      {
+        onClick: () => onViewChange(v3.toLowerCase()),
+        className: `px-4 py-1.5 text-sm font-medium transition-colors ${view === v3.toLowerCase() ? "bg-black text-white rounded-lg" : "text-gray-600 hover:text-black"}`,
+        children: v3
+      },
+      v3
+    )) }),
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "flex items-center gap-2 px-4 py-1.5 border border-black/15 rounded-lg text-sm text-gray-700 hover:bg-black/5", children: "\u2261 Sort: A-Z" })
+  ] })
+] });
+var EventPill = ({ label, color, small }) => {
+  const cls = {
+    green: "bg-green-50 text-green-700",
+    purple: "bg-purple-50 text-purple-700",
+    yellow: "bg-yellow-50 text-yellow-700"
+  }[color];
+  const dot = {
+    green: "bg-green-400",
+    purple: "bg-purple-400",
+    yellow: "bg-yellow-400"
+  }[color];
+  return /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+    "div",
     {
-      id: "1",
-      title: "Team Standup",
-      time: "09:00 AM",
-      date: "2024-01-22",
-      attendees: 5
-    },
-    {
-      id: "2",
-      title: "Client Meeting",
-      time: "02:00 PM",
-      date: "2024-01-22",
-      attendees: 8
-    },
-    {
-      id: "3",
-      title: "Design Review",
-      time: "04:00 PM",
-      date: "2024-01-22",
-      attendees: 3
+      className: `flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium ${cls} ${small ? "max-w-[100px]" : ""}`,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: `w-1.5 h-1.5 rounded-full flex-shrink-0 ${dot}` }),
+        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "truncate", children: label })
+      ]
     }
-  ];
-  return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "max-w-2xl mx-auto p-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("h1", { className: "text-3xl font-bold mb-6", children: "Calendar Events" }),
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "space-y-4", children: events.map((event) => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(Card, { className: "p-6", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "flex items-center justify-between", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("h3", { className: "text-lg font-semibold mb-2", children: event.title }),
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("p", { className: "text-gray-600 mb-2", children: [
-          "\u{1F4C5} ",
-          event.date,
-          " at ",
-          event.time
-        ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("p", { className: "text-gray-600", children: [
-          "\u{1F465} ",
-          event.attendees,
-          " attendees"
-        ] })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(Button, { children: "View Details" })
-    ] }) }, event.id)) })
+  );
+};
+var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+  "div",
+  {
+    className: "fixed inset-0 bg-black/20 flex items-center justify-center z-50",
+    onClick: onClose,
+    children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+      "div",
+      {
+        className: "bg-white rounded-2xl shadow-2xl w-[480px] p-6",
+        onClick: (e2) => e2.stopPropagation(),
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center justify-between mb-1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "text-xs font-semibold bg-black text-white px-2 py-0.5 rounded", children: "7:30 am" }),
+            /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "text-gray-400 hover:text-gray-600 text-lg", children: "\xB7\xB7\xB7" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("h2", { className: "text-2xl font-bold text-black mt-3 mb-1", children: "Design a new dashboard for client" }),
+          /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("p", { className: "text-sm text-gray-500 mb-5", children: "Task created on 7 Jun 2022" }),
+          /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex gap-8 mb-5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("p", { className: "text-xs text-gray-500 mb-2", children: "Assigned to" }),
+              /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center", children: [
+                [
+                  "bg-orange-400",
+                  "bg-purple-500",
+                  "bg-blue-400",
+                  "bg-green-400"
+                ].map((c2, i2) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+                  "span",
+                  {
+                    className: `w-7 h-7 rounded-full ${c2} border-2 border-white -ml-1 first:ml-0`
+                  },
+                  i2
+                )),
+                /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "w-7 h-7 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-400 text-xs -ml-1", children: "+" })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("p", { className: "text-xs text-gray-500 mb-2", children: "Due to" }),
+              /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "px-3 py-1 border border-black/15 rounded-lg text-sm font-medium", children: "15 Aug 2023" }),
+                /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "px-3 py-1 bg-purple-100 text-purple-700 rounded-lg text-sm font-medium", children: "Business" })
+              ] })
+            ] })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "border-t border-black/10 pt-4 mb-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("h3", { className: "text-sm font-semibold text-black mb-2", children: "Description" }),
+            /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("p", { className: "text-sm text-gray-600 leading-relaxed", children: "When I first got into the online advertising business, I was looking for the magical combination that would put my website" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center gap-2 border border-black/15 rounded-xl px-3 py-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+              "input",
+              {
+                className: "flex-1 text-sm text-gray-400 outline-none bg-transparent",
+                placeholder: "Type to add your comment",
+                readOnly: true
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "text-gray-400 text-lg", children: "\u263A" }),
+            /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "text-gray-400 text-lg", children: "+" }),
+            /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center text-white", children: "\u203A" })
+          ] })
+        ]
+      }
+    )
+  }
+);
+var weeks = [
+  [
+    { day: null, events: [] },
+    { day: null, events: [] },
+    { day: null, events: [] },
+    { day: null, events: [] },
+    {
+      day: 30,
+      events: [{ label: "Presentation", color: "yellow" }]
+    },
+    { day: 1, events: [{ label: "Call", color: "green" }] },
+    { day: 2, events: [] }
+  ],
+  [
+    {
+      day: 5,
+      events: [
+        { label: "Meeting", color: "purple" },
+        { label: "Call", color: "green" },
+        { label: "+1 more", color: "purple" }
+      ]
+    },
+    { day: 6, events: [] },
+    { day: 7, events: [] },
+    { day: 8, events: [] },
+    {
+      day: 9,
+      events: [{ label: "Presentation", color: "yellow" }]
+    },
+    { day: 8, events: [{ label: "Meeting", color: "purple" }] },
+    { day: 9, events: [] }
+  ],
+  [
+    { day: 12, events: [{ label: "Call", color: "green" }] },
+    { day: 13, events: [] },
+    { day: 14, events: [] },
+    { day: 15, events: [] },
+    { day: 15, events: [] },
+    {
+      day: 15,
+      events: [
+        { label: "Meeting", color: "purple" },
+        { label: "Call", color: "green" },
+        { label: "+1 more", color: "purple" }
+      ]
+    },
+    { day: 16, events: [] }
+  ],
+  [
+    {
+      day: 19,
+      events: [{ label: "Presentation", color: "yellow" }]
+    },
+    { day: 20, events: [] },
+    { day: 21, events: [] },
+    { day: 22, events: [{ label: "Meeting", color: "purple" }] },
+    { day: 22, events: [] },
+    { day: 22, events: [] },
+    { day: 23, events: [] }
+  ],
+  [
+    { day: 26, events: [{ label: "Meeting", color: "purple" }] },
+    {
+      day: 27,
+      events: [
+        { label: "Call", color: "green" },
+        { label: "Meeting", color: "purple" }
+      ]
+    },
+    { day: 28, events: [] },
+    { day: 29, events: [] },
+    { day: 29, events: [] },
+    {
+      day: 30,
+      events: [{ label: "Presentation", color: "yellow" }]
+    },
+    { day: 30, events: [] }
+  ]
+];
+var MonthView = ({
+  showModal,
+  onToggle
+}) => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex-1 overflow-auto px-6 pb-6 relative", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "border border-black/10 rounded-xl overflow-hidden bg-white", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "grid grid-cols-7 border-b border-black/10", children: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d2) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+      "div",
+      {
+        className: "py-2 text-center text-xs font-medium text-gray-500",
+        children: d2
+      },
+      d2
+    )) }),
+    weeks.map((week, wi) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+      "div",
+      {
+        className: "grid grid-cols-7 border-b last:border-b-0 border-black/10",
+        children: week.map((cell, ci) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+          "div",
+          {
+            onClick: cell.day ? onToggle : void 0,
+            className: `min-h-[90px] border-r last:border-r-0 border-black/10 p-2 ${cell.day ? "cursor-pointer hover:bg-gray-50" : "bg-gray-50/30"}`,
+            children: cell.day && /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(import_jsx_runtime53.Fragment, { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "text-xs font-medium text-gray-600 mb-1", children: cell.day }),
+              /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "space-y-0.5", children: cell.events.map((e2, ei) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+                EventPill,
+                {
+                  label: e2.label,
+                  color: e2.color,
+                  small: true
+                },
+                ei
+              )) })
+            ] })
+          },
+          ci
+        ))
+      },
+      wi
+    ))
+  ] }),
+  showModal && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(EventModal, { onClose: onToggle })
+] });
+var timeSlots = [
+  "7am",
+  "8am",
+  "9am",
+  "10am",
+  "11am",
+  "12am",
+  "13am",
+  "1pm",
+  "2pm"
+];
+var dayEvents = [
+  { time: "7:30 am", label: "Call", color: "green" },
+  { time: "8:30 am", label: "Meeting", color: "purple" },
+  { time: "9:00 am", label: "Meeting", color: "purple" },
+  { time: "10:30 am", label: "Call", color: "green" },
+  null,
+  { time: "7:30 am", label: "Meeting", color: "yellow" },
+  null,
+  { time: "7:30 am", label: "Call", color: "green" },
+  { time: "7:30 am", label: "Meeting", color: "purple" }
+];
+var DayView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "flex-1 overflow-auto px-6 pb-6", children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "border border-black/10 rounded-xl overflow-hidden bg-white", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "py-3 px-4 border-b border-black/10 text-sm font-semibold text-gray-700 text-center", children: "Monday, 3" }),
+  timeSlots.map((slot, i2) => {
+    const ev = dayEvents[i2];
+    return /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+      "div",
+      {
+        className: "grid border-b last:border-b-0 border-black/10",
+        style: { gridTemplateColumns: "64px 1fr" },
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "py-3 px-3 text-xs text-gray-500 text-right border-r border-black/10 self-center", children: slot }),
+          /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "py-2 px-3 min-h-[44px] flex items-center", children: ev && /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+            "div",
+            {
+              className: `flex items-center gap-2 px-3 py-1.5 rounded-lg w-full ${ev.color === "green" ? "bg-green-50" : ev.color === "purple" ? "bg-purple-50" : "bg-yellow-50"}`,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+                  "span",
+                  {
+                    className: `w-2 h-2 rounded-full ${ev.color === "green" ? "bg-green-400" : ev.color === "purple" ? "bg-purple-400" : "bg-yellow-400"}`
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "text-xs text-gray-500", children: ev.time }),
+                /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "text-sm font-semibold text-gray-800", children: ev.label })
+              ]
+            }
+          ) })
+        ]
+      },
+      slot
+    );
+  })
+] }) });
+var weekCols = [
+  {
+    label: "Mon, 3",
+    events: {
+      0: { label: "Call", color: "green" },
+      2: { label: "Meeting", color: "purple" },
+      3: { label: "Call", color: "green" },
+      5: { label: "Present...", color: "yellow" }
+    }
+  },
+  {
+    label: "Tue, 4",
+    events: {
+      1: { label: "Meeting", color: "purple" },
+      2: { label: "Call", color: "green" },
+      6: { label: "Meeting", color: "purple" }
+    }
+  },
+  {
+    label: "Wed, 5",
+    events: {
+      0: { label: "Meeting", color: "purple" },
+      5: { label: "Meeting", color: "purple" },
+      6: { label: "Meeting", color: "purple" }
+    }
+  },
+  {
+    label: "Thu, 6",
+    events: {
+      1: { label: "Present...", color: "yellow" },
+      5: { label: "Meeting", color: "purple" }
+    }
+  },
+  {
+    label: "Fri, 7",
+    events: {
+      0: { label: "Call", color: "green" },
+      2: { label: "Present...", color: "yellow" },
+      5: { label: "Meeting", color: "purple" }
+    }
+  },
+  {
+    label: "Sat, 8",
+    events: {
+      2: { label: "Meeting", color: "purple" },
+      3: { label: "Call", color: "green" },
+      6: { label: "Present...", color: "yellow" }
+    }
+  },
+  { label: "Sun, 9", events: {} }
+];
+var WeekView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "flex-1 overflow-auto px-6 pb-6", children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "border border-black/10 rounded-xl overflow-hidden bg-white", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+    "div",
+    {
+      className: "grid border-b border-black/10",
+      style: { gridTemplateColumns: "64px repeat(7, 1fr)" },
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "border-r border-black/10" }),
+        weekCols.map((d2) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+          "div",
+          {
+            className: "py-2 text-center text-xs font-medium text-gray-500 border-r last:border-r-0 border-black/10",
+            children: d2.label
+          },
+          d2.label
+        ))
+      ]
+    }
+  ),
+  timeSlots.map((slot, si) => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+    "div",
+    {
+      className: "grid border-b last:border-b-0 border-black/10",
+      style: { gridTemplateColumns: "64px repeat(7, 1fr)" },
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "py-3 px-3 text-xs text-gray-500 text-right border-r border-black/10", children: slot }),
+        weekCols.map((day, di) => {
+          const ev = day.events[si];
+          return /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+            "div",
+            {
+              className: "py-1 px-1 border-r last:border-r-0 border-black/10 min-h-[44px] flex items-start pt-2",
+              children: ev && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(EventPill, { label: ev.label, color: ev.color, small: true })
+            },
+            di
+          );
+        })
+      ]
+    },
+    slot
+  ))
+] }) });
+var Footer9 = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center justify-between px-8 py-3 border-t bg-[#f5efe6] border-black/10 text-sm text-gray-500", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center gap-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "hover:opacity-80", children: "\xB7\xB7\xB7 English" }),
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "hover:opacity-80", children: "API" })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "px-2 py-1 rounded bg-purple-600 text-white text-xs", children: "\xB7\xB7\xB7" }),
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "px-2 py-1 rounded bg-black/10 text-xs", children: "\xB7\xB7\xB7" })
+  ] })
+] });
+var CalendarEvent = ({
+  defaultView = "month"
+}) => {
+  const [view, setView] = (0, import_react10.useState)(defaultView);
+  const [showModal, setShowModal] = (0, import_react10.useState)(defaultView === "month");
+  const dateLabels = {
+    month: "September 2022",
+    week: "September 3 - 9, 2022",
+    day: "September 3 - 9, 2022"
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex h-screen bg-[#f5efe6]", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(CalendarSidebar, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(TopBar9, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+        CalendarNav,
+        {
+          view,
+          onViewChange: (v3) => {
+            setView(v3);
+            setShowModal(v3 === "month");
+          },
+          dateLabel: dateLabels[view]
+        }
+      ),
+      view === "month" && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+        MonthView,
+        {
+          showModal,
+          onToggle: () => setShowModal((s2) => !s2)
+        }
+      ),
+      view === "day" && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(DayView, {}),
+      view === "week" && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(WeekView, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(Footer9, {})
+    ] })
   ] });
 };
 
 // src/screens/Support/SupportHome.tsx
-var import_jsx_runtime52 = require("react/jsx-runtime");
-var SupportHome = () => {
-  const categories = [
-    { id: "1", title: "Getting Started", articles: 12 },
-    { id: "2", title: "Billing & Payments", articles: 8 },
-    { id: "3", title: "Account Management", articles: 15 },
-    { id: "4", title: "Troubleshooting", articles: 20 }
-  ];
-  return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "max-w-4xl mx-auto p-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("h1", { className: "text-3xl font-bold mb-2", children: "Help & Support" }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("p", { className: "text-gray-600 mb-6", children: "Find answers and get support from our team" }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "mb-8", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(Input, { placeholder: "Search help articles...", className: "w-full" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-6", children: categories.map((cat) => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
-      Card,
+var import_react11 = __toESM(require("react"), 1);
+var import_jsx_runtime54 = require("react/jsx-runtime");
+var SupportSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "w-[200px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "px-5 py-5 border-b border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex items-center gap-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "text-lg font-bold text-white", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500 mb-3" })
+  ] }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex-1 overflow-y-auto px-3 py-4 space-y-5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("nav", { className: "space-y-0.5", children: [
+        { label: "Dashboard", badge: 15, badgeColor: "bg-purple-600" },
+        { label: "Projects" },
+        { label: "Tasks" },
+        { label: "Kanban Desk", badge: 28, badgeColor: "bg-purple-600" },
+        { label: "File Manager", badge: 14, badgeColor: "bg-green-500" },
+        { label: "Calendar" },
+        { label: "Inbox" }
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+        "button",
+        {
+          className: "w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { children: item.label }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+              "span",
+              {
+                className: `text-[10px] text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                children: item.badge
+              }
+            )
+          ]
+        },
+        item.label
+      )) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "space-y-0.5", children: [
+        [
+          { name: "Alexandre Paiva", color: "bg-orange-400" },
+          { name: "Thanawan Chadee", color: "bg-purple-500" },
+          { name: "Justine Robinson", color: "bg-blue-400" }
+        ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+          "button",
+          {
+            className: "w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-white/5",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                "span",
+                {
+                  className: `w-6 h-6 rounded-full ${member.color} flex-shrink-0`
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { children: member.name })
+            ]
+          },
+          member.name
+        )),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "text-xs", children: "\u2304 See More" }) })
+      ] })
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "px-3 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex items-center justify-between px-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex items-center gap-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-pink-500" }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "text-xs text-gray-200", children: "Henry Richardson" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "text-gray-500 hover:text-white text-xs", children: "\xB7\xB7\xB7" })
+  ] }) })
+] });
+var SupportTopBar = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex items-center justify-between px-6 py-3.5 border-b bg-white border-black/10", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("h1", { className: "text-2xl font-bold text-black", children: "Help Center" }),
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex items-center gap-3", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "text-gray-500", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+      "svg",
       {
-        className: "p-6 hover:shadow-lg transition-shadow cursor-pointer",
+        width: "18",
+        height: "18",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: "2",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("h3", { className: "text-lg font-semibold mb-2", children: cat.title }),
-          /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("p", { className: "text-gray-600 mb-4", children: [
-            cat.articles,
-            " articles"
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(Button, { variant: "outline", children: "Browse" })
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "m21 21-4.35-4.35" })
         ]
-      },
-      cat.id
-    )) })
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "text-gray-500", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+      "svg",
+      {
+        width: "18",
+        height: "18",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: "2",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" }),
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M13.73 21a2 2 0 0 1-3.46 0" })
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-black/5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "currentColor", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("rect", { x: "2", y: "2", width: "9", height: "9", rx: "1" }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("rect", { x: "13", y: "2", width: "9", height: "9", rx: "1" }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("rect", { x: "2", y: "13", width: "9", height: "9", rx: "1" }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("rect", { x: "13", y: "13", width: "9", height: "9", rx: "1" })
+      ] }),
+      "Apps"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+        "svg",
+        {
+          width: "14",
+          height: "14",
+          viewBox: "0 0 24 24",
+          fill: "none",
+          stroke: "currentColor",
+          strokeWidth: "2.5",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("circle", { cx: "12", cy: "12", r: "10" }),
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M12 8v8M8 12h8" })
+          ]
+        }
+      ),
+      "Create new"
+    ] })
+  ] })
+] });
+var SupportFooter = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex items-center justify-between px-8 py-3 border-t bg-[#f5efe6] border-black/10 text-sm text-gray-500", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex items-center gap-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "flex items-center gap-1.5 hover:opacity-80", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+        "svg",
+        {
+          width: "14",
+          height: "14",
+          viewBox: "0 0 24 24",
+          fill: "none",
+          stroke: "currentColor",
+          strokeWidth: "2",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("circle", { cx: "12", cy: "12", r: "10" }),
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" })
+          ]
+        }
+      ),
+      "English"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "hover:opacity-80", children: "API" })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "w-7 h-7 rounded flex items-center justify-center bg-purple-600 text-white", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M12 3a9 9 0 1 0 9 9H12z" }) }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "w-7 h-7 rounded flex items-center justify-center bg-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+      "svg",
+      {
+        width: "13",
+        height: "13",
+        viewBox: "0 0 24 24",
+        fill: "none",
+        stroke: "currentColor",
+        strokeWidth: "2",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("circle", { cx: "12", cy: "12", r: "4" }),
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" })
+        ]
+      }
+    ) })
+  ] })
+] });
+var SupportHero = ({
+  searchPlaceholder = "Search help articles",
+  searchValue
+}) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+  "div",
+  {
+    className: "relative mx-6 mt-6 rounded-2xl overflow-hidden px-8 py-10 mb-6",
+    style: {
+      background: "radial-gradient(ellipse at 70% 50%, rgba(180,120,255,0.35) 0%, transparent 65%), #f5efe6"
+    },
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+        "h2",
+        {
+          className: "text-4xl font-bold text-center text-black mb-6",
+          style: { letterSpacing: "-0.02em" },
+          children: "How can we help you?"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "max-w-lg mx-auto relative mb-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+          "input",
+          {
+            className: "w-full px-4 py-2.5 pr-10 rounded-xl border border-black/20 bg-white text-black text-sm outline-none placeholder-gray-400",
+            placeholder: searchPlaceholder,
+            defaultValue: searchValue,
+            readOnly: true
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "absolute right-2.5 top-1/2 -translate-y-1/2 w-7 h-7 bg-purple-600 rounded-lg flex items-center justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+          "svg",
+          {
+            width: "13",
+            height: "13",
+            viewBox: "0 0 24 24",
+            fill: "none",
+            stroke: "white",
+            strokeWidth: "2.5",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "m21 21-4.35-4.35" })
+            ]
+          }
+        ) })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "text-center text-xs text-gray-500", children: "For example: How to create an account" })
+    ]
+  }
+);
+var ProductIcon = ({
+  letter,
+  color
+}) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+  "div",
+  {
+    className: `w-9 h-9 rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 ${color}`,
+    children: letter
+  }
+);
+var ProductCategoryCard = ({
+  letter,
+  color,
+  title,
+  description
+}) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex items-start gap-3 p-3 bg-white rounded-xl border border-black/10 cursor-pointer hover:shadow-sm transition-shadow", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(ProductIcon, { letter, color }),
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "font-semibold text-sm text-black", children: title }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "text-xs text-gray-500 mt-0.5", children: description })
+  ] })
+] });
+var HelpArticleCard = ({
+  title,
+  category,
+  description
+}) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "p-4 bg-white rounded-xl border border-black/10 cursor-pointer hover:shadow-sm transition-shadow", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "text-[10px] font-semibold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full", children: category }),
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "font-semibold text-sm text-black mt-2 mb-1", children: title }),
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "text-xs text-gray-500 leading-relaxed", children: description }),
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "text-xs text-purple-600 font-medium mt-2 hover:underline", children: "Read more" })
+] });
+var Breadcrumb = ({ items }) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "flex items-center gap-1.5 text-sm text-gray-500 px-6 pt-4 pb-2", children: items.map((item, i2) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(import_react11.default.Fragment, { children: [
+  i2 > 0 && /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+    "svg",
+    {
+      width: "12",
+      height: "12",
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: "currentColor",
+      strokeWidth: "2",
+      children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M9 18l6-6-6-6" })
+    }
+  ),
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+    "span",
+    {
+      className: i2 === items.length - 1 ? "text-black font-medium" : "hover:text-black cursor-pointer",
+      children: item
+    }
+  )
+] }, i2)) });
+var ArticleSidebarNav = () => {
+  const items = [
+    { label: "Getting started", active: true },
+    { label: "Managing my account" },
+    { label: "Trading and funding" },
+    { label: "Taxes and financial services" },
+    { label: "Privacy and security" },
+    { label: "Other topics" },
+    { label: "Asset Directory" },
+    { label: "Top of mind" }
+  ];
+  return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "w-48 flex-shrink-0 pt-2", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("nav", { className: "space-y-0.5", children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+    "button",
+    {
+      className: `w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${item.active ? "text-purple-600 font-medium" : "text-gray-700 hover:text-black hover:bg-black/5"}`,
+      children: item.label
+    },
+    item.label
+  )) }) });
+};
+var RelatedArticleRow = ({
+  icon,
+  iconBg,
+  title,
+  date,
+  tag
+}) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex items-center gap-4 p-4 border border-black/10 rounded-xl bg-white cursor-pointer hover:shadow-sm transition-shadow", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+    "div",
+    {
+      className: `w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${iconBg}`,
+      children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "text-base", children: icon })
+    }
+  ),
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "font-semibold text-sm text-black", children: title }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("p", { className: "text-xs text-gray-500 mt-0.5", children: [
+      date,
+      " \u2022 ",
+      tag
+    ] })
+  ] })
+] });
+var SearchResultRow = ({ title, excerpt }) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "p-4 border border-black/10 rounded-xl bg-white cursor-pointer hover:shadow-sm transition-shadow", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "font-semibold text-sm text-black mb-1", children: title }),
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "text-xs text-gray-500 leading-relaxed", children: excerpt }),
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "text-xs text-purple-600 font-medium mt-2 hover:underline", children: "See more articles" })
+] });
+var products = [
+  {
+    letter: "W",
+    color: "bg-blue-500",
+    title: "Wallet",
+    description: "The full Doctor Project wallet"
+  },
+  {
+    letter: "C",
+    color: "bg-green-500",
+    title: "Commerce",
+    description: "Accept payments from anyone"
+  },
+  {
+    letter: "C",
+    color: "bg-purple-500",
+    title: "Cloud",
+    description: "Scale the future of payments"
+  },
+  {
+    letter: "O",
+    color: "bg-orange-500",
+    title: "Online Trading",
+    description: "Grow your trading business"
+  },
+  {
+    letter: "E",
+    color: "bg-teal-500",
+    title: "Exchange",
+    description: "Global marketplace for trading"
+  },
+  {
+    letter: "Q",
+    color: "bg-pink-500",
+    title: "Query & Transactions",
+    description: "Stay on top of compliance"
+  },
+  {
+    letter: "C",
+    color: "bg-yellow-500",
+    title: "Card",
+    description: "Earn points and rewards"
+  },
+  {
+    letter: "I",
+    color: "bg-indigo-500",
+    title: "Intelligence",
+    description: "Automate your compliance"
+  },
+  {
+    letter: "A",
+    color: "bg-red-500",
+    title: "Apps downloads",
+    description: "More apps for your wallet"
+  }
+];
+var popularArticles = [
+  {
+    title: "Taxes and Fees",
+    category: "Taxes and Fees",
+    description: "What is an NFT? What if you don't always want to save more than $1M in the same accounts. Unfortunately, it can happen by accident. If you confirm you qualify for but didn't receive any in the weekly drop."
+  },
+  {
+    title: "Helpdesk",
+    category: "Helpdesk",
+    description: "How to verify your identity on our marketplace. Don't worry about not trading. You will NFT 1M of the same amounts. Unfortunately, it can happen by accident."
+  },
+  {
+    title: "Marketplace",
+    category: "Marketplace",
+    description: "Keep your account safe by adding an extra layer. It's not about not trading. You will NFT always want to save more than $1M in the same amounts. Unfortunately, it can happen."
+  }
+];
+var relatedArticles = [
+  {
+    icon: "\u2709",
+    iconBg: "bg-gray-100",
+    title: "Waiting period for first payout on our fintech platform for marketplaces",
+    date: "31 Dec 2021",
+    tag: "Payments"
+  },
+  {
+    icon: "\u23F0",
+    iconBg: "bg-gray-100",
+    title: "Strong Customer Authentication-related preparations for businesses",
+    date: "04 Sep 2020",
+    tag: "Account and settings"
+  },
+  {
+    icon: "\u25A3",
+    iconBg: "bg-gray-100",
+    title: "Security, permissions, and access levels when connecting your account",
+    date: "1 Feb 2022",
+    tag: "Payments"
+  }
+];
+var topCommunityPosts = [
+  {
+    icon: "\u2709",
+    iconBg: "bg-gray-100",
+    title: "Waiting period for first payout on our fintech platform for marketplaces",
+    date: "31 Dec 2021",
+    tag: "Payments"
+  },
+  {
+    icon: "\u23F0",
+    iconBg: "bg-gray-100",
+    title: "Strong Customer Authentication-related preparations for businesses",
+    date: "04 Sep 2020",
+    tag: "Account and settings"
+  },
+  {
+    icon: "\u25A3",
+    iconBg: "bg-gray-100",
+    title: "Security, permissions, and access levels when connecting your account",
+    date: "1 Feb 2022",
+    tag: "Payments"
+  }
+];
+var searchResults = [
+  {
+    title: "Access levels when connecting your account to a third-party platform",
+    excerpt: "It's better than an NFT 1M of the same amounts. Unfortunately, it can happen by accident. It can happen if you confirm you qualify for but didn't receive any in the weekly drop."
+  },
+  {
+    title: "Setting up your Xero account with Stripe",
+    excerpt: "It's better than an NFT 1M of the same amounts. Unfortunately, it can happen by accident. It can happen if you confirm you qualify for but didn't receive any in the weekly drop."
+  },
+  {
+    title: "Integrate your Corporate Card with QuickBooks Online or QuickBooks Desktop",
+    excerpt: "In our accounting platform, portals and having lessons when you provide, you can NFT 1M of the same amounts. Unfortunately, it can happen by accident."
+  }
+];
+var SupportHome = ({ view = "home" }) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex h-screen", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SupportSidebar, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden bg-[#f5efe6]", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SupportTopBar, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex-1 overflow-auto", children: [
+        view === "home" && /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(import_jsx_runtime54.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SupportHero, {}),
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "px-6 pb-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "mb-6", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("h3", { className: "text-sm font-semibold text-black mb-3", children: "Products" }),
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "grid grid-cols-3 gap-2", children: products.map((p3) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                ProductCategoryCard,
+                {
+                  ...p3
+                },
+                `${p3.title}-${p3.description}`
+              )) })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("h3", { className: "text-sm font-semibold text-black mb-3", children: "Popular help topics" }),
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "grid grid-cols-3 gap-3", children: popularArticles.map((a2) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(HelpArticleCard, { ...a2 }, a2.title)) })
+            ] })
+          ] })
+        ] }),
+        view === "categories" && /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(import_jsx_runtime54.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Breadcrumb, { items: ["Help Center", "Categories", "..."] }),
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SupportHero, {}),
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "px-6 pb-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "mb-6", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("h3", { className: "text-sm font-semibold text-black mb-3", children: "Product categories" }),
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "grid grid-cols-3 gap-3", children: [
+                {
+                  letter: "G",
+                  color: "bg-blue-500",
+                  title: "Getting started with platform",
+                  description: "Verify my account\nManage my details",
+                  articles: 3
+                },
+                {
+                  letter: "M",
+                  color: "bg-green-500",
+                  title: "Managing my account",
+                  description: "Not have any NFT 1M\nAdd a payment method\nManage my details",
+                  articles: 3
+                },
+                {
+                  letter: "T",
+                  color: "bg-purple-500",
+                  title: "Trading and funding",
+                  description: "Buying, selling or transferring crypto\nUnderstanding crypto compliance",
+                  articles: 3
+                }
+              ].map((cat) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+                "div",
+                {
+                  className: "p-4 bg-white rounded-xl border border-black/10 cursor-pointer hover:shadow-sm transition-shadow",
+                  children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex items-start gap-3 mb-3", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                        "div",
+                        {
+                          className: `w-9 h-9 rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 ${cat.color}`,
+                          children: cat.letter
+                        }
+                      ),
+                      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "font-semibold text-sm text-black", children: cat.title }) })
+                    ] }),
+                    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "space-y-1 mb-3", children: cat.description.split("\n").map((line) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "text-xs text-gray-500", children: line }, line)) }),
+                    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "text-xs text-purple-600 font-medium hover:underline", children: "See more articles" })
+                  ]
+                },
+                cat.title
+              )) })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("h3", { className: "text-sm font-semibold text-black mb-3", children: "Top community posts" }),
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "space-y-2", children: topCommunityPosts.map((post) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(RelatedArticleRow, { ...post }, post.title)) })
+            ] })
+          ] })
+        ] }),
+        view === "article" && /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(import_jsx_runtime54.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Breadcrumb, { items: ["Help Center", "Account", "Funds reports"] }),
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "px-6 pb-4 flex gap-6", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex-1 min-w-0", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                "h1",
+                {
+                  className: "text-4xl font-bold text-black mb-6",
+                  style: { letterSpacing: "-0.02em" },
+                  children: "Getting started: funds reports"
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "p-5 border border-black/10 rounded-xl bg-white mb-4", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "text-sm text-gray-700 leading-relaxed mb-4", children: "There is no better advertisement campaign that is low cost and also successful at the same time. Great business ideas when utilized effectively can save lots of money. This is not only easy for those who work full-time as an advertiser." }),
+                /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "border border-dashed border-black/20 rounded-lg p-4 mb-4", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("ol", { className: "space-y-1", children: [
+                  "Fliers and business cards can be tacked on such bulletin boards.",
+                  "But before doing so, check out with the human resource department",
+                  "Parents are required to be in regular touch with the teachers to know",
+                  "Do not miss this opportunity and spread the word. Hand them the business card"
+                ].map((item, i2) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+                  "li",
+                  {
+                    className: "text-sm font-medium text-black",
+                    children: [
+                      i2 + 1,
+                      ". ",
+                      item
+                    ]
+                  },
+                  i2
+                )) }) }),
+                /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "text-sm text-gray-700 leading-relaxed mb-4", children: "Get involved with fundraiser at schools, as it's a nice approach to market business. Prior to handing out the order received, collect all necessary information like business card pack, fliers, with proper information. Information can be based on what is the company about, what are the products and services provided, or how to get information in touch with the company. In each individual order, carefully place all of them and seal the package properly." }),
+                /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "text-xs text-gray-400 leading-relaxed", children: "Note: Voice mails can be put to good use, other than recording messages. They can help to deliver the marketing message. Greet with a brief message, following with website and email address." })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("h3", { className: "text-sm font-semibold text-black mb-3", children: "This also may help you" }),
+                /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "space-y-2", children: relatedArticles.map((a2) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(RelatedArticleRow, { ...a2 }, a2.title)) })
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(ArticleSidebarNav, {})
+          ] })
+        ] }),
+        view === "search" && /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(import_jsx_runtime54.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+            SupportHero,
+            {
+              searchPlaceholder: "Search help articles",
+              searchValue: "Account"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "px-6 pb-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "text-sm font-semibold text-black mb-3", children: "Search results" }),
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "space-y-3 mb-6", children: searchResults.map((r2) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SearchResultRow, { ...r2 }, r2.title)) }),
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "flex items-center justify-between py-4 text-sm text-gray-500", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 border border-black/20 rounded-lg text-xs text-gray-600 hover:bg-black/5", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                  "svg",
+                  {
+                    width: "14",
+                    height: "14",
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M15 18l-6-6 6-6" })
+                  }
+                ),
+                "Prev"
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "text-xs", children: "Page 1 of 10" }),
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "flex items-center gap-1.5 px-3 py-1.5 border border-black/20 rounded-lg text-xs text-gray-600 hover:bg-black/5", children: [
+                "Next",
+                /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                  "svg",
+                  {
+                    width: "14",
+                    height: "14",
+                    viewBox: "0 0 24 24",
+                    fill: "none",
+                    stroke: "currentColor",
+                    strokeWidth: "2",
+                    children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M9 18l6-6-6-6" })
+                  }
+                )
+              ] })
+            ] })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SupportFooter, {})
+    ] })
   ] });
 };
 
 // src/screens/ProfileSettings/ProfileAccount.tsx
-var import_react9 = require("react");
-var import_jsx_runtime53 = require("react/jsx-runtime");
-var ProfileAccount = () => {
-  const [formData, setFormData] = (0, import_react9.useState)({
-    fullName: "John Doe",
-    email: "john@example.com",
-    phone: "+1 (555) 123-4567",
-    location: "San Francisco, CA"
-  });
-  return /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "max-w-2xl mx-auto p-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("h1", { className: "text-3xl font-bold mb-6", children: "Account Settings" }),
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(Card, { className: "p-6", children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
-        Input,
+var import_react12 = require("react");
+var import_jsx_runtime55 = require("react/jsx-runtime");
+var DoctorProjectSidebar7 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "w-[280px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "px-6 py-5 border-b border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex items-center gap-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "text-xl font-bold text-white", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500 mb-3" })
+  ] }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex-1 overflow-y-auto px-4 py-4 space-y-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("nav", { className: "space-y-1", children: [
         {
-          label: "Full Name",
-          value: formData.fullName,
-          onChange: (e2) => setFormData({ ...formData, fullName: e2.target.value })
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
-        Input,
+          label: "Dashboard",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: 2,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("circle", { cx: "12", cy: "12", r: "10" }),
+                /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("circle", { cx: "12", cy: "12", r: "3" })
+              ]
+            }
+          ),
+          badge: 15,
+          badgeColor: "bg-purple-600"
+        },
         {
-          label: "Email",
-          type: "email",
-          value: formData.email,
-          onChange: (e2) => setFormData({ ...formData, email: e2.target.value })
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
-        Input,
+          label: "Projects",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: 2,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("rect", { x: "3", y: "3", width: "7", height: "7" }),
+                /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("rect", { x: "14", y: "3", width: "7", height: "7" }),
+                /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("rect", { x: "3", y: "14", width: "7", height: "7" }),
+                /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("rect", { x: "14", y: "14", width: "7", height: "7" })
+              ]
+            }
+          )
+        },
         {
-          label: "Phone",
-          value: formData.phone,
-          onChange: (e2) => setFormData({ ...formData, phone: e2.target.value })
-        }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
-        Input,
+          label: "Tasks",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: 2,
+              children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("polyline", { points: "20 6 9 17 4 12" })
+            }
+          )
+        },
         {
-          label: "Location",
-          value: formData.location,
-          onChange: (e2) => setFormData({ ...formData, location: e2.target.value })
+          label: "Kanban Desk",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: 2,
+              children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("path", { d: "M3 6h18M3 12h18M3 18h18" })
+            }
+          ),
+          badge: 28,
+          badgeColor: "bg-purple-600"
+        },
+        {
+          label: "File Manager",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: 2,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("path", { d: "M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" }),
+                /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("polyline", { points: "14 2 14 8 20 8" })
+              ]
+            }
+          ),
+          badge: 14,
+          badgeColor: "bg-green-500"
+        },
+        {
+          label: "Calendar",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: 2,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("rect", { x: "3", y: "4", width: "18", height: "18", rx: "2", ry: "2" }),
+                /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("line", { x1: "16", y1: "2", x2: "16", y2: "6" }),
+                /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("line", { x1: "8", y1: "2", x2: "8", y2: "6" }),
+                /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("line", { x1: "3", y1: "10", x2: "21", y2: "10" })
+              ]
+            }
+          )
+        },
+        {
+          label: "Inbox",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: 2,
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("polyline", { points: "22 12 16 12 14 15 10 15 8 12 2 12" }),
+                /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("path", { d: "M5.45 5.11L2 12v6a2 2 0 002 2h16a2 2 0 002-2v-6l-3.45-6.89A2 2 0 0016.76 4H7.24a2 2 0 00-1.79 1.11z" })
+              ]
+            }
+          )
         }
-      ),
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "flex gap-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(Button, { children: "Save Changes" }),
-        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(Button, { variant: "outline", children: "Cancel" })
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+        "button",
+        {
+          className: "w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex items-center gap-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "text-base", children: item.icon }),
+              /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { children: item.label })
+            ] }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+              "span",
+              {
+                className: `text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                children: item.badge
+              }
+            )
+          ]
+        },
+        item.label
+      )) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "space-y-1", children: [
+        [
+          { name: "Alexandre Paiva", color: "from-blue-500 to-cyan-400" },
+          { name: "Thanawan Chadee", color: "from-orange-400 to-pink-500" },
+          { name: "Justine Robinson", color: "from-green-400 to-teal-500" }
+        ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+          "button",
+          {
+            className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+                "div",
+                {
+                  className: `w-7 h-7 rounded-full bg-gradient-to-br ${member.color} flex-shrink-0`
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { children: member.name })
+            ]
+          },
+          member.name
+        )),
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              viewBox: "0 0 24 24",
+              fill: "none",
+              stroke: "currentColor",
+              strokeWidth: 2,
+              children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("polyline", { points: "6 9 12 15 18 9" })
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { children: "See More" })
+        ] })
       ] })
-    ] }) })
-  ] });
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "px-4 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex items-center justify-between px-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex items-center gap-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex-shrink-0" }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "text-sm text-gray-200", children: "Henry Richardson" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "text-gray-500 hover:text-white text-lg", children: "\xB7\xB7\xB7" })
+  ] }) })
+] });
+var TopBar10 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex items-center justify-between px-8 py-4 border-b bg-[#f5efe6] border-black/10 flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("h1", { className: "text-3xl font-bold text-black", children: "Profile Settings" }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex items-center gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "p-2 rounded-lg text-gray-500 hover:bg-black/5", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+      "svg",
+      {
+        className: "w-5 h-5",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          }
+        )
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "p-2 rounded-lg text-gray-500 hover:bg-black/5", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+      "svg",
+      {
+        className: "w-5 h-5",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+          }
+        )
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-black/5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
+            }
+          )
+        }
+      ),
+      "Apps"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          strokeWidth: 2.5,
+          children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              d: "M12 4v16m8-8H4"
+            }
+          )
+        }
+      ),
+      "Create new"
+    ] })
+  ] })
+] });
+var Footer10 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex items-center justify-between px-8 py-3 border-t bg-[#f5efe6] border-black/10 text-sm text-gray-500 flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex items-center gap-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("button", { className: "flex items-center gap-1.5 hover:opacity-80", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeWidth: 2,
+                d: "M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+              }
+            )
+          ]
+        }
+      ),
+      "English"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "hover:opacity-80", children: "API" })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "p-1.5 rounded bg-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            }
+          )
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "p-1.5 rounded bg-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          }
+        )
+      }
+    ) })
+  ] })
+] });
+var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "w-[280px] flex-shrink-0 px-6 py-6", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "w-20 h-20 rounded-full overflow-hidden bg-gray-200 mb-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+      "img",
+      {
+        src: "https://i.pravatar.cc/80?img=47",
+        alt: "Laquita Elliott",
+        className: "w-full h-full object-cover",
+        onError: (e2) => {
+          e2.target.style.display = "none";
+        }
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "w-full h-full bg-gradient-to-br from-blue-300 to-indigo-400 flex items-center justify-center text-white text-2xl font-bold", children: "LE" })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("h2", { className: "text-xl font-bold text-black mb-0.5", children: "Laquita Elliott" }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "text-sm text-gray-500 mb-3", children: "elliott.laquita@gmail.com" }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("p", { className: "text-sm text-gray-600 mb-4", children: [
+    "Happiness is not something readymade.",
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("br", {}),
+    "It comes from your own actions."
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "px-4 py-1.5 border border-gray-300 rounded text-sm font-medium text-gray-700 hover:bg-gray-50 mb-6", children: "Designer" }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "space-y-3", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "pb-3 border-b border-dashed border-gray-300", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "text-xl font-bold text-black", children: "296" }),
+          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "text-xs font-semibold text-white bg-red-400 px-1.5 py-0.5 rounded", children: "-8" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+          "svg",
+          {
+            className: "w-4 h-4 text-gray-400",
+            fill: "none",
+            viewBox: "0 0 24 24",
+            stroke: "currentColor",
+            strokeWidth: 2,
+            children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                d: "M19 9l-7 7-7-7"
+              }
+            )
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "text-sm text-gray-500 mt-0.5", children: "New tasks" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "pb-3 border-b border-dashed border-gray-300", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex items-center justify-between", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex items-center gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "text-xl font-bold text-black", children: "18" }),
+          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "text-xs font-semibold text-white bg-green-500 px-1.5 py-0.5 rounded", children: "5" })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+          "svg",
+          {
+            className: "w-4 h-4 text-gray-400",
+            fill: "none",
+            viewBox: "0 0 24 24",
+            stroke: "currentColor",
+            strokeWidth: 2,
+            children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                d: "M5 15l7-7 7 7"
+              }
+            )
+          }
+        )
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "text-sm text-gray-500 mt-0.5", children: "Followers" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "pb-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "text-xl font-bold text-black", children: "$36" }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "text-sm text-gray-500 mt-0.5", children: "Hourly rate" })
+    ] })
+  ] })
+] });
+var TABS = [
+  { key: "account", label: "Account" },
+  { key: "security", label: "Security" },
+  { key: "social", label: "Social Networks" },
+  { key: "apis", label: "APIs" },
+  { key: "notifications", label: "Notifications" }
+];
+var ProfileTabBar = ({ activeTab, onTabChange }) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex items-center gap-1 mb-4 flex-shrink-0", children: [
+  TABS.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+    "button",
+    {
+      onClick: () => onTabChange(tab.key),
+      className: `px-4 py-2 rounded text-sm font-medium transition-colors ${activeTab === tab.key ? "bg-black text-white" : "text-gray-600 hover:text-black hover:bg-black/5"}`,
+      children: tab.label
+    },
+    tab.key
+  )),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "ml-auto", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 border border-gray-300 rounded text-sm font-medium text-gray-700 hover:bg-gray-50", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "text-gray-400", children: "\xB7\xB7\xB7" }),
+    "Actions"
+  ] }) })
+] });
+var ContentCard = ({
+  title,
+  children
+}) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex-1 border border-gray-200 rounded-lg bg-white flex flex-col overflow-hidden", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "px-6 py-4 border-b border-gray-200", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("h2", { className: "text-lg font-bold text-black", children: title }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "flex-1 px-6 py-4 overflow-y-auto", children }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "px-6 py-4 border-t border-gray-100 flex items-center justify-between", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "px-6 py-2.5 border border-gray-300 rounded text-sm font-bold text-black hover:bg-gray-50", children: "Reset Changes" }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "px-8 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-bold rounded transition-colors", children: "Update Settings" })
+  ] })
+] });
+var FieldRow = ({ label, value, half }) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: half ? "w-1/2 pr-4" : "w-full", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "text-xs text-gray-500 mb-1", children: label }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "text-sm font-bold text-black pb-2 border-b border-gray-200", children: value })
+] });
+var ProfileLayout = ({
+  activeTab,
+  onTabChange,
+  children
+}) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex h-screen overflow-hidden", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(DoctorProjectSidebar7, {}),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden bg-[#f5efe6]", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(TopBar10, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex-1 flex overflow-hidden px-8 py-6 gap-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(ProfileSidePanel, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(ProfileTabBar, { activeTab, onTabChange }),
+        children
+      ] })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(Footer10, {})
+  ] })
+] });
+var ProfileAccount = () => {
+  const [activeTab, setActiveTab] = (0, import_react12.useState)("account");
+  return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(ProfileLayout, { activeTab, onTabChange: setActiveTab, children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(ContentCard, { title: "Public account details", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "space-y-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "flex flex-wrap", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(FieldRow, { label: "Full name", value: "Henry Richardson" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "flex flex-wrap", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(FieldRow, { label: "Country", value: "United States" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "flex flex-wrap", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(FieldRow, { label: "City", value: "New Castle" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex gap-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(FieldRow, { label: "Date of birth", value: "January 24, 1983" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(FieldRow, { label: "Gender", value: "Male" }) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "flex gap-6", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(FieldRow, { label: "Email address", value: "seb.bennett@gmail.com" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(FieldRow, { label: "Phone number", value: "+995 590 558 124" }) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "flex flex-wrap", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+      FieldRow,
+      {
+        label: "Address",
+        value: "83222 Dicki View, South Pasqualeview, RI 79216-3100"
+      }
+    ) })
+  ] }) }) });
 };
 
 // src/screens/ProfileSettings/ProfileNotifications.tsx
-var import_jsx_runtime54 = require("react/jsx-runtime");
+var import_react13 = require("react");
+var import_jsx_runtime56 = require("react/jsx-runtime");
+var Toggle2 = ({ enabled, onChange }) => /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+  "button",
+  {
+    onClick: () => onChange(!enabled),
+    className: `relative inline-flex h-6 w-12 items-center rounded-sm transition-colors flex-shrink-0 ${enabled ? "bg-purple-500" : "bg-purple-200"}`,
+    style: { minWidth: "3rem" },
+    children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+      "span",
+      {
+        className: `inline-block h-5 w-5 transform rounded-sm bg-black transition-transform ${enabled ? "translate-x-6" : "translate-x-0.5"}`
+      }
+    )
+  }
+);
+var NotifRow = ({ label, description, enabled, onChange }) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex items-center justify-between py-4 border-b border-gray-200 last:border-b-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("p", { className: "text-xs text-gray-500 mb-0.5", children: label }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("p", { className: "text-sm font-bold text-black", children: description })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(Toggle2, { enabled, onChange })
+] });
+var DoctorProjectSidebar8 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "w-[280px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "px-6 py-5 border-b border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex items-center gap-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "text-xl font-bold text-white", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500 mb-3" })
+  ] }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex-1 overflow-y-auto px-4 py-4 space-y-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("nav", { className: "space-y-1", children: [
+        { label: "Dashboard", badge: 15, badgeColor: "bg-purple-600" },
+        { label: "Projects" },
+        { label: "Tasks" },
+        { label: "Kanban Desk", badge: 28, badgeColor: "bg-purple-600" },
+        { label: "File Manager", badge: 14, badgeColor: "bg-green-500" },
+        { label: "Calendar" },
+        { label: "Inbox" }
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
+        "button",
+        {
+          className: "w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { children: item.label }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+              "span",
+              {
+                className: `text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                children: item.badge
+              }
+            )
+          ]
+        },
+        item.label
+      )) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "space-y-1", children: [
+        [
+          { name: "Alexandre Paiva", color: "from-blue-500 to-cyan-400" },
+          { name: "Thanawan Chadee", color: "from-orange-400 to-pink-500" },
+          { name: "Justine Robinson", color: "from-green-400 to-teal-500" }
+        ].map((m3) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
+          "button",
+          {
+            className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+                "div",
+                {
+                  className: `w-7 h-7 rounded-full bg-gradient-to-br ${m3.color} flex-shrink-0`
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { children: m3.name })
+            ]
+          },
+          m3.name
+        )),
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { children: "See More" }) })
+      ] })
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "px-4 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex items-center justify-between px-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex items-center gap-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex-shrink-0" }),
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "text-sm text-gray-200", children: "Henry Richardson" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "text-gray-500 hover:text-white text-lg", children: "\xB7\xB7\xB7" })
+  ] }) })
+] });
+var TopBar11 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex items-center justify-between px-8 py-4 border-b bg-[#f5efe6] border-black/10 flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("h1", { className: "text-3xl font-bold text-black", children: "Profile Settings" }),
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex items-center gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "p-2 rounded-lg text-gray-500 hover:bg-black/5", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+      "svg",
+      {
+        className: "w-5 h-5",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          }
+        )
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "p-2 rounded-lg text-gray-500 hover:bg-black/5", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+      "svg",
+      {
+        className: "w-5 h-5",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+          }
+        )
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-black/5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
+            }
+          )
+        }
+      ),
+      "Apps"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          strokeWidth: 2.5,
+          children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              d: "M12 4v16m8-8H4"
+            }
+          )
+        }
+      ),
+      "Create new"
+    ] })
+  ] })
+] });
+var Footer11 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex items-center justify-between px-8 py-3 border-t bg-[#f5efe6] border-black/10 text-sm text-gray-500 flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex items-center gap-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("button", { className: "flex items-center gap-1.5 hover:opacity-80", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeWidth: 2,
+                d: "M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+              }
+            )
+          ]
+        }
+      ),
+      "English"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "hover:opacity-80", children: "API" })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "p-1.5 rounded bg-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            }
+          )
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "p-1.5 rounded bg-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          }
+        )
+      }
+    ) })
+  ] })
+] });
 var ProfileNotifications = () => {
-  return /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "max-w-2xl mx-auto p-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("h1", { className: "text-3xl font-bold mb-6", children: "Notification Settings" }),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Card, { className: "p-6", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "space-y-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Checkbox, { label: "Email notifications", defaultChecked: true }),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Checkbox, { label: "Push notifications", defaultChecked: true }),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Checkbox, { label: "SMS notifications" }),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Checkbox, { label: "Marketing emails" }),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Checkbox, { label: "Weekly digest", defaultChecked: true })
-    ] }) })
+  const [activeTab, setActiveTab] = (0, import_react13.useState)("notifications");
+  const [settings, setSettings] = (0, import_react13.useState)({
+    productUpdates: true,
+    reminders: false,
+    promotions: true,
+    policy: true,
+    accountSupport: false
+  });
+  const TABS4 = [
+    { key: "account", label: "Account" },
+    { key: "security", label: "Security" },
+    { key: "social", label: "Social Networks" },
+    { key: "apis", label: "APIs" },
+    { key: "notifications", label: "Notifications" }
+  ];
+  return /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex h-screen overflow-hidden", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(DoctorProjectSidebar8, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden bg-[#f5efe6]", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(TopBar11, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex-1 flex overflow-hidden px-8 py-6 gap-6", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(ProfileSidePanel, {}),
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex items-center gap-1 mb-4 flex-shrink-0", children: [
+            TABS4.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+              "button",
+              {
+                onClick: () => setActiveTab(tab.key),
+                className: `px-4 py-2 rounded text-sm font-medium transition-colors ${activeTab === tab.key ? "bg-black text-white" : "text-gray-600 hover:text-black hover:bg-black/5"}`,
+                children: tab.label
+              },
+              tab.key
+            )),
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "ml-auto", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 border border-gray-300 rounded text-sm font-medium text-gray-700 hover:bg-gray-50", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "text-gray-400", children: "\xB7\xB7\xB7" }),
+              "Actions"
+            ] }) })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex-1 border border-gray-200 rounded-lg bg-white flex flex-col overflow-hidden", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "px-6 py-4 border-b border-gray-200", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("h2", { className: "text-lg font-bold text-black", children: "Notifications" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "flex-1 px-6 py-2 overflow-y-auto", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+                NotifRow,
+                {
+                  label: "Product updates",
+                  description: "Receive messages from our platform",
+                  enabled: settings.productUpdates,
+                  onChange: (v3) => setSettings({ ...settings, productUpdates: v3 })
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+                NotifRow,
+                {
+                  label: "Reminders",
+                  description: "Receive booking reminders, pricing notices",
+                  enabled: settings.reminders,
+                  onChange: (v3) => setSettings({ ...settings, reminders: v3 })
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+                NotifRow,
+                {
+                  label: "Promotions and tips",
+                  description: "Receive coupons, promotions, surveys",
+                  enabled: settings.promotions,
+                  onChange: (v3) => setSettings({ ...settings, promotions: v3 })
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+                NotifRow,
+                {
+                  label: "Policy and community",
+                  description: "Receive updates on job regulations",
+                  enabled: settings.policy,
+                  onChange: (v3) => setSettings({ ...settings, policy: v3 })
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+                NotifRow,
+                {
+                  label: "Account support",
+                  description: "Receive messages about your account, your trips, legal alerts",
+                  enabled: settings.accountSupport,
+                  onChange: (v3) => setSettings({ ...settings, accountSupport: v3 })
+                }
+              )
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "px-6 py-4 border-t border-gray-100 flex items-center justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "px-6 py-2.5 border border-gray-300 rounded text-sm font-bold text-black hover:bg-gray-50", children: "Reset Changes" }),
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "px-8 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-bold rounded transition-colors", children: "Update Settings" })
+            ] })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(Footer11, {})
+    ] })
   ] });
 };
 
 // src/screens/ProfileSettings/ProfileSecurity.tsx
-var import_jsx_runtime55 = require("react/jsx-runtime");
-var ProfileSecurity = () => {
-  return /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "max-w-2xl mx-auto p-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("h1", { className: "text-3xl font-bold mb-6", children: "Security Settings" }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "space-y-6", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(Card, { className: "p-6", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("h3", { className: "text-lg font-semibold mb-4", children: "Password" }),
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "text-gray-600 mb-4", children: "Last changed 3 months ago" }),
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(Button, { children: "Change Password" })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(Card, { className: "p-6", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("h3", { className: "text-lg font-semibold mb-4", children: "Two-Factor Authentication" }),
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "text-gray-600 mb-4", children: "Enhance your account security" }),
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(Button, { children: "Enable 2FA" })
-      ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(Card, { className: "p-6", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("h3", { className: "text-lg font-semibold mb-4", children: "Active Sessions" }),
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "text-gray-600 mb-4", children: "1 active session" }),
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(Button, { variant: "outline", children: "View & Manage" })
+var import_react14 = require("react");
+var import_jsx_runtime57 = require("react/jsx-runtime");
+var DoctorProjectSidebar9 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "w-[280px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "px-6 py-5 border-b border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex items-center gap-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "text-xl font-bold text-white", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500 mb-3" })
+  ] }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex-1 overflow-y-auto px-4 py-4 space-y-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("nav", { className: "space-y-1", children: [
+        { label: "Dashboard", badge: 15, badgeColor: "bg-purple-600" },
+        { label: "Projects" },
+        { label: "Tasks" },
+        { label: "Kanban Desk", badge: 28, badgeColor: "bg-purple-600" },
+        { label: "File Manager", badge: 14, badgeColor: "bg-green-500" },
+        { label: "Calendar" },
+        { label: "Inbox" }
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
+        "button",
+        {
+          className: "w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { children: item.label }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+              "span",
+              {
+                className: `text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                children: item.badge
+              }
+            )
+          ]
+        },
+        item.label
+      )) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "space-y-1", children: [
+        [
+          { name: "Alexandre Paiva", color: "from-blue-500 to-cyan-400" },
+          { name: "Thanawan Chadee", color: "from-orange-400 to-pink-500" },
+          { name: "Justine Robinson", color: "from-green-400 to-teal-500" }
+        ].map((m3) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
+          "button",
+          {
+            className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+                "div",
+                {
+                  className: `w-7 h-7 rounded-full bg-gradient-to-br ${m3.color} flex-shrink-0`
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { children: m3.name })
+            ]
+          },
+          m3.name
+        )),
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { children: "See More" }) })
       ] })
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "px-4 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex items-center justify-between px-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex items-center gap-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex-shrink-0" }),
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "text-sm text-gray-200", children: "Henry Richardson" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "text-gray-500 hover:text-white text-lg", children: "\xB7\xB7\xB7" })
+  ] }) })
+] });
+var TopBar12 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex items-center justify-between px-8 py-4 border-b bg-[#f5efe6] border-black/10 flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h1", { className: "text-3xl font-bold text-black", children: "Profile Settings" }),
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex items-center gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "p-2 rounded-lg text-gray-500 hover:bg-black/5", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+      "svg",
+      {
+        className: "w-5 h-5",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          }
+        )
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "p-2 rounded-lg text-gray-500 hover:bg-black/5", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+      "svg",
+      {
+        className: "w-5 h-5",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+          }
+        )
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-black/5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
+            }
+          )
+        }
+      ),
+      "Apps"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          strokeWidth: 2.5,
+          children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              d: "M12 4v16m8-8H4"
+            }
+          )
+        }
+      ),
+      "Create new"
+    ] })
+  ] })
+] });
+var Footer12 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex items-center justify-between px-8 py-3 border-t bg-[#f5efe6] border-black/10 text-sm text-gray-500 flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex items-center gap-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "flex items-center gap-1.5 hover:opacity-80", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeWidth: 2,
+                d: "M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+              }
+            )
+          ]
+        }
+      ),
+      "English"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "hover:opacity-80", children: "API" })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "p-1.5 rounded bg-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            }
+          )
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "p-1.5 rounded bg-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          }
+        )
+      }
+    ) })
+  ] })
+] });
+var TABS2 = [
+  { key: "account", label: "Account" },
+  { key: "security", label: "Security" },
+  { key: "social", label: "Social Networks" },
+  { key: "apis", label: "APIs" },
+  { key: "notifications", label: "Notifications" }
+];
+var FieldRow2 = ({
+  label,
+  value
+}) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "text-xs text-gray-500 mb-1", children: label }),
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "text-sm font-bold text-black pb-2 border-b border-gray-200", children: value })
+] });
+var SessionRow = ({ date, device, isCurrent, icon }) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex items-center gap-4 py-3 border-b border-gray-200 last:border-b-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "w-9 h-9 flex items-center justify-center text-gray-600 flex-shrink-0", children: icon === "laptop" ? /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
+    "svg",
+    {
+      className: "w-6 h-6",
+      fill: "none",
+      viewBox: "0 0 24 24",
+      stroke: "currentColor",
+      strokeWidth: 1.5,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("rect", { x: "2", y: "4", width: "20", height: "14", rx: "2" }),
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("path", { d: "M0 20h24", strokeLinecap: "round" })
+      ]
+    }
+  ) : /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+    "svg",
+    {
+      className: "w-5 h-6",
+      fill: "none",
+      viewBox: "0 0 24 24",
+      stroke: "currentColor",
+      strokeWidth: 1.5,
+      children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("rect", { x: "5", y: "2", width: "14", height: "20", rx: "2" })
+    }
+  ) }),
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "text-xs text-gray-500", children: date }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "text-sm font-bold text-black", children: device })
+  ] }),
+  isCurrent && /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "px-4 py-1.5 bg-black text-white text-xs font-semibold rounded hover:bg-gray-800 transition-colors", children: "Current session" })
+] });
+var ProfileSecurity = () => {
+  const [activeTab, setActiveTab] = (0, import_react14.useState)("security");
+  return /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex h-screen overflow-hidden", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(DoctorProjectSidebar9, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden bg-[#f5efe6]", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TopBar12, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex-1 flex overflow-hidden px-8 py-6 gap-6", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(ProfileSidePanel, {}),
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex items-center gap-1 mb-4 flex-shrink-0", children: [
+            TABS2.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+              "button",
+              {
+                onClick: () => setActiveTab(tab.key),
+                className: `px-4 py-2 rounded text-sm font-medium transition-colors ${activeTab === tab.key ? "bg-black text-white" : "text-gray-600 hover:text-black hover:bg-black/5"}`,
+                children: tab.label
+              },
+              tab.key
+            )),
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "ml-auto", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 border border-gray-300 rounded text-sm font-medium text-gray-700 hover:bg-gray-50", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "text-gray-400", children: "\xB7\xB7\xB7" }),
+              "Actions"
+            ] }) })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex-1 border border-gray-200 rounded-lg bg-white flex flex-col overflow-hidden", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "px-6 py-4 border-b border-gray-200", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h2", { className: "text-lg font-bold text-black", children: "Login details" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex-1 px-6 py-4 overflow-y-auto space-y-4", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(FieldRow2, { label: "Current password", value: "\u2022\u2022\u2022\u2022\u2022\u2022" }),
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "flex gap-6", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+                  FieldRow2,
+                  {
+                    label: "Security questions",
+                    value: "Your fathers name"
+                  }
+                ) }),
+                /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(FieldRow2, { label: "2-Step verification", value: "Enabled" }) })
+              ] }),
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "pt-2", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h3", { className: "text-base font-bold text-black mb-3", children: "Security credentials" }),
+                /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+                  SessionRow,
+                  {
+                    icon: "laptop",
+                    date: "01 Apr 2021 at 06:25PM",
+                    device: "Mac OS Safari 15.1",
+                    isCurrent: true
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+                  SessionRow,
+                  {
+                    icon: "phone",
+                    date: "19 Oct 2021 at 06:30AM",
+                    device: "iOS Safari 15.1"
+                  }
+                )
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "px-6 py-4 border-t border-gray-100 flex items-center justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "px-6 py-2.5 border border-gray-300 rounded text-sm font-bold text-black hover:bg-gray-50", children: "Reset Changes" }),
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "px-8 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-bold rounded transition-colors", children: "Update Settings" })
+            ] })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Footer12, {})
     ] })
   ] });
 };
 
 // src/screens/ProfileSettings/ProfileSocial.tsx
-var import_jsx_runtime56 = require("react/jsx-runtime");
-var ProfileSocial = () => {
-  const socialAccounts = [
-    { name: "Twitter", connected: true, handle: "@johndoe" },
-    { name: "LinkedIn", connected: true, handle: "johndoe" },
-    { name: "GitHub", connected: false, handle: null },
-    { name: "Facebook", connected: false, handle: null }
-  ];
-  return /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "max-w-2xl mx-auto p-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("h1", { className: "text-3xl font-bold mb-6", children: "Social Accounts" }),
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "space-y-4", children: socialAccounts.map((account) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
-      Card,
+var import_react15 = require("react");
+var import_jsx_runtime58 = require("react/jsx-runtime");
+var DoctorProjectSidebar10 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "w-[280px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "px-6 py-5 border-b border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex items-center gap-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "text-xl font-bold text-white", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500 mb-3" })
+  ] }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex-1 overflow-y-auto px-4 py-4 space-y-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("nav", { className: "space-y-1", children: [
+        { label: "Dashboard", badge: 15, badgeColor: "bg-purple-600" },
+        { label: "Projects" },
+        { label: "Tasks" },
+        { label: "Kanban Desk", badge: 28, badgeColor: "bg-purple-600" },
+        { label: "File Manager", badge: 14, badgeColor: "bg-green-500" },
+        { label: "Calendar" },
+        { label: "Inbox" }
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+        "button",
+        {
+          className: "w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { children: item.label }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+              "span",
+              {
+                className: `text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                children: item.badge
+              }
+            )
+          ]
+        },
+        item.label
+      )) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "space-y-1", children: [
+        [
+          { name: "Alexandre Paiva", color: "from-blue-500 to-cyan-400" },
+          { name: "Thanawan Chadee", color: "from-orange-400 to-pink-500" },
+          { name: "Justine Robinson", color: "from-green-400 to-teal-500" }
+        ].map((m3) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+          "button",
+          {
+            className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+                "div",
+                {
+                  className: `w-7 h-7 rounded-full bg-gradient-to-br ${m3.color} flex-shrink-0`
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { children: m3.name })
+            ]
+          },
+          m3.name
+        )),
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5 transition-colors", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { children: "See More" }) })
+      ] })
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "px-4 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex items-center justify-between px-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex items-center gap-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex-shrink-0" }),
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "text-sm text-gray-200", children: "Henry Richardson" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "text-gray-500 hover:text-white text-lg", children: "\xB7\xB7\xB7" })
+  ] }) })
+] });
+var TopBar13 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex items-center justify-between px-8 py-4 border-b bg-[#f5efe6] border-black/10 flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("h1", { className: "text-3xl font-bold text-black", children: "Profile Settings" }),
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex items-center gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "p-2 rounded-lg text-gray-500 hover:bg-black/5", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+      "svg",
       {
-        className: "p-6 flex items-center justify-between",
+        className: "w-5 h-5",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          }
+        )
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "p-2 rounded-lg text-gray-500 hover:bg-black/5", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+      "svg",
+      {
+        className: "w-5 h-5",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+          }
+        )
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-black/5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
+            }
+          )
+        }
+      ),
+      "Apps"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          strokeWidth: 2.5,
+          children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              d: "M12 4v16m8-8H4"
+            }
+          )
+        }
+      ),
+      "Create new"
+    ] })
+  ] })
+] });
+var Footer13 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex items-center justify-between px-8 py-3 border-t bg-[#f5efe6] border-black/10 text-sm text-gray-500 flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex items-center gap-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "flex items-center gap-1.5 hover:opacity-80", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeWidth: 2,
+                d: "M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+              }
+            )
+          ]
+        }
+      ),
+      "English"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "hover:opacity-80", children: "API" })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "p-1.5 rounded bg-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("h3", { className: "font-semibold", children: account.name }),
-            account.connected && /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("p", { className: "text-gray-600 text-sm", children: [
-              "Connected as ",
-              account.handle
-            ] }),
-            !account.connected && /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("p", { className: "text-gray-600 text-sm", children: "Not connected" })
-          ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(Button, { variant: account.connected ? "outline" : "primary", children: account.connected ? "Disconnect" : "Connect" })
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            }
+          )
         ]
-      },
-      account.name
-    )) })
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "p-1.5 rounded bg-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          }
+        )
+      }
+    ) })
+  ] })
+] });
+var TABS3 = [
+  { key: "account", label: "Account" },
+  { key: "security", label: "Security" },
+  { key: "social", label: "Social Networks" },
+  { key: "apis", label: "APIs" },
+  { key: "notifications", label: "Notifications" }
+];
+var SocialRow = ({ account }) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex items-center gap-4 py-3 border-b border-gray-200 last:border-b-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "w-9 h-9 flex items-center justify-center text-black flex-shrink-0 text-xl font-bold", children: account.icon }),
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("p", { className: "text-xs text-gray-500 mb-0.5", children: account.name }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("p", { className: "text-sm font-bold text-black", children: account.value ?? "Not connected" })
+  ] }),
+  !account.value && /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "flex items-center gap-1.5 text-sm text-gray-600 hover:text-black font-medium", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        strokeWidth: 2,
+        children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            d: "M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+          }
+        )
+      }
+    ),
+    "Connect"
+  ] })
+] });
+var ProfileSocial = () => {
+  const [activeTab, setActiveTab] = (0, import_react15.useState)("social");
+  const socialAccounts = [
+    {
+      name: "Facebook",
+      value: "https://www.facebook.com/whiteui.store",
+      icon: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("svg", { className: "w-6 h-6", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" }) })
+    },
+    {
+      name: "Twitter",
+      value: null,
+      icon: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("svg", { className: "w-6 h-6", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" }) })
+    },
+    {
+      name: "Dropbox",
+      value: "@whiteui.store",
+      icon: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("svg", { className: "w-6 h-6", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M12 2L6 7l6 5-6 5 6 5 6-5-6-5 6-5-6-5zm-6 17l6-5 6 5-6 5-6-5z" }) })
+    },
+    {
+      name: "Google",
+      value: null,
+      icon: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("svg", { className: "w-6 h-6", viewBox: "0 0 24 24", fill: "currentColor", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" }),
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" }),
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" }),
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" })
+      ] })
+    }
+  ];
+  return /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex h-screen overflow-hidden", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(DoctorProjectSidebar10, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden bg-[#f5efe6]", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(TopBar13, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex-1 flex overflow-hidden px-8 py-6 gap-6", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(ProfileSidePanel, {}),
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex items-center gap-1 mb-4 flex-shrink-0", children: [
+            TABS3.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+              "button",
+              {
+                onClick: () => setActiveTab(tab.key),
+                className: `px-4 py-2 rounded text-sm font-medium transition-colors ${activeTab === tab.key ? "bg-black text-white" : "text-gray-600 hover:text-black hover:bg-black/5"}`,
+                children: tab.label
+              },
+              tab.key
+            )),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "ml-auto", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 border border-gray-300 rounded text-sm font-medium text-gray-700 hover:bg-gray-50", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "text-gray-400", children: "\xB7\xB7\xB7" }),
+              "Actions"
+            ] }) })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex-1 border border-gray-200 rounded-lg bg-white flex flex-col overflow-hidden", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "px-6 py-4 border-b border-gray-200", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("h2", { className: "text-lg font-bold text-black", children: "Social profiles" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "flex-1 px-6 py-2 overflow-y-auto", children: [
+              socialAccounts.map((account) => /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(SocialRow, { account }, account.name)),
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "flex items-center gap-2 mt-4 text-sm font-bold text-black hover:opacity-70 transition-opacity", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+                  "svg",
+                  {
+                    className: "w-5 h-5",
+                    fill: "currentColor",
+                    viewBox: "0 0 24 24",
+                    children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" })
+                  }
+                ),
+                "Add More"
+              ] })
+            ] }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "px-6 py-4 border-t border-gray-100 flex items-center justify-between", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "px-6 py-2.5 border border-gray-300 rounded text-sm font-bold text-black hover:bg-gray-50", children: "Reset Changes" }),
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "px-8 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-bold rounded transition-colors", children: "Update Settings" })
+            ] })
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Footer13, {})
+    ] })
   ] });
 };
 
 // src/screens/Reports/ChartContainer.tsx
-var import_jsx_runtime57 = require("react/jsx-runtime");
+var import_jsx_runtime59 = require("react/jsx-runtime");
+var DoctorProjectSidebar11 = ({
+  active = "Analytics"
+}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "w-[220px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "px-6 py-5", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center gap-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "text-xl font-bold text-white", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "w-2 h-2 rounded-full bg-purple-500 mb-3 inline-block" })
+  ] }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex-1 overflow-y-auto px-4 py-2 space-y-5", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Navigation" }),
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("nav", { className: "space-y-0.5", children: [
+        {
+          label: "Dashboard",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: [
+                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                  "rect",
+                  {
+                    x: "3",
+                    y: "3",
+                    width: "7",
+                    height: "7",
+                    rx: "1",
+                    strokeWidth: 2
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                  "rect",
+                  {
+                    x: "14",
+                    y: "3",
+                    width: "7",
+                    height: "7",
+                    rx: "1",
+                    strokeWidth: 2
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                  "rect",
+                  {
+                    x: "3",
+                    y: "14",
+                    width: "7",
+                    height: "7",
+                    rx: "1",
+                    strokeWidth: 2
+                  }
+                ),
+                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                  "rect",
+                  {
+                    x: "14",
+                    y: "14",
+                    width: "7",
+                    height: "7",
+                    rx: "1",
+                    strokeWidth: 2
+                  }
+                )
+              ]
+            }
+          )
+        },
+        {
+          label: "Products",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"
+                }
+              )
+            }
+          )
+        },
+        {
+          label: "Contacts",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"
+                }
+              )
+            }
+          )
+        },
+        {
+          label: "Customers",
+          badge: 15,
+          badgeColor: "bg-purple-600",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                }
+              )
+            }
+          )
+        },
+        {
+          label: "Sales",
+          badge: 14,
+          badgeColor: "bg-green-500",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                }
+              )
+            }
+          )
+        },
+        {
+          label: "Analytics",
+          icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "svg",
+            {
+              className: "w-4 h-4",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                }
+              )
+            }
+          )
+        }
+      ].map((item) => {
+        const isActive = item.label === active;
+        return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+          "button",
+          {
+            className: `w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${isActive ? "bg-white/10 text-white font-medium" : "text-gray-400 hover:text-white hover:bg-white/5"}`,
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center gap-3", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { children: item.icon }),
+                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { children: item.label })
+              ] }),
+              item.badge && /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                "span",
+                {
+                  className: `text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`,
+                  children: item.badge
+                }
+              )
+            ]
+          },
+          item.label
+        );
+      }) })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("p", { className: "text-xs text-gray-500 uppercase tracking-widest px-2 mb-2", children: "Team Members" }),
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "space-y-0.5", children: [
+        [
+          { name: "Alexandre Paiva", color: "bg-orange-500" },
+          { name: "Thanawan Chadee", color: "bg-rose-400" },
+          { name: "Justine Robinson", color: "bg-amber-500" }
+        ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+          "button",
+          {
+            className: "w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                "div",
+                {
+                  className: `w-6 h-6 rounded-full ${member.color} flex-shrink-0`
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "text-sm", children: member.name })
+            ]
+          },
+          member.name
+        )),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-500 hover:text-gray-300", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "svg",
+            {
+              className: "w-3 h-3",
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M19 9l-7 7-7-7"
+                }
+              )
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { children: "See More" })
+        ] })
+      ] })
+    ] })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "px-4 py-4 border-t border-white/10", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center justify-between px-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center gap-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-500" }),
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "text-sm text-gray-200", children: "Henry Richardson" })
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "text-gray-500 hover:text-white text-lg leading-none", children: "\xB7\xB7\xB7" })
+  ] }) })
+] });
+var TopBar14 = ({ title }) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center justify-between px-8 py-4 border-b border-black/10 bg-[#f5efe6]", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("h1", { className: "text-3xl font-bold text-black", children: title }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center gap-3", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "p-2 rounded-lg hover:bg-black/5 text-gray-500", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      "svg",
+      {
+        className: "w-5 h-5",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+          }
+        )
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "p-2 rounded-lg hover:bg-black/5 text-gray-500", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      "svg",
+      {
+        className: "w-5 h-5",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
+          }
+        )
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-black/5", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
+            }
+          )
+        }
+      ),
+      "Apps"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M12 8v8M8 12h8"
+              }
+            )
+          ]
+        }
+      ),
+      "Create new"
+    ] })
+  ] })
+] });
+var Footer14 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center justify-between px-8 py-3 border-t border-black/10 text-sm text-gray-500 bg-[#f5efe6]", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center gap-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "flex items-center gap-1.5 hover:opacity-80", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+        "svg",
+        {
+          className: "w-4 h-4",
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeWidth: 2,
+                d: "M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+              }
+            )
+          ]
+        }
+      ),
+      "English"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "hover:opacity-80", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "hover:opacity-80", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "hover:opacity-80", children: "API" })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "p-1.5 rounded bg-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: [
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            }
+          )
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "p-1.5 rounded bg-black/10", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: "M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          }
+        )
+      }
+    ) })
+  ] })
+] });
+var CalendarIcon = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+  "svg",
+  {
+    className: "w-5 h-5 text-gray-400",
+    fill: "none",
+    viewBox: "0 0 24 24",
+    stroke: "currentColor",
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { x: "3", y: "4", width: "18", height: "18", rx: "2", strokeWidth: 2 }),
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("path", { strokeLinecap: "round", strokeWidth: 2, d: "M16 2v4M8 2v4M3 10h18" })
+    ]
+  }
+);
+var ChartCardWrapper = ({
+  title,
+  children,
+  legend,
+  className = ""
+}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+  "div",
+  {
+    className: `bg-white border border-black/10 rounded-xl overflow-hidden ${className}`,
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center justify-between px-5 py-4 border-b border-black/5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("h2", { className: "text-base font-bold text-black", children: title }),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center gap-4", children: [
+          legend && /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "flex items-center gap-3", children: legend.map((l2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "span",
+              {
+                className: "w-2 h-2 rounded-full inline-block",
+                style: { backgroundColor: l2.color }
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "text-xs text-gray-500", children: l2.label })
+          ] }, l2.label)) }),
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(CalendarIcon, {})
+        ] })
+      ] }),
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "p-4", children })
+    ]
+  }
+);
+var BarChartSVG = ({
+  data,
+  labels,
+  maxValue = 500,
+  height = 200
+}) => {
+  const svgWidth = 800;
+  const svgHeight = height;
+  const padLeft = 40;
+  const padRight = 10;
+  const padTop = 10;
+  const padBottom = 30;
+  const chartW = svgWidth - padLeft - padRight;
+  const chartH = svgHeight - padTop - padBottom;
+  const barW = Math.floor(chartW / data.length) * 0.45;
+  const gap = chartW / data.length;
+  const yLines = [0, 100, 200, 300, 400, 500];
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+    "svg",
+    {
+      viewBox: `0 0 ${svgWidth} ${svgHeight}`,
+      className: "w-full",
+      style: { height },
+      children: [
+        yLines.map((v3) => {
+          const y2 = padTop + chartH - v3 / maxValue * chartH;
+          return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "line",
+              {
+                x1: padLeft,
+                y1: y2,
+                x2: svgWidth - padRight,
+                y2,
+                stroke: "#ccc",
+                strokeWidth: 0.5,
+                strokeDasharray: "4,3"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "text",
+              {
+                x: padLeft - 5,
+                y: y2 + 4,
+                textAnchor: "end",
+                fontSize: 10,
+                fill: "#999",
+                children: v3
+              }
+            )
+          ] }, v3);
+        }),
+        data.map((val, i2) => {
+          const barH = val / maxValue * chartH;
+          const x3 = padLeft + i2 * gap + gap / 2 - barW / 2;
+          const y2 = padTop + chartH - barH;
+          const bgH = chartH;
+          const bgY = padTop;
+          return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "rect",
+              {
+                x: x3,
+                y: bgY,
+                width: barW,
+                height: bgH,
+                rx: 3,
+                fill: "#e9d5ff",
+                opacity: 0.5
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "rect",
+              {
+                x: x3,
+                y: y2,
+                width: barW,
+                height: barH,
+                rx: 3,
+                fill: "#a855f7"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "text",
+              {
+                x: padLeft + i2 * gap + gap / 2,
+                y: svgHeight - 5,
+                textAnchor: "middle",
+                fontSize: 10,
+                fill: "#999",
+                children: labels[i2]
+              }
+            )
+          ] }, i2);
+        })
+      ]
+    }
+  );
+};
+var HBarChartSVG = ({ data, height = 260 }) => {
+  const svgWidth = 800;
+  const svgHeight = height;
+  const padLeft = 45;
+  const padRight = 20;
+  const padTop = 10;
+  const padBottom = 25;
+  const chartW = svgWidth - padLeft - padRight;
+  const chartH = svgHeight - padTop - padBottom;
+  const rowH = chartH / data.length;
+  const barH = rowH * 0.35;
+  const absMax = Math.max(...data.map((d2) => d2.maxValue));
+  const xTicks = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1e3];
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+    "svg",
+    {
+      viewBox: `0 0 ${svgWidth} ${svgHeight}`,
+      className: "w-full",
+      style: { height },
+      children: [
+        xTicks.map((v3) => {
+          const x3 = padLeft + v3 / absMax * chartW;
+          return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "line",
+              {
+                x1: x3,
+                y1: padTop,
+                x2: x3,
+                y2: svgHeight - padBottom,
+                stroke: "#ccc",
+                strokeWidth: 0.5,
+                strokeDasharray: "3,3"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "text",
+              {
+                x: x3,
+                y: svgHeight - padBottom + 14,
+                textAnchor: "middle",
+                fontSize: 10,
+                fill: "#999",
+                children: v3
+              }
+            )
+          ] }, v3);
+        }),
+        data.map((item, i2) => {
+          const y2 = padTop + i2 * rowH + rowH / 2 - barH / 2;
+          const bgW = item.maxValue / absMax * chartW;
+          const fgW = item.value / absMax * chartW;
+          return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "text",
+              {
+                x: padLeft - 5,
+                y: y2 + barH / 2 + 4,
+                textAnchor: "end",
+                fontSize: 10,
+                fill: "#999",
+                children: item.label
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "line",
+              {
+                x1: padLeft,
+                y1: padTop + i2 * rowH + rowH - 2,
+                x2: svgWidth - padRight,
+                y2: padTop + i2 * rowH + rowH - 2,
+                stroke: "#eee",
+                strokeWidth: 0.5,
+                strokeDasharray: "3,3"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "rect",
+              {
+                x: padLeft,
+                y: y2,
+                width: bgW,
+                height: barH,
+                rx: 3,
+                fill: "#e9d5ff",
+                opacity: 0.5
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "rect",
+              {
+                x: padLeft,
+                y: y2,
+                width: fgW,
+                height: barH,
+                rx: 3,
+                fill: "#a855f7"
+              }
+            )
+          ] }, i2);
+        })
+      ]
+    }
+  );
+};
+function smoothPath(points) {
+  if (points.length < 2) return "";
+  let d2 = `M ${points[0].x} ${points[0].y}`;
+  for (let i2 = 1; i2 < points.length; i2++) {
+    const prev = points[i2 - 1];
+    const curr = points[i2];
+    const cpX = (prev.x + curr.x) / 2;
+    d2 += ` C ${cpX} ${prev.y}, ${cpX} ${curr.y}, ${curr.x} ${curr.y}`;
+  }
+  return d2;
+}
+function linePath(points) {
+  return points.map((p3, i2) => `${i2 === 0 ? "M" : "L"} ${p3.x} ${p3.y}`).join(" ");
+}
+var WaveChartSVG = ({
+  dataBlue,
+  dataGreen,
+  labels,
+  maxValue = 500,
+  height = 220,
+  smooth = true,
+  showTooltip = false
+}) => {
+  const svgWidth = 800;
+  const svgHeight = height;
+  const padLeft = 40;
+  const padRight = 10;
+  const padTop = 20;
+  const padBottom = 30;
+  const chartW = svgWidth - padLeft - padRight;
+  const chartH = svgHeight - padTop - padBottom;
+  const yLines = [0, 100, 200, 300, 400, 500];
+  const n2 = dataBlue.length;
+  const toPoint = (val, i2) => ({
+    x: padLeft + i2 / (n2 - 1) * chartW,
+    y: padTop + chartH - val / maxValue * chartH
+  });
+  const bluePoints = dataBlue.map(toPoint);
+  const greenPoints = dataGreen.map(toPoint);
+  const bluePath = smooth ? smoothPath(bluePoints) : linePath(bluePoints);
+  const greenPath = smooth ? smoothPath(greenPoints) : linePath(greenPoints);
+  const blueAreaClose = `L ${bluePoints[n2 - 1].x} ${padTop + chartH} L ${bluePoints[0].x} ${padTop + chartH} Z`;
+  const greenAreaClose = `L ${greenPoints[n2 - 1].x} ${padTop + chartH} L ${greenPoints[0].x} ${padTop + chartH} Z`;
+  const tooltipIdx = Math.floor(n2 / 2);
+  const tooltipPt = bluePoints[tooltipIdx];
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+    "svg",
+    {
+      viewBox: `0 0 ${svgWidth} ${svgHeight}`,
+      className: "w-full",
+      style: { height },
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("defs", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("linearGradient", { id: "waveBlueGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("stop", { offset: "0%", stopColor: "#a855f7", stopOpacity: "0.15" }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("stop", { offset: "100%", stopColor: "#a855f7", stopOpacity: "0.02" })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("linearGradient", { id: "waveGreenGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("stop", { offset: "0%", stopColor: "#86efac", stopOpacity: "0.15" }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("stop", { offset: "100%", stopColor: "#86efac", stopOpacity: "0.02" })
+          ] })
+        ] }),
+        yLines.map((v3) => {
+          const y2 = padTop + chartH - v3 / maxValue * chartH;
+          return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "line",
+              {
+                x1: padLeft,
+                y1: y2,
+                x2: svgWidth - padRight,
+                y2,
+                stroke: "#ccc",
+                strokeWidth: 0.5,
+                strokeDasharray: "4,3"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "text",
+              {
+                x: padLeft - 5,
+                y: y2 + 4,
+                textAnchor: "end",
+                fontSize: 10,
+                fill: "#999",
+                children: v3
+              }
+            )
+          ] }, v3);
+        }),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("path", { d: bluePath + blueAreaClose, fill: "url(#waveBlueGrad)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("path", { d: greenPath + greenAreaClose, fill: "url(#waveGreenGrad)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("path", { d: greenPath, fill: "none", stroke: "#86efac", strokeWidth: 2 }),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("path", { d: bluePath, fill: "none", stroke: "#a855f7", strokeWidth: 2 }),
+        labels.map((lbl, i2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "text",
+          {
+            x: padLeft + i2 / (n2 - 1) * chartW,
+            y: svgHeight - 5,
+            textAnchor: "middle",
+            fontSize: 10,
+            fill: "#999",
+            children: lbl
+          },
+          i2
+        )),
+        showTooltip && /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "circle",
+            {
+              cx: tooltipPt.x,
+              cy: tooltipPt.y,
+              r: 6,
+              fill: "#a855f7",
+              stroke: "white",
+              strokeWidth: 2
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "rect",
+            {
+              x: tooltipPt.x + 10,
+              y: tooltipPt.y - 30,
+              width: 90,
+              height: 44,
+              rx: 6,
+              fill: "white",
+              stroke: "#e5e7eb",
+              strokeWidth: 1
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "text",
+            {
+              x: tooltipPt.x + 55,
+              y: tooltipPt.y - 14,
+              textAnchor: "middle",
+              fontSize: 9,
+              fill: "#6b7280",
+              children: "June 16"
+            }
+          ),
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "text",
+            {
+              x: tooltipPt.x + 55,
+              y: tooltipPt.y + 4,
+              textAnchor: "middle",
+              fontSize: 13,
+              fontWeight: "bold",
+              fill: "#111",
+              children: "$14.800"
+            }
+          )
+        ] })
+      ]
+    }
+  );
+};
+var DoubleBarChartSVG = ({
+  dataGreen,
+  dataPurple,
+  labels,
+  maxValue = 500,
+  height = 200
+}) => {
+  const svgWidth = 800;
+  const svgHeight = height;
+  const padLeft = 40;
+  const padRight = 10;
+  const padTop = 10;
+  const padBottom = 30;
+  const chartW = svgWidth - padLeft - padRight;
+  const chartH = svgHeight - padTop - padBottom;
+  const n2 = dataGreen.length;
+  const slotW = chartW / n2;
+  const barW = slotW * 0.28;
+  const yLines = [0, 100, 200, 300, 400, 500];
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+    "svg",
+    {
+      viewBox: `0 0 ${svgWidth} ${svgHeight}`,
+      className: "w-full",
+      style: { height },
+      children: [
+        yLines.map((v3) => {
+          const y2 = padTop + chartH - v3 / maxValue * chartH;
+          return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "line",
+              {
+                x1: padLeft,
+                y1: y2,
+                x2: svgWidth - padRight,
+                y2,
+                stroke: "#ccc",
+                strokeWidth: 0.5,
+                strokeDasharray: "4,3"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "text",
+              {
+                x: padLeft - 5,
+                y: y2 + 4,
+                textAnchor: "end",
+                fontSize: 10,
+                fill: "#999",
+                children: v3
+              }
+            )
+          ] }, v3);
+        }),
+        dataGreen.map((gVal, i2) => {
+          const pVal = dataPurple[i2];
+          const gH = gVal / maxValue * chartH;
+          const pH = pVal / maxValue * chartH;
+          const centerX = padLeft + i2 * slotW + slotW / 2;
+          const gX = centerX - barW - 2;
+          const pX = centerX + 2;
+          return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "rect",
+              {
+                x: gX,
+                y: padTop + chartH - gH,
+                width: barW,
+                height: gH,
+                rx: 2,
+                fill: "#86efac"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "rect",
+              {
+                x: pX,
+                y: padTop + chartH - pH,
+                width: barW,
+                height: pH,
+                rx: 2,
+                fill: "#c4b5fd"
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "text",
+              {
+                x: centerX,
+                y: svgHeight - 5,
+                textAnchor: "middle",
+                fontSize: 10,
+                fill: "#999",
+                children: labels[i2]
+              }
+            )
+          ] }, i2);
+        })
+      ]
+    }
+  );
+};
+var PolarChartSVG = ({
+  variant = "radar",
+  height = 300
+}) => {
+  const cx = 160;
+  const cy = 160;
+  const maxR = 110;
+  const rings = [0.2, 0.4, 0.6, 0.8, 1];
+  const directions = [
+    "North",
+    "North\nEast",
+    "East",
+    "South\nEast",
+    "South",
+    "South\nWest",
+    "West",
+    "North\nWest"
+  ];
+  const n2 = directions.length;
+  const series1 = [0.95, 0.7, 0.55, 0.8, 0.45, 0.6, 0.9, 0.75];
+  const series2 = [0.5, 0.85, 0.4, 0.6, 0.9, 0.35, 0.7, 0.5];
+  const angleOffset = -Math.PI / 2;
+  const getPoint = (r2, i2) => {
+    const angle = angleOffset + i2 / n2 * 2 * Math.PI;
+    return {
+      x: cx + r2 * maxR * Math.cos(angle),
+      y: cy + r2 * maxR * Math.sin(angle)
+    };
+  };
+  const polyPath = (values) => values.map((v3, i2) => {
+    const pt = getPoint(v3, i2);
+    return `${i2 === 0 ? "M" : "L"} ${pt.x} ${pt.y}`;
+  }).join(" ") + " Z";
+  if (variant === "segments") {
+    const segmentColors = [
+      "#fde68a",
+      "#fca5a5",
+      "#93c5fd",
+      "#86efac",
+      "#f9a8d4",
+      "#c4b5fd"
+    ];
+    const segValues = [0.6, 0.45, 0.7, 0.5, 0.55, 0.65];
+    const segN = segValues.length;
+    const wedgeAngle = 2 * Math.PI / segN;
+    const segPaths = segValues.map((v3, i2) => {
+      const startAngle = angleOffset + i2 * wedgeAngle;
+      const endAngle = startAngle + wedgeAngle;
+      const r2 = v3 * maxR;
+      const x1 = cx + r2 * Math.cos(startAngle);
+      const y1 = cy + r2 * Math.sin(startAngle);
+      const x22 = cx + r2 * Math.cos(endAngle);
+      const y2 = cy + r2 * Math.sin(endAngle);
+      return `M ${cx} ${cy} L ${x1} ${y1} A ${r2} ${r2} 0 0 1 ${x22} ${y2} Z`;
+    });
+    return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("svg", { viewBox: "0 0 320 320", className: "w-full", style: { height }, children: [
+      rings.map((r2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        "circle",
+        {
+          cx,
+          cy,
+          r: r2 * maxR,
+          fill: "none",
+          stroke: "#e5e7eb",
+          strokeWidth: 0.8
+        },
+        r2
+      )),
+      Array.from({ length: segN }).map((_3, i2) => {
+        const angle = angleOffset + i2 / segN * 2 * Math.PI;
+        return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "line",
+          {
+            x1: cx,
+            y1: cy,
+            x2: cx + maxR * Math.cos(angle),
+            y2: cy + maxR * Math.sin(angle),
+            stroke: "#d1d5db",
+            strokeWidth: 0.8,
+            strokeDasharray: "3,2"
+          },
+          i2
+        );
+      }),
+      segPaths.map((d2, i2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("path", { d: d2, fill: segmentColors[i2], opacity: 0.75 }, i2)),
+      directions.slice(0, 8).map((dir, i2) => {
+        const angle = angleOffset + i2 / n2 * 2 * Math.PI;
+        const labelR = maxR + 22;
+        const lx = cx + labelR * Math.cos(angle);
+        const ly = cy + labelR * Math.sin(angle);
+        const lines = dir.split("\n");
+        return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "text",
+          {
+            x: lx,
+            y: ly,
+            textAnchor: "middle",
+            dominantBaseline: "middle",
+            fontSize: 9,
+            fill: "#6b7280",
+            children: lines.map((line, j3) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "tspan",
+              {
+                x: lx,
+                dy: j3 === 0 ? lines.length > 1 ? -6 : 0 : 12,
+                children: line
+              },
+              j3
+            ))
+          },
+          i2
+        );
+      })
+    ] });
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("svg", { viewBox: "0 0 320 320", className: "w-full", style: { height }, children: [
+    rings.map((r2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      "circle",
+      {
+        cx,
+        cy,
+        r: r2 * maxR,
+        fill: "none",
+        stroke: "#e5e7eb",
+        strokeWidth: 0.8
+      },
+      r2
+    )),
+    Array.from({ length: n2 }).map((_3, i2) => {
+      const pt = getPoint(1, i2);
+      return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        "line",
+        {
+          x1: cx,
+          y1: cy,
+          x2: pt.x,
+          y2: pt.y,
+          stroke: "#d1d5db",
+          strokeWidth: 0.8,
+          strokeDasharray: "3,2"
+        },
+        i2
+      );
+    }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      "path",
+      {
+        d: polyPath(series2),
+        fill: "#86efac",
+        fillOpacity: 0.3,
+        stroke: "#86efac",
+        strokeWidth: 1.5
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      "path",
+      {
+        d: polyPath(series1),
+        fill: "#a855f7",
+        fillOpacity: 0.25,
+        stroke: "#a855f7",
+        strokeWidth: 1.5
+      }
+    ),
+    directions.map((dir, i2) => {
+      const angle = angleOffset + i2 / n2 * 2 * Math.PI;
+      const labelR = maxR + 22;
+      const lx = cx + labelR * Math.cos(angle);
+      const ly = cy + labelR * Math.sin(angle);
+      const lines = dir.split("\n");
+      return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        "text",
+        {
+          x: lx,
+          y: ly,
+          textAnchor: "middle",
+          dominantBaseline: "middle",
+          fontSize: 9,
+          fill: "#6b7280",
+          children: lines.map((line, j3) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "tspan",
+            {
+              x: lx,
+              dy: j3 === 0 ? lines.length > 1 ? -6 : 0 : 12,
+              children: line
+            },
+            j3
+          ))
+        },
+        i2
+      );
+    })
+  ] });
+};
+var Sparkline = ({
+  color,
+  values = [40, 55, 35, 60, 45, 70, 55, 80]
+}) => {
+  const w3 = 100;
+  const h2 = 40;
+  const max = Math.max(...values);
+  const min = Math.min(...values);
+  const range = max - min || 1;
+  const points = values.map((v3, i2) => ({
+    x: i2 / (values.length - 1) * w3,
+    y: h2 - (v3 - min) / range * h2 * 0.8 - h2 * 0.1
+  }));
+  const d2 = points.map((p3, i2) => `${i2 === 0 ? "M" : "L"} ${p3.x} ${p3.y}`).join(" ");
+  const areaClose = `L ${points[points.length - 1].x} ${h2} L 0 ${h2} Z`;
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+    "svg",
+    {
+      viewBox: `0 0 ${w3} ${h2}`,
+      className: "w-20 h-10",
+      preserveAspectRatio: "none",
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+          "linearGradient",
+          {
+            id: `sparkGrad${color.replace("#", "")}`,
+            x1: "0",
+            y1: "0",
+            x2: "0",
+            y2: "1",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("stop", { offset: "0%", stopColor: color, stopOpacity: "0.3" }),
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("stop", { offset: "100%", stopColor: color, stopOpacity: "0.05" })
+            ]
+          }
+        ) }),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            d: d2 + areaClose,
+            fill: `url(#sparkGrad${color.replace("#", "")})`
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("path", { d: d2, fill: "none", stroke: color, strokeWidth: "2" })
+      ]
+    }
+  );
+};
+var BarSparkline = ({
+  color,
+  values = [30, 50, 70, 40, 60, 80, 50]
+}) => {
+  const w3 = 80;
+  const h2 = 50;
+  const max = Math.max(...values);
+  const n2 = values.length;
+  const bw = w3 / n2 * 0.55;
+  const gap = w3 / n2;
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    "svg",
+    {
+      viewBox: `0 0 ${w3} ${h2}`,
+      className: "w-20 h-12",
+      preserveAspectRatio: "none",
+      children: values.map((v3, i2) => {
+        const barH = v3 / max * h2 * 0.9;
+        const x3 = i2 * gap + gap / 2 - bw / 2;
+        return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "rect",
+          {
+            x: x3,
+            y: h2 - barH,
+            width: bw,
+            height: barH,
+            rx: 2,
+            fill: color,
+            opacity: 0.8
+          },
+          i2
+        );
+      })
+    }
+  );
+};
+var DonutChart = ({
+  segments,
+  label,
+  sublabel,
+  height = 200,
+  showSegmentLabels = false,
+  emptyRings = false
+}) => {
+  const cx = 120;
+  const cy = 120;
+  const R3 = 90;
+  const r2 = 55;
+  if (emptyRings) {
+    const colors = ["#a855f7", "#fbbf24", "#86efac"];
+    const radii = [R3, R3 - 20, R3 - 40];
+    return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("svg", { viewBox: "0 0 240 240", className: "w-full", style: { height }, children: [
+      radii.map((rad, i2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        "circle",
+        {
+          cx,
+          cy,
+          r: rad,
+          fill: "none",
+          stroke: colors[i2],
+          strokeWidth: 8
+        },
+        i2
+      )),
+      label && /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(import_jsx_runtime59.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "text",
+          {
+            x: cx,
+            y: cy - 8,
+            textAnchor: "middle",
+            fontSize: 18,
+            fontWeight: "bold",
+            fill: "#111",
+            children: label
+          }
+        ),
+        sublabel && /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "text",
+          {
+            x: cx,
+            y: cy + 12,
+            textAnchor: "middle",
+            fontSize: 11,
+            fill: "#6b7280",
+            children: sublabel
+          }
+        )
+      ] })
+    ] });
+  }
+  let total = segments.reduce((s2, seg) => s2 + seg.pct, 0);
+  let currentAngle = -Math.PI / 2;
+  const paths = segments.map((seg) => {
+    const angle = seg.pct / total * 2 * Math.PI;
+    const startAngle = currentAngle;
+    const endAngle = currentAngle + angle;
+    currentAngle = endAngle;
+    const x1 = cx + R3 * Math.cos(startAngle);
+    const y1 = cy + R3 * Math.sin(startAngle);
+    const x22 = cx + R3 * Math.cos(endAngle);
+    const y2 = cy + R3 * Math.sin(endAngle);
+    const ix1 = cx + r2 * Math.cos(endAngle);
+    const iy1 = cy + r2 * Math.sin(endAngle);
+    const ix2 = cx + r2 * Math.cos(startAngle);
+    const iy2 = cy + r2 * Math.sin(startAngle);
+    const large = angle > Math.PI ? 1 : 0;
+    const midAngle = startAngle + angle / 2;
+    const midR = (R3 + r2) / 2;
+    const lx = cx + midR * Math.cos(midAngle);
+    const ly = cy + midR * Math.sin(midAngle);
+    const pct = Math.round(seg.pct / total * 100);
+    return {
+      d: `M ${x1} ${y1} A ${R3} ${R3} 0 ${large} 1 ${x22} ${y2} L ${ix1} ${iy1} A ${r2} ${r2} 0 ${large} 0 ${ix2} ${iy2} Z`,
+      color: seg.color,
+      lx,
+      ly,
+      pct,
+      showLabel: showSegmentLabels && pct > 5
+    };
+  });
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("svg", { viewBox: "0 0 240 240", className: "w-full", style: { height }, children: [
+    paths.map((p3, i2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("path", { d: p3.d, fill: p3.color }, i2)),
+    paths.map(
+      (p3, i2) => p3.showLabel && /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+        "text",
+        {
+          x: p3.lx,
+          y: p3.ly,
+          textAnchor: "middle",
+          dominantBaseline: "middle",
+          fontSize: 9,
+          fill: "white",
+          fontWeight: "bold",
+          children: [
+            p3.pct,
+            "%"
+          ]
+        },
+        i2
+      )
+    ),
+    label && /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(import_jsx_runtime59.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        "text",
+        {
+          x: cx,
+          y: cy - 8,
+          textAnchor: "middle",
+          fontSize: 18,
+          fontWeight: "bold",
+          fill: "#111",
+          children: label
+        }
+      ),
+      sublabel && /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        "text",
+        {
+          x: cx,
+          y: cy + 12,
+          textAnchor: "middle",
+          fontSize: 11,
+          fill: "#6b7280",
+          children: sublabel
+        }
+      )
+    ] })
+  ] });
+};
+var WorldMapSVG = () => {
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+    "svg",
+    {
+      viewBox: "0 0 800 420",
+      className: "w-full",
+      style: { height: 350 },
+      preserveAspectRatio: "xMidYMid meet",
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { width: "800", height: "420", fill: "#f5f0eb" }),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            d: "M 110 60 L 210 50 L 240 70 L 250 120 L 230 160 L 200 180 L 180 200 L 160 220 L 140 200 L 120 170 L 100 140 L 90 100 Z",
+            fill: "#d1c5b8",
+            opacity: 0.4
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            d: "M 180 230 L 220 220 L 240 250 L 250 300 L 240 350 L 210 380 L 185 370 L 170 340 L 165 290 L 170 260 Z",
+            fill: "#d1c5b8",
+            opacity: 0.4
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            d: "M 360 60 L 420 55 L 440 80 L 430 110 L 400 120 L 375 115 L 355 90 Z",
+            fill: "#d1c5b8",
+            opacity: 0.4
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            d: "M 360 130 L 420 125 L 445 160 L 440 230 L 410 290 L 380 310 L 355 280 L 340 230 L 345 170 Z",
+            fill: "#d1c5b8",
+            opacity: 0.4
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            d: "M 450 50 L 650 45 L 680 80 L 700 130 L 670 170 L 620 200 L 560 210 L 510 190 L 470 160 L 440 120 L 445 80 Z",
+            fill: "#d1c5b8",
+            opacity: 0.4
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            d: "M 600 280 L 680 265 L 720 290 L 720 340 L 690 365 L 640 360 L 600 340 L 590 310 Z",
+            fill: "#d1c5b8",
+            opacity: 0.4
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            d: "M 110 60 L 210 50 L 240 70 L 250 120 L 230 160 L 200 180 L 180 200 L 160 220 L 140 200 L 120 170 L 100 140 L 90 100 Z",
+            fill: "#a855f7",
+            opacity: 0.75
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            d: "M 160 200 L 195 192 L 200 220 L 185 235 L 165 230 Z",
+            fill: "#ec4899",
+            opacity: 0.85
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            d: "M 180 230 L 220 220 L 240 250 L 250 300 L 240 350 L 210 380 L 185 370 L 170 340 L 165 290 L 170 260 Z",
+            fill: "#06b6d4",
+            opacity: 0.8
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            d: "M 370 68 L 395 65 L 408 82 L 400 100 L 378 98 L 365 82 Z",
+            fill: "#22c55e",
+            opacity: 0.8
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            d: "M 480 58 L 640 52 L 670 90 L 655 150 L 600 185 L 540 190 L 500 165 L 468 130 L 462 90 Z",
+            fill: "#d97706",
+            opacity: 0.75
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            d: "M 620 195 L 650 185 L 660 210 L 640 225 L 618 215 Z",
+            fill: "#7c3aed",
+            opacity: 0.7
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            d: "M 600 280 L 680 265 L 720 290 L 720 340 L 690 365 L 640 360 L 600 340 L 590 310 Z",
+            fill: "#f87171",
+            opacity: 0.8
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "rect",
+          {
+            x: "545",
+            y: "135",
+            width: "85",
+            height: "38",
+            rx: "6",
+            fill: "white",
+            stroke: "#e5e7eb",
+            strokeWidth: 1
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("text", { x: "587", y: "153", textAnchor: "middle", fontSize: 9, fill: "#6b7280", children: "$14.800" }),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "polygon",
+          {
+            points: "555,173 575,173 565,183",
+            fill: "white",
+            stroke: "#e5e7eb",
+            strokeWidth: 0.5
+          }
+        ),
+        [
+          { color: "#fbbf24", label: "Yellow", x: 230 },
+          { color: "#a855f7", label: "Blue", x: 305 },
+          { color: "#86efac", label: "Green", x: 370 },
+          { color: "#f87171", label: "Red", x: 440 },
+          { color: "#4f46e5", label: "Dark Blue", x: 508 }
+        ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("circle", { cx: item.x, cy: 402, r: 5, fill: item.color }),
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("text", { x: item.x + 10, y: 406, fontSize: 10, fill: "#6b7280", children: item.label })
+        ] }, item.label))
+      ]
+    }
+  );
+};
+var StatCard1 = ({
+  label,
+  value,
+  badge,
+  badgeColor = "bg-green-100 text-green-700",
+  description,
+  trend = "up"
+}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "bg-white border border-black/10 rounded-xl p-4 flex-1", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center justify-between mb-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "text-xs text-gray-500", children: label }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      "svg",
+      {
+        className: "w-4 h-4 text-gray-400",
+        fill: "none",
+        viewBox: "0 0 24 24",
+        stroke: "currentColor",
+        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "path",
+          {
+            strokeLinecap: "round",
+            strokeLinejoin: "round",
+            strokeWidth: 2,
+            d: trend === "up" ? "M7 17L17 7M17 7H7M17 7v10" : "M7 7l10 10M17 17H7M17 17V7"
+          }
+        )
+      }
+    )
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "text-2xl font-bold text-black mb-0.5", children: value }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "text-xs text-gray-500", children: description }),
+    badge && /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      "span",
+      {
+        className: `text-xs font-medium px-1.5 py-0.5 rounded ${badgeColor}`,
+        children: badge
+      }
+    )
+  ] })
+] });
+var StatCard2 = ({
+  label,
+  value,
+  spent,
+  left,
+  barColor,
+  pct
+}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "bg-white border border-black/10 rounded-xl p-4 flex-1", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "text-xs text-gray-500 mb-0.5", children: label }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "text-2xl font-bold text-black mb-2", children: value }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "h-1.5 rounded-full bg-gray-100 mb-2", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    "div",
+    {
+      className: "h-full rounded-full",
+      style: { width: `${pct}%`, backgroundColor: barColor }
+    }
+  ) }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex justify-between text-xs text-gray-500", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("span", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "font-medium text-gray-800", children: spent }),
+      " Spent"
+    ] }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("span", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "font-medium text-gray-800", children: left }),
+      " Left"
+    ] })
+  ] })
+] });
+var StatCard3 = ({
+  label,
+  value,
+  sub,
+  change,
+  changeColor,
+  chartColor,
+  chartValues
+}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "bg-white border border-black/10 rounded-xl p-4 flex-1 flex items-center gap-4", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "text-xs text-gray-500 mb-0.5", children: label }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "text-2xl font-bold text-black", children: value }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "text-xs text-gray-500 mt-0.5", children: sub }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: `text-xs font-medium ${changeColor}`, children: change })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(BarSparkline, { color: chartColor, values: chartValues })
+] });
+var StatCard4 = ({
+  icon,
+  value,
+  label,
+  chartColor,
+  chartValues
+}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "bg-white border border-black/10 rounded-xl p-4 flex-1 flex items-center gap-3", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "w-10 h-10 border border-black/10 rounded-lg flex items-center justify-center text-gray-500 flex-shrink-0", children: icon }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "text-xl font-bold text-black", children: value }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "text-xs text-gray-500", children: label })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(Sparkline, { color: chartColor, values: chartValues })
+] });
+var MONTHS_12 = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec"
+];
+var MONTHS_8 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"];
+var MONTHS_4 = ["Jan", "Feb", "Mar", "Apr"];
+var MONTHS_6 = ["Jan", "Feb", "Mar", "Apr", "May", "Jun"];
+var BAR_DATA_12 = [330, 210, 440, 490, 190, 260, 340, 300, 380, 220, 130, 90];
+var BAR_DATA_8 = [330, 210, 440, 490, 190, 260, 340, 300];
+var BAR_DATA_4 = [330, 210, 440, 490];
+var HBAR_DATA_12 = [
+  { label: "Jul", value: 870, maxValue: 980 },
+  { label: "Jun", value: 720, maxValue: 950 },
+  { label: "Apr", value: 640, maxValue: 900 },
+  { label: "Mar", value: 310, maxValue: 820 },
+  { label: "Feb", value: 700, maxValue: 870 },
+  { label: "Jan", value: 810, maxValue: 940 }
+];
+var HBAR_DATA_8 = [
+  { label: "Jul", value: 620, maxValue: 700 },
+  { label: "Jun", value: 560, maxValue: 650 },
+  { label: "Apr", value: 510, maxValue: 590 },
+  { label: "Mar", value: 190, maxValue: 580 },
+  { label: "Feb", value: 500, maxValue: 560 },
+  { label: "Jan", value: 580, maxValue: 640 }
+];
+var HBAR_DATA_4 = [
+  { label: "Jul", value: 280, maxValue: 320 },
+  { label: "Jun", value: 230, maxValue: 290 },
+  { label: "Apr", value: 200, maxValue: 250 },
+  { label: "Mar", value: 75, maxValue: 210 },
+  { label: "Feb", value: 110, maxValue: 200 },
+  { label: "Jan", value: 220, maxValue: 270 }
+];
+var WAVE_BLUE_12 = [
+  280,
+  330,
+  390,
+  420,
+  360,
+  290,
+  250,
+  270,
+  230,
+  320,
+  420,
+  460
+];
+var WAVE_GREEN_12 = [
+  100,
+  140,
+  200,
+  240,
+  270,
+  300,
+  350,
+  290,
+  330,
+  360,
+  340,
+  310
+];
+var WAVE_BLUE_8 = [280, 330, 390, 420, 360, 290, 250, 270];
+var WAVE_GREEN_8 = [100, 140, 200, 240, 270, 300, 350, 290];
+var WAVE_BLUE_4 = [150, 200, 240, 210];
+var WAVE_GREEN_4 = [80, 130, 180, 370];
+var GEO_BLUE_12 = [
+  420,
+  350,
+  430,
+  380,
+  310,
+  330,
+  310,
+  290,
+  280,
+  240,
+  100,
+  120
+];
+var GEO_GREEN_12 = [
+  100,
+  140,
+  200,
+  200,
+  230,
+  330,
+  290,
+  310,
+  290,
+  340,
+  420,
+  380
+];
+var GEO_BLUE_8 = [420, 350, 430, 380, 310, 330, 310, 400];
+var GEO_GREEN_8 = [100, 150, 200, 220, 240, 320, 310, 100];
+var GEO_BLUE_4 = [250, 200, 240, 210];
+var GEO_GREEN_4 = [120, 180, 260, 380];
+var DOUBLE_GREEN_12 = [
+  220,
+  370,
+  340,
+  410,
+  100,
+  160,
+  10,
+  110,
+  200,
+  390,
+  200,
+  310
+];
+var DOUBLE_PURPLE_12 = [
+  210,
+  60,
+  400,
+  60,
+  60,
+  100,
+  30,
+  100,
+  190,
+  380,
+  370,
+  70
+];
+var DOUBLE_GREEN_8 = [220, 370, 340, 410, 100, 160, 10, 110];
+var DOUBLE_PURPLE_8 = [210, 60, 400, 60, 60, 100, 30, 100];
+var DOUBLE_GREEN_4 = [220, 370, 340, 410];
+var DOUBLE_PURPLE_4 = [210, 60, 400, 60];
+var ReportScreen = ({
+  children,
+  active = "Analytics"
+}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex h-screen bg-[#f5efe6]", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(DoctorProjectSidebar11, { active }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex-1 flex flex-col overflow-hidden", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(TopBar14, { title: "Reports" }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "flex-1 overflow-auto p-6 space-y-4", children }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(Footer14, {})
+  ] })
+] });
+var BarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScreen, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      StatCard1,
+      {
+        label: "Balance",
+        value: "$80,470.50",
+        badge: "+10%",
+        badgeColor: "bg-green-100 text-green-700",
+        description: "Total remaining balance",
+        trend: "up"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      StatCard1,
+      {
+        label: "Money in",
+        value: "$60,930.50",
+        badge: "-14%",
+        badgeColor: "bg-red-100 text-red-600",
+        description: "Total amount you gained",
+        trend: "down"
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      StatCard1,
+      {
+        label: "Money out",
+        value: "$42,890.30",
+        badge: "+16%",
+        badgeColor: "bg-green-100 text-green-700",
+        description: "Total amount you spent",
+        trend: "up"
+      }
+    )
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    BarChartSVG,
+    {
+      data: BAR_DATA_12,
+      labels: MONTHS_12,
+      maxValue: 500,
+      height: 220
+    }
+  ) }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    BarChartSVG,
+    {
+      data: BAR_DATA_12,
+      labels: MONTHS_12,
+      maxValue: 500,
+      height: 220
+    }
+  ) }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 8 columns", className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      BarChartSVG,
+      {
+        data: BAR_DATA_8,
+        labels: MONTHS_8,
+        maxValue: 500,
+        height: 200
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 4 columns", className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      BarChartSVG,
+      {
+        data: BAR_DATA_4,
+        labels: MONTHS_4,
+        maxValue: 500,
+        height: 200
+      }
+    ) })
+  ] })
+] });
+var BarsHorizontalScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScreen, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      StatCard2,
+      {
+        label: "Balance",
+        value: "$80,470.50",
+        spent: "1.345",
+        left: "1.345",
+        barColor: "#22c55e",
+        pct: 50
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      StatCard2,
+      {
+        label: "Money in",
+        value: "$60,930.50",
+        spent: "1.345",
+        left: "1.345",
+        barColor: "#fbbf24",
+        pct: 50
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      StatCard2,
+      {
+        label: "Money out",
+        value: "$42,890.30",
+        spent: "1.345",
+        left: "1.345",
+        barColor: "#f87171",
+        pct: 50
+      }
+    )
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(HBarChartSVG, { data: HBAR_DATA_12, height: 260 }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 8 columns", className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(HBarChartSVG, { data: HBAR_DATA_8, height: 240 }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 4 columns", className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(HBarChartSVG, { data: HBAR_DATA_4, height: 240 }) })
+  ] })
+] });
+var ChartGeometricScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScreen, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "flex gap-4", children: [
+    { label: "Balance", value: "$80,470.50", color: "#22c55e" },
+    { label: "Money in", value: "$60,930.50", color: "#fbbf24" },
+    { label: "Money out", value: "$42,890.30", color: "#f87171" }
+  ].map((s2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+    "div",
+    {
+      className: "bg-white border border-black/10 rounded-xl p-4 flex-1",
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-start justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "text-xs text-gray-500 mb-0.5", children: s2.label }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "text-2xl font-bold text-black", children: s2.value })
+          ] }),
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "w-6 h-6 text-gray-400", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+            }
+          ) }) })
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "div",
+          {
+            className: "h-1 rounded-full mt-3",
+            style: { backgroundColor: s2.color }
+          }
+        )
+      ]
+    },
+    s2.label
+  )) }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    ChartCardWrapper,
+    {
+      title: "Wave 12 columns",
+      legend: [
+        { color: "#a855f7", label: "Blue Tag" },
+        { color: "#86efac", label: "Green Tag" }
+      ],
+      children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        WaveChartSVG,
+        {
+          dataBlue: GEO_BLUE_12,
+          dataGreen: GEO_GREEN_12,
+          labels: MONTHS_12,
+          maxValue: 500,
+          height: 260,
+          smooth: false,
+          showTooltip: true
+        }
+      )
+    }
+  ),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      ChartCardWrapper,
+      {
+        title: "Wave 8 columns",
+        className: "flex-1",
+        legend: [
+          { color: "#a855f7", label: "Blue Tag" },
+          { color: "#86efac", label: "Green Tag" }
+        ],
+        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          WaveChartSVG,
+          {
+            dataBlue: GEO_BLUE_8,
+            dataGreen: GEO_GREEN_8,
+            labels: MONTHS_8,
+            maxValue: 500,
+            height: 220,
+            smooth: false,
+            showTooltip: true
+          }
+        )
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Wave 4 columns", className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      WaveChartSVG,
+      {
+        dataBlue: GEO_BLUE_4,
+        dataGreen: GEO_GREEN_4,
+        labels: MONTHS_4,
+        maxValue: 500,
+        height: 220,
+        smooth: false,
+        showTooltip: true
+      }
+    ) })
+  ] })
+] });
+var ChartWaveScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScreen, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      StatCard3,
+      {
+        label: "Dropbox",
+        value: "368.4 Gb",
+        sub: "",
+        change: "\u2191 +0.73%",
+        changeColor: "text-green-600",
+        chartColor: "#22c55e",
+        chartValues: [30, 45, 40, 55, 50, 65, 60]
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      StatCard3,
+      {
+        label: "Amazon AWS",
+        value: "82.6 Tb",
+        sub: "",
+        change: "\u2193 -0.73%",
+        changeColor: "text-red-500",
+        chartColor: "#fbbf24",
+        chartValues: [60, 55, 50, 45, 40, 35, 38]
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      StatCard3,
+      {
+        label: "Google Cloud",
+        value: "16.8 Gb",
+        sub: "",
+        change: "\u2191 +6.59%",
+        changeColor: "text-green-600",
+        chartColor: "#f87171",
+        chartValues: [25, 30, 35, 40, 38, 45, 50]
+      }
+    )
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    ChartCardWrapper,
+    {
+      title: "Wave 12 columns",
+      legend: [
+        { color: "#a855f7", label: "Blue Tag" },
+        { color: "#86efac", label: "Green Tag" }
+      ],
+      children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        WaveChartSVG,
+        {
+          dataBlue: WAVE_BLUE_12,
+          dataGreen: WAVE_GREEN_12,
+          labels: MONTHS_12,
+          maxValue: 500,
+          height: 260,
+          smooth: true,
+          showTooltip: true
+        }
+      )
+    }
+  ),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      ChartCardWrapper,
+      {
+        title: "Wave 8 columns",
+        className: "flex-1",
+        legend: [
+          { color: "#a855f7", label: "Blue Tag" },
+          { color: "#86efac", label: "Green Tag" }
+        ],
+        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          WaveChartSVG,
+          {
+            dataBlue: WAVE_BLUE_8,
+            dataGreen: WAVE_GREEN_8,
+            labels: MONTHS_8,
+            maxValue: 500,
+            height: 220,
+            smooth: true,
+            showTooltip: true
+          }
+        )
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Wave 4 columns", className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      WaveChartSVG,
+      {
+        dataBlue: WAVE_BLUE_4,
+        dataGreen: WAVE_GREEN_4,
+        labels: MONTHS_4,
+        maxValue: 500,
+        height: 220,
+        smooth: true,
+        showTooltip: true
+      }
+    ) })
+  ] })
+] });
+var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScreen, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+    ChartCardWrapper,
+    {
+      title: "Bars 12 columns",
+      legend: [
+        { color: "#86efac", label: "Blue Tag" },
+        { color: "#c4b5fd", label: "Green Tag" }
+      ],
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "flex gap-4 mb-4 border-b border-black/5 pb-4", children: [
+          {
+            label: "Balance",
+            value: "$80,470.50",
+            change: "+10%",
+            pos: true
+          },
+          {
+            label: "Money in",
+            value: "$60,930.50",
+            change: "-2%",
+            pos: false
+          },
+          {
+            label: "Money out",
+            value: "$42,890.30",
+            change: "+10%",
+            pos: true
+          }
+        ].map((s2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex-1", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "text-xs text-gray-500", children: s2.label }),
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "text-lg font-bold text-black", children: s2.value }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "span",
+              {
+                className: `text-xs ${s2.pos ? "text-green-600" : "text-red-500"}`,
+                children: s2.change
+              }
+            ),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "svg",
+              {
+                className: `w-3 h-3 ${s2.pos ? "text-green-600" : "text-red-500"}`,
+                fill: "none",
+                viewBox: "0 0 24 24",
+                stroke: "currentColor",
+                children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                  "path",
+                  {
+                    strokeLinecap: "round",
+                    strokeLinejoin: "round",
+                    strokeWidth: 2,
+                    d: s2.pos ? "M7 17L17 7M17 7H7M17 7v10" : "M7 7l10 10M17 17H7M17 17V7"
+                  }
+                )
+              }
+            )
+          ] })
+        ] }, s2.label)) }),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          DoubleBarChartSVG,
+          {
+            dataGreen: DOUBLE_GREEN_12,
+            dataPurple: DOUBLE_PURPLE_12,
+            labels: MONTHS_12,
+            maxValue: 500,
+            height: 220
+          }
+        )
+      ]
+    }
+  ),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    DoubleBarChartSVG,
+    {
+      dataGreen: DOUBLE_GREEN_12,
+      dataPurple: DOUBLE_PURPLE_12,
+      labels: MONTHS_12,
+      maxValue: 500,
+      height: 220
+    }
+  ) }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 8 columns", className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      DoubleBarChartSVG,
+      {
+        dataGreen: DOUBLE_GREEN_8,
+        dataPurple: DOUBLE_PURPLE_8,
+        labels: MONTHS_8,
+        maxValue: 500,
+        height: 200
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 4 columns", className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      DoubleBarChartSVG,
+      {
+        dataGreen: DOUBLE_GREEN_4,
+        dataPurple: DOUBLE_PURPLE_4,
+        labels: MONTHS_4,
+        maxValue: 500,
+        height: 200
+      }
+    ) })
+  ] })
+] });
+var MiscScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScreen, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Map 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(WorldMapSVG, {}) }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Pie chart 6 columns", className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex flex-col items-center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        DonutChart,
+        {
+          emptyRings: true,
+          label: "$80,720.50",
+          sublabel: "from all accounts",
+          height: 200,
+          segments: []
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "flex items-center gap-4 mt-2", children: [
+        { color: "#fbbf24", label: "Yellow Tag" },
+        { color: "#a855f7", label: "Blue Tag" },
+        { color: "#86efac", label: "Green Tag" }
+      ].map((l2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "span",
+          {
+            className: "w-2 h-2 rounded-full",
+            style: { backgroundColor: l2.color }
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "text-xs text-gray-500", children: l2.label })
+      ] }, l2.label)) })
+    ] }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Pie chart 6 columns", className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex flex-col items-center", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        DonutChart,
+        {
+          label: "$80,720.50",
+          sublabel: "from all accounts",
+          height: 200,
+          showSegmentLabels: true,
+          segments: [
+            { color: "#fbbf24", pct: 8 },
+            { color: "#a855f7", pct: 35 },
+            { color: "#86efac", pct: 30 },
+            { color: "#f87171", pct: 20 },
+            { color: "#4f46e5", pct: 7 }
+          ]
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "flex items-center gap-4 mt-2", children: [
+        { color: "#fbbf24", label: "Yellow" },
+        { color: "#a855f7", label: "Blue" },
+        { color: "#86efac", label: "Green" },
+        { color: "#f87171", label: "Red" },
+        { color: "#4f46e5", label: "Dark Blue" }
+      ].map((l2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex items-center gap-1.5", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          "span",
+          {
+            className: "w-2 h-2 rounded-full",
+            style: { backgroundColor: l2.color }
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "text-xs text-gray-500", children: l2.label })
+      ] }, l2.label)) })
+    ] }) })
+  ] })
+] });
+var PolarChartScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScreen, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "flex gap-4", children: [
+    {
+      icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+        "svg",
+        {
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          className: "w-5 h-5",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { x: "3", y: "3", width: "7", height: "7", rx: "1", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { x: "14", y: "3", width: "7", height: "7", rx: "1", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { x: "3", y: "14", width: "7", height: "7", rx: "1", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { x: "14", y: "14", width: "7", height: "7", rx: "1", strokeWidth: 2 })
+          ]
+        }
+      ),
+      value: "368.4 Gb",
+      label: "Dropbox",
+      color: "#a855f7",
+      values: [30, 50, 35, 55, 45, 60, 55, 70]
+    },
+    {
+      icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+        "svg",
+        {
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          className: "w-5 h-5",
+          children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { x: "3", y: "4", width: "18", height: "18", rx: "2", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeWidth: 2,
+                d: "M16 2v4M8 2v4M3 10h18"
+              }
+            )
+          ]
+        }
+      ),
+      value: "82.6 Tb",
+      label: "Amazon AWS",
+      color: "#a855f7",
+      values: [55, 45, 60, 50, 65, 55, 70, 60]
+    },
+    {
+      icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        "svg",
+        {
+          fill: "none",
+          viewBox: "0 0 24 24",
+          stroke: "currentColor",
+          className: "w-5 h-5",
+          children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            "path",
+            {
+              strokeLinecap: "round",
+              strokeLinejoin: "round",
+              strokeWidth: 2,
+              d: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"
+            }
+          )
+        }
+      ),
+      value: "16.8 Gb",
+      label: "Google Cloud",
+      color: "#a855f7",
+      values: [40, 55, 45, 60, 50, 65, 55, 70]
+    }
+  ].map((s2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    StatCard4,
+    {
+      icon: s2.icon,
+      value: s2.value,
+      label: s2.label,
+      chartColor: s2.color,
+      chartValues: s2.values
+    },
+    s2.label
+  )) }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Polar chart 6 columns", className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(PolarChartSVG, { variant: "radar", height: 320 }) }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Polar chart 6 columns", className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "flex justify-center", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(PolarChartSVG, { variant: "segments", height: 320 }) }) })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "flex gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Wave 6 columns", className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      WaveChartSVG,
+      {
+        dataBlue: [280, 160, 130, 250, 290, 240],
+        dataGreen: [],
+        labels: MONTHS_6,
+        maxValue: 500,
+        height: 200,
+        smooth: true,
+        showTooltip: true
+      }
+    ) }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Wave 6 columns", className: "flex-1", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      WaveChartSVG,
+      {
+        dataBlue: [
+          340,
+          280,
+          400,
+          360,
+          430,
+          370,
+          210,
+          310,
+          280,
+          440,
+          200,
+          300
+        ].slice(0, 6),
+        dataGreen: [],
+        labels: MONTHS_6,
+        maxValue: 500,
+        height: 200,
+        smooth: true,
+        showTooltip: true
+      }
+    ) })
+  ] })
+] });
 var ChartContainer = ({
   title,
   subtitle,
   children
-}) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "max-w-6xl mx-auto p-6", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "mb-8", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h1", { className: "text-3xl font-bold", children: title }),
-      subtitle && /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "text-gray-600 mt-2", children: subtitle })
-    ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "grid grid-cols-1 lg:grid-cols-2 gap-6", children })
-  ] });
-};
-var ChartBarVariant = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(Card, { className: "p-6", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h3", { className: "text-lg font-semibold mb-4", children: "Bar Chart" }),
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "text-gray-600", children: "Bar chart visualization with mock data" })
+}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "max-w-6xl mx-auto p-6", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "mb-8", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("h1", { className: "text-3xl font-bold", children: title }),
+    subtitle && /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("p", { className: "text-gray-600 mt-2", children: subtitle })
+  ] }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "grid grid-cols-1 lg:grid-cols-2 gap-6", children })
 ] });
-var ChartPolarVariant = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(Card, { className: "p-6", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h3", { className: "text-lg font-semibold mb-4", children: "Polar Chart" }),
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "text-gray-600", children: "Polar chart visualization with mock data" })
-] });
-var ChartWaveVariant = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(Card, { className: "p-6", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h3", { className: "text-lg font-semibold mb-4", children: "Wave Chart" }),
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "text-gray-600", children: "Wave chart visualization with mock data" })
-] });
-var ChartGeometricVariant = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(Card, { className: "p-6", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h3", { className: "text-lg font-semibold mb-4", children: "Geometric Chart" }),
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "text-gray-600", children: "Geometric chart visualization with mock data" })
-] });
-var ChartHorizontalBarsVariant = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(Card, { className: "p-6", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h3", { className: "text-lg font-semibold mb-4", children: "Horizontal Bars" }),
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "text-gray-600", children: "Horizontal bar chart visualization with mock data" })
-] });
-var ChartDoubleBarsVariant = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(Card, { className: "p-6", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h3", { className: "text-lg font-semibold mb-4", children: "Double Bars" }),
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "text-gray-600", children: "Double bar chart visualization with mock data" })
-] });
-var ChartMiscVariant = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(Card, { className: "p-6", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h3", { className: "text-lg font-semibold mb-4", children: "Misc Chart" }),
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "text-gray-600", children: "Miscellaneous chart visualization with mock data" })
-] });
+var ChartBarVariant = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(BarsScreen, {});
+var ChartPolarVariant = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(PolarChartScreen, {});
+var ChartWaveVariant = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartWaveScreen, {});
+var ChartGeometricVariant = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartGeometricScreen, {});
+var ChartHorizontalBarsVariant = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(BarsHorizontalScreen, {});
+var ChartDoubleBarsVariant = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(DoubleBarsScreen, {});
+var ChartMiscVariant = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(MiscScreen, {});
 
 // node_modules/@faker-js/faker/dist/chunk-KERBADJJ.js
 var e = [{ name: "Aegean Airlines", iataCode: "A3" }, { name: "Aeroflot", iataCode: "SU" }, { name: "Aerolineas Argentinas", iataCode: "AR" }, { name: "Aeromexico", iataCode: "AM" }, { name: "Air Algerie", iataCode: "AH" }, { name: "Air Arabia", iataCode: "G9" }, { name: "Air Canada", iataCode: "AC" }, { name: "Air China", iataCode: "CA" }, { name: "Air Europa", iataCode: "UX" }, { name: "Air France", iataCode: "AF" }, { name: "Air India", iataCode: "AI" }, { name: "Air Mauritius", iataCode: "MK" }, { name: "Air New Zealand", iataCode: "NZ" }, { name: "Air Niugini", iataCode: "PX" }, { name: "Air Tahiti", iataCode: "VT" }, { name: "Air Tahiti Nui", iataCode: "TN" }, { name: "Air Transat", iataCode: "TS" }, { name: "AirAsia X", iataCode: "D7" }, { name: "AirAsia", iataCode: "AK" }, { name: "Aircalin", iataCode: "SB" }, { name: "Alaska Airlines", iataCode: "AS" }, { name: "Alitalia", iataCode: "AZ" }, { name: "All Nippon Airways", iataCode: "NH" }, { name: "Allegiant Air", iataCode: "G4" }, { name: "American Airlines", iataCode: "AA" }, { name: "Asiana Airlines", iataCode: "OZ" }, { name: "Avianca", iataCode: "AV" }, { name: "Azul Linhas Aereas Brasileiras", iataCode: "AD" }, { name: "Azur Air", iataCode: "ZF" }, { name: "Beijing Capital Airlines", iataCode: "JD" }, { name: "Boliviana de Aviacion", iataCode: "OB" }, { name: "British Airways", iataCode: "BA" }, { name: "Cathay Pacific", iataCode: "CX" }, { name: "Cebu Pacific Air", iataCode: "5J" }, { name: "China Airlines", iataCode: "CI" }, { name: "China Eastern Airlines", iataCode: "MU" }, { name: "China Southern Airlines", iataCode: "CZ" }, { name: "Condor", iataCode: "DE" }, { name: "Copa Airlines", iataCode: "CM" }, { name: "Delta Air Lines", iataCode: "DL" }, { name: "Easyfly", iataCode: "VE" }, { name: "EasyJet", iataCode: "U2" }, { name: "EcoJet", iataCode: "8J" }, { name: "Egyptair", iataCode: "MS" }, { name: "El Al", iataCode: "LY" }, { name: "Emirates Airlines", iataCode: "EK" }, { name: "Ethiopian Airlines", iataCode: "ET" }, { name: "Etihad Airways", iataCode: "EY" }, { name: "EVA Air", iataCode: "BR" }, { name: "Fiji Airways", iataCode: "FJ" }, { name: "Finnair", iataCode: "AY" }, { name: "Flybondi", iataCode: "FO" }, { name: "Flydubai", iataCode: "FZ" }, { name: "FlySafair", iataCode: "FA" }, { name: "Frontier Airlines", iataCode: "F9" }, { name: "Garuda Indonesia", iataCode: "GA" }, { name: "Go First", iataCode: "G8" }, { name: "Gol Linhas Aereas Inteligentes", iataCode: "G3" }, { name: "Hainan Airlines", iataCode: "HU" }, { name: "Hawaiian Airlines", iataCode: "HA" }, { name: "IndiGo Airlines", iataCode: "6E" }, { name: "Japan Airlines", iataCode: "JL" }, { name: "Jeju Air", iataCode: "7C" }, { name: "Jet2", iataCode: "LS" }, { name: "JetBlue Airways", iataCode: "B6" }, { name: "JetSMART", iataCode: "JA" }, { name: "Juneyao Airlines", iataCode: "HO" }, { name: "Kenya Airways", iataCode: "KQ" }, { name: "KLM Royal Dutch Airlines", iataCode: "KL" }, { name: "Korean Air", iataCode: "KE" }, { name: "Kulula.com", iataCode: "MN" }, { name: "LATAM Airlines", iataCode: "LA" }, { name: "Lion Air", iataCode: "JT" }, { name: "LOT Polish Airlines", iataCode: "LO" }, { name: "Lufthansa", iataCode: "LH" }, { name: "Libyan Airlines", iataCode: "LN" }, { name: "Linea Aerea Amaszonas", iataCode: "Z8" }, { name: "Malaysia Airlines", iataCode: "MH" }, { name: "Nordwind Airlines", iataCode: "N4" }, { name: "Norwegian Air Shuttle", iataCode: "DY" }, { name: "Oman Air", iataCode: "WY" }, { name: "Pakistan International Airlines", iataCode: "PK" }, { name: "Pegasus Airlines", iataCode: "PC" }, { name: "Philippine Airlines", iataCode: "PR" }, { name: "Qantas Group", iataCode: "QF" }, { name: "Qatar Airways", iataCode: "QR" }, { name: "Republic Airways", iataCode: "YX" }, { name: "Royal Air Maroc", iataCode: "AT" }, { name: "Ryanair", iataCode: "FR" }, { name: "S7 Airlines", iataCode: "S7" }, { name: "SAS", iataCode: "SK" }, { name: "Satena", iataCode: "9R" }, { name: "Saudia", iataCode: "SV" }, { name: "Shandong Airlines", iataCode: "SC" }, { name: "Sichuan Airlines", iataCode: "3U" }, { name: "Singapore Airlines", iataCode: "SQ" }, { name: "Sky Airline", iataCode: "H2" }, { name: "SkyWest Airlines", iataCode: "OO" }, { name: "South African Airways", iataCode: "SA" }, { name: "Southwest Airlines", iataCode: "WN" }, { name: "SpiceJet", iataCode: "SG" }, { name: "Spirit Airlines", iataCode: "NK" }, { name: "Spring Airlines", iataCode: "9S" }, { name: "SriLankan Airlines", iataCode: "UL" }, { name: "Star Peru", iataCode: "2I" }, { name: "Sun Country Airlines", iataCode: "SY" }, { name: "SunExpress", iataCode: "XQ" }, { name: "TAP Air Portugal", iataCode: "TP" }, { name: "Thai AirAsia", iataCode: "FD" }, { name: "Thai Airways", iataCode: "TG" }, { name: "TUI Airways", iataCode: "BY" }, { name: "Tunisair", iataCode: "TU" }, { name: "Turkish Airlines", iataCode: "TK" }, { name: "Ukraine International", iataCode: "PS" }, { name: "United Airlines", iataCode: "UA" }, { name: "Ural Airlines", iataCode: "U6" }, { name: "VietJet Air", iataCode: "VJ" }, { name: "Vietnam Airlines", iataCode: "VN" }, { name: "Virgin Atlantic Airways", iataCode: "VS" }, { name: "Virgin Australia", iataCode: "VA" }, { name: "VivaAerobus", iataCode: "VB" }, { name: "VOEPASS Linhas Aereas", iataCode: "2Z" }, { name: "Volaris", iataCode: "Y4" }, { name: "WestJet", iataCode: "WS" }, { name: "Wingo", iataCode: "P5" }, { name: "Wizz Air", iataCode: "W6" }];

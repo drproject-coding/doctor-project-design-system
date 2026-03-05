@@ -24,8 +24,8 @@ export function Tabs({
   const current = activeKey ?? internalKey;
 
   const containerClasses = [
-    "bru-tabs",
-    variant && `bru-tabs--${variant}`,
+    "drp-tabs",
+    variant && `drp-tabs--${variant}`,
     className,
   ]
     .filter(Boolean)
@@ -36,7 +36,7 @@ export function Tabs({
       {items.map((item) => (
         <button
           key={item.key}
-          className={`bru-tab ${current === item.key ? "bru-tab--active" : ""}`}
+          className={`drp-tab ${current === item.key ? "drp-tab--active" : ""}`}
           onClick={() => {
             setInternalKey(item.key);
             onChange?.(item.key);

@@ -18,8 +18,8 @@ export function Table<T extends Record<string, any>>({
   className = "",
 }: TableProps<T>) {
   return (
-    <div className="bru-table-scroll">
-      <table className={`bru-table ${className}`}>
+    <div className="drp-table-scroll">
+      <table className={`drp-table ${className}`}>
         <thead>
           <tr>
             {columns.map((col) => (

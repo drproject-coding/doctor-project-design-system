@@ -30,7 +30,7 @@ const SidebarNav = () => (
         fontSize: "18px",
         fontWeight: 800,
         marginBottom: "32px",
-        fontFamily: "var(--bru-font-primary)",
+        fontFamily: "var(--drp-font-primary)",
         letterSpacing: "0.08em",
       }}
     >
@@ -48,12 +48,12 @@ const SidebarNav = () => (
             padding: "10px 12px",
             textDecoration: "none",
             color: "inherit",
-            fontFamily: "var(--bru-font-primary)",
+            fontFamily: "var(--drp-font-primary)",
             fontSize: "14px",
             fontWeight: 600,
             background: i === 0 ? "rgba(99,29,237,0.08)" : "transparent",
             borderLeft:
-              i === 0 ? "3px solid var(--bru-purple)" : "3px solid transparent",
+              i === 0 ? "3px solid var(--drp-purple)" : "3px solid transparent",
           }}
         >
           <span
@@ -68,7 +68,7 @@ const SidebarNav = () => (
           />
           <span>{item.label}</span>
           {item.badge && (
-            <Badge variant="filled" className="bru-badge--filled">
+            <Badge variant="filled" className="drp-badge--filled">
               {item.badge}
             </Badge>
           )}
@@ -92,7 +92,7 @@ const TopbarNav = () => (
       style={{
         fontSize: "16px",
         fontWeight: 700,
-        fontFamily: "var(--bru-font-primary)",
+        fontFamily: "var(--drp-font-primary)",
         textTransform: "uppercase",
         letterSpacing: "0.05em",
         margin: 0,
@@ -130,7 +130,7 @@ export const DashboardPage: StoryObj = {
             <span
               style={{
                 padding: "0 24px",
-                fontFamily: "var(--bru-font-primary)",
+                fontFamily: "var(--drp-font-primary)",
                 fontSize: "12px",
                 color: "#666",
               }}
@@ -170,7 +170,7 @@ export const DashboardPage: StoryObj = {
                       textTransform: "uppercase",
                       letterSpacing: "0.05em",
                       color: "#666",
-                      fontFamily: "var(--bru-font-primary)",
+                      fontFamily: "var(--drp-font-primary)",
                       fontWeight: 600,
                     }}
                   >
@@ -181,7 +181,7 @@ export const DashboardPage: StoryObj = {
                       margin: "4px 0",
                       fontSize: "28px",
                       fontWeight: 700,
-                      fontFamily: "var(--bru-font-primary)",
+                      fontFamily: "var(--drp-font-primary)",
                     }}
                   >
                     {s.value}
@@ -228,10 +228,10 @@ export const DashboardPage: StoryObj = {
                       key={i}
                       style={{
                         flex: 1,
-                        background: "var(--bru-purple)",
+                        background: "var(--drp-purple)",
                         height: `${(val / 60000) * 100}%`,
                         minHeight: "4px",
-                        border: "1px solid var(--bru-black)",
+                        border: "1px solid var(--drp-black)",
                       }}
                       title={`${chartData.labels[i]}: $${val.toLocaleString()}`}
                     />
@@ -244,7 +244,7 @@ export const DashboardPage: StoryObj = {
                     marginTop: "8px",
                     fontSize: "10px",
                     color: "#999",
-                    fontFamily: "var(--bru-font-primary)",
+                    fontFamily: "var(--drp-font-primary)",
                   }}
                 >
                   {chartData.labels.map((l) => (
@@ -395,7 +395,7 @@ export const SettingsPage: StoryObj = {
                 style={{
                   fontSize: "16px",
                   fontWeight: 700,
-                  fontFamily: "var(--bru-font-primary)",
+                  fontFamily: "var(--drp-font-primary)",
                   textTransform: "uppercase",
                   letterSpacing: "0.05em",
                   margin: 0,
@@ -424,8 +424,8 @@ export const SettingsPage: StoryObj = {
                 title="Profile"
                 subtitle="Update your personal information"
               />
-              <div className="bru-form-stack">
-                <div className="bru-form-row">
+              <div className="drp-form-stack">
+                <div className="drp-form-row">
                   <Input label="First Name" placeholder="John" />
                   <Input label="Last Name" placeholder="Doe" />
                 </div>
@@ -462,7 +462,7 @@ export const SettingsPage: StoryObj = {
               </div>
             </Card>
 
-            <div className="bru-form-actions" style={{ marginTop: "24px" }}>
+            <div className="drp-form-actions" style={{ marginTop: "24px" }}>
               <Button variant="primary">Save Changes</Button>
               <Button variant="outline">Cancel</Button>
             </div>
@@ -501,7 +501,7 @@ export const UserListPage: StoryObj = {
                   style={{
                     fontSize: "16px",
                     fontWeight: 700,
-                    fontFamily: "var(--bru-font-primary)",
+                    fontFamily: "var(--drp-font-primary)",
                     textTransform: "uppercase",
                     letterSpacing: "0.05em",
                     margin: 0,
@@ -643,7 +643,7 @@ export const UserListPage: StoryObj = {
               </>
             }
           >
-            <div className="bru-form-stack">
+            <div className="drp-form-stack">
               <Input label="Full Name" placeholder="Enter full name" />
               <Input
                 label="Email"

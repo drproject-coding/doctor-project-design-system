@@ -15,7 +15,7 @@ export function Avatar({
   initials,
   className = "",
 }: AvatarProps) {
-  const classes = ["bru-avatar", size && `bru-avatar--${size}`, className]
+  const classes = ["drp-avatar", size && `drp-avatar--${size}`, className]
     .filter(Boolean)
     .join(" ");
 
@@ -30,11 +30,11 @@ export function Avatar({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        fontFamily: "var(--bru-font-primary)",
+        fontFamily: "var(--drp-font-primary)",
         fontWeight: 700,
         fontSize: size === "sm" ? "14px" : size === "lg" ? "32px" : "20px",
-        background: "var(--bru-purple-20)",
-        color: "var(--bru-purple)",
+        background: "var(--drp-purple-20)",
+        color: "var(--drp-purple)",
       }}
     >
       {initials || "?"}

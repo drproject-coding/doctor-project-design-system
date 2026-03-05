@@ -66,7 +66,7 @@ async function run() {
       const results = {};
 
       // Check form row columns
-      const formRow = document.querySelector('.bru-form-row');
+      const formRow = document.querySelector('.drp-form-row');
       if (formRow) {
         const cols = getComputedStyle(formRow).gridTemplateColumns;
         results.formRowColumns = cols;
@@ -74,37 +74,37 @@ async function run() {
       }
 
       // Check card grid columns
-      const grid4 = document.querySelector('.bru-grid-4');
+      const grid4 = document.querySelector('.drp-grid-4');
       if (grid4) {
         results.gridColumns = getComputedStyle(grid4).gridTemplateColumns;
       }
 
       // Check button group wrap
-      const btnGroup = document.querySelector('.bru-btn-group');
+      const btnGroup = document.querySelector('.drp-btn-group');
       if (btnGroup) {
         results.btnGroupWrap = getComputedStyle(btnGroup).flexWrap;
       }
 
       // Check tabs overflow
-      const tabs = document.querySelector('.bru-tabs');
+      const tabs = document.querySelector('.drp-tabs');
       if (tabs) {
         results.tabsOverflow = getComputedStyle(tabs).overflowX;
       }
 
       // Check modal max-width
-      const modal = document.querySelector('.bru-modal');
+      const modal = document.querySelector('.drp-modal');
       if (modal) {
         results.modalMaxWidth = getComputedStyle(modal).maxWidth;
       }
 
       // Check pagination wrap
-      const pagination = document.querySelector('.bru-pagination');
+      const pagination = document.querySelector('.drp-pagination');
       if (pagination) {
         results.paginationWrap = getComputedStyle(pagination).flexWrap;
       }
 
       // Check input font size (iOS zoom prevention)
-      const input = document.querySelector('.bru-input');
+      const input = document.querySelector('.drp-input');
       if (input) {
         results.inputFontSize = getComputedStyle(input).fontSize;
       }

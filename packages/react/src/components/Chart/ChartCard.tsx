@@ -21,28 +21,28 @@ export function ChartCard({
   action,
   className = "",
 }: ChartCardProps) {
-  const containerClasses = ["bru-chart-card", className]
+  const containerClasses = ["drp-chart-card", className]
     .filter(Boolean)
     .join(" ");
 
   const bodyClasses = [
-    "bru-chart-container",
-    size && `bru-chart-container--${size}`,
+    "drp-chart-container",
+    size && `drp-chart-container--${size}`,
   ]
     .filter(Boolean)
     .join(" ");
 
   return (
     <div className={containerClasses}>
-      <div className="bru-chart-header">
+      <div className="drp-chart-header">
         <div>
-          <h3 className="bru-card__title">{title}</h3>
-          {subtitle && <p className="bru-card__subtitle">{subtitle}</p>}
+          <h3 className="drp-card__title">{title}</h3>
+          {subtitle && <p className="drp-card__subtitle">{subtitle}</p>}
         </div>
         {action}
       </div>
       <div className={bodyClasses}>{children}</div>
-      {legend && <div className="bru-chart-legend">{legend}</div>}
+      {legend && <div className="drp-chart-legend">{legend}</div>}
     </div>
   );
 }

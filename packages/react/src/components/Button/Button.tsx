@@ -28,11 +28,11 @@ export function Button({
   ...props
 }: ButtonProps) {
   const classes = [
-    "bru-btn",
-    variant && `bru-btn--${variant}`,
-    size && `bru-btn--${size}`,
-    block && "bru-btn--block",
-    icon && "bru-btn--icon",
+    "drp-btn",
+    variant && `drp-btn--${variant}`,
+    size && `drp-btn--${size}`,
+    block && "drp-btn--block",
+    icon && "drp-btn--icon",
     className,
   ]
     .filter(Boolean)

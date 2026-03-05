@@ -14,7 +14,7 @@ export interface CaseCardProps {
 export function CaseCard({
   image,
   imageLabel,
-  imageColor = "var(--bru-purple)",
+  imageColor = "var(--drp-purple)",
   stat,
   statLabel,
   title,
@@ -25,8 +25,8 @@ export function CaseCard({
     <div
       className={className}
       style={{
-        border: "3px solid var(--bru-black)",
-        background: "var(--bru-surface)",
+        border: "3px solid var(--drp-black)",
+        background: "var(--drp-surface)",
         overflow: "hidden",
       }}
     >
@@ -34,11 +34,11 @@ export function CaseCard({
         style={{
           height: "200px",
           background: imageColor,
-          borderBottom: "2px solid var(--bru-black)",
+          borderBottom: "2px solid var(--drp-black)",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          fontFamily: "var(--bru-font-primary)",
+          fontFamily: "var(--drp-font-primary)",
           fontSize: "2rem",
           fontWeight: 800,
           color: "#FFFFFF",
@@ -46,13 +46,13 @@ export function CaseCard({
       >
         {image || imageLabel}
       </div>
-      <div style={{ padding: "var(--bru-space-6)" }}>
+      <div style={{ padding: "var(--drp-space-6)" }}>
         <p
           style={{
-            fontFamily: "var(--bru-font-primary)",
+            fontFamily: "var(--drp-font-primary)",
             fontSize: "2.5rem",
             fontWeight: 800,
-            color: "var(--bru-orange)",
+            color: "var(--drp-orange)",
             marginBottom: "8px",
           }}
         >
@@ -61,7 +61,7 @@ export function CaseCard({
         <p style={{ fontSize: "13px", marginBottom: "16px" }}>{statLabel}</p>
         <h3
           style={{
-            fontFamily: "var(--bru-font-primary)",
+            fontFamily: "var(--drp-font-primary)",
             fontSize: "18px",
             fontWeight: 700,
             marginBottom: "8px",

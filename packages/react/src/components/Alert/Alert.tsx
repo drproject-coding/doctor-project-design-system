@@ -16,16 +16,16 @@ const variantStyles: Record<
 > = {
   info: {
     bg: "rgba(0,102,255,0.08)",
-    border: "var(--bru-info, #0066FF)",
+    border: "var(--drp-info, #0066FF)",
     icon: "ℹ",
   },
-  success: { bg: "rgba(0,170,0,0.08)", border: "var(--bru-mint)", icon: "✓" },
+  success: { bg: "rgba(0,170,0,0.08)", border: "var(--drp-mint)", icon: "✓" },
   warning: {
     bg: "rgba(255,170,0,0.08)",
-    border: "var(--bru-yellow)",
+    border: "var(--drp-yellow)",
     icon: "⚠",
   },
-  error: { bg: "rgba(255,68,68,0.08)", border: "var(--bru-pink)", icon: "✕" },
+  error: { bg: "rgba(255,68,68,0.08)", border: "var(--drp-pink)", icon: "✕" },
 };
 
 export function Alert({
@@ -42,7 +42,7 @@ export function Alert({
       style={{
         padding: "16px 20px",
         background: styles.bg,
-        border: `2px solid var(--bru-black)`,
+        border: `2px solid var(--drp-black)`,
         borderLeft: `4px solid ${styles.border}`,
         display: "flex",
         gap: "12px",
@@ -56,7 +56,7 @@ export function Alert({
         {title && (
           <p
             style={{
-              fontFamily: "var(--bru-font-primary)",
+              fontFamily: "var(--drp-font-primary)",
               fontWeight: 700,
               fontSize: "14px",
               marginBottom: "4px",

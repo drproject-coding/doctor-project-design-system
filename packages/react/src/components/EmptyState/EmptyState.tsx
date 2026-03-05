@@ -17,7 +17,7 @@ export function EmptyState({
 }: EmptyStateProps) {
   return (
     <div
-      className={`bru-empty ${className}`}
+      className={`drp-empty ${className}`}
       style={{
         textAlign: "center",
         padding: "48px 24px",
@@ -29,7 +29,7 @@ export function EmptyState({
           fontSize: "48px",
           marginBottom: "16px",
           opacity: 0.3,
-          fontFamily: "var(--bru-font-primary)",
+          fontFamily: "var(--drp-font-primary)",
           fontWeight: 800,
         }}
       >
@@ -37,7 +37,7 @@ export function EmptyState({
       </div>
       <h3
         style={{
-          fontFamily: "var(--bru-font-primary)",
+          fontFamily: "var(--drp-font-primary)",
           fontSize: "18px",
           fontWeight: 700,
           marginBottom: "8px",

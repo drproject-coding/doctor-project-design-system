@@ -17,9 +17,9 @@ export function ProgressBar({
   className = "",
 }: ProgressBarProps) {
   const progressClasses = [
-    "bru-progress",
-    color && `bru-progress--${color}`,
-    size && `bru-progress--${size}`,
+    "drp-progress",
+    color && `drp-progress--${color}`,
+    size && `drp-progress--${size}`,
     className,
   ]
     .filter(Boolean)
@@ -28,7 +28,7 @@ export function ProgressBar({
   const bar = (
     <div className={progressClasses}>
       <div
-        className="bru-progress__bar"
+        className="drp-progress__bar"
         style={{ width: `${Math.min(100, Math.max(0, value))}%` }}
       />
     </div>
@@ -36,8 +36,8 @@ export function ProgressBar({
 
   if (label) {
     return (
-      <div className="bru-progress-group">
-        <div className="bru-progress-group__label">
+      <div className="drp-progress-group">
+        <div className="drp-progress-group__label">
           <span>{label}</span>
           <span>{value}%</span>
         </div>

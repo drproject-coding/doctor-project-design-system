@@ -19,16 +19,16 @@ export function Loader({ size, label, className = "" }: LoaderProps) {
         style={{
           width: dimension,
           height: dimension,
-          border: `${borderWidth}px solid var(--bru-light-grey, #E0E0E0)`,
-          borderTop: `${borderWidth}px solid var(--bru-purple)`,
-          animation: "bru-spin 0.8s linear infinite",
+          border: `${borderWidth}px solid var(--drp-light-grey, #E0E0E0)`,
+          borderTop: `${borderWidth}px solid var(--drp-purple)`,
+          animation: "drp-spin 0.8s linear infinite",
         }}
       />
       {label && (
         <span
           style={{
-            fontFamily: "var(--bru-font-primary)",
-            fontSize: "var(--bru-text-sm)",
+            fontFamily: "var(--drp-font-primary)",
+            fontSize: "var(--drp-text-sm)",
             fontWeight: 600,
             textTransform: "uppercase",
             letterSpacing: "0.05em",
@@ -37,7 +37,7 @@ export function Loader({ size, label, className = "" }: LoaderProps) {
           {label}
         </span>
       )}
-      <style>{`@keyframes bru-spin { to { transform: rotate(360deg); } }`}</style>
+      <style>{`@keyframes drp-spin { to { transform: rotate(360deg); } }`}</style>
     </div>
   );
 }

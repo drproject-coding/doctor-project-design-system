@@ -7,7 +7,7 @@ export function Divider({ label, className = "" }: DividerProps) {
   if (label) {
     return (
       <div
-        className={`bru-divider ${className}`}
+        className={`drp-divider ${className}`}
         style={{
           display: "flex",
           alignItems: "center",
@@ -15,11 +15,11 @@ export function Divider({ label, className = "" }: DividerProps) {
         }}
       >
         <div
-          style={{ flex: 1, height: "2px", background: "var(--bru-black)" }}
+          style={{ flex: 1, height: "2px", background: "var(--drp-black)" }}
         />
         <span
           style={{
-            fontFamily: "var(--bru-font-primary)",
+            fontFamily: "var(--drp-font-primary)",
             fontSize: "11px",
             fontWeight: 700,
             textTransform: "uppercase",
@@ -30,18 +30,18 @@ export function Divider({ label, className = "" }: DividerProps) {
           {label}
         </span>
         <div
-          style={{ flex: 1, height: "2px", background: "var(--bru-black)" }}
+          style={{ flex: 1, height: "2px", background: "var(--drp-black)" }}
         />
       </div>
     );
   }
   return (
     <hr
-      className={`bru-divider ${className}`}
+      className={`drp-divider ${className}`}
       style={{
         border: "none",
         height: "2px",
-        background: "var(--bru-black)",
+        background: "var(--drp-black)",
         margin: 0,
       }}
     />

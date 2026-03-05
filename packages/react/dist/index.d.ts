@@ -387,38 +387,32 @@ interface ListScreenProps extends Omit<DashboardLayoutProps, "children"> {
 }
 declare const ListScreen: React.FC<ListScreenProps>;
 
-interface Product {
-    id: string;
-    name: string;
-    category: string;
-    price: number;
-    stock: number;
-    status: "Active" | "Inactive";
-    createdDate: string;
+interface ProductsListProps {
+    theme?: "light" | "dark";
+    variant?: "v1" | "v2" | "v3" | "details";
 }
-declare const ProductsList: React.FC;
+declare const ProductsList: React.FC<ProductsListProps>;
 
 interface Customer {
     id: string;
     name: string;
     email: string;
-    phone: string;
-    status: "Active" | "Inactive";
-    joinDate: string;
-    totalPurchases: number;
+    status: "Tag" | "Pending" | "center";
 }
-declare const CustomersList: React.FC;
-
-interface Account {
-    id: string;
-    accountName: string;
-    accountType: string;
-    balance: number;
-    status: "Active" | "Inactive";
-    lastUpdate: string;
+interface CustomersListProps {
+    theme?: "light" | "dark";
+    variant?: "v1" | "v2" | "v3" | "details";
 }
-declare const AccountsList: React.FC;
+declare const CustomersList: React.FC<CustomersListProps>;
 
+interface AccountsListProps {
+    theme?: "light" | "dark";
+    variant?: "v1" | "v2";
+}
+declare const AccountsList: React.FC<AccountsListProps>;
+
+type TransactionVariant = "listV1" | "listV2" | "invoice" | "empty";
+/** @deprecated Legacy interface kept for backwards-compatible re-exports */
 interface Transaction {
     id: string;
     description: string;
@@ -427,31 +421,40 @@ interface Transaction {
     status: "Completed" | "Pending" | "Failed";
     type: "Income" | "Expense";
 }
-declare const TransactionsList: React.FC;
+interface TransactionsListProps {
+    theme?: "light" | "dark";
+    variant?: TransactionVariant;
+}
+declare const TransactionsList: React.FC<TransactionsListProps>;
 
 interface Contact {
     id: string;
     name: string;
     email: string;
-    company: string;
-    phone: string;
-    lastContact: string;
-    status: "Active" | "Inactive";
+    service: string;
+    status: "Online" | "Away" | "Offline";
+    color: string;
 }
-declare const ContactsList: React.FC;
-
-interface Sale {
-    id: string;
-    customer: string;
-    amount: number;
-    date: string;
-    status: "Completed" | "Pending" | "Cancelled";
-    salesperson: string;
+interface ContactsListProps {
+    theme?: "light" | "dark";
+    variant?: "v1" | "v2" | "new-contact" | "empty";
 }
-declare const SalesList: React.FC;
+declare const ContactsList: React.FC<ContactsListProps>;
 
-declare const InboxList: React.FC;
+interface SalesListProps {
+    theme?: "light" | "dark";
+    variant?: "v1" | "v2";
+}
+declare const SalesList: React.FC<SalesListProps>;
 
+type InboxVariant = "mail-list" | "chat" | "mail-compose" | "empty";
+interface InboxListProps {
+    theme?: "light" | "dark";
+    variant?: InboxVariant;
+}
+declare const InboxList: React.FC<InboxListProps>;
+
+type PaymentsTheme = "light" | "dark";
 interface Payment {
     id: string;
     method: string;
@@ -460,20 +463,31 @@ interface Payment {
     recipient: string;
     status: "Completed" | "Pending" | "Failed";
 }
-declare const PaymentsList: React.FC;
-
-interface Course {
-    id: string;
-    title: string;
-    instructor: string;
-    progress: number;
-    status: "In Progress" | "Completed" | "Not Started";
+type PaymentsVariant = "list" | "details" | "send-money" | "pay-utilities";
+interface PaymentsListProps {
+    theme?: PaymentsTheme;
+    variant?: PaymentsVariant;
 }
-declare const EducationCourses: React.FC;
+declare const PaymentsList: React.FC<PaymentsListProps>;
 
-declare const CalendarEvent: React.FC;
+type EducationView = "courses" | "category";
+interface EducationCoursesProps {
+    theme?: "light" | "dark";
+    view?: EducationView;
+}
+declare const EducationCourses: React.FC<EducationCoursesProps>;
 
-declare const SupportHome: React.FC;
+type CalendarView = "month" | "week" | "day";
+interface CalendarEventProps {
+    defaultView?: CalendarView;
+}
+declare const CalendarEvent: React.FC<CalendarEventProps>;
+
+type SupportView = "home" | "categories" | "article" | "search";
+interface SupportHomeProps {
+    view?: SupportView;
+}
+declare const SupportHome: React.FC<SupportHomeProps>;
 
 declare const ProfileAccount: React.FC;
 
@@ -539,4 +553,4 @@ declare const chartData: {
 };
 declare const menuItems: MenuItem[];
 
-export { type Account, AccountsList, Alert, type AlertProps, AppShell, type AppShellProps, Avatar, type AvatarProps, Badge, type BadgeProps, type BreadcrumbItem, Breadcrumbs, type BreadcrumbsProps, Button, type ButtonProps, CalendarEvent, Card, CardHeader, type CardHeaderProps, type CardProps, CaseCard, type CaseCardProps, ChartBarVariant, ChartCard, type ChartCardProps, ChartContainer, type ChartContainerProps, ChartDoubleBarsVariant, ChartGeometricVariant, ChartHorizontalBarsVariant, ChartMiscVariant, ChartPolarVariant, ChartWaveVariant, Checkbox, type CheckboxProps, type Contact, ContactsList, Counter, type CounterProps, type Course, type Customer, CustomersList, DashboardLayout, type DashboardLayoutProps, Divider, type DividerProps, EducationCourses, EmptyState, type EmptyStateProps, Footer, type FooterColumn, type FooterProps, Hero, type HeroProps, InboxList, Input, type InputProps, ListScreen, type ListScreenProps, Loader, type LoaderProps, Marquee, type MarqueeProps, type MenuItem, Modal, type ModalProps, Navbar, type NavbarProps, Pagination, type PaginationProps, PasswordReset, type PasswordResetProps, type Payment, PaymentsList, PricingCard, type PricingCardProps, type Product, ProductsList, ProfileAccount, ProfileNotifications, ProfileSecurity, ProfileSocial, ProgressBar, type ProgressBarProps, Radio, type RadioProps, type Sale, SalesList, Select, type SelectProps, Sidebar, type SidebarItem, type SidebarProps, SignIn, SignUp, Skeleton, type SkeletonProps, type StatCard, type StatCardProps, StatusDot, type StatusDotProps, SupportHome, Switch, type SwitchProps, type TabItem, Table, type TableColumn, type TableProps, Tabs, type TabsProps, Tag, type TagProps, Textarea, type TextareaProps, Tooltip, type TooltipProps, TopBar, type TopBarProps, Topbar, type TopbarProps, type Transaction, TransactionsList, type User, chartData, generateChartData, generateMenuItems, generateStats, generateUsers, menuItems, stats, users };
+export { AccountsList, Alert, type AlertProps, AppShell, type AppShellProps, Avatar, type AvatarProps, Badge, type BadgeProps, type BreadcrumbItem, Breadcrumbs, type BreadcrumbsProps, Button, type ButtonProps, CalendarEvent, Card, CardHeader, type CardHeaderProps, type CardProps, CaseCard, type CaseCardProps, ChartBarVariant, ChartCard, type ChartCardProps, ChartContainer, type ChartContainerProps, ChartDoubleBarsVariant, ChartGeometricVariant, ChartHorizontalBarsVariant, ChartMiscVariant, ChartPolarVariant, ChartWaveVariant, Checkbox, type CheckboxProps, type Contact, ContactsList, Counter, type CounterProps, type Customer, CustomersList, DashboardLayout, type DashboardLayoutProps, Divider, type DividerProps, EducationCourses, type EducationCoursesProps, type EducationView, EmptyState, type EmptyStateProps, Footer, type FooterColumn, type FooterProps, Hero, type HeroProps, InboxList, Input, type InputProps, ListScreen, type ListScreenProps, Loader, type LoaderProps, Marquee, type MarqueeProps, type MenuItem, Modal, type ModalProps, Navbar, type NavbarProps, Pagination, type PaginationProps, PasswordReset, type PasswordResetProps, type Payment, PaymentsList, PricingCard, type PricingCardProps, type ProductsListProps as Product, ProductsList, ProfileAccount, ProfileNotifications, ProfileSecurity, ProfileSocial, ProgressBar, type ProgressBarProps, Radio, type RadioProps, type SalesListProps as Sale, SalesList, Select, type SelectProps, Sidebar, type SidebarItem, type SidebarProps, SignIn, SignUp, Skeleton, type SkeletonProps, type StatCard, type StatCardProps, StatusDot, type StatusDotProps, SupportHome, Switch, type SwitchProps, type TabItem, Table, type TableColumn, type TableProps, Tabs, type TabsProps, Tag, type TagProps, Textarea, type TextareaProps, Tooltip, type TooltipProps, TopBar, type TopBarProps, Topbar, type TopbarProps, type Transaction, TransactionsList, type User, chartData, generateChartData, generateMenuItems, generateStats, generateUsers, menuItems, stats, users };

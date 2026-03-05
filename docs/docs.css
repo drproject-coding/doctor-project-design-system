@@ -50,10 +50,10 @@ body.dark-mode .docs-code {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--bru-grey);
+  color: var(--drp-grey);
   margin-bottom: 16px;
   padding-bottom: 8px;
-  border-bottom: var(--bru-border-thin);
+  border-bottom: var(--drp-border-thin);
 }
 
 .docs-demo {
@@ -62,8 +62,8 @@ body.dark-mode .docs-code {
   gap: 12px;
   align-items: center;
   padding: 24px;
-  background: var(--bru-surface);
-  border: var(--bru-border);
+  background: var(--drp-surface);
+  border: var(--drp-border);
   margin-bottom: 4px;
 }
 
@@ -79,7 +79,7 @@ body.dark-mode .docs-code {
 }
 
 .docs-swatch {
-  border: var(--bru-border);
+  border: var(--drp-border);
   overflow: hidden;
 }
 
@@ -98,8 +98,8 @@ body.dark-mode .docs-code {
 }
 
 .docs-swatch-value {
-  color: var(--bru-grey);
-  font-family: var(--bru-font-mono);
+  color: var(--drp-grey);
+  font-family: var(--drp-font-mono);
 }
 
 .docs-page-header {

@@ -1,17 +1,17 @@
-# Plan: Bruddle React Component Library + Storybook
+# Plan: DoctorProject React Component Library + Storybook
 
 ## Context
 
-The bruddle-design-system repo has a complete, production-ready pure-CSS design system (18 CSS modules, design tokens, fonts, dark mode) but no framework components or interactive documentation. We're wrapping every CSS component into typed React components with Storybook for visual testing, using faker.js for realistic dashboard data.
+The doctorproject-design-system repo has a complete, production-ready pure-CSS design system (18 CSS modules, design tokens, fonts, dark mode) but no framework components or interactive documentation. We're wrapping every CSS component into typed React components with Storybook for visual testing, using faker.js for realistic dashboard data.
 
 ## Approach
 
-**pnpm monorepo** — CSS stays at root, React components live in `packages/react/`. Storybook 8 + React 19 + Vite 6 + TypeScript. Components are thin wrappers that apply `bru-*` CSS classes via `className` props. No CSS Modules needed.
+**pnpm monorepo** — CSS stays at root, React components live in `packages/react/`. Storybook 8 + React 19 + Vite 6 + TypeScript. Components are thin wrappers that apply `drp-*` CSS classes via `className` props. No CSS Modules needed.
 
 ## Folder Structure
 
 ```
-bruddle-design-system/          (existing root)
+doctorproject-design-system/          (existing root)
 ├── css/                        (existing — untouched)
 ├── fonts/                      (existing — served via staticDirs)
 ├── packages/
@@ -60,7 +60,7 @@ bruddle-design-system/          (existing root)
 | Bundler         | Vite 6 (dev) + tsup (lib)        | Fast dev, clean library output           |
 | Storybook       | v8 + react-vite                  | Latest stable, native Vite support       |
 | Dark mode       | storybook-dark-mode              | Maps to existing `body.dark-mode` class  |
-| CSS approach    | Direct `bru-*` className strings | Existing CSS IS the module system        |
+| CSS approach    | Direct `drp-*` className strings | Existing CSS IS the module system        |
 | Fake data       | @faker-js/faker v9               | Dashboard: users, stats, charts          |
 | Fonts           | staticDirs from root /fonts      | No duplication                           |
 
@@ -136,7 +136,7 @@ bruddle-design-system/          (existing root)
 - [ ] `pnpm storybook` launches at localhost:6006
 - [ ] Visby fonts render correctly
 - [ ] Dark mode toggle works (body.dark-mode)
-- [ ] All 22 components render with correct bru-\* classes
+- [ ] All 22 components render with correct drp-\* classes
 - [ ] Dashboard story shows full layout with fake data
 - [ ] Controls panel allows interactive prop changes
 - [ ] Autodocs generates documentation pages

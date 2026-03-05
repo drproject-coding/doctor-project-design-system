@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Forms — Bruddle Design System</title>
+  <title>Forms — DoctorProject Design System</title>
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="docs.css">
 </head>
@@ -11,7 +11,7 @@
   <div class="app-layout">
     <nav class="sidebar">
       <div class="sidebar-brand">
-        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-name">DoctorProject</span>
         <span class="sidebar-brand-dot"></span>
       </div>
       <div class="sidebar-nav">
@@ -88,7 +88,7 @@
           <h1 class="topbar-title">Forms</h1>
         </div>
         <div class="topbar-right">
-          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+          <button id="darkModeToggle" class="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm" title="Toggle dark mode">&#9790;</button>
         </div>
       </header>
 
@@ -96,67 +96,67 @@
         <div class="container">
 
           <div class="docs-page-header">
-            <h2 class="bru-h2">Forms</h2>
-            <p class="bru-text bru-mt-2">Inputs, selects, textareas, checkboxes, radios, switches, and counters. All form controls feature purple focus highlights and offset shadows.</p>
+            <h2 class="drp-h2">Forms</h2>
+            <p class="drp-text drp-mt-2">Inputs, selects, textareas, checkboxes, radios, switches, and counters. All form controls feature purple focus highlights and offset shadows.</p>
           </div>
 
           <!-- Text Input -->
           <div class="docs-section">
             <h3 class="docs-section-title">Text Input</h3>
             <div class="docs-demo docs-demo--col" style="max-width: 400px;">
-              <div class="bru-field">
-                <label class="bru-field__label">Default</label>
-                <input type="text" class="bru-input" placeholder="Type something...">
+              <div class="drp-field">
+                <label class="drp-field__label">Default</label>
+                <input type="text" class="drp-input" placeholder="Type something...">
               </div>
-              <div class="bru-field">
-                <label class="bru-field__label">Error</label>
-                <input type="text" class="bru-input bru-input--error" value="Invalid value">
+              <div class="drp-field">
+                <label class="drp-field__label">Error</label>
+                <input type="text" class="drp-input drp-input--error" value="Invalid value">
               </div>
-              <div class="bru-field">
-                <label class="bru-field__label">Success</label>
-                <input type="text" class="bru-input bru-input--success" value="Looks good">
+              <div class="drp-field">
+                <label class="drp-field__label">Success</label>
+                <input type="text" class="drp-input drp-input--success" value="Looks good">
               </div>
-              <div class="bru-field">
-                <label class="bru-field__label">Disabled</label>
-                <input type="text" class="bru-input" disabled value="Cannot edit">
+              <div class="drp-field">
+                <label class="drp-field__label">Disabled</label>
+                <input type="text" class="drp-input" disabled value="Cannot edit">
               </div>
             </div>
-<pre class="docs-code">&lt;div class="bru-field"&gt;
-  &lt;label class="bru-field__label"&gt;Email&lt;/label&gt;
-  &lt;input type="text" class="bru-input" placeholder="..."&gt;
+<pre class="docs-code">&lt;div class="drp-field"&gt;
+  &lt;label class="drp-field__label"&gt;Email&lt;/label&gt;
+  &lt;input type="text" class="drp-input" placeholder="..."&gt;
 &lt;/div&gt;
 
 &lt;!-- Error / Success states --&gt;
-&lt;input class="bru-input bru-input--error"&gt;
-&lt;input class="bru-input bru-input--success"&gt;</pre>
+&lt;input class="drp-input drp-input--error"&gt;
+&lt;input class="drp-input drp-input--success"&gt;</pre>
           </div>
 
           <!-- Textarea -->
           <div class="docs-section">
             <h3 class="docs-section-title">Textarea</h3>
             <div class="docs-demo docs-demo--col" style="max-width: 400px;">
-              <div class="bru-field">
-                <label class="bru-field__label">Message</label>
-                <textarea class="bru-input" placeholder="Write your message..."></textarea>
+              <div class="drp-field">
+                <label class="drp-field__label">Message</label>
+                <textarea class="drp-input" placeholder="Write your message..."></textarea>
               </div>
             </div>
-<pre class="docs-code">&lt;textarea class="bru-input" placeholder="..."&gt;&lt;/textarea&gt;</pre>
+<pre class="docs-code">&lt;textarea class="drp-input" placeholder="..."&gt;&lt;/textarea&gt;</pre>
           </div>
 
           <!-- Select -->
           <div class="docs-section">
             <h3 class="docs-section-title">Select</h3>
             <div class="docs-demo docs-demo--col" style="max-width: 400px;">
-              <div class="bru-field">
-                <label class="bru-field__label">Choose option</label>
-                <select class="bru-select">
+              <div class="drp-field">
+                <label class="drp-field__label">Choose option</label>
+                <select class="drp-select">
                   <option>Option A</option>
                   <option>Option B</option>
                   <option>Option C</option>
                 </select>
               </div>
             </div>
-<pre class="docs-code">&lt;select class="bru-select"&gt;
+<pre class="docs-code">&lt;select class="drp-select"&gt;
   &lt;option&gt;Option A&lt;/option&gt;
   &lt;option&gt;Option B&lt;/option&gt;
 &lt;/select&gt;</pre>
@@ -166,21 +166,21 @@
           <div class="docs-section">
             <h3 class="docs-section-title">Checkbox</h3>
             <div class="docs-demo">
-              <label class="bru-checkbox">
+              <label class="drp-checkbox">
                 <input type="checkbox"> Unchecked
               </label>
-              <label class="bru-checkbox">
+              <label class="drp-checkbox">
                 <input type="checkbox" checked> Checked
               </label>
-              <label class="bru-checkbox bru-checkbox--dark">
+              <label class="drp-checkbox drp-checkbox--dark">
                 <input type="checkbox" checked> Dark
               </label>
             </div>
-<pre class="docs-code">&lt;label class="bru-checkbox"&gt;
+<pre class="docs-code">&lt;label class="drp-checkbox"&gt;
   &lt;input type="checkbox"&gt; Label
 &lt;/label&gt;
 
-&lt;label class="bru-checkbox bru-checkbox--dark"&gt;
+&lt;label class="drp-checkbox drp-checkbox--dark"&gt;
   &lt;input type="checkbox" checked&gt; Dark variant
 &lt;/label&gt;</pre>
           </div>
@@ -189,29 +189,29 @@
           <div class="docs-section">
             <h3 class="docs-section-title">Radio Buttons</h3>
             <div class="docs-demo">
-              <label class="bru-radio">
+              <label class="drp-radio">
                 <input type="radio" name="demo-radio" checked> Default (mint)
               </label>
-              <label class="bru-radio bru-radio--pink">
+              <label class="drp-radio drp-radio--pink">
                 <input type="radio" name="demo-radio"> Pink
               </label>
-              <label class="bru-radio bru-radio--purple">
+              <label class="drp-radio drp-radio--purple">
                 <input type="radio" name="demo-radio"> Purple
               </label>
-              <label class="bru-radio bru-radio--dark">
+              <label class="drp-radio drp-radio--dark">
                 <input type="radio" name="demo-radio-dark" checked> Dark
               </label>
             </div>
-<pre class="docs-code">&lt;label class="bru-radio"&gt;
+<pre class="docs-code">&lt;label class="drp-radio"&gt;
   &lt;input type="radio" name="group"&gt; Default
 &lt;/label&gt;
-&lt;label class="bru-radio bru-radio--pink"&gt;
+&lt;label class="drp-radio drp-radio--pink"&gt;
   &lt;input type="radio" name="group"&gt; Pink
 &lt;/label&gt;
-&lt;label class="bru-radio bru-radio--purple"&gt;
+&lt;label class="drp-radio drp-radio--purple"&gt;
   &lt;input type="radio" name="group"&gt; Purple
 &lt;/label&gt;
-&lt;label class="bru-radio bru-radio--dark"&gt;
+&lt;label class="drp-radio drp-radio--dark"&gt;
   &lt;input type="radio" name="group2"&gt; Dark
 &lt;/label&gt;</pre>
           </div>
@@ -220,25 +220,25 @@
           <div class="docs-section">
             <h3 class="docs-section-title">Switch / Toggle</h3>
             <div class="docs-demo">
-              <label class="bru-switch">
+              <label class="drp-switch">
                 <input type="checkbox">
-                <span class="bru-switch__track">
-                  <span class="bru-switch__knob"></span>
+                <span class="drp-switch__track">
+                  <span class="drp-switch__knob"></span>
                 </span>
-                <span class="bru-text bru-text--bold">Off</span>
+                <span class="drp-text drp-text--bold">Off</span>
               </label>
-              <label class="bru-switch">
+              <label class="drp-switch">
                 <input type="checkbox" checked>
-                <span class="bru-switch__track">
-                  <span class="bru-switch__knob"></span>
+                <span class="drp-switch__track">
+                  <span class="drp-switch__knob"></span>
                 </span>
-                <span class="bru-text bru-text--bold">On</span>
+                <span class="drp-text drp-text--bold">On</span>
               </label>
             </div>
-<pre class="docs-code">&lt;label class="bru-switch"&gt;
+<pre class="docs-code">&lt;label class="drp-switch"&gt;
   &lt;input type="checkbox"&gt;
-  &lt;span class="bru-switch__track"&gt;
-    &lt;span class="bru-switch__knob"&gt;&lt;/span&gt;
+  &lt;span class="drp-switch__track"&gt;
+    &lt;span class="drp-switch__knob"&gt;&lt;/span&gt;
   &lt;/span&gt;
   &lt;span&gt;Label&lt;/span&gt;
 &lt;/label&gt;</pre>
@@ -248,16 +248,16 @@
           <div class="docs-section">
             <h3 class="docs-section-title">Counter</h3>
             <div class="docs-demo">
-              <div class="bru-counter">
-                <button class="bru-counter__btn">&minus;</button>
-                <input type="number" class="bru-counter__value" value="3" min="0" max="99">
-                <button class="bru-counter__btn">+</button>
+              <div class="drp-counter">
+                <button class="drp-counter__btn">&minus;</button>
+                <input type="number" class="drp-counter__value" value="3" min="0" max="99">
+                <button class="drp-counter__btn">+</button>
               </div>
             </div>
-<pre class="docs-code">&lt;div class="bru-counter"&gt;
-  &lt;button class="bru-counter__btn"&gt;&amp;minus;&lt;/button&gt;
-  &lt;input type="number" class="bru-counter__value" value="3"&gt;
-  &lt;button class="bru-counter__btn"&gt;+&lt;/button&gt;
+<pre class="docs-code">&lt;div class="drp-counter"&gt;
+  &lt;button class="drp-counter__btn"&gt;&amp;minus;&lt;/button&gt;
+  &lt;input type="number" class="drp-counter__value" value="3"&gt;
+  &lt;button class="drp-counter__btn"&gt;+&lt;/button&gt;
 &lt;/div&gt;</pre>
           </div>
 
@@ -265,36 +265,36 @@
           <div class="docs-section">
             <h3 class="docs-section-title">Form Layout</h3>
             <div class="docs-demo docs-demo--col" style="max-width: 500px;">
-              <div class="bru-form-stack">
-                <div class="bru-form-row">
-                  <div class="bru-field">
-                    <label class="bru-field__label">First Name</label>
-                    <input type="text" class="bru-input" placeholder="Jane">
+              <div class="drp-form-stack">
+                <div class="drp-form-row">
+                  <div class="drp-field">
+                    <label class="drp-field__label">First Name</label>
+                    <input type="text" class="drp-input" placeholder="Jane">
                   </div>
-                  <div class="bru-field">
-                    <label class="bru-field__label">Last Name</label>
-                    <input type="text" class="bru-input" placeholder="Doe">
+                  <div class="drp-field">
+                    <label class="drp-field__label">Last Name</label>
+                    <input type="text" class="drp-input" placeholder="Doe">
                   </div>
                 </div>
-                <div class="bru-field">
-                  <label class="bru-field__label">Email</label>
-                  <input type="email" class="bru-input" placeholder="jane@example.com">
+                <div class="drp-field">
+                  <label class="drp-field__label">Email</label>
+                  <input type="email" class="drp-input" placeholder="jane@example.com">
                 </div>
-                <div class="bru-form-actions">
-                  <button class="bru-btn bru-btn--primary">Submit</button>
-                  <button class="bru-btn bru-btn--ghost">Cancel</button>
+                <div class="drp-form-actions">
+                  <button class="drp-btn drp-btn--primary">Submit</button>
+                  <button class="drp-btn drp-btn--ghost">Cancel</button>
                 </div>
               </div>
             </div>
-<pre class="docs-code">&lt;div class="bru-form-stack"&gt;
-  &lt;div class="bru-form-row"&gt;
-    &lt;div class="bru-field"&gt;...&lt;/div&gt;
-    &lt;div class="bru-field"&gt;...&lt;/div&gt;
+<pre class="docs-code">&lt;div class="drp-form-stack"&gt;
+  &lt;div class="drp-form-row"&gt;
+    &lt;div class="drp-field"&gt;...&lt;/div&gt;
+    &lt;div class="drp-field"&gt;...&lt;/div&gt;
   &lt;/div&gt;
-  &lt;div class="bru-field"&gt;...&lt;/div&gt;
-  &lt;div class="bru-form-actions"&gt;
-    &lt;button class="bru-btn bru-btn--primary"&gt;Submit&lt;/button&gt;
-    &lt;button class="bru-btn bru-btn--ghost"&gt;Cancel&lt;/button&gt;
+  &lt;div class="drp-field"&gt;...&lt;/div&gt;
+  &lt;div class="drp-form-actions"&gt;
+    &lt;button class="drp-btn drp-btn--primary"&gt;Submit&lt;/button&gt;
+    &lt;button class="drp-btn drp-btn--ghost"&gt;Cancel&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>
           </div>

@@ -1,6 +1,6 @@
 /* ============================================================
-   BRUDDLE DESIGN SYSTEM — CHART HELPER
-   Pre-configured Chart.js theme matching Bruddle's brutalist
+   DOCTORPROJECT DESIGN SYSTEM — CHART HELPER
+   Pre-configured Chart.js theme matching DoctorProject's brutalist
    design language. Drop-in replacement for raw Chart() calls.
 
    Requires: Chart.js 4.x  (https://www.chartjs.org/)
@@ -17,7 +17,7 @@ const BruCharts = (() => {
 
   /* ── Palette ── */
   const PALETTE = [
-    '#AE7AFF',  // Bruddle purple
+    '#AE7AFF',  // DoctorProject purple
     '#98E9AB',  // Mint / success
     '#E99898',  // Pink / danger
     '#FAE8A4',  // Yellow / warning
@@ -63,7 +63,7 @@ const BruCharts = (() => {
       },
       plugins: {
         legend: {
-          display: false, // Use .bru-chart-legend instead
+          display: false, // Use .drp-chart-legend instead
         },
         tooltip: {
           backgroundColor: c.tooltip.bg,
@@ -288,8 +288,8 @@ const BruCharts = (() => {
   function buildLegend(items, options = {}) {
     const round = options.round || false;
     return items.map(item =>
-      `<div class="bru-chart-legend__item">` +
-        `<span class="bru-chart-legend__dot${round ? ' bru-chart-legend__dot--round' : ''}" style="background:${item.color}"></span>` +
+      `<div class="drp-chart-legend__item">` +
+        `<span class="drp-chart-legend__dot${round ? ' drp-chart-legend__dot--round' : ''}" style="background:${item.color}"></span>` +
         `${item.label}` +
       `</div>`
     ).join('');

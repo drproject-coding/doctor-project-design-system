@@ -8,9 +8,9 @@ export interface TooltipProps {
 
 export function Tooltip({ text, children, className = "" }: TooltipProps) {
   return (
-    <span className={`bru-tooltip ${className}`}>
+    <span className={`drp-tooltip ${className}`}>
       {children}
-      <span className="bru-tooltip-text">{text}</span>
+      <span className="drp-tooltip-text">{text}</span>
     </span>
   );
 }

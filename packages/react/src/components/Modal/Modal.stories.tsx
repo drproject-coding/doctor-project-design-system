@@ -16,7 +16,7 @@ export const Default: Story = {
     return (
       <>
         <button
-          className="bru-btn bru-btn--primary"
+          className="drp-btn drp-btn--primary"
           onClick={() => setOpen(true)}
         >
           Open Modal
@@ -28,13 +28,13 @@ export const Default: Story = {
           footer={
             <>
               <button
-                className="bru-btn bru-btn--outline"
+                className="drp-btn drp-btn--outline"
                 onClick={() => setOpen(false)}
               >
                 Cancel
               </button>
               <button
-                className="bru-btn bru-btn--primary"
+                className="drp-btn drp-btn--primary"
                 onClick={() => setOpen(false)}
               >
                 Confirm
@@ -58,7 +58,7 @@ export const LongContent: Story = {
     return (
       <>
         <button
-          className="bru-btn bru-btn--outline"
+          className="drp-btn drp-btn--outline"
           onClick={() => setOpen(true)}
         >
           Open Long Modal

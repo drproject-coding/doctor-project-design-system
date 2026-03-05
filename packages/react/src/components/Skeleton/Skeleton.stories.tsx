@@ -19,7 +19,7 @@ export const Avatar: Story = {
 
 export const CardSkeleton: Story = {
   render: () => (
-    <div className="bru-card" style={{ padding: "24px", maxWidth: "400px" }}>
+    <div className="drp-card" style={{ padding: "24px", maxWidth: "400px" }}>
       <div
         style={{
           display: "flex",

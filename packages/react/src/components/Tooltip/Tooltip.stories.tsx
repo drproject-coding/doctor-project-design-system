@@ -24,7 +24,7 @@ export const OnButton: Story = {
   render: () => (
     <div style={{ padding: "40px" }}>
       <Tooltip text="Click to save your changes">
-        <button className="bru-btn bru-btn--primary">Save</button>
+        <button className="drp-btn drp-btn--primary">Save</button>
       </Tooltip>
     </div>
   ),

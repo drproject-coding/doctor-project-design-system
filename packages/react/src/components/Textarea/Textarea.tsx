@@ -14,9 +14,9 @@ export function Textarea({
   ...props
 }: TextareaProps) {
   const classes = [
-    "bru-input",
-    error && "bru-input--error",
-    success && "bru-input--success",
+    "drp-input",
+    error && "drp-input--error",
+    success && "drp-input--success",
     className,
   ]
     .filter(Boolean)
@@ -24,8 +24,8 @@ export function Textarea({
 
   if (label) {
     return (
-      <div className="bru-field">
-        <label className="bru-field__label">{label}</label>
+      <div className="drp-field">
+        <label className="drp-field__label">{label}</label>
         <textarea className={classes} {...props} />
       </div>
     );

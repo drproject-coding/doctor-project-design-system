@@ -3,38 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bruddle Design System — Complete Showcase</title>
+  <title>DoctorProject Design System — Complete Showcase</title>
   <link rel="stylesheet" href="../css/index.css">
   <style>
     /* ── Page-Level Styles ── */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: var(--bru-font-primary);
-      background: var(--bru-cream);
-      color: var(--bru-text-primary);
+      font-family: var(--drp-font-primary);
+      background: var(--drp-cream);
+      color: var(--drp-text-primary);
       line-height: 1.5;
     }
 
     /* Page Header */
     .page-header {
-      background: var(--bru-black);
-      color: var(--bru-white);
-      padding: var(--bru-space-12) var(--bru-space-8);
+      background: var(--drp-black);
+      color: var(--drp-white);
+      padding: var(--drp-space-12) var(--drp-space-8);
       text-align: center;
-      border-bottom: 4px solid var(--bru-purple);
+      border-bottom: 4px solid var(--drp-purple);
     }
     .page-title {
-      font-family: var(--bru-font-primary);
+      font-family: var(--drp-font-primary);
       font-size: 3.5rem;
-      font-weight: var(--bru-weight-heavy);
+      font-weight: var(--drp-weight-heavy);
       text-transform: uppercase;
-      letter-spacing: var(--bru-tracking-tight);
-      margin-bottom: var(--bru-space-3);
+      letter-spacing: var(--drp-tracking-tight);
+      margin-bottom: var(--drp-space-3);
     }
     .page-subtitle {
-      font-family: var(--bru-font-mono);
-      font-size: var(--bru-text-sm);
+      font-family: var(--drp-font-mono);
+      font-size: var(--drp-text-sm);
       opacity: 0.7;
     }
 
@@ -44,122 +44,122 @@
       top: 20px;
       right: 20px;
       z-index: 9999;
-      background: var(--bru-black);
-      color: var(--bru-white);
-      border: 2px solid var(--bru-white);
-      padding: var(--bru-space-2) var(--bru-space-4);
-      font-family: var(--bru-font-mono);
-      font-size: var(--bru-text-sm);
-      font-weight: var(--bru-weight-semibold);
+      background: var(--drp-black);
+      color: var(--drp-white);
+      border: 2px solid var(--drp-white);
+      padding: var(--drp-space-2) var(--drp-space-4);
+      font-family: var(--drp-font-mono);
+      font-size: var(--drp-text-sm);
+      font-weight: var(--drp-weight-semibold);
       cursor: pointer;
       text-transform: uppercase;
-      box-shadow: var(--bru-shadow-sm);
-      transition: all var(--bru-duration-fast) var(--bru-ease);
+      box-shadow: var(--drp-shadow-sm);
+      transition: all var(--drp-duration-fast) var(--drp-ease);
     }
     .dark-mode-btn:hover {
-      background: var(--bru-purple);
-      border-color: var(--bru-purple);
+      background: var(--drp-purple);
+      border-color: var(--drp-purple);
     }
 
     /* TOC Navigation */
     .toc {
-      background: var(--bru-white);
-      border-bottom: var(--bru-border);
-      padding: var(--bru-space-4) var(--bru-space-6);
+      background: var(--drp-white);
+      border-bottom: var(--drp-border);
+      padding: var(--drp-space-4) var(--drp-space-6);
       position: sticky;
       top: 0;
-      z-index: var(--bru-z-sticky);
+      z-index: var(--drp-z-sticky);
     }
     .toc-title {
-      font-family: var(--bru-font-mono);
-      font-size: var(--bru-text-xs);
+      font-family: var(--drp-font-mono);
+      font-size: var(--drp-text-xs);
       text-transform: uppercase;
-      letter-spacing: var(--bru-tracking-widest);
-      color: var(--bru-text-muted);
-      margin-bottom: var(--bru-space-2);
+      letter-spacing: var(--drp-tracking-widest);
+      color: var(--drp-text-muted);
+      margin-bottom: var(--drp-space-2);
     }
     .toc-list {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--bru-space-1);
+      gap: var(--drp-space-1);
       list-style: none;
     }
     .toc-link {
-      font-family: var(--bru-font-mono);
-      font-size: var(--bru-text-xs);
-      font-weight: var(--bru-weight-semibold);
+      font-family: var(--drp-font-mono);
+      font-size: var(--drp-text-xs);
+      font-weight: var(--drp-weight-semibold);
       text-decoration: none;
-      color: var(--bru-text-primary);
-      padding: var(--bru-space-1) var(--bru-space-3);
+      color: var(--drp-text-primary);
+      padding: var(--drp-space-1) var(--drp-space-3);
       border: 2px solid transparent;
       text-transform: uppercase;
-      transition: all var(--bru-duration-fast) var(--bru-ease);
+      transition: all var(--drp-duration-fast) var(--drp-ease);
     }
     .toc-link:hover {
-      background: var(--bru-orange);
+      background: var(--drp-orange);
       color: #FFFFFF;
-      border-color: var(--bru-black);
+      border-color: var(--drp-black);
     }
 
     /* Section Layout */
     .section {
-      padding: var(--bru-space-16) var(--bru-space-8);
-      border-bottom: var(--bru-border-chunk);
+      padding: var(--drp-space-16) var(--drp-space-8);
+      border-bottom: var(--drp-border-chunk);
     }
     .section-title {
-      font-family: var(--bru-font-primary);
+      font-family: var(--drp-font-primary);
       font-size: 2.5rem;
-      font-weight: var(--bru-weight-heavy);
+      font-weight: var(--drp-weight-heavy);
       text-transform: uppercase;
-      margin-bottom: var(--bru-space-2);
+      margin-bottom: var(--drp-space-2);
     }
     .section-subtitle {
-      font-family: var(--bru-font-mono);
-      font-size: var(--bru-text-sm);
-      color: var(--bru-text-muted);
+      font-family: var(--drp-font-mono);
+      font-size: var(--drp-text-sm);
+      color: var(--drp-text-muted);
       text-transform: uppercase;
-      letter-spacing: var(--bru-tracking-wide);
-      margin-bottom: var(--bru-space-8);
+      letter-spacing: var(--drp-tracking-wide);
+      margin-bottom: var(--drp-space-8);
     }
     .subsection {
-      margin-bottom: var(--bru-space-10);
+      margin-bottom: var(--drp-space-10);
     }
     .subsection-title {
-      font-family: var(--bru-font-primary);
+      font-family: var(--drp-font-primary);
       font-size: 1.25rem;
-      font-weight: var(--bru-weight-bold);
-      margin-bottom: var(--bru-space-4);
-      padding-bottom: var(--bru-space-2);
-      border-bottom: var(--bru-border-thin);
+      font-weight: var(--drp-weight-bold);
+      margin-bottom: var(--drp-space-4);
+      padding-bottom: var(--drp-space-2);
+      border-bottom: var(--drp-border-thin);
     }
 
     /* Showcase helpers */
     .showcase-row {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--bru-space-4);
+      gap: var(--drp-space-4);
       align-items: flex-start;
-      margin-bottom: var(--bru-space-6);
+      margin-bottom: var(--drp-space-6);
     }
     .showcase-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: var(--bru-space-4);
-      margin-bottom: var(--bru-space-6);
+      gap: var(--drp-space-4);
+      margin-bottom: var(--drp-space-6);
     }
     .showcase-grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--bru-space-6);
-      margin-bottom: var(--bru-space-6);
+      gap: var(--drp-space-6);
+      margin-bottom: var(--drp-space-6);
     }
     .showcase-label {
-      font-family: var(--bru-font-mono);
-      font-size: var(--bru-text-xs);
-      color: var(--bru-text-muted);
+      font-family: var(--drp-font-mono);
+      font-size: var(--drp-text-xs);
+      color: var(--drp-text-muted);
       text-transform: uppercase;
-      letter-spacing: var(--bru-tracking-widest);
-      margin-bottom: var(--bru-space-3);
+      letter-spacing: var(--drp-tracking-widest);
+      margin-bottom: var(--drp-space-3);
       display: block;
     }
 
@@ -167,12 +167,12 @@
     .color-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: var(--bru-space-4);
+      gap: var(--drp-space-4);
     }
     .color-swatch {
-      border: 2px solid var(--bru-black);
+      border: 2px solid var(--drp-black);
       overflow: hidden;
-      transition: transform var(--bru-duration-fast) var(--bru-ease);
+      transition: transform var(--drp-duration-fast) var(--drp-ease);
     }
     .color-swatch:hover { transform: translate(-2px, -2px); }
     .color-preview {
@@ -182,48 +182,48 @@
       justify-content: center;
     }
     .color-info {
-      padding: var(--bru-space-2) var(--bru-space-3);
-      background: var(--bru-white);
-      border-top: 2px solid var(--bru-black);
+      padding: var(--drp-space-2) var(--drp-space-3);
+      background: var(--drp-white);
+      border-top: 2px solid var(--drp-black);
     }
     .color-name {
-      font-family: var(--bru-font-mono);
-      font-size: var(--bru-text-xs);
-      font-weight: var(--bru-weight-semibold);
+      font-family: var(--drp-font-mono);
+      font-size: var(--drp-text-xs);
+      font-weight: var(--drp-weight-semibold);
     }
     .color-value {
-      font-family: var(--bru-font-mono);
+      font-family: var(--drp-font-mono);
       font-size: 10px;
-      color: var(--bru-text-muted);
+      color: var(--drp-text-muted);
     }
 
     /* Font showcase */
     .font-card {
-      padding: var(--bru-space-6);
-      background: var(--bru-white);
-      border: 2px solid var(--bru-black);
+      padding: var(--drp-space-6);
+      background: var(--drp-white);
+      border: 2px solid var(--drp-black);
     }
     .font-name {
-      font-family: var(--bru-font-mono);
-      font-size: var(--bru-text-xs);
+      font-family: var(--drp-font-mono);
+      font-size: var(--drp-text-xs);
       text-transform: uppercase;
-      letter-spacing: var(--bru-tracking-widest);
-      color: var(--bru-text-muted);
-      margin-bottom: var(--bru-space-2);
+      letter-spacing: var(--drp-tracking-widest);
+      color: var(--drp-text-muted);
+      margin-bottom: var(--drp-space-2);
     }
 
     /* Type scale */
     .type-sample {
       display: flex;
       align-items: baseline;
-      gap: var(--bru-space-4);
-      padding: var(--bru-space-3) 0;
-      border-bottom: 1px solid var(--bru-grey-light);
+      gap: var(--drp-space-4);
+      padding: var(--drp-space-3) 0;
+      border-bottom: 1px solid var(--drp-grey-light);
     }
     .type-label {
-      font-family: var(--bru-font-mono);
-      font-size: var(--bru-text-xs);
-      color: var(--bru-text-muted);
+      font-family: var(--drp-font-mono);
+      font-size: var(--drp-text-xs);
+      color: var(--drp-text-muted);
       min-width: 120px;
       flex-shrink: 0;
     }
@@ -232,60 +232,60 @@
     .input-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: var(--bru-space-6);
+      gap: var(--drp-space-6);
     }
     .input-group {
       display: flex;
       flex-direction: column;
-      gap: var(--bru-space-2);
+      gap: var(--drp-space-2);
     }
     .input-label {
-      font-family: var(--bru-font-mono);
-      font-size: var(--bru-text-xs);
-      font-weight: var(--bru-weight-semibold);
+      font-family: var(--drp-font-mono);
+      font-size: var(--drp-text-xs);
+      font-weight: var(--drp-weight-semibold);
       text-transform: uppercase;
-      letter-spacing: var(--bru-tracking-wide);
+      letter-spacing: var(--drp-tracking-wide);
     }
 
     /* Card grid */
     .card-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--bru-space-6);
+      gap: var(--drp-space-6);
     }
 
     /* Feedback grid */
     .feedback-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: var(--bru-space-4);
+      gap: var(--drp-space-4);
     }
 
     /* Animation demos */
     .animation-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-      gap: var(--bru-space-4);
+      gap: var(--drp-space-4);
     }
     .animation-demo {
-      background: var(--bru-white);
-      border: 2px solid var(--bru-black);
-      padding: var(--bru-space-6);
+      background: var(--drp-white);
+      border: 2px solid var(--drp-black);
+      padding: var(--drp-space-6);
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: var(--bru-space-3);
+      gap: var(--drp-space-3);
     }
     .animation-box {
       width: 60px;
       height: 60px;
-      background: var(--bru-purple);
-      border: 2px solid var(--bru-black);
+      background: var(--drp-purple);
+      border: 2px solid var(--drp-black);
     }
     .animation-label {
-      font-family: var(--bru-font-mono);
-      font-size: var(--bru-text-xs);
-      font-weight: var(--bru-weight-semibold);
+      font-family: var(--drp-font-mono);
+      font-size: var(--drp-text-xs);
+      font-weight: var(--drp-weight-semibold);
       text-transform: uppercase;
     }
 
@@ -293,23 +293,23 @@
     .spacing-demo {
       display: flex;
       flex-wrap: wrap;
-      gap: var(--bru-space-4);
+      gap: var(--drp-space-4);
       align-items: flex-end;
     }
     .spacing-item {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: var(--bru-space-2);
+      gap: var(--drp-space-2);
     }
     .spacing-box {
-      background: var(--bru-purple);
-      border: 2px solid var(--bru-black);
+      background: var(--drp-purple);
+      border: 2px solid var(--drp-black);
     }
     .spacing-label {
-      font-family: var(--bru-font-mono);
+      font-family: var(--drp-font-mono);
       font-size: 10px;
-      color: var(--bru-text-muted);
+      color: var(--drp-text-muted);
     }
 
     /* Grid demo */
@@ -317,43 +317,43 @@
       display: grid;
       grid-template-columns: repeat(12, 1fr);
       gap: 2px;
-      margin-bottom: var(--bru-space-4);
+      margin-bottom: var(--drp-space-4);
     }
     .grid-col-demo {
-      padding: var(--bru-space-3);
-      background: var(--bru-grey-light);
-      border: 1px solid var(--bru-black);
+      padding: var(--drp-space-3);
+      background: var(--drp-grey-light);
+      border: 1px solid var(--drp-black);
       text-align: center;
-      font-family: var(--bru-font-mono);
-      font-size: var(--bru-text-xs);
+      font-family: var(--drp-font-mono);
+      font-size: var(--drp-text-xs);
     }
 
     /* Nav showcase */
     .nav-showcase {
-      background: var(--bru-white);
-      border: 2px solid var(--bru-black);
-      padding: var(--bru-space-4);
-      margin-bottom: var(--bru-space-6);
+      background: var(--drp-white);
+      border: 2px solid var(--drp-black);
+      padding: var(--drp-space-4);
+      margin-bottom: var(--drp-space-6);
     }
 
     /* Footer */
     .page-footer {
-      background: var(--bru-black);
-      color: var(--bru-white);
-      padding: var(--bru-space-8);
+      background: var(--drp-black);
+      color: var(--drp-white);
+      padding: var(--drp-space-8);
       text-align: center;
-      border-top: 4px solid var(--bru-purple);
+      border-top: 4px solid var(--drp-purple);
     }
     .page-footer h3 {
-      font-family: var(--bru-font-primary);
+      font-family: var(--drp-font-primary);
       font-size: 1.5rem;
-      font-weight: var(--bru-weight-heavy);
+      font-weight: var(--drp-weight-heavy);
       text-transform: uppercase;
-      margin-bottom: var(--bru-space-2);
+      margin-bottom: var(--drp-space-2);
     }
     .page-footer p {
-      font-family: var(--bru-font-mono);
-      font-size: var(--bru-text-xs);
+      font-family: var(--drp-font-mono);
+      font-size: var(--drp-text-xs);
       opacity: 0.6;
     }
 
@@ -362,7 +362,7 @@
       .card-grid, .showcase-grid-3 { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
-      .section { padding: var(--bru-space-8) var(--bru-space-4); }
+      .section { padding: var(--drp-space-8) var(--drp-space-4); }
       .section-title { font-size: 2rem; }
       .page-title { font-size: 2rem; }
       .input-grid, .feedback-grid, .card-grid, .showcase-grid-3 { grid-template-columns: 1fr; }
@@ -380,7 +380,7 @@
 
 <!-- Page Header -->
 <header class="page-header">
-  <h1 class="page-title">Bruddle Design System</h1>
+  <h1 class="page-title">DoctorProject Design System</h1>
   <p class="page-subtitle">Brutalist Edition &mdash; Doctor Project Brand Identity</p>
 </header>
 
@@ -542,49 +542,49 @@
     <div class="showcase-grid" style="grid-template-columns: repeat(4, 1fr);">
       <div class="font-card">
         <div class="font-name">Display</div>
-        <div style="font-family:var(--bru-font-primary); font-weight:800; font-size:2rem; text-transform:uppercase;">Visby Heavy</div>
+        <div style="font-family:var(--drp-font-primary); font-weight:800; font-size:2rem; text-transform:uppercase;">Visby Heavy</div>
       </div>
       <div class="font-card">
         <div class="font-name">Heading</div>
-        <div style="font-family:var(--bru-font-primary); font-weight:700; font-size:2rem;">Visby Bold</div>
+        <div style="font-family:var(--drp-font-primary); font-weight:700; font-size:2rem;">Visby Bold</div>
       </div>
       <div class="font-card">
         <div class="font-name">Body</div>
-        <div style="font-family:var(--bru-font-primary); font-weight:500; font-size:1.25rem;">Visby Medium</div>
+        <div style="font-family:var(--drp-font-primary); font-weight:500; font-size:1.25rem;">Visby Medium</div>
       </div>
       <div class="font-card">
         <div class="font-name">Mono</div>
-        <div style="font-family:var(--bru-font-mono); font-size:1.25rem;">Space Mono</div>
+        <div style="font-family:var(--drp-font-mono); font-size:1.25rem;">Space Mono</div>
       </div>
     </div>
   </div>
 
   <div class="subsection">
     <h3 class="subsection-title">Type Scale</h3>
-    <div class="type-sample"><span class="type-label">Display XL</span><span class="bru-display-xl">BRUDDLE</span></div>
-    <div class="type-sample"><span class="type-label">Display LG</span><span class="bru-display-lg">BRUDDLE</span></div>
-    <div class="type-sample"><span class="type-label">Display MD</span><span class="bru-display-md">BRUDDLE</span></div>
-    <div class="type-sample"><span class="type-label">H1</span><span class="bru-h1">Heading One</span></div>
-    <div class="type-sample"><span class="type-label">H2</span><span class="bru-h2">Heading Two</span></div>
-    <div class="type-sample"><span class="type-label">H3</span><span class="bru-h3">Heading Three</span></div>
-    <div class="type-sample"><span class="type-label">H4</span><span class="bru-h4">Heading Four</span></div>
-    <div class="type-sample"><span class="type-label">H5</span><span class="bru-h5">Heading Five</span></div>
-    <div class="type-sample"><span class="type-label">H6</span><span class="bru-h6">Heading Six</span></div>
-    <div class="type-sample"><span class="type-label">Body LG</span><span class="bru-body-lg">The quick brown fox jumps over the lazy dog.</span></div>
-    <div class="type-sample"><span class="type-label">Body MD</span><span class="bru-body-md">The quick brown fox jumps over the lazy dog.</span></div>
-    <div class="type-sample"><span class="type-label">Body SM</span><span class="bru-body-sm">The quick brown fox jumps over the lazy dog.</span></div>
-    <div class="type-sample"><span class="type-label">Caption</span><span class="bru-caption">Caption text &mdash; Space Mono uppercase</span></div>
+    <div class="type-sample"><span class="type-label">Display XL</span><span class="drp-display-xl">DOCTORPROJECT</span></div>
+    <div class="type-sample"><span class="type-label">Display LG</span><span class="drp-display-lg">DOCTORPROJECT</span></div>
+    <div class="type-sample"><span class="type-label">Display MD</span><span class="drp-display-md">DOCTORPROJECT</span></div>
+    <div class="type-sample"><span class="type-label">H1</span><span class="drp-h1">Heading One</span></div>
+    <div class="type-sample"><span class="type-label">H2</span><span class="drp-h2">Heading Two</span></div>
+    <div class="type-sample"><span class="type-label">H3</span><span class="drp-h3">Heading Three</span></div>
+    <div class="type-sample"><span class="type-label">H4</span><span class="drp-h4">Heading Four</span></div>
+    <div class="type-sample"><span class="type-label">H5</span><span class="drp-h5">Heading Five</span></div>
+    <div class="type-sample"><span class="type-label">H6</span><span class="drp-h6">Heading Six</span></div>
+    <div class="type-sample"><span class="type-label">Body LG</span><span class="drp-body-lg">The quick brown fox jumps over the lazy dog.</span></div>
+    <div class="type-sample"><span class="type-label">Body MD</span><span class="drp-body-md">The quick brown fox jumps over the lazy dog.</span></div>
+    <div class="type-sample"><span class="type-label">Body SM</span><span class="drp-body-sm">The quick brown fox jumps over the lazy dog.</span></div>
+    <div class="type-sample"><span class="type-label">Caption</span><span class="drp-caption">Caption text &mdash; Space Mono uppercase</span></div>
   </div>
 
   <div class="subsection">
     <h3 class="subsection-title">Text Colors &amp; Weights</h3>
     <div class="showcase-row">
-      <span class="bru-text--purple" style="font-size:1rem;">Purple text</span>
-      <span class="bru-text--mint" style="font-size:1rem;">Mint text</span>
-      <span class="bru-text--pink" style="font-size:1rem;">Pink text</span>
-      <span class="bru-text--muted" style="font-size:1rem;">Muted text</span>
-      <span class="bru-text--bold" style="font-size:1rem;">Bold weight</span>
-      <span class="bru-text--semibold" style="font-size:1rem;">Semibold weight</span>
+      <span class="drp-text--purple" style="font-size:1rem;">Purple text</span>
+      <span class="drp-text--mint" style="font-size:1rem;">Mint text</span>
+      <span class="drp-text--pink" style="font-size:1rem;">Pink text</span>
+      <span class="drp-text--muted" style="font-size:1rem;">Muted text</span>
+      <span class="drp-text--bold" style="font-size:1rem;">Bold weight</span>
+      <span class="drp-text--semibold" style="font-size:1rem;">Semibold weight</span>
     </div>
   </div>
 </section>
@@ -600,50 +600,50 @@
   <div class="subsection">
     <h3 class="subsection-title">Variants</h3>
     <div class="showcase-row">
-      <button class="bru-btn bru-btn--primary">Primary</button>
-      <button class="bru-btn bru-btn--secondary">Secondary</button>
-      <button class="bru-btn bru-btn--outline">Outline</button>
-      <button class="bru-btn bru-btn--ghost">Ghost</button>
-      <button class="bru-btn bru-btn--ghost-bordered">Ghost Bordered</button>
-      <button class="bru-btn bru-btn--danger">Danger</button>
-      <button class="bru-btn bru-btn--dark">Dark</button>
+      <button class="drp-btn drp-btn--primary">Primary</button>
+      <button class="drp-btn drp-btn--secondary">Secondary</button>
+      <button class="drp-btn drp-btn--outline">Outline</button>
+      <button class="drp-btn drp-btn--ghost">Ghost</button>
+      <button class="drp-btn drp-btn--ghost-bordered">Ghost Bordered</button>
+      <button class="drp-btn drp-btn--danger">Danger</button>
+      <button class="drp-btn drp-btn--dark">Dark</button>
     </div>
   </div>
 
   <div class="subsection">
     <h3 class="subsection-title">Sizes</h3>
     <div class="showcase-row" style="align-items: center;">
-      <button class="bru-btn bru-btn--primary bru-btn--sm">Small</button>
-      <button class="bru-btn bru-btn--primary">Default</button>
-      <button class="bru-btn bru-btn--primary bru-btn--lg">Large</button>
+      <button class="drp-btn drp-btn--primary drp-btn--sm">Small</button>
+      <button class="drp-btn drp-btn--primary">Default</button>
+      <button class="drp-btn drp-btn--primary drp-btn--lg">Large</button>
     </div>
   </div>
 
   <div class="subsection">
     <h3 class="subsection-title">Icon Buttons</h3>
     <div class="showcase-row" style="align-items: center;">
-      <button class="bru-btn bru-btn--primary bru-btn--icon">+</button>
-      <button class="bru-btn bru-btn--secondary bru-btn--icon">&#9998;</button>
-      <button class="bru-btn bru-btn--outline bru-btn--icon">&#215;</button>
-      <button class="bru-btn bru-btn--danger bru-btn--icon">&#128465;</button>
+      <button class="drp-btn drp-btn--primary drp-btn--icon">+</button>
+      <button class="drp-btn drp-btn--secondary drp-btn--icon">&#9998;</button>
+      <button class="drp-btn drp-btn--outline drp-btn--icon">&#215;</button>
+      <button class="drp-btn drp-btn--danger drp-btn--icon">&#128465;</button>
     </div>
   </div>
 
   <div class="subsection">
     <h3 class="subsection-title">Disabled State</h3>
     <div class="showcase-row">
-      <button class="bru-btn bru-btn--primary" disabled>Disabled Primary</button>
-      <button class="bru-btn bru-btn--secondary" disabled>Disabled Secondary</button>
-      <button class="bru-btn bru-btn--outline" disabled>Disabled Outline</button>
+      <button class="drp-btn drp-btn--primary" disabled>Disabled Primary</button>
+      <button class="drp-btn drp-btn--secondary" disabled>Disabled Secondary</button>
+      <button class="drp-btn drp-btn--outline" disabled>Disabled Outline</button>
     </div>
   </div>
 
   <div class="subsection">
     <h3 class="subsection-title">Button Group</h3>
-    <div class="bru-btn-group">
-      <button class="bru-btn bru-btn--outline">Left</button>
-      <button class="bru-btn bru-btn--outline">Center</button>
-      <button class="bru-btn bru-btn--outline">Right</button>
+    <div class="drp-btn-group">
+      <button class="drp-btn drp-btn--outline">Left</button>
+      <button class="drp-btn drp-btn--outline">Center</button>
+      <button class="drp-btn drp-btn--outline">Right</button>
     </div>
   </div>
 </section>
@@ -661,23 +661,23 @@
     <div class="input-grid">
       <div class="input-group">
         <label class="input-label">Default</label>
-        <input type="text" class="bru-input" placeholder="Enter your name...">
+        <input type="text" class="drp-input" placeholder="Enter your name...">
       </div>
       <div class="input-group">
         <label class="input-label">Focused</label>
-        <input type="text" class="bru-input" placeholder="Click to focus" value="Focused input">
+        <input type="text" class="drp-input" placeholder="Click to focus" value="Focused input">
       </div>
       <div class="input-group">
         <label class="input-label">Error</label>
-        <input type="text" class="bru-input bru-input--error" placeholder="Invalid input" value="Bad value">
+        <input type="text" class="drp-input drp-input--error" placeholder="Invalid input" value="Bad value">
       </div>
       <div class="input-group">
         <label class="input-label">Success</label>
-        <input type="text" class="bru-input bru-input--success" placeholder="Valid input" value="Good value">
+        <input type="text" class="drp-input drp-input--success" placeholder="Valid input" value="Good value">
       </div>
       <div class="input-group">
         <label class="input-label">Disabled</label>
-        <input type="text" class="bru-input" placeholder="Disabled" disabled>
+        <input type="text" class="drp-input" placeholder="Disabled" disabled>
       </div>
     </div>
   </div>
@@ -685,14 +685,14 @@
   <div class="subsection">
     <h3 class="subsection-title">Textarea</h3>
     <div style="max-width: 600px;">
-      <textarea class="bru-input" rows="4" placeholder="Write your message here..."></textarea>
+      <textarea class="drp-input" rows="4" placeholder="Write your message here..."></textarea>
     </div>
   </div>
 
   <div class="subsection">
     <h3 class="subsection-title">Select Dropdown</h3>
     <div style="max-width: 300px;">
-      <select class="bru-select">
+      <select class="drp-select">
         <option>Choose an option...</option>
         <option>Option Alpha</option>
         <option>Option Beta</option>
@@ -703,16 +703,16 @@
 
   <div class="subsection">
     <h3 class="subsection-title">Checkboxes</h3>
-    <div class="showcase-row" style="gap: var(--bru-space-6);">
-      <label class="bru-checkbox">
+    <div class="showcase-row" style="gap: var(--drp-space-6);">
+      <label class="drp-checkbox">
         <input type="checkbox" checked>
         <span>Checked</span>
       </label>
-      <label class="bru-checkbox">
+      <label class="drp-checkbox">
         <input type="checkbox">
         <span>Unchecked</span>
       </label>
-      <label class="bru-checkbox bru-checkbox--dark">
+      <label class="drp-checkbox drp-checkbox--dark">
         <input type="checkbox" checked>
         <span>Dark variant</span>
       </label>
@@ -721,20 +721,20 @@
 
   <div class="subsection">
     <h3 class="subsection-title">Radio Buttons</h3>
-    <div class="showcase-row" style="gap: var(--bru-space-6);">
-      <label class="bru-radio">
+    <div class="showcase-row" style="gap: var(--drp-space-6);">
+      <label class="drp-radio">
         <input type="radio" name="demo-radio" checked>
         <span>Option A</span>
       </label>
-      <label class="bru-radio">
+      <label class="drp-radio">
         <input type="radio" name="demo-radio">
         <span>Option B</span>
       </label>
-      <label class="bru-radio bru-radio--purple">
+      <label class="drp-radio drp-radio--purple">
         <input type="radio" name="demo-radio2" checked>
         <span>Purple</span>
       </label>
-      <label class="bru-radio bru-radio--pink">
+      <label class="drp-radio drp-radio--pink">
         <input type="radio" name="demo-radio2">
         <span>Pink</span>
       </label>
@@ -743,15 +743,15 @@
 
   <div class="subsection">
     <h3 class="subsection-title">Toggle Switches</h3>
-    <div class="showcase-row" style="gap: var(--bru-space-6); align-items: center;">
-      <label class="bru-switch">
+    <div class="showcase-row" style="gap: var(--drp-space-6); align-items: center;">
+      <label class="drp-switch">
         <input type="checkbox" checked>
-        <span class="bru-switch__track"><span class="bru-switch__knob"></span></span>
+        <span class="drp-switch__track"><span class="drp-switch__knob"></span></span>
         <span>Enabled</span>
       </label>
-      <label class="bru-switch">
+      <label class="drp-switch">
         <input type="checkbox">
-        <span class="bru-switch__track"><span class="bru-switch__knob"></span></span>
+        <span class="drp-switch__track"><span class="drp-switch__knob"></span></span>
         <span>Disabled</span>
       </label>
     </div>
@@ -760,10 +760,10 @@
   <div class="subsection">
     <h3 class="subsection-title">Counter Input</h3>
     <div class="showcase-row" style="align-items: center;">
-      <div class="bru-counter">
-        <button class="bru-counter__btn" onclick="this.nextElementSibling.textContent = Math.max(0, parseInt(this.nextElementSibling.textContent) - 1)">−</button>
-        <span class="bru-counter__value">5</span>
-        <button class="bru-counter__btn" onclick="this.previousElementSibling.textContent = parseInt(this.previousElementSibling.textContent) + 1">+</button>
+      <div class="drp-counter">
+        <button class="drp-counter__btn" onclick="this.nextElementSibling.textContent = Math.max(0, parseInt(this.nextElementSibling.textContent) - 1)">−</button>
+        <span class="drp-counter__value">5</span>
+        <button class="drp-counter__btn" onclick="this.previousElementSibling.textContent = parseInt(this.previousElementSibling.textContent) + 1">+</button>
       </div>
     </div>
   </div>
@@ -780,13 +780,13 @@
   <div class="subsection">
     <h3 class="subsection-title">Navbar</h3>
     <div class="nav-showcase">
-      <nav class="bru-navbar" style="position: relative;">
-        <a href="#" class="bru-nav-brand">BRUDDLE</a>
-        <ul class="bru-nav-links">
-          <li><a href="#" class="bru-nav-link active">Dashboard</a></li>
-          <li><a href="#" class="bru-nav-link">Projects</a></li>
-          <li><a href="#" class="bru-nav-link">Reports</a></li>
-          <li><a href="#" class="bru-nav-link">Settings</a></li>
+      <nav class="drp-navbar" style="position: relative;">
+        <a href="#" class="drp-nav-brand">DOCTORPROJECT</a>
+        <ul class="drp-nav-links">
+          <li><a href="#" class="drp-nav-link active">Dashboard</a></li>
+          <li><a href="#" class="drp-nav-link">Projects</a></li>
+          <li><a href="#" class="drp-nav-link">Reports</a></li>
+          <li><a href="#" class="drp-nav-link">Settings</a></li>
         </ul>
       </nav>
     </div>
@@ -795,47 +795,47 @@
   <div class="subsection">
     <h3 class="subsection-title">Tabs</h3>
     <div class="showcase-row">
-      <div class="bru-tabs">
-        <button class="bru-tab active">Overview</button>
-        <button class="bru-tab">Analytics</button>
-        <button class="bru-tab">Reports</button>
-        <button class="bru-tab">Export</button>
+      <div class="drp-tabs">
+        <button class="drp-tab active">Overview</button>
+        <button class="drp-tab">Analytics</button>
+        <button class="drp-tab">Reports</button>
+        <button class="drp-tab">Export</button>
       </div>
     </div>
-    <span class="showcase-label" style="margin-top: var(--bru-space-4);">Underline Variant</span>
+    <span class="showcase-label" style="margin-top: var(--drp-space-4);">Underline Variant</span>
     <div class="showcase-row">
-      <div class="bru-tabs bru-tabs--underline">
-        <button class="bru-tab active">Overview</button>
-        <button class="bru-tab">Analytics</button>
-        <button class="bru-tab">Reports</button>
+      <div class="drp-tabs drp-tabs--underline">
+        <button class="drp-tab active">Overview</button>
+        <button class="drp-tab">Analytics</button>
+        <button class="drp-tab">Reports</button>
       </div>
     </div>
   </div>
 
   <div class="subsection">
     <h3 class="subsection-title">Breadcrumbs</h3>
-    <nav class="bru-breadcrumbs">
-      <a href="#" class="bru-breadcrumb-item">Home</a>
-      <span class="bru-breadcrumb-separator">/</span>
-      <a href="#" class="bru-breadcrumb-item">Projects</a>
-      <span class="bru-breadcrumb-separator">/</span>
-      <a href="#" class="bru-breadcrumb-item">Doctor Project</a>
-      <span class="bru-breadcrumb-separator">/</span>
-      <span class="bru-breadcrumb-current">Design System</span>
+    <nav class="drp-breadcrumbs">
+      <a href="#" class="drp-breadcrumb-item">Home</a>
+      <span class="drp-breadcrumb-separator">/</span>
+      <a href="#" class="drp-breadcrumb-item">Projects</a>
+      <span class="drp-breadcrumb-separator">/</span>
+      <a href="#" class="drp-breadcrumb-item">Doctor Project</a>
+      <span class="drp-breadcrumb-separator">/</span>
+      <span class="drp-breadcrumb-current">Design System</span>
     </nav>
   </div>
 
   <div class="subsection">
     <h3 class="subsection-title">Pagination</h3>
     <div class="showcase-row">
-      <nav class="bru-pagination">
-        <button class="bru-pagination__btn">&larr;</button>
-        <button class="bru-pagination__page active">1</button>
-        <button class="bru-pagination__page">2</button>
-        <button class="bru-pagination__page">3</button>
-        <button class="bru-pagination__page">4</button>
-        <button class="bru-pagination__page">5</button>
-        <button class="bru-pagination__btn">&rarr;</button>
+      <nav class="drp-pagination">
+        <button class="drp-pagination__btn">&larr;</button>
+        <button class="drp-pagination__page active">1</button>
+        <button class="drp-pagination__page">2</button>
+        <button class="drp-pagination__page">3</button>
+        <button class="drp-pagination__page">4</button>
+        <button class="drp-pagination__page">5</button>
+        <button class="drp-pagination__btn">&rarr;</button>
       </nav>
     </div>
   </div>
@@ -852,26 +852,26 @@
   <div class="subsection">
     <h3 class="subsection-title">Basic Cards</h3>
     <div class="card-grid">
-      <div class="bru-card">
-        <div class="bru-card__header">
-          <h4 class="bru-card__title">Project Alpha</h4>
-          <p class="bru-card__subtitle">Clinical study results</p>
+      <div class="drp-card">
+        <div class="drp-card__header">
+          <h4 class="drp-card__title">Project Alpha</h4>
+          <p class="drp-card__subtitle">Clinical study results</p>
         </div>
-        <p style="padding: var(--bru-space-4); font-size: var(--bru-text-sm); color: var(--bru-text-secondary);">Comprehensive analysis of phase 3 clinical trials with measurable outcomes and patient data.</p>
+        <p style="padding: var(--drp-space-4); font-size: var(--drp-text-sm); color: var(--drp-text-secondary);">Comprehensive analysis of phase 3 clinical trials with measurable outcomes and patient data.</p>
       </div>
-      <div class="bru-card bru-card--raised">
-        <div class="bru-card__header">
-          <h4 class="bru-card__title">Raised Card</h4>
-          <p class="bru-card__subtitle">With larger shadow</p>
+      <div class="drp-card drp-card--raised">
+        <div class="drp-card__header">
+          <h4 class="drp-card__title">Raised Card</h4>
+          <p class="drp-card__subtitle">With larger shadow</p>
         </div>
-        <p style="padding: var(--bru-space-4); font-size: var(--bru-text-sm); color: var(--bru-text-secondary);">This card uses the raised variant for more visual emphasis and depth.</p>
+        <p style="padding: var(--drp-space-4); font-size: var(--drp-text-sm); color: var(--drp-text-secondary);">This card uses the raised variant for more visual emphasis and depth.</p>
       </div>
-      <div class="bru-card bru-card--interactive">
-        <div class="bru-card__header">
-          <h4 class="bru-card__title">Interactive Card</h4>
-          <p class="bru-card__subtitle">Hover to see effect</p>
+      <div class="drp-card drp-card--interactive">
+        <div class="drp-card__header">
+          <h4 class="drp-card__title">Interactive Card</h4>
+          <p class="drp-card__subtitle">Hover to see effect</p>
         </div>
-        <p style="padding: var(--bru-space-4); font-size: var(--bru-text-sm); color: var(--bru-text-secondary);">Cards with interaction feedback — translates and shadow lifts on hover, presses on click.</p>
+        <p style="padding: var(--drp-space-4); font-size: var(--drp-text-sm); color: var(--drp-text-secondary);">Cards with interaction feedback — translates and shadow lifts on hover, presses on click.</p>
       </div>
     </div>
   </div>
@@ -879,47 +879,47 @@
   <div class="subsection">
     <h3 class="subsection-title">Color-Accented Cards</h3>
     <div class="card-grid" style="grid-template-columns: repeat(4, 1fr);">
-      <div class="bru-card bru-card--purple">
-        <div class="bru-card__header"><h4 class="bru-card__title">Purple</h4></div>
-        <p style="padding: var(--bru-space-4); font-size: var(--bru-text-sm);">Left border accent</p>
+      <div class="drp-card drp-card--purple">
+        <div class="drp-card__header"><h4 class="drp-card__title">Purple</h4></div>
+        <p style="padding: var(--drp-space-4); font-size: var(--drp-text-sm);">Left border accent</p>
       </div>
-      <div class="bru-card bru-card--mint">
-        <div class="bru-card__header"><h4 class="bru-card__title">Mint</h4></div>
-        <p style="padding: var(--bru-space-4); font-size: var(--bru-text-sm);">Left border accent</p>
+      <div class="drp-card drp-card--mint">
+        <div class="drp-card__header"><h4 class="drp-card__title">Mint</h4></div>
+        <p style="padding: var(--drp-space-4); font-size: var(--drp-text-sm);">Left border accent</p>
       </div>
-      <div class="bru-card bru-card--pink">
-        <div class="bru-card__header"><h4 class="bru-card__title">Pink</h4></div>
-        <p style="padding: var(--bru-space-4); font-size: var(--bru-text-sm);">Left border accent</p>
+      <div class="drp-card drp-card--pink">
+        <div class="drp-card__header"><h4 class="drp-card__title">Pink</h4></div>
+        <p style="padding: var(--drp-space-4); font-size: var(--drp-text-sm);">Left border accent</p>
       </div>
-      <div class="bru-card bru-card--yellow">
-        <div class="bru-card__header"><h4 class="bru-card__title">Yellow</h4></div>
-        <p style="padding: var(--bru-space-4); font-size: var(--bru-text-sm);">Left border accent</p>
+      <div class="drp-card drp-card--yellow">
+        <div class="drp-card__header"><h4 class="drp-card__title">Yellow</h4></div>
+        <p style="padding: var(--drp-space-4); font-size: var(--drp-text-sm);">Left border accent</p>
       </div>
     </div>
   </div>
 
   <div class="subsection">
     <h3 class="subsection-title">Stat Cards</h3>
-    <div class="bru-stat-grid bru-stat-grid--4">
-      <div class="bru-stat-card">
-        <div class="bru-stat-card__label">Total Users</div>
-        <div class="bru-stat-card__value">12,847</div>
-        <span class="bru-stat-card__badge bru-stat-card__badge--up">+12.5%</span>
+    <div class="drp-stat-grid drp-stat-grid--4">
+      <div class="drp-stat-card">
+        <div class="drp-stat-card__label">Total Users</div>
+        <div class="drp-stat-card__value">12,847</div>
+        <span class="drp-stat-card__badge drp-stat-card__badge--up">+12.5%</span>
       </div>
-      <div class="bru-stat-card">
-        <div class="bru-stat-card__label">Revenue</div>
-        <div class="bru-stat-card__value">$84.2K</div>
-        <span class="bru-stat-card__badge bru-stat-card__badge--up">+8.3%</span>
+      <div class="drp-stat-card">
+        <div class="drp-stat-card__label">Revenue</div>
+        <div class="drp-stat-card__value">$84.2K</div>
+        <span class="drp-stat-card__badge drp-stat-card__badge--up">+8.3%</span>
       </div>
-      <div class="bru-stat-card">
-        <div class="bru-stat-card__label">Bounce Rate</div>
-        <div class="bru-stat-card__value">32.1%</div>
-        <span class="bru-stat-card__badge bru-stat-card__badge--down">-2.4%</span>
+      <div class="drp-stat-card">
+        <div class="drp-stat-card__label">Bounce Rate</div>
+        <div class="drp-stat-card__value">32.1%</div>
+        <span class="drp-stat-card__badge drp-stat-card__badge--down">-2.4%</span>
       </div>
-      <div class="bru-stat-card">
-        <div class="bru-stat-card__label">Avg. Session</div>
-        <div class="bru-stat-card__value">4m 22s</div>
-        <span class="bru-stat-card__badge bru-stat-card__badge--up">+15%</span>
+      <div class="drp-stat-card">
+        <div class="drp-stat-card__label">Avg. Session</div>
+        <div class="drp-stat-card__value">4m 22s</div>
+        <span class="drp-stat-card__badge drp-stat-card__badge--up">+15%</span>
       </div>
     </div>
   </div>
@@ -935,33 +935,33 @@
 
   <div class="subsection">
     <h3 class="subsection-title">Alerts</h3>
-    <div style="display: flex; flex-direction: column; gap: var(--bru-space-4); max-width: 700px;">
-      <div class="bru-alert bru-alert--success">
-        <span class="bru-alert__icon">[&#10003;]</span>
-        <div class="bru-alert__content">
-          <div class="bru-alert__title">Success</div>
-          <div class="bru-alert__text">Operation completed successfully. All data has been saved.</div>
+    <div style="display: flex; flex-direction: column; gap: var(--drp-space-4); max-width: 700px;">
+      <div class="drp-alert drp-alert--success">
+        <span class="drp-alert__icon">[&#10003;]</span>
+        <div class="drp-alert__content">
+          <div class="drp-alert__title">Success</div>
+          <div class="drp-alert__text">Operation completed successfully. All data has been saved.</div>
         </div>
       </div>
-      <div class="bru-alert bru-alert--warning">
-        <span class="bru-alert__icon">[!]</span>
-        <div class="bru-alert__content">
-          <div class="bru-alert__title">Warning</div>
-          <div class="bru-alert__text">Your session will expire in 5 minutes. Save your work now.</div>
+      <div class="drp-alert drp-alert--warning">
+        <span class="drp-alert__icon">[!]</span>
+        <div class="drp-alert__content">
+          <div class="drp-alert__title">Warning</div>
+          <div class="drp-alert__text">Your session will expire in 5 minutes. Save your work now.</div>
         </div>
       </div>
-      <div class="bru-alert bru-alert--error">
-        <span class="bru-alert__icon">[&#10005;]</span>
-        <div class="bru-alert__content">
-          <div class="bru-alert__title">Error</div>
-          <div class="bru-alert__text">Failed to connect to server. Please check your connection.</div>
+      <div class="drp-alert drp-alert--error">
+        <span class="drp-alert__icon">[&#10005;]</span>
+        <div class="drp-alert__content">
+          <div class="drp-alert__title">Error</div>
+          <div class="drp-alert__text">Failed to connect to server. Please check your connection.</div>
         </div>
       </div>
-      <div class="bru-alert bru-alert--info">
-        <span class="bru-alert__icon">[?]</span>
-        <div class="bru-alert__content">
-          <div class="bru-alert__title">Information</div>
-          <div class="bru-alert__text">A new version is available. Update to get the latest features.</div>
+      <div class="drp-alert drp-alert--info">
+        <span class="drp-alert__icon">[?]</span>
+        <div class="drp-alert__content">
+          <div class="drp-alert__title">Information</div>
+          <div class="drp-alert__text">A new version is available. Update to get the latest features.</div>
         </div>
       </div>
     </div>
@@ -970,16 +970,16 @@
   <div class="subsection">
     <h3 class="subsection-title">Toast Notifications</h3>
     <div class="showcase-row">
-      <div class="bru-toast bru-toast--success" style="position: relative;">
+      <div class="drp-toast drp-toast--success" style="position: relative;">
         <strong>&#10003; Success</strong> &mdash; Changes saved
       </div>
-      <div class="bru-toast bru-toast--error" style="position: relative;">
+      <div class="drp-toast drp-toast--error" style="position: relative;">
         <strong>&#10005; Error</strong> &mdash; Upload failed
       </div>
-      <div class="bru-toast bru-toast--warning" style="position: relative;">
+      <div class="drp-toast drp-toast--warning" style="position: relative;">
         <strong>! Warning</strong> &mdash; Low disk space
       </div>
-      <div class="bru-toast bru-toast--info" style="position: relative;">
+      <div class="drp-toast drp-toast--info" style="position: relative;">
         <strong>? Info</strong> &mdash; 3 new messages
       </div>
     </div>
@@ -987,26 +987,26 @@
 
   <div class="subsection">
     <h3 class="subsection-title">Progress Bars</h3>
-    <div style="display: flex; flex-direction: column; gap: var(--bru-space-4); max-width: 500px;">
+    <div style="display: flex; flex-direction: column; gap: var(--drp-space-4); max-width: 500px;">
       <div>
         <span class="showcase-label">Default (Purple)</span>
-        <div class="bru-progress"><div class="bru-progress__bar" style="width: 72%;"></div></div>
+        <div class="drp-progress"><div class="drp-progress__bar" style="width: 72%;"></div></div>
       </div>
       <div>
         <span class="showcase-label">Mint</span>
-        <div class="bru-progress bru-progress--mint"><div class="bru-progress__bar" style="width: 45%;"></div></div>
+        <div class="drp-progress drp-progress--mint"><div class="drp-progress__bar" style="width: 45%;"></div></div>
       </div>
       <div>
         <span class="showcase-label">Pink</span>
-        <div class="bru-progress bru-progress--pink"><div class="bru-progress__bar" style="width: 88%;"></div></div>
+        <div class="drp-progress drp-progress--pink"><div class="drp-progress__bar" style="width: 88%;"></div></div>
       </div>
       <div>
         <span class="showcase-label">Small</span>
-        <div class="bru-progress bru-progress--sm"><div class="bru-progress__bar" style="width: 60%;"></div></div>
+        <div class="drp-progress drp-progress--sm"><div class="drp-progress__bar" style="width: 60%;"></div></div>
       </div>
       <div>
         <span class="showcase-label">Large</span>
-        <div class="bru-progress bru-progress--lg"><div class="bru-progress__bar" style="width: 35%;"></div></div>
+        <div class="drp-progress drp-progress--lg"><div class="drp-progress__bar" style="width: 35%;"></div></div>
       </div>
     </div>
   </div>
@@ -1014,18 +1014,18 @@
   <div class="subsection">
     <h3 class="subsection-title">Loading Spinner</h3>
     <div class="showcase-row" style="align-items: center;">
-      <div class="bru-spinner"></div>
-      <span style="font-family: var(--bru-font-mono); font-size: var(--bru-text-sm);">Loading data...</span>
+      <div class="drp-spinner"></div>
+      <span style="font-family: var(--drp-font-mono); font-size: var(--drp-text-sm);">Loading data...</span>
     </div>
   </div>
 
   <div class="subsection">
     <h3 class="subsection-title">Skeleton Loading</h3>
-    <div style="display: flex; flex-direction: column; gap: var(--bru-space-3); max-width: 400px;">
-      <div class="bru-skeleton" style="height: 24px; width: 60%;"></div>
-      <div class="bru-skeleton" style="height: 16px; width: 100%;"></div>
-      <div class="bru-skeleton" style="height: 16px; width: 80%;"></div>
-      <div class="bru-skeleton" style="height: 120px; width: 100%;"></div>
+    <div style="display: flex; flex-direction: column; gap: var(--drp-space-3); max-width: 400px;">
+      <div class="drp-skeleton" style="height: 24px; width: 60%;"></div>
+      <div class="drp-skeleton" style="height: 16px; width: 100%;"></div>
+      <div class="drp-skeleton" style="height: 16px; width: 80%;"></div>
+      <div class="drp-skeleton" style="height: 120px; width: 100%;"></div>
     </div>
   </div>
 </section>
@@ -1040,18 +1040,18 @@
 
   <div class="subsection">
     <h3 class="subsection-title">Modal (Static Preview)</h3>
-    <div style="position: relative; background: rgba(0,0,0,0.15); padding: var(--bru-space-8); display: flex; justify-content: center;">
-      <div class="bru-modal" style="position: relative; max-width: 500px; width: 100%;">
-        <div class="bru-modal__header">
-          <h3 class="bru-modal__title">Confirm Action</h3>
-          <button class="bru-modal__close">&times;</button>
+    <div style="position: relative; background: rgba(0,0,0,0.15); padding: var(--drp-space-8); display: flex; justify-content: center;">
+      <div class="drp-modal" style="position: relative; max-width: 500px; width: 100%;">
+        <div class="drp-modal__header">
+          <h3 class="drp-modal__title">Confirm Action</h3>
+          <button class="drp-modal__close">&times;</button>
         </div>
-        <div class="bru-modal__body">
+        <div class="drp-modal__body">
           <p>Are you sure you want to proceed? This action cannot be undone and all associated data will be permanently removed.</p>
         </div>
-        <div class="bru-modal__footer">
-          <button class="bru-btn bru-btn--outline">Cancel</button>
-          <button class="bru-btn bru-btn--danger">Delete</button>
+        <div class="drp-modal__footer">
+          <button class="drp-btn drp-btn--outline">Cancel</button>
+          <button class="drp-btn drp-btn--danger">Delete</button>
         </div>
       </div>
     </div>
@@ -1059,18 +1059,18 @@
 
   <div class="subsection">
     <h3 class="subsection-title">Tooltips</h3>
-    <div class="showcase-row" style="gap: var(--bru-space-8); padding-top: var(--bru-space-10);">
-      <span class="bru-tooltip">
-        <button class="bru-btn bru-btn--primary">Hover me</button>
-        <span class="bru-tooltip-text">This is a tooltip</span>
+    <div class="showcase-row" style="gap: var(--drp-space-8); padding-top: var(--drp-space-10);">
+      <span class="drp-tooltip">
+        <button class="drp-btn drp-btn--primary">Hover me</button>
+        <span class="drp-tooltip-text">This is a tooltip</span>
       </span>
-      <span class="bru-tooltip">
-        <button class="bru-btn bru-btn--outline">More info</button>
-        <span class="bru-tooltip-text">Additional context here</span>
+      <span class="drp-tooltip">
+        <button class="drp-btn drp-btn--outline">More info</button>
+        <span class="drp-tooltip-text">Additional context here</span>
       </span>
-      <span class="bru-tooltip">
+      <span class="drp-tooltip">
         <span style="text-decoration: underline; cursor: help;">Underlined text</span>
-        <span class="bru-tooltip-text">Tooltips work on any element</span>
+        <span class="drp-tooltip-text">Tooltips work on any element</span>
       </span>
     </div>
   </div>
@@ -1089,15 +1089,15 @@
     <div class="showcase-row" style="align-items: center;">
       <div>
         <span class="showcase-label">Small (40px)</span>
-        <div class="bru-avatar bru-avatar--sm" style="background: var(--bru-purple); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700;">AB</div>
+        <div class="drp-avatar drp-avatar--sm" style="background: var(--drp-purple); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700;">AB</div>
       </div>
       <div>
         <span class="showcase-label">Default (64px)</span>
-        <div class="bru-avatar" style="background: var(--bru-orange); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 1.25rem;">CD</div>
+        <div class="drp-avatar" style="background: var(--drp-orange); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 1.25rem;">CD</div>
       </div>
       <div>
         <span class="showcase-label">Large (96px)</span>
-        <div class="bru-avatar bru-avatar--lg" style="background: var(--bru-mint); display: flex; align-items: center; justify-content: center; color: var(--bru-black); font-weight: 700; font-size: 1.5rem;">EF</div>
+        <div class="drp-avatar drp-avatar--lg" style="background: var(--drp-mint); display: flex; align-items: center; justify-content: center; color: var(--drp-black); font-weight: 700; font-size: 1.5rem;">EF</div>
       </div>
     </div>
   </div>
@@ -1105,50 +1105,50 @@
   <div class="subsection">
     <h3 class="subsection-title">Badges &amp; Tags</h3>
     <div class="showcase-row">
-      <span class="bru-badge bru-badge--primary">Primary</span>
-      <span class="bru-badge bru-badge--secondary">Secondary</span>
-      <span class="bru-badge bru-badge--outline">Outline</span>
-      <span class="bru-badge bru-badge--filled">Filled</span>
-      <span class="bru-badge bru-badge--mint">Mint</span>
-      <span class="bru-badge bru-badge--pink">Pink</span>
+      <span class="drp-badge drp-badge--primary">Primary</span>
+      <span class="drp-badge drp-badge--secondary">Secondary</span>
+      <span class="drp-badge drp-badge--outline">Outline</span>
+      <span class="drp-badge drp-badge--filled">Filled</span>
+      <span class="drp-badge drp-badge--mint">Mint</span>
+      <span class="drp-badge drp-badge--pink">Pink</span>
     </div>
-    <span class="showcase-label" style="margin-top: var(--bru-space-4);">Tags</span>
+    <span class="showcase-label" style="margin-top: var(--drp-space-4);">Tags</span>
     <div class="showcase-row">
-      <span class="bru-tag">Default</span>
-      <span class="bru-tag bru-tag--filled bru-tag--purple">Purple</span>
-      <span class="bru-tag bru-tag--filled bru-tag--mint">Mint</span>
-      <span class="bru-tag bru-tag--filled bru-tag--pink">Pink</span>
-      <span class="bru-tag bru-tag--filled bru-tag--yellow">Yellow</span>
-      <span class="bru-tag bru-tag--dark">Dark</span>
-      <span class="bru-tag bru-tag--closeable">Closeable <button class="bru-tag__close">&times;</button></span>
-      <span class="bru-tag bru-tag--dot">With dot</span>
+      <span class="drp-tag">Default</span>
+      <span class="drp-tag drp-tag--filled drp-tag--purple">Purple</span>
+      <span class="drp-tag drp-tag--filled drp-tag--mint">Mint</span>
+      <span class="drp-tag drp-tag--filled drp-tag--pink">Pink</span>
+      <span class="drp-tag drp-tag--filled drp-tag--yellow">Yellow</span>
+      <span class="drp-tag drp-tag--dark">Dark</span>
+      <span class="drp-tag drp-tag--closeable">Closeable <button class="drp-tag__close">&times;</button></span>
+      <span class="drp-tag drp-tag--dot">With dot</span>
     </div>
   </div>
 
   <div class="subsection">
     <h3 class="subsection-title">Status Dots</h3>
-    <div class="showcase-row" style="align-items: center; gap: var(--bru-space-6);">
-      <span style="display:flex;align-items:center;gap:var(--bru-space-2);"><span class="bru-dot bru-dot--purple"></span> Active</span>
-      <span style="display:flex;align-items:center;gap:var(--bru-space-2);"><span class="bru-dot bru-dot--mint"></span> Online</span>
-      <span style="display:flex;align-items:center;gap:var(--bru-space-2);"><span class="bru-dot bru-dot--pink"></span> Busy</span>
-      <span style="display:flex;align-items:center;gap:var(--bru-space-2);"><span class="bru-dot bru-dot--yellow"></span> Away</span>
-      <span style="display:flex;align-items:center;gap:var(--bru-space-2);"><span class="bru-dot bru-dot--pulse bru-dot--mint"></span> Pulsing</span>
+    <div class="showcase-row" style="align-items: center; gap: var(--drp-space-6);">
+      <span style="display:flex;align-items:center;gap:var(--drp-space-2);"><span class="drp-dot drp-dot--purple"></span> Active</span>
+      <span style="display:flex;align-items:center;gap:var(--drp-space-2);"><span class="drp-dot drp-dot--mint"></span> Online</span>
+      <span style="display:flex;align-items:center;gap:var(--drp-space-2);"><span class="drp-dot drp-dot--pink"></span> Busy</span>
+      <span style="display:flex;align-items:center;gap:var(--drp-space-2);"><span class="drp-dot drp-dot--yellow"></span> Away</span>
+      <span style="display:flex;align-items:center;gap:var(--drp-space-2);"><span class="drp-dot drp-dot--pulse drp-dot--mint"></span> Pulsing</span>
     </div>
   </div>
 
   <div class="subsection">
     <h3 class="subsection-title">Carousel</h3>
     <div style="max-width: 600px;">
-      <div class="bru-carousel" id="demoCarousel">
-        <div class="bru-carousel__track">
-          <div class="bru-carousel__slide" style="background: var(--bru-purple); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-weight: 800;">SLIDE 1</div>
-          <div class="bru-carousel__slide" style="background: var(--bru-orange); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-weight: 800;">SLIDE 2</div>
-          <div class="bru-carousel__slide" style="background: var(--bru-black); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-weight: 800;">SLIDE 3</div>
+      <div class="drp-carousel" id="demoCarousel">
+        <div class="drp-carousel__track">
+          <div class="drp-carousel__slide" style="background: var(--drp-purple); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-weight: 800;">SLIDE 1</div>
+          <div class="drp-carousel__slide" style="background: var(--drp-orange); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-weight: 800;">SLIDE 2</div>
+          <div class="drp-carousel__slide" style="background: var(--drp-black); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2rem; font-weight: 800;">SLIDE 3</div>
         </div>
-        <div class="bru-carousel__nav">
-          <button class="bru-carousel__dot active" data-slide="0"></button>
-          <button class="bru-carousel__dot" data-slide="1"></button>
-          <button class="bru-carousel__dot" data-slide="2"></button>
+        <div class="drp-carousel__nav">
+          <button class="drp-carousel__dot active" data-slide="0"></button>
+          <button class="drp-carousel__dot" data-slide="1"></button>
+          <button class="drp-carousel__dot" data-slide="2"></button>
         </div>
       </div>
     </div>
@@ -1165,16 +1165,16 @@
 
   <div class="subsection">
     <h3 class="subsection-title">Hero Section</h3>
-    <div class="bru-hero">
-      <div class="bru-hero__content">
-        <h2 class="bru-hero__title">Built for <span>Digital Shift</span></h2>
-        <p class="bru-hero__text">A brutalist design system crafted for the think tank driving digital transformation with clarity, speed, and precision.</p>
+    <div class="drp-hero">
+      <div class="drp-hero__content">
+        <h2 class="drp-hero__title">Built for <span>Digital Shift</span></h2>
+        <p class="drp-hero__text">A brutalist design system crafted for the think tank driving digital transformation with clarity, speed, and precision.</p>
         <div class="showcase-row">
-          <button class="bru-btn bru-btn--primary">Get Started</button>
-          <button class="bru-btn bru-btn--outline">Learn More</button>
+          <button class="drp-btn drp-btn--primary">Get Started</button>
+          <button class="drp-btn drp-btn--outline">Learn More</button>
         </div>
       </div>
-      <div class="bru-hero__image" style="min-height: 300px; background: var(--bru-purple); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 3rem; font-weight: 800;">
+      <div class="drp-hero__image" style="min-height: 300px; background: var(--drp-purple); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 3rem; font-weight: 800;">
         DP
       </div>
     </div>
@@ -1182,21 +1182,21 @@
 
   <div class="subsection">
     <h3 class="subsection-title">Feature Grid</h3>
-    <div class="bru-features">
-      <div class="bru-feature">
-        <div class="bru-feature__icon">01</div>
-        <h4 class="bru-feature__title">Strategy</h4>
-        <p class="bru-feature__text">Strategic consulting for organizations navigating digital transformation and operational change.</p>
+    <div class="drp-features">
+      <div class="drp-feature">
+        <div class="drp-feature__icon">01</div>
+        <h4 class="drp-feature__title">Strategy</h4>
+        <p class="drp-feature__text">Strategic consulting for organizations navigating digital transformation and operational change.</p>
       </div>
-      <div class="bru-feature">
-        <div class="bru-feature__icon">02</div>
-        <h4 class="bru-feature__title">Innovation</h4>
-        <p class="bru-feature__text">Research-driven insights and frameworks to accelerate digital adoption across industries.</p>
+      <div class="drp-feature">
+        <div class="drp-feature__icon">02</div>
+        <h4 class="drp-feature__title">Innovation</h4>
+        <p class="drp-feature__text">Research-driven insights and frameworks to accelerate digital adoption across industries.</p>
       </div>
-      <div class="bru-feature">
-        <div class="bru-feature__icon">03</div>
-        <h4 class="bru-feature__title">Execution</h4>
-        <p class="bru-feature__text">End-to-end project management turning digital strategy into measurable business outcomes.</p>
+      <div class="drp-feature">
+        <div class="drp-feature__icon">03</div>
+        <h4 class="drp-feature__title">Execution</h4>
+        <p class="drp-feature__text">End-to-end project management turning digital strategy into measurable business outcomes.</p>
       </div>
     </div>
   </div>
@@ -1204,40 +1204,40 @@
   <div class="subsection">
     <h3 class="subsection-title">Pricing Cards</h3>
     <div class="showcase-grid-3">
-      <div class="bru-pricing-card">
-        <div class="bru-pricing-card__title">Starter</div>
-        <div class="bru-pricing-card__price">$29</div>
-        <div class="bru-pricing-card__period">per month</div>
-        <ul class="bru-pricing-card__features">
-          <li class="bru-pricing-card__feature">5 Projects</li>
-          <li class="bru-pricing-card__feature">Basic Analytics</li>
-          <li class="bru-pricing-card__feature">Email Support</li>
+      <div class="drp-pricing-card">
+        <div class="drp-pricing-card__title">Starter</div>
+        <div class="drp-pricing-card__price">$29</div>
+        <div class="drp-pricing-card__period">per month</div>
+        <ul class="drp-pricing-card__features">
+          <li class="drp-pricing-card__feature">5 Projects</li>
+          <li class="drp-pricing-card__feature">Basic Analytics</li>
+          <li class="drp-pricing-card__feature">Email Support</li>
         </ul>
-        <button class="bru-btn bru-btn--outline" style="width: 100%;">Choose Plan</button>
+        <button class="drp-btn drp-btn--outline" style="width: 100%;">Choose Plan</button>
       </div>
-      <div class="bru-pricing-card featured">
-        <div class="bru-pricing-card__title">Professional</div>
-        <div class="bru-pricing-card__price">$79</div>
-        <div class="bru-pricing-card__period">per month</div>
-        <ul class="bru-pricing-card__features">
-          <li class="bru-pricing-card__feature">Unlimited Projects</li>
-          <li class="bru-pricing-card__feature">Advanced Analytics</li>
-          <li class="bru-pricing-card__feature">Priority Support</li>
-          <li class="bru-pricing-card__feature">AI Insights</li>
+      <div class="drp-pricing-card featured">
+        <div class="drp-pricing-card__title">Professional</div>
+        <div class="drp-pricing-card__price">$79</div>
+        <div class="drp-pricing-card__period">per month</div>
+        <ul class="drp-pricing-card__features">
+          <li class="drp-pricing-card__feature">Unlimited Projects</li>
+          <li class="drp-pricing-card__feature">Advanced Analytics</li>
+          <li class="drp-pricing-card__feature">Priority Support</li>
+          <li class="drp-pricing-card__feature">AI Insights</li>
         </ul>
-        <button class="bru-btn bru-btn--secondary" style="width: 100%;">Choose Plan</button>
+        <button class="drp-btn drp-btn--secondary" style="width: 100%;">Choose Plan</button>
       </div>
-      <div class="bru-pricing-card">
-        <div class="bru-pricing-card__title">Enterprise</div>
-        <div class="bru-pricing-card__price">$199</div>
-        <div class="bru-pricing-card__period">per month</div>
-        <ul class="bru-pricing-card__features">
-          <li class="bru-pricing-card__feature">Everything in Pro</li>
-          <li class="bru-pricing-card__feature">Custom Integrations</li>
-          <li class="bru-pricing-card__feature">Dedicated Manager</li>
-          <li class="bru-pricing-card__feature">SLA Guarantee</li>
+      <div class="drp-pricing-card">
+        <div class="drp-pricing-card__title">Enterprise</div>
+        <div class="drp-pricing-card__price">$199</div>
+        <div class="drp-pricing-card__period">per month</div>
+        <ul class="drp-pricing-card__features">
+          <li class="drp-pricing-card__feature">Everything in Pro</li>
+          <li class="drp-pricing-card__feature">Custom Integrations</li>
+          <li class="drp-pricing-card__feature">Dedicated Manager</li>
+          <li class="drp-pricing-card__feature">SLA Guarantee</li>
         </ul>
-        <button class="bru-btn bru-btn--outline" style="width: 100%;">Contact Sales</button>
+        <button class="drp-btn drp-btn--outline" style="width: 100%;">Contact Sales</button>
       </div>
     </div>
   </div>
@@ -1245,15 +1245,15 @@
   <div class="subsection">
     <h3 class="subsection-title">Testimonial</h3>
     <div style="max-width: 600px;">
-      <div class="bru-testimonial">
-        <blockquote class="bru-testimonial__quote">
+      <div class="drp-testimonial">
+        <blockquote class="drp-testimonial__quote">
           &ldquo;Doctor Project gave us the strategic clarity to lead our digital shift. The brutalist design approach mirrors the directness we bring to every engagement.&rdquo;
         </blockquote>
-        <div class="bru-testimonial__author">
-          <div class="bru-testimonial__avatar" style="background: var(--bru-orange); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700;">JL</div>
+        <div class="drp-testimonial__author">
+          <div class="drp-testimonial__avatar" style="background: var(--drp-orange); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700;">JL</div>
           <div>
-            <div class="bru-testimonial__name">Julia Lang</div>
-            <div class="bru-testimonial__role">Head of Digital Strategy, Shift Corp.</div>
+            <div class="drp-testimonial__name">Julia Lang</div>
+            <div class="drp-testimonial__role">Head of Digital Strategy, Shift Corp.</div>
           </div>
         </div>
       </div>
@@ -1262,10 +1262,10 @@
 
   <div class="subsection">
     <h3 class="subsection-title">Call to Action</h3>
-    <div class="bru-cta">
-      <h3 class="bru-cta__title">Ready to Lead Your Digital Shift?</h3>
-      <p class="bru-cta__text">Join forward-thinking organizations already partnering with Doctor Project to drive digital transformation.</p>
-      <button class="bru-btn bru-btn--secondary bru-btn--lg">Start Free Trial</button>
+    <div class="drp-cta">
+      <h3 class="drp-cta__title">Ready to Lead Your Digital Shift?</h3>
+      <p class="drp-cta__text">Join forward-thinking organizations already partnering with Doctor Project to drive digital transformation.</p>
+      <button class="drp-btn drp-btn--secondary drp-btn--lg">Start Free Trial</button>
     </div>
   </div>
 </section>
@@ -1275,19 +1275,19 @@
      SECTION 11: MARQUEE
      ════════════════════════════════════════════════ -->
 <section class="section" id="marquee" style="padding: 0; border: none;">
-  <div style="padding: var(--bru-space-16) var(--bru-space-8); background: var(--bru-black); color: var(--bru-white); border-bottom: 3px solid var(--bru-black);">
-    <h2 class="section-title" style="color: var(--bru-white);">Marquee Banner</h2>
-    <p class="section-subtitle" style="margin-bottom: var(--bru-space-8);">Infinite scrolling text</p>
-    <div class="bru-marquee">
-      <div class="bru-marquee__track">
-        <span class="bru-marquee__item">AI Solutions ///</span>
-        <span class="bru-marquee__item">Strategic Consulting +++</span>
-        <span class="bru-marquee__item">Project Management ***</span>
-        <span class="bru-marquee__item">Change Management &bull;&bull;&bull;</span>
-        <span class="bru-marquee__item">AI Solutions ///</span>
-        <span class="bru-marquee__item">Strategic Consulting +++</span>
-        <span class="bru-marquee__item">Project Management ***</span>
-        <span class="bru-marquee__item">Change Management &bull;&bull;&bull;</span>
+  <div style="padding: var(--drp-space-16) var(--drp-space-8); background: var(--drp-black); color: var(--drp-white); border-bottom: 3px solid var(--drp-black);">
+    <h2 class="section-title" style="color: var(--drp-white);">Marquee Banner</h2>
+    <p class="section-subtitle" style="margin-bottom: var(--drp-space-8);">Infinite scrolling text</p>
+    <div class="drp-marquee">
+      <div class="drp-marquee__track">
+        <span class="drp-marquee__item">AI Solutions ///</span>
+        <span class="drp-marquee__item">Strategic Consulting +++</span>
+        <span class="drp-marquee__item">Project Management ***</span>
+        <span class="drp-marquee__item">Change Management &bull;&bull;&bull;</span>
+        <span class="drp-marquee__item">AI Solutions ///</span>
+        <span class="drp-marquee__item">Strategic Consulting +++</span>
+        <span class="drp-marquee__item">Project Management ***</span>
+        <span class="drp-marquee__item">Change Management &bull;&bull;&bull;</span>
       </div>
     </div>
   </div>
@@ -1321,24 +1321,24 @@
 
   <div class="subsection">
     <h3 class="subsection-title">Utility Grids</h3>
-    <div class="showcase-row" style="flex-direction: column; gap: var(--bru-space-4);">
+    <div class="showcase-row" style="flex-direction: column; gap: var(--drp-space-4);">
       <span class="showcase-label">2-Column Grid</span>
-      <div class="bru-grid-2" style="gap: var(--bru-space-3);">
-        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 1</div>
-        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 2</div>
+      <div class="drp-grid-2" style="gap: var(--drp-space-3);">
+        <div style="background: var(--drp-grey-light); padding: var(--drp-space-3); border: 1px solid var(--drp-black); text-align: center; font-family: var(--drp-font-mono); font-size: var(--drp-text-xs);">Col 1</div>
+        <div style="background: var(--drp-grey-light); padding: var(--drp-space-3); border: 1px solid var(--drp-black); text-align: center; font-family: var(--drp-font-mono); font-size: var(--drp-text-xs);">Col 2</div>
       </div>
       <span class="showcase-label">3-Column Grid</span>
-      <div class="bru-grid-3" style="gap: var(--bru-space-3);">
-        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 1</div>
-        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 2</div>
-        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 3</div>
+      <div class="drp-grid-3" style="gap: var(--drp-space-3);">
+        <div style="background: var(--drp-grey-light); padding: var(--drp-space-3); border: 1px solid var(--drp-black); text-align: center; font-family: var(--drp-font-mono); font-size: var(--drp-text-xs);">Col 1</div>
+        <div style="background: var(--drp-grey-light); padding: var(--drp-space-3); border: 1px solid var(--drp-black); text-align: center; font-family: var(--drp-font-mono); font-size: var(--drp-text-xs);">Col 2</div>
+        <div style="background: var(--drp-grey-light); padding: var(--drp-space-3); border: 1px solid var(--drp-black); text-align: center; font-family: var(--drp-font-mono); font-size: var(--drp-text-xs);">Col 3</div>
       </div>
       <span class="showcase-label">4-Column Grid</span>
-      <div class="bru-grid-4" style="gap: var(--bru-space-3);">
-        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 1</div>
-        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 2</div>
-        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 3</div>
-        <div style="background: var(--bru-grey-light); padding: var(--bru-space-3); border: 1px solid var(--bru-black); text-align: center; font-family: var(--bru-font-mono); font-size: var(--bru-text-xs);">Col 4</div>
+      <div class="drp-grid-4" style="gap: var(--drp-space-3);">
+        <div style="background: var(--drp-grey-light); padding: var(--drp-space-3); border: 1px solid var(--drp-black); text-align: center; font-family: var(--drp-font-mono); font-size: var(--drp-text-xs);">Col 1</div>
+        <div style="background: var(--drp-grey-light); padding: var(--drp-space-3); border: 1px solid var(--drp-black); text-align: center; font-family: var(--drp-font-mono); font-size: var(--drp-text-xs);">Col 2</div>
+        <div style="background: var(--drp-grey-light); padding: var(--drp-space-3); border: 1px solid var(--drp-black); text-align: center; font-family: var(--drp-font-mono); font-size: var(--drp-text-xs);">Col 3</div>
+        <div style="background: var(--drp-grey-light); padding: var(--drp-space-3); border: 1px solid var(--drp-black); text-align: center; font-family: var(--drp-font-mono); font-size: var(--drp-text-xs);">Col 4</div>
       </div>
     </div>
   </div>
@@ -1359,25 +1359,25 @@
 
   <div class="subsection">
     <h3 class="subsection-title">Dividers</h3>
-    <div style="display: flex; flex-direction: column; gap: var(--bru-space-4); max-width: 500px;">
+    <div style="display: flex; flex-direction: column; gap: var(--drp-space-4); max-width: 500px;">
       <span class="showcase-label">Default</span>
-      <div class="bru-divider"></div>
+      <div class="drp-divider"></div>
       <span class="showcase-label">Dashed</span>
-      <div class="bru-divider bru-divider--dashed"></div>
+      <div class="drp-divider drp-divider--dashed"></div>
       <span class="showcase-label">Dotted</span>
-      <div class="bru-divider bru-divider--dotted"></div>
+      <div class="drp-divider drp-divider--dotted"></div>
       <span class="showcase-label">Thick</span>
-      <div class="bru-divider bru-divider--thick"></div>
+      <div class="drp-divider drp-divider--thick"></div>
     </div>
   </div>
 
   <div class="subsection">
     <h3 class="subsection-title">Empty State</h3>
     <div style="max-width: 400px;">
-      <div class="bru-empty">
-        <div class="bru-empty__icon">&#128269;</div>
-        <h4 class="bru-empty__title">No results found</h4>
-        <p class="bru-empty__text">Try adjusting your search terms or filters to find what you're looking for.</p>
+      <div class="drp-empty">
+        <div class="drp-empty__icon">&#128269;</div>
+        <h4 class="drp-empty__title">No results found</h4>
+        <p class="drp-empty__text">Try adjusting your search terms or filters to find what you're looking for.</p>
       </div>
     </div>
   </div>
@@ -1385,10 +1385,10 @@
   <div class="subsection">
     <h3 class="subsection-title">Dropzone</h3>
     <div style="max-width: 400px;">
-      <div class="bru-dropzone">
-        <div class="bru-dropzone__icon">&#128228;</div>
-        <div class="bru-dropzone__text">Drop files here or click to upload</div>
-        <div class="bru-dropzone__hint">SVG, PNG, JPG (max. 10MB)</div>
+      <div class="drp-dropzone">
+        <div class="drp-dropzone__icon">&#128228;</div>
+        <div class="drp-dropzone__text">Drop files here or click to upload</div>
+        <div class="drp-dropzone__hint">SVG, PNG, JPG (max. 10MB)</div>
       </div>
     </div>
   </div>
@@ -1404,44 +1404,44 @@
 
   <div class="animation-grid">
     <div class="animation-demo">
-      <div class="animation-box bru-anim-slide-up"></div>
+      <div class="animation-box drp-anim-slide-up"></div>
       <div class="animation-label">Slide Up</div>
     </div>
     <div class="animation-demo">
-      <div class="animation-box bru-anim-slide-down"></div>
+      <div class="animation-box drp-anim-slide-down"></div>
       <div class="animation-label">Slide Down</div>
     </div>
     <div class="animation-demo">
-      <div class="animation-box bru-anim-scale-in"></div>
+      <div class="animation-box drp-anim-scale-in"></div>
       <div class="animation-label">Scale In</div>
     </div>
     <div class="animation-demo">
-      <div class="animation-box bru-anim-glitch"></div>
+      <div class="animation-box drp-anim-glitch"></div>
       <div class="animation-label">Glitch</div>
     </div>
     <div class="animation-demo">
-      <div class="animation-box bru-anim-bounce"></div>
+      <div class="animation-box drp-anim-bounce"></div>
       <div class="animation-label">Bounce</div>
     </div>
     <div class="animation-demo">
-      <div class="animation-box bru-anim-pulse"></div>
+      <div class="animation-box drp-anim-pulse"></div>
       <div class="animation-label">Pulse</div>
     </div>
     <div class="animation-demo">
-      <div class="animation-box bru-anim-shake"></div>
+      <div class="animation-box drp-anim-shake"></div>
       <div class="animation-label">Shake</div>
     </div>
   </div>
 
-  <div class="subsection" style="margin-top: var(--bru-space-8);">
+  <div class="subsection" style="margin-top: var(--drp-space-8);">
     <h3 class="subsection-title">Shadows</h3>
-    <div class="showcase-row" style="gap: var(--bru-space-8);">
-      <div style="width:80px;height:80px;background:var(--bru-white);border:2px solid var(--bru-black);box-shadow:var(--bru-shadow-xs);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--bru-font-mono);font-size:10px;">XS</span></div>
-      <div style="width:80px;height:80px;background:var(--bru-white);border:2px solid var(--bru-black);box-shadow:var(--bru-shadow-sm);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--bru-font-mono);font-size:10px;">SM</span></div>
-      <div style="width:80px;height:80px;background:var(--bru-white);border:2px solid var(--bru-black);box-shadow:var(--bru-shadow-md);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--bru-font-mono);font-size:10px;">MD</span></div>
-      <div style="width:80px;height:80px;background:var(--bru-white);border:2px solid var(--bru-black);box-shadow:var(--bru-shadow-lg);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--bru-font-mono);font-size:10px;">LG</span></div>
-      <div style="width:80px;height:80px;background:var(--bru-white);border:2px solid var(--bru-black);box-shadow:var(--bru-shadow-xl);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--bru-font-mono);font-size:10px;">XL</span></div>
-      <div style="width:80px;height:80px;background:var(--bru-white);border:2px solid var(--bru-black);box-shadow:var(--bru-shadow-hover);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--bru-font-mono);font-size:10px;">HOVER</span></div>
+    <div class="showcase-row" style="gap: var(--drp-space-8);">
+      <div style="width:80px;height:80px;background:var(--drp-white);border:2px solid var(--drp-black);box-shadow:var(--drp-shadow-xs);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--drp-font-mono);font-size:10px;">XS</span></div>
+      <div style="width:80px;height:80px;background:var(--drp-white);border:2px solid var(--drp-black);box-shadow:var(--drp-shadow-sm);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--drp-font-mono);font-size:10px;">SM</span></div>
+      <div style="width:80px;height:80px;background:var(--drp-white);border:2px solid var(--drp-black);box-shadow:var(--drp-shadow-md);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--drp-font-mono);font-size:10px;">MD</span></div>
+      <div style="width:80px;height:80px;background:var(--drp-white);border:2px solid var(--drp-black);box-shadow:var(--drp-shadow-lg);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--drp-font-mono);font-size:10px;">LG</span></div>
+      <div style="width:80px;height:80px;background:var(--drp-white);border:2px solid var(--drp-black);box-shadow:var(--drp-shadow-xl);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--drp-font-mono);font-size:10px;">XL</span></div>
+      <div style="width:80px;height:80px;background:var(--drp-white);border:2px solid var(--drp-black);box-shadow:var(--drp-shadow-hover);display:flex;align-items:center;justify-content:center;"><span style="font-family:var(--drp-font-mono);font-size:10px;">HOVER</span></div>
     </div>
   </div>
 </section>
@@ -1449,7 +1449,7 @@
 
 <!-- Footer -->
 <footer class="page-footer">
-  <h3>BRUDDLE DESIGN SYSTEM</h3>
+  <h3>DOCTORPROJECT DESIGN SYSTEM</h3>
   <p>Doctor Project &mdash; Think Tank for Digital Shift &copy; 2026</p>
 </footer>
 
@@ -1479,20 +1479,20 @@
   }
 
   // Tabs interaction
-  document.querySelectorAll('.bru-tabs').forEach(tabGroup => {
-    tabGroup.querySelectorAll('.bru-tab').forEach(tab => {
+  document.querySelectorAll('.drp-tabs').forEach(tabGroup => {
+    tabGroup.querySelectorAll('.drp-tab').forEach(tab => {
       tab.addEventListener('click', () => {
-        tabGroup.querySelectorAll('.bru-tab').forEach(t => t.classList.remove('active'));
+        tabGroup.querySelectorAll('.drp-tab').forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
       });
     });
   });
 
   // Pagination interaction
-  document.querySelectorAll('.bru-pagination').forEach(pagination => {
-    pagination.querySelectorAll('.bru-pagination__page').forEach(page => {
+  document.querySelectorAll('.drp-pagination').forEach(pagination => {
+    pagination.querySelectorAll('.drp-pagination__page').forEach(page => {
       page.addEventListener('click', () => {
-        pagination.querySelectorAll('.bru-pagination__page').forEach(p => p.classList.remove('active'));
+        pagination.querySelectorAll('.drp-pagination__page').forEach(p => p.classList.remove('active'));
         page.classList.add('active');
       });
     });
@@ -1501,8 +1501,8 @@
   // Carousel
   const carousel = document.getElementById('demoCarousel');
   if (carousel) {
-    const track = carousel.querySelector('.bru-carousel__track');
-    const dots = carousel.querySelectorAll('.bru-carousel__dot');
+    const track = carousel.querySelector('.drp-carousel__track');
+    const dots = carousel.querySelectorAll('.drp-carousel__dot');
     let currentSlide = 0;
 
     dots.forEach(dot => {
