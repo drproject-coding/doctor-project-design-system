@@ -20,17 +20,17 @@ export const Default: Story = {
     title: (
       <>
         Prescription For{" "}
-        <span style={{ color: "var(--bru-purple)" }}>Product Chaos</span>
+        <span style={{ color: "var(--drp-purple)" }}>Product Chaos</span>
       </>
     ),
     subtitle:
       "Centralize, Standardize, Syndicate. The clinical approach to PXM that treats your disorganized product data.",
     actions: (
       <div style={{ display: "flex", gap: "16px" }}>
-        <button className="bru-btn bru-btn--primary bru-btn--lg">
+        <button className="drp-btn drp-btn--primary drp-btn--lg">
           Start Treatment
         </button>
-        <button className="bru-btn bru-btn--outline bru-btn--lg">
+        <button className="drp-btn drp-btn--outline drp-btn--lg">
           Learn More
         </button>
       </div>
@@ -39,19 +39,19 @@ export const Default: Story = {
       <div style={{ textAlign: "center" }}>
         <div
           style={{
-            fontFamily: "var(--bru-font-primary)",
+            fontFamily: "var(--drp-font-primary)",
             fontSize: "8rem",
             fontWeight: 800,
-            color: "var(--bru-purple)",
+            color: "var(--drp-purple)",
           }}
         >
           PXM
         </div>
         <div
           style={{
-            fontFamily: "var(--bru-font-mono)",
+            fontFamily: "var(--drp-font-mono)",
             fontSize: "12px",
-            color: "var(--bru-orange)",
+            color: "var(--drp-orange)",
             marginTop: "16px",
             letterSpacing: "0.1em",
           }}
@@ -68,12 +68,12 @@ export const SimpleHero: Story = {
     title: (
       <>
         Build Better{" "}
-        <span style={{ color: "var(--bru-purple)" }}>Products</span>
+        <span style={{ color: "var(--drp-purple)" }}>Products</span>
       </>
     ),
     subtitle: "A brutalist design system for modern web applications.",
     actions: (
-      <button className="bru-btn bru-btn--primary bru-btn--lg">
+      <button className="drp-btn drp-btn--primary drp-btn--lg">
         Get Started
       </button>
     ),

@@ -17,7 +17,7 @@ export function Skeleton({
     background:
       "linear-gradient(90deg, rgba(0,0,0,0.06) 25%, rgba(0,0,0,0.12) 50%, rgba(0,0,0,0.06) 75%)",
     backgroundSize: "200% 100%",
-    animation: "bru-shimmer 1.5s ease-in-out infinite",
+    animation: "drp-shimmer 1.5s ease-in-out infinite",
     border: "1px solid rgba(0,0,0,0.08)",
   };
 
@@ -39,7 +39,7 @@ export function Skeleton({
   return (
     <>
       <div className={className} style={baseStyle} />
-      <style>{`@keyframes bru-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }`}</style>
+      <style>{`@keyframes drp-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }`}</style>
     </>
   );
 }

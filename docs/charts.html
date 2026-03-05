@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Charts — Bruddle Design System</title>
+  <title>Charts — DoctorProject Design System</title>
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="docs.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
-  <script src="../js/bru-charts.js"></script>
+  <script src="../js/drp-charts.js"></script>
 </head>
 <body>
   <div class="app-layout">
     <nav class="sidebar">
       <div class="sidebar-brand">
-        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-name">DoctorProject</span>
         <span class="sidebar-brand-dot"></span>
       </div>
       <div class="sidebar-nav">
@@ -90,14 +90,14 @@
           <h1 class="topbar-title">Charts & Graphs</h1>
         </div>
         <div class="topbar-right">
-          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+          <button id="darkModeToggle" class="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm" title="Toggle dark mode">&#9790;</button>
         </div>
       </header>
 
       <div class="content">
         <div class="docs-page-header">
-          <h1 class="bru-heading-xl">Charts & Graphs</h1>
-          <p class="bru-text-md" style="color: var(--bru-grey); max-width: 560px;">
+          <h1 class="drp-heading-xl">Charts & Graphs</h1>
+          <p class="drp-text-md" style="color: var(--drp-grey); max-width: 560px;">
             Pre-themed Chart.js components with brutalist styling. Includes chart cards, containers,
             custom legends, stat cards, donut overlays, and a helper library.
           </p>
@@ -107,33 +107,33 @@
         <div class="docs-section">
           <div class="docs-section-title">Stat Cards</div>
 
-          <div class="bru-stat-grid bru-stat-grid--4">
-            <div class="bru-stat-card">
-              <div class="bru-stat-card__label">Total Revenue</div>
-              <div class="bru-stat-card__value">$12,489</div>
-              <span class="bru-stat-card__badge bru-stat-card__badge--up">+12.5%</span>
+          <div class="drp-stat-grid drp-stat-grid--4">
+            <div class="drp-stat-card">
+              <div class="drp-stat-card__label">Total Revenue</div>
+              <div class="drp-stat-card__value">$12,489</div>
+              <span class="drp-stat-card__badge drp-stat-card__badge--up">+12.5%</span>
             </div>
-            <div class="bru-stat-card">
-              <div class="bru-stat-card__label">Products</div>
-              <div class="bru-stat-card__value">84</div>
-              <span class="bru-stat-card__badge bru-stat-card__badge--up">+6</span>
+            <div class="drp-stat-card">
+              <div class="drp-stat-card__label">Products</div>
+              <div class="drp-stat-card__value">84</div>
+              <span class="drp-stat-card__badge drp-stat-card__badge--up">+6</span>
             </div>
-            <div class="bru-stat-card">
-              <div class="bru-stat-card__label">Refund Rate</div>
-              <div class="bru-stat-card__value">8.2%</div>
-              <span class="bru-stat-card__badge bru-stat-card__badge--down">+1.3%</span>
+            <div class="drp-stat-card">
+              <div class="drp-stat-card__label">Refund Rate</div>
+              <div class="drp-stat-card__value">8.2%</div>
+              <span class="drp-stat-card__badge drp-stat-card__badge--down">+1.3%</span>
             </div>
-            <div class="bru-stat-card">
-              <div class="bru-stat-card__label">Avg. Spend</div>
-              <div class="bru-stat-card__value">$148</div>
+            <div class="drp-stat-card">
+              <div class="drp-stat-card__label">Avg. Spend</div>
+              <div class="drp-stat-card__value">$148</div>
             </div>
           </div>
 
-<div class="docs-code">&lt;div class="bru-stat-grid bru-stat-grid--4"&gt;
-  &lt;div class="bru-stat-card"&gt;
-    &lt;div class="bru-stat-card__label"&gt;Total Revenue&lt;/div&gt;
-    &lt;div class="bru-stat-card__value"&gt;$12,489&lt;/div&gt;
-    &lt;span class="bru-stat-card__badge bru-stat-card__badge--up"&gt;+12.5%&lt;/span&gt;
+<div class="docs-code">&lt;div class="drp-stat-grid drp-stat-grid--4"&gt;
+  &lt;div class="drp-stat-card"&gt;
+    &lt;div class="drp-stat-card__label"&gt;Total Revenue&lt;/div&gt;
+    &lt;div class="drp-stat-card__value"&gt;$12,489&lt;/div&gt;
+    &lt;span class="drp-stat-card__badge drp-stat-card__badge--up"&gt;+12.5%&lt;/span&gt;
   &lt;/div&gt;
   ...
 &lt;/div&gt;</div>
@@ -143,12 +143,12 @@
         <div class="docs-section">
           <div class="docs-section-title">Bar Chart</div>
 
-          <div class="bru-chart-card">
-            <div class="bru-chart-header">
-              <h3 class="bru-chart-title">Monthly Spending</h3>
-              <div class="bru-chart-legend" id="barLegend"></div>
+          <div class="drp-chart-card">
+            <div class="drp-chart-header">
+              <h3 class="drp-chart-title">Monthly Spending</h3>
+              <div class="drp-chart-legend" id="barLegend"></div>
             </div>
-            <div class="bru-chart-container">
+            <div class="drp-chart-container">
               <canvas id="barChart"></canvas>
             </div>
           </div>
@@ -167,12 +167,12 @@
         <div class="docs-section">
           <div class="docs-section-title">Line Chart</div>
 
-          <div class="bru-chart-card">
-            <div class="bru-chart-header">
-              <h3 class="bru-chart-title">Spending Trend</h3>
-              <div class="bru-chart-legend" id="lineLegend"></div>
+          <div class="drp-chart-card">
+            <div class="drp-chart-header">
+              <h3 class="drp-chart-title">Spending Trend</h3>
+              <div class="drp-chart-legend" id="lineLegend"></div>
             </div>
-            <div class="bru-chart-container">
+            <div class="drp-chart-container">
               <canvas id="lineChart"></canvas>
             </div>
           </div>
@@ -190,12 +190,12 @@
         <div class="docs-section">
           <div class="docs-section-title">Mixed Chart (Bar + Line)</div>
 
-          <div class="bru-chart-card">
-            <div class="bru-chart-header">
-              <h3 class="bru-chart-title">Purchases vs Spending</h3>
-              <div class="bru-chart-legend" id="mixedLegend"></div>
+          <div class="drp-chart-card">
+            <div class="drp-chart-header">
+              <h3 class="drp-chart-title">Purchases vs Spending</h3>
+              <div class="drp-chart-legend" id="mixedLegend"></div>
             </div>
-            <div class="bru-chart-container">
+            <div class="drp-chart-container">
               <canvas id="mixedChart"></canvas>
             </div>
           </div>
@@ -214,43 +214,43 @@
         <div class="docs-section">
           <div class="docs-section-title">Doughnut Chart</div>
 
-          <div class="bru-chart-grid bru-chart-grid--2">
+          <div class="drp-chart-grid drp-chart-grid--2">
             <!-- Doughnut with center overlay -->
-            <div class="bru-chart-card">
-              <div class="bru-chart-header">
-                <h3 class="bru-chart-title">Product Status</h3>
+            <div class="drp-chart-card">
+              <div class="drp-chart-header">
+                <h3 class="drp-chart-title">Product Status</h3>
               </div>
-              <div class="bru-chart-donut-wrap">
-                <div class="bru-chart-container--sm">
+              <div class="drp-chart-donut-wrap">
+                <div class="drp-chart-container--sm">
                   <canvas id="donutChart"></canvas>
                 </div>
-                <div class="bru-chart-donut-center">
-                  <div class="bru-chart-donut-value">84</div>
-                  <div class="bru-chart-donut-label">total products</div>
+                <div class="drp-chart-donut-center">
+                  <div class="drp-chart-donut-value">84</div>
+                  <div class="drp-chart-donut-label">total products</div>
                 </div>
               </div>
-              <div class="bru-chart-legend bru-chart-legend--center bru-chart-legend--bordered" id="donutLegend"></div>
+              <div class="drp-chart-legend drp-chart-legend--center drp-chart-legend--bordered" id="donutLegend"></div>
             </div>
 
             <!-- Simple doughnut -->
-            <div class="bru-chart-card">
-              <div class="bru-chart-header">
-                <h3 class="bru-chart-title">Spending Breakdown</h3>
+            <div class="drp-chart-card">
+              <div class="drp-chart-header">
+                <h3 class="drp-chart-title">Spending Breakdown</h3>
               </div>
-              <div class="bru-chart-container--sm">
+              <div class="drp-chart-container--sm">
                 <canvas id="donutChart2"></canvas>
               </div>
-              <div class="bru-chart-legend bru-chart-legend--center bru-chart-legend--bordered" id="donutLegend2"></div>
+              <div class="drp-chart-legend drp-chart-legend--center drp-chart-legend--bordered" id="donutLegend2"></div>
             </div>
           </div>
 
-<div class="docs-code">&lt;div class="bru-chart-donut-wrap"&gt;
-  &lt;div class="bru-chart-container--sm"&gt;
+<div class="docs-code">&lt;div class="drp-chart-donut-wrap"&gt;
+  &lt;div class="drp-chart-container--sm"&gt;
     &lt;canvas id="donutChart"&gt;&lt;/canvas&gt;
   &lt;/div&gt;
-  &lt;div class="bru-chart-donut-center"&gt;
-    &lt;div class="bru-chart-donut-value"&gt;84&lt;/div&gt;
-    &lt;div class="bru-chart-donut-label"&gt;total products&lt;/div&gt;
+  &lt;div class="drp-chart-donut-center"&gt;
+    &lt;div class="drp-chart-donut-value"&gt;84&lt;/div&gt;
+    &lt;div class="drp-chart-donut-label"&gt;total products&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;
 
@@ -264,11 +264,11 @@ const chart = BruCharts.doughnut('#donutChart', {
         <div class="docs-section">
           <div class="docs-section-title">Horizontal Bar</div>
 
-          <div class="bru-chart-card">
-            <div class="bru-chart-header">
-              <h3 class="bru-chart-title">Top Products by Spend</h3>
+          <div class="drp-chart-card">
+            <div class="drp-chart-header">
+              <h3 class="drp-chart-title">Top Products by Spend</h3>
             </div>
-            <div class="bru-chart-container">
+            <div class="drp-chart-container">
               <canvas id="hBarChart"></canvas>
             </div>
           </div>
@@ -283,22 +283,22 @@ const chart = BruCharts.doughnut('#donutChart', {
         <div class="docs-section">
           <div class="docs-section-title">Polar Area &amp; Radar</div>
 
-          <div class="bru-chart-grid bru-chart-grid--2">
-            <div class="bru-chart-card">
-              <div class="bru-chart-header">
-                <h3 class="bru-chart-title">Category Distribution</h3>
+          <div class="drp-chart-grid drp-chart-grid--2">
+            <div class="drp-chart-card">
+              <div class="drp-chart-header">
+                <h3 class="drp-chart-title">Category Distribution</h3>
               </div>
-              <div class="bru-chart-container--sm">
+              <div class="drp-chart-container--sm">
                 <canvas id="polarChart"></canvas>
               </div>
-              <div class="bru-chart-legend bru-chart-legend--center bru-chart-legend--bordered" id="polarLegend"></div>
+              <div class="drp-chart-legend drp-chart-legend--center drp-chart-legend--bordered" id="polarLegend"></div>
             </div>
 
-            <div class="bru-chart-card">
-              <div class="bru-chart-header">
-                <h3 class="bru-chart-title">Portfolio Analysis</h3>
+            <div class="drp-chart-card">
+              <div class="drp-chart-header">
+                <h3 class="drp-chart-title">Portfolio Analysis</h3>
               </div>
-              <div class="bru-chart-container--sm">
+              <div class="drp-chart-container--sm">
                 <canvas id="radarChart"></canvas>
               </div>
             </div>
@@ -319,48 +319,48 @@ BruCharts.radar('#radarChart', {
         <div class="docs-section">
           <div class="docs-section-title">Chart Grid Layouts</div>
 
-          <div class="bru-chart-grid bru-chart-grid--3">
-            <div class="bru-chart-card">
-              <div class="bru-chart-header">
-                <h3 class="bru-chart-title">Q1</h3>
+          <div class="drp-chart-grid drp-chart-grid--3">
+            <div class="drp-chart-card">
+              <div class="drp-chart-header">
+                <h3 class="drp-chart-title">Q1</h3>
               </div>
-              <div class="bru-chart-container--sm">
+              <div class="drp-chart-container--sm">
                 <canvas id="miniChart1"></canvas>
               </div>
             </div>
-            <div class="bru-chart-card">
-              <div class="bru-chart-header">
-                <h3 class="bru-chart-title">Q2</h3>
+            <div class="drp-chart-card">
+              <div class="drp-chart-header">
+                <h3 class="drp-chart-title">Q2</h3>
               </div>
-              <div class="bru-chart-container--sm">
+              <div class="drp-chart-container--sm">
                 <canvas id="miniChart2"></canvas>
               </div>
             </div>
-            <div class="bru-chart-card">
-              <div class="bru-chart-header">
-                <h3 class="bru-chart-title">Q3</h3>
+            <div class="drp-chart-card">
+              <div class="drp-chart-header">
+                <h3 class="drp-chart-title">Q3</h3>
               </div>
-              <div class="bru-chart-container--sm">
+              <div class="drp-chart-container--sm">
                 <canvas id="miniChart3"></canvas>
               </div>
             </div>
           </div>
 
-<div class="docs-code">&lt;div class="bru-chart-grid bru-chart-grid--3"&gt;
-  &lt;div class="bru-chart-card"&gt;...&lt;/div&gt;
-  &lt;div class="bru-chart-card"&gt;...&lt;/div&gt;
-  &lt;div class="bru-chart-card"&gt;...&lt;/div&gt;
+<div class="docs-code">&lt;div class="drp-chart-grid drp-chart-grid--3"&gt;
+  &lt;div class="drp-chart-card"&gt;...&lt;/div&gt;
+  &lt;div class="drp-chart-card"&gt;...&lt;/div&gt;
+  &lt;div class="drp-chart-card"&gt;...&lt;/div&gt;
 &lt;/div&gt;
 
 &lt;!-- Other grid variants: --&gt;
-&lt;div class="bru-chart-grid bru-chart-grid--2"&gt;...&lt;/div&gt;
-&lt;div class="bru-chart-grid bru-chart-grid--2-1"&gt;...&lt;/div&gt;</div>
+&lt;div class="drp-chart-grid drp-chart-grid--2"&gt;...&lt;/div&gt;
+&lt;div class="drp-chart-grid drp-chart-grid--2-1"&gt;...&lt;/div&gt;</div>
         </div>
 
         <!-- ═══════════ COLOR PALETTE ═══════════ -->
         <div class="docs-section">
           <div class="docs-section-title">Color Palette</div>
-          <p class="bru-text-sm" style="color: var(--bru-grey); margin-bottom: 16px;">
+          <p class="drp-text-sm" style="color: var(--drp-grey); margin-bottom: 16px;">
             BruCharts.PALETTE — 10 curated colors auto-applied to datasets.
           </p>
 
@@ -384,7 +384,7 @@ BruCharts.bar('#el', {
           <div class="docs-section-title">BruCharts API</div>
 
           <div class="responsive-table-wrapper">
-            <table class="bru-table">
+            <table class="drp-table">
               <thead>
                 <tr>
                   <th>Method</th>

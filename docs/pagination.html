@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pagination — Bruddle Design System</title>
+  <title>Pagination — DoctorProject Design System</title>
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="docs.css">
 </head>
@@ -11,7 +11,7 @@
   <div class="app-layout">
     <nav class="sidebar">
       <div class="sidebar-brand">
-        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-name">DoctorProject</span>
         <span class="sidebar-brand-dot"></span>
       </div>
       <div class="sidebar-nav">
@@ -88,7 +88,7 @@
           <h1 class="topbar-title">Pagination</h1>
         </div>
         <div class="topbar-right">
-          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+          <button id="darkModeToggle" class="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm" title="Toggle dark mode">&#9790;</button>
         </div>
       </header>
 
@@ -96,32 +96,32 @@
         <div class="container">
 
           <div class="docs-page-header">
-            <h2 class="bru-h2">Pagination</h2>
-            <p class="bru-text bru-mt-2">Connected page navigation with prev/next buttons and numbered pages. Three variants: default, dark, and transparent.</p>
+            <h2 class="drp-h2">Pagination</h2>
+            <p class="drp-text drp-mt-2">Connected page navigation with prev/next buttons and numbered pages. Three variants: default, dark, and transparent.</p>
           </div>
 
           <!-- Default -->
           <div class="docs-section">
             <h3 class="docs-section-title">Default</h3>
             <div class="docs-demo">
-              <nav class="bru-pagination">
-                <button class="bru-pagination__btn">&larr;</button>
-                <button class="bru-pagination__page">1</button>
-                <button class="bru-pagination__page bru-pagination__page--active">2</button>
-                <button class="bru-pagination__page">3</button>
-                <button class="bru-pagination__page">4</button>
-                <button class="bru-pagination__page">5</button>
-                <span class="bru-pagination__info">2 of 5</span>
-                <button class="bru-pagination__btn">&rarr;</button>
+              <nav class="drp-pagination">
+                <button class="drp-pagination__btn">&larr;</button>
+                <button class="drp-pagination__page">1</button>
+                <button class="drp-pagination__page drp-pagination__page--active">2</button>
+                <button class="drp-pagination__page">3</button>
+                <button class="drp-pagination__page">4</button>
+                <button class="drp-pagination__page">5</button>
+                <span class="drp-pagination__info">2 of 5</span>
+                <button class="drp-pagination__btn">&rarr;</button>
               </nav>
             </div>
-<pre class="docs-code">&lt;nav class="bru-pagination"&gt;
-  &lt;button class="bru-pagination__btn"&gt;&amp;larr;&lt;/button&gt;
-  &lt;button class="bru-pagination__page"&gt;1&lt;/button&gt;
-  &lt;button class="bru-pagination__page bru-pagination__page--active"&gt;2&lt;/button&gt;
-  &lt;button class="bru-pagination__page"&gt;3&lt;/button&gt;
-  &lt;span class="bru-pagination__info"&gt;2 of 5&lt;/span&gt;
-  &lt;button class="bru-pagination__btn"&gt;&amp;rarr;&lt;/button&gt;
+<pre class="docs-code">&lt;nav class="drp-pagination"&gt;
+  &lt;button class="drp-pagination__btn"&gt;&amp;larr;&lt;/button&gt;
+  &lt;button class="drp-pagination__page"&gt;1&lt;/button&gt;
+  &lt;button class="drp-pagination__page drp-pagination__page--active"&gt;2&lt;/button&gt;
+  &lt;button class="drp-pagination__page"&gt;3&lt;/button&gt;
+  &lt;span class="drp-pagination__info"&gt;2 of 5&lt;/span&gt;
+  &lt;button class="drp-pagination__btn"&gt;&amp;rarr;&lt;/button&gt;
 &lt;/nav&gt;</pre>
           </div>
 
@@ -129,17 +129,17 @@
           <div class="docs-section">
             <h3 class="docs-section-title">Dark Variant</h3>
             <div class="docs-demo">
-              <nav class="bru-pagination bru-pagination--dark">
-                <button class="bru-pagination__btn">&larr;</button>
-                <button class="bru-pagination__page">1</button>
-                <button class="bru-pagination__page">2</button>
-                <button class="bru-pagination__page bru-pagination__page--active">3</button>
-                <button class="bru-pagination__page">4</button>
-                <span class="bru-pagination__info">3 of 4</span>
-                <button class="bru-pagination__btn">&rarr;</button>
+              <nav class="drp-pagination drp-pagination--dark">
+                <button class="drp-pagination__btn">&larr;</button>
+                <button class="drp-pagination__page">1</button>
+                <button class="drp-pagination__page">2</button>
+                <button class="drp-pagination__page drp-pagination__page--active">3</button>
+                <button class="drp-pagination__page">4</button>
+                <span class="drp-pagination__info">3 of 4</span>
+                <button class="drp-pagination__btn">&rarr;</button>
               </nav>
             </div>
-<pre class="docs-code">&lt;nav class="bru-pagination bru-pagination--dark"&gt;
+<pre class="docs-code">&lt;nav class="drp-pagination drp-pagination--dark"&gt;
   &lt;!-- same inner markup --&gt;
 &lt;/nav&gt;</pre>
           </div>
@@ -148,15 +148,15 @@
           <div class="docs-section">
             <h3 class="docs-section-title">Transparent Variant</h3>
             <div class="docs-demo">
-              <nav class="bru-pagination bru-pagination--transparent">
-                <button class="bru-pagination__btn">&larr;</button>
-                <button class="bru-pagination__page bru-pagination__page--active">1</button>
-                <button class="bru-pagination__page">2</button>
-                <button class="bru-pagination__page">3</button>
-                <button class="bru-pagination__btn">&rarr;</button>
+              <nav class="drp-pagination drp-pagination--transparent">
+                <button class="drp-pagination__btn">&larr;</button>
+                <button class="drp-pagination__page drp-pagination__page--active">1</button>
+                <button class="drp-pagination__page">2</button>
+                <button class="drp-pagination__page">3</button>
+                <button class="drp-pagination__btn">&rarr;</button>
               </nav>
             </div>
-<pre class="docs-code">&lt;nav class="bru-pagination bru-pagination--transparent"&gt;
+<pre class="docs-code">&lt;nav class="drp-pagination drp-pagination--transparent"&gt;
   &lt;!-- same inner markup --&gt;
 &lt;/nav&gt;</pre>
           </div>

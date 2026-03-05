@@ -9,10 +9,10 @@ export interface SwitchProps extends Omit<
 
 export function Switch({ label, ...props }: SwitchProps) {
   return (
-    <label className="bru-switch">
+    <label className="drp-switch">
       <input type="checkbox" {...props} />
-      <span className="bru-switch__track">
-        <span className="bru-switch__knob" />
+      <span className="drp-switch__track">
+        <span className="drp-switch__knob" />
       </span>
       {label && <span>{label}</span>}
     </label>

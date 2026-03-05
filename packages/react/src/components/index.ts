@@ -52,8 +52,12 @@ export type { TabsProps, TabItem } from "./Tabs";
 export { Pagination } from "./Pagination";
 export type { PaginationProps } from "./Pagination";
 
-export { AppShell, Sidebar, Topbar } from "./Layout";
-export type { AppShellProps, SidebarProps, TopbarProps } from "./Layout";
+export { AppShell, Topbar, DashboardLayout } from "./Layout";
+export type {
+  AppShellProps,
+  TopbarProps,
+  DashboardLayoutProps,
+} from "./Layout";
 
 export { Navbar } from "./Navbar";
 export type { NavbarProps } from "./Navbar";
@@ -99,3 +103,72 @@ export type { EmptyStateProps } from "./EmptyState";
 
 export { Divider } from "./Divider";
 export type { DividerProps } from "./Divider";
+
+export { TopBar } from "./TopBar";
+export type { TopBarProps } from "./TopBar";
+
+export { Sidebar } from "./Sidebar";
+export type { SidebarProps, SidebarItem } from "./Sidebar";
+
+// ============================================================================
+// ALL SCREENS EXPORTED FOR EASY DISCOVERY
+// ============================================================================
+// Import all screens from the screens index
+export {
+  // Auth
+  SignIn,
+  SignUp,
+  PasswordReset,
+  // Templates
+  ListScreen,
+  // Products
+  ProductsList,
+  // Customers
+  CustomersList,
+  // Accounts
+  AccountsList,
+  // Transactions
+  TransactionsList,
+  // Contacts
+  ContactsList,
+  // Sales
+  SalesList,
+  // Inbox
+  InboxList,
+  // Payments
+  PaymentsList,
+  // Education
+  EducationCourses,
+  // Calendar
+  CalendarEvent,
+  // Support
+  SupportHome,
+  // Profile Settings
+  ProfileAccount,
+  ProfileNotifications,
+  ProfileSecurity,
+  ProfileSocial,
+  // Charts
+  ChartContainer,
+  ChartBarVariant,
+  ChartPolarVariant,
+  ChartWaveVariant,
+  ChartGeometricVariant,
+  ChartHorizontalBarsVariant,
+  ChartDoubleBarsVariant,
+  ChartMiscVariant,
+} from "../screens";
+
+export type {
+  ListScreenProps,
+  PasswordResetProps,
+  Product,
+  Customer,
+  Transaction,
+  Contact,
+  Sale,
+  Payment,
+  EducationCoursesProps,
+  EducationView,
+  ChartContainerProps,
+} from "../screens";

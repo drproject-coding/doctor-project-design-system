@@ -1,5 +1,5 @@
 /* ============================================================
-   BRUDDLE DESIGN SYSTEM — CARDS
+   DOCTORPROJECT DESIGN SYSTEM — CARDS
    ============================================================ */
 
 
@@ -7,71 +7,71 @@
    CARDS
    ────────────────────────────────────────────── */
 
-.bru-card {
-  background: var(--bru-surface);
-  border: var(--bru-border);
-  padding: var(--bru-space-6);
+.drp-card {
+  background: var(--drp-surface);
+  border: var(--drp-border);
+  padding: var(--drp-space-6);
 }
 
-.bru-card--raised {
-  box-shadow: var(--bru-shadow-lg);
+.drp-card--raised {
+  box-shadow: var(--drp-shadow-lg);
 }
 
-.bru-card--sm {
-  box-shadow: var(--bru-shadow-sm);
+.drp-card--sm {
+  box-shadow: var(--drp-shadow-sm);
 }
 
-.bru-card--flat {
+.drp-card--flat {
   border: none;
   box-shadow: none;
 }
 
-.bru-card--interactive {
+.drp-card--interactive {
   cursor: pointer;
   transition:
-    transform var(--bru-duration-fast) var(--bru-ease),
-    box-shadow var(--bru-duration-fast) var(--bru-ease);
+    transform var(--drp-duration-fast) var(--drp-ease),
+    box-shadow var(--drp-duration-fast) var(--drp-ease);
 }
 
-.bru-card--interactive:hover {
+.drp-card--interactive:hover {
   transform: translate(1px, 1px);
-  box-shadow: var(--bru-shadow-sm);
+  box-shadow: var(--drp-shadow-sm);
 }
 
-.bru-card--interactive:active {
+.drp-card--interactive:active {
   transform: translate(3px, 3px);
   box-shadow: none;
 }
 
 /* Card header */
-.bru-card__header {
+.drp-card__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: var(--bru-space-4);
+  margin-bottom: var(--drp-space-4);
 }
 
-.bru-card__title {
-  font-family: var(--bru-font-primary);
-  font-size: var(--bru-text-lg);
-  font-weight: var(--bru-weight-bold);
-  color: var(--bru-black);
+.drp-card__title {
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-lg);
+  font-weight: var(--drp-weight-bold);
+  color: var(--drp-black);
   margin: 0;
 }
 
-.bru-card__subtitle {
-  font-family: var(--bru-font-primary);
-  font-size: var(--bru-text-sm);
-  color: var(--bru-grey);
-  margin: var(--bru-space-1) 0 0;
-  line-height: var(--bru-leading-normal);
+.drp-card__subtitle {
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-sm);
+  color: var(--drp-grey);
+  margin: var(--drp-space-1) 0 0;
+  line-height: var(--drp-leading-normal);
 }
 
 /* Color accent cards */
-.bru-card--purple { border-left: 4px solid var(--bru-purple); }
-.bru-card--mint   { border-left: 4px solid var(--bru-mint); }
-.bru-card--pink   { border-left: 4px solid var(--bru-pink); }
-.bru-card--yellow { border-left: 4px solid var(--bru-yellow); }
+.drp-card--purple { border-left: 4px solid var(--drp-purple); }
+.drp-card--mint   { border-left: 4px solid var(--drp-mint); }
+.drp-card--pink   { border-left: 4px solid var(--drp-pink); }
+.drp-card--yellow { border-left: 4px solid var(--drp-yellow); }
 
 
 /* ──────────────────────────────────────────────
@@ -79,39 +79,39 @@
    ────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
-  .bru-card {
-    padding: var(--bru-space-4);
+  .drp-card {
+    padding: var(--drp-space-4);
   }
 
-  .bru-card__header {
-    padding: var(--bru-space-3) var(--bru-space-4);
+  .drp-card__header {
+    padding: var(--drp-space-3) var(--drp-space-4);
   }
 
-  .bru-card__body {
-    padding: var(--bru-space-4);
+  .drp-card__body {
+    padding: var(--drp-space-4);
   }
 
-  .bru-card__footer {
-    padding: var(--bru-space-3) var(--bru-space-4);
+  .drp-card__footer {
+    padding: var(--drp-space-3) var(--drp-space-4);
   }
 }
 
 @media (max-width: 390px) {
-  .bru-card {
-    padding: var(--bru-space-3);
+  .drp-card {
+    padding: var(--drp-space-3);
   }
 
-  .bru-card__header {
-    padding: var(--bru-space-2) var(--bru-space-3);
+  .drp-card__header {
+    padding: var(--drp-space-2) var(--drp-space-3);
   }
 
-  .bru-card__body {
-    padding: var(--bru-space-3);
+  .drp-card__body {
+    padding: var(--drp-space-3);
   }
 
-  .bru-card__footer {
-    padding: var(--bru-space-2) var(--bru-space-3);
+  .drp-card__footer {
+    padding: var(--drp-space-2) var(--drp-space-3);
     flex-direction: column;
-    gap: var(--bru-space-2);
+    gap: var(--drp-space-2);
   }
 }

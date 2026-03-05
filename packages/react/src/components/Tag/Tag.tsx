@@ -24,12 +24,12 @@ export function Tag({
   className = "",
 }: TagProps) {
   const classes = [
-    "bru-tag",
-    color && `bru-tag--${color}`,
-    filled && "bru-tag--filled",
-    dark && "bru-tag--dark",
-    dot && "bru-tag--dot",
-    closeable && "bru-tag--closeable",
+    "drp-tag",
+    color && `drp-tag--${color}`,
+    filled && "drp-tag--filled",
+    dark && "drp-tag--dark",
+    dot && "drp-tag--dot",
+    closeable && "drp-tag--closeable",
     className,
   ]
     .filter(Boolean)
@@ -39,7 +39,7 @@ export function Tag({
     <span className={classes}>
       {children}
       {closeable && (
-        <button className="bru-tag__close" onClick={onClose}>
+        <button className="drp-tag__close" onClick={onClose}>
           ×
         </button>
       )}

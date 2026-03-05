@@ -7,20 +7,20 @@ export interface StatCardProps {
 export function StatCard({ value, label, className = "" }: StatCardProps) {
   return (
     <div
-      className={`bru-stat-card ${className}`}
+      className={`drp-stat-card ${className}`}
       style={{
         textAlign: "center",
-        padding: "var(--bru-space-8)",
-        border: "var(--bru-border-chunk)",
-        background: "var(--bru-surface)",
+        padding: "var(--drp-space-8)",
+        border: "var(--drp-border-chunk)",
+        background: "var(--drp-surface)",
       }}
     >
       <p
         style={{
-          fontFamily: "var(--bru-font-primary)",
+          fontFamily: "var(--drp-font-primary)",
           fontSize: "3.5rem",
           fontWeight: 800,
-          color: "var(--bru-purple)",
+          color: "var(--drp-purple)",
           lineHeight: 1,
         }}
       >
@@ -28,12 +28,12 @@ export function StatCard({ value, label, className = "" }: StatCardProps) {
       </p>
       <p
         style={{
-          fontFamily: "var(--bru-font-primary)",
-          fontSize: "var(--bru-text-sm)",
+          fontFamily: "var(--drp-font-primary)",
+          fontSize: "var(--drp-text-sm)",
           fontWeight: 600,
           textTransform: "uppercase",
           letterSpacing: "0.1em",
-          marginTop: "var(--bru-space-2)",
+          marginTop: "var(--drp-space-2)",
         }}
       >
         {label}

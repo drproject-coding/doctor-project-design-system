@@ -24,7 +24,7 @@ export const Default: Story = {
 
 export const Fast: Story = {
   args: {
-    items: ["BRUTALIST", "DESIGN", "SYSTEM", "BRUDDLE"],
+    items: ["BRUTALIST", "DESIGN", "SYSTEM", "DOCTOR PROJECT"],
     separator: "///",
     speed: 10,
   },

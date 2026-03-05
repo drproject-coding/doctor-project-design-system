@@ -26,10 +26,10 @@ export function Footer({
     <footer
       className={className}
       style={{
-        background: "var(--bru-black)",
+        background: "var(--drp-black)",
         color: "#FFFFFF",
-        padding: "var(--bru-space-16, 64px) 0",
-        borderTop: "3px solid var(--bru-purple)",
+        padding: "var(--drp-space-16, 64px) 0",
+        borderTop: "3px solid var(--drp-purple)",
       }}
     >
       <div style={{ maxWidth: "1440px", margin: "0 auto", padding: "0 24px" }}>
@@ -43,7 +43,7 @@ export function Footer({
           <div>
             <p
               style={{
-                fontFamily: "var(--bru-font-primary)",
+                fontFamily: "var(--drp-font-primary)",
                 fontSize: "2rem",
                 fontWeight: 800,
                 marginBottom: "16px",
@@ -61,13 +61,13 @@ export function Footer({
             <div key={col.title}>
               <p
                 style={{
-                  fontFamily: "var(--bru-font-primary)",
+                  fontFamily: "var(--drp-font-primary)",
                   fontSize: "12px",
                   fontWeight: 700,
                   textTransform: "uppercase",
                   letterSpacing: "0.05em",
                   marginBottom: "16px",
-                  color: "var(--bru-orange)",
+                  color: "var(--drp-orange)",
                 }}
               >
                 {col.title}
@@ -114,7 +114,7 @@ export function Footer({
             {copyright && (
               <p
                 style={{
-                  fontFamily: "var(--bru-font-mono)",
+                  fontFamily: "var(--drp-font-mono)",
                   fontSize: "11px",
                   opacity: 0.5,
                 }}

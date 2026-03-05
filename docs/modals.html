@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modals — Bruddle Design System</title>
+  <title>Modals — DoctorProject Design System</title>
   <link rel="stylesheet" href="../css/index.css">
   <link rel="stylesheet" href="docs.css">
 </head>
@@ -11,7 +11,7 @@
   <div class="app-layout">
     <nav class="sidebar">
       <div class="sidebar-brand">
-        <span class="sidebar-brand-name">Bruddle</span>
+        <span class="sidebar-brand-name">DoctorProject</span>
         <span class="sidebar-brand-dot"></span>
       </div>
       <div class="sidebar-nav">
@@ -88,7 +88,7 @@
           <h1 class="topbar-title">Modals</h1>
         </div>
         <div class="topbar-right">
-          <button id="darkModeToggle" class="bru-btn bru-btn--ghost bru-btn--icon bru-btn--sm" title="Toggle dark mode">&#9790;</button>
+          <button id="darkModeToggle" class="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm" title="Toggle dark mode">&#9790;</button>
         </div>
       </header>
 
@@ -96,34 +96,34 @@
         <div class="container">
 
           <div class="docs-page-header">
-            <h2 class="bru-h2">Modals</h2>
-            <p class="bru-text bru-mt-2">Full-screen overlay with a centered dialog. Features a purple header, body content area, and footer with action buttons.</p>
+            <h2 class="drp-h2">Modals</h2>
+            <p class="drp-text drp-mt-2">Full-screen overlay with a centered dialog. Features a purple header, body content area, and footer with action buttons.</p>
           </div>
 
           <!-- Modal Demo -->
           <div class="docs-section">
             <h3 class="docs-section-title">Demo</h3>
             <div class="docs-demo">
-              <button class="bru-btn bru-btn--primary" id="openModal">Open Modal</button>
+              <button class="drp-btn drp-btn--primary" id="openModal">Open Modal</button>
             </div>
 
             <!-- The modal itself -->
-            <div class="bru-overlay" id="demoOverlay" hidden>
-              <div class="bru-modal">
-                <div class="bru-modal__header">
-                  <h3 class="bru-modal__title">Confirm Action</h3>
-                  <button class="bru-modal__close" id="closeModal">&times;</button>
+            <div class="drp-overlay" id="demoOverlay" hidden>
+              <div class="drp-modal">
+                <div class="drp-modal__header">
+                  <h3 class="drp-modal__title">Confirm Action</h3>
+                  <button class="drp-modal__close" id="closeModal">&times;</button>
                 </div>
-                <div class="bru-modal__body">
-                  <p class="bru-text">Are you sure you want to proceed? This action will sync all products from your AppSumo account.</p>
-                  <div class="bru-field bru-mt-4">
-                    <label class="bru-field__label">Notes (optional)</label>
-                    <textarea class="bru-input" placeholder="Add a note..." rows="3"></textarea>
+                <div class="drp-modal__body">
+                  <p class="drp-text">Are you sure you want to proceed? This action will sync all products from your AppSumo account.</p>
+                  <div class="drp-field drp-mt-4">
+                    <label class="drp-field__label">Notes (optional)</label>
+                    <textarea class="drp-input" placeholder="Add a note..." rows="3"></textarea>
                   </div>
                 </div>
-                <div class="bru-modal__footer">
-                  <button class="bru-btn bru-btn--ghost" id="cancelModal">Cancel</button>
-                  <button class="bru-btn bru-btn--primary">Confirm</button>
+                <div class="drp-modal__footer">
+                  <button class="drp-btn drp-btn--ghost" id="cancelModal">Cancel</button>
+                  <button class="drp-btn drp-btn--primary">Confirm</button>
                 </div>
               </div>
             </div>
@@ -132,18 +132,18 @@
           <!-- Code -->
           <div class="docs-section">
             <h3 class="docs-section-title">Markup</h3>
-<pre class="docs-code">&lt;div class="bru-overlay" id="demoOverlay" hidden&gt;
-  &lt;div class="bru-modal"&gt;
-    &lt;div class="bru-modal__header"&gt;
-      &lt;h3 class="bru-modal__title"&gt;Title&lt;/h3&gt;
-      &lt;button class="bru-modal__close"&gt;&amp;times;&lt;/button&gt;
+<pre class="docs-code">&lt;div class="drp-overlay" id="demoOverlay" hidden&gt;
+  &lt;div class="drp-modal"&gt;
+    &lt;div class="drp-modal__header"&gt;
+      &lt;h3 class="drp-modal__title"&gt;Title&lt;/h3&gt;
+      &lt;button class="drp-modal__close"&gt;&amp;times;&lt;/button&gt;
     &lt;/div&gt;
-    &lt;div class="bru-modal__body"&gt;
-      &lt;p class="bru-text"&gt;Body content here.&lt;/p&gt;
+    &lt;div class="drp-modal__body"&gt;
+      &lt;p class="drp-text"&gt;Body content here.&lt;/p&gt;
     &lt;/div&gt;
-    &lt;div class="bru-modal__footer"&gt;
-      &lt;button class="bru-btn bru-btn--ghost"&gt;Cancel&lt;/button&gt;
-      &lt;button class="bru-btn bru-btn--primary"&gt;Confirm&lt;/button&gt;
+    &lt;div class="drp-modal__footer"&gt;
+      &lt;button class="drp-btn drp-btn--ghost"&gt;Cancel&lt;/button&gt;
+      &lt;button class="drp-btn drp-btn--primary"&gt;Confirm&lt;/button&gt;
     &lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt;</pre>

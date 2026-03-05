@@ -8,9 +8,9 @@ export interface StatusDotProps {
 
 export function StatusDot({ color, pulse, className = "" }: StatusDotProps) {
   const classes = [
-    "bru-dot",
-    color && `bru-dot--${color}`,
-    pulse && "bru-dot--pulse",
+    "drp-dot",
+    color && `drp-dot--${color}`,
+    pulse && "drp-dot--pulse",
     className,
   ]
     .filter(Boolean)

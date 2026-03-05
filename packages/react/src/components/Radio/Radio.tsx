@@ -17,9 +17,9 @@ export function Radio({
   ...props
 }: RadioProps) {
   const classes = [
-    "bru-radio",
-    color && `bru-radio--${color}`,
-    dark && "bru-radio--dark",
+    "drp-radio",
+    color && `drp-radio--${color}`,
+    dark && "drp-radio--dark",
     className,
   ]
     .filter(Boolean)

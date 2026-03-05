@@ -1,5 +1,5 @@
 /* ============================================================
-   BRUDDLE DESIGN SYSTEM — TABLES
+   DOCTORPROJECT DESIGN SYSTEM — TABLES
    ============================================================ */
 
 
@@ -7,42 +7,42 @@
    TABLE
    ────────────────────────────────────────────── */
 
-.bru-table {
+.drp-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  border: var(--bru-border);
-  font-family: var(--bru-font-primary);
-  font-size: var(--bru-text-sm);
+  border: var(--drp-border);
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-sm);
 }
 
-.bru-table th {
-  padding: var(--bru-space-3) var(--bru-space-4);
+.drp-table th {
+  padding: var(--drp-space-3) var(--drp-space-4);
   text-align: left;
-  font-weight: var(--bru-weight-bold);
+  font-weight: var(--drp-weight-bold);
   text-transform: uppercase;
-  letter-spacing: var(--bru-tracking-wide);
-  font-size: var(--bru-text-xs);
-  color: var(--bru-grey);
+  letter-spacing: var(--drp-tracking-wide);
+  font-size: var(--drp-text-xs);
+  color: var(--drp-grey);
   background: rgba(0, 0, 0, 0.02);
-  border-bottom: var(--bru-border);
+  border-bottom: var(--drp-border);
 }
 
-.bru-table td {
-  padding: var(--bru-space-3) var(--bru-space-4);
-  border-bottom: var(--bru-border-thin);
-  color: var(--bru-black);
+.drp-table td {
+  padding: var(--drp-space-3) var(--drp-space-4);
+  border-bottom: var(--drp-border-thin);
+  color: var(--drp-black);
 }
 
-.bru-table tr:last-child td {
+.drp-table tr:last-child td {
   border-bottom: none;
 }
 
-.bru-table tr:hover td {
+.drp-table tr:hover td {
   background: rgba(0, 0, 0, 0.02);
 }
 
-body.dark-mode .bru-table th {
+body.dark-mode .drp-table th {
   background: rgba(255, 255, 255, 0.04);
 }
 
@@ -52,19 +52,19 @@ body.dark-mode .bru-table th {
    ────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
-  .bru-table th,
-  .bru-table td {
-    padding: var(--bru-space-2) var(--bru-space-3);
+  .drp-table th,
+  .drp-table td {
+    padding: var(--drp-space-2) var(--drp-space-3);
   }
 }
 
 @media (max-width: 390px) {
-  .bru-table {
-    font-size: var(--bru-text-xs);
+  .drp-table {
+    font-size: var(--drp-text-xs);
   }
 
-  .bru-table th,
-  .bru-table td {
-    padding: var(--bru-space-2);
+  .drp-table th,
+  .drp-table td {
+    padding: var(--drp-space-2);
   }
 }

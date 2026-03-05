@@ -1,29 +1,29 @@
 /* ============================================================
-   BRUDDLE DESIGN SYSTEM — TAGS, BADGES, TABS, PROGRESS BARS
-   Matching Bruddle "Tabs, Tags, and Badges" specification.
+   DOCTORPROJECT DESIGN SYSTEM — TAGS, BADGES, TABS, PROGRESS BARS
+   Matching DoctorProject "Tabs, Tags, and Badges" specification.
 
    TABS:
-     .bru-tabs              Tab container
-     .bru-tab               Individual tab
-     .bru-tab--active       Active state (filled black)
+     .drp-tabs              Tab container
+     .drp-tab               Individual tab
+     .drp-tab--active       Active state (filled black)
 
    TAGS:
-     .bru-tag               Base tag (outlined)
-     .bru-tag--filled       Solid background variant
-     .bru-tag--purple       Purple color
-     .bru-tag--mint         Mint/green color
-     .bru-tag--pink         Pink/red color
-     .bru-tag--yellow       Yellow color
-     .bru-tag--grey         Grey color
-     .bru-tag--closeable    With close/X button
-     .bru-tag--dot          With leading dot indicator
+     .drp-tag               Base tag (outlined)
+     .drp-tag--filled       Solid background variant
+     .drp-tag--purple       Purple color
+     .drp-tag--mint         Mint/green color
+     .drp-tag--pink         Pink/red color
+     .drp-tag--yellow       Yellow color
+     .drp-tag--grey         Grey color
+     .drp-tag--closeable    With close/X button
+     .drp-tag--dot          With leading dot indicator
 
    BADGES:
-     .bru-badge             Small count badge
+     .drp-badge             Small count badge
 
    PROGRESS:
-     .bru-progress          Progress bar container
-     .bru-progress__bar     Filled bar
+     .drp-progress          Progress bar container
+     .drp-progress__bar     Filled bar
    ============================================================ */
 
 
@@ -31,69 +31,69 @@
    TABS
    ────────────────────────────────────────────── */
 
-.bru-tabs {
+.drp-tabs {
   display: inline-flex;
   gap: 0;
-  border: var(--bru-border);
+  border: var(--drp-border);
   border-radius: 0;
   overflow: hidden;
-  background: var(--bru-white);
+  background: var(--drp-white);
 }
 
-.bru-tab {
+.drp-tab {
   padding: 8px 18px;
-  font-family: var(--bru-font-primary);
-  font-size: var(--bru-text-sm);
-  font-weight: var(--bru-weight-bold);
-  color: var(--bru-black);
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-sm);
+  font-weight: var(--drp-weight-bold);
+  color: var(--drp-black);
   background: transparent;
   border: none;
-  border-right: var(--bru-border);
+  border-right: var(--drp-border);
   cursor: pointer;
-  transition: background var(--bru-duration-fast) var(--bru-ease);
+  transition: background var(--drp-duration-fast) var(--drp-ease);
 }
 
-.bru-tab:last-child {
+.drp-tab:last-child {
   border-right: none;
 }
 
-.bru-tab:hover {
+.drp-tab:hover {
   background: rgba(0, 0, 0, 0.04);
 }
 
-.bru-tab--active,
-.bru-tab.active {
+.drp-tab--active,
+.drp-tab.active {
   background: #000000;
   color: #FFFFFF;
 }
 
-body.dark-mode .bru-tab--active,
-body.dark-mode .bru-tab.active {
+body.dark-mode .drp-tab--active,
+body.dark-mode .drp-tab.active {
   background: #FFFFFF;
   color: #000000;
 }
 
 /* Underline tab variant (for page-level navigation) */
-.bru-tabs--underline {
+.drp-tabs--underline {
   border: none;
   border-radius: 0;
-  gap: var(--bru-space-4);
-  border-bottom: var(--bru-border);
+  gap: var(--drp-space-4);
+  border-bottom: var(--drp-border);
   background: transparent;
 }
 
-.bru-tabs--underline .bru-tab {
+.drp-tabs--underline .drp-tab {
   border-right: none;
   border-bottom: 3px solid transparent;
   margin-bottom: -2px;
   padding: 8px 4px;
 }
 
-.bru-tabs--underline .bru-tab--active,
-.bru-tabs--underline .bru-tab.active {
+.drp-tabs--underline .drp-tab--active,
+.drp-tabs--underline .drp-tab.active {
   background: transparent;
-  color: var(--bru-black);
-  border-bottom-color: var(--bru-purple);
+  color: var(--drp-black);
+  border-bottom-color: var(--drp-purple);
 }
 
 
@@ -101,17 +101,17 @@ body.dark-mode .bru-tab.active {
    TAGS — BASE
    ────────────────────────────────────────────── */
 
-.bru-tag {
+.drp-tag {
   display: inline-flex;
   align-items: center;
-  gap: var(--bru-space-1);
+  gap: var(--drp-space-1);
   padding: 4px 12px;
-  font-family: var(--bru-font-primary);
-  font-size: var(--bru-text-sm);
-  font-weight: var(--bru-weight-bold);
-  color: var(--bru-black);
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-sm);
+  font-weight: var(--drp-weight-bold);
+  color: var(--drp-black);
   background: transparent;
-  border: 1px solid var(--bru-black);
+  border: 1px solid var(--drp-black);
   border-radius: 0;
   white-space: nowrap;
   line-height: 1.3;
@@ -122,29 +122,29 @@ body.dark-mode .bru-tab.active {
    TAGS — COLOR VARIANTS (outlined)
    ────────────────────────────────────────────── */
 
-.bru-tag--purple {
-  border-color: var(--bru-purple);
-  color: var(--bru-purple);
+.drp-tag--purple {
+  border-color: var(--drp-purple);
+  color: var(--drp-purple);
 }
 
-.bru-tag--mint {
-  border-color: var(--bru-mint);
-  color: var(--bru-success-dark);
+.drp-tag--mint {
+  border-color: var(--drp-mint);
+  color: var(--drp-success-dark);
 }
 
-.bru-tag--pink {
-  border-color: var(--bru-pink);
-  color: var(--bru-error-dark);
+.drp-tag--pink {
+  border-color: var(--drp-pink);
+  color: var(--drp-error-dark);
 }
 
-.bru-tag--yellow {
-  border-color: var(--bru-yellow);
-  color: var(--bru-warning-dark);
+.drp-tag--yellow {
+  border-color: var(--drp-yellow);
+  color: var(--drp-warning-dark);
 }
 
-.bru-tag--grey {
-  border-color: var(--bru-grey-85);
-  color: var(--bru-grey);
+.drp-tag--grey {
+  border-color: var(--drp-grey-85);
+  color: var(--drp-grey);
 }
 
 
@@ -152,39 +152,39 @@ body.dark-mode .bru-tab.active {
    TAGS — FILLED VARIANTS
    ────────────────────────────────────────────── */
 
-.bru-tag--filled {
-  background: var(--bru-black);
+.drp-tag--filled {
+  background: var(--drp-black);
   color: #FFFFFF;
-  border-color: var(--bru-black);
+  border-color: var(--drp-black);
 }
 
-body.dark-mode .bru-tag--filled {
+body.dark-mode .drp-tag--filled {
   background: #FFFFFF;
   color: #000000;
 }
 
-.bru-tag--filled.bru-tag--purple {
-  background: var(--bru-purple);
+.drp-tag--filled.drp-tag--purple {
+  background: var(--drp-purple);
   color: #FFFFFF;
-  border-color: var(--bru-purple);
+  border-color: var(--drp-purple);
 }
 
-.bru-tag--filled.bru-tag--mint {
-  background: var(--bru-mint);
-  color: var(--bru-success-dark);
-  border-color: var(--bru-mint);
+.drp-tag--filled.drp-tag--mint {
+  background: var(--drp-mint);
+  color: var(--drp-success-dark);
+  border-color: var(--drp-mint);
 }
 
-.bru-tag--filled.bru-tag--pink {
-  background: var(--bru-pink);
-  color: var(--bru-error-dark);
-  border-color: var(--bru-pink);
+.drp-tag--filled.drp-tag--pink {
+  background: var(--drp-pink);
+  color: var(--drp-error-dark);
+  border-color: var(--drp-pink);
 }
 
-.bru-tag--filled.bru-tag--yellow {
-  background: var(--bru-yellow);
-  color: var(--bru-warning-dark);
-  border-color: var(--bru-yellow);
+.drp-tag--filled.drp-tag--yellow {
+  background: var(--drp-yellow);
+  color: var(--drp-warning-dark);
+  border-color: var(--drp-yellow);
 }
 
 
@@ -192,28 +192,28 @@ body.dark-mode .bru-tag--filled {
    TAGS — DARK VARIANT (black bg)
    ────────────────────────────────────────────── */
 
-.bru-tag--dark {
+.drp-tag--dark {
   background: #000000;
   color: #FFFFFF;
   border-color: #000000;
 }
 
-.bru-tag--dark.bru-tag--purple {
+.drp-tag--dark.drp-tag--purple {
   background: #000000;
-  color: var(--bru-purple);
-  border-color: var(--bru-purple);
+  color: var(--drp-purple);
+  border-color: var(--drp-purple);
 }
 
-.bru-tag--dark.bru-tag--mint {
+.drp-tag--dark.drp-tag--mint {
   background: #000000;
-  color: var(--bru-mint);
-  border-color: var(--bru-mint);
+  color: var(--drp-mint);
+  border-color: var(--drp-mint);
 }
 
-.bru-tag--dark.bru-tag--pink {
+.drp-tag--dark.drp-tag--pink {
   background: #000000;
-  color: var(--bru-pink);
-  border-color: var(--bru-pink);
+  color: var(--drp-pink);
+  border-color: var(--drp-pink);
 }
 
 
@@ -221,11 +221,11 @@ body.dark-mode .bru-tag--filled {
    TAG — CLOSEABLE (with X button)
    ────────────────────────────────────────────── */
 
-.bru-tag--closeable {
+.drp-tag--closeable {
   padding-right: 6px;
 }
 
-.bru-tag__close {
+.drp-tag__close {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -240,10 +240,10 @@ body.dark-mode .bru-tag--filled {
   line-height: 1;
   padding: 0;
   opacity: 0.6;
-  transition: opacity var(--bru-duration-fast) var(--bru-ease);
+  transition: opacity var(--drp-duration-fast) var(--drp-ease);
 }
 
-.bru-tag__close:hover {
+.drp-tag__close:hover {
   opacity: 1;
 }
 
@@ -252,18 +252,18 @@ body.dark-mode .bru-tag--filled {
    TAG — DOT INDICATOR
    ────────────────────────────────────────────── */
 
-.bru-tag--dot::before {
+.drp-tag--dot::before {
   content: '';
   width: 6px;
   height: 6px;
   border-radius: 0;
-  background: var(--bru-purple);
+  background: var(--drp-purple);
   flex-shrink: 0;
 }
 
-.bru-tag--dot.bru-tag--mint::before { background: var(--bru-mint); }
-.bru-tag--dot.bru-tag--pink::before { background: var(--bru-pink); }
-.bru-tag--dot.bru-tag--yellow::before { background: var(--bru-yellow); }
+.drp-tag--dot.drp-tag--mint::before { background: var(--drp-mint); }
+.drp-tag--dot.drp-tag--pink::before { background: var(--drp-pink); }
+.drp-tag--dot.drp-tag--yellow::before { background: var(--drp-yellow); }
 
 
 /* ──────────────────────────────────────────────
@@ -271,38 +271,38 @@ body.dark-mode .bru-tag--filled {
    Small count indicators.
    ────────────────────────────────────────────── */
 
-.bru-badge {
+.drp-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 22px;
   height: 22px;
   padding: 0 6px;
-  font-family: var(--bru-font-primary);
-  font-size: var(--bru-text-sm);
-  font-weight: var(--bru-weight-bold);
-  color: var(--bru-black);
-  background: var(--bru-purple-20);
-  border: 1px solid var(--bru-purple);
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-sm);
+  font-weight: var(--drp-weight-bold);
+  color: var(--drp-black);
+  background: var(--drp-purple-20);
+  border: 1px solid var(--drp-purple);
   border-radius: 0;
   line-height: 1;
 }
 
-.bru-badge--filled {
-  background: var(--bru-purple);
+.drp-badge--filled {
+  background: var(--drp-purple);
   color: #FFFFFF;
 }
 
-.bru-badge--mint {
+.drp-badge--mint {
   background: rgba(152, 233, 171, 0.2);
-  border-color: var(--bru-mint);
-  color: var(--bru-success-dark);
+  border-color: var(--drp-mint);
+  color: var(--drp-success-dark);
 }
 
-.bru-badge--pink {
+.drp-badge--pink {
   background: rgba(233, 152, 152, 0.2);
-  border-color: var(--bru-pink);
-  color: var(--bru-error-dark);
+  border-color: var(--drp-pink);
+  color: var(--drp-error-dark);
 }
 
 
@@ -310,31 +310,31 @@ body.dark-mode .bru-tag--filled {
    BADGE VARIANTS (DP-style)
    ────────────────────────────────────────────── */
 
-.bru-badge--primary {
-  background: var(--bru-purple);
+.drp-badge--primary {
+  background: var(--drp-purple);
   color: #FFFFFF;
-  border-color: var(--bru-purple);
+  border-color: var(--drp-purple);
 }
 
-.bru-badge--secondary {
-  background: var(--bru-orange);
+.drp-badge--secondary {
+  background: var(--drp-orange);
   color: #FFFFFF;
-  border-color: var(--bru-orange);
+  border-color: var(--drp-orange);
 }
 
-.bru-badge--outline {
+.drp-badge--outline {
   background: transparent;
-  color: var(--bru-black);
-  border-color: var(--bru-black);
+  color: var(--drp-black);
+  border-color: var(--drp-black);
 }
 
 
 /* ──────────────────────────────────────────────
    PROGRESS BARS
-   Thin colored bars with Bruddle styling.
+   Thin colored bars with DoctorProject styling.
    ────────────────────────────────────────────── */
 
-.bru-progress {
+.drp-progress {
   width: 100%;
   height: 6px;
   background: rgba(0, 0, 0, 0.08);
@@ -342,40 +342,40 @@ body.dark-mode .bru-tag--filled {
   overflow: hidden;
 }
 
-.bru-progress__bar {
+.drp-progress__bar {
   height: 100%;
-  background: var(--bru-purple);
+  background: var(--drp-purple);
   border-radius: 0;
-  transition: width var(--bru-duration-slow) var(--bru-ease);
+  transition: width var(--drp-duration-slow) var(--drp-ease);
 }
 
 /* Color variants */
-.bru-progress--mint .bru-progress__bar    { background: var(--bru-mint); }
-.bru-progress--pink .bru-progress__bar    { background: var(--bru-pink); }
-.bru-progress--yellow .bru-progress__bar  { background: var(--bru-yellow); }
-.bru-progress--grey .bru-progress__bar    { background: var(--bru-grey); }
+.drp-progress--mint .drp-progress__bar    { background: var(--drp-mint); }
+.drp-progress--pink .drp-progress__bar    { background: var(--drp-pink); }
+.drp-progress--yellow .drp-progress__bar  { background: var(--drp-yellow); }
+.drp-progress--grey .drp-progress__bar    { background: var(--drp-grey); }
 
 /* Size variants */
-.bru-progress--sm { height: 4px; }
-.bru-progress--lg { height: 10px; }
+.drp-progress--sm { height: 4px; }
+.drp-progress--lg { height: 10px; }
 
 /* With label */
-.bru-progress-group {
+.drp-progress-group {
   display: flex;
   flex-direction: column;
-  gap: var(--bru-space-1);
+  gap: var(--drp-space-1);
 }
 
-.bru-progress-group__label {
+.drp-progress-group__label {
   display: flex;
   justify-content: space-between;
-  font-family: var(--bru-font-primary);
-  font-size: var(--bru-text-xs);
-  font-weight: var(--bru-weight-semibold);
-  color: var(--bru-grey);
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-xs);
+  font-weight: var(--drp-weight-semibold);
+  color: var(--drp-grey);
 }
 
-body.dark-mode .bru-progress {
+body.dark-mode .drp-progress {
   background: rgba(255, 255, 255, 0.08);
 }
 
@@ -385,22 +385,22 @@ body.dark-mode .bru-progress {
    Small colored dot for inline status.
    ────────────────────────────────────────────── */
 
-.bru-dot {
+.drp-dot {
   display: inline-block;
   width: 8px;
   height: 8px;
   border-radius: 0;
-  background: var(--bru-grey);
+  background: var(--drp-grey);
   flex-shrink: 0;
 }
 
-.bru-dot--purple  { background: var(--bru-purple); }
-.bru-dot--mint    { background: var(--bru-mint); }
-.bru-dot--pink    { background: var(--bru-pink); }
-.bru-dot--yellow  { background: var(--bru-yellow); }
-.bru-dot--pulse   { animation: bru-pulse 2s ease-in-out infinite; }
+.drp-dot--purple  { background: var(--drp-purple); }
+.drp-dot--mint    { background: var(--drp-mint); }
+.drp-dot--pink    { background: var(--drp-pink); }
+.drp-dot--yellow  { background: var(--drp-yellow); }
+.drp-dot--pulse   { animation: drp-pulse 2s ease-in-out infinite; }
 
-@keyframes bru-pulse {
+@keyframes drp-pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
 }
@@ -411,29 +411,29 @@ body.dark-mode .bru-progress {
    ────────────────────────────────────────────── */
 
 @media (max-width: 768px) {
-  .bru-tabs {
+  .drp-tabs {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
 
-  .bru-tabs::-webkit-scrollbar {
+  .drp-tabs::-webkit-scrollbar {
     display: none;
   }
 
-  .bru-tab {
+  .drp-tab {
     white-space: nowrap;
     flex-shrink: 0;
   }
 }
 
 @media (max-width: 390px) {
-  .bru-tab {
+  .drp-tab {
     padding: 8px 12px;
-    font-size: var(--bru-text-xs);
+    font-size: var(--drp-text-xs);
   }
 
-  .bru-tag {
+  .drp-tag {
     font-size: 11px;
     padding: 2px 8px;
   }

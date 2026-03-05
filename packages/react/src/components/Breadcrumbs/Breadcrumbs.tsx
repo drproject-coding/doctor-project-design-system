@@ -10,16 +10,16 @@ export interface BreadcrumbsProps {
 
 export function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
   return (
-    <nav className={`bru-breadcrumbs ${className}`}>
+    <nav className={`drp-breadcrumbs ${className}`}>
       {items.map((item, i) => (
         <span key={i}>
-          {i > 0 && <span className="bru-breadcrumbs__sep">/</span>}
+          {i > 0 && <span className="drp-breadcrumbs__sep">/</span>}
           {item.href ? (
-            <a className="bru-breadcrumbs__link" href={item.href}>
+            <a className="drp-breadcrumbs__link" href={item.href}>
               {item.label}
             </a>
           ) : (
-            <span className="bru-breadcrumbs__current">{item.label}</span>
+            <span className="drp-breadcrumbs__current">{item.label}</span>
           )}
         </span>
       ))}

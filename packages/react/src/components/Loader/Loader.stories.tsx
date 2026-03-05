@@ -30,7 +30,7 @@ export const AllSizes: Story = {
 export const InCard: Story = {
   render: () => (
     <div
-      className="bru-card"
+      className="drp-card"
       style={{
         padding: "48px",
         textAlign: "center",
@@ -43,7 +43,7 @@ export const InCard: Story = {
       <Loader size="lg" />
       <p
         style={{
-          fontFamily: "var(--bru-font-primary)",
+          fontFamily: "var(--drp-font-primary)",
           fontSize: "14px",
           fontWeight: 600,
           color: "#666",

@@ -18,13 +18,13 @@ export function Marquee({
   const doubled = [...track, ...track];
 
   return (
-    <div className={`bru-marquee ${className}`}>
+    <div className={`drp-marquee ${className}`}>
       <div
-        className="bru-marquee__track"
+        className="drp-marquee__track"
         style={{ animationDuration: `${speed}s` }}
       >
         {doubled.map((text, i) => (
-          <span key={i} className="bru-marquee__item">
+          <span key={i} className="drp-marquee__item">
             {text}
           </span>
         ))}

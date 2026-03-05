@@ -30,10 +30,10 @@ export const Default: Story = {
             key={i}
             style={{
               flex: 1,
-              background: "var(--bru-purple)",
+              background: "var(--drp-purple)",
               height: `${(val / 60000) * 100}%`,
               minHeight: "4px",
-              border: "1px solid var(--bru-black)",
+              border: "1px solid var(--drp-black)",
             }}
             title={`${chartData.labels[i]}: $${val.toLocaleString()}`}
           />
@@ -46,7 +46,7 @@ export const Default: Story = {
           display: "flex",
           gap: "16px",
           fontSize: "12px",
-          fontFamily: "var(--bru-font-primary)",
+          fontFamily: "var(--drp-font-primary)",
         }}
       >
         <span>
@@ -55,7 +55,7 @@ export const Default: Story = {
               display: "inline-block",
               width: 8,
               height: 8,
-              background: "var(--bru-purple)",
+              background: "var(--drp-purple)",
               marginRight: 4,
             }}
           />
@@ -87,9 +87,9 @@ export const TwoCharts: Story = {
               key={i}
               style={{
                 flex: 1,
-                background: "var(--bru-mint)",
+                background: "var(--drp-mint)",
                 height: `${(val / 3000) * 100}%`,
-                border: "1px solid var(--bru-black)",
+                border: "1px solid var(--drp-black)",
               }}
             />
           ))}
@@ -111,9 +111,9 @@ export const TwoCharts: Story = {
               key={i}
               style={{
                 flex: 1,
-                background: "var(--bru-orange)",
+                background: "var(--drp-orange)",
                 height: `${(val / 500) * 100}%`,
-                border: "1px solid var(--bru-black)",
+                border: "1px solid var(--drp-black)",
               }}
             />
           ))}

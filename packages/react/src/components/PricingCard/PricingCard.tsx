@@ -22,8 +22,8 @@ export function PricingCard({
   className = "",
 }: PricingCardProps) {
   const classes = [
-    "bru-pricing",
-    featured && "bru-pricing--featured",
+    "drp-pricing",
+    featured && "drp-pricing--featured",
     className,
   ]
     .filter(Boolean)
@@ -32,9 +32,9 @@ export function PricingCard({
     <div
       className={classes}
       style={{
-        padding: "var(--bru-space-8)",
-        border: "3px solid var(--bru-black)",
-        background: featured ? "var(--bru-purple)" : "var(--bru-surface)",
+        padding: "var(--drp-space-8)",
+        border: "3px solid var(--drp-black)",
+        background: featured ? "var(--drp-purple)" : "var(--drp-surface)",
         color: featured ? "#FFFFFF" : "inherit",
         textAlign: "center",
         position: "relative",
@@ -48,13 +48,13 @@ export function PricingCard({
             left: "50%",
             transform: "translateX(-50%)",
             padding: "2px 16px",
-            background: "var(--bru-orange)",
+            background: "var(--drp-orange)",
             color: "#FFFFFF",
-            fontFamily: "var(--bru-font-primary)",
+            fontFamily: "var(--drp-font-primary)",
             fontSize: "11px",
             fontWeight: 700,
             textTransform: "uppercase",
-            border: "2px solid var(--bru-black)",
+            border: "2px solid var(--drp-black)",
           }}
         >
           {badge}
@@ -62,7 +62,7 @@ export function PricingCard({
       )}
       <p
         style={{
-          fontFamily: "var(--bru-font-primary)",
+          fontFamily: "var(--drp-font-primary)",
           fontSize: "12px",
           fontWeight: 700,
           textTransform: "uppercase",
@@ -74,7 +74,7 @@ export function PricingCard({
       </p>
       <p
         style={{
-          fontFamily: "var(--bru-font-primary)",
+          fontFamily: "var(--drp-font-primary)",
           fontSize: "2.5rem",
           fontWeight: 800,
           marginBottom: "8px",
@@ -85,7 +85,7 @@ export function PricingCard({
       {period && (
         <p
           style={{
-            fontFamily: "var(--bru-font-mono)",
+            fontFamily: "var(--drp-font-mono)",
             fontSize: "11px",
             opacity: 0.7,
             marginBottom: "24px",
@@ -106,7 +106,7 @@ export function PricingCard({
           <li
             key={i}
             style={{
-              fontFamily: "var(--bru-font-mono)",
+              fontFamily: "var(--drp-font-mono)",
               fontSize: "13px",
               padding: "8px 0",
               borderBottom: "1px solid rgba(128,128,128,0.3)",
@@ -118,7 +118,7 @@ export function PricingCard({
             <span
               style={{
                 fontWeight: 700,
-                color: featured ? "#FFFFFF" : "var(--bru-success)",
+                color: featured ? "#FFFFFF" : "var(--drp-success)",
               }}
             >
               ✓

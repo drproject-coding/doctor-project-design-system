@@ -12,7 +12,7 @@ type Story = StoryObj<typeof CaseCard>;
 export const Default: Story = {
   args: {
     imageLabel: "FASHION",
-    imageColor: "var(--bru-purple)",
+    imageColor: "var(--drp-purple)",
     stat: "+400%",
     statLabel: "Conversion Rate Increase",
     title: "Global Fashion Brand",
@@ -32,7 +32,7 @@ export const CaseStudyRow: Story = {
     >
       <CaseCard
         imageLabel="FASHION"
-        imageColor="var(--bru-purple)"
+        imageColor="var(--drp-purple)"
         stat="+400%"
         statLabel="Conversion Rate Increase"
         title="Global Fashion Brand"
@@ -40,7 +40,7 @@ export const CaseStudyRow: Story = {
       />
       <CaseCard
         imageLabel="ELECTRONICS"
-        imageColor="var(--bru-orange)"
+        imageColor="var(--drp-orange)"
         stat="+250%"
         statLabel="Revenue Growth"
         title="Tech Retailer"

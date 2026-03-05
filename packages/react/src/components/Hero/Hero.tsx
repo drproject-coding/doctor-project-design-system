@@ -18,14 +18,14 @@ export function Hero({
   className = "",
 }: HeroProps) {
   return (
-    <section className={`bru-hero ${className}`}>
-      <div className="bru-hero__content">
-        {badge && <div className="bru-hero__badge">{badge}</div>}
-        <h1 className="bru-hero__title">{title}</h1>
-        {subtitle && <p className="bru-hero__subtitle">{subtitle}</p>}
-        {actions && <div className="bru-hero__actions">{actions}</div>}
+    <section className={`drp-hero ${className}`}>
+      <div className="drp-hero__content">
+        {badge && <div className="drp-hero__badge">{badge}</div>}
+        <h1 className="drp-hero__title">{title}</h1>
+        {subtitle && <p className="drp-hero__subtitle">{subtitle}</p>}
+        {actions && <div className="drp-hero__actions">{actions}</div>}
       </div>
-      {visual && <div className="bru-hero__visual">{visual}</div>}
+      {visual && <div className="drp-hero__visual">{visual}</div>}
     </section>
   );
 }

@@ -21,7 +21,7 @@ export const Default: Story = {
       "Email Support",
     ],
     action: (
-      <button className="bru-btn bru-btn--outline" style={{ width: "100%" }}>
+      <button className="drp-btn drp-btn--outline" style={{ width: "100%" }}>
         Get Started
       </button>
     ),
@@ -45,11 +45,11 @@ export const Featured: Story = {
     ],
     action: (
       <button
-        className="bru-btn"
+        className="drp-btn"
         style={{
           width: "100%",
           background: "#fff",
-          color: "var(--bru-purple)",
+          color: "var(--drp-purple)",
         }}
       >
         Get Started
@@ -80,7 +80,7 @@ export const PricingRow: Story = {
         ]}
         action={
           <button
-            className="bru-btn bru-btn--outline"
+            className="drp-btn drp-btn--outline"
             style={{ width: "100%" }}
           >
             Get Started
@@ -103,11 +103,11 @@ export const PricingRow: Story = {
         ]}
         action={
           <button
-            className="bru-btn"
+            className="drp-btn"
             style={{
               width: "100%",
               background: "#fff",
-              color: "var(--bru-purple)",
+              color: "var(--drp-purple)",
             }}
           >
             Get Started
@@ -128,7 +128,7 @@ export const PricingRow: Story = {
         ]}
         action={
           <button
-            className="bru-btn bru-btn--outline"
+            className="drp-btn drp-btn--outline"
             style={{ width: "100%" }}
           >
             Contact Sales

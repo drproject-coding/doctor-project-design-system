@@ -38,7 +38,7 @@ export const WithCustomRender: Story = {
           header: "Role",
           render: (row) => (
             <span
-              className="bru-tag bru-tag--purple"
+              className="drp-tag drp-tag--purple"
               style={{ fontSize: "11px" }}
             >
               {String(row.role)}
@@ -56,7 +56,7 @@ export const WithCustomRender: Story = {
                   ? "yellow"
                   : "pink";
             return (
-              <span className={`bru-tag bru-tag--${color} bru-tag--dot`}>
+              <span className={`drp-tag drp-tag--${color} drp-tag--dot`}>
                 {String(row.status)}
               </span>
             );

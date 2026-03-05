@@ -18,24 +18,24 @@ export interface TopbarProps {
 
 export function AppShell({ sidebar, topbar, children, footer }: AppShellProps) {
   return (
-    <div className="bru-app">
+    <div className="drp-app">
       {sidebar}
-      <div className="bru-main-wrapper">
+      <div className="drp-main-wrapper">
         {topbar}
-        <main className="bru-main">{children}</main>
-        {footer && <footer className="bru-footer">{footer}</footer>}
+        <main className="drp-main">{children}</main>
+        {footer && <footer className="drp-footer">{footer}</footer>}
       </div>
     </div>
   );
 }
 
 export function Sidebar({ children, collapsed }: SidebarProps) {
-  const classes = ["bru-sidebar", collapsed && "bru-sidebar--collapsed"]
+  const classes = ["drp-sidebar", collapsed && "drp-sidebar--collapsed"]
     .filter(Boolean)
     .join(" ");
   return <aside className={classes}>{children}</aside>;
 }
 
 export function Topbar({ children }: TopbarProps) {
-  return <header className="bru-topbar">{children}</header>;
+  return <header className="drp-topbar">{children}</header>;
 }

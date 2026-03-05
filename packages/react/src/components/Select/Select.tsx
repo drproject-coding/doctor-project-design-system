@@ -12,14 +12,14 @@ export function Select({
   ...props
 }: SelectProps) {
   const selectEl = (
-    <select className={`bru-select ${className}`} {...props}>
+    <select className={`drp-select ${className}`} {...props}>
       {children}
     </select>
   );
   if (label) {
     return (
-      <div className="bru-field">
-        <label className="bru-field__label">{label}</label>
+      <div className="drp-field">
+        <label className="drp-field__label">{label}</label>
         {selectEl}
       </div>
     );

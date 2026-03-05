@@ -23,9 +23,9 @@ export function Card({
   ...props
 }: CardProps) {
   const classes = [
-    "bru-card",
-    variant && `bru-card--${variant}`,
-    accent && `bru-card--${accent}`,
+    "drp-card",
+    variant && `drp-card--${variant}`,
+    accent && `drp-card--${accent}`,
     className,
   ]
     .filter(Boolean)
@@ -39,10 +39,10 @@ export function Card({
 
 export function CardHeader({ title, subtitle, action }: CardHeaderProps) {
   return (
-    <div className="bru-card__header">
+    <div className="drp-card__header">
       <div>
-        <h3 className="bru-card__title">{title}</h3>
-        {subtitle && <p className="bru-card__subtitle">{subtitle}</p>}
+        <h3 className="drp-card__title">{title}</h3>
+        {subtitle && <p className="drp-card__subtitle">{subtitle}</p>}
       </div>
       {action}
     </div>
