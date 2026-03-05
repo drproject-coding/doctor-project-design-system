@@ -1,54 +1,106 @@
 import React from "react";
 
-export interface SidebarItem {
+export interface SidebarNavItem {
   id: string;
   label: string;
   icon?: React.ReactNode;
-  href?: string;
-  children?: SidebarItem[];
+  badge?: string | number;
+  badgeVariant?: "purple" | "green";
   active?: boolean;
+  href?: string;
+  onClick?: () => void;
+}
+
+export interface SidebarNavSection {
+  label: string;
+  items: SidebarNavItem[];
+}
+
+export interface SidebarTeamMember {
+  name: string;
+  avatar?: string;
+  initials?: string;
 }
 
 export interface SidebarProps {
-  items: SidebarItem[];
-  theme?: "light" | "dark";
+  brandName?: string;
+  sections?: SidebarNavSection[];
+  teamMembers?: SidebarTeamMember[];
+  teamLabel?: string;
   collapsed?: boolean;
   onItemClick?: (id: string) => void;
+  className?: string;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({
-  items,
-  theme = "light",
+  brandName = "Doctor Project",
+  sections = [],
+  teamMembers = [],
+  teamLabel = "Team",
   collapsed = false,
   onItemClick,
+  className = "",
 }) => {
-  const bgClass = theme === "dark" ? "bg-slate-900" : "bg-white";
-  const borderClass = theme === "dark" ? "border-slate-700" : "border-gray-200";
-  const textClass = theme === "dark" ? "text-slate-300" : "text-gray-700";
-
-  const renderItems = (items: SidebarItem[], level = 0) => {
-    return items.map((item) => (
-      <div key={item.id}>
-        <button
-          onClick={() => onItemClick?.(item.id)}
-          className={`w-full text-left px-4 py-2 rounded flex items-center gap-2 ${
-            item.active ? "bg-blue-100 text-blue-700" : textClass
-          } hover:bg-gray-100`}
-          style={{ paddingLeft: `${(level + 1) * 1.5}rem` }}
-        >
-          {item.icon && <span className="w-5 h-5">{item.icon}</span>}
-          {!collapsed && <span>{item.label}</span>}
-        </button>
-        {item.children && !collapsed && renderItems(item.children, level + 1)}
-      </div>
-    ));
-  };
+  const sidebarClass = ["sidebar", collapsed && "collapsed", className]
+    .filter(Boolean)
+    .join(" ");
 
   return (
-    <div
-      className={`${bgClass} border-r ${borderClass} w-${collapsed ? "20" : "64"} transition-all`}
-    >
-      <div className="p-4">{renderItems(items)}</div>
-    </div>
+    <aside className={sidebarClass}>
+      <div className="sidebar-brand">
+        <span className="sidebar-brand-name">{brandName}</span>
+        <span className="sidebar-brand-dot" />
+      </div>
+
+      <nav className="sidebar-nav">
+        {sections.map((section, sIdx) => (
+          <div key={sIdx} className="sidebar-nav-section">
+            <div className="sidebar-nav-label">{section.label}</div>
+            {section.items.map((item) => (
+              <a
+                key={item.id}
+                className={`sidebar-nav-item${item.active ? " active" : ""}`}
+                href={item.href || "#"}
+                onClick={(e) => {
+                  e.preventDefault();
+                  item.onClick?.();
+                  onItemClick?.(item.id);
+                }}
+              >
+                {item.icon && (
+                  <span className="sidebar-nav-icon">{item.icon}</span>
+                )}
+                <span className="sidebar-nav-text">{item.label}</span>
+                {item.badge !== undefined && (
+                  <span
+                    className={`sidebar-badge sidebar-badge--${item.badgeVariant || "purple"}`}
+                  >
+                    {item.badge}
+                  </span>
+                )}
+              </a>
+            ))}
+          </div>
+        ))}
+      </nav>
+
+      {teamMembers.length > 0 && (
+        <div className="sidebar-team">
+          <div className="sidebar-team-label">{teamLabel}</div>
+          {teamMembers.map((member, idx) => (
+            <div key={idx} className="sidebar-team-member">
+              <div className="sidebar-avatar">
+                {member.avatar ? (
+                  <img src={member.avatar} alt={member.name} />
+                ) : (
+                  member.initials || member.name.charAt(0).toUpperCase()
+                )}
+              </div>
+              <span className="sidebar-team-name">{member.name}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </aside>
   );
 };

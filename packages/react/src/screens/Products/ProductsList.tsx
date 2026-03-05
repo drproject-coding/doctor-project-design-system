@@ -2,7 +2,9 @@ import React from "react";
 
 // ─── Shared sidebar / top-bar / footer ───────────────────────────────────────
 
-const DoctorProjectSidebar: React.FC<{ activeItem: string }> = ({ activeItem }) => {
+const DoctorProjectSidebar: React.FC<{ activeItem: string }> = ({
+  activeItem,
+}) => {
   const navItems = [
     { id: "dashboard", label: "Dashboard" },
     { id: "products", label: "Products" },
@@ -11,126 +13,124 @@ const DoctorProjectSidebar: React.FC<{ activeItem: string }> = ({ activeItem }) 
       id: "customers",
       label: "Customers",
       badge: 15,
-      badgeColor: "bg-purple-600",
+      badgeVariant: "sidebar-badge--purple",
     },
-    { id: "sales", label: "Sales", badge: 14, badgeColor: "bg-green-500" },
+    {
+      id: "sales",
+      label: "Sales",
+      badge: 14,
+      badgeVariant: "sidebar-badge--green",
+    },
     { id: "analytics", label: "Analytics" },
   ];
 
   const teamMembers = [
-    { name: "Alexandre Paiva", initials: "AP", color: "bg-orange-400" },
-    { name: "Thanawan Chadee", initials: "TC", color: "bg-teal-500" },
-    { name: "Justine Robinson", initials: "JR", color: "bg-purple-500" },
+    { name: "Alexandre Paiva", initials: "AP", bg: "var(--drp-orange)" },
+    { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-mint)" },
+    { name: "Justine Robinson", initials: "JR", bg: "var(--drp-purple)" },
   ];
 
   return (
-    <div className="w-[200px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0">
-      {/* Logo */}
-      <div className="px-5 py-5">
-        <div className="flex items-center gap-1">
-          <span className="text-xl font-bold text-white">Doctor Project</span>
-          <span className="w-2 h-2 rounded-full bg-purple-500 mb-3 flex-shrink-0"></span>
-        </div>
+    <aside className="sidebar" style={{ width: 200 }}>
+      <div className="sidebar-brand">
+        <span className="sidebar-brand-name" style={{ fontSize: 20 }}>
+          Doctor Project
+        </span>
+        <span className="sidebar-brand-dot" />
       </div>
 
-      <div className="flex-1 overflow-y-auto px-3 pb-4 space-y-5">
-        {/* Navigation */}
-        <div>
-          <p className="text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2">
-            Navigation
-          </p>
-          <nav className="space-y-0.5">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${
-                  item.id === activeItem
-                    ? "bg-white/10 text-white font-medium"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
-                }`}
-              >
-                <div className="flex items-center gap-2.5">
-                  <svg
-                    className="w-3.5 h-3.5 flex-shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                    />
-                  </svg>
-                  <span>{item.label}</span>
-                </div>
-                {item.badge && (
-                  <span
-                    className={`text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`}
-                  >
-                    {item.badge}
-                  </span>
-                )}
-              </button>
-            ))}
-          </nav>
-        </div>
-
-        {/* Team Members */}
-        <div>
-          <p className="text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2">
-            Team Members
-          </p>
-          <div className="space-y-0.5">
-            {teamMembers.map((m) => (
-              <button
-                key={m.name}
-                className="w-full flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5"
-              >
-                <div
-                  className={`w-6 h-6 rounded-full ${m.color} flex items-center justify-center text-[10px] text-white font-bold flex-shrink-0`}
+      <nav className="sidebar-nav">
+        <div className="sidebar-nav-section">
+          <div className="sidebar-nav-label">Navigation</div>
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              className={`sidebar-nav-item ${item.id === activeItem ? "active" : ""}`}
+            >
+              <span className="sidebar-nav-icon">
+                <svg
+                  width="14"
+                  height="14"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  {m.initials[0]}
-                </div>
-                <span className="truncate">{m.name}</span>
-              </button>
-            ))}
-            <button className="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-gray-500 hover:text-gray-300">
-              <svg
-                className="w-3 h-3"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-              <span>See More</span>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </span>
+              <span className="sidebar-nav-text">{item.label}</span>
+              {item.badge && (
+                <span className={`sidebar-badge ${item.badgeVariant}`}>
+                  {item.badge}
+                </span>
+              )}
             </button>
-          </div>
+          ))}
         </div>
-      </div>
 
-      {/* User profile */}
-      <div className="px-3 py-4 border-t border-white/10">
-        <div className="flex items-center justify-between px-2">
-          <div className="flex items-center gap-2.5">
-            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex-shrink-0"></div>
-            <span className="text-sm text-gray-200 truncate">
-              Henry Richardson
-            </span>
+        <div className="sidebar-team">
+          <div className="sidebar-team-label">Team Members</div>
+          {teamMembers.map((m) => (
+            <div key={m.name} className="sidebar-team-member">
+              <div
+                className="sidebar-avatar"
+                style={{
+                  background: m.bg,
+                  width: 24,
+                  height: 24,
+                  fontSize: 10,
+                }}
+              >
+                {m.initials[0]}
+              </div>
+              <span className="sidebar-team-name" style={{ fontSize: 13 }}>
+                {m.name}
+              </span>
+            </div>
+          ))}
+          <div className="sidebar-see-more">
+            <svg
+              width="12"
+              height="12"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+            <span>See More</span>
           </div>
-          <button className="text-gray-500 hover:text-white text-xs">
-            ···
-          </button>
         </div>
+      </nav>
+
+      <div className="sidebar-user">
+        <div
+          className="sidebar-avatar"
+          style={{
+            background:
+              "linear-gradient(135deg, var(--drp-orange), var(--drp-pink))",
+            width: 28,
+            height: 28,
+          }}
+        />
+        <div className="sidebar-user-info">
+          <div className="sidebar-user-name" style={{ fontSize: 13 }}>
+            Henry Richardson
+          </div>
+        </div>
+        <button className="sidebar-user-menu-btn">...</button>
       </div>
-    </div>
+    </aside>
   );
 };
 
@@ -138,12 +138,13 @@ const TopBar: React.FC<{ title?: string; showBack?: boolean }> = ({
   title = "Products",
   showBack,
 }) => (
-  <div className="flex items-center justify-between px-6 py-3 bg-[#f5efe6]">
-    <div className="flex items-center gap-3">
+  <div className="topbar">
+    <div className="topbar-left">
       {showBack && (
-        <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-black/10 text-gray-500 hover:bg-black/5">
+        <button className="drp-btn drp-btn--outline drp-btn--icon drp-btn--sm">
           <svg
-            className="w-4 h-4"
+            width="16"
+            height="16"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -157,18 +158,15 @@ const TopBar: React.FC<{ title?: string; showBack?: boolean }> = ({
           </svg>
         </button>
       )}
-      <h1 className="text-2xl font-bold text-black">{title}</h1>
+      <h1 className="topbar-title">{title}</h1>
     </div>
-    <div className="flex items-center gap-2">
-      <button className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600">
-        ···
-      </button>
-      <button className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600">
-        ···
-      </button>
-      <button className="flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-600 hover:bg-black/5 rounded-lg">
+    <div className="topbar-right">
+      <button className="topbar-icon-btn">...</button>
+      <button className="topbar-icon-btn">...</button>
+      <button className="topbar-apps-btn">
         <svg
-          className="w-4 h-4"
+          width="16"
+          height="16"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -180,43 +178,29 @@ const TopBar: React.FC<{ title?: string; showBack?: boolean }> = ({
             d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
           />
         </svg>
-        Apps
+        <span>Apps</span>
       </button>
-      <button className="flex items-center gap-1.5 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors">
-        <span className="text-base leading-none">+</span>
-        Create new
+      <button className="topbar-create-btn">
+        <span>+</span>
+        <span>Create new</span>
       </button>
     </div>
   </div>
 );
 
 const Footer: React.FC = () => (
-  <div className="flex items-center justify-between px-6 py-3 border-t border-black/10 bg-[#f5efe6] text-sm text-gray-500">
-    <div className="flex items-center gap-5">
-      <button className="flex items-center gap-1.5 hover:opacity-80">
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <circle cx="12" cy="12" r="10" strokeWidth={2} />
-          <path
-            strokeLinecap="round"
-            strokeWidth={2}
-            d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
-          />
-        </svg>
-        English
-      </button>
-      <button className="hover:opacity-80">Privacy Policy</button>
-      <button className="hover:opacity-80">License</button>
-      <button className="hover:opacity-80">API</button>
+  <div className="footer-bar">
+    <div className="footer-links">
+      <span className="footer-link">English</span>
+      <span className="footer-link">Privacy Policy</span>
+      <span className="footer-link">License</span>
+      <span className="footer-link">API</span>
     </div>
-    <div className="flex items-center gap-2">
-      <button className="p-1.5 rounded bg-black/10 hover:bg-black/20">
+    <div className="footer-right">
+      <button className="footer-icon-btn">
         <svg
-          className="w-4 h-4"
+          width="16"
+          height="16"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -235,9 +219,10 @@ const Footer: React.FC = () => (
           />
         </svg>
       </button>
-      <button className="p-1.5 rounded bg-black/10 hover:bg-black/20">
+      <button className="footer-icon-btn">
         <svg
-          className="w-4 h-4"
+          width="16"
+          height="16"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -256,7 +241,13 @@ const Footer: React.FC = () => (
 
 const SortIcon: React.FC = () => (
   <svg
-    className="w-3 h-3 inline-block ml-1 text-gray-400"
+    style={{
+      width: 12,
+      height: 12,
+      display: "inline-block",
+      marginLeft: 4,
+      color: "var(--drp-grey)",
+    }}
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
@@ -271,10 +262,17 @@ const SortIcon: React.FC = () => (
 );
 
 const TablePagination: React.FC = () => (
-  <div className="flex items-center justify-between px-4 py-3 border-t border-black/10">
-    <button className="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-black/10 text-sm text-gray-600 hover:bg-black/5">
+  <div
+    className="drp-flex drp-items-center drp-justify-between"
+    style={{
+      padding: "var(--drp-space-3) var(--drp-space-4)",
+      borderTop: "var(--drp-border-thin)",
+    }}
+  >
+    <button className="drp-btn drp-btn--outline drp-btn--sm">
       <svg
-        className="w-4 h-4"
+        width="16"
+        height="16"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -288,11 +286,12 @@ const TablePagination: React.FC = () => (
       </svg>
       Prev
     </button>
-    <span className="text-sm text-gray-500">Page 1 of 10</span>
-    <button className="flex items-center gap-1 px-3 py-1.5 rounded-lg border border-black/10 text-sm text-gray-600 hover:bg-black/5">
+    <span className="drp-text drp-text--sm drp-text--muted">Page 1 of 10</span>
+    <button className="drp-btn drp-btn--outline drp-btn--sm">
       Next
       <svg
-        className="w-4 h-4"
+        width="16"
+        height="16"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -317,10 +316,10 @@ const StockBar: React.FC<{ value: number; max: number; color: string }> = ({
 }) => {
   const pct = Math.min(100, Math.round((value / max) * 100));
   return (
-    <div className="w-20 h-1.5 rounded-full bg-gray-200">
+    <div className="drp-progress drp-progress--sm" style={{ width: 80 }}>
       <div
-        className={`h-full rounded-full ${color}`}
-        style={{ width: `${pct}%` }}
+        className="drp-progress__bar"
+        style={{ width: `${pct}%`, background: color }}
       />
     </div>
   );
@@ -328,14 +327,25 @@ const StockBar: React.FC<{ value: number; max: number; color: string }> = ({
 
 // ─── Product thumbnail placeholder ───────────────────────────────────────────
 
-const ProductThumb: React.FC<{ color?: string }> = ({
-  color = "bg-gray-200",
+const ProductThumb: React.FC<{ bg?: string }> = ({
+  bg = "var(--drp-cream)",
 }) => (
   <div
-    className={`w-10 h-10 rounded-lg ${color} flex items-center justify-center flex-shrink-0`}
+    style={{
+      width: 40,
+      height: 40,
+      background: bg,
+      border: "var(--drp-border-thin)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flexShrink: 0,
+    }}
   >
     <svg
-      className="w-5 h-5 text-gray-400"
+      width="20"
+      height="20"
+      style={{ color: "var(--drp-grey)" }}
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -361,9 +371,9 @@ const v1Products = [
     sold: 1313,
     stock: 2168,
     stockMax: 3000,
-    stockColor: "bg-green-400",
+    stockColor: "var(--drp-mint)",
     price: "$4,140",
-    thumb: "bg-gray-200",
+    thumb: "var(--drp-cream)",
   },
   {
     id: "2",
@@ -373,9 +383,9 @@ const v1Products = [
     sold: 4531,
     stock: 5506,
     stockMax: 6000,
-    stockColor: "bg-yellow-400",
+    stockColor: "var(--drp-yellow)",
     price: "$2,148",
-    thumb: "bg-blue-100",
+    thumb: "#dbeafe",
   },
   {
     id: "3",
@@ -385,9 +395,9 @@ const v1Products = [
     sold: 3632,
     stock: 8522,
     stockMax: 10000,
-    stockColor: "bg-green-400",
+    stockColor: "var(--drp-mint)",
     price: "$3,680",
-    thumb: "bg-slate-100",
+    thumb: "#f1f5f9",
   },
   {
     id: "4",
@@ -397,9 +407,9 @@ const v1Products = [
     sold: 6818,
     stock: 6656,
     stockMax: 8000,
-    stockColor: "bg-green-400",
+    stockColor: "var(--drp-mint)",
     price: "$3,250",
-    thumb: "bg-gray-100",
+    thumb: "var(--drp-cream)",
   },
   {
     id: "5",
@@ -409,9 +419,9 @@ const v1Products = [
     sold: 6183,
     stock: 3678,
     stockMax: 8000,
-    stockColor: "bg-red-400",
+    stockColor: "var(--drp-pink)",
     price: "$1,800",
-    thumb: "bg-amber-100",
+    thumb: "#fef3c7",
   },
   {
     id: "6",
@@ -421,72 +431,78 @@ const v1Products = [
     sold: 1728,
     stock: 6619,
     stockMax: 8000,
-    stockColor: "bg-yellow-400",
+    stockColor: "var(--drp-yellow)",
     price: "$2,900",
-    thumb: "bg-indigo-100",
+    thumb: "#e0e7ff",
   },
 ];
 
 const V1Content: React.FC = () => (
-  <div className="flex-1 overflow-auto p-5">
-    <div className="bg-white rounded-xl border border-black/10 overflow-hidden">
-      {/* Table header */}
-      <div className="grid grid-cols-[2fr_3fr_1fr_1.5fr_1fr_40px] items-center px-4 py-3 border-b border-black/10 text-sm font-medium text-gray-600">
-        <div>
-          Name <SortIcon />
-        </div>
-        <div>
-          Details <SortIcon />
-        </div>
-        <div>
-          Sold <SortIcon />
-        </div>
-        <div>
-          Stock <SortIcon />
-        </div>
-        <div>
-          Price <SortIcon />
-        </div>
-        <div></div>
-      </div>
-
-      {v1Products.map((p) => (
-        <div
-          key={p.id}
-          className="grid grid-cols-[2fr_3fr_1fr_1.5fr_1fr_40px] items-center px-4 py-3 border-b border-black/5 hover:bg-gray-50 transition-colors"
-        >
-          {/* Name + image */}
-          <div className="flex items-center gap-3">
-            <ProductThumb color={p.thumb} />
-            <span className="text-sm font-medium text-black">{p.name}</span>
-          </div>
-
-          {/* Description */}
-          <div className="text-sm text-gray-500 leading-snug pr-4">
-            {p.description}
-          </div>
-
-          {/* Sold */}
-          <div className="text-sm text-gray-700">{p.sold}</div>
-
-          {/* Stock with progress bar */}
-          <div className="flex flex-col gap-1">
-            <StockBar value={p.stock} max={p.stockMax} color={p.stockColor} />
-            <span className="text-xs text-gray-500">
-              {p.stock.toLocaleString()}
-            </span>
-          </div>
-
-          {/* Price */}
-          <div className="text-sm font-semibold text-black">{p.price}</div>
-
-          {/* Actions */}
-          <button className="w-8 h-8 flex items-center justify-center rounded-lg border border-black/10 text-gray-400 hover:text-gray-600 text-xs">
-            ···
-          </button>
-        </div>
-      ))}
-
+  <div className="content">
+    <div className="drp-card" style={{ padding: 0, overflow: "hidden" }}>
+      {/* Table */}
+      <table className="drp-table">
+        <thead>
+          <tr>
+            <th>
+              Name <SortIcon />
+            </th>
+            <th>
+              Details <SortIcon />
+            </th>
+            <th>
+              Sold <SortIcon />
+            </th>
+            <th>
+              Stock <SortIcon />
+            </th>
+            <th>
+              Price <SortIcon />
+            </th>
+            <th style={{ width: 40 }}></th>
+          </tr>
+        </thead>
+        <tbody>
+          {v1Products.map((p) => (
+            <tr key={p.id}>
+              <td>
+                <div className="drp-flex drp-items-center drp-gap-3">
+                  <ProductThumb bg={p.thumb} />
+                  <span className="drp-text drp-text--bold">{p.name}</span>
+                </div>
+              </td>
+              <td>
+                <span className="drp-text drp-text--sm drp-text--muted">
+                  {p.description}
+                </span>
+              </td>
+              <td>
+                <span className="drp-text drp-text--sm">{p.sold}</span>
+              </td>
+              <td>
+                <div className="drp-flex-col drp-gap-1">
+                  <StockBar
+                    value={p.stock}
+                    max={p.stockMax}
+                    color={p.stockColor}
+                  />
+                  <span className="drp-caption">
+                    {p.stock.toLocaleString()}
+                  </span>
+                </div>
+              </td>
+              <td>
+                <span className="drp-text drp-text--bold">{p.price}</span>
+              </td>
+              <td>
+                <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                  ...
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       <TablePagination />
     </div>
   </div>
@@ -501,7 +517,7 @@ const v2Products = [
     category: "Technology",
     sku: "8XXP",
     avl: "Tag",
-    avlColor: "text-gray-500",
+    avlVariant: "drp-tag--grey",
     color: "Black",
     sales: 140,
     price: "$25,00",
@@ -512,7 +528,7 @@ const v2Products = [
     category: "Marketing",
     sku: "KSXU",
     avl: "Here",
-    avlColor: "text-green-600",
+    avlVariant: "drp-tag--mint",
     color: "Neutral",
     sales: 96,
     price: "$137,50",
@@ -523,7 +539,7 @@ const v2Products = [
     category: "Marketing",
     sku: "BA2S",
     avl: "Low",
-    avlColor: "text-red-500",
+    avlVariant: "drp-tag--pink",
     color: "White",
     sales: 14,
     price: "$245,80",
@@ -534,7 +550,7 @@ const v2Products = [
     category: "Clothing",
     sku: "XG42",
     avl: "Tag",
-    avlColor: "text-gray-500",
+    avlVariant: "drp-tag--grey",
     color: "Multicolor",
     sales: 239,
     price: "$105,50",
@@ -545,7 +561,7 @@ const v2Products = [
     category: "Smart Wear",
     sku: "5WHL",
     avl: "Here",
-    avlColor: "text-green-600",
+    avlVariant: "drp-tag--mint",
     color: "White",
     sales: 38,
     price: "$295,00",
@@ -556,7 +572,7 @@ const v2Products = [
     category: "Technology",
     sku: "VVD3",
     avl: "Tag",
-    avlColor: "text-gray-500",
+    avlVariant: "drp-tag--grey",
     color: "Black",
     sales: 155,
     price: "$95,00",
@@ -567,7 +583,7 @@ const v2Products = [
     category: "Gifts & Toys",
     sku: "3L85",
     avl: "Low",
-    avlColor: "text-red-500",
+    avlVariant: "drp-tag--pink",
     color: "White",
     sales: 198,
     price: "$164,40",
@@ -578,7 +594,7 @@ const v2Products = [
     category: "Gifts & Toys",
     sku: "QQ44",
     avl: "Tag",
-    avlColor: "text-gray-500",
+    avlVariant: "drp-tag--grey",
     color: "Multicolor",
     sales: 36,
     price: "$350,00",
@@ -589,171 +605,129 @@ const v2Products = [
     category: "Clothing",
     sku: "XG42",
     avl: "Tag",
-    avlColor: "text-gray-500",
+    avlVariant: "drp-tag--grey",
     color: "Multicolor",
     sales: 239,
     price: "$105,50",
   },
 ];
 
-const V2Content: React.FC = () => (
-  <div className="flex-1 overflow-auto p-5">
-    {/* Filter bar */}
-    <div className="flex items-center justify-between mb-4">
-      <div className="flex items-center gap-2">
-        <button className="flex items-center gap-1.5 px-3 py-1.5 bg-purple-100 text-purple-700 text-sm rounded-lg font-medium">
-          <svg
-            className="w-3.5 h-3.5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707l-6.414 6.414A1 1 0 0014 14v4a1 1 0 01-.553.894l-4 2A1 1 0 018 20v-6a1 1 0 01.293-.707L14.586 6.7A1 1 0 0015 6V5H9v1a1 1 0 01-.293.707L2.293 13.12A1 1 0 002 13.828V19a1 1 0 001 1h0"
-            />
-          </svg>
-          All Filters
-        </button>
-        <button className="flex items-center gap-1 px-3 py-1.5 bg-white border border-black/10 text-sm rounded-lg text-gray-600 hover:bg-gray-50">
-          All Customers
-          <svg
-            className="w-3 h-3 text-gray-400"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-        <button className="flex items-center gap-1 px-3 py-1.5 bg-white border border-black/10 text-sm rounded-lg text-gray-600 hover:bg-gray-50">
-          A-Z
-          <svg
-            className="w-3 h-3 text-gray-400"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-      </div>
-      <button className="flex items-center gap-2 px-4 py-1.5 bg-white border border-black/10 text-sm rounded-lg text-gray-600 hover:bg-gray-50 min-w-[100px]">
-        <svg
-          className="w-4 h-4 text-gray-400"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          />
-        </svg>
-        Search
+const FilterBar: React.FC = () => (
+  <div className="drp-flex drp-items-center drp-justify-between drp-mb-4">
+    <div className="drp-flex drp-items-center drp-gap-2">
+      <button className="drp-btn drp-btn--sm drp-btn--primary">
+        All Filters
       </button>
+      <button className="drp-btn drp-btn--sm drp-btn--outline">
+        All Customers
+      </button>
+      <button className="drp-btn drp-btn--sm drp-btn--outline">A-Z</button>
     </div>
+    <button className="drp-btn drp-btn--sm drp-btn--outline">
+      <svg
+        width="16"
+        height="16"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+        />
+      </svg>
+      Search
+    </button>
+  </div>
+);
 
-    <div className="bg-white rounded-xl border border-black/10 overflow-hidden">
-      {/* Table header */}
-      <div className="grid grid-cols-[40px_2fr_1.5fr_1fr_1fr_1fr_1fr_1fr_40px] items-center px-4 py-3 border-b border-black/10 text-sm font-medium text-gray-600">
-        <div>
-          <input type="checkbox" className="rounded" />
-        </div>
-        <div>
-          Product <SortIcon />
-        </div>
-        <div>
-          Category <SortIcon />
-        </div>
-        <div>
-          Id <SortIcon />
-        </div>
-        <div>
-          Avl <SortIcon />
-        </div>
-        <div>
-          Color <SortIcon />
-        </div>
-        <div>
-          Sales <SortIcon />
-        </div>
-        <div>
-          Price <SortIcon />
-        </div>
-        <div></div>
-      </div>
-
-      {v2Products.map((p) => (
-        <div
-          key={p.id}
-          className="grid grid-cols-[40px_2fr_1.5fr_1fr_1fr_1fr_1fr_1fr_40px] items-center px-4 py-3 border-b border-black/5 hover:bg-gray-50 transition-colors"
-        >
-          <div>
-            <input type="checkbox" className="rounded" />
-          </div>
-
-          {/* Product with image */}
-          <div className="flex items-center gap-3">
-            <ProductThumb />
-            <span className="text-sm font-medium text-black">{p.name}</span>
-          </div>
-
-          {/* Category pill */}
-          <div>
-            <span className="px-3 py-1 border border-black/15 rounded-lg text-sm text-gray-700 bg-white">
-              {p.category}
-            </span>
-          </div>
-
-          {/* SKU */}
-          <div className="text-sm text-gray-600">{p.sku}</div>
-
-          {/* Availability */}
-          <div>
-            <span
-              className={`px-2.5 py-1 border rounded-lg text-xs font-medium border-black/10 ${p.avlColor}`}
-            >
-              {p.avl}
-            </span>
-          </div>
-
-          {/* Color */}
-          <div className="text-sm text-gray-600">{p.color}</div>
-
-          {/* Sales */}
-          <div className="text-sm text-gray-700">{p.sales}</div>
-
-          {/* Price */}
-          <div className="text-sm font-semibold text-black">{p.price}</div>
-
-          {/* Actions */}
-          <button className="text-gray-400 hover:text-gray-600 text-xs">
-            ···
-          </button>
-        </div>
-      ))}
-
+const V2Content: React.FC = () => (
+  <div className="content">
+    <FilterBar />
+    <div className="drp-card" style={{ padding: 0, overflow: "hidden" }}>
+      <table className="drp-table">
+        <thead>
+          <tr>
+            <th style={{ width: 40 }}>
+              <label className="drp-checkbox">
+                <input type="checkbox" />
+              </label>
+            </th>
+            <th>
+              Product <SortIcon />
+            </th>
+            <th>
+              Category <SortIcon />
+            </th>
+            <th>
+              Id <SortIcon />
+            </th>
+            <th>
+              Avl <SortIcon />
+            </th>
+            <th>
+              Color <SortIcon />
+            </th>
+            <th>
+              Sales <SortIcon />
+            </th>
+            <th>
+              Price <SortIcon />
+            </th>
+            <th style={{ width: 40 }}></th>
+          </tr>
+        </thead>
+        <tbody>
+          {v2Products.map((p) => (
+            <tr key={p.id}>
+              <td>
+                <label className="drp-checkbox">
+                  <input type="checkbox" />
+                </label>
+              </td>
+              <td>
+                <div className="drp-flex drp-items-center drp-gap-3">
+                  <ProductThumb />
+                  <span className="drp-text drp-text--bold">{p.name}</span>
+                </div>
+              </td>
+              <td>
+                <span className="drp-tag">{p.category}</span>
+              </td>
+              <td>
+                <span className="drp-text drp-text--sm drp-text--muted">
+                  {p.sku}
+                </span>
+              </td>
+              <td>
+                <span className={`drp-tag ${p.avlVariant}`}>{p.avl}</span>
+              </td>
+              <td>
+                <span className="drp-text drp-text--sm">{p.color}</span>
+              </td>
+              <td>
+                <span className="drp-text drp-text--sm">{p.sales}</span>
+              </td>
+              <td>
+                <span className="drp-text drp-text--bold">{p.price}</span>
+              </td>
+              <td>
+                <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                  ...
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       <TablePagination />
     </div>
   </div>
 );
 
-// ─── V3 – Payment-style list: Name, Amount, Status (Paid/Pending), Rate, Service, Date, Source ──
+// ─── V3 – Payment-style list ──────────────────────────────────────────────────
 
 const v3Products = [
   {
@@ -828,7 +802,7 @@ const v3Products = [
   },
   {
     id: "8",
-    name: "Hugo Assunção",
+    name: "Hugo Assuncao",
     amount: "$6,366",
     status: "Paid",
     rate: "$25,00",
@@ -849,65 +823,22 @@ const v3Products = [
 ];
 
 const V3Content: React.FC = () => (
-  <div className="flex-1 overflow-auto p-5">
-    {/* Filter bar */}
-    <div className="flex items-center justify-between mb-4">
-      <div className="flex items-center gap-2">
-        <button className="flex items-center gap-1.5 px-3 py-1.5 bg-purple-100 text-purple-700 text-sm rounded-lg font-medium">
-          <svg
-            className="w-3.5 h-3.5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707l-6.414 6.414A1 1 0 0014 14v4a1 1 0 01-.553.894l-4 2A1 1 0 018 20v-6a1 1 0 01.293-.707L2.293 13.12A1 1 0 002 13.828V19a1 1 0 001 1h0"
-            />
-          </svg>
+  <div className="content">
+    <div className="drp-flex drp-items-center drp-justify-between drp-mb-4">
+      <div className="drp-flex drp-items-center drp-gap-2">
+        <button className="drp-btn drp-btn--sm drp-btn--primary">
           All Filters
         </button>
-        <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-black/10 text-sm rounded-lg text-gray-600 hover:bg-gray-50">
-          <svg
-            className="w-4 h-4 text-gray-400"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-            />
-          </svg>
-          Group
-        </button>
-        <button className="flex items-center gap-1.5 px-3 py-1.5 bg-white border border-black/10 text-sm rounded-lg text-gray-600 hover:bg-gray-50">
-          <svg
-            className="w-3.5 h-3.5 text-gray-400"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"
-            />
-          </svg>
-          Sort
-        </button>
-        <button className="w-8 h-8 flex items-center justify-center bg-white border border-black/10 rounded-lg text-gray-500 hover:bg-gray-50 text-xs">
-          ···
+        <button className="drp-btn drp-btn--sm drp-btn--outline">Group</button>
+        <button className="drp-btn drp-btn--sm drp-btn--outline">Sort</button>
+        <button className="drp-btn drp-btn--outline drp-btn--icon drp-btn--sm">
+          ...
         </button>
       </div>
-      <button className="w-8 h-8 flex items-center justify-center bg-white border border-black/10 rounded-lg text-gray-500 hover:bg-gray-50">
+      <button className="drp-btn drp-btn--outline drp-btn--icon drp-btn--sm">
         <svg
-          className="w-4 h-4"
+          width="16"
+          height="16"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -921,84 +852,81 @@ const V3Content: React.FC = () => (
         </svg>
       </button>
     </div>
-
-    <div className="bg-white rounded-xl border border-black/10 overflow-hidden">
-      {/* Table header */}
-      <div className="grid grid-cols-[40px_2fr_1fr_1fr_1fr_1.5fr_1.5fr_1.5fr_40px] items-center px-4 py-3 border-b border-black/10 text-sm font-medium text-gray-600">
-        <div>
-          <input type="checkbox" className="rounded" />
-        </div>
-        <div>
-          Name <SortIcon />
-        </div>
-        <div>
-          Amount <SortIcon />
-        </div>
-        <div>
-          Status <SortIcon />
-        </div>
-        <div>
-          Rate <SortIcon />
-        </div>
-        <div>
-          Service <SortIcon />
-        </div>
-        <div>
-          Date <SortIcon />
-        </div>
-        <div>
-          Source <SortIcon />
-        </div>
-        <div></div>
-      </div>
-
-      {v3Products.map((p) => (
-        <div
-          key={p.id}
-          className="grid grid-cols-[40px_2fr_1fr_1fr_1fr_1.5fr_1.5fr_1.5fr_40px] items-center px-4 py-3 border-b border-black/5 hover:bg-gray-50 transition-colors"
-        >
-          <div>
-            <input type="checkbox" className="rounded" />
-          </div>
-
-          {/* Name */}
-          <div className="text-sm font-medium text-black">{p.name}</div>
-
-          {/* Amount */}
-          <div className="text-sm font-semibold text-black">{p.amount}</div>
-
-          {/* Status badge */}
-          <div>
-            <span
-              className={`px-3 py-1 rounded-md text-sm font-medium text-white ${p.status === "Paid" ? "bg-black" : "bg-black"}`}
-            >
-              {p.status}
-            </span>
-          </div>
-
-          {/* Rate */}
-          <div className="text-sm font-semibold text-black">{p.rate}</div>
-
-          {/* Service pill */}
-          <div>
-            <span className="px-3 py-1 border border-black/15 rounded-lg text-sm text-gray-700 bg-white">
-              {p.service}
-            </span>
-          </div>
-
-          {/* Date */}
-          <div className="text-sm text-gray-600">{p.date}</div>
-
-          {/* Source */}
-          <div className="text-sm text-gray-600">{p.source}</div>
-
-          {/* Actions */}
-          <button className="text-gray-400 hover:text-gray-600 text-xs">
-            ···
-          </button>
-        </div>
-      ))}
-
+    <div className="drp-card" style={{ padding: 0, overflow: "hidden" }}>
+      <table className="drp-table">
+        <thead>
+          <tr>
+            <th style={{ width: 40 }}>
+              <label className="drp-checkbox">
+                <input type="checkbox" />
+              </label>
+            </th>
+            <th>
+              Name <SortIcon />
+            </th>
+            <th>
+              Amount <SortIcon />
+            </th>
+            <th>
+              Status <SortIcon />
+            </th>
+            <th>
+              Rate <SortIcon />
+            </th>
+            <th>
+              Service <SortIcon />
+            </th>
+            <th>
+              Date <SortIcon />
+            </th>
+            <th>
+              Source <SortIcon />
+            </th>
+            <th style={{ width: 40 }}></th>
+          </tr>
+        </thead>
+        <tbody>
+          {v3Products.map((p) => (
+            <tr key={p.id}>
+              <td>
+                <label className="drp-checkbox">
+                  <input type="checkbox" />
+                </label>
+              </td>
+              <td>
+                <span className="drp-text drp-text--bold">{p.name}</span>
+              </td>
+              <td>
+                <span className="drp-text drp-text--bold">{p.amount}</span>
+              </td>
+              <td>
+                <span className="drp-tag drp-tag--filled">{p.status}</span>
+              </td>
+              <td>
+                <span className="drp-text drp-text--bold">{p.rate}</span>
+              </td>
+              <td>
+                <span className="drp-tag">{p.service}</span>
+              </td>
+              <td>
+                <span className="drp-text drp-text--sm drp-text--muted">
+                  {p.date}
+                </span>
+              </td>
+              <td>
+                <span className="drp-text drp-text--sm drp-text--muted">
+                  {p.source}
+                </span>
+              </td>
+              <td>
+                <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                  ...
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       <TablePagination />
     </div>
   </div>
@@ -1007,322 +935,123 @@ const V3Content: React.FC = () => (
 // ─── Details screen ───────────────────────────────────────────────────────────
 
 const DetailsContent: React.FC = () => (
-  <div className="flex-1 overflow-auto p-5 flex gap-6">
-    {/* Left panel */}
-    <div className="w-[220px] flex-shrink-0">
-      {/* Product image */}
-      <div className="w-full aspect-square rounded-xl bg-gradient-to-br from-pink-200 to-purple-200 mb-4 flex items-center justify-center overflow-hidden">
-        <div className="w-full h-full bg-gradient-to-br from-violet-100 to-pink-100" />
-      </div>
-
-      <h2 className="text-lg font-bold text-black leading-snug mb-1">
-        Neoft UI Kit for NFT Marketplaces
-      </h2>
-      <p className="text-xs text-gray-500 mb-3">
-        250 Pages and 320 symbols for NFT Marketplace UI design
-      </p>
-
-      <span className="px-3 py-1 border border-black/15 rounded-lg text-sm text-gray-700 bg-white">
-        Template
-      </span>
-
-      <div className="mt-5 space-y-4">
-        <div className="border-b border-dashed border-black/10 pb-4">
-          <div className="flex items-center gap-2 mb-0.5">
-            <span className="text-2xl font-bold text-black">296</span>
-            <span className="px-1.5 py-0.5 bg-red-100 text-red-600 text-xs font-bold rounded">
-              8+
-            </span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-xs text-gray-500">New sales</span>
-            <svg
-              className="w-3.5 h-3.5 text-green-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M5 13l4 4L19 7"
-              />
-            </svg>
-          </div>
-        </div>
-
-        <div className="border-b border-dashed border-black/10 pb-4">
-          <div className="flex items-center gap-2 mb-0.5">
-            <span className="text-2xl font-bold text-black">18</span>
-            <span className="px-1.5 py-0.5 bg-green-100 text-green-600 text-xs font-bold rounded">
-              5
-            </span>
-          </div>
-          <div className="flex items-center justify-between">
-            <span className="text-xs text-gray-500">Followers</span>
-            <svg
-              className="w-3.5 h-3.5 text-gray-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M7 17L17 7M17 7H7M17 7v10"
-              />
-            </svg>
-          </div>
-        </div>
-
-        <div>
-          <span className="text-lg font-bold text-black">$36</span>
-          <div className="text-xs text-gray-500">Regular price</div>
-        </div>
-      </div>
-
-      <button className="mt-4 flex items-center gap-2 px-3 py-2 border border-black/10 rounded-lg text-sm text-gray-600 hover:bg-gray-50 w-full">
-        <svg
-          className="w-4 h-4 text-purple-500"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
+  <div className="content">
+    <div className="drp-flex drp-gap-6">
+      {/* Left panel */}
+      <div style={{ width: 220, flexShrink: 0 }}>
+        <div
+          style={{
+            width: "100%",
+            aspectRatio: "1/1",
+            background:
+              "linear-gradient(135deg, var(--drp-pink), var(--drp-purple))",
+            marginBottom: "var(--drp-space-4)",
+            border: "var(--drp-border)",
+          }}
+        />
+        <h2 className="drp-h5" style={{ marginBottom: "var(--drp-space-1)" }}>
+          Neoft UI Kit for NFT Marketplaces
+        </h2>
+        <p
+          className="drp-text drp-text--sm drp-text--muted"
+          style={{ marginBottom: "var(--drp-space-3)" }}
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M12 4v16m8-8H4"
-          />
-        </svg>
-        Add an update
-        <span className="ml-auto flex gap-1">
-          <svg
-            className="w-4 h-4 text-gray-400"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 10h16M4 14h16M4 18h16"
-            />
-          </svg>
-          <svg
-            className="w-4 h-4 text-gray-400"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M7 17L17 7M17 7H7M17 7v10"
-            />
-          </svg>
-        </span>
-      </button>
-    </div>
+          250 Pages and 320 symbols for NFT Marketplace UI design
+        </p>
+        <span className="drp-tag">Template</span>
 
-    {/* Right panel */}
-    <div className="flex-1">
-      {/* Tabs */}
-      <div className="flex items-center gap-1 mb-5">
-        <button className="px-4 py-2 bg-black text-white text-sm font-medium rounded-lg">
-          General information
-        </button>
-        <button className="px-4 py-2 text-sm text-gray-500 hover:text-gray-700">
-          Pricing
-        </button>
-        <button className="px-4 py-2 text-sm text-gray-500 hover:text-gray-700">
-          Delivery
-        </button>
-        <button className="px-4 py-2 text-sm text-gray-500 hover:text-gray-700">
-          Returns
-        </button>
-        <div className="ml-auto">
-          <button className="flex items-center gap-1 px-3 py-2 border border-black/15 rounded-lg text-sm text-gray-600 hover:bg-gray-50">
-            --- Actions
-          </button>
+        <div style={{ marginTop: "var(--drp-space-5)" }}>
+          <div
+            style={{
+              borderBottom: "var(--drp-border-dashed)",
+              paddingBottom: "var(--drp-space-4)",
+              marginBottom: "var(--drp-space-4)",
+            }}
+          >
+            <div
+              className="drp-flex drp-items-center drp-gap-2"
+              style={{ marginBottom: 2 }}
+            >
+              <span className="drp-h4">296</span>
+              <span className="drp-badge drp-badge--pink">8+</span>
+            </div>
+            <span className="drp-caption">New sales</span>
+          </div>
+
+          <div
+            style={{
+              borderBottom: "var(--drp-border-dashed)",
+              paddingBottom: "var(--drp-space-4)",
+              marginBottom: "var(--drp-space-4)",
+            }}
+          >
+            <div
+              className="drp-flex drp-items-center drp-gap-2"
+              style={{ marginBottom: 2 }}
+            >
+              <span className="drp-h4">18</span>
+              <span className="drp-badge drp-badge--mint">5</span>
+            </div>
+            <span className="drp-caption">Followers</span>
+          </div>
+
+          <div>
+            <span className="drp-h5">$36</span>
+            <div className="drp-caption">Regular price</div>
+          </div>
         </div>
+
+        <button className="drp-btn drp-btn--outline drp-btn--sm drp-btn--block drp-mt-4">
+          <svg
+            width="16"
+            height="16"
+            style={{ color: "var(--drp-purple)" }}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+            />
+          </svg>
+          Edit product page
+        </button>
       </div>
 
-      <div className="bg-white rounded-xl border border-black/10 p-5">
-        <h3 className="text-base font-semibold text-black mb-5">
-          General information
-        </h3>
-
-        {/* Images */}
-        <div className="mb-5">
-          <label className="text-sm text-gray-500 mb-2 block">Images</label>
-          <div className="flex gap-2">
-            {[
-              "bg-pink-100",
-              "bg-purple-100",
-              "bg-blue-100",
-              "bg-green-100",
-              "bg-orange-100",
-            ].map((c, i) => (
-              <div
-                key={i}
-                className={`w-16 h-16 rounded-lg ${c} relative flex items-center justify-center flex-shrink-0`}
-              >
-                <button className="absolute top-1 right-1 w-4 h-4 bg-black/20 rounded-full flex items-center justify-center">
-                  <svg
-                    className="w-2.5 h-2.5 text-white"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-              </div>
-            ))}
+      {/* Right panel */}
+      <div style={{ flex: 1 }}>
+        <div className="drp-card" style={{ padding: 0, overflow: "hidden" }}>
+          <div
+            className="drp-flex drp-items-center drp-gap-2"
+            style={{
+              padding: "var(--drp-space-4)",
+              borderBottom: "var(--drp-border-thin)",
+            }}
+          >
+            <button className="drp-tab drp-tab--active">Overview</button>
+            <button className="drp-tab">Currency</button>
+            <button className="drp-tab">Statement</button>
           </div>
-        </div>
-
-        {/* Product title + Category */}
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <div>
-            <label className="text-sm text-gray-500 mb-1.5 block">
-              Product title
-            </label>
-            <input
-              type="text"
-              defaultValue="Dell XPS, 2021"
-              className="w-full px-3 py-2 border border-black/15 rounded-lg text-sm text-black focus:outline-none focus:ring-1 focus:ring-purple-500"
-            />
-          </div>
-          <div>
-            <label className="text-sm text-gray-500 mb-1.5 block">
-              Category
-            </label>
-            <div className="relative">
-              <select className="w-full px-3 py-2 border border-black/15 rounded-lg text-sm text-black focus:outline-none focus:ring-1 focus:ring-purple-500 appearance-none bg-white">
-                <option>Laptops</option>
-                <option>Electronics</option>
-              </select>
-              <svg
-                className="w-4 h-4 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
+          <div style={{ padding: "var(--drp-space-5)" }}>
+            <div
+              style={{
+                width: "100%",
+                height: 200,
+                background: "var(--drp-cream)",
+                border: "var(--drp-border-thin)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <span className="drp-text drp-text--muted">
+                Chart placeholder
+              </span>
             </div>
           </div>
-        </div>
-
-        {/* SKU + Available */}
-        <div className="grid grid-cols-2 gap-4 mb-4">
-          <div>
-            <label className="text-sm text-gray-500 mb-1.5 block">SKU</label>
-            <input
-              type="text"
-              defaultValue="SKU: 34589-123"
-              className="w-full px-3 py-2 border border-black/15 rounded-lg text-sm text-black focus:outline-none focus:ring-1 focus:ring-purple-500"
-            />
-          </div>
-          <div>
-            <label className="text-sm text-gray-500 mb-1.5 block">
-              Available
-            </label>
-            <div className="flex items-center border border-black/15 rounded-lg overflow-hidden">
-              <span className="px-3 py-2 text-sm text-gray-600 bg-white flex-1">
-                Primary warehouse
-              </span>
-              <button className="px-2 py-2 text-gray-400 hover:text-gray-600 border-l border-black/10">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M20 12H4"
-                  />
-                </svg>
-              </button>
-              <span className="px-2 py-2 text-sm font-medium text-black">
-                248
-              </span>
-              <button className="px-2 py-2 text-gray-400 hover:text-gray-600 border-l border-black/10">
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 4v16m8-8H4"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Specifications */}
-        <div className="mb-6">
-          <label className="text-sm text-gray-500 mb-1.5 block">
-            Specifications
-          </label>
-          <div className="flex flex-wrap gap-2 p-3 border border-black/15 rounded-lg min-h-[48px]">
-            {["Digital", "UI / UX", "Web", "Theme"].map((tag) => (
-              <span
-                key={tag}
-                className="flex items-center gap-1 px-2 py-1 bg-gray-100 rounded-md text-sm text-gray-700"
-              >
-                {tag}
-                <svg
-                  className="w-3 h-3 text-gray-400 cursor-pointer hover:text-gray-600"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </span>
-            ))}
-          </div>
-        </div>
-
-        {/* Actions */}
-        <div className="flex items-center gap-3">
-          <button className="px-6 py-2.5 border border-black/15 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50">
-            Reset Changes
-          </button>
-          <button className="px-6 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors">
-            Update Settings
-          </button>
         </div>
       </div>
     </div>
@@ -1340,20 +1069,30 @@ export const ProductsList: React.FC<ProductsListProps> = ({
   theme = "light",
   variant = "v1",
 }) => {
-  const isDetails = variant === "details";
+  const renderContent = () => {
+    switch (variant) {
+      case "v2":
+        return <V2Content />;
+      case "v3":
+        return <V3Content />;
+      case "details":
+        return <DetailsContent />;
+      default:
+        return <V1Content />;
+    }
+  };
 
   return (
-    <div className="flex h-screen bg-[#f5efe6]">
-      <DoctorProjectSidebar activeItem="products" />
-      <div className="flex-1 flex flex-col overflow-hidden">
+    <div className="app-layout">
+      <DoctorProjectSidebar
+        activeItem={variant === "details" ? "products" : "products"}
+      />
+      <div className="main-content" style={{ marginLeft: 200 }}>
         <TopBar
-          title={isDetails ? "Product details" : "Products"}
-          showBack={isDetails}
+          title={variant === "details" ? "Product Details" : "Products"}
+          showBack={variant === "details"}
         />
-        {variant === "v1" && <V1Content />}
-        {variant === "v2" && <V2Content />}
-        {variant === "v3" && <V3Content />}
-        {variant === "details" && <DetailsContent />}
+        {renderContent()}
         <Footer />
       </div>
     </div>

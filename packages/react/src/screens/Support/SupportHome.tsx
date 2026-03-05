@@ -3,99 +3,79 @@ import React from "react";
 // ─── Sidebar ─────────────────────────────────────────────────────────────────
 
 const SupportSidebar: React.FC = () => (
-  <div className="w-[200px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0">
-    {/* Logo */}
-    <div className="px-5 py-5 border-b border-white/10">
-      <div className="flex items-center gap-1">
-        <span className="text-lg font-bold text-white">Doctor Project</span>
-        <span className="w-2 h-2 rounded-full bg-purple-500 mb-3"></span>
-      </div>
+  <aside className="sidebar">
+    <div className="sidebar-brand">
+      <span className="sidebar-brand-name">Doctor Project</span>
+      <span className="sidebar-brand-dot"></span>
     </div>
 
-    {/* Navigation */}
-    <div className="flex-1 overflow-y-auto px-3 py-4 space-y-5">
-      <div>
-        <p className="text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2">
-          Navigation
-        </p>
-        <nav className="space-y-0.5">
-          {[
-            { label: "Dashboard", badge: 15, badgeColor: "bg-purple-600" },
-            { label: "Projects" },
-            { label: "Tasks" },
-            { label: "Kanban Desk", badge: 28, badgeColor: "bg-purple-600" },
-            { label: "File Manager", badge: 14, badgeColor: "bg-green-500" },
-            { label: "Calendar" },
-            { label: "Inbox" },
-          ].map((item) => (
-            <button
-              key={item.label}
-              className="w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5"
-            >
-              <span>{item.label}</span>
-              {item.badge && (
-                <span
-                  className={`text-[10px] text-white px-1.5 py-0.5 rounded ${item.badgeColor}`}
-                >
-                  {item.badge}
-                </span>
-              )}
-            </button>
-          ))}
-        </nav>
-      </div>
-
-      {/* Team Members */}
-      <div>
-        <p className="text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2">
-          Team Members
-        </p>
-        <div className="space-y-0.5">
-          {[
-            { name: "Alexandre Paiva", color: "bg-orange-400" },
-            { name: "Thanawan Chadee", color: "bg-purple-500" },
-            { name: "Justine Robinson", color: "bg-blue-400" },
-          ].map((member) => (
-            <button
-              key={member.name}
-              className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-white/5"
-            >
+    <nav className="sidebar-nav">
+      <div className="sidebar-nav-section">
+        <div className="sidebar-nav-label">Navigation</div>
+        {[
+          { label: "Dashboard", badge: 15, badgeType: "purple" as const },
+          { label: "Projects" },
+          { label: "Tasks" },
+          { label: "Kanban Desk", badge: 28, badgeType: "purple" as const },
+          { label: "File Manager", badge: 14, badgeType: "green" as const },
+          { label: "Calendar" },
+          { label: "Inbox" },
+        ].map((item) => (
+          <a key={item.label} className="sidebar-nav-item">
+            <span className="sidebar-nav-text">{item.label}</span>
+            {item.badge && (
               <span
-                className={`w-6 h-6 rounded-full ${member.color} flex-shrink-0`}
-              ></span>
-              <span>{member.name}</span>
-            </button>
-          ))}
-          <button className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5">
-            <span className="text-xs">&#8964; See More</span>
-          </button>
-        </div>
+                className={`sidebar-badge sidebar-badge--${item.badgeType}`}
+              >
+                {item.badge}
+              </span>
+            )}
+          </a>
+        ))}
       </div>
-    </div>
 
-    {/* Footer user */}
-    <div className="px-3 py-4 border-t border-white/10">
-      <div className="flex items-center justify-between px-2">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-pink-500"></div>
-          <span className="text-xs text-gray-200">Henry Richardson</span>
-        </div>
-        <button className="text-gray-500 hover:text-white text-xs">
-          &middot;&middot;&middot;
-        </button>
+      <div className="sidebar-team">
+        <div className="sidebar-team-label">Team Members</div>
+        {[
+          { name: "Alexandre Paiva", bg: "var(--drp-orange)" },
+          { name: "Thanawan Chadee", bg: "var(--drp-purple)" },
+          { name: "Justine Robinson", bg: "var(--drp-info)" },
+        ].map((member) => (
+          <div key={member.name} className="sidebar-team-member">
+            <div className="sidebar-avatar" style={{ background: member.bg }}>
+              {member.name[0]}
+            </div>
+            <span className="sidebar-team-name">{member.name}</span>
+          </div>
+        ))}
+        <div className="sidebar-see-more">See More</div>
       </div>
+    </nav>
+
+    <div className="sidebar-user">
+      <div
+        className="sidebar-avatar"
+        style={{ background: "var(--drp-orange)" }}
+      >
+        H
+      </div>
+      <div className="sidebar-user-info">
+        <div className="sidebar-user-name">Henry Richardson</div>
+      </div>
+      <button className="sidebar-user-menu-btn">...</button>
     </div>
-  </div>
+  </aside>
 );
 
 // ─── Top Bar ──────────────────────────────────────────────────────────────────
 
 const SupportTopBar: React.FC = () => (
-  <div className="flex items-center justify-between px-6 py-3.5 border-b bg-white border-black/10">
-    <h1 className="text-2xl font-bold text-black">Help Center</h1>
-    <div className="flex items-center gap-3">
-      {/* search */}
-      <button className="text-gray-500">
+  <header className="topbar">
+    <div className="topbar-left">
+      <h1 className="topbar-title">Help Center</h1>
+    </div>
+    <div className="topbar-right">
+      <button className="topbar-icon-btn">
         <svg
           width="18"
           height="18"
@@ -108,8 +88,7 @@ const SupportTopBar: React.FC = () => (
           <path d="m21 21-4.35-4.35" />
         </svg>
       </button>
-      {/* bell */}
-      <button className="text-gray-500">
+      <button className="topbar-icon-btn">
         <svg
           width="18"
           height="18"
@@ -122,18 +101,16 @@ const SupportTopBar: React.FC = () => (
           <path d="M13.73 21a2 2 0 0 1-3.46 0" />
         </svg>
       </button>
-      {/* Apps */}
-      <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium text-gray-700 hover:bg-black/5">
+      <button className="topbar-apps-btn">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-          <rect x="2" y="2" width="9" height="9" rx="1" />
-          <rect x="13" y="2" width="9" height="9" rx="1" />
-          <rect x="2" y="13" width="9" height="9" rx="1" />
-          <rect x="13" y="13" width="9" height="9" rx="1" />
+          <rect x="2" y="2" width="9" height="9" />
+          <rect x="13" y="2" width="9" height="9" />
+          <rect x="2" y="13" width="9" height="9" />
+          <rect x="13" y="13" width="9" height="9" />
         </svg>
-        Apps
+        <span>Apps</span>
       </button>
-      {/* Create new */}
-      <button className="flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg">
+      <button className="topbar-create-btn">
         <svg
           width="14"
           height="14"
@@ -145,42 +122,29 @@ const SupportTopBar: React.FC = () => (
           <circle cx="12" cy="12" r="10" />
           <path d="M12 8v8M8 12h8" />
         </svg>
-        Create new
+        <span>Create new</span>
       </button>
     </div>
-  </div>
+  </header>
 );
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
 
 const SupportFooter: React.FC = () => (
-  <div className="flex items-center justify-between px-8 py-3 border-t bg-[#f5efe6] border-black/10 text-sm text-gray-500">
-    <div className="flex items-center gap-6">
-      <button className="flex items-center gap-1.5 hover:opacity-80">
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <circle cx="12" cy="12" r="10" />
-          <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-        </svg>
-        English
-      </button>
-      <button className="hover:opacity-80">Privacy Policy</button>
-      <button className="hover:opacity-80">License</button>
-      <button className="hover:opacity-80">API</button>
+  <footer className="footer-bar">
+    <div className="footer-links">
+      <span className="footer-link">English</span>
+      <span className="footer-link">Privacy Policy</span>
+      <span className="footer-link">License</span>
+      <span className="footer-link">API</span>
     </div>
-    <div className="flex items-center gap-2">
-      <button className="w-7 h-7 rounded flex items-center justify-center bg-purple-600 text-white">
+    <div className="footer-right">
+      <button className="footer-icon-btn footer-icon-btn--accent">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
           <path d="M12 3a9 9 0 1 0 9 9H12z" />
         </svg>
       </button>
-      <button className="w-7 h-7 rounded flex items-center justify-center bg-black/10">
+      <button className="footer-icon-btn">
         <svg
           width="13"
           height="13"
@@ -194,7 +158,7 @@ const SupportFooter: React.FC = () => (
         </svg>
       </button>
     </div>
-  </div>
+  </footer>
 );
 
 // ─── Hero / Search ────────────────────────────────────────────────────────────
@@ -209,26 +173,44 @@ const SupportHero: React.FC<SupportHeroProps> = ({
   searchValue,
 }) => (
   <div
-    className="relative mx-6 mt-6 rounded-2xl overflow-hidden px-8 py-10 mb-6"
     style={{
+      margin: "var(--drp-space-6)",
+      padding: "var(--drp-space-10) var(--drp-space-8)",
+      border: "var(--drp-border)",
       background:
-        "radial-gradient(ellipse at 70% 50%, rgba(180,120,255,0.35) 0%, transparent 65%), #f5efe6",
+        "radial-gradient(ellipse at 70% 50%, var(--drp-purple-20) 0%, transparent 65%), var(--drp-cream)",
     }}
   >
     <h2
-      className="text-4xl font-bold text-center text-black mb-6"
-      style={{ letterSpacing: "-0.02em" }}
+      className="drp-h2 drp-text-center"
+      style={{ marginBottom: "var(--drp-space-6)" }}
     >
       How can we help you?
     </h2>
-    <div className="max-w-lg mx-auto relative mb-3">
+    <div
+      style={{
+        maxWidth: 480,
+        margin: "0 auto",
+        position: "relative",
+        marginBottom: "var(--drp-space-3)",
+      }}
+    >
       <input
-        className="w-full px-4 py-2.5 pr-10 rounded-xl border border-black/20 bg-white text-black text-sm outline-none placeholder-gray-400"
+        className="drp-input"
+        style={{ width: "100%", paddingRight: 44 }}
         placeholder={searchPlaceholder}
         defaultValue={searchValue}
         readOnly
       />
-      <button className="absolute right-2.5 top-1/2 -translate-y-1/2 w-7 h-7 bg-purple-600 rounded-lg flex items-center justify-center">
+      <button
+        className="drp-btn drp-btn--primary drp-btn--icon drp-btn--sm"
+        style={{
+          position: "absolute",
+          right: 8,
+          top: "50%",
+          transform: "translateY(-50%)",
+        }}
+      >
         <svg
           width="13"
           height="13"
@@ -242,22 +224,9 @@ const SupportHero: React.FC<SupportHeroProps> = ({
         </svg>
       </button>
     </div>
-    <p className="text-center text-xs text-gray-500">
+    <p className="drp-text drp-text--sm drp-text--muted drp-text-center">
       For example: How to create an account
     </p>
-  </div>
-);
-
-// ─── Product Category Icon ────────────────────────────────────────────────────
-
-const ProductIcon: React.FC<{ letter: string; color: string }> = ({
-  letter,
-  color,
-}) => (
-  <div
-    className={`w-9 h-9 rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 ${color}`}
-  >
-    {letter}
   </div>
 );
 
@@ -276,16 +245,41 @@ const ProductCategoryCard: React.FC<ProductCategoryProps> = ({
   title,
   description,
 }) => (
-  <div className="flex items-start gap-3 p-3 bg-white rounded-xl border border-black/10 cursor-pointer hover:shadow-sm transition-shadow">
-    <ProductIcon letter={letter} color={color} />
-    <div>
-      <p className="font-semibold text-sm text-black">{title}</p>
-      <p className="text-xs text-gray-500 mt-0.5">{description}</p>
+  <div
+    className="drp-card drp-card--interactive"
+    style={{ padding: "var(--drp-space-3)" }}
+  >
+    <div className="drp-flex drp-items-center drp-gap-3">
+      <div
+        style={{
+          width: 36,
+          height: 36,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: color,
+          color: "#fff",
+          fontWeight: "var(--drp-weight-bold)" as any,
+          fontSize: "var(--drp-text-sm)",
+          flexShrink: 0,
+        }}
+      >
+        {letter}
+      </div>
+      <div>
+        <p className="drp-text drp-text--bold drp-text--sm">{title}</p>
+        <p
+          className="drp-text drp-text--sm drp-text--muted"
+          style={{ marginTop: 2 }}
+        >
+          {description}
+        </p>
+      </div>
     </div>
   </div>
 );
 
-// ─── Popular Help Article ─────────────────────────────────────────────────────
+// ─── Help Article Card ───────────────────────────────────────────────────────
 
 interface HelpArticleProps {
   title: string;
@@ -298,13 +292,42 @@ const HelpArticleCard: React.FC<HelpArticleProps> = ({
   category,
   description,
 }) => (
-  <div className="p-4 bg-white rounded-xl border border-black/10 cursor-pointer hover:shadow-sm transition-shadow">
-    <span className="text-[10px] font-semibold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-full">
+  <div
+    className="drp-card drp-card--interactive"
+    style={{ padding: "var(--drp-space-4)" }}
+  >
+    <span
+      className="drp-tag drp-tag--filled drp-tag--purple"
+      style={{ fontSize: "var(--drp-text-xs)" }}
+    >
       {category}
     </span>
-    <p className="font-semibold text-sm text-black mt-2 mb-1">{title}</p>
-    <p className="text-xs text-gray-500 leading-relaxed">{description}</p>
-    <button className="text-xs text-purple-600 font-medium mt-2 hover:underline">
+    <p
+      className="drp-text drp-text--bold drp-text--sm"
+      style={{
+        marginTop: "var(--drp-space-2)",
+        marginBottom: "var(--drp-space-1)",
+      }}
+    >
+      {title}
+    </p>
+    <p
+      className="drp-text drp-text--sm drp-text--muted"
+      style={{ lineHeight: "var(--drp-leading-loose)" }}
+    >
+      {description}
+    </p>
+    <button
+      className="drp-btn drp-btn--ghost drp-btn--sm drp-btn--purple"
+      style={{
+        marginTop: "var(--drp-space-2)",
+        padding: 0,
+        textTransform: "none",
+        border: "none",
+        boxShadow: "none",
+        color: "var(--drp-purple)",
+      }}
+    >
       Read more
     </button>
   </div>
@@ -313,7 +336,12 @@ const HelpArticleCard: React.FC<HelpArticleProps> = ({
 // ─── Breadcrumb ───────────────────────────────────────────────────────────────
 
 const Breadcrumb: React.FC<{ items: string[] }> = ({ items }) => (
-  <div className="flex items-center gap-1.5 text-sm text-gray-500 px-6 pt-4 pb-2">
+  <div
+    className="drp-flex drp-items-center drp-gap-1"
+    style={{
+      padding: "var(--drp-space-4) var(--drp-space-6) var(--drp-space-2)",
+    }}
+  >
     {items.map((item, i) => (
       <React.Fragment key={i}>
         {i > 0 && (
@@ -322,18 +350,15 @@ const Breadcrumb: React.FC<{ items: string[] }> = ({ items }) => (
             height="12"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="currentColor"
+            stroke="var(--drp-grey)"
             strokeWidth="2"
           >
             <path d="M9 18l6-6-6-6" />
           </svg>
         )}
         <span
-          className={
-            i === items.length - 1
-              ? "text-black font-medium"
-              : "hover:text-black cursor-pointer"
-          }
+          className={`drp-text drp-text--sm ${i === items.length - 1 ? "drp-text--bold" : "drp-text--muted"}`}
+          style={{ cursor: i < items.length - 1 ? "pointer" : "default" }}
         >
           {item}
         </span>
@@ -342,7 +367,7 @@ const Breadcrumb: React.FC<{ items: string[] }> = ({ items }) => (
   </div>
 );
 
-// ─── Article Sidebar ──────────────────────────────────────────────────────────
+// ─── Article Sidebar Nav ─────────────────────────────────────────────────────
 
 const ArticleSidebarNav: React.FC = () => {
   const items = [
@@ -357,26 +382,28 @@ const ArticleSidebarNav: React.FC = () => {
   ];
 
   return (
-    <div className="w-48 flex-shrink-0 pt-2">
-      <nav className="space-y-0.5">
+    <div
+      style={{ width: 192, flexShrink: 0, paddingTop: "var(--drp-space-2)" }}
+    >
+      <nav>
         {items.map((item) => (
-          <button
+          <div
             key={item.label}
-            className={`w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${
-              item.active
-                ? "text-purple-600 font-medium"
-                : "text-gray-700 hover:text-black hover:bg-black/5"
-            }`}
+            className={`drp-text drp-text--sm ${item.active ? "drp-text--purple drp-text--bold" : ""}`}
+            style={{
+              padding: "6px var(--drp-space-3)",
+              cursor: "pointer",
+            }}
           >
             {item.label}
-          </button>
+          </div>
         ))}
       </nav>
     </div>
   );
 };
 
-// ─── Related Article Row ──────────────────────────────────────────────────────
+// ─── Related Article Row ────────────────────────────────────────────────────
 
 interface RelatedArticleProps {
   icon: string;
@@ -388,27 +415,44 @@ interface RelatedArticleProps {
 
 const RelatedArticleRow: React.FC<RelatedArticleProps> = ({
   icon,
-  iconBg,
   title,
   date,
   tag,
 }) => (
-  <div className="flex items-center gap-4 p-4 border border-black/10 rounded-xl bg-white cursor-pointer hover:shadow-sm transition-shadow">
-    <div
-      className={`w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0 ${iconBg}`}
-    >
-      <span className="text-base">{icon}</span>
-    </div>
-    <div>
-      <p className="font-semibold text-sm text-black">{title}</p>
-      <p className="text-xs text-gray-500 mt-0.5">
-        {date} &bull; {tag}
-      </p>
+  <div
+    className="drp-card drp-card--interactive"
+    style={{ padding: "var(--drp-space-4)" }}
+  >
+    <div className="drp-flex drp-items-center drp-gap-4">
+      <div
+        style={{
+          width: 40,
+          height: 40,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "var(--drp-cream)",
+          border: "var(--drp-border-thin)",
+          flexShrink: 0,
+          fontSize: 16,
+        }}
+      >
+        {icon}
+      </div>
+      <div>
+        <p className="drp-text drp-text--bold drp-text--sm">{title}</p>
+        <p
+          className="drp-text drp-text--sm drp-text--muted"
+          style={{ marginTop: 2 }}
+        >
+          {date} &bull; {tag}
+        </p>
+      </div>
     </div>
   </div>
 );
 
-// ─── Search Result Row ────────────────────────────────────────────────────────
+// ─── Search Result Row ──────────────────────────────────────────────────────
 
 interface SearchResultProps {
   title: string;
@@ -416,10 +460,33 @@ interface SearchResultProps {
 }
 
 const SearchResultRow: React.FC<SearchResultProps> = ({ title, excerpt }) => (
-  <div className="p-4 border border-black/10 rounded-xl bg-white cursor-pointer hover:shadow-sm transition-shadow">
-    <p className="font-semibold text-sm text-black mb-1">{title}</p>
-    <p className="text-xs text-gray-500 leading-relaxed">{excerpt}</p>
-    <button className="text-xs text-purple-600 font-medium mt-2 hover:underline">
+  <div
+    className="drp-card drp-card--interactive"
+    style={{ padding: "var(--drp-space-4)" }}
+  >
+    <p
+      className="drp-text drp-text--bold drp-text--sm"
+      style={{ marginBottom: "var(--drp-space-1)" }}
+    >
+      {title}
+    </p>
+    <p
+      className="drp-text drp-text--sm drp-text--muted"
+      style={{ lineHeight: "var(--drp-leading-loose)" }}
+    >
+      {excerpt}
+    </p>
+    <button
+      className="drp-btn drp-btn--ghost drp-btn--sm"
+      style={{
+        marginTop: "var(--drp-space-2)",
+        padding: 0,
+        textTransform: "none",
+        border: "none",
+        boxShadow: "none",
+        color: "var(--drp-purple)",
+      }}
+    >
       See more articles
     </button>
   </div>
@@ -436,55 +503,55 @@ export interface SupportHomeProps {
 const products: ProductCategoryProps[] = [
   {
     letter: "W",
-    color: "bg-blue-500",
+    color: "var(--drp-info)",
     title: "Wallet",
     description: "The full Doctor Project wallet",
   },
   {
     letter: "C",
-    color: "bg-green-500",
+    color: "var(--drp-success)",
     title: "Commerce",
     description: "Accept payments from anyone",
   },
   {
     letter: "C",
-    color: "bg-purple-500",
+    color: "var(--drp-purple)",
     title: "Cloud",
     description: "Scale the future of payments",
   },
   {
     letter: "O",
-    color: "bg-orange-500",
+    color: "var(--drp-orange)",
     title: "Online Trading",
     description: "Grow your trading business",
   },
   {
     letter: "E",
-    color: "bg-teal-500",
+    color: "#14b8a6",
     title: "Exchange",
     description: "Global marketplace for trading",
   },
   {
     letter: "Q",
-    color: "bg-pink-500",
+    color: "var(--drp-pink)",
     title: "Query & Transactions",
     description: "Stay on top of compliance",
   },
   {
     letter: "C",
-    color: "bg-yellow-500",
+    color: "var(--drp-warning)",
     title: "Card",
     description: "Earn points and rewards",
   },
   {
     letter: "I",
-    color: "bg-indigo-500",
+    color: "#6366f1",
     title: "Intelligence",
     description: "Automate your compliance",
   },
   {
     letter: "A",
-    color: "bg-red-500",
+    color: "var(--drp-error)",
     title: "Apps downloads",
     description: "More apps for your wallet",
   },
@@ -513,23 +580,23 @@ const popularArticles: HelpArticleProps[] = [
 
 const relatedArticles: RelatedArticleProps[] = [
   {
-    icon: "✉",
-    iconBg: "bg-gray-100",
+    icon: "\u2709",
+    iconBg: "",
     title:
       "Waiting period for first payout on our fintech platform for marketplaces",
     date: "31 Dec 2021",
     tag: "Payments",
   },
   {
-    icon: "⏰",
-    iconBg: "bg-gray-100",
+    icon: "\u23F0",
+    iconBg: "",
     title: "Strong Customer Authentication-related preparations for businesses",
     date: "04 Sep 2020",
     tag: "Account and settings",
   },
   {
-    icon: "▣",
-    iconBg: "bg-gray-100",
+    icon: "\u25A3",
+    iconBg: "",
     title:
       "Security, permissions, and access levels when connecting your account",
     date: "1 Feb 2022",
@@ -539,23 +606,23 @@ const relatedArticles: RelatedArticleProps[] = [
 
 const topCommunityPosts = [
   {
-    icon: "✉",
-    iconBg: "bg-gray-100",
+    icon: "\u2709",
+    iconBg: "",
     title:
       "Waiting period for first payout on our fintech platform for marketplaces",
     date: "31 Dec 2021",
     tag: "Payments",
   },
   {
-    icon: "⏰",
-    iconBg: "bg-gray-100",
+    icon: "\u23F0",
+    iconBg: "",
     title: "Strong Customer Authentication-related preparations for businesses",
     date: "04 Sep 2020",
     tag: "Account and settings",
   },
   {
-    icon: "▣",
-    iconBg: "bg-gray-100",
+    icon: "\u25A3",
+    iconBg: "",
     title:
       "Security, permissions, and access levels when connecting your account",
     date: "1 Feb 2022",
@@ -585,23 +652,26 @@ const searchResults: SearchResultProps[] = [
 
 export const SupportHome: React.FC<SupportHomeProps> = ({ view = "home" }) => {
   return (
-    <div className="flex h-screen">
+    <div className="app-layout">
       <SupportSidebar />
-
-      <div className="flex-1 flex flex-col overflow-hidden bg-[#f5efe6]">
+      <div className="main-content">
         <SupportTopBar />
 
-        <div className="flex-1 overflow-auto">
+        <div style={{ flex: 1, overflow: "auto" }}>
           {view === "home" && (
             <>
               <SupportHero />
-              <div className="px-6 pb-4">
-                {/* Products */}
-                <div className="mb-6">
-                  <h3 className="text-sm font-semibold text-black mb-3">
+              <div
+                style={{ padding: "0 var(--drp-space-6) var(--drp-space-4)" }}
+              >
+                <div style={{ marginBottom: "var(--drp-space-6)" }}>
+                  <h3
+                    className="drp-h6"
+                    style={{ marginBottom: "var(--drp-space-3)" }}
+                  >
                     Products
                   </h3>
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="drp-grid-3">
                     {products.map((p) => (
                       <ProductCategoryCard
                         key={`${p.title}-${p.description}`}
@@ -610,13 +680,14 @@ export const SupportHome: React.FC<SupportHomeProps> = ({ view = "home" }) => {
                     ))}
                   </div>
                 </div>
-
-                {/* Popular help topics */}
                 <div>
-                  <h3 className="text-sm font-semibold text-black mb-3">
+                  <h3
+                    className="drp-h6"
+                    style={{ marginBottom: "var(--drp-space-3)" }}
+                  >
                     Popular help topics
                   </h3>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="drp-grid-3">
                     {popularArticles.map((a) => (
                       <HelpArticleCard key={a.title} {...a} />
                     ))}
@@ -630,24 +701,28 @@ export const SupportHome: React.FC<SupportHomeProps> = ({ view = "home" }) => {
             <>
               <Breadcrumb items={["Help Center", "Categories", "..."]} />
               <SupportHero />
-              <div className="px-6 pb-4">
-                {/* Product categories */}
-                <div className="mb-6">
-                  <h3 className="text-sm font-semibold text-black mb-3">
+              <div
+                style={{ padding: "0 var(--drp-space-6) var(--drp-space-4)" }}
+              >
+                <div style={{ marginBottom: "var(--drp-space-6)" }}>
+                  <h3
+                    className="drp-h6"
+                    style={{ marginBottom: "var(--drp-space-3)" }}
+                  >
                     Product categories
                   </h3>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="drp-grid-3">
                     {[
                       {
                         letter: "G",
-                        color: "bg-blue-500",
+                        color: "var(--drp-info)",
                         title: "Getting started with platform",
                         description: "Verify my account\nManage my details",
                         articles: 3,
                       },
                       {
                         letter: "M",
-                        color: "bg-green-500",
+                        color: "var(--drp-success)",
                         title: "Managing my account",
                         description:
                           "Not have any NFT 1M\nAdd a payment method\nManage my details",
@@ -655,7 +730,7 @@ export const SupportHome: React.FC<SupportHomeProps> = ({ view = "home" }) => {
                       },
                       {
                         letter: "T",
-                        color: "bg-purple-500",
+                        color: "var(--drp-purple)",
                         title: "Trading and funding",
                         description:
                           "Buying, selling or transferring crypto\nUnderstanding crypto compliance",
@@ -664,41 +739,68 @@ export const SupportHome: React.FC<SupportHomeProps> = ({ view = "home" }) => {
                     ].map((cat) => (
                       <div
                         key={cat.title}
-                        className="p-4 bg-white rounded-xl border border-black/10 cursor-pointer hover:shadow-sm transition-shadow"
+                        className="drp-card drp-card--interactive"
+                        style={{ padding: "var(--drp-space-4)" }}
                       >
-                        <div className="flex items-start gap-3 mb-3">
+                        <div
+                          className="drp-flex drp-items-center drp-gap-3"
+                          style={{ marginBottom: "var(--drp-space-3)" }}
+                        >
                           <div
-                            className={`w-9 h-9 rounded-lg flex items-center justify-center text-white font-bold text-sm flex-shrink-0 ${cat.color}`}
+                            style={{
+                              width: 36,
+                              height: 36,
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              background: cat.color,
+                              color: "#fff",
+                              fontWeight: 700,
+                              fontSize: "var(--drp-text-sm)",
+                              flexShrink: 0,
+                            }}
                           >
                             {cat.letter}
                           </div>
-                          <div>
-                            <p className="font-semibold text-sm text-black">
-                              {cat.title}
-                            </p>
-                          </div>
+                          <p className="drp-text drp-text--bold drp-text--sm">
+                            {cat.title}
+                          </p>
                         </div>
-                        <div className="space-y-1 mb-3">
+                        <div style={{ marginBottom: "var(--drp-space-3)" }}>
                           {cat.description.split("\n").map((line) => (
-                            <p key={line} className="text-xs text-gray-500">
+                            <p
+                              key={line}
+                              className="drp-text drp-text--sm drp-text--muted"
+                              style={{ marginBottom: 4 }}
+                            >
                               {line}
                             </p>
                           ))}
                         </div>
-                        <button className="text-xs text-purple-600 font-medium hover:underline">
+                        <button
+                          className="drp-btn drp-btn--ghost drp-btn--sm"
+                          style={{
+                            padding: 0,
+                            textTransform: "none",
+                            border: "none",
+                            boxShadow: "none",
+                            color: "var(--drp-purple)",
+                          }}
+                        >
                           See more articles
                         </button>
                       </div>
                     ))}
                   </div>
                 </div>
-
-                {/* Top community posts */}
                 <div>
-                  <h3 className="text-sm font-semibold text-black mb-3">
+                  <h3
+                    className="drp-h6"
+                    style={{ marginBottom: "var(--drp-space-3)" }}
+                  >
                     Top community posts
                   </h3>
-                  <div className="space-y-2">
+                  <div className="drp-flex-col drp-gap-2">
                     {topCommunityPosts.map((post) => (
                       <RelatedArticleRow key={post.title} {...post} />
                     ))}
@@ -711,25 +813,43 @@ export const SupportHome: React.FC<SupportHomeProps> = ({ view = "home" }) => {
           {view === "article" && (
             <>
               <Breadcrumb items={["Help Center", "Account", "Funds reports"]} />
-              <div className="px-6 pb-4 flex gap-6">
-                {/* Main article content */}
-                <div className="flex-1 min-w-0">
+              <div
+                className="drp-flex drp-gap-6"
+                style={{ padding: "0 var(--drp-space-6) var(--drp-space-4)" }}
+              >
+                <div style={{ flex: 1, minWidth: 0 }}>
                   <h1
-                    className="text-4xl font-bold text-black mb-6"
-                    style={{ letterSpacing: "-0.02em" }}
+                    className="drp-h2"
+                    style={{ marginBottom: "var(--drp-space-6)" }}
                   >
                     Getting started: funds reports
                   </h1>
-                  <div className="p-5 border border-black/10 rounded-xl bg-white mb-4">
-                    <p className="text-sm text-gray-700 leading-relaxed mb-4">
+                  <div
+                    className="drp-card"
+                    style={{ marginBottom: "var(--drp-space-4)" }}
+                  >
+                    <p
+                      className="drp-text drp-text--sm"
+                      style={{
+                        lineHeight: "var(--drp-leading-loose)",
+                        marginBottom: "var(--drp-space-4)",
+                        color: "var(--drp-text-secondary)",
+                      }}
+                    >
                       There is no better advertisement campaign that is low cost
                       and also successful at the same time. Great business ideas
                       when utilized effectively can save lots of money. This is
                       not only easy for those who work full-time as an
                       advertiser.
                     </p>
-                    <div className="border border-dashed border-black/20 rounded-lg p-4 mb-4">
-                      <ol className="space-y-1">
+                    <div
+                      style={{
+                        border: "var(--drp-border-dashed)",
+                        padding: "var(--drp-space-4)",
+                        marginBottom: "var(--drp-space-4)",
+                      }}
+                    >
+                      <ol style={{ listStyle: "none", padding: 0, margin: 0 }}>
                         {[
                           "Fliers and business cards can be tacked on such bulletin boards.",
                           "But before doing so, check out with the human resource department",
@@ -738,46 +858,51 @@ export const SupportHome: React.FC<SupportHomeProps> = ({ view = "home" }) => {
                         ].map((item, i) => (
                           <li
                             key={i}
-                            className="text-sm font-medium text-black"
+                            className="drp-text drp-text--sm drp-text--bold"
+                            style={{ marginBottom: "var(--drp-space-1)" }}
                           >
                             {i + 1}. {item}
                           </li>
                         ))}
                       </ol>
                     </div>
-                    <p className="text-sm text-gray-700 leading-relaxed mb-4">
+                    <p
+                      className="drp-text drp-text--sm"
+                      style={{
+                        lineHeight: "var(--drp-leading-loose)",
+                        marginBottom: "var(--drp-space-4)",
+                        color: "var(--drp-text-secondary)",
+                      }}
+                    >
                       Get involved with fundraiser at schools, as it&apos;s a
                       nice approach to market business. Prior to handing out the
                       order received, collect all necessary information like
                       business card pack, fliers, with proper information.
-                      Information can be based on what is the company about,
-                      what are the products and services provided, or how to get
-                      information in touch with the company. In each individual
-                      order, carefully place all of them and seal the package
-                      properly.
                     </p>
-                    <p className="text-xs text-gray-400 leading-relaxed">
+                    <p
+                      className="drp-text drp-text--sm drp-text--muted"
+                      style={{ lineHeight: "var(--drp-leading-loose)" }}
+                    >
                       Note: Voice mails can be put to good use, other than
                       recording messages. They can help to deliver the marketing
-                      message. Greet with a brief message, following with
-                      website and email address.
+                      message.
                     </p>
                   </div>
 
-                  {/* Related */}
                   <div>
-                    <h3 className="text-sm font-semibold text-black mb-3">
+                    <h3
+                      className="drp-h6"
+                      style={{ marginBottom: "var(--drp-space-3)" }}
+                    >
                       This also may help you
                     </h3>
-                    <div className="space-y-2">
+                    <div className="drp-flex-col drp-gap-2">
                       {relatedArticles.map((a) => (
                         <RelatedArticleRow key={a.title} {...a} />
                       ))}
                     </div>
                   </div>
                 </div>
-
-                {/* Article nav sidebar */}
                 <ArticleSidebarNav />
               </div>
             </>
@@ -789,19 +914,28 @@ export const SupportHome: React.FC<SupportHomeProps> = ({ view = "home" }) => {
                 searchPlaceholder="Search help articles"
                 searchValue="Account"
               />
-              <div className="px-6 pb-4">
-                <p className="text-sm font-semibold text-black mb-3">
+              <div
+                style={{ padding: "0 var(--drp-space-6) var(--drp-space-4)" }}
+              >
+                <p
+                  className="drp-text drp-text--bold drp-text--sm"
+                  style={{ marginBottom: "var(--drp-space-3)" }}
+                >
                   Search results
                 </p>
-                <div className="space-y-3 mb-6">
+                <div
+                  className="drp-flex-col drp-gap-3"
+                  style={{ marginBottom: "var(--drp-space-6)" }}
+                >
                   {searchResults.map((r) => (
                     <SearchResultRow key={r.title} {...r} />
                   ))}
                 </div>
-
-                {/* Pagination */}
-                <div className="flex items-center justify-between py-4 text-sm text-gray-500">
-                  <button className="flex items-center gap-1.5 px-3 py-1.5 border border-black/20 rounded-lg text-xs text-gray-600 hover:bg-black/5">
+                <div
+                  className="drp-flex drp-items-center drp-justify-between"
+                  style={{ padding: "var(--drp-space-4) 0" }}
+                >
+                  <button className="drp-btn drp-btn--sm drp-btn--outline">
                     <svg
                       width="14"
                       height="14"
@@ -814,8 +948,10 @@ export const SupportHome: React.FC<SupportHomeProps> = ({ view = "home" }) => {
                     </svg>
                     Prev
                   </button>
-                  <span className="text-xs">Page 1 of 10</span>
-                  <button className="flex items-center gap-1.5 px-3 py-1.5 border border-black/20 rounded-lg text-xs text-gray-600 hover:bg-black/5">
+                  <span className="drp-text drp-text--sm drp-text--muted">
+                    Page 1 of 10
+                  </span>
+                  <button className="drp-btn drp-btn--sm drp-btn--outline">
                     Next
                     <svg
                       width="14"

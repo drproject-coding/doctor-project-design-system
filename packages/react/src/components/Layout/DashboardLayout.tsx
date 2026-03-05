@@ -7,7 +7,6 @@ export interface DashboardLayoutProps {
   sidebarProps?: SidebarProps;
   topBarProps?: TopBarProps;
   showSidebar?: boolean;
-  theme?: "light" | "dark";
 }
 
 export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
@@ -15,16 +14,15 @@ export const DashboardLayout: React.FC<DashboardLayoutProps> = ({
   sidebarProps,
   topBarProps,
   showSidebar = true,
-  theme = "light",
 }) => {
   return (
-    <div className="flex h-screen">
-      {showSidebar && sidebarProps && (
-        <Sidebar {...sidebarProps} theme={theme} />
-      )}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        {topBarProps && <TopBar {...topBarProps} theme={theme} />}
-        <div className="flex-1 overflow-auto bg-gray-50 p-6">{children}</div>
+    <div className="app-layout">
+      {showSidebar && sidebarProps && <Sidebar {...sidebarProps} />}
+      <div className="main-content">
+        {topBarProps && <TopBar {...topBarProps} />}
+        <div className="content">
+          <div className="container">{children}</div>
+        </div>
       </div>
     </div>
   );

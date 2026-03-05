@@ -181,29 +181,40 @@ declare function Topbar({ children }: TopbarProps): react_jsx_runtime.JSX.Elemen
 
 interface TopBarProps {
     title?: string;
-    showIcon?: boolean;
-    theme?: "light" | "dark";
     actions?: React.ReactNode;
-    breadcrumbs?: Array<{
-        label: string;
-        href?: string;
-    }>;
+    menuButton?: boolean;
+    onMenuClick?: () => void;
+    className?: string;
 }
 declare const TopBar: React.FC<TopBarProps>;
 
-interface SidebarItem {
+interface SidebarNavItem {
     id: string;
     label: string;
     icon?: React.ReactNode;
-    href?: string;
-    children?: SidebarItem[];
+    badge?: string | number;
+    badgeVariant?: "purple" | "green";
     active?: boolean;
+    href?: string;
+    onClick?: () => void;
+}
+interface SidebarNavSection {
+    label: string;
+    items: SidebarNavItem[];
+}
+interface SidebarTeamMember {
+    name: string;
+    avatar?: string;
+    initials?: string;
 }
 interface SidebarProps {
-    items: SidebarItem[];
-    theme?: "light" | "dark";
+    brandName?: string;
+    sections?: SidebarNavSection[];
+    teamMembers?: SidebarTeamMember[];
+    teamLabel?: string;
     collapsed?: boolean;
     onItemClick?: (id: string) => void;
+    className?: string;
 }
 declare const Sidebar: React.FC<SidebarProps>;
 
@@ -212,7 +223,6 @@ interface DashboardLayoutProps {
     sidebarProps?: SidebarProps;
     topBarProps?: TopBarProps;
     showSidebar?: boolean;
-    theme?: "light" | "dark";
 }
 declare const DashboardLayout: React.FC<DashboardLayoutProps>;
 
@@ -553,4 +563,4 @@ declare const chartData: {
 };
 declare const menuItems: MenuItem[];
 
-export { AccountsList, Alert, type AlertProps, AppShell, type AppShellProps, Avatar, type AvatarProps, Badge, type BadgeProps, type BreadcrumbItem, Breadcrumbs, type BreadcrumbsProps, Button, type ButtonProps, CalendarEvent, Card, CardHeader, type CardHeaderProps, type CardProps, CaseCard, type CaseCardProps, ChartBarVariant, ChartCard, type ChartCardProps, ChartContainer, type ChartContainerProps, ChartDoubleBarsVariant, ChartGeometricVariant, ChartHorizontalBarsVariant, ChartMiscVariant, ChartPolarVariant, ChartWaveVariant, Checkbox, type CheckboxProps, type Contact, ContactsList, Counter, type CounterProps, type Customer, CustomersList, DashboardLayout, type DashboardLayoutProps, Divider, type DividerProps, EducationCourses, type EducationCoursesProps, type EducationView, EmptyState, type EmptyStateProps, Footer, type FooterColumn, type FooterProps, Hero, type HeroProps, InboxList, Input, type InputProps, ListScreen, type ListScreenProps, Loader, type LoaderProps, Marquee, type MarqueeProps, type MenuItem, Modal, type ModalProps, Navbar, type NavbarProps, Pagination, type PaginationProps, PasswordReset, type PasswordResetProps, type Payment, PaymentsList, PricingCard, type PricingCardProps, type ProductsListProps as Product, ProductsList, ProfileAccount, ProfileNotifications, ProfileSecurity, ProfileSocial, ProgressBar, type ProgressBarProps, Radio, type RadioProps, type SalesListProps as Sale, SalesList, Select, type SelectProps, Sidebar, type SidebarItem, type SidebarProps, SignIn, SignUp, Skeleton, type SkeletonProps, type StatCard, type StatCardProps, StatusDot, type StatusDotProps, SupportHome, Switch, type SwitchProps, type TabItem, Table, type TableColumn, type TableProps, Tabs, type TabsProps, Tag, type TagProps, Textarea, type TextareaProps, Tooltip, type TooltipProps, TopBar, type TopBarProps, Topbar, type TopbarProps, type Transaction, TransactionsList, type User, chartData, generateChartData, generateMenuItems, generateStats, generateUsers, menuItems, stats, users };
+export { AccountsList, Alert, type AlertProps, AppShell, type AppShellProps, Avatar, type AvatarProps, Badge, type BadgeProps, type BreadcrumbItem, Breadcrumbs, type BreadcrumbsProps, Button, type ButtonProps, CalendarEvent, Card, CardHeader, type CardHeaderProps, type CardProps, CaseCard, type CaseCardProps, ChartBarVariant, ChartCard, type ChartCardProps, ChartContainer, type ChartContainerProps, ChartDoubleBarsVariant, ChartGeometricVariant, ChartHorizontalBarsVariant, ChartMiscVariant, ChartPolarVariant, ChartWaveVariant, Checkbox, type CheckboxProps, type Contact, ContactsList, Counter, type CounterProps, type Customer, CustomersList, DashboardLayout, type DashboardLayoutProps, Divider, type DividerProps, EducationCourses, type EducationCoursesProps, type EducationView, EmptyState, type EmptyStateProps, Footer, type FooterColumn, type FooterProps, Hero, type HeroProps, InboxList, Input, type InputProps, ListScreen, type ListScreenProps, Loader, type LoaderProps, Marquee, type MarqueeProps, type MenuItem, Modal, type ModalProps, Navbar, type NavbarProps, Pagination, type PaginationProps, PasswordReset, type PasswordResetProps, type Payment, PaymentsList, PricingCard, type PricingCardProps, type ProductsListProps as Product, ProductsList, ProfileAccount, ProfileNotifications, ProfileSecurity, ProfileSocial, ProgressBar, type ProgressBarProps, Radio, type RadioProps, type SalesListProps as Sale, SalesList, Select, type SelectProps, Sidebar, type SidebarNavItem, type SidebarNavSection, type SidebarProps, type SidebarTeamMember, SignIn, SignUp, Skeleton, type SkeletonProps, type StatCard, type StatCardProps, StatusDot, type StatusDotProps, SupportHome, Switch, type SwitchProps, type TabItem, Table, type TableColumn, type TableProps, Tabs, type TabsProps, Tag, type TagProps, Textarea, type TextareaProps, Tooltip, type TooltipProps, TopBar, type TopBarProps, Topbar, type TopbarProps, type Transaction, TransactionsList, type User, chartData, generateChartData, generateMenuItems, generateStats, generateUsers, menuItems, stats, users };

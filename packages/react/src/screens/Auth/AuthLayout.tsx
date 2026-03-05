@@ -1,13 +1,20 @@
 import React, { ReactNode } from "react";
 
 /**
- * Decorative right panel — floating UI cards over a purple blob background.
+ * Decorative right panel -- floating UI cards over a purple blob background.
  * Purely visual, matches the registration screenshots.
+ * Uses drp- design system classes with zero border-radius (brutalist).
  */
 const DecorativePanel: React.FC = () => (
   <div
-    className="hidden lg:flex flex-1 relative overflow-hidden"
-    style={{ background: "#F2F2F2" }}
+    className="drp-decorative-panel"
+    style={{
+      display: "none",
+      flex: 1,
+      position: "relative",
+      overflow: "hidden",
+      background: "var(--drp-cream)",
+    }}
   >
     {/* Purple blob */}
     <div
@@ -19,38 +26,40 @@ const DecorativePanel: React.FC = () => (
         width: "520px",
         height: "520px",
         background:
-          "radial-gradient(ellipse at 40% 40%, #a78bfa 0%, #7c3aed 35%, #631DED 60%, #c4b5fd 100%)",
-        borderRadius: "50% 60% 55% 45% / 45% 55% 60% 50%",
+          "radial-gradient(ellipse at 40% 40%, #a78bfa 0%, #7c3aed 35%, var(--drp-purple) 60%, #c4b5fd 100%)",
         filter: "blur(2px)",
         opacity: 0.85,
       }}
     />
 
-    {/* Floating card 1 — task tracker (top-right area) */}
+    {/* Floating card 1 -- task tracker (top-right area) */}
     <div
+      className="drp-card"
       style={{
         position: "absolute",
         top: "8%",
         right: "12%",
-        background: "#fff",
-        borderRadius: "12px",
         padding: "14px 16px",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+        boxShadow: "var(--drp-shadow-md)",
         minWidth: "180px",
         zIndex: 10,
+        background: "var(--drp-white)",
       }}
     >
-      <div style={{ fontSize: "11px", color: "#888", marginBottom: "8px" }}>
+      <div
+        className="drp-caption"
+        style={{ marginBottom: "var(--drp-space-2)" }}
+      >
         NM Tasks
       </div>
       {/* Mini bar chart */}
       <div
+        className="drp-flex drp-items-center"
         style={{
-          display: "flex",
           alignItems: "flex-end",
           gap: "4px",
           height: "36px",
-          marginBottom: "8px",
+          marginBottom: "var(--drp-space-2)",
         }}
       >
         {[14, 22, 18, 30, 24, 20, 28].map((h, i) => (
@@ -59,223 +68,196 @@ const DecorativePanel: React.FC = () => (
             style={{
               width: "10px",
               height: `${h}px`,
-              background: i === 3 ? "#631DED" : "#e5e7eb",
-              borderRadius: "2px",
+              background:
+                i === 3 ? "var(--drp-purple)" : "var(--drp-grey-light)",
             }}
           />
         ))}
       </div>
-      <div style={{ fontSize: "10px", color: "#888" }}>Mon – Sun</div>
+      <div className="drp-caption">Mon -- Sun</div>
     </div>
 
-    {/* Floating card 2 — user task card (center-left) */}
+    {/* Floating card 2 -- user task card (center-left) */}
     <div
+      className="drp-card"
       style={{
         position: "absolute",
         top: "30%",
         left: "8%",
-        background: "#fff",
-        borderRadius: "14px",
         padding: "14px 16px",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.14)",
+        boxShadow: "var(--drp-shadow-md)",
         minWidth: "200px",
         zIndex: 10,
+        background: "var(--drp-white)",
       }}
     >
       <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          marginBottom: "10px",
-        }}
+        className="drp-flex drp-items-center drp-gap-3"
+        style={{ marginBottom: "var(--drp-space-3)" }}
       >
         <div
           style={{
             width: "36px",
             height: "36px",
-            borderRadius: "50%",
-            background: "linear-gradient(135deg, #a78bfa, #631DED)",
+            background: "linear-gradient(135deg, #a78bfa, var(--drp-purple))",
             flexShrink: 0,
           }}
         />
         <div>
-          <div style={{ fontSize: "12px", fontWeight: 600, color: "#121212" }}>
+          <div className="drp-text drp-text--sm drp-text--bold">
             Delafaran Sorgato
           </div>
-          <div style={{ fontSize: "10px", color: "#888" }}>in progress</div>
+          <div className="drp-caption">in progress</div>
         </div>
       </div>
       <div
+        className="drp-bg-purple"
         style={{
-          background: "#631DED",
-          color: "#fff",
-          fontSize: "11px",
-          fontWeight: 600,
-          borderRadius: "6px",
+          fontSize: "var(--drp-text-xs)",
+          fontWeight: "var(--drp-weight-semibold)" as any,
           padding: "5px 12px",
           display: "inline-block",
-          marginBottom: "10px",
+          marginBottom: "var(--drp-space-3)",
         }}
       >
         Task
       </div>
-      <div style={{ display: "flex", gap: "12px" }}>
-        <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: "13px", fontWeight: 700, color: "#121212" }}>
-            $123.20
-          </div>
-          <div style={{ fontSize: "10px", color: "#888" }}>Est.</div>
+      <div className="drp-flex drp-gap-3">
+        <div className="drp-text-center">
+          <div className="drp-text drp-text--bold">$123.20</div>
+          <div className="drp-caption">Est.</div>
         </div>
-        <div style={{ textAlign: "center" }}>
-          <div style={{ fontSize: "13px", fontWeight: 700, color: "#121212" }}>
-            14
-          </div>
-          <div style={{ fontSize: "10px", color: "#888" }}>hrs</div>
+        <div className="drp-text-center">
+          <div className="drp-text drp-text--bold">14</div>
+          <div className="drp-caption">hrs</div>
         </div>
       </div>
     </div>
 
-    {/* Floating card 3 — "Update design system" (top-right corner) */}
+    {/* Floating card 3 -- "Update design system" (top-right corner) */}
     <div
+      className="drp-card"
       style={{
         position: "absolute",
         top: "18%",
         right: "4%",
-        background: "#fff",
-        borderRadius: "10px",
         padding: "10px 14px",
-        boxShadow: "0 4px 20px rgba(0,0,0,0.10)",
-        fontSize: "11px",
-        fontWeight: 600,
-        color: "#121212",
+        boxShadow: "var(--drp-shadow-sm)",
         zIndex: 10,
         whiteSpace: "nowrap",
+        background: "var(--drp-white)",
       }}
     >
-      Update design system
+      <span className="drp-text drp-text--sm drp-text--semibold">
+        Update design system
+      </span>
     </div>
 
-    {/* Floating card 4 — revenue card (center-right) */}
+    {/* Floating card 4 -- revenue card (center-right) */}
     <div
+      className="drp-card"
       style={{
         position: "absolute",
         top: "52%",
         left: "10%",
-        background: "#fff",
-        borderRadius: "14px",
         padding: "14px 16px",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+        boxShadow: "var(--drp-shadow-md)",
         minWidth: "180px",
         zIndex: 10,
+        background: "var(--drp-white)",
       }}
     >
-      <div style={{ fontSize: "11px", color: "#888", marginBottom: "4px" }}>
+      <div
+        className="drp-caption"
+        style={{ marginBottom: "var(--drp-space-1)" }}
+      >
         Total revenue
       </div>
-      <div
-        style={{
-          fontSize: "18px",
-          fontWeight: 700,
-          color: "#121212",
-          marginBottom: "8px",
-        }}
-      >
+      <div className="drp-h4" style={{ marginBottom: "var(--drp-space-2)" }}>
         $68,310.28
       </div>
-      <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+      <div className="drp-flex drp-items-center drp-gap-2">
         <span
           style={{
-            background: "#f3f4f6",
-            borderRadius: "6px",
+            background: "var(--drp-cream)",
             padding: "3px 8px",
-            fontSize: "11px",
-            color: "#631DED",
-            fontWeight: 600,
+            fontSize: "var(--drp-text-xs)",
+            color: "var(--drp-purple)",
+            fontWeight: "var(--drp-weight-semibold)" as any,
           }}
         >
           7,384
         </span>
-        <span style={{ fontSize: "10px", color: "#888" }}>transactions</span>
+        <span className="drp-caption">transactions</span>
       </div>
     </div>
 
-    {/* Floating card 5 — "Photobook for family move" */}
+    {/* Floating card 5 -- "Photobook for family move" */}
     <div
+      className="drp-card"
       style={{
         position: "absolute",
         top: "58%",
         right: "5%",
-        background: "#fff",
-        borderRadius: "10px",
         padding: "10px 14px",
-        boxShadow: "0 4px 20px rgba(0,0,0,0.10)",
+        boxShadow: "var(--drp-shadow-sm)",
         zIndex: 10,
         minWidth: "190px",
+        background: "var(--drp-white)",
       }}
     >
       <div
-        style={{
-          fontSize: "11px",
-          fontWeight: 600,
-          color: "#121212",
-          marginBottom: "6px",
-        }}
+        className="drp-text drp-text--sm drp-text--semibold"
+        style={{ marginBottom: "var(--drp-space-2)" }}
       >
         Photobook for family move
       </div>
       <div
+        className="drp-flex drp-items-center drp-gap-2"
         style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "6px",
-          background: "#f3f4f6",
-          borderRadius: "6px",
+          background: "var(--drp-cream)",
           padding: "4px 8px",
-          fontSize: "10px",
-          color: "#631DED",
-          fontWeight: 600,
+          fontSize: "var(--drp-text-xs)",
+          color: "var(--drp-purple)",
+          fontWeight: "var(--drp-weight-semibold)" as any,
         }}
       >
         <span>Due on 15 Aug 2025</span>
       </div>
     </div>
 
-    {/* Floating card 6 — "Design tasks" tag (bottom-left) */}
+    {/* Floating card 6 -- "Design tasks" tag (bottom-left) */}
     <div
+      className="drp-card"
       style={{
         position: "absolute",
         bottom: "22%",
         left: "6%",
-        background: "#fff",
-        borderRadius: "8px",
         padding: "8px 12px",
-        boxShadow: "0 4px 16px rgba(0,0,0,0.10)",
-        fontSize: "11px",
-        fontWeight: 600,
-        color: "#121212",
+        boxShadow: "var(--drp-shadow-sm)",
         zIndex: 10,
+        background: "var(--drp-white)",
       }}
     >
-      Design tasks
+      <span className="drp-text drp-text--sm drp-text--semibold">
+        Design tasks
+      </span>
     </div>
 
-    {/* Floating card 7 — "Mockup for task app" (bottom-center) */}
+    {/* Floating card 7 -- "Mockup for task app" (bottom-center) */}
     <div
+      className="drp-card"
       style={{
         position: "absolute",
         bottom: "14%",
         left: "18%",
-        background: "#fff",
-        borderRadius: "8px",
         padding: "8px 14px",
-        boxShadow: "0 4px 16px rgba(0,0,0,0.10)",
-        fontSize: "11px",
-        color: "#121212",
+        boxShadow: "var(--drp-shadow-sm)",
         zIndex: 10,
+        background: "var(--drp-white)",
       }}
     >
-      Mockup for task app
+      <span className="drp-text drp-text--sm">Mockup for task app</span>
     </div>
 
     {/* Decorative dots */}
@@ -286,8 +268,7 @@ const DecorativePanel: React.FC = () => (
         left: "30%",
         width: "12px",
         height: "12px",
-        background: "#121212",
-        borderRadius: "50%",
+        background: "var(--drp-black)",
         zIndex: 10,
       }}
     />
@@ -298,8 +279,7 @@ const DecorativePanel: React.FC = () => (
         left: "55%",
         width: "8px",
         height: "8px",
-        background: "#121212",
-        borderRadius: "50%",
+        background: "var(--drp-black)",
         zIndex: 10,
       }}
     />
@@ -310,8 +290,7 @@ const DecorativePanel: React.FC = () => (
         right: "30%",
         width: "10px",
         height: "10px",
-        background: "#121212",
-        borderRadius: "50%",
+        background: "var(--drp-black)",
         zIndex: 10,
       }}
     />
@@ -326,7 +305,7 @@ const DecorativePanel: React.FC = () => (
     >
       <path
         d="M2 20 Q10 5 20 20 Q30 35 40 20 Q50 5 58 20"
-        stroke="#121212"
+        stroke="var(--drp-black)"
         strokeWidth="2.5"
         fill="none"
         strokeLinecap="round"
@@ -341,12 +320,19 @@ const DecorativePanel: React.FC = () => (
     >
       <path
         d="M2 17 Q10 4 18 17 Q26 30 34 17 Q42 4 48 17"
-        stroke="#121212"
+        stroke="var(--drp-black)"
         strokeWidth="2.5"
         fill="none"
         strokeLinecap="round"
       />
     </svg>
+
+    {/* Inline style to show panel on lg screens */}
+    <style>{`
+      @media (min-width: 1024px) {
+        .drp-decorative-panel { display: flex !important; }
+      }
+    `}</style>
   </div>
 );
 
@@ -361,31 +347,44 @@ export interface AuthLayoutProps {
  */
 export const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => (
   <div
-    className="min-h-screen flex"
-    style={{ fontFamily: "var(--drp-font-primary, sans-serif)" }}
+    className="drp-flex"
+    style={{
+      minHeight: "100vh",
+      fontFamily: "var(--drp-font-primary)",
+    }}
   >
     {/* Left panel */}
     <div
-      className="flex flex-col w-full lg:w-[480px] xl:w-[520px] min-h-screen px-10 py-10"
-      style={{ background: "#F2F2F2", flexShrink: 0 }}
+      className="drp-flex-col"
+      style={{
+        width: "100%",
+        maxWidth: "520px",
+        minHeight: "100vh",
+        padding: "var(--drp-space-10)",
+        background: "var(--drp-cream)",
+        flexShrink: 0,
+      }}
     >
       {/* Logo */}
-      <div className="mb-12">
+      <div style={{ marginBottom: "var(--drp-space-12)" }}>
         <span
-          style={{
-            fontWeight: 800,
-            fontSize: "20px",
-            color: "#121212",
-            letterSpacing: "-0.5px",
-          }}
+          className="drp-h5"
+          style={{ fontWeight: "var(--drp-weight-heavy)" as any }}
         >
           Doctor Project
-          <span style={{ color: "#631DED" }}>.</span>
+          <span style={{ color: "var(--drp-purple)" }}>.</span>
         </span>
       </div>
 
       {/* Form content */}
-      <div className="flex-1 flex flex-col justify-center max-w-sm">
+      <div
+        className="drp-flex-col"
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          maxWidth: "384px",
+        }}
+      >
         {children}
       </div>
     </div>

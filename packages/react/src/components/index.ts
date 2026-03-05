@@ -108,7 +108,12 @@ export { TopBar } from "./TopBar";
 export type { TopBarProps } from "./TopBar";
 
 export { Sidebar } from "./Sidebar";
-export type { SidebarProps, SidebarItem } from "./Sidebar";
+export type {
+  SidebarProps,
+  SidebarNavItem,
+  SidebarNavSection,
+  SidebarTeamMember,
+} from "./Sidebar";
 
 // ============================================================================
 // ALL SCREENS EXPORTED FOR EASY DISCOVERY

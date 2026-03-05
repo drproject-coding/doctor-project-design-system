@@ -15,121 +15,55 @@ export const SignUp: React.FC = () => {
     console.log("Sign up:", { country, countryBusiness, email, password });
   };
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    padding: "11px 14px",
-    border: "1.5px solid #E0E0E0",
-    borderRadius: "8px",
-    fontSize: "13px",
-    color: "#121212",
-    background: "#fff",
-    outline: "none",
-    boxSizing: "border-box",
-    appearance: "none" as const,
-  };
-
-  const labelStyle: React.CSSProperties = {
-    display: "block",
-    fontSize: "12px",
-    fontWeight: 600,
-    color: "#444",
-    marginBottom: "6px",
-  };
-
-  const fieldStyle: React.CSSProperties = {
-    marginBottom: "14px",
-  };
-
   return (
     <AuthLayout>
       <div>
-        <h1
-          style={{
-            fontSize: "36px",
-            fontWeight: 800,
-            color: "#121212",
-            lineHeight: 1.1,
-            marginBottom: "8px",
-            letterSpacing: "-0.5px",
-          }}
-        >
+        <h1 className="drp-h2" style={{ marginBottom: "var(--drp-space-2)" }}>
           Sign up
         </h1>
         <p
-          style={{
-            fontSize: "13px",
-            color: "#888",
-            marginBottom: "28px",
-          }}
+          className="drp-text drp-text--sm drp-text--muted"
+          style={{ marginBottom: "var(--drp-space-6)" }}
         >
           Fill out the form below using your current location
         </p>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="drp-form-stack">
           {/* Country/Region of Residence */}
-          <div style={fieldStyle}>
-            <label style={labelStyle}>Country/Region of Residence</label>
-            <div style={{ position: "relative" }}>
-              <select
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-                style={{
-                  ...inputStyle,
-                  paddingRight: "36px",
-                  cursor: "pointer",
-                }}
-              >
-                <option value="United States">United States</option>
-                <option value="United Kingdom">United Kingdom</option>
-                <option value="Canada">Canada</option>
-                <option value="Australia">Australia</option>
-                <option value="Germany">Germany</option>
-                <option value="France">France</option>
-              </select>
-              <svg
-                style={{
-                  position: "absolute",
-                  right: "12px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  pointerEvents: "none",
-                  color: "#888",
-                }}
-                width="14"
-                height="14"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <polyline points="6 9 12 15 18 9" />
-              </svg>
-            </div>
+          <div className="drp-field">
+            <label className="drp-field__label">
+              Country/Region of Residence
+            </label>
+            <select
+              className="drp-select"
+              value={country}
+              onChange={(e) => setCountry(e.target.value)}
+              style={{ width: "100%" }}
+            >
+              <option value="United States">United States</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Canada">Canada</option>
+              <option value="Australia">Australia</option>
+              <option value="Germany">Germany</option>
+              <option value="France">France</option>
+            </select>
           </div>
 
           {/* Email */}
-          <div style={fieldStyle}>
-            <label style={labelStyle}>Email</label>
-            <div style={{ position: "relative" }}>
+          <div className="drp-field">
+            <label className="drp-field__label">Email</label>
+            <div className="drp-field--has-icon">
               <input
+                className="drp-input"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="catherine.shaw@gmail.com"
-                style={{ ...inputStyle, paddingRight: "40px" }}
+                style={{ width: "100%" }}
               />
               {/* Mail icon */}
               <svg
-                style={{
-                  position: "absolute",
-                  right: "12px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  color: "#888",
-                  pointerEvents: "none",
-                }}
+                className="drp-field__icon"
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
@@ -138,6 +72,7 @@ export const SignUp: React.FC = () => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                style={{ color: "var(--drp-grey)" }}
               >
                 <rect x="2" y="4" width="20" height="16" rx="2" />
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
@@ -146,15 +81,16 @@ export const SignUp: React.FC = () => {
           </div>
 
           {/* Password */}
-          <div style={fieldStyle}>
-            <label style={labelStyle}>Password</label>
-            <div style={{ position: "relative" }}>
+          <div className="drp-field">
+            <label className="drp-field__label">Password</label>
+            <div className="drp-field--has-icon">
               <input
+                className="drp-input"
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
-                style={{ ...inputStyle, paddingRight: "40px" }}
+                style={{ width: "100%" }}
               />
               <button
                 type="button"
@@ -162,13 +98,12 @@ export const SignUp: React.FC = () => {
                 style={{
                   position: "absolute",
                   right: "12px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
+                  bottom: "12px",
                   background: "none",
                   border: "none",
                   cursor: "pointer",
                   padding: 0,
-                  color: "#888",
+                  color: "var(--drp-grey)",
                 }}
               >
                 {showPassword ? (
@@ -206,87 +141,38 @@ export const SignUp: React.FC = () => {
           </div>
 
           {/* Checkboxes */}
-          <div style={{ marginBottom: "20px" }}>
-            <label
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: "8px",
-                fontSize: "12px",
-                color: "#444",
-                cursor: "pointer",
-                marginBottom: "10px",
-                lineHeight: 1.4,
-              }}
-            >
+          <div className="drp-flex-col drp-gap-3">
+            <label className="drp-checkbox">
               <input
                 type="checkbox"
                 checked={receiveUpdates}
                 onChange={(e) => setReceiveUpdates(e.target.checked)}
-                style={{
-                  width: "15px",
-                  height: "15px",
-                  accentColor: "#631DED",
-                  cursor: "pointer",
-                  flexShrink: 0,
-                  marginTop: "1px",
-                }}
               />
               I agree to receive email updates
             </label>
-            <label
-              style={{
-                display: "flex",
-                alignItems: "flex-start",
-                gap: "8px",
-                fontSize: "12px",
-                color: "#444",
-                cursor: "pointer",
-                lineHeight: 1.4,
-              }}
-            >
+            <label className="drp-checkbox">
               <input
                 type="checkbox"
                 checked={agreeTerms}
                 onChange={(e) => setAgreeTerms(e.target.checked)}
-                style={{
-                  width: "15px",
-                  height: "15px",
-                  accentColor: "#631DED",
-                  cursor: "pointer",
-                  flexShrink: 0,
-                  marginTop: "1px",
-                }}
               />
-              I have read and agree to{" "}
-              <a
-                href="#"
-                style={{
-                  color: "#631DED",
-                  textDecoration: "none",
-                  fontWeight: 500,
-                }}
-              >
-                Terms of Service
-              </a>
+              <span>
+                I have read and agree to{" "}
+                <a
+                  href="#"
+                  className="drp-text--purple drp-text--medium"
+                  style={{ textDecoration: "none" }}
+                >
+                  Terms of Service
+                </a>
+              </span>
             </label>
           </div>
 
           {/* Create account button */}
           <button
             type="submit"
-            style={{
-              width: "100%",
-              padding: "13px",
-              background: "#631DED",
-              color: "#fff",
-              border: "none",
-              borderRadius: "8px",
-              fontSize: "14px",
-              fontWeight: 700,
-              cursor: "pointer",
-              letterSpacing: "0.2px",
-            }}
+            className="drp-btn drp-btn--primary drp-btn--block"
           >
             Create account
           </button>
@@ -294,21 +180,14 @@ export const SignUp: React.FC = () => {
 
         {/* Sign in link */}
         <p
-          style={{
-            marginTop: "24px",
-            fontSize: "12px",
-            color: "#888",
-            textAlign: "center",
-          }}
+          className="drp-text drp-text--sm drp-text--muted drp-text-center"
+          style={{ marginTop: "var(--drp-space-6)" }}
         >
           Already registered?{" "}
           <a
             href="#"
-            style={{
-              color: "#631DED",
-              fontWeight: 600,
-              textDecoration: "none",
-            }}
+            className="drp-text--purple drp-text--semibold"
+            style={{ textDecoration: "none" }}
           >
             Sign in to your account
           </a>
