@@ -20,7 +20,7 @@ export const Default: Story = {
           fontWeight: 800,
         }}
       >
-        BRUDDLE
+        DOCTOR PROJECT
       </strong>
     ),
     children: (

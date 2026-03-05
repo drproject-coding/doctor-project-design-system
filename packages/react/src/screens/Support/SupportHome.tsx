@@ -7,7 +7,7 @@ const SupportSidebar: React.FC = () => (
     {/* Logo */}
     <div className="px-5 py-5 border-b border-white/10">
       <div className="flex items-center gap-1">
-        <span className="text-lg font-bold text-white">Bruddle</span>
+        <span className="text-lg font-bold text-white">Doctor Project</span>
         <span className="w-2 h-2 rounded-full bg-purple-500 mb-3"></span>
       </div>
     </div>
@@ -438,7 +438,7 @@ const products: ProductCategoryProps[] = [
     letter: "W",
     color: "bg-blue-500",
     title: "Wallet",
-    description: "The full Bruddle wallet",
+    description: "The full Doctor Project wallet",
   },
   {
     letter: "C",

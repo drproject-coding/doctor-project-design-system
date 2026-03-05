@@ -6,7 +6,7 @@ const CalendarSidebar: React.FC = () => (
   <div className="w-[280px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0">
     <div className="px-6 py-5 border-b border-white/10">
       <div className="flex items-center gap-1">
-        <span className="text-xl font-bold text-white">Bruddle</span>
+        <span className="text-xl font-bold text-white">Doctor Project</span>
         <span className="w-2 h-2 rounded-full bg-purple-500 mb-3"></span>
       </div>
     </div>

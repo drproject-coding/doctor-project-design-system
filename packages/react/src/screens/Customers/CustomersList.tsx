@@ -14,12 +14,12 @@ export interface CustomersListProps {
 
 // ─── Sidebar ────────────────────────────────────────────────────────────────
 
-const BruddleSidebar: React.FC = () => (
+const DoctorProjectSidebar: React.FC = () => (
   <div className="w-[160px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0">
     {/* Logo */}
     <div className="px-5 py-5">
       <div className="flex items-center gap-1">
-        <span className="text-lg font-bold text-white">Bruddle</span>
+        <span className="text-lg font-bold text-white">Doctor Project</span>
         <span className="w-1.5 h-1.5 rounded-full bg-purple-500 mb-3"></span>
       </div>
     </div>
@@ -1637,7 +1637,7 @@ export const CustomersList: React.FC<CustomersListProps> = ({
 
   return (
     <div className={`flex h-screen ${bg}`}>
-      <BruddleSidebar />
+      <DoctorProjectSidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <TopBar
           title={isDetails ? "All Customers" : "Customers"}

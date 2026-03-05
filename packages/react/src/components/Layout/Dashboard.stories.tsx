@@ -34,7 +34,7 @@ const SidebarNav = () => (
         letterSpacing: "0.08em",
       }}
     >
-      BRUDDLE
+      DOCTOR PROJECT
     </h2>
     <nav style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
       {menuItems.map((item, i) => (
@@ -135,7 +135,7 @@ export const DashboardPage: StoryObj = {
                 color: "#666",
               }}
             >
-              © 2026 Bruddle Design System
+              © 2026 Doctor Project Design System
             </span>
           }
         >

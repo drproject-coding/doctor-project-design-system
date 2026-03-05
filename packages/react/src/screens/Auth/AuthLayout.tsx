@@ -379,7 +379,7 @@ export const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => (
             letterSpacing: "-0.5px",
           }}
         >
-          Bruddle
+          Doctor Project
           <span style={{ color: "#631DED" }}>.</span>
         </span>
       </div>

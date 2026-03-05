@@ -2,7 +2,7 @@ import React from "react";
 
 // ─── Shared sidebar / top-bar / footer ───────────────────────────────────────
 
-const BruddleSidebar: React.FC<{ activeItem: string }> = ({ activeItem }) => {
+const DoctorProjectSidebar: React.FC<{ activeItem: string }> = ({ activeItem }) => {
   const navItems = [
     { id: "dashboard", label: "Dashboard" },
     { id: "products", label: "Products" },
@@ -28,7 +28,7 @@ const BruddleSidebar: React.FC<{ activeItem: string }> = ({ activeItem }) => {
       {/* Logo */}
       <div className="px-5 py-5">
         <div className="flex items-center gap-1">
-          <span className="text-xl font-bold text-white">Bruddle</span>
+          <span className="text-xl font-bold text-white">Doctor Project</span>
           <span className="w-2 h-2 rounded-full bg-purple-500 mb-3 flex-shrink-0"></span>
         </div>
       </div>
@@ -1344,7 +1344,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({
 
   return (
     <div className="flex h-screen bg-[#f5efe6]">
-      <BruddleSidebar activeItem="products" />
+      <DoctorProjectSidebar activeItem="products" />
       <div className="flex-1 flex flex-col overflow-hidden">
         <TopBar
           title={isDetails ? "Product details" : "Products"}

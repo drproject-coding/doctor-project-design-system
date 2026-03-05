@@ -152,7 +152,7 @@ export const SignInWithQR: React.FC = () => (
           lineHeight: 1.5,
         }}
       >
-        Scan this code with the mobile app to log in to Bruddle
+        Scan this code with the mobile app to log in to Doctor Project
       </p>
 
       {/* QR code container */}

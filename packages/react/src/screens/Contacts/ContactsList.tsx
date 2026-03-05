@@ -36,7 +36,7 @@ const ContactsSidebar: React.FC = () => (
     <div className="px-4 pt-5 pb-4">
       <div className="flex items-center gap-0.5">
         <span className="text-lg font-bold text-white tracking-tight">
-          Bruddle
+          Doctor Project
         </span>
         <span className="w-1.5 h-1.5 rounded-full bg-purple-500 mb-3 ml-0.5"></span>
       </div>

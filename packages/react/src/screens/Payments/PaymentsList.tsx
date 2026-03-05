@@ -30,7 +30,7 @@ interface SidebarProps {
   variant: PaymentsVariant;
 }
 
-const BruddleSidebar: React.FC<SidebarProps> = ({ variant }) => {
+const DoctorProjectSidebar: React.FC<SidebarProps> = ({ variant }) => {
   const showTeamMembers = variant === "details";
 
   return (
@@ -38,7 +38,7 @@ const BruddleSidebar: React.FC<SidebarProps> = ({ variant }) => {
       {/* Logo */}
       <div className="px-6 py-5 border-b border-white/10">
         <div className="flex items-center gap-1">
-          <span className="text-xl font-bold text-white">Bruddle</span>
+          <span className="text-xl font-bold text-white">Doctor Project</span>
           <span className="w-2 h-2 rounded-full bg-purple-500 mb-3"></span>
         </div>
       </div>
@@ -1493,7 +1493,7 @@ export const PaymentsList: React.FC<PaymentsListProps> = ({
 
   return (
     <div className={`flex h-screen ${bg} overflow-hidden`}>
-      <BruddleSidebar variant={variant} />
+      <DoctorProjectSidebar variant={variant} />
       <div className="flex-1 flex flex-col overflow-hidden min-w-0">
         <TopBar
           theme={theme}

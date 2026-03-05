@@ -22,7 +22,7 @@ const SidebarContent = () => (
         fontFamily: "var(--bru-font-primary)",
       }}
     >
-      BRUDDLE
+      DOCTOR PROJECT
     </h2>
     <nav style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
       {menuItems.map((item) => (
@@ -130,7 +130,7 @@ export const Default: Story = {
               color: "#666",
             }}
           >
-            © 2026 Bruddle Design System
+            © 2026 Doctor Project Design System
           </span>
         }
       >
