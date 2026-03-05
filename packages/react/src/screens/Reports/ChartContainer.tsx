@@ -3,12 +3,21 @@ import {
   Chart as ChartJS,
   RadialLinearScale,
   ArcElement,
+  PointElement,
+  LineElement,
   Tooltip,
   Legend,
 } from "chart.js";
 import { PolarArea, Radar } from "react-chartjs-2";
 
-ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
+ChartJS.register(
+  RadialLinearScale,
+  ArcElement,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Legend,
+);
 
 // ─── Shared Layout Components ────────────────────────────────────────────────
 
