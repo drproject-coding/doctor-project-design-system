@@ -1,4 +1,14 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  ArcElement,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { PolarArea, Radar } from "react-chartjs-2";
+
+ChartJS.register(RadialLinearScale, ArcElement, Tooltip, Legend);
 
 // ─── Shared Layout Components ────────────────────────────────────────────────
 
@@ -900,227 +910,122 @@ const DoubleBarChartSVG: React.FC<DoubleBarChartSVGProps> = ({
   );
 };
 
-// ─── SVG Polar / Radar Chart ──────────────────────────────────────────────────
+// ─── Chart.js Polar Area Chart ────────────────────────────────────────────────
 
-interface PolarChartSVGProps {
+interface PolarChartProps {
   variant?: "radar" | "segments";
   height?: number;
 }
 
-const PolarChartSVG: React.FC<PolarChartSVGProps> = ({
+const PolarChartComponent: React.FC<PolarChartProps> = ({
   variant = "radar",
-  height = 300,
+  height = 320,
 }) => {
-  const cx = 160;
-  const cy = 160;
-  const maxR = 110;
-  const rings = [0.2, 0.4, 0.6, 0.8, 1.0];
-  const directions = [
-    "North",
-    "North\nEast",
-    "East",
-    "South\nEast",
-    "South",
-    "South\nWest",
-    "West",
-    "North\nWest",
-  ];
-  const n = directions.length;
-
-  // Radar data (two series)
-  const series1 = [0.95, 0.7, 0.55, 0.8, 0.45, 0.6, 0.9, 0.75];
-  const series2 = [0.5, 0.85, 0.4, 0.6, 0.9, 0.35, 0.7, 0.5];
-
-  const angleOffset = -Math.PI / 2;
-  const getPoint = (r: number, i: number) => {
-    const angle = angleOffset + (i / n) * 2 * Math.PI;
-    return {
-      x: cx + r * maxR * Math.cos(angle),
-      y: cy + r * maxR * Math.sin(angle),
-    };
-  };
-
-  const polyPath = (values: number[]) =>
-    values
-      .map((v, i) => {
-        const pt = getPoint(v, i);
-        return `${i === 0 ? "M" : "L"} ${pt.x} ${pt.y}`;
-      })
-      .join(" ") + " Z";
-
   if (variant === "segments") {
-    // Pie-segment style polar chart
-    const segmentColors = [
-      "var(--drp-yellow)",
-      "var(--drp-pink)",
-      "#93c5fd",
-      "var(--drp-mint)",
-      "#f9a8d4",
-      "var(--drp-purple)",
-    ];
-    const segValues = [0.6, 0.45, 0.7, 0.5, 0.55, 0.65];
-    const segN = segValues.length;
-    const wedgeAngle = (2 * Math.PI) / segN;
+    const data = {
+      labels: [
+        "Category A",
+        "Category B",
+        "Category C",
+        "Category D",
+        "Category E",
+        "Category F",
+      ],
+      datasets: [
+        {
+          data: [60, 45, 70, 50, 55, 65],
+          backgroundColor: [
+            "rgba(255, 193, 7, 0.75)", // yellow
+            "rgba(255, 105, 135, 0.75)", // pink
+            "rgba(147, 197, 253, 0.75)", // light blue
+            "rgba(0, 200, 150, 0.75)", // mint
+            "rgba(249, 168, 212, 0.75)", // rose
+            "rgba(99, 29, 237, 0.75)", // purple
+          ],
+          borderColor: [
+            "#FFC107",
+            "#FF6987",
+            "#93c5fd",
+            "#00C896",
+            "#f9a8d4",
+            "#631DED",
+          ],
+          borderWidth: 2,
+        },
+      ],
+    };
 
-    const segPaths = segValues.map((v, i) => {
-      const startAngle = angleOffset + i * wedgeAngle;
-      const endAngle = startAngle + wedgeAngle;
-      const r = v * maxR;
-      const x1 = cx + r * Math.cos(startAngle);
-      const y1 = cy + r * Math.sin(startAngle);
-      const x2 = cx + r * Math.cos(endAngle);
-      const y2 = cy + r * Math.sin(endAngle);
-      return `M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 0 1 ${x2} ${y2} Z`;
-    });
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+      },
+      scales: {
+        r: {
+          grid: { color: "rgba(102, 102, 102, 0.2)" },
+          ticks: { display: false },
+        },
+      },
+    };
 
     return (
-      <svg viewBox="0 0 320 320" style={{ width: "100%", height }}>
-        {/* Rings */}
-        {rings.map((r) => (
-          <circle
-            key={r}
-            cx={cx}
-            cy={cy}
-            r={r * maxR}
-            fill="none"
-            stroke="var(--drp-grey)"
-            strokeWidth={0.8}
-            opacity={0.3}
-          />
-        ))}
-        {/* Spokes */}
-        {Array.from({ length: segN }).map((_, i) => {
-          const angle = angleOffset + (i / segN) * 2 * Math.PI;
-          return (
-            <line
-              key={i}
-              x1={cx}
-              y1={cy}
-              x2={cx + maxR * Math.cos(angle)}
-              y2={cy + maxR * Math.sin(angle)}
-              stroke="var(--drp-grey)"
-              strokeWidth={0.8}
-              strokeDasharray="3,2"
-              opacity={0.3}
-            />
-          );
-        })}
-        {/* Segments */}
-        {segPaths.map((d, i) => (
-          <path key={i} d={d} fill={segmentColors[i]} opacity={0.75} />
-        ))}
-        {/* Direction labels */}
-        {directions.slice(0, 8).map((dir, i) => {
-          const angle = angleOffset + (i / n) * 2 * Math.PI;
-          const labelR = maxR + 22;
-          const lx = cx + labelR * Math.cos(angle);
-          const ly = cy + labelR * Math.sin(angle);
-          const lines = dir.split("\n");
-          return (
-            <text
-              key={i}
-              x={lx}
-              y={ly}
-              textAnchor="middle"
-              dominantBaseline="middle"
-              fontSize={9}
-              fill="var(--drp-grey)"
-            >
-              {lines.map((line, j) => (
-                <tspan
-                  key={j}
-                  x={lx}
-                  dy={j === 0 ? (lines.length > 1 ? -6 : 0) : 12}
-                >
-                  {line}
-                </tspan>
-              ))}
-            </text>
-          );
-        })}
-      </svg>
+      <div style={{ height, width: "100%" }}>
+        <PolarArea data={data} options={options} />
+      </div>
     );
   }
 
   // Radar variant
+  const radarData = {
+    labels: ["North", "NE", "East", "SE", "South", "SW", "West", "NW"],
+    datasets: [
+      {
+        label: "Series A",
+        data: [95, 70, 55, 80, 45, 60, 90, 75],
+        backgroundColor: "rgba(99, 29, 237, 0.2)",
+        borderColor: "#631DED",
+        borderWidth: 2,
+        pointBackgroundColor: "#631DED",
+        pointRadius: 3,
+      },
+      {
+        label: "Series B",
+        data: [50, 85, 40, 60, 90, 35, 70, 50],
+        backgroundColor: "rgba(0, 200, 150, 0.2)",
+        borderColor: "#00C896",
+        borderWidth: 2,
+        pointBackgroundColor: "#00C896",
+        pointRadius: 3,
+      },
+    ],
+  };
+
+  const radarOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+    },
+    scales: {
+      r: {
+        beginAtZero: true,
+        max: 100,
+        grid: { color: "rgba(102, 102, 102, 0.2)" },
+        angleLines: { color: "rgba(102, 102, 102, 0.2)" },
+        ticks: { display: false },
+        pointLabels: {
+          font: { size: 11 },
+          color: "#666666",
+        },
+      },
+    },
+  };
+
   return (
-    <svg viewBox="0 0 320 320" style={{ width: "100%", height }}>
-      {/* Rings */}
-      {rings.map((r) => (
-        <circle
-          key={r}
-          cx={cx}
-          cy={cy}
-          r={r * maxR}
-          fill="none"
-          stroke="var(--drp-grey)"
-          strokeWidth={0.8}
-          opacity={0.3}
-        />
-      ))}
-      {/* Spokes */}
-      {Array.from({ length: n }).map((_, i) => {
-        const pt = getPoint(1, i);
-        return (
-          <line
-            key={i}
-            x1={cx}
-            y1={cy}
-            x2={pt.x}
-            y2={pt.y}
-            stroke="var(--drp-grey)"
-            strokeWidth={0.8}
-            strokeDasharray="3,2"
-            opacity={0.3}
-          />
-        );
-      })}
-      {/* Series 2 (green, back) */}
-      <path
-        d={polyPath(series2)}
-        fill="var(--drp-mint)"
-        fillOpacity={0.3}
-        stroke="var(--drp-mint)"
-        strokeWidth={1.5}
-      />
-      {/* Series 1 (purple, front) */}
-      <path
-        d={polyPath(series1)}
-        fill="var(--drp-purple)"
-        fillOpacity={0.25}
-        stroke="var(--drp-purple)"
-        strokeWidth={1.5}
-      />
-      {/* Direction labels */}
-      {directions.map((dir, i) => {
-        const angle = angleOffset + (i / n) * 2 * Math.PI;
-        const labelR = maxR + 22;
-        const lx = cx + labelR * Math.cos(angle);
-        const ly = cy + labelR * Math.sin(angle);
-        const lines = dir.split("\n");
-        return (
-          <text
-            key={i}
-            x={lx}
-            y={ly}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fontSize={9}
-            fill="var(--drp-grey)"
-          >
-            {lines.map((line, j) => (
-              <tspan
-                key={j}
-                x={lx}
-                dy={j === 0 ? (lines.length > 1 ? -6 : 0) : 12}
-              >
-                {line}
-              </tspan>
-            ))}
-          </text>
-        );
-      })}
-    </svg>
+    <div style={{ height, width: "100%" }}>
+      <Radar data={radarData} options={radarOptions} />
+    </div>
   );
 };
 
@@ -1381,150 +1286,208 @@ const DonutChart: React.FC<DonutChartProps> = ({
   );
 };
 
-// ─── World Map SVG (Simplified) ───────────────────────────────────────────────
+// ─── Chart.js World Map (Choropleth) ──────────────────────────────────────────
 
-const WorldMapSVG: React.FC = () => {
-  // Highly simplified continent outlines
-  return (
-    <svg
-      viewBox="0 0 800 420"
-      style={{ width: "100%", height: 350 }}
-      preserveAspectRatio="xMidYMid meet"
-    >
-      {/* Background */}
-      <rect width="800" height="420" fill="var(--drp-cream)" />
+const WORLD_ATLAS_URL =
+  "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 
-      {/* Base continents (light beige) */}
-      {/* North America (gray base) */}
-      <path
-        d="M 110 60 L 210 50 L 240 70 L 250 120 L 230 160 L 200 180 L 180 200 L 160 220 L 140 200 L 120 170 L 100 140 L 90 100 Z"
-        fill="var(--drp-grey)"
-        opacity={0.2}
-      />
-      {/* South America (gray base) */}
-      <path
-        d="M 180 230 L 220 220 L 240 250 L 250 300 L 240 350 L 210 380 L 185 370 L 170 340 L 165 290 L 170 260 Z"
-        fill="var(--drp-grey)"
-        opacity={0.2}
-      />
-      {/* Europe */}
-      <path
-        d="M 360 60 L 420 55 L 440 80 L 430 110 L 400 120 L 375 115 L 355 90 Z"
-        fill="var(--drp-grey)"
-        opacity={0.2}
-      />
-      {/* Africa */}
-      <path
-        d="M 360 130 L 420 125 L 445 160 L 440 230 L 410 290 L 380 310 L 355 280 L 340 230 L 345 170 Z"
-        fill="var(--drp-grey)"
-        opacity={0.2}
-      />
-      {/* Asia */}
-      <path
-        d="M 450 50 L 650 45 L 680 80 L 700 130 L 670 170 L 620 200 L 560 210 L 510 190 L 470 160 L 440 120 L 445 80 Z"
-        fill="var(--drp-grey)"
-        opacity={0.2}
-      />
-      {/* Australia */}
-      <path
-        d="M 600 280 L 680 265 L 720 290 L 720 340 L 690 365 L 640 360 L 600 340 L 590 310 Z"
-        fill="var(--drp-grey)"
-        opacity={0.2}
-      />
+const WorldMapChart: React.FC = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const chartRef = useRef<ChartJS | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-      {/* Colored highlights */}
-      {/* North America - Purple */}
-      <path
-        d="M 110 60 L 210 50 L 240 70 L 250 120 L 230 160 L 200 180 L 180 200 L 160 220 L 140 200 L 120 170 L 100 140 L 90 100 Z"
-        fill="var(--drp-purple)"
-        opacity={0.75}
-      />
-      {/* Mexico - Pink */}
-      <path
-        d="M 160 200 L 195 192 L 200 220 L 185 235 L 165 230 Z"
-        fill="var(--drp-pink)"
-        opacity={0.85}
-      />
-      {/* South America - Cyan */}
-      <path
-        d="M 180 230 L 220 220 L 240 250 L 250 300 L 240 350 L 210 380 L 185 370 L 170 340 L 165 290 L 170 260 Z"
-        fill="#17a2b8"
-        opacity={0.8}
-      />
-      {/* Europe small - green */}
-      <path
-        d="M 370 68 L 395 65 L 408 82 L 400 100 L 378 98 L 365 82 Z"
-        fill="var(--drp-mint)"
-        opacity={0.8}
-      />
-      {/* Asia - Gold/Orange */}
-      <path
-        d="M 480 58 L 640 52 L 670 90 L 655 150 L 600 185 L 540 190 L 500 165 L 468 130 L 462 90 Z"
-        fill="#FF6C01"
-        opacity={0.75}
-      />
-      {/* South East Asia small */}
-      <path
-        d="M 620 195 L 650 185 L 660 210 L 640 225 L 618 215 Z"
-        fill="var(--drp-purple)"
-        opacity={0.7}
-      />
-      {/* Australia - Pink/Red */}
-      <path
-        d="M 600 280 L 680 265 L 720 290 L 720 340 L 690 365 L 640 360 L 600 340 L 590 310 Z"
-        fill="var(--drp-pink)"
-        opacity={0.8}
-      />
+  useEffect(() => {
+    let cancelled = false;
 
-      {/* Tooltip */}
-      <rect
-        x="545"
-        y="135"
-        width="85"
-        height="38"
-        rx="0"
-        fill="var(--drp-surface)"
-        stroke="var(--drp-black)"
-        strokeWidth={1}
-      />
-      <text
-        x="587"
-        y="153"
-        textAnchor="middle"
-        fontSize={9}
-        fill="var(--drp-grey)"
+    const init = async () => {
+      try {
+        // Dynamically import chartjs-chart-geo (it registers itself on Chart.js)
+        const geoModule = await import("chartjs-chart-geo");
+        const topoModule = await import("topojson-client");
+
+        // Register geo controllers
+        ChartJS.register(
+          geoModule.ChoroplethController,
+          geoModule.GeoFeature,
+          geoModule.ColorScale,
+          geoModule.ProjectionScale,
+        );
+
+        // Fetch world topojson
+        const res = await fetch(WORLD_ATLAS_URL);
+        const topology = await res.json();
+
+        if (cancelled) return;
+
+        const countries = (topoModule as any).feature(
+          topology,
+          topology.objects.countries,
+        ).features;
+
+        // Sample data — assign values for highlighted countries
+        const sampleValues: Record<string, number> = {
+          "840": 10,
+          "826": 6,
+          "250": 3,
+          "246": 2,
+          "040": 1,
+          "528": 1,
+          "400": 1,
+          "380": 1,
+        };
+
+        if (!canvasRef.current) return;
+
+        // Destroy previous chart
+        if (chartRef.current) {
+          chartRef.current.destroy();
+        }
+
+        chartRef.current = new ChartJS(canvasRef.current, {
+          type: "choropleth" as any,
+          data: {
+            labels: countries.map((c: any) => c.properties?.name || c.id),
+            datasets: [
+              {
+                label: "Products",
+                data: countries.map((c: any) => ({
+                  feature: c,
+                  value: sampleValues[c.id] || 0,
+                })),
+              },
+            ],
+          },
+          options: {
+            showOutline: true,
+            showGraticule: false,
+            plugins: {
+              legend: { display: false },
+            },
+            scales: {
+              projection: {
+                axis: "x",
+                projection: "equalEarth",
+              } as any,
+              color: {
+                axis: "x",
+                quantize: 5,
+                legend: { position: "bottom-right" },
+                interpolate: (v: number) => {
+                  // Purple scale from light to dark
+                  const r = Math.round(99 + (1 - v) * 156);
+                  const g = Math.round(29 + (1 - v) * 226);
+                  const b = Math.round(237 + (1 - v) * 18);
+                  return `rgba(${r}, ${g}, ${b}, ${v < 0.05 ? 0.1 : 0.8})`;
+                },
+              } as any,
+            },
+          } as any,
+        });
+
+        setLoading(false);
+      } catch (err) {
+        if (!cancelled) {
+          setError("Failed to load map data");
+          setLoading(false);
+        }
+      }
+    };
+
+    init();
+
+    return () => {
+      cancelled = true;
+      if (chartRef.current) {
+        chartRef.current.destroy();
+        chartRef.current = null;
+      }
+    };
+  }, []);
+
+  if (error) {
+    return (
+      <div
+        style={{
+          height: 350,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#666",
+        }}
       >
-        $14.800
-      </text>
-      <polygon
-        points="555,173 575,173 565,183"
-        fill="var(--drp-surface)"
-        stroke="var(--drp-black)"
-        strokeWidth={0.5}
-      />
+        {error}
+      </div>
+    );
+  }
+
+  return (
+    <div style={{ position: "relative", height: 350, width: "100%" }}>
+      {loading && (
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#666",
+          }}
+        >
+          Loading map...
+        </div>
+      )}
+      <canvas ref={canvasRef} style={{ width: "100%", height: "100%" }} />
 
       {/* Legend */}
-      {[
-        { color: "var(--drp-yellow)", label: "Yellow", x: 230 },
-        { color: "var(--drp-purple)", label: "Blue", x: 305 },
-        { color: "var(--drp-mint)", label: "Green", x: 370 },
-        { color: "var(--drp-pink)", label: "Red", x: 440 },
-        { color: "#6f42c1", label: "Dark Blue", x: 508 },
-      ].map((item) => (
-        <g key={item.label}>
-          <rect
-            x={item.x - 5}
-            y={397}
-            width={10}
-            height={10}
-            fill={item.color}
-          />
-          <text x={item.x + 10} y={406} fontSize={10} fill="var(--drp-grey)">
-            {item.label}
-          </text>
-        </g>
-      ))}
-    </svg>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: 16,
+          marginTop: 8,
+          flexWrap: "wrap",
+        }}
+      >
+        {[
+          { color: "#631DED", label: "United States (10)" },
+          { color: "#7B3DEF", label: "United Kingdom (6)" },
+          { color: "#9460F2", label: "France (3)" },
+          { color: "#AD83F5", label: "Finland (2)" },
+          { color: "#C6A6F8", label: "Austria (1)" },
+          { color: "#C6A6F8", label: "Netherlands (1)" },
+          { color: "#C6A6F8", label: "Jordan (1)" },
+          { color: "#C6A6F8", label: "Italy (1)" },
+        ].map((item) => (
+          <div
+            key={item.label}
+            style={{ display: "flex", alignItems: "center", gap: 4 }}
+          >
+            <span
+              style={{
+                width: 10,
+                height: 10,
+                borderRadius: "50%",
+                backgroundColor: item.color,
+                display: "inline-block",
+              }}
+            />
+            <span style={{ fontSize: 11, color: "#666" }}>{item.label}</span>
+          </div>
+        ))}
+      </div>
+
+      <p
+        style={{
+          textAlign: "center",
+          fontSize: 11,
+          color: "#999",
+          marginTop: 4,
+        }}
+      >
+        Location data: 29 of 266 products (11%)
+      </p>
+    </div>
   );
 };
 
@@ -2298,7 +2261,7 @@ export const MiscScreen: React.FC = () => (
   <ReportScreen>
     {/* Map */}
     <ChartCardWrapper title="Map 12 columns">
-      <WorldMapSVG />
+      <WorldMapChart />
     </ChartCardWrapper>
 
     {/* Pie chart 6 cols x2 */}
@@ -2469,12 +2432,12 @@ export const PolarChartScreen: React.FC = () => (
     <div className="drp-chart-grid drp-chart-grid--2">
       <ChartCardWrapper title="Polar chart 6 columns">
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <PolarChartSVG variant="radar" height={320} />
+          <PolarChartComponent variant="radar" height={320} />
         </div>
       </ChartCardWrapper>
       <ChartCardWrapper title="Polar chart 6 columns">
         <div style={{ display: "flex", justifyContent: "center" }}>
-          <PolarChartSVG variant="segments" height={320} />
+          <PolarChartComponent variant="segments" height={320} />
         </div>
       </ChartCardWrapper>
     </div>
