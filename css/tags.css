@@ -26,7 +26,6 @@
      .drp-progress__bar     Filled bar
    ============================================================ */
 
-
 /* ──────────────────────────────────────────────
    TABS
    ────────────────────────────────────────────── */
@@ -64,12 +63,12 @@
 .drp-tab--active,
 .drp-tab.active {
   background: #000000;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 body.dark-mode .drp-tab--active,
 body.dark-mode .drp-tab.active {
-  background: #FFFFFF;
+  background: #ffffff;
   color: #000000;
 }
 
@@ -96,7 +95,6 @@ body.dark-mode .drp-tab.active {
   border-bottom-color: var(--drp-purple);
 }
 
-
 /* ──────────────────────────────────────────────
    TAGS — BASE
    ────────────────────────────────────────────── */
@@ -116,7 +114,6 @@ body.dark-mode .drp-tab.active {
   white-space: nowrap;
   line-height: 1.3;
 }
-
 
 /* ──────────────────────────────────────────────
    TAGS — COLOR VARIANTS (outlined)
@@ -147,6 +144,26 @@ body.dark-mode .drp-tab.active {
   color: var(--drp-grey);
 }
 
+.drp-tag--orange {
+  border-color: var(--drp-orange);
+  color: var(--drp-orange-dark);
+}
+
+.drp-tag--light {
+  border-color: #e8e8f0;
+  color: var(--drp-grey);
+  background: #f5f5fa;
+}
+
+.drp-tag--teal {
+  border-color: #5fdcb3;
+  color: #1a7a5a;
+}
+
+.drp-tag--black {
+  border-color: var(--drp-black);
+  color: var(--drp-black);
+}
 
 /* ──────────────────────────────────────────────
    TAGS — FILLED VARIANTS
@@ -154,18 +171,18 @@ body.dark-mode .drp-tab.active {
 
 .drp-tag--filled {
   background: var(--drp-black);
-  color: #FFFFFF;
+  color: #ffffff;
   border-color: var(--drp-black);
 }
 
 body.dark-mode .drp-tag--filled {
-  background: #FFFFFF;
+  background: #ffffff;
   color: #000000;
 }
 
 .drp-tag--filled.drp-tag--purple {
   background: var(--drp-purple);
-  color: #FFFFFF;
+  color: #ffffff;
   border-color: var(--drp-purple);
 }
 
@@ -187,6 +204,23 @@ body.dark-mode .drp-tag--filled {
   border-color: var(--drp-yellow);
 }
 
+.drp-tag--filled.drp-tag--orange {
+  background: var(--drp-orange);
+  color: #ffffff;
+  border-color: var(--drp-orange);
+}
+
+.drp-tag--filled.drp-tag--teal {
+  background: #5fdcb3;
+  color: #1a7a5a;
+  border-color: #5fdcb3;
+}
+
+.drp-tag--filled.drp-tag--black {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
 
 /* ──────────────────────────────────────────────
    TAGS — DARK VARIANT (black bg)
@@ -194,7 +228,7 @@ body.dark-mode .drp-tag--filled {
 
 .drp-tag--dark {
   background: #000000;
-  color: #FFFFFF;
+  color: #ffffff;
   border-color: #000000;
 }
 
@@ -215,7 +249,6 @@ body.dark-mode .drp-tag--filled {
   color: var(--drp-pink);
   border-color: var(--drp-pink);
 }
-
 
 /* ──────────────────────────────────────────────
    TAG — CLOSEABLE (with X button)
@@ -247,13 +280,12 @@ body.dark-mode .drp-tag--filled {
   opacity: 1;
 }
 
-
 /* ──────────────────────────────────────────────
    TAG — DOT INDICATOR
    ────────────────────────────────────────────── */
 
 .drp-tag--dot::before {
-  content: '';
+  content: "";
   width: 6px;
   height: 6px;
   border-radius: 0;
@@ -261,10 +293,27 @@ body.dark-mode .drp-tag--filled {
   flex-shrink: 0;
 }
 
-.drp-tag--dot.drp-tag--mint::before { background: var(--drp-mint); }
-.drp-tag--dot.drp-tag--pink::before { background: var(--drp-pink); }
-.drp-tag--dot.drp-tag--yellow::before { background: var(--drp-yellow); }
+.drp-tag--dot.drp-tag--mint::before {
+  background: var(--drp-mint);
+}
+.drp-tag--dot.drp-tag--pink::before {
+  background: var(--drp-pink);
+}
+.drp-tag--dot.drp-tag--yellow::before {
+  background: var(--drp-yellow);
+}
 
+.drp-tag--dot.drp-tag--orange::before {
+  background: var(--drp-orange);
+}
+
+.drp-tag--dot.drp-tag--teal::before {
+  background: #5fdcb3;
+}
+
+.drp-tag--dot.drp-tag--black::before {
+  background: var(--drp-black);
+}
 
 /* ──────────────────────────────────────────────
    BADGES
@@ -290,7 +339,7 @@ body.dark-mode .drp-tag--filled {
 
 .drp-badge--filled {
   background: var(--drp-purple);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .drp-badge--mint {
@@ -305,20 +354,19 @@ body.dark-mode .drp-tag--filled {
   color: var(--drp-error-dark);
 }
 
-
 /* ──────────────────────────────────────────────
    BADGE VARIANTS (DP-style)
    ────────────────────────────────────────────── */
 
 .drp-badge--primary {
   background: var(--drp-purple);
-  color: #FFFFFF;
+  color: #ffffff;
   border-color: var(--drp-purple);
 }
 
 .drp-badge--secondary {
   background: var(--drp-orange);
-  color: #FFFFFF;
+  color: #ffffff;
   border-color: var(--drp-orange);
 }
 
@@ -327,7 +375,6 @@ body.dark-mode .drp-tag--filled {
   color: var(--drp-black);
   border-color: var(--drp-black);
 }
-
 
 /* ──────────────────────────────────────────────
    PROGRESS BARS
@@ -350,14 +397,26 @@ body.dark-mode .drp-tag--filled {
 }
 
 /* Color variants */
-.drp-progress--mint .drp-progress__bar    { background: var(--drp-mint); }
-.drp-progress--pink .drp-progress__bar    { background: var(--drp-pink); }
-.drp-progress--yellow .drp-progress__bar  { background: var(--drp-yellow); }
-.drp-progress--grey .drp-progress__bar    { background: var(--drp-grey); }
+.drp-progress--mint .drp-progress__bar {
+  background: var(--drp-mint);
+}
+.drp-progress--pink .drp-progress__bar {
+  background: var(--drp-pink);
+}
+.drp-progress--yellow .drp-progress__bar {
+  background: var(--drp-yellow);
+}
+.drp-progress--grey .drp-progress__bar {
+  background: var(--drp-grey);
+}
 
 /* Size variants */
-.drp-progress--sm { height: 4px; }
-.drp-progress--lg { height: 10px; }
+.drp-progress--sm {
+  height: 4px;
+}
+.drp-progress--lg {
+  height: 10px;
+}
 
 /* With label */
 .drp-progress-group {
@@ -379,7 +438,6 @@ body.dark-mode .drp-progress {
   background: rgba(255, 255, 255, 0.08);
 }
 
-
 /* ──────────────────────────────────────────────
    STATUS INDICATOR DOT
    Small colored dot for inline status.
@@ -394,17 +452,31 @@ body.dark-mode .drp-progress {
   flex-shrink: 0;
 }
 
-.drp-dot--purple  { background: var(--drp-purple); }
-.drp-dot--mint    { background: var(--drp-mint); }
-.drp-dot--pink    { background: var(--drp-pink); }
-.drp-dot--yellow  { background: var(--drp-yellow); }
-.drp-dot--pulse   { animation: drp-pulse 2s ease-in-out infinite; }
-
-@keyframes drp-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+.drp-dot--purple {
+  background: var(--drp-purple);
+}
+.drp-dot--mint {
+  background: var(--drp-mint);
+}
+.drp-dot--pink {
+  background: var(--drp-pink);
+}
+.drp-dot--yellow {
+  background: var(--drp-yellow);
+}
+.drp-dot--pulse {
+  animation: drp-pulse 2s ease-in-out infinite;
 }
 
+@keyframes drp-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
 
 /* ──────────────────────────────────────────────
    RESPONSIVE — TABS & TAGS
