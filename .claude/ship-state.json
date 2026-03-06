@@ -1,0 +1,34 @@
+{
+  "session_id": "ship-2026-03-06-0040",
+  "verify_session_id": "verify-2026-03-06-0030",
+  "verified_commit": "ae84d6336a9ac8ee5c24e08104eaa90e3669e8bf",
+  "target": "main",
+  "started_at": "2026-03-06T00:40:00+01:00",
+  "status": "SHIPPED",
+  "phases": {
+    "pre_ship_review": {
+      "status": "APPROVED"
+    },
+    "commit_strategy": {
+      "status": "APPROVED",
+      "strategy": "squash"
+    },
+    "documentation": {
+      "status": "SKIPPED"
+    },
+    "pr_creation": {
+      "status": "CREATED",
+      "pr_number": 2,
+      "pr_url": "https://github.com/drproject-coding/bruddle-design-system/pull/2"
+    },
+    "merge": {
+      "status": "MERGED",
+      "sha": "00a9aa3"
+    }
+  },
+  "unlock_merge": true,
+  "cleanup": {
+    "branches_deleted": []
+  },
+  "shipped_at": "2026-03-06T01:07:00Z"
+}
