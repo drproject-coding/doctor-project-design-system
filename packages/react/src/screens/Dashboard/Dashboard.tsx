@@ -9,6 +9,8 @@ import { Avatar } from "../../components/Avatar";
 import { Alert } from "../../components/Alert";
 import { ResponsiveGrid } from "../../components/ResponsiveGrid/ResponsiveGrid";
 import { EmptyState } from "../../components/EmptyState";
+import { AppSidebar } from "../shared/AppSidebar";
+import { AppTopBar } from "../shared/AppTopBar";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -25,21 +27,6 @@ interface Product {
 }
 
 // ─── Mock Data ────────────────────────────────────────────────────────────────
-
-const NAV_ITEMS = [
-  { id: "dashboard", label: "Dashboard", active: true },
-  { id: "analytics", label: "Analytics" },
-  { id: "reports", label: "Reports" },
-  { id: "transactions", label: "Transactions" },
-  { id: "products", label: "Products" },
-  { id: "catalog", label: "AppSumo Catalog" },
-  { id: "admin", label: "Admin Panel" },
-  { id: "import", label: "Import" },
-  { id: "logs", label: "Logs" },
-  { id: "sync", label: "Sync Jobs" },
-  { id: "settings", label: "Settings" },
-];
-
 const PRODUCTS: Product[] = [
   {
     id: "1",
@@ -226,7 +213,6 @@ const FILTERS = [
 type Filter = (typeof FILTERS)[number];
 
 export function Dashboard() {
-  const [activeNav, setActiveNav] = useState("dashboard");
   const [filter, setFilter] = useState<Filter>("All");
   const [search, setSearch] = useState("");
 
@@ -242,225 +228,11 @@ export function Dashboard() {
   });
 
   return (
-    <div
-      style={{
-        display: "flex",
-        height: "100vh",
-        overflow: "hidden",
-        fontFamily: "var(--drp-font-primary)",
-      }}
-    >
-      {/* ── Sidebar ── */}
-      <aside
-        style={{
-          width: 200,
-          minWidth: 200,
-          background: "#0f0f13",
-          color: "#fff",
-          display: "flex",
-          flexDirection: "column",
-          height: "100%",
-          overflow: "hidden",
-        }}
-      >
-        {/* Brand */}
-        <div
-          style={{
-            padding: "20px 16px 12px",
-            borderBottom: "1px solid rgba(255,255,255,0.07)",
-          }}
-        >
-          <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <span
-              style={{ fontSize: 18, fontWeight: 800, letterSpacing: -0.5 }}
-            >
-              Tools Tracker
-            </span>
-            <span style={{ color: "var(--drp-purple)", fontSize: 14 }}>✦</span>
-          </div>
-        </div>
+    <div className="app-layout" style={{ height: "100vh", overflow: "hidden" }}>
+      <AppSidebar activeId="dashboard" />
 
-        {/* Nav */}
-        <nav style={{ flex: 1, padding: "8px 0", overflowY: "auto" }}>
-          <div
-            style={{
-              padding: "8px 16px 4px",
-              fontSize: 10,
-              fontWeight: 700,
-              color: "rgba(255,255,255,0.3)",
-              letterSpacing: 1,
-            }}
-          >
-            NAVIGATION
-          </div>
-          {NAV_ITEMS.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => setActiveNav(item.id)}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 10,
-                width: "100%",
-                padding: "7px 16px",
-                background:
-                  activeNav === item.id
-                    ? "rgba(99,29,237,0.15)"
-                    : "transparent",
-                border: "none",
-                borderLeft:
-                  activeNav === item.id
-                    ? "2px solid var(--drp-purple)"
-                    : "2px solid transparent",
-                color:
-                  activeNav === item.id
-                    ? "var(--drp-purple)"
-                    : "rgba(255,255,255,0.6)",
-                fontSize: 13,
-                fontWeight: activeNav === item.id ? 600 : 400,
-                cursor: "pointer",
-                textAlign: "left",
-                fontFamily: "var(--drp-font-primary)",
-              }}
-            >
-              {item.label}
-            </button>
-          ))}
-        </nav>
-
-        {/* Data Status */}
-        <div
-          style={{
-            padding: "12px 16px",
-            borderTop: "1px solid rgba(255,255,255,0.07)",
-          }}
-        >
-          <div
-            style={{
-              fontSize: 10,
-              fontWeight: 700,
-              color: "rgba(255,255,255,0.3)",
-              letterSpacing: 1,
-              marginBottom: 8,
-            }}
-          >
-            DATA STATUS
-          </div>
-          <div
-            style={{
-              color: "rgba(255,255,255,0.7)",
-              fontSize: 13,
-              marginBottom: 2,
-            }}
-          >
-            73
-          </div>
-          <div
-            style={{
-              color: "rgba(255,255,255,0.7)",
-              fontSize: 13,
-              marginBottom: 8,
-            }}
-          >
-            334
-          </div>
-          <div style={{ marginBottom: 8 }}>
-            <Alert variant="warning">Data may be outdated</Alert>
-          </div>
-          <div style={{ display: "flex", gap: 6 }}>
-            <Button
-              size="sm"
-              variant="primary"
-              style={{ flex: 1, fontSize: 11 }}
-            >
-              Run Sync
-            </Button>
-            <Button
-              size="sm"
-              variant="outline"
-              style={{ flex: 1, fontSize: 11 }}
-            >
-              Clear Cache
-            </Button>
-          </div>
-        </div>
-
-        {/* User */}
-        <div
-          style={{
-            padding: "10px 16px",
-            borderTop: "1px solid rgba(255,255,255,0.07)",
-            display: "flex",
-            alignItems: "center",
-            gap: 10,
-          }}
-        >
-          <Avatar initials="YF" size="sm" />
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <div
-              style={{
-                fontSize: 12,
-                fontWeight: 600,
-                color: "#fff",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                whiteSpace: "nowrap",
-              }}
-            >
-              yfatihi.pro
-            </div>
-            <div style={{ fontSize: 11, color: "rgba(255,255,255,0.4)" }}>
-              Admin
-            </div>
-          </div>
-          <button
-            aria-label="User options"
-            style={{
-              background: "none",
-              border: "none",
-              color: "rgba(255,255,255,0.3)",
-              fontSize: 16,
-              cursor: "pointer",
-              padding: "4px",
-              lineHeight: 1,
-            }}
-          >
-            ···
-          </button>
-        </div>
-      </aside>
-
-      {/* ── Main ── */}
-      <div
-        style={{
-          flex: 1,
-          display: "flex",
-          flexDirection: "column",
-          background: "#f4f4f6",
-          overflow: "hidden",
-        }}
-      >
-        {/* Topbar */}
-        <div
-          style={{
-            height: 52,
-            background: "#fff",
-            borderBottom: "1px solid #e5e7eb",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "0 24px",
-          }}
-        >
-          <h1
-            style={{ margin: 0, fontSize: 18, fontWeight: 700, color: "#111" }}
-          >
-            Dashboard
-          </h1>
-          <Button variant="primary" size="sm">
-            ⟳ Sync with AppSumo
-          </Button>
-        </div>
+      <div className="main-content" style={{ overflow: "hidden" }}>
+        <AppTopBar title="Dashboard" />
 
         {/* Content */}
         <div

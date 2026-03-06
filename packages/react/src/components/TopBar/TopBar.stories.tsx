@@ -1,6 +1,7 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { TopBar } from "./TopBar";
+import { Pictogram } from "../Pictogram/Pictogram";
 
 const meta: Meta<typeof TopBar> = {
   component: TopBar,
@@ -19,42 +20,32 @@ export const Default: Story = {
   },
 };
 
+export const WithMenuButton: Story = {
+  args: {
+    title: "Dashboard",
+    menuButton: true,
+  },
+};
+
 export const WithActions: Story = {
   args: {
     title: "Accounts",
     actions: (
       <>
-        <button className="topbar-icon-btn">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
+        <button className="topbar-icon-btn" aria-label="Search">
+          <Pictogram name="Filters" size={20} aria-hidden={true} />
         </button>
-        <button className="topbar-icon-btn">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-          </svg>
+        <button className="topbar-icon-btn" aria-label="Notifications">
+          <Pictogram name="Attention" size={20} aria-hidden={true} />
           <span className="notification-dot" />
         </button>
+        <button className="topbar-apps-btn">
+          <Pictogram name="Apps" size={20} aria-hidden={true} />
+          <span>Apps</span>
+        </button>
         <button className="topbar-create-btn">
-          <svg
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path d="M12 4v16m8-8H4" />
-          </svg>
-          Create New
+          <Pictogram name="Add" size={20} aria-hidden={true} />
+          <span>Create New</span>
         </button>
       </>
     ),

@@ -1,100 +1,11 @@
 import React from "react";
-import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
+import { AppTopBar } from "../shared/AppTopBar";
+import { AppFooter } from "../shared/AppFooter";
 
 // ─── Top Bar ──────────────────────────────────────────────────────────────────
 
-const EducationTopBar: React.FC = () => (
-  <header className="topbar">
-    <div className="topbar-left">
-      <h1 className="topbar-title">Courses</h1>
-    </div>
-    <div className="topbar-right">
-      <button className="topbar-icon-btn">
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <circle cx="11" cy="11" r="8" />
-          <path d="m21 21-4.35-4.35" />
-        </svg>
-      </button>
-      <button className="topbar-icon-btn">
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-          <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-        </svg>
-      </button>
-      <button className="topbar-apps-btn">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-          <rect x="2" y="2" width="9" height="9" />
-          <rect x="13" y="2" width="9" height="9" />
-          <rect x="2" y="13" width="9" height="9" />
-          <rect x="13" y="13" width="9" height="9" />
-        </svg>
-        <span>Apps</span>
-      </button>
-      <button className="topbar-create-btn">
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-        >
-          <circle cx="12" cy="12" r="10" />
-          <path d="M12 8v8M8 12h8" />
-        </svg>
-        <span>Create new</span>
-      </button>
-    </div>
-  </header>
-);
-
 // ─── Footer ───────────────────────────────────────────────────────────────────
-
-const EducationFooter: React.FC = () => (
-  <footer className="footer-bar">
-    <div className="footer-links">
-      <span className="footer-link">English</span>
-      <span className="footer-link">Privacy Policy</span>
-      <span className="footer-link">License</span>
-      <span className="footer-link">API</span>
-    </div>
-    <div className="footer-right">
-      <button className="footer-icon-btn footer-icon-btn--accent">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 3a9 9 0 1 0 9 9H12z" />
-        </svg>
-      </button>
-      <button className="footer-icon-btn">
-        <svg
-          width="13"
-          height="13"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-        </svg>
-      </button>
-    </div>
-  </footer>
-);
 
 // ─── Course Image Placeholders ────────────────────────────────────────────────
 
@@ -562,7 +473,7 @@ export const EducationCourses: React.FC<EducationCoursesProps> = ({
     <div className="app-layout">
       <AppSidebar activeId="education" />
       <div className="main-content">
-        <EducationTopBar />
+        <AppTopBar title="Courses" />
 
         <div style={{ flex: 1, overflow: "auto" }}>
           {view === "courses" ? (
@@ -642,7 +553,7 @@ export const EducationCourses: React.FC<EducationCoursesProps> = ({
           )}
         </div>
 
-        <EducationFooter />
+        <AppFooter />
       </div>
     </div>
   );

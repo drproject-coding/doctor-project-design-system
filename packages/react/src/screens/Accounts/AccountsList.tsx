@@ -1,139 +1,13 @@
 import React from "react";
 import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
+import { AppTopBar } from "../shared/AppTopBar";
+import { AppFooter } from "../shared/AppFooter";
 
 interface AccountsListProps {
   theme?: "light" | "dark";
   variant?: "v1" | "v2";
 }
-
-const TopBar: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => (
-  <div className={`topbar ${theme === "dark" ? "dark-mode" : ""}`}>
-    <h1 className="topbar-title drp-h2">Accounts</h1>
-    <div className="topbar-right">
-      <button className="topbar-icon-btn">
-        <svg
-          width="20"
-          height="20"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-          />
-        </svg>
-      </button>
-      <button className="topbar-icon-btn">
-        <svg
-          width="20"
-          height="20"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-          />
-        </svg>
-      </button>
-      <button className="topbar-apps-btn">
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
-          />
-        </svg>
-        Apps
-      </button>
-      <button className="topbar-create-btn">
-        <Pictogram name="Add" size={20} aria-hidden={true} />
-        Create new
-      </button>
-    </div>
-  </div>
-);
-
-const Footer: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => (
-  <div className={`footer-bar ${theme === "dark" ? "dark-mode" : ""}`}>
-    <div className="footer-links">
-      <button className="footer-link">
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <circle cx="12" cy="12" r="10" strokeWidth={2} />
-          <path
-            strokeLinecap="round"
-            strokeWidth={2}
-            d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
-          />
-        </svg>
-        English
-      </button>
-      <button className="footer-link">Privacy Policy</button>
-      <button className="footer-link">License</button>
-      <button className="footer-link">API</button>
-    </div>
-    <div className="footer-right">
-      <button className="footer-icon-btn">
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-        </svg>
-      </button>
-      <button className="footer-icon-btn">
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-          />
-        </svg>
-      </button>
-    </div>
-  </div>
-);
 
 // Simple SVG line chart
 const LineChart: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => {
@@ -846,13 +720,13 @@ export const AccountsList: React.FC<AccountsListProps> = ({
   <div className="app-layout">
     <AppSidebar activeId="accounts" />
     <div className="main-content">
-      <TopBar theme={theme} />
+      <AppTopBar title="Accounts" />
       {variant === "v1" ? (
         <V1Content theme={theme} />
       ) : (
         <V2Content theme={theme} />
       )}
-      <Footer theme={theme} />
+      <AppFooter />
     </div>
   </div>
 );

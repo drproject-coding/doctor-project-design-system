@@ -1,0 +1,13 @@
+{
+  "session_id": "plan-2026-03-05-0124",
+  "started_at": "2026-03-05T01:24:00Z",
+  "project_hash": "doctorproject-design-system",
+  "phase": "brain-jam",
+  "research_complete": false,
+  "human_decisions": [],
+  "abandoned": false,
+  "status": "interrupted",
+  "interrupted_at": "2026-03-05T01:54:01+01:00",
+  "interrupted_by": "auto",
+  "resume_instructions": "Session interrupted during brain-jam phase. To resume: claudikins-kernel:outline --session-id plan-2026-03-05-0124"
+}

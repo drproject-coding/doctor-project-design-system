@@ -1,29 +1,72 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
-import React, { ButtonHTMLAttributes, ReactNode, InputHTMLAttributes, SelectHTMLAttributes, HTMLAttributes, TextareaHTMLAttributes } from 'react';
+import React, { ReactNode, ButtonHTMLAttributes, InputHTMLAttributes, SelectHTMLAttributes, HTMLAttributes, TextareaHTMLAttributes } from 'react';
+
+interface HeadingProps {
+    level?: 1 | 2 | 3 | 4 | 5 | 6;
+    children: ReactNode;
+    uppercase?: boolean;
+    className?: string;
+}
+declare function Heading({ level, children, uppercase, className, }: HeadingProps): react_jsx_runtime.JSX.Element;
+
+type TextSize = "xs" | "sm" | "md" | "lg";
+type TextWeight = "regular" | "medium" | "semibold" | "bold";
+interface TextProps {
+    size?: TextSize;
+    weight?: TextWeight;
+    muted?: boolean;
+    secondary?: boolean;
+    as?: "p" | "span" | "div" | "label";
+    children: ReactNode;
+    className?: string;
+}
+declare function Text({ size, weight, muted, secondary, as: Tag, children, className, }: TextProps): react_jsx_runtime.JSX.Element;
+
+type IconName = "dashboard" | "analytics" | "users" | "orders" | "products" | "settings" | "search" | "bell" | "mail" | "calendar" | "check" | "close" | "plus" | "minus" | "arrow-left" | "arrow-right" | "arrow-up" | "arrow-down" | "edit" | "trash" | "eye" | "eye-off" | "filter" | "download";
+type IconSize = "sm" | "md" | "lg";
+interface IconProps {
+    name: IconName;
+    size?: IconSize;
+    color?: string;
+    className?: string;
+}
+declare function Icon({ name, size, color, className, }: IconProps): react_jsx_runtime.JSX.Element;
 
 type ButtonVariant = "primary" | "outline" | "ghost" | "ghost-bordered" | "danger" | "secondary" | "dark";
 type ButtonSize = "sm" | "lg";
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonBaseProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "aria-label"> & {
     variant?: ButtonVariant;
     size?: ButtonSize;
     block?: boolean;
-    icon?: boolean;
+    /** Icon element placed before the label */
+    iconLeft?: ReactNode;
+    /** Icon element placed after the label */
+    iconRight?: ReactNode;
     children: ReactNode;
-}
-declare function Button({ variant, size, block, icon, className, children, ...props }: ButtonProps): react_jsx_runtime.JSX.Element;
+};
+type ButtonProps = (ButtonBaseProps & {
+    icon?: false;
+    "aria-label"?: string;
+}) | (ButtonBaseProps & {
+    icon: true;
+    "aria-label": string;
+});
+declare function Button({ variant, size, block, icon, iconLeft, iconRight, className, children, ...props }: ButtonProps): react_jsx_runtime.JSX.Element;
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     label?: string;
-    error?: boolean;
+    error?: string | boolean;
     success?: boolean;
 }
-declare function Input({ label, error, success, className, ...props }: InputProps): react_jsx_runtime.JSX.Element;
+declare function Input({ label, error, success, className, id, spellCheck, type, ...props }: InputProps): react_jsx_runtime.JSX.Element;
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
     label?: string;
+    error?: string | boolean;
+    success?: boolean;
     children: ReactNode;
 }
-declare function Select({ label, className, children, ...props }: SelectProps): react_jsx_runtime.JSX.Element;
+declare function Select({ label, error, success, className, children, id, ...props }: SelectProps): react_jsx_runtime.JSX.Element;
 
 interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
     label: string;
@@ -35,8 +78,9 @@ interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type">
     label: string;
     color?: "pink" | "purple";
     dark?: boolean;
+    error?: boolean;
 }
-declare function Radio({ label, color, dark, className, ...props }: RadioProps): react_jsx_runtime.JSX.Element;
+declare function Radio({ label, color, dark, error, className, ...props }: RadioProps): react_jsx_runtime.JSX.Element;
 
 interface SwitchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
     label?: string;
@@ -51,18 +95,22 @@ interface CounterProps {
 }
 declare function Counter({ value: controlledValue, min, max, onChange, }: CounterProps): react_jsx_runtime.JSX.Element;
 
-type TagColor = "purple" | "mint" | "pink" | "yellow" | "grey";
+type TagColor = "purple" | "mint" | "pink" | "yellow" | "grey" | "orange" | "light" | "teal" | "black";
 interface TagProps {
     children: ReactNode;
     color?: TagColor;
     filled?: boolean;
     dark?: boolean;
     dot?: boolean;
+    /** Alias for `dot` — show a leading legend dot */
+    legend?: boolean;
+    /** Icon element placed before the label */
+    icon?: ReactNode;
     closeable?: boolean;
     onClose?: () => void;
     className?: string;
 }
-declare function Tag({ children, color, filled, dark, dot, closeable, onClose, className, }: TagProps): react_jsx_runtime.JSX.Element;
+declare function Tag({ children, color, filled, dark, dot, legend, icon, closeable, onClose, className, }: TagProps): react_jsx_runtime.JSX.Element;
 
 type BadgeVariant = "filled" | "primary" | "secondary" | "outline" | "mint" | "pink";
 interface BadgeProps {
@@ -132,8 +180,10 @@ interface TableProps<T> {
     columns: TableColumn<T>[];
     data: T[];
     className?: string;
+    "aria-label"?: string;
+    caption?: string;
 }
-declare function Table<T extends Record<string, any>>({ columns, data, className, }: TableProps<T>): react_jsx_runtime.JSX.Element;
+declare function Table<T extends Record<string, any>>({ columns, data, className, "aria-label": ariaLabel, caption, }: TableProps<T>): react_jsx_runtime.JSX.Element;
 
 interface ModalProps {
     open: boolean;
@@ -326,10 +376,10 @@ declare function Footer({ brand, tagline, columns, copyright, bottomLinks, class
 
 interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     label?: string;
-    error?: boolean;
+    error?: string | boolean;
     success?: boolean;
 }
-declare function Textarea({ label, error, success, className, ...props }: TextareaProps): react_jsx_runtime.JSX.Element;
+declare function Textarea({ label, error, success, className, id, ...props }: TextareaProps): react_jsx_runtime.JSX.Element;
 
 type LoaderSize = "sm" | "lg";
 interface LoaderProps {
@@ -371,6 +421,58 @@ interface DividerProps {
     className?: string;
 }
 declare function Divider({ label, className }: DividerProps): react_jsx_runtime.JSX.Element;
+
+interface TestimonialProps {
+    quote: string;
+    name: string;
+    role?: string;
+    avatar?: ReactNode;
+    className?: string;
+}
+declare function Testimonial({ quote, name, role, avatar, className, }: TestimonialProps): react_jsx_runtime.JSX.Element;
+
+interface SpinnerProps {
+    className?: string;
+}
+declare function Spinner({ className }: SpinnerProps): react_jsx_runtime.JSX.Element;
+
+type ToastVariant = "success" | "error" | "warning" | "info";
+interface ToastProps {
+    variant?: ToastVariant;
+    message: string;
+    icon?: ReactNode;
+    className?: string;
+}
+declare function Toast({ variant, message, icon, className }: ToastProps): react_jsx_runtime.JSX.Element;
+
+interface DropzoneProps {
+    onFiles?: (files: File[]) => void;
+    accept?: string;
+    hint?: string;
+    icon?: ReactNode;
+    className?: string;
+    "aria-label"?: string;
+}
+declare function Dropzone({ onFiles, accept, hint, icon, className, "aria-label": ariaLabel, }: DropzoneProps): react_jsx_runtime.JSX.Element;
+
+interface FeatureItem {
+    icon: ReactNode;
+    title: string;
+    text: string;
+}
+interface FeatureListProps {
+    features: FeatureItem[];
+    className?: string;
+}
+declare function FeatureList({ features, className }: FeatureListProps): react_jsx_runtime.JSX.Element;
+
+interface CtaBannerProps {
+    title: string;
+    text?: string;
+    children?: ReactNode;
+    className?: string;
+}
+declare function CtaBanner({ title, text, children, className, }: CtaBannerProps): react_jsx_runtime.JSX.Element;
 
 declare const SignIn: React.FC;
 
@@ -563,4 +665,4 @@ declare const chartData: {
 };
 declare const menuItems: MenuItem[];
 
-export { AccountsList, Alert, type AlertProps, AppShell, type AppShellProps, Avatar, type AvatarProps, Badge, type BadgeProps, type BreadcrumbItem, Breadcrumbs, type BreadcrumbsProps, Button, type ButtonProps, CalendarEvent, Card, CardHeader, type CardHeaderProps, type CardProps, CaseCard, type CaseCardProps, ChartBarVariant, ChartCard, type ChartCardProps, ChartContainer, type ChartContainerProps, ChartDoubleBarsVariant, ChartGeometricVariant, ChartHorizontalBarsVariant, ChartMiscVariant, ChartPolarVariant, ChartWaveVariant, Checkbox, type CheckboxProps, type Contact, ContactsList, Counter, type CounterProps, type Customer, CustomersList, DashboardLayout, type DashboardLayoutProps, Divider, type DividerProps, EducationCourses, type EducationCoursesProps, type EducationView, EmptyState, type EmptyStateProps, Footer, type FooterColumn, type FooterProps, Hero, type HeroProps, InboxList, Input, type InputProps, ListScreen, type ListScreenProps, Loader, type LoaderProps, Marquee, type MarqueeProps, type MenuItem, Modal, type ModalProps, Navbar, type NavbarProps, Pagination, type PaginationProps, PasswordReset, type PasswordResetProps, type Payment, PaymentsList, PricingCard, type PricingCardProps, type ProductsListProps as Product, ProductsList, ProfileAccount, ProfileNotifications, ProfileSecurity, ProfileSocial, ProgressBar, type ProgressBarProps, Radio, type RadioProps, type SalesListProps as Sale, SalesList, Select, type SelectProps, Sidebar, type SidebarNavItem, type SidebarNavSection, type SidebarProps, type SidebarTeamMember, SignIn, SignUp, Skeleton, type SkeletonProps, type StatCard, type StatCardProps, StatusDot, type StatusDotProps, SupportHome, Switch, type SwitchProps, type TabItem, Table, type TableColumn, type TableProps, Tabs, type TabsProps, Tag, type TagProps, Textarea, type TextareaProps, Tooltip, type TooltipProps, TopBar, type TopBarProps, Topbar, type TopbarProps, type Transaction, TransactionsList, type User, chartData, generateChartData, generateMenuItems, generateStats, generateUsers, menuItems, stats, users };
+export { AccountsList, Alert, type AlertProps, AppShell, type AppShellProps, Avatar, type AvatarProps, Badge, type BadgeProps, type BreadcrumbItem, Breadcrumbs, type BreadcrumbsProps, Button, type ButtonProps, CalendarEvent, Card, CardHeader, type CardHeaderProps, type CardProps, CaseCard, type CaseCardProps, ChartBarVariant, ChartCard, type ChartCardProps, ChartContainer, type ChartContainerProps, ChartDoubleBarsVariant, ChartGeometricVariant, ChartHorizontalBarsVariant, ChartMiscVariant, ChartPolarVariant, ChartWaveVariant, Checkbox, type CheckboxProps, type Contact, ContactsList, Counter, type CounterProps, CtaBanner, type CtaBannerProps, type Customer, CustomersList, DashboardLayout, type DashboardLayoutProps, Divider, type DividerProps, Dropzone, type DropzoneProps, EducationCourses, type EducationCoursesProps, type EducationView, EmptyState, type EmptyStateProps, type FeatureItem, FeatureList, type FeatureListProps, Footer, type FooterColumn, type FooterProps, Heading, type HeadingProps, Hero, type HeroProps, Icon, type IconProps, InboxList, Input, type InputProps, ListScreen, type ListScreenProps, Loader, type LoaderProps, Marquee, type MarqueeProps, type MenuItem, Modal, type ModalProps, Navbar, type NavbarProps, Pagination, type PaginationProps, PasswordReset, type PasswordResetProps, type Payment, PaymentsList, PricingCard, type PricingCardProps, type ProductsListProps as Product, ProductsList, ProfileAccount, ProfileNotifications, ProfileSecurity, ProfileSocial, ProgressBar, type ProgressBarProps, Radio, type RadioProps, type SalesListProps as Sale, SalesList, Select, type SelectProps, Sidebar, type SidebarNavItem, type SidebarNavSection, type SidebarProps, type SidebarTeamMember, SignIn, SignUp, Skeleton, type SkeletonProps, Spinner, type SpinnerProps, type StatCard, type StatCardProps, StatusDot, type StatusDotProps, SupportHome, Switch, type SwitchProps, type TabItem, Table, type TableColumn, type TableProps, Tabs, type TabsProps, Tag, type TagProps, Testimonial, type TestimonialProps, Text, type TextProps, Textarea, type TextareaProps, Toast, type ToastProps, type ToastVariant, Tooltip, type TooltipProps, TopBar, type TopBarProps, Topbar, type TopbarProps, type Transaction, TransactionsList, type User, chartData, generateChartData, generateMenuItems, generateStats, generateUsers, menuItems, stats, users };

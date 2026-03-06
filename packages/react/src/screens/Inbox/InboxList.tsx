@@ -1,113 +1,11 @@
 import React, { useState } from "react";
 import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
+import { AppTopBar } from "../shared/AppTopBar";
+import { AppFooter } from "../shared/AppFooter";
 // ─── Top Bar ─────────────────────────────────────────────────────────────────
 
-const InboxTopBar: React.FC<{ showBack?: boolean }> = ({
-  showBack = false,
-}) => (
-  <div className="topbar">
-    <div className="topbar-left">
-      {showBack && (
-        <button className="drp-btn drp-btn--outline drp-btn--icon drp-btn--sm">
-          <svg
-            width="16"
-            height="16"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
-      )}
-      <h1 className="topbar-title">Inbox</h1>
-    </div>
-    <div className="topbar-right">
-      <button className="topbar-icon-btn">...</button>
-      <button className="topbar-icon-btn">...</button>
-      <button className="topbar-apps-btn">
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
-          />
-        </svg>
-        <span>Apps</span>
-      </button>
-      <button className="topbar-create-btn">
-        <Pictogram name="Add" size={20} aria-hidden={true} />
-        <span>Create new</span>
-      </button>
-    </div>
-  </div>
-);
-
 // ─── Footer ───────────────────────────────────────────────────────────────────
-
-const InboxFooter: React.FC = () => (
-  <div className="footer-bar">
-    <div className="footer-links">
-      <span className="footer-link">English</span>
-      <span className="footer-link">Privacy Policy</span>
-      <span className="footer-link">License</span>
-      <span className="footer-link">API</span>
-    </div>
-    <div className="footer-right">
-      <button className="footer-icon-btn">
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-        </svg>
-      </button>
-      <button className="footer-icon-btn">
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-          />
-        </svg>
-      </button>
-    </div>
-  </div>
-);
 
 // ─── Avatar ───────────────────────────────────────────────────────────────────
 
@@ -253,7 +151,7 @@ const MailListVariant: React.FC = () => {
 
   return (
     <>
-      <InboxTopBar />
+      <AppTopBar title="Inbox" />
       <div className="content">
         {/* Toolbar */}
         <div className="drp-flex drp-items-center drp-justify-between drp-mb-4">
@@ -470,7 +368,7 @@ const MailListVariant: React.FC = () => {
           <button className="drp-btn drp-btn--outline drp-btn--sm">Next</button>
         </div>
       </div>
-      <InboxFooter />
+      <AppFooter />
     </>
   );
 };
@@ -533,7 +431,7 @@ const chatMessages = [
 
 const ChatVariant: React.FC = () => (
   <>
-    <InboxTopBar />
+    <AppTopBar title="Inbox" />
     <div className="content">
       <div className="drp-flex drp-gap-4" style={{ flex: 1, minHeight: 0 }}>
         {/* Left Panel: Message List */}
@@ -990,7 +888,7 @@ const ChatVariant: React.FC = () => (
         </div>
       </div>
     </div>
-    <InboxFooter />
+    <AppFooter />
   </>
 );
 
@@ -1000,7 +898,7 @@ const ChatVariant: React.FC = () => (
 
 const MailComposeVariant: React.FC = () => (
   <>
-    <InboxTopBar showBack />
+    <AppTopBar title="Inbox" />
     <div className="content">
       {/* Action bar */}
       <div className="drp-flex drp-items-center drp-justify-between drp-mb-4">
@@ -1234,7 +1132,7 @@ const MailComposeVariant: React.FC = () => (
         </div>
       </div>
     </div>
-    <InboxFooter />
+    <AppFooter />
   </>
 );
 
@@ -1244,7 +1142,7 @@ const MailComposeVariant: React.FC = () => (
 
 const EmptyVariant: React.FC = () => (
   <>
-    <InboxTopBar />
+    <AppTopBar title="Inbox" />
     <div
       className="content"
       style={{
@@ -1365,7 +1263,7 @@ const EmptyVariant: React.FC = () => (
         </button>
       </div>
     </div>
-    <InboxFooter />
+    <AppFooter />
   </>
 );
 

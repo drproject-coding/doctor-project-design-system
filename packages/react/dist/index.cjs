@@ -53,13 +53,18 @@ __export(index_exports, {
   Checkbox: () => Checkbox,
   ContactsList: () => ContactsList,
   Counter: () => Counter,
+  CtaBanner: () => CtaBanner,
   CustomersList: () => CustomersList,
   DashboardLayout: () => DashboardLayout,
   Divider: () => Divider,
+  Dropzone: () => Dropzone,
   EducationCourses: () => EducationCourses,
   EmptyState: () => EmptyState,
+  FeatureList: () => FeatureList,
   Footer: () => Footer,
+  Heading: () => Heading,
   Hero: () => Hero,
+  Icon: () => Icon,
   InboxList: () => InboxList,
   Input: () => Input,
   ListScreen: () => ListScreen,
@@ -84,6 +89,7 @@ __export(index_exports, {
   SignIn: () => SignIn,
   SignUp: () => SignUp,
   Skeleton: () => Skeleton,
+  Spinner: () => Spinner,
   StatCard: () => StatCard,
   StatusDot: () => StatusDot,
   SupportHome: () => SupportHome,
@@ -91,7 +97,10 @@ __export(index_exports, {
   Table: () => Table,
   Tabs: () => Tabs,
   Tag: () => Tag,
+  Testimonial: () => Testimonial,
+  Text: () => Text,
   Textarea: () => Textarea,
+  Toast: () => Toast,
   Tooltip: () => Tooltip,
   TopBar: () => TopBar,
   Topbar: () => Topbar,
@@ -107,13 +116,120 @@ __export(index_exports, {
 });
 module.exports = __toCommonJS(index_exports);
 
-// src/components/Button/Button.tsx
+// src/components/Heading/Heading.tsx
 var import_jsx_runtime = require("react/jsx-runtime");
+function Heading({
+  level = 1,
+  children,
+  uppercase,
+  className = ""
+}) {
+  const Tag2 = `h${level}`;
+  const classes = [`drp-h${level}`, className].filter(Boolean).join(" ");
+  const style = uppercase ? {
+    textTransform: "uppercase",
+    letterSpacing: "var(--drp-tracking-caps)",
+    fontWeight: "var(--drp-weight-heavy)"
+  } : {};
+  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Tag2, { className: classes, style, children });
+}
+
+// src/components/Text/Text.tsx
+var import_jsx_runtime2 = require("react/jsx-runtime");
+function Text({
+  size,
+  weight,
+  muted,
+  secondary,
+  as: Tag2 = "p",
+  children,
+  className = ""
+}) {
+  const classes = [
+    "drp-text",
+    size && size !== "md" && `drp-text--${size}`,
+    weight && weight !== "regular" && `drp-text--${weight}`,
+    className
+  ].filter(Boolean).join(" ");
+  const style = {};
+  if (muted) {
+    style.color = "var(--drp-text-muted)";
+  } else if (secondary) {
+    style.color = "var(--drp-text-secondary)";
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+    Tag2,
+    {
+      className: classes,
+      style: Object.keys(style).length ? style : void 0,
+      children
+    }
+  );
+}
+
+// src/components/Icon/Icon.tsx
+var import_jsx_runtime3 = require("react/jsx-runtime");
+var sizeMap = { sm: 16, md: 20, lg: 24 };
+var iconPaths = {
+  dashboard: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4",
+  analytics: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0h6m2 0v-4a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+  users: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+  orders: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01",
+  products: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
+  settings: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066zM15 12a3 3 0 11-6 0 3 3 0 016 0z",
+  search: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
+  bell: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9",
+  mail: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+  calendar: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
+  check: "M5 13l4 4L19 7",
+  close: "M6 18L18 6M6 6l12 12",
+  plus: "M12 4v16m8-8H4",
+  minus: "M20 12H4",
+  "arrow-left": "M19 12H5m7-7l-7 7 7 7",
+  "arrow-right": "M5 12h14m-7-7l7 7-7 7",
+  "arrow-up": "M12 19V5m-7 7l7-7 7 7",
+  "arrow-down": "M12 5v14m-7-7l7 7 7-7",
+  edit: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
+  trash: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16",
+  eye: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z",
+  "eye-off": "M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L6.59 6.59m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a9.97 9.97 0 01-4.132 5.411m0 0L21 21",
+  filter: "M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z",
+  download: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+};
+function Icon({
+  name,
+  size = "md",
+  color = "currentColor",
+  className = ""
+}) {
+  const px = sizeMap[size];
+  return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
+    "svg",
+    {
+      width: px,
+      height: px,
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: color,
+      strokeWidth: 2,
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      className: className || void 0,
+      "aria-hidden": "true",
+      children: iconPaths[name].split(" M").map((segment, i2) => /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("path", { d: i2 === 0 ? segment : `M${segment}` }, i2))
+    }
+  );
+}
+
+// src/components/Button/Button.tsx
+var import_jsx_runtime4 = require("react/jsx-runtime");
 function Button({
   variant,
   size,
   block,
   icon,
+  iconLeft,
+  iconRight,
   className = "",
   children,
   ...props
@@ -126,53 +242,111 @@ function Button({
     icon && "drp-btn--icon",
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", { className: classes, ...props, children });
+  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("button", { className: classes, ...props, children: [
+    iconLeft && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "drp-btn__icon", children: iconLeft }),
+    children,
+    iconRight && /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("span", { className: "drp-btn__icon", children: iconRight })
+  ] });
 }
 
 // src/components/Input/Input.tsx
-var import_jsx_runtime2 = require("react/jsx-runtime");
+var import_react = require("react");
+var import_jsx_runtime5 = require("react/jsx-runtime");
 function Input({
   label,
   error,
   success,
   className = "",
+  id,
+  spellCheck,
+  type,
   ...props
 }) {
+  const generatedId = (0, import_react.useId)();
+  const inputId = id ?? generatedId;
+  const resolvedSpellCheck = spellCheck ?? (type === "email" || type === "password" ? false : void 0);
   const inputClasses = [
     "drp-input",
     error && "drp-input--error",
     success && "drp-input--success",
     className
   ].filter(Boolean).join(" ");
+  const errorMessage = typeof error === "string" ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("span", { className: "drp-field__error", role: "alert", children: error }) : null;
   if (label) {
-    return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "drp-field", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("label", { className: "drp-field__label", children: label }),
-      /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("input", { className: inputClasses, ...props })
+    return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("div", { className: "drp-field", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("label", { className: "drp-field__label", htmlFor: inputId, children: label }),
+      /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+        "input",
+        {
+          id: inputId,
+          type,
+          className: inputClasses,
+          spellCheck: resolvedSpellCheck,
+          ...props
+        }
+      ),
+      errorMessage
     ] });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)("input", { className: inputClasses, ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)(import_jsx_runtime5.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
+      "input",
+      {
+        id: inputId,
+        type,
+        className: inputClasses,
+        spellCheck: resolvedSpellCheck,
+        ...props
+      }
+    ),
+    errorMessage
+  ] });
 }
 
 // src/components/Select/Select.tsx
-var import_jsx_runtime3 = require("react/jsx-runtime");
+var import_react2 = require("react");
+var import_jsx_runtime6 = require("react/jsx-runtime");
 function Select({
   label,
+  error,
+  success,
   className = "",
   children,
+  id,
   ...props
 }) {
-  const selectEl = /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("select", { className: `drp-select ${className}`, ...props, children });
+  const generatedId = (0, import_react2.useId)();
+  const selectId = id ?? generatedId;
+  const selectEl = /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+    "select",
+    {
+      id: selectId,
+      className: [
+        "drp-select",
+        error && "drp-select--error",
+        success && "drp-select--success",
+        className
+      ].filter(Boolean).join(" "),
+      ...props,
+      children
+    }
+  );
+  const errorMessage = typeof error === "string" ? /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "drp-field__error", role: "alert", children: error }) : null;
   if (label) {
-    return /* @__PURE__ */ (0, import_jsx_runtime3.jsxs)("div", { className: "drp-field", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime3.jsx)("label", { className: "drp-field__label", children: label }),
-      selectEl
+    return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "drp-field", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("label", { className: "drp-field__label", htmlFor: selectId, children: label }),
+      selectEl,
+      errorMessage
     ] });
   }
-  return selectEl;
+  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)(import_jsx_runtime6.Fragment, { children: [
+    selectEl,
+    errorMessage
+  ] });
 }
 
 // src/components/Checkbox/Checkbox.tsx
-var import_jsx_runtime4 = require("react/jsx-runtime");
+var import_jsx_runtime7 = require("react/jsx-runtime");
 function Checkbox({
   label,
   dark,
@@ -180,18 +354,19 @@ function Checkbox({
   ...props
 }) {
   const classes = ["drp-checkbox", dark && "drp-checkbox--dark", className].filter(Boolean).join(" ");
-  return /* @__PURE__ */ (0, import_jsx_runtime4.jsxs)("label", { className: classes, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime4.jsx)("input", { type: "checkbox", ...props }),
+  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("label", { className: classes, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)("input", { type: "checkbox", ...props }),
     label
   ] });
 }
 
 // src/components/Radio/Radio.tsx
-var import_jsx_runtime5 = require("react/jsx-runtime");
+var import_jsx_runtime8 = require("react/jsx-runtime");
 function Radio({
   label,
   color,
   dark,
+  error,
   className = "",
   ...props
 }) {
@@ -199,42 +374,43 @@ function Radio({
     "drp-radio",
     color && `drp-radio--${color}`,
     dark && "drp-radio--dark",
+    error && "drp-radio--error",
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ (0, import_jsx_runtime5.jsxs)("label", { className: classes, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime5.jsx)("input", { type: "radio", ...props }),
+  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("label", { className: classes, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("input", { type: "radio", ...props }),
     label
   ] });
 }
 
 // src/components/Switch/Switch.tsx
-var import_jsx_runtime6 = require("react/jsx-runtime");
+var import_jsx_runtime9 = require("react/jsx-runtime");
 function Switch({ label, ...props }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("label", { className: "drp-switch", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("input", { type: "checkbox", ...props }),
-    /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "drp-switch__track", children: /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { className: "drp-switch__knob" }) }),
-    label && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("span", { children: label })
+  return /* @__PURE__ */ (0, import_jsx_runtime9.jsxs)("label", { className: "drp-switch", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("input", { type: "checkbox", ...props }),
+    /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "drp-switch__track", children: /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: "drp-switch__knob" }) }),
+    label && /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { children: label })
   ] });
 }
 
 // src/components/Counter/Counter.tsx
-var import_react = require("react");
-var import_jsx_runtime7 = require("react/jsx-runtime");
+var import_react3 = require("react");
+var import_jsx_runtime10 = require("react/jsx-runtime");
 function Counter({
   value: controlledValue,
   min = 0,
   max = 99,
   onChange
 }) {
-  const [internalValue, setInternalValue] = (0, import_react.useState)(controlledValue ?? min);
+  const [internalValue, setInternalValue] = (0, import_react3.useState)(controlledValue ?? min);
   const value = controlledValue ?? internalValue;
   const update = (next) => {
     const clamped = Math.min(max, Math.max(min, next));
     setInternalValue(clamped);
     onChange?.(clamped);
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime7.jsxs)("div", { className: "drp-counter", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime10.jsxs)("div", { className: "drp-counter", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
       "button",
       {
         className: "drp-counter__btn",
@@ -243,7 +419,7 @@ function Counter({
         children: "\u2212"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
       "input",
       {
         className: "drp-counter__value",
@@ -255,7 +431,7 @@ function Counter({
         readOnly: true
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime7.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime10.jsx)(
       "button",
       {
         className: "drp-counter__btn",
@@ -268,41 +444,45 @@ function Counter({
 }
 
 // src/components/Tag/Tag.tsx
-var import_jsx_runtime8 = require("react/jsx-runtime");
+var import_jsx_runtime11 = require("react/jsx-runtime");
 function Tag({
   children,
   color,
   filled,
   dark,
   dot,
+  legend,
+  icon,
   closeable,
   onClose,
   className = ""
 }) {
+  const showDot = dot || legend;
   const classes = [
     "drp-tag",
     color && `drp-tag--${color}`,
     filled && "drp-tag--filled",
     dark && "drp-tag--dark",
-    dot && "drp-tag--dot",
+    showDot && "drp-tag--dot",
     closeable && "drp-tag--closeable",
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ (0, import_jsx_runtime8.jsxs)("span", { className: classes, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("span", { className: classes, children: [
+    icon && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { className: "drp-tag__icon", children: icon }),
     children,
-    closeable && /* @__PURE__ */ (0, import_jsx_runtime8.jsx)("button", { className: "drp-tag__close", onClick: onClose, children: "\xD7" })
+    closeable && /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("button", { className: "drp-tag__close", onClick: onClose, children: "\xD7" })
   ] });
 }
 
 // src/components/Badge/Badge.tsx
-var import_jsx_runtime9 = require("react/jsx-runtime");
+var import_jsx_runtime12 = require("react/jsx-runtime");
 function Badge({ children, variant, className = "" }) {
   const classes = ["drp-badge", variant && `drp-badge--${variant}`, className].filter(Boolean).join(" ");
-  return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)("span", { className: classes, children });
+  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("span", { className: classes, children });
 }
 
 // src/components/StatusDot/StatusDot.tsx
-var import_jsx_runtime10 = require("react/jsx-runtime");
+var import_jsx_runtime13 = require("react/jsx-runtime");
 function StatusDot({ color, pulse, className = "" }) {
   const classes = [
     "drp-dot",
@@ -310,11 +490,11 @@ function StatusDot({ color, pulse, className = "" }) {
     pulse && "drp-dot--pulse",
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ (0, import_jsx_runtime10.jsx)("span", { className: classes });
+  return /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: classes });
 }
 
 // src/components/ProgressBar/ProgressBar.tsx
-var import_jsx_runtime11 = require("react/jsx-runtime");
+var import_jsx_runtime14 = require("react/jsx-runtime");
 function ProgressBar({
   value,
   color,
@@ -328,7 +508,7 @@ function ProgressBar({
     size && `drp-progress--${size}`,
     className
   ].filter(Boolean).join(" ");
-  const bar = /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("div", { className: progressClasses, children: /* @__PURE__ */ (0, import_jsx_runtime11.jsx)(
+  const bar = /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: progressClasses, children: /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
     "div",
     {
       className: "drp-progress__bar",
@@ -336,10 +516,10 @@ function ProgressBar({
     }
   ) });
   if (label) {
-    return /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "drp-progress-group", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("div", { className: "drp-progress-group__label", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsx)("span", { children: label }),
-        /* @__PURE__ */ (0, import_jsx_runtime11.jsxs)("span", { children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "drp-progress-group", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "drp-progress-group__label", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("span", { children: label }),
+        /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("span", { children: [
           value,
           "%"
         ] })
@@ -351,7 +531,7 @@ function ProgressBar({
 }
 
 // src/components/Avatar/Avatar.tsx
-var import_jsx_runtime12 = require("react/jsx-runtime");
+var import_jsx_runtime15 = require("react/jsx-runtime");
 function Avatar({
   src,
   alt = "",
@@ -361,9 +541,9 @@ function Avatar({
 }) {
   const classes = ["drp-avatar", size && `drp-avatar--${size}`, className].filter(Boolean).join(" ");
   if (src) {
-    return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)("img", { className: classes, src, alt });
+    return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("img", { className: classes, src, alt });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime12.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
     "div",
     {
       className: classes,
@@ -383,16 +563,16 @@ function Avatar({
 }
 
 // src/components/Tooltip/Tooltip.tsx
-var import_jsx_runtime13 = require("react/jsx-runtime");
+var import_jsx_runtime16 = require("react/jsx-runtime");
 function Tooltip({ text, children, className = "" }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime13.jsxs)("span", { className: `drp-tooltip ${className}`, children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("span", { className: `drp-tooltip ${className}`, children: [
     children,
-    /* @__PURE__ */ (0, import_jsx_runtime13.jsx)("span", { className: "drp-tooltip-text", children: text })
+    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("span", { className: "drp-tooltip-text", children: text })
   ] });
 }
 
 // src/components/Card/Card.tsx
-var import_jsx_runtime14 = require("react/jsx-runtime");
+var import_jsx_runtime17 = require("react/jsx-runtime");
 function Card({
   variant,
   accent,
@@ -406,48 +586,113 @@ function Card({
     accent && `drp-card--${accent}`,
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("div", { className: classes, ...props, children });
+  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: classes, ...props, children });
 }
 function CardHeader({ title, subtitle, action }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { className: "drp-card__header", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("h3", { className: "drp-card__title", children: title }),
-      subtitle && /* @__PURE__ */ (0, import_jsx_runtime14.jsx)("p", { className: "drp-card__subtitle", children: subtitle })
+  return /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { className: "drp-card__header", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime17.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("h3", { className: "drp-card__title", children: title }),
+      subtitle && /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("p", { className: "drp-card__subtitle", children: subtitle })
     ] }),
     action
   ] });
 }
 
 // src/components/Table/Table.tsx
-var import_jsx_runtime15 = require("react/jsx-runtime");
+var import_jsx_runtime18 = require("react/jsx-runtime");
 function Table({
   columns,
   data,
-  className = ""
+  className = "",
+  "aria-label": ariaLabel,
+  caption
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("div", { className: "drp-table-scroll", children: /* @__PURE__ */ (0, import_jsx_runtime15.jsxs)("table", { className: `drp-table ${className}`, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("tr", { children: columns.map((col) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("th", { children: col.header }, col.key)) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("tbody", { children: data.map((row, i2) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("tr", { children: columns.map((col) => /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("td", { children: col.render ? col.render(row) : String(row[col.key] ?? "") }, col.key)) }, i2)) })
+  return /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("div", { className: "drp-table-scroll", style: { overflowX: "auto" }, children: /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("table", { className: `drp-table ${className}`, "aria-label": ariaLabel, children: [
+    caption && /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("caption", { children: caption }),
+    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("tr", { children: columns.map((col) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("th", { scope: "col", children: col.header }, col.key)) }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("tbody", { children: data.map((row, i2) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("tr", { children: columns.map((col) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)("td", { children: col.render ? col.render(row) : String(row[col.key] ?? "") }, col.key)) }, i2)) })
   ] }) });
 }
 
 // src/components/Modal/Modal.tsx
-var import_jsx_runtime16 = require("react/jsx-runtime");
+var import_react4 = require("react");
+var import_jsx_runtime19 = require("react/jsx-runtime");
+var FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 function Modal({ open, onClose, title, children, footer }) {
+  const titleId = (0, import_react4.useId)();
+  const modalRef = (0, import_react4.useRef)(null);
+  const previousFocusRef = (0, import_react4.useRef)(null);
+  (0, import_react4.useEffect)(() => {
+    if (!open) return;
+    previousFocusRef.current = document.activeElement;
+    const timer = setTimeout(() => {
+      const focusable = modalRef.current?.querySelectorAll(FOCUSABLE_SELECTOR);
+      if (focusable && focusable.length > 0) {
+        focusable[0].focus();
+      }
+    }, 0);
+    return () => {
+      clearTimeout(timer);
+      previousFocusRef.current?.focus();
+    };
+  }, [open]);
   if (!open) return null;
-  return /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "drp-overlay", onClick: onClose, children: /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "drp-modal", onClick: (e2) => e2.stopPropagation(), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsxs)("div", { className: "drp-modal__header", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("h2", { className: "drp-modal__title", children: title }),
-      /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("button", { className: "drp-modal__close", onClick: onClose, children: "\xD7" })
-    ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "drp-modal__body", children }),
-    footer && /* @__PURE__ */ (0, import_jsx_runtime16.jsx)("div", { className: "drp-modal__footer", children: footer })
-  ] }) });
+  const handleKeyDown = (e2) => {
+    if (e2.key === "Escape") {
+      onClose();
+      return;
+    }
+    if (e2.key === "Tab") {
+      const focusable = modalRef.current?.querySelectorAll(FOCUSABLE_SELECTOR);
+      if (!focusable || focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e2.shiftKey) {
+        if (document.activeElement === first) {
+          e2.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e2.preventDefault();
+          first.focus();
+        }
+      }
+    }
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "drp-overlay", onClick: onClose, children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
+    "div",
+    {
+      className: "drp-modal",
+      ref: modalRef,
+      role: "dialog",
+      "aria-modal": "true",
+      "aria-labelledby": titleId,
+      onClick: (e2) => e2.stopPropagation(),
+      onKeyDown: handleKeyDown,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "drp-modal__header", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h2", { className: "drp-modal__title", id: titleId, children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+            "button",
+            {
+              className: "drp-modal__close",
+              onClick: onClose,
+              "aria-label": "Close",
+              children: "\xD7"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "drp-modal__body", children }),
+        footer && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "drp-modal__footer", children: footer })
+      ]
+    }
+  ) });
 }
 
 // src/components/Tabs/Tabs.tsx
-var import_react2 = require("react");
-var import_jsx_runtime17 = require("react/jsx-runtime");
+var import_react5 = require("react");
+var import_jsx_runtime20 = require("react/jsx-runtime");
 function Tabs({
   items,
   activeKey,
@@ -455,14 +700,14 @@ function Tabs({
   variant,
   className = ""
 }) {
-  const [internalKey, setInternalKey] = (0, import_react2.useState)(items[0]?.key);
+  const [internalKey, setInternalKey] = (0, import_react5.useState)(items[0]?.key);
   const current = activeKey ?? internalKey;
   const containerClasses = [
     "drp-tabs",
     variant && `drp-tabs--${variant}`,
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ (0, import_jsx_runtime17.jsx)("div", { className: containerClasses, children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime17.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: containerClasses, children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
     "button",
     {
       className: `drp-tab ${current === item.key ? "drp-tab--active" : ""}`,
@@ -477,7 +722,7 @@ function Tabs({
 }
 
 // src/components/Pagination/Pagination.tsx
-var import_jsx_runtime18 = require("react/jsx-runtime");
+var import_jsx_runtime21 = require("react/jsx-runtime");
 function Pagination({
   currentPage,
   totalPages,
@@ -491,8 +736,8 @@ function Pagination({
     className
   ].filter(Boolean).join(" ");
   const pages = Array.from({ length: totalPages }, (_3, i2) => i2 + 1);
-  return /* @__PURE__ */ (0, import_jsx_runtime18.jsxs)("div", { className: containerClasses, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: containerClasses, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
       "button",
       {
         className: "drp-pagination__btn",
@@ -501,7 +746,7 @@ function Pagination({
         children: "\u2039"
       }
     ),
-    pages.map((page) => /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+    pages.map((page) => /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
       "button",
       {
         className: `drp-pagination__page ${page === currentPage ? "drp-pagination__page--active" : ""}`,
@@ -510,7 +755,7 @@ function Pagination({
       },
       page
     )),
-    /* @__PURE__ */ (0, import_jsx_runtime18.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
       "button",
       {
         className: "drp-pagination__btn",
@@ -523,23 +768,23 @@ function Pagination({
 }
 
 // src/components/Layout/Layout.tsx
-var import_jsx_runtime19 = require("react/jsx-runtime");
+var import_jsx_runtime22 = require("react/jsx-runtime");
 function AppShell({ sidebar, topbar, children, footer }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "drp-app", children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "app-layout", children: [
     sidebar,
-    /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "drp-main-wrapper", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "main-content", children: [
       topbar,
-      /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("main", { className: "drp-main", children }),
-      footer && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("footer", { className: "drp-footer", children: footer })
+      /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("main", { children }),
+      footer && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("footer", { className: "footer-bar", children: footer })
     ] })
   ] });
 }
 function Topbar({ children }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("header", { className: "drp-topbar", children });
+  return /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("header", { className: "topbar", children });
 }
 
 // src/components/TopBar/TopBar.tsx
-var import_jsx_runtime20 = require("react/jsx-runtime");
+var import_jsx_runtime23 = require("react/jsx-runtime");
 var TopBar = ({
   title,
   actions,
@@ -547,26 +792,26 @@ var TopBar = ({
   onMenuClick,
   className = ""
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("header", { className: `topbar ${className}`, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime20.jsxs)("div", { className: "topbar-left", children: [
-      menuButton && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("button", { className: "topbar-menu-btn", onClick: onMenuClick, children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("header", { className: `topbar ${className}`, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("div", { className: "topbar-left", children: [
+      menuButton && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("button", { className: "topbar-menu-btn", onClick: onMenuClick, children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)(
         "svg",
         {
           viewBox: "0 0 24 24",
           fill: "none",
           stroke: "currentColor",
           strokeWidth: 2,
-          children: /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("path", { d: "M3 12h18M3 6h18M3 18h18" })
+          children: /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("path", { d: "M3 12h18M3 6h18M3 18h18" })
         }
       ) }),
-      title && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("h1", { className: "topbar-title", children: title })
+      title && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("h1", { className: "topbar-title", children: title })
     ] }),
-    actions && /* @__PURE__ */ (0, import_jsx_runtime20.jsx)("div", { className: "topbar-right", children: actions })
+    actions && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "topbar-right", children: actions })
   ] });
 };
 
 // src/components/Sidebar/Sidebar.tsx
-var import_jsx_runtime21 = require("react/jsx-runtime");
+var import_jsx_runtime24 = require("react/jsx-runtime");
 var Sidebar = ({
   brandName = "Doctor Project",
   sections = [],
@@ -577,14 +822,14 @@ var Sidebar = ({
   className = ""
 }) => {
   const sidebarClass = ["sidebar", collapsed && "collapsed", className].filter(Boolean).join(" ");
-  return /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("aside", { className: sidebarClass, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "sidebar-brand", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "sidebar-brand-name", children: brandName }),
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "sidebar-brand-dot" })
+  return /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("aside", { className: sidebarClass, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sidebar-brand", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "sidebar-brand-name", children: brandName }),
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "sidebar-brand-dot" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("nav", { className: "sidebar-nav", children: sections.map((section, sIdx) => /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "sidebar-nav-label", children: section.label }),
-      section.items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("nav", { className: "sidebar-nav", children: sections.map((section, sIdx) => /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "sidebar-nav-label", children: section.label }),
+      section.items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)(
         "a",
         {
           className: `sidebar-nav-item${item.active ? " active" : ""}`,
@@ -595,9 +840,9 @@ var Sidebar = ({
             onItemClick?.(item.id);
           },
           children: [
-            item.icon && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "sidebar-nav-icon", children: item.icon }),
-            /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-            item.badge !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime21.jsx)(
+            item.icon && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "sidebar-nav-icon", children: item.icon }),
+            /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+            item.badge !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)(
               "span",
               {
                 className: `sidebar-badge sidebar-badge--${item.badgeVariant || "purple"}`,
@@ -609,59 +854,59 @@ var Sidebar = ({
         item.id
       ))
     ] }, sIdx)) }),
-    teamMembers.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "sidebar-team-label", children: teamLabel }),
-      teamMembers.map((member, idx) => /* @__PURE__ */ (0, import_jsx_runtime21.jsxs)("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("div", { className: "sidebar-avatar", children: member.avatar ? /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("img", { src: member.avatar, alt: member.name }) : member.initials || member.name.charAt(0).toUpperCase() }),
-        /* @__PURE__ */ (0, import_jsx_runtime21.jsx)("span", { className: "sidebar-team-name", children: member.name })
+    teamMembers.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "sidebar-team-label", children: teamLabel }),
+      teamMembers.map((member, idx) => /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("div", { className: "sidebar-avatar", children: member.avatar ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("img", { src: member.avatar, alt: member.name }) : member.initials || member.name.charAt(0).toUpperCase() }),
+        /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "sidebar-team-name", children: member.name })
       ] }, idx))
     ] })
   ] });
 };
 
 // src/components/Layout/DashboardLayout.tsx
-var import_jsx_runtime22 = require("react/jsx-runtime");
+var import_jsx_runtime25 = require("react/jsx-runtime");
 var DashboardLayout = ({
   children,
   sidebarProps,
   topBarProps,
   showSidebar = true
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "app-layout", children: [
-    showSidebar && sidebarProps && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(Sidebar, { ...sidebarProps }),
-    /* @__PURE__ */ (0, import_jsx_runtime22.jsxs)("div", { className: "main-content", children: [
-      topBarProps && /* @__PURE__ */ (0, import_jsx_runtime22.jsx)(TopBar, { ...topBarProps }),
-      /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime22.jsx)("div", { className: "container", children }) })
+  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "app-layout", children: [
+    showSidebar && sidebarProps && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(Sidebar, { ...sidebarProps }),
+    /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "main-content", children: [
+      topBarProps && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(TopBar, { ...topBarProps }),
+      /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "container", children }) })
     ] })
   ] });
 };
 
 // src/components/Navbar/Navbar.tsx
-var import_jsx_runtime23 = require("react/jsx-runtime");
+var import_jsx_runtime26 = require("react/jsx-runtime");
 function Navbar({
   brand,
   children,
   actions,
   className = ""
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime23.jsxs)("nav", { className: `drp-navbar ${className}`, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "drp-navbar__brand", children: brand }),
-    /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "drp-navbar__links", children }),
-    actions && /* @__PURE__ */ (0, import_jsx_runtime23.jsx)("div", { className: "drp-navbar__actions", children: actions })
+  return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("nav", { className: `drp-navbar ${className}`, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "drp-navbar__brand", children: brand }),
+    /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "drp-navbar__links", children }),
+    actions && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "drp-navbar__actions", children: actions })
   ] });
 }
 
 // src/components/Breadcrumbs/Breadcrumbs.tsx
-var import_jsx_runtime24 = require("react/jsx-runtime");
+var import_jsx_runtime27 = require("react/jsx-runtime");
 function Breadcrumbs({ items, className = "" }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("nav", { className: `drp-breadcrumbs ${className}`, children: items.map((item, i2) => /* @__PURE__ */ (0, import_jsx_runtime24.jsxs)("span", { children: [
-    i2 > 0 && /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "drp-breadcrumbs__sep", children: "/" }),
-    item.href ? /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("a", { className: "drp-breadcrumbs__link", href: item.href, children: item.label }) : /* @__PURE__ */ (0, import_jsx_runtime24.jsx)("span", { className: "drp-breadcrumbs__current", children: item.label })
+  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("nav", { className: `drp-breadcrumbs ${className}`, children: items.map((item, i2) => /* @__PURE__ */ (0, import_jsx_runtime27.jsxs)("span", { children: [
+    i2 > 0 && /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: "drp-breadcrumbs__sep", children: "/" }),
+    item.href ? /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("a", { className: "drp-breadcrumbs__link", href: item.href, children: item.label }) : /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: "drp-breadcrumbs__current", children: item.label })
   ] }, i2)) });
 }
 
 // src/components/Chart/ChartCard.tsx
-var import_jsx_runtime25 = require("react/jsx-runtime");
+var import_jsx_runtime28 = require("react/jsx-runtime");
 function ChartCard({
   title,
   subtitle,
@@ -676,21 +921,21 @@ function ChartCard({
     "drp-chart-container",
     size && `drp-chart-container--${size}`
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: containerClasses, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "drp-chart-header", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("h3", { className: "drp-card__title", children: title }),
-        subtitle && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("p", { className: "drp-card__subtitle", children: subtitle })
+  return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: containerClasses, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { className: "drp-chart-header", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("h3", { className: "drp-card__title", children: title }),
+        subtitle && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("p", { className: "drp-card__subtitle", children: subtitle })
       ] }),
       action
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: bodyClasses, children }),
-    legend && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "drp-chart-legend", children: legend })
+    /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: bodyClasses, children }),
+    legend && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("div", { className: "drp-chart-legend", children: legend })
   ] });
 }
 
 // src/components/Hero/Hero.tsx
-var import_jsx_runtime26 = require("react/jsx-runtime");
+var import_jsx_runtime29 = require("react/jsx-runtime");
 function Hero({
   badge,
   title,
@@ -699,19 +944,19 @@ function Hero({
   visual,
   className = ""
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("section", { className: `drp-hero ${className}`, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)("div", { className: "drp-hero__content", children: [
-      badge && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "drp-hero__badge", children: badge }),
-      /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("h1", { className: "drp-hero__title", children: title }),
-      subtitle && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("p", { className: "drp-hero__subtitle", children: subtitle }),
-      actions && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "drp-hero__actions", children: actions })
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("section", { className: `drp-hero ${className}`, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)("div", { className: "drp-hero__content", children: [
+      badge && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: "drp-hero__badge", children: badge }),
+      /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("h1", { className: "drp-hero__title", children: title }),
+      subtitle && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("p", { className: "drp-hero__subtitle", children: subtitle }),
+      actions && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: "drp-hero__actions", children: actions })
     ] }),
-    visual && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("div", { className: "drp-hero__visual", children: visual })
+    visual && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)("div", { className: "drp-hero__visual", children: visual })
   ] });
 }
 
 // src/components/Marquee/Marquee.tsx
-var import_jsx_runtime27 = require("react/jsx-runtime");
+var import_jsx_runtime30 = require("react/jsx-runtime");
 function Marquee({
   items,
   separator = "+++",
@@ -722,20 +967,20 @@ function Marquee({
     (item, i2) => i2 < items.length - 1 ? [item, separator] : [item]
   );
   const doubled = [...track, ...track];
-  return /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("div", { className: `drp-marquee ${className}`, children: /* @__PURE__ */ (0, import_jsx_runtime27.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("div", { className: `drp-marquee ${className}`, children: /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
     "div",
     {
       className: "drp-marquee__track",
       style: { animationDuration: `${speed}s` },
-      children: doubled.map((text, i2) => /* @__PURE__ */ (0, import_jsx_runtime27.jsx)("span", { className: "drp-marquee__item", children: text }, i2))
+      children: doubled.map((text, i2) => /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("span", { className: "drp-marquee__item", children: text }, i2))
     }
   ) });
 }
 
 // src/components/StatCard/StatCard.tsx
-var import_jsx_runtime28 = require("react/jsx-runtime");
+var import_jsx_runtime31 = require("react/jsx-runtime");
 function StatCard({ value, label, className = "" }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime28.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
     "div",
     {
       className: `drp-stat-card ${className}`,
@@ -746,7 +991,7 @@ function StatCard({ value, label, className = "" }) {
         background: "var(--drp-surface)"
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
           "p",
           {
             style: {
@@ -759,7 +1004,7 @@ function StatCard({ value, label, className = "" }) {
             children: value
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
           "p",
           {
             style: {
@@ -779,7 +1024,7 @@ function StatCard({ value, label, className = "" }) {
 }
 
 // src/components/PricingCard/PricingCard.tsx
-var import_jsx_runtime29 = require("react/jsx-runtime");
+var import_jsx_runtime32 = require("react/jsx-runtime");
 function PricingCard({
   title,
   price,
@@ -795,7 +1040,7 @@ function PricingCard({
     featured && "drp-pricing--featured",
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(
     "div",
     {
       className: classes,
@@ -808,7 +1053,7 @@ function PricingCard({
         position: "relative"
       },
       children: [
-        badge && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+        badge && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
           "div",
           {
             style: {
@@ -828,7 +1073,7 @@ function PricingCard({
             children: badge
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
           "p",
           {
             style: {
@@ -842,7 +1087,7 @@ function PricingCard({
             children: title
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
           "p",
           {
             style: {
@@ -854,7 +1099,7 @@ function PricingCard({
             children: price
           }
         ),
-        period && /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+        period && /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
           "p",
           {
             style: {
@@ -866,7 +1111,7 @@ function PricingCard({
             children: period
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
           "ul",
           {
             style: {
@@ -875,7 +1120,7 @@ function PricingCard({
               marginBottom: "24px",
               padding: 0
             },
-            children: features.map((f3, i2) => /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(
+            children: features.map((f3, i2) => /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(
               "li",
               {
                 style: {
@@ -888,7 +1133,7 @@ function PricingCard({
                   gap: "8px"
                 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime32.jsx)(
                     "span",
                     {
                       style: {
@@ -912,7 +1157,7 @@ function PricingCard({
 }
 
 // src/components/CaseCard/CaseCard.tsx
-var import_jsx_runtime30 = require("react/jsx-runtime");
+var import_jsx_runtime33 = require("react/jsx-runtime");
 function CaseCard({
   image,
   imageLabel,
@@ -923,7 +1168,7 @@ function CaseCard({
   description,
   className = ""
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(
     "div",
     {
       className,
@@ -933,7 +1178,7 @@ function CaseCard({
         overflow: "hidden"
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
           "div",
           {
             style: {
@@ -951,8 +1196,8 @@ function CaseCard({
             children: image || imageLabel
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)("div", { style: { padding: "var(--drp-space-6)" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)("div", { style: { padding: "var(--drp-space-6)" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
             "p",
             {
               style: {
@@ -965,8 +1210,8 @@ function CaseCard({
               children: stat
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("p", { style: { fontSize: "13px", marginBottom: "16px" }, children: statLabel }),
-          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("p", { style: { fontSize: "13px", marginBottom: "16px" }, children: statLabel }),
+          /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
             "h3",
             {
               style: {
@@ -978,7 +1223,7 @@ function CaseCard({
               children: title
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime30.jsx)("p", { style: { fontSize: "13px", color: "#666", lineHeight: 1.6 }, children: description })
+          /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("p", { style: { fontSize: "13px", color: "#666", lineHeight: 1.6 }, children: description })
         ] })
       ]
     }
@@ -986,7 +1231,7 @@ function CaseCard({
 }
 
 // src/components/Footer/Footer.tsx
-var import_jsx_runtime31 = require("react/jsx-runtime");
+var import_jsx_runtime34 = require("react/jsx-runtime");
 function Footer({
   brand,
   tagline,
@@ -995,7 +1240,7 @@ function Footer({
   bottomLinks,
   className = ""
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
     "footer",
     {
       className,
@@ -1005,8 +1250,8 @@ function Footer({
         padding: "var(--drp-space-16, 64px) 0",
         borderTop: "3px solid var(--drp-purple)"
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { style: { maxWidth: "1440px", margin: "0 auto", padding: "0 24px" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)("div", { style: { maxWidth: "1440px", margin: "0 auto", padding: "0 24px" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(
           "div",
           {
             style: {
@@ -1015,8 +1260,8 @@ function Footer({
               gap: "32px"
             },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
                   "p",
                   {
                     style: {
@@ -1028,10 +1273,10 @@ function Footer({
                     children: brand
                   }
                 ),
-                tagline && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("p", { style: { fontSize: "13px", opacity: 0.7, maxWidth: "300px" }, children: tagline })
+                tagline && /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("p", { style: { fontSize: "13px", opacity: 0.7, maxWidth: "300px" }, children: tagline })
               ] }),
-              columns.map((col) => /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)("div", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+              columns.map((col) => /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
                   "p",
                   {
                     style: {
@@ -1046,7 +1291,7 @@ function Footer({
                     children: col.title
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
                   "ul",
                   {
                     style: {
@@ -1056,7 +1301,7 @@ function Footer({
                       flexDirection: "column",
                       gap: "8px"
                     },
-                    children: col.links.map((link) => /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+                    children: col.links.map((link) => /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
                       "a",
                       {
                         href: link.href,
@@ -1075,7 +1320,7 @@ function Footer({
             ]
           }
         ),
-        (copyright || bottomLinks) && /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
+        (copyright || bottomLinks) && /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(
           "div",
           {
             style: {
@@ -1087,7 +1332,7 @@ function Footer({
               alignItems: "center"
             },
             children: [
-              copyright && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+              copyright && /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
                 "p",
                 {
                   style: {
@@ -1098,7 +1343,7 @@ function Footer({
                   children: copyright
                 }
               ),
-              bottomLinks && /* @__PURE__ */ (0, import_jsx_runtime31.jsx)("div", { style: { display: "flex", gap: "16px" }, children: bottomLinks.map((link) => /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+              bottomLinks && /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("div", { style: { display: "flex", gap: "16px" }, children: bottomLinks.map((link) => /* @__PURE__ */ (0, import_jsx_runtime34.jsx)(
                 "a",
                 {
                   href: link.href,
@@ -1121,41 +1366,50 @@ function Footer({
 }
 
 // src/components/Textarea/Textarea.tsx
-var import_jsx_runtime32 = require("react/jsx-runtime");
+var import_react6 = require("react");
+var import_jsx_runtime35 = require("react/jsx-runtime");
 function Textarea({
   label,
   error,
   success,
   className = "",
+  id,
   ...props
 }) {
+  const generatedId = (0, import_react6.useId)();
+  const inputId = id ?? generatedId;
   const classes = [
     "drp-input",
     error && "drp-input--error",
     success && "drp-input--success",
     className
   ].filter(Boolean).join(" ");
+  const errorMessage = typeof error === "string" ? /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("span", { className: "drp-field__error", role: "alert", children: error }) : null;
   if (label) {
-    return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)("div", { className: "drp-field", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("label", { className: "drp-field__label", children: label }),
-      /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("textarea", { className: classes, ...props })
+    return /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)("div", { className: "drp-field", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("label", { className: "drp-field__label", htmlFor: inputId, children: label }),
+      /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("textarea", { id: inputId, className: classes, ...props }),
+      errorMessage
     ] });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("textarea", { className: classes, ...props });
+  return /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(import_jsx_runtime35.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("textarea", { id: inputId, className: classes, ...props }),
+    errorMessage
+  ] });
 }
 
 // src/components/Loader/Loader.tsx
-var import_jsx_runtime33 = require("react/jsx-runtime");
+var import_jsx_runtime36 = require("react/jsx-runtime");
 function Loader({ size, label, className = "" }) {
   const dimension = size === "sm" ? 20 : size === "lg" ? 48 : 32;
   const borderWidth = size === "sm" ? 2 : size === "lg" ? 4 : 3;
-  return /* @__PURE__ */ (0, import_jsx_runtime33.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime36.jsxs)(
     "div",
     {
       className,
       style: { display: "inline-flex", alignItems: "center", gap: "12px" },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
           "div",
           {
             style: {
@@ -1167,7 +1421,7 @@ function Loader({ size, label, className = "" }) {
             }
           }
         ),
-        label && /* @__PURE__ */ (0, import_jsx_runtime33.jsx)(
+        label && /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
           "span",
           {
             style: {
@@ -1180,14 +1434,14 @@ function Loader({ size, label, className = "" }) {
             children: label
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime33.jsx)("style", { children: `@keyframes drp-spin { to { transform: rotate(360deg); } }` })
+        /* @__PURE__ */ (0, import_jsx_runtime36.jsx)("style", { children: `@keyframes drp-spin { to { transform: rotate(360deg); } }` })
       ]
     }
   );
 }
 
 // src/components/Skeleton/Skeleton.tsx
-var import_jsx_runtime34 = require("react/jsx-runtime");
+var import_jsx_runtime37 = require("react/jsx-runtime");
 function Skeleton({
   width,
   height,
@@ -1214,14 +1468,14 @@ function Skeleton({
       height: height || "120px"
     });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime34.jsxs)(import_jsx_runtime34.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("div", { className, style: baseStyle }),
-    /* @__PURE__ */ (0, import_jsx_runtime34.jsx)("style", { children: `@keyframes drp-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }` })
+  return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(import_jsx_runtime37.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("div", { className, style: baseStyle }),
+    /* @__PURE__ */ (0, import_jsx_runtime37.jsx)("style", { children: `@keyframes drp-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }` })
   ] });
 }
 
 // src/components/Alert/Alert.tsx
-var import_jsx_runtime35 = require("react/jsx-runtime");
+var import_jsx_runtime38 = require("react/jsx-runtime");
 var variantStyles = {
   info: {
     bg: "rgba(0,102,255,0.08)",
@@ -1244,9 +1498,10 @@ function Alert({
   className = ""
 }) {
   const styles = variantStyles[variant];
-  return /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
     "div",
     {
+      role: "alert",
       className,
       style: {
         padding: "16px 20px",
@@ -1258,9 +1513,16 @@ function Alert({
         alignItems: "flex-start"
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("span", { style: { fontWeight: 700, fontSize: "16px", flexShrink: 0 }, children: styles.icon }),
-        /* @__PURE__ */ (0, import_jsx_runtime35.jsxs)("div", { style: { flex: 1 }, children: [
-          title && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+          "span",
+          {
+            style: { fontWeight: 700, fontSize: "16px", flexShrink: 0 },
+            "aria-hidden": "true",
+            children: styles.icon
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { style: { flex: 1 }, children: [
+          title && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
             "p",
             {
               style: {
@@ -1273,12 +1535,13 @@ function Alert({
               children: title
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime35.jsx)("div", { style: { fontSize: "13px", lineHeight: 1.5 }, children })
+          /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { style: { fontSize: "13px", lineHeight: 1.5 }, children })
         ] }),
-        onClose && /* @__PURE__ */ (0, import_jsx_runtime35.jsx)(
+        onClose && /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
           "button",
           {
             onClick: onClose,
+            "aria-label": "Close alert",
             style: {
               background: "none",
               border: "none",
@@ -1297,7 +1560,7 @@ function Alert({
 }
 
 // src/components/EmptyState/EmptyState.tsx
-var import_jsx_runtime36 = require("react/jsx-runtime");
+var import_jsx_runtime39 = require("react/jsx-runtime");
 function EmptyState({
   icon = "\u2205",
   title,
@@ -1305,7 +1568,7 @@ function EmptyState({
   action,
   className = ""
 }) {
-  return /* @__PURE__ */ (0, import_jsx_runtime36.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
     "div",
     {
       className: `drp-empty ${className}`,
@@ -1315,7 +1578,7 @@ function EmptyState({
         border: "2px dashed rgba(0,0,0,0.2)"
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
           "div",
           {
             style: {
@@ -1328,7 +1591,7 @@ function EmptyState({
             children: icon
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
           "h3",
           {
             style: {
@@ -1341,7 +1604,7 @@ function EmptyState({
             children: title
           }
         ),
-        description && /* @__PURE__ */ (0, import_jsx_runtime36.jsx)(
+        description && /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
           "p",
           {
             style: {
@@ -1360,10 +1623,10 @@ function EmptyState({
 }
 
 // src/components/Divider/Divider.tsx
-var import_jsx_runtime37 = require("react/jsx-runtime");
+var import_jsx_runtime40 = require("react/jsx-runtime");
 function Divider({ label, className = "" }) {
   if (label) {
-    return /* @__PURE__ */ (0, import_jsx_runtime37.jsxs)(
+    return /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
       "div",
       {
         className: `drp-divider ${className}`,
@@ -1373,13 +1636,13 @@ function Divider({ label, className = "" }) {
           gap: "16px"
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
             "div",
             {
               style: { flex: 1, height: "2px", background: "var(--drp-black)" }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
             "span",
             {
               style: {
@@ -1393,7 +1656,7 @@ function Divider({ label, className = "" }) {
               children: label
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
             "div",
             {
               style: { flex: 1, height: "2px", background: "var(--drp-black)" }
@@ -1403,7 +1666,7 @@ function Divider({ label, className = "" }) {
       }
     );
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime37.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
     "hr",
     {
       className: `drp-divider ${className}`,
@@ -1417,12 +1680,162 @@ function Divider({ label, className = "" }) {
   );
 }
 
+// src/components/Testimonial/Testimonial.tsx
+var import_jsx_runtime41 = require("react/jsx-runtime");
+function Testimonial({
+  quote,
+  name,
+  role,
+  avatar,
+  className = ""
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: ["drp-testimonial", className].filter(Boolean).join(" "), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { className: "drp-testimonial__quote", children: quote }),
+    /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "drp-testimonial__author", children: [
+      avatar && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: "drp-testimonial__avatar", children: avatar }),
+      /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: "drp-testimonial__name", children: name }),
+        role && /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: "drp-testimonial__role", children: role })
+      ] })
+    ] })
+  ] });
+}
+
+// src/components/Spinner/Spinner.tsx
+var import_jsx_runtime42 = require("react/jsx-runtime");
+function Spinner({ className = "" }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime42.jsx)(
+    "div",
+    {
+      className: ["drp-spinner", className].filter(Boolean).join(" "),
+      role: "status",
+      "aria-label": "Loading"
+    }
+  );
+}
+
+// src/components/Toast/Toast.tsx
+var import_jsx_runtime43 = require("react/jsx-runtime");
+function Toast({ variant, message, icon, className = "" }) {
+  const classes = [
+    "drp-toast",
+    variant ? `drp-toast--${variant}` : "",
+    className
+  ].filter(Boolean).join(" ");
+  return /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)("div", { className: classes, role: "status", children: [
+    icon && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: icon }),
+    /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("span", { children: message })
+  ] });
+}
+
+// src/components/Dropzone/Dropzone.tsx
+var import_react7 = require("react");
+var import_jsx_runtime44 = require("react/jsx-runtime");
+function Dropzone({
+  onFiles,
+  accept,
+  hint = "PNG, JPG, PDF up to 10MB",
+  icon = "\u2191",
+  className = "",
+  "aria-label": ariaLabel = "Upload file"
+}) {
+  const [active, setActive] = (0, import_react7.useState)(false);
+  const inputRef = (0, import_react7.useRef)(null);
+  function handleDragOver(e2) {
+    e2.preventDefault();
+    setActive(true);
+  }
+  function handleDragLeave() {
+    setActive(false);
+  }
+  function handleDrop(e2) {
+    e2.preventDefault();
+    setActive(false);
+    const files = Array.from(e2.dataTransfer.files);
+    if (files.length) onFiles?.(files);
+  }
+  function handleChange(e2) {
+    const files = Array.from(e2.target.files ?? []);
+    if (files.length) onFiles?.(files);
+  }
+  function handleKeyDown(e2) {
+    if (e2.key === "Enter" || e2.key === " ") {
+      e2.preventDefault();
+      inputRef.current?.click();
+    }
+  }
+  const classes = [
+    "drp-dropzone",
+    active ? "drp-dropzone--active" : "",
+    className
+  ].filter(Boolean).join(" ");
+  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+    "div",
+    {
+      className: classes,
+      role: "button",
+      tabIndex: 0,
+      "aria-label": ariaLabel,
+      onDragOver: handleDragOver,
+      onDragLeave: handleDragLeave,
+      onDrop: handleDrop,
+      onClick: () => inputRef.current?.click(),
+      onKeyDown: handleKeyDown,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          "input",
+          {
+            ref: inputRef,
+            type: "file",
+            accept,
+            multiple: true,
+            style: { display: "none" },
+            onChange: handleChange
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-dropzone__icon", children: icon }),
+        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-dropzone__text", children: "Drop files here or click to upload" }),
+        hint && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-dropzone__hint", children: hint })
+      ]
+    }
+  );
+}
+
+// src/components/FeatureList/FeatureList.tsx
+var import_jsx_runtime45 = require("react/jsx-runtime");
+function FeatureList({ features, className = "" }) {
+  return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: ["drp-features", className].filter(Boolean).join(" "), children: features.map((f3, i2) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "drp-feature", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "drp-feature__icon", children: f3.icon }),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "drp-feature__title", children: f3.title }),
+    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "drp-feature__text", children: f3.text })
+  ] }, i2)) });
+}
+
+// src/components/CtaBanner/CtaBanner.tsx
+var import_jsx_runtime46 = require("react/jsx-runtime");
+function CtaBanner({
+  title,
+  text,
+  children,
+  className = ""
+}) {
+  return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: ["drp-cta", className].filter(Boolean).join(" "), children: [
+    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "drp-cta__title", children: title }),
+    text && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("p", { className: "drp-cta__text", children: text }),
+    children
+  ] });
+}
+
+// src/screens/Dashboard/Dashboard.tsx
+var import_react8 = require("react");
+var import_jsx_runtime47 = require("react/jsx-runtime");
+
 // src/screens/Auth/SignIn.tsx
-var import_react3 = require("react");
+var import_react9 = require("react");
 
 // src/screens/Auth/AuthLayout.tsx
-var import_jsx_runtime38 = require("react/jsx-runtime");
-var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+var import_jsx_runtime48 = require("react/jsx-runtime");
+var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
   "div",
   {
     className: "drp-decorative-panel",
@@ -1434,7 +1847,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
       background: "var(--drp-cream)"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
         "div",
         {
           style: {
@@ -1450,7 +1863,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
           }
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
         "div",
         {
           className: "drp-card",
@@ -1465,7 +1878,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
             background: "var(--drp-white)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
               "div",
               {
                 className: "drp-caption",
@@ -1473,7 +1886,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
                 children: "NM Tasks"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
               "div",
               {
                 className: "drp-flex drp-items-center",
@@ -1483,7 +1896,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
                   height: "36px",
                   marginBottom: "var(--drp-space-2)"
                 },
-                children: [14, 22, 18, 30, 24, 20, 28].map((h2, i2) => /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+                children: [14, 22, 18, 30, 24, 20, 28].map((h2, i2) => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
                   "div",
                   {
                     style: {
@@ -1496,11 +1909,11 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
                 ))
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "drp-caption", children: "Mon -- Sun" })
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "drp-caption", children: "Mon -- Sun" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
         "div",
         {
           className: "drp-card",
@@ -1515,13 +1928,13 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
             background: "var(--drp-white)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
               "div",
               {
                 className: "drp-flex drp-items-center drp-gap-3",
                 style: { marginBottom: "var(--drp-space-3)" },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
                     "div",
                     {
                       style: {
@@ -1532,14 +1945,14 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
                       }
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "drp-text drp-text--sm drp-text--bold", children: "Delafaran Sorgato" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "drp-caption", children: "in progress" })
+                  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "drp-text drp-text--sm drp-text--bold", children: "Delafaran Sorgato" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "drp-caption", children: "in progress" })
                   ] })
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
               "div",
               {
                 className: "drp-bg-purple",
@@ -1553,20 +1966,20 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
                 children: "Task"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { className: "drp-flex drp-gap-3", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { className: "drp-text-center", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "drp-text drp-text--bold", children: "$123.20" }),
-                /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "drp-caption", children: "Est." })
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-flex drp-gap-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-text-center", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "drp-text drp-text--bold", children: "$123.20" }),
+                /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "drp-caption", children: "Est." })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { className: "drp-text-center", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "drp-text drp-text--bold", children: "14" }),
-                /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "drp-caption", children: "hrs" })
+              /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-text-center", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "drp-text drp-text--bold", children: "14" }),
+                /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "drp-caption", children: "hrs" })
               ] })
             ] })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
         "div",
         {
           className: "drp-card",
@@ -1580,10 +1993,10 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
             whiteSpace: "nowrap",
             background: "var(--drp-white)"
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { className: "drp-text drp-text--sm drp-text--semibold", children: "Update design system" })
+          children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-text drp-text--sm drp-text--semibold", children: "Update design system" })
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
         "div",
         {
           className: "drp-card",
@@ -1598,7 +2011,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
             background: "var(--drp-white)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
               "div",
               {
                 className: "drp-caption",
@@ -1606,9 +2019,9 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
                 children: "Total revenue"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { className: "drp-h4", style: { marginBottom: "var(--drp-space-2)" }, children: "$68,310.28" }),
-            /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "drp-h4", style: { marginBottom: "var(--drp-space-2)" }, children: "$68,310.28" }),
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
                 "span",
                 {
                   style: {
@@ -1621,12 +2034,12 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
                   children: "7,384"
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { className: "drp-caption", children: "transactions" })
+              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-caption", children: "transactions" })
             ] })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
         "div",
         {
           className: "drp-card",
@@ -1641,7 +2054,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
             background: "var(--drp-white)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
               "div",
               {
                 className: "drp-text drp-text--sm drp-text--semibold",
@@ -1649,7 +2062,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
                 children: "Photobook for family move"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
               "div",
               {
                 className: "drp-flex drp-items-center drp-gap-2",
@@ -1660,13 +2073,13 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
                   color: "var(--drp-purple)",
                   fontWeight: "var(--drp-weight-semibold)"
                 },
-                children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { children: "Due on 15 Aug 2025" })
+                children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { children: "Due on 15 Aug 2025" })
               }
             )
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
         "div",
         {
           className: "drp-card",
@@ -1679,10 +2092,10 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
             zIndex: 10,
             background: "var(--drp-white)"
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { className: "drp-text drp-text--sm drp-text--semibold", children: "Design tasks" })
+          children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-text drp-text--sm drp-text--semibold", children: "Design tasks" })
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
         "div",
         {
           className: "drp-card",
@@ -1695,10 +2108,10 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
             zIndex: 10,
             background: "var(--drp-white)"
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { className: "drp-text drp-text--sm", children: "Mockup for task app" })
+          children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-text drp-text--sm", children: "Mockup for task app" })
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
         "div",
         {
           style: {
@@ -1712,7 +2125,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
           }
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
         "div",
         {
           style: {
@@ -1726,7 +2139,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
           }
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
         "div",
         {
           style: {
@@ -1740,7 +2153,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
           }
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
         "svg",
         {
           style: { position: "absolute", top: "5%", right: "28%", zIndex: 10 },
@@ -1748,7 +2161,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
           height: "40",
           viewBox: "0 0 60 40",
           fill: "none",
-          children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
             "path",
             {
               d: "M2 20 Q10 5 20 20 Q30 35 40 20 Q50 5 58 20",
@@ -1760,7 +2173,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
         "svg",
         {
           style: { position: "absolute", bottom: "28%", right: "18%", zIndex: 10 },
@@ -1768,7 +2181,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
           height: "34",
           viewBox: "0 0 50 34",
           fill: "none",
-          children: /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
             "path",
             {
               d: "M2 17 Q10 4 18 17 Q26 30 34 17 Q42 4 48 17",
@@ -1780,7 +2193,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("style", { children: `
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("style", { children: `
       @media (min-width: 1024px) {
         .drp-decorative-panel { display: flex !important; }
       }
@@ -1788,7 +2201,7 @@ var DecorativePanel = () => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
     ]
   }
 );
-var AuthLayout = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+var AuthLayout = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
   "div",
   {
     className: "drp-flex",
@@ -1797,7 +2210,7 @@ var AuthLayout = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs
       fontFamily: "var(--drp-font-primary)"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
         "div",
         {
           className: "drp-flex-col",
@@ -1810,18 +2223,18 @@ var AuthLayout = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs
             flexShrink: 0
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("div", { style: { marginBottom: "var(--drp-space-12)" }, children: /* @__PURE__ */ (0, import_jsx_runtime38.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { style: { marginBottom: "var(--drp-space-12)" }, children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
               "span",
               {
                 className: "drp-h5",
                 style: { fontWeight: "var(--drp-weight-heavy)" },
                 children: [
                   "Doctor Project",
-                  /* @__PURE__ */ (0, import_jsx_runtime38.jsx)("span", { style: { color: "var(--drp-purple)" }, children: "." })
+                  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { style: { color: "var(--drp-purple)" }, children: "." })
                 ]
               }
             ) }),
-            /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
               "div",
               {
                 className: "drp-flex-col",
@@ -1836,25 +2249,25 @@ var AuthLayout = ({ children }) => /* @__PURE__ */ (0, import_jsx_runtime38.jsxs
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime38.jsx)(DecorativePanel, {})
+      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(DecorativePanel, {})
     ]
   }
 );
 
 // src/screens/Auth/SignIn.tsx
-var import_jsx_runtime39 = require("react/jsx-runtime");
+var import_jsx_runtime49 = require("react/jsx-runtime");
 var SignIn = () => {
-  const [email, setEmail] = (0, import_react3.useState)("catherine.shaw@gmail.com");
-  const [password, setPassword] = (0, import_react3.useState)("");
-  const [showPassword, setShowPassword] = (0, import_react3.useState)(false);
-  const [rememberMe, setRememberMe] = (0, import_react3.useState)(false);
+  const [email, setEmail] = (0, import_react9.useState)("catherine.shaw@gmail.com");
+  const [password, setPassword] = (0, import_react9.useState)("");
+  const [showPassword, setShowPassword] = (0, import_react9.useState)(false);
+  const [rememberMe, setRememberMe] = (0, import_react9.useState)(false);
   const handleSubmit = (e2) => {
     e2.preventDefault();
     console.log("Sign in:", { email, password, rememberMe });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(AuthLayout, { children: /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("h1", { className: "drp-h2", style: { marginBottom: "var(--drp-space-2)" }, children: "Sign in" }),
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(AuthLayout, { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("h1", { className: "drp-h2", style: { marginBottom: "var(--drp-space-2)" }, children: "Sign in" }),
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted",
@@ -1862,11 +2275,11 @@ var SignIn = () => {
         children: "Enter your account details or use QR code"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("form", { onSubmit: handleSubmit, className: "drp-form-stack", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { className: "drp-field", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("label", { className: "drp-field__label", children: "Email" }),
-        /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { className: "drp-field--has-icon", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("form", { onSubmit: handleSubmit, className: "drp-form-stack", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "drp-field", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("label", { className: "drp-field__label", children: "Email" }),
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "drp-field--has-icon", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
             "input",
             {
               className: "drp-input",
@@ -1877,7 +2290,7 @@ var SignIn = () => {
               style: { width: "100%" }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
             "svg",
             {
               className: "drp-field__icon",
@@ -1891,17 +2304,17 @@ var SignIn = () => {
               strokeLinejoin: "round",
               style: { color: "var(--drp-grey)" },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
-                /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
+                /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
+                /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
               ]
             }
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { className: "drp-field", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("label", { className: "drp-field__label", children: "Password" }),
-        /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { className: "drp-field--has-icon", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "drp-field", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("label", { className: "drp-field__label", children: "Password" }),
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "drp-field--has-icon", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
             "input",
             {
               className: "drp-input",
@@ -1912,7 +2325,7 @@ var SignIn = () => {
               style: { width: "100%" }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
             "button",
             {
               type: "button",
@@ -1927,7 +2340,7 @@ var SignIn = () => {
                 padding: 0,
                 color: "var(--drp-grey)"
               },
-              children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+              children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
                 "svg",
                 {
                   width: "16",
@@ -1939,12 +2352,12 @@ var SignIn = () => {
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("path", { d: "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("path", { d: "M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("line", { x1: "1", y1: "1", x2: "23", y2: "23" })
+                    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("path", { d: "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("path", { d: "M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("line", { x1: "1", y1: "1", x2: "23", y2: "23" })
                   ]
                 }
-              ) : /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+              ) : /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
                 "svg",
                 {
                   width: "16",
@@ -1956,8 +2369,8 @@ var SignIn = () => {
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("circle", { cx: "12", cy: "12", r: "3" })
+                    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("circle", { cx: "12", cy: "12", r: "3" })
                   ]
                 }
               )
@@ -1965,9 +2378,9 @@ var SignIn = () => {
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("label", { className: "drp-checkbox", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("label", { className: "drp-checkbox", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
             "input",
             {
               type: "checkbox",
@@ -1977,7 +2390,7 @@ var SignIn = () => {
           ),
           "Remember me"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
           "a",
           {
             href: "#",
@@ -1987,7 +2400,7 @@ var SignIn = () => {
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
         "button",
         {
           type: "submit",
@@ -1995,18 +2408,18 @@ var SignIn = () => {
           children: "Log in"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("div", { className: "drp-divider", style: { flex: 1, margin: 0 } }),
-        /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "or" }),
-        /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("div", { className: "drp-divider", style: { flex: 1, margin: 0 } })
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "drp-divider", style: { flex: 1, margin: 0 } }),
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "or" }),
+        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "drp-divider", style: { flex: 1, margin: 0 } })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
         "button",
         {
           type: "button",
           className: "drp-btn drp-btn--outline drp-btn--block",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
               "svg",
               {
                 width: "16",
@@ -2018,10 +2431,10 @@ var SignIn = () => {
                 strokeLinecap: "round",
                 strokeLinejoin: "round",
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("rect", { x: "3", y: "3", width: "7", height: "7" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("rect", { x: "14", y: "3", width: "7", height: "7" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime39.jsx)("rect", { x: "3", y: "14", width: "7", height: "7" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("rect", { x: "3", y: "3", width: "7", height: "7" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("rect", { x: "14", y: "3", width: "7", height: "7" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("rect", { x: "3", y: "14", width: "7", height: "7" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
                     "path",
                     {
                       d: "M14 14h1v1h-1zM17 14h1v1h-1zM20 14h1v1h-1zM14 17h1v1h-1zM17 17h1v1h-1zM20 17h1v1h-1zM14 20h1v1h-1zM17 20h1v1h-1zM20 20h1v1h-1z",
@@ -2037,7 +2450,7 @@ var SignIn = () => {
         }
       )
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime39.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted drp-text-center",
@@ -2045,7 +2458,7 @@ var SignIn = () => {
         children: [
           "You don't have an account?",
           " ",
-          /* @__PURE__ */ (0, import_jsx_runtime39.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
             "a",
             {
               href: "#",
@@ -2061,23 +2474,23 @@ var SignIn = () => {
 };
 
 // src/screens/Auth/SignUp.tsx
-var import_react4 = require("react");
-var import_jsx_runtime40 = require("react/jsx-runtime");
+var import_react10 = require("react");
+var import_jsx_runtime50 = require("react/jsx-runtime");
 var SignUp = () => {
-  const [country, setCountry] = (0, import_react4.useState)("United States");
-  const [countryBusiness, setCountryBusiness] = (0, import_react4.useState)("");
-  const [email, setEmail] = (0, import_react4.useState)("catherine.shaw4");
-  const [password, setPassword] = (0, import_react4.useState)("");
-  const [showPassword, setShowPassword] = (0, import_react4.useState)(false);
-  const [receiveUpdates, setReceiveUpdates] = (0, import_react4.useState)(false);
-  const [agreeTerms, setAgreeTerms] = (0, import_react4.useState)(false);
+  const [country, setCountry] = (0, import_react10.useState)("United States");
+  const [countryBusiness, setCountryBusiness] = (0, import_react10.useState)("");
+  const [email, setEmail] = (0, import_react10.useState)("catherine.shaw4");
+  const [password, setPassword] = (0, import_react10.useState)("");
+  const [showPassword, setShowPassword] = (0, import_react10.useState)(false);
+  const [receiveUpdates, setReceiveUpdates] = (0, import_react10.useState)(false);
+  const [agreeTerms, setAgreeTerms] = (0, import_react10.useState)(false);
   const handleSubmit = (e2) => {
     e2.preventDefault();
     console.log("Sign up:", { country, countryBusiness, email, password });
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(AuthLayout, { children: /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("h1", { className: "drp-h2", style: { marginBottom: "var(--drp-space-2)" }, children: "Sign up" }),
-    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(AuthLayout, { children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("h1", { className: "drp-h2", style: { marginBottom: "var(--drp-space-2)" }, children: "Sign up" }),
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted",
@@ -2085,10 +2498,10 @@ var SignUp = () => {
         children: "Fill out the form below using your current location"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("form", { onSubmit: handleSubmit, className: "drp-form-stack", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { className: "drp-field", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("label", { className: "drp-field__label", children: "Country/Region of Residence" }),
-        /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("form", { onSubmit: handleSubmit, className: "drp-form-stack", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-field", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("label", { className: "drp-field__label", children: "Country/Region of Residence" }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
           "select",
           {
             className: "drp-select",
@@ -2096,20 +2509,20 @@ var SignUp = () => {
             onChange: (e2) => setCountry(e2.target.value),
             style: { width: "100%" },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("option", { value: "United States", children: "United States" }),
-              /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("option", { value: "United Kingdom", children: "United Kingdom" }),
-              /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("option", { value: "Canada", children: "Canada" }),
-              /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("option", { value: "Australia", children: "Australia" }),
-              /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("option", { value: "Germany", children: "Germany" }),
-              /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("option", { value: "France", children: "France" })
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("option", { value: "United States", children: "United States" }),
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("option", { value: "United Kingdom", children: "United Kingdom" }),
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("option", { value: "Canada", children: "Canada" }),
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("option", { value: "Australia", children: "Australia" }),
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("option", { value: "Germany", children: "Germany" }),
+              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("option", { value: "France", children: "France" })
             ]
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { className: "drp-field", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("label", { className: "drp-field__label", children: "Email" }),
-        /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { className: "drp-field--has-icon", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-field", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("label", { className: "drp-field__label", children: "Email" }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-field--has-icon", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
             "input",
             {
               className: "drp-input",
@@ -2120,7 +2533,7 @@ var SignUp = () => {
               style: { width: "100%" }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
             "svg",
             {
               className: "drp-field__icon",
@@ -2134,17 +2547,17 @@ var SignUp = () => {
               strokeLinejoin: "round",
               style: { color: "var(--drp-grey)" },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
-                /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
+                /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
+                /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
               ]
             }
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { className: "drp-field", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("label", { className: "drp-field__label", children: "Password" }),
-        /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { className: "drp-field--has-icon", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-field", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("label", { className: "drp-field__label", children: "Password" }),
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-field--has-icon", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
             "input",
             {
               className: "drp-input",
@@ -2155,7 +2568,7 @@ var SignUp = () => {
               style: { width: "100%" }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
             "button",
             {
               type: "button",
@@ -2170,7 +2583,7 @@ var SignUp = () => {
                 padding: 0,
                 color: "var(--drp-grey)"
               },
-              children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+              children: showPassword ? /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
                 "svg",
                 {
                   width: "16",
@@ -2182,12 +2595,12 @@ var SignUp = () => {
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("path", { d: "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("path", { d: "M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("line", { x1: "1", y1: "1", x2: "23", y2: "23" })
+                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("path", { d: "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("path", { d: "M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("line", { x1: "1", y1: "1", x2: "23", y2: "23" })
                   ]
                 }
-              ) : /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+              ) : /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
                 "svg",
                 {
                   width: "16",
@@ -2199,8 +2612,8 @@ var SignUp = () => {
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime40.jsx)("circle", { cx: "12", cy: "12", r: "3" })
+                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("circle", { cx: "12", cy: "12", r: "3" })
                   ]
                 }
               )
@@ -2208,9 +2621,9 @@ var SignUp = () => {
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("div", { className: "drp-flex-col drp-gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("label", { className: "drp-checkbox", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex-col drp-gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("label", { className: "drp-checkbox", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
             "input",
             {
               type: "checkbox",
@@ -2220,8 +2633,8 @@ var SignUp = () => {
           ),
           "I agree to receive email updates"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("label", { className: "drp-checkbox", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("label", { className: "drp-checkbox", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
             "input",
             {
               type: "checkbox",
@@ -2229,10 +2642,10 @@ var SignUp = () => {
               onChange: (e2) => setAgreeTerms(e2.target.checked)
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)("span", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("span", { children: [
             "I have read and agree to",
             " ",
-            /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
               "a",
               {
                 href: "#",
@@ -2244,7 +2657,7 @@ var SignUp = () => {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
         "button",
         {
           type: "submit",
@@ -2253,7 +2666,7 @@ var SignUp = () => {
         }
       )
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime40.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted drp-text-center",
@@ -2261,7 +2674,7 @@ var SignUp = () => {
         children: [
           "Already registered?",
           " ",
-          /* @__PURE__ */ (0, import_jsx_runtime40.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
             "a",
             {
               href: "#",
@@ -2277,16 +2690,16 @@ var SignUp = () => {
 };
 
 // src/screens/Auth/PasswordReset.tsx
-var import_react5 = require("react");
-var import_jsx_runtime41 = require("react/jsx-runtime");
+var import_react11 = require("react");
+var import_jsx_runtime51 = require("react/jsx-runtime");
 var PasswordReset = ({
   mode = "request"
 }) => {
-  const [email, setEmail] = (0, import_react5.useState)("catherine.shaw@gmail.com");
-  const [newPassword, setNewPassword] = (0, import_react5.useState)("");
-  const [confirmPassword, setConfirmPassword] = (0, import_react5.useState)("");
-  const [showPassword, setShowPassword] = (0, import_react5.useState)(false);
-  const [submitted, setSubmitted] = (0, import_react5.useState)(false);
+  const [email, setEmail] = (0, import_react11.useState)("catherine.shaw@gmail.com");
+  const [newPassword, setNewPassword] = (0, import_react11.useState)("");
+  const [confirmPassword, setConfirmPassword] = (0, import_react11.useState)("");
+  const [showPassword, setShowPassword] = (0, import_react11.useState)(false);
+  const [submitted, setSubmitted] = (0, import_react11.useState)(false);
   const handleRequestReset = (e2) => {
     e2.preventDefault();
     if (email) {
@@ -2299,8 +2712,8 @@ var PasswordReset = ({
       console.log("Password reset successful");
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(AuthLayout, { children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { children: mode === "request" ? /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(AuthLayout, { children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { children: mode === "request" ? /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(import_jsx_runtime51.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
       "h1",
       {
         className: "drp-h1",
@@ -2308,7 +2721,7 @@ var PasswordReset = ({
         children: "Forgot password?"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted",
@@ -2320,11 +2733,11 @@ var PasswordReset = ({
         children: "Enter your email address and we'll send you instructions on how to reset your password in a few minutes. You can also add a recovery email if you've never set one before."
       }
     ),
-    submitted ? /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: "drp-alert drp-alert--success", children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("div", { className: "drp-alert__content", children: /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("p", { className: "drp-text drp-text--sm", children: "Check your email for reset instructions." }) }) }) : /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("form", { onSubmit: handleRequestReset, className: "drp-form-stack", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "drp-field", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("label", { className: "drp-field__label", children: "Email" }),
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "drp-field--has-icon", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+    submitted ? /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "drp-alert drp-alert--success", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "drp-alert__content", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("p", { className: "drp-text drp-text--sm", children: "Check your email for reset instructions." }) }) }) : /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("form", { onSubmit: handleRequestReset, className: "drp-form-stack", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-field", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: "drp-field__label", children: "Email" }),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-field--has-icon", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
             "input",
             {
               className: "drp-input",
@@ -2335,7 +2748,7 @@ var PasswordReset = ({
               style: { width: "100%" }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
             "svg",
             {
               className: "drp-field__icon",
@@ -2349,14 +2762,14 @@ var PasswordReset = ({
               strokeLinejoin: "round",
               style: { color: "var(--drp-grey)" },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
-                /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
+                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
               ]
             }
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
         "button",
         {
           type: "submit",
@@ -2365,7 +2778,7 @@ var PasswordReset = ({
         }
       )
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted drp-text-center",
@@ -2373,7 +2786,7 @@ var PasswordReset = ({
         children: [
           "Already registered?",
           " ",
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
             "a",
             {
               href: "#",
@@ -2385,8 +2798,8 @@ var PasswordReset = ({
         ]
       }
     )
-  ] }) : /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(import_jsx_runtime41.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+  ] }) : /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(import_jsx_runtime51.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
       "h1",
       {
         className: "drp-h2",
@@ -2394,7 +2807,7 @@ var PasswordReset = ({
         children: "Reset Password"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted",
@@ -2402,11 +2815,11 @@ var PasswordReset = ({
         children: "Enter your new password below"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("form", { onSubmit: handleResetPassword, className: "drp-form-stack", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "drp-field", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("label", { className: "drp-field__label", children: "New Password" }),
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "drp-field--has-icon", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("form", { onSubmit: handleResetPassword, className: "drp-form-stack", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-field", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: "drp-field__label", children: "New Password" }),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-field--has-icon", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
             "input",
             {
               className: "drp-input",
@@ -2417,7 +2830,7 @@ var PasswordReset = ({
               style: { width: "100%" }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
             "button",
             {
               type: "button",
@@ -2432,7 +2845,7 @@ var PasswordReset = ({
                 padding: 0,
                 color: "var(--drp-grey)"
               },
-              children: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
                 "svg",
                 {
                   width: "16",
@@ -2444,8 +2857,8 @@ var PasswordReset = ({
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("circle", { cx: "12", cy: "12", r: "3" })
+                    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("circle", { cx: "12", cy: "12", r: "3" })
                   ]
                 }
               )
@@ -2453,10 +2866,10 @@ var PasswordReset = ({
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "drp-field", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("label", { className: "drp-field__label", children: "Confirm Password" }),
-        /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)("div", { className: "drp-field--has-icon", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-field", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: "drp-field__label", children: "Confirm Password" }),
+        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-field--has-icon", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
             "input",
             {
               className: "drp-input",
@@ -2467,7 +2880,7 @@ var PasswordReset = ({
               style: { width: "100%" }
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
             "button",
             {
               type: "button",
@@ -2482,7 +2895,7 @@ var PasswordReset = ({
                 padding: 0,
                 color: "var(--drp-grey)"
               },
-              children: /* @__PURE__ */ (0, import_jsx_runtime41.jsxs)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
                 "svg",
                 {
                   width: "16",
@@ -2494,8 +2907,8 @@ var PasswordReset = ({
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime41.jsx)("circle", { cx: "12", cy: "12", r: "3" })
+                    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("circle", { cx: "12", cy: "12", r: "3" })
                   ]
                 }
               )
@@ -2503,7 +2916,7 @@ var PasswordReset = ({
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime41.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
         "button",
         {
           type: "submit",
@@ -2516,11 +2929,11 @@ var PasswordReset = ({
 };
 
 // src/screens/Auth/SignInWithQR.tsx
-var import_jsx_runtime42 = require("react/jsx-runtime");
+var import_jsx_runtime52 = require("react/jsx-runtime");
 
 // src/screens/Common/ListScreen.tsx
-var import_react6 = require("react");
-var import_jsx_runtime43 = require("react/jsx-runtime");
+var import_react12 = require("react");
+var import_jsx_runtime53 = require("react/jsx-runtime");
 var ListScreen = ({
   title,
   subtitle,
@@ -2532,24 +2945,24 @@ var ListScreen = ({
   itemsPerPage = 10,
   ...layoutProps
 }) => {
-  const [searchQuery, setSearchQuery] = (0, import_react6.useState)("");
-  const [currentPage, setCurrentPage] = (0, import_react6.useState)(1);
+  const [searchQuery, setSearchQuery] = (0, import_react12.useState)("");
+  const [currentPage, setCurrentPage] = (0, import_react12.useState)(1);
   const filteredData = data.filter(
     (item) => JSON.stringify(item).toLowerCase().includes(searchQuery.toLowerCase())
   );
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
   const startIdx = (currentPage - 1) * itemsPerPage;
   const paginatedData = filteredData.slice(startIdx, startIdx + itemsPerPage);
-  return /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
     DashboardLayout,
     {
       ...layoutProps,
       topBarProps: {
         title,
-        actions: onAddClick && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(Button, { onClick: onAddClick, className: "drp-btn drp-btn--primary", children: "+ Add New" }),
+        actions: onAddClick && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(Button, { onClick: onAddClick, className: "drp-btn drp-btn--primary", children: "+ Add New" }),
         ...layoutProps.topBarProps
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime43.jsxs)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
         "div",
         {
           style: {
@@ -2558,8 +2971,8 @@ var ListScreen = ({
             gap: "var(--drp-space-6)"
           },
           children: [
-            subtitle && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)("p", { className: "drp-caption", children: subtitle }),
-            showSearch && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+            subtitle && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("p", { className: "drp-caption", children: subtitle }),
+            showSearch && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
               Input,
               {
                 placeholder: "Search...",
@@ -2570,7 +2983,7 @@ var ListScreen = ({
                 }
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
               Table,
               {
                 columns: columns.map((col) => ({
@@ -2581,7 +2994,7 @@ var ListScreen = ({
                 data: paginatedData
               }
             ),
-            totalPages > 1 && /* @__PURE__ */ (0, import_jsx_runtime43.jsx)(
+            totalPages > 1 && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
               Pagination,
               {
                 currentPage,
@@ -2597,7 +3010,7 @@ var ListScreen = ({
 };
 
 // src/screens/Products/ProductsList.tsx
-var import_jsx_runtime44 = require("react/jsx-runtime");
+var import_jsx_runtime54 = require("react/jsx-runtime");
 var DoctorProjectSidebar = ({
   activeItem
 }) => {
@@ -2624,20 +3037,20 @@ var DoctorProjectSidebar = ({
     { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-mint)" },
     { name: "Justine Robinson", initials: "JR", bg: "var(--drp-purple)" }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("aside", { className: "sidebar", style: { width: 200 }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "sidebar-brand", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "sidebar-brand-dot" })
+  return /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("aside", { className: "sidebar", style: { width: 200 }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "sidebar-brand", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "sidebar-brand-dot" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("nav", { className: "sidebar-nav", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "sidebar-nav-section", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
-        navItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("nav", { className: "sidebar-nav", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "sidebar-nav-section", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
+        navItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
           "button",
           {
             className: `sidebar-nav-item ${item.id === activeItem ? "active" : ""}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
                 "svg",
                 {
                   width: "14",
@@ -2645,7 +3058,7 @@ var DoctorProjectSidebar = ({
                   fill: "none",
                   viewBox: "0 0 24 24",
                   stroke: "currentColor",
-                  children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+                  children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -2656,17 +3069,17 @@ var DoctorProjectSidebar = ({
                   )
                 }
               ) }),
-              /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-              item.badge && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
+              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+              item.badge && /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
             ]
           },
           item.id
         ))
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "sidebar-team", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
-        teamMembers.map((m3) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "sidebar-team-member", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "sidebar-team", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
+        teamMembers.map((m3) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "sidebar-team-member", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
             "div",
             {
               className: "sidebar-avatar",
@@ -2679,10 +3092,10 @@ var DoctorProjectSidebar = ({
               children: m3.initials[0]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "sidebar-team-name", style: { fontSize: 13 }, children: m3.name })
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "sidebar-team-name", style: { fontSize: 13 }, children: m3.name })
         ] }, m3.name)),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "sidebar-see-more", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "sidebar-see-more", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
             "svg",
             {
               width: "12",
@@ -2690,7 +3103,7 @@ var DoctorProjectSidebar = ({
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -2701,12 +3114,12 @@ var DoctorProjectSidebar = ({
               )
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { children: "See More" })
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { children: "See More" })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "sidebar-user", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "sidebar-user", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
         "div",
         {
           className: "sidebar-avatar",
@@ -2717,17 +3130,17 @@ var DoctorProjectSidebar = ({
           }
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "sidebar-user-name", style: { fontSize: 13 }, children: "Henry Richardson" }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "sidebar-user-name", style: { fontSize: 13 }, children: "Henry Richardson" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
     ] })
   ] });
 };
 var TopBar2 = ({
   title = "Products",
   showBack
-}) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "topbar-left", children: [
-    showBack && /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "topbar-left", children: [
+    showBack && /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
       "svg",
       {
         width: "16",
@@ -2735,7 +3148,7 @@ var TopBar2 = ({
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -2746,13 +3159,13 @@ var TopBar2 = ({
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("h1", { className: "topbar-title", children: title })
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("h1", { className: "topbar-title", children: title })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "topbar-icon-btn", children: "..." }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "topbar-icon-btn", children: "..." }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "topbar-icon-btn", children: "..." }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "topbar-icon-btn", children: "..." }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
         "svg",
         {
           width: "16",
@@ -2760,7 +3173,7 @@ var TopBar2 = ({
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -2771,23 +3184,23 @@ var TopBar2 = ({
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { children: "Apps" })
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { children: "+" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { children: "Create new" })
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { children: "+" }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer2 = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "footer-link", children: "API" })
+var Footer2 = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
       "svg",
       {
         width: "16",
@@ -2796,7 +3209,7 @@ var Footer2 = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { clas
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -2805,7 +3218,7 @@ var Footer2 = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { clas
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -2817,7 +3230,7 @@ var Footer2 = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { clas
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
       "svg",
       {
         width: "16",
@@ -2825,7 +3238,7 @@ var Footer2 = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { clas
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -2838,7 +3251,7 @@ var Footer2 = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { clas
     ) })
   ] })
 ] });
-var SortIcon = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+var SortIcon = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
   "svg",
   {
     style: {
@@ -2851,7 +3264,7 @@ var SortIcon = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor",
-    children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
       "path",
       {
         strokeLinecap: "round",
@@ -2862,7 +3275,7 @@ var SortIcon = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
     )
   }
 );
-var TablePagination = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+var TablePagination = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
@@ -2871,8 +3284,8 @@ var TablePagination = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
       borderTop: "var(--drp-border-thin)"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
           "svg",
           {
             width: "16",
@@ -2880,7 +3293,7 @@ var TablePagination = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
               "path",
               {
                 strokeLinecap: "round",
@@ -2893,10 +3306,10 @@ var TablePagination = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
         ),
         "Prev"
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
         "Next",
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
           "svg",
           {
             width: "16",
@@ -2904,7 +3317,7 @@ var TablePagination = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
               "path",
               {
                 strokeLinecap: "round",
@@ -2925,7 +3338,7 @@ var StockBar = ({
   color
 }) => {
   const pct = Math.min(100, Math.round(value / max * 100));
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "drp-progress drp-progress--sm", style: { width: 80 }, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "drp-progress drp-progress--sm", style: { width: 80 }, children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
     "div",
     {
       className: "drp-progress__bar",
@@ -2935,7 +3348,7 @@ var StockBar = ({
 };
 var ProductThumb = ({
   bg = "var(--drp-cream)"
-}) => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
   "div",
   {
     style: {
@@ -2948,7 +3361,7 @@ var ProductThumb = ({
       justifyContent: "center",
       flexShrink: 0
     },
-    children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
       "svg",
       {
         width: "20",
@@ -2957,7 +3370,7 @@ var ProductThumb = ({
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -3038,40 +3451,40 @@ var v1Products = [
     thumb: "#e0e7ff"
   }
 ];
-var V1Content = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("table", { className: "drp-table", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("tr", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+var V1Content = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("table", { className: "drp-table", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("tr", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
         "Name ",
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
         "Details ",
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
         "Sold ",
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
         "Stock ",
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
         "Price ",
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("th", { style: { width: 40 } })
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("th", { style: { width: 40 } })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("tbody", { children: v1Products.map((p3) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("tr", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(ProductThumb, { bg: p3.thumb }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--bold", children: p3.name })
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("tbody", { children: v1Products.map((p3) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("tr", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(ProductThumb, { bg: p3.thumb }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--bold", children: p3.name })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.description }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--sm", children: p3.sold }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "drp-flex-col drp-gap-1", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.description }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--sm", children: p3.sold }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "drp-flex-col drp-gap-1", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
           StockBar,
           {
             value: p3.stock,
@@ -3079,13 +3492,13 @@ var V1Content = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { cla
             color: p3.stockColor
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-caption", children: p3.stock.toLocaleString() })
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-caption", children: p3.stock.toLocaleString() })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--bold", children: p3.price }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--bold", children: p3.price }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
     ] }, p3.id)) })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(TablePagination, {})
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(TablePagination, {})
 ] }) });
 var v2Products = [
   {
@@ -3188,14 +3601,14 @@ var v2Products = [
     price: "$105,50"
   }
 ];
-var FilterBar = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--primary", children: "All Filters" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "All Customers" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "A-Z" })
+var FilterBar = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--primary", children: "All Filters" }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "All Customers" }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "A-Z" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
       "svg",
       {
         width: "16",
@@ -3203,7 +3616,7 @@ var FilterBar = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { cl
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -3217,58 +3630,58 @@ var FilterBar = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { cl
     "Search"
   ] })
 ] });
-var V2Content = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "content", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(FilterBar, {}),
-  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("table", { className: "drp-table", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("tr", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("th", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("input", { type: "checkbox" }) }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+var V2Content = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "content", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(FilterBar, {}),
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("table", { className: "drp-table", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("tr", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("th", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("input", { type: "checkbox" }) }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
           "Product ",
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
           "Category ",
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
           "Id ",
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
           "Avl ",
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
           "Color ",
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
           "Sales ",
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
           "Price ",
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("th", { style: { width: 40 } })
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("th", { style: { width: 40 } })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("tbody", { children: v2Products.map((p3) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("tr", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("input", { type: "checkbox" }) }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(ProductThumb, {}),
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--bold", children: p3.name })
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("tbody", { children: v2Products.map((p3) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("tr", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("input", { type: "checkbox" }) }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(ProductThumb, {}),
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--bold", children: p3.name })
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-tag", children: p3.category }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.sku }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: `drp-tag ${p3.avlVariant}`, children: p3.avl }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--sm", children: p3.color }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--sm", children: p3.sales }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--bold", children: p3.price }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-tag", children: p3.category }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.sku }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: `drp-tag ${p3.avlVariant}`, children: p3.avl }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--sm", children: p3.color }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--sm", children: p3.sales }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--bold", children: p3.price }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
       ] }, p3.id)) })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(TablePagination, {})
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(TablePagination, {})
   ] })
 ] });
 var v3Products = [
@@ -3363,15 +3776,15 @@ var v3Products = [
     source: "fiverr.com"
   }
 ];
-var V3Content = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "content", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--primary", children: "All Filters" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Group" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Sort" }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: "..." })
+var V3Content = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "content", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--primary", children: "All Filters" }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Group" }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Sort" }),
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: "..." })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
       "svg",
       {
         width: "16",
@@ -3379,7 +3792,7 @@ var V3Content = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { cl
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -3391,58 +3804,58 @@ var V3Content = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { cl
       }
     ) })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("table", { className: "drp-table", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("tr", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("th", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("input", { type: "checkbox" }) }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("table", { className: "drp-table", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("tr", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("th", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("input", { type: "checkbox" }) }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
           "Name ",
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
           "Amount ",
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
           "Status ",
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
           "Rate ",
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
           "Service ",
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
           "Date ",
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("th", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("th", { children: [
           "Source ",
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(SortIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SortIcon, {})
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("th", { style: { width: 40 } })
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("th", { style: { width: 40 } })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("tbody", { children: v3Products.map((p3) => /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("tr", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("input", { type: "checkbox" }) }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--bold", children: p3.name }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--bold", children: p3.amount }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-tag drp-tag--filled", children: p3.status }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--bold", children: p3.rate }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-tag", children: p3.service }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.date }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.source }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("tbody", { children: v3Products.map((p3) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("tr", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("input", { type: "checkbox" }) }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--bold", children: p3.name }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--bold", children: p3.amount }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-tag drp-tag--filled", children: p3.status }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--bold", children: p3.rate }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-tag", children: p3.service }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.date }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.source }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
       ] }, p3.id)) })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(TablePagination, {})
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(TablePagination, {})
   ] })
 ] });
-var DetailsContent = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "drp-flex drp-gap-6", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { style: { width: 220, flexShrink: 0 }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+var DetailsContent = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "drp-flex drp-gap-6", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { style: { width: 220, flexShrink: 0 }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
       "div",
       {
         style: {
@@ -3454,8 +3867,8 @@ var DetailsContent = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", 
         }
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("h2", { className: "drp-h5", style: { marginBottom: "var(--drp-space-1)" }, children: "Neoft UI Kit for NFT Marketplaces" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("h2", { className: "drp-h5", style: { marginBottom: "var(--drp-space-1)" }, children: "Neoft UI Kit for NFT Marketplaces" }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted",
@@ -3463,9 +3876,9 @@ var DetailsContent = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", 
         children: "250 Pages and 320 symbols for NFT Marketplace UI design"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-tag", children: "Template" }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { style: { marginTop: "var(--drp-space-5)" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-tag", children: "Template" }),
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { style: { marginTop: "var(--drp-space-5)" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
         "div",
         {
           style: {
@@ -3474,22 +3887,22 @@ var DetailsContent = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", 
             marginBottom: "var(--drp-space-4)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
               "div",
               {
                 className: "drp-flex drp-items-center drp-gap-2",
                 style: { marginBottom: 2 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-h4", children: "296" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-badge drp-badge--pink", children: "8+" })
+                  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-h4", children: "296" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-badge drp-badge--pink", children: "8+" })
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-caption", children: "New sales" })
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-caption", children: "New sales" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
         "div",
         {
           style: {
@@ -3498,28 +3911,28 @@ var DetailsContent = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", 
             marginBottom: "var(--drp-space-4)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
               "div",
               {
                 className: "drp-flex drp-items-center drp-gap-2",
                 style: { marginBottom: 2 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-h4", children: "18" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-badge drp-badge--mint", children: "5" })
+                  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-h4", children: "18" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-badge drp-badge--mint", children: "5" })
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-caption", children: "Followers" })
+            /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-caption", children: "Followers" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-h5", children: "$36" }),
-        /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { className: "drp-caption", children: "Regular price" })
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-h5", children: "$36" }),
+        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "drp-caption", children: "Regular price" })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm drp-btn--block drp-mt-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm drp-btn--block drp-mt-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
         "svg",
         {
           width: "16",
@@ -3528,7 +3941,7 @@ var DetailsContent = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", 
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -3542,8 +3955,8 @@ var DetailsContent = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", 
       "Edit product page"
     ] })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { style: { flex: 1 }, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { style: { flex: 1 }, children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
       "div",
       {
         className: "drp-flex drp-items-center drp-gap-2",
@@ -3552,13 +3965,13 @@ var DetailsContent = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", 
           borderBottom: "var(--drp-border-thin)"
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-tab drp-tab--active", children: "Overview" }),
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-tab", children: "Currency" }),
-          /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("button", { className: "drp-tab", children: "Statement" })
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-tab drp-tab--active", children: "Overview" }),
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-tab", children: "Currency" }),
+          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "drp-tab", children: "Statement" })
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", { style: { padding: "var(--drp-space-5)" }, children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { style: { padding: "var(--drp-space-5)" }, children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
       "div",
       {
         style: {
@@ -3570,7 +3983,7 @@ var DetailsContent = () => /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("div", 
           alignItems: "center",
           justifyContent: "center"
         },
-        children: /* @__PURE__ */ (0, import_jsx_runtime44.jsx)("span", { className: "drp-text drp-text--muted", children: "Chart placeholder" })
+        children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--muted", children: "Chart placeholder" })
       }
     ) })
   ] }) })
@@ -3582,24 +3995,24 @@ var ProductsList = ({
   const renderContent = () => {
     switch (variant) {
       case "v2":
-        return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(V2Content, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(V2Content, {});
       case "v3":
-        return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(V3Content, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(V3Content, {});
       case "details":
-        return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(DetailsContent, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(DetailsContent, {});
       default:
-        return /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(V1Content, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(V1Content, {});
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "app-layout", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "app-layout", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
       DoctorProjectSidebar,
       {
         activeItem: variant === "details" ? "products" : "products"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime44.jsxs)("div", { className: "main-content", style: { marginLeft: 200 }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "main-content", style: { marginLeft: 200 }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
         TopBar2,
         {
           title: variant === "details" ? "Product Details" : "Products",
@@ -3607,21 +4020,21 @@ var ProductsList = ({
         }
       ),
       renderContent(),
-      /* @__PURE__ */ (0, import_jsx_runtime44.jsx)(Footer2, {})
+      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Footer2, {})
     ] })
   ] });
 };
 
 // src/screens/Customers/CustomersList.tsx
-var import_jsx_runtime45 = require("react/jsx-runtime");
-var DoctorProjectSidebar2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("aside", { className: "sidebar", style: { width: 160 }, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "sidebar-brand", style: { padding: "20px 16px" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "sidebar-brand-name", style: { fontSize: 18 }, children: "Doctor Project" }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "sidebar-brand-dot" })
+var import_jsx_runtime55 = require("react/jsx-runtime");
+var DoctorProjectSidebar2 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("aside", { className: "sidebar", style: { width: 160 }, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "sidebar-brand", style: { padding: "20px 16px" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "sidebar-brand-name", style: { fontSize: 18 }, children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard" },
         { label: "Products" },
@@ -3634,32 +4047,32 @@ var DoctorProjectSidebar2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)
         },
         { label: "Sales", badge: 14, badgeVariant: "sidebar-badge--green" },
         { label: "Analytics" }
-      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
         "button",
         {
           className: `sidebar-nav-item ${item.active ? "active" : ""}`,
           style: { fontSize: 12, padding: "8px 10px" },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-            item.badge && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
+            /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
           ]
         },
         item.label
       ))
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-grey)" },
         { name: "Thanawan Chadee", bg: "var(--drp-orange)" },
         { name: "Justine Robinson", bg: "var(--drp-pink)" }
-      ].map((m3) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+      ].map((m3) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
         "div",
         {
           className: "sidebar-team-member",
           style: { padding: "6px 10px" },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
               "div",
               {
                 className: "sidebar-avatar",
@@ -3667,18 +4080,18 @@ var DoctorProjectSidebar2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)
                 children: m3.name[0]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "sidebar-team-name", style: { fontSize: 12 }, children: m3.name })
+            /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "sidebar-team-name", style: { fontSize: 12 }, children: m3.name })
           ]
         },
         m3.name
       )),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
         "div",
         {
           className: "sidebar-see-more",
           style: { fontSize: 11, padding: "6px 10px" },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
               "svg",
               {
                 width: "12",
@@ -3686,7 +4099,7 @@ var DoctorProjectSidebar2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)
                 fill: "none",
                 viewBox: "0 0 24 24",
                 stroke: "currentColor",
-                children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -3697,14 +4110,14 @@ var DoctorProjectSidebar2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)
                 )
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { children: "See More" })
+            /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { children: "See More" })
           ]
         }
       )
     ] })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "sidebar-user", style: { padding: "12px 12px" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "sidebar-user", style: { padding: "12px 12px" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
       "div",
       {
         className: "sidebar-avatar",
@@ -3715,14 +4128,14 @@ var DoctorProjectSidebar2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)
         }
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "sidebar-user-name", style: { fontSize: 12 }, children: "Henry Richardson" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "sidebar-user-name", style: { fontSize: 12 }, children: "Henry Richardson" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var TopBar3 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("h1", { className: "topbar-title", children: "Customers" }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+var TopBar3 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("h1", { className: "topbar-title", children: "Customers" }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
       "svg",
       {
         width: "20",
@@ -3730,7 +4143,7 @@ var TopBar3 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { clas
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -3741,7 +4154,7 @@ var TopBar3 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { clas
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
       "svg",
       {
         width: "20",
@@ -3749,7 +4162,7 @@ var TopBar3 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { clas
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -3760,8 +4173,8 @@ var TopBar3 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { clas
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
         "svg",
         {
           width: "16",
@@ -3769,7 +4182,7 @@ var TopBar3 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { clas
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -3780,23 +4193,23 @@ var TopBar3 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { clas
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { children: "Apps" })
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { children: "+" }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { children: "Create new" })
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { children: "+" }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer3 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "footer-link", children: "API" })
+var Footer3 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
       "svg",
       {
         width: "16",
@@ -3805,7 +4218,7 @@ var Footer3 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { clas
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -3814,7 +4227,7 @@ var Footer3 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { clas
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -3826,7 +4239,7 @@ var Footer3 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { clas
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
       "svg",
       {
         width: "16",
@@ -3834,7 +4247,7 @@ var Footer3 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { clas
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -3847,7 +4260,7 @@ var Footer3 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { clas
     ) })
   ] })
 ] });
-var SortIcon2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+var SortIcon2 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
   "svg",
   {
     style: {
@@ -3860,7 +4273,7 @@ var SortIcon2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor",
-    children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
       "path",
       {
         strokeLinecap: "round",
@@ -3871,7 +4284,7 @@ var SortIcon2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
     )
   }
 );
-var TablePagination2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+var TablePagination2 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
@@ -3880,9 +4293,9 @@ var TablePagination2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
       borderTop: "var(--drp-border-thin)"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Prev" }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Next" })
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Prev" }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Next" })
     ]
   }
 );
@@ -3951,7 +4364,7 @@ var customers = [
     bg: "var(--drp-warning)"
   }
 ];
-var TabBar = ({ active }) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+var TabBar = ({ active }) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
@@ -3960,7 +4373,7 @@ var TabBar = ({ active }) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
       borderBottom: "var(--drp-border-thin)"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "drp-tabs", children: ["All Contacts", "Teammates", "Customers"].map((tab) => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "drp-tabs", children: ["All Contacts", "Teammates", "Customers"].map((tab) => /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
         "button",
         {
           className: `drp-tab ${tab === active ? "drp-tab--active" : ""}`,
@@ -3968,40 +4381,40 @@ var TabBar = ({ active }) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
         },
         tab
       )) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Sort: A-Z" }),
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Bulk Actions" })
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Sort: A-Z" }),
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Bulk Actions" })
       ] })
     ]
   }
 );
-var V1Content2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(TabBar, { active: "All Contacts" }),
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("table", { className: "drp-table", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("tr", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("th", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("input", { type: "checkbox" }) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("th", { children: [
+var V1Content2 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(TabBar, { active: "All Contacts" }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("table", { className: "drp-table", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("tr", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("th", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("input", { type: "checkbox" }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("th", { children: [
         "Name ",
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(SortIcon2, {})
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("th", { children: [
         "Email ",
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(SortIcon2, {})
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("th", { children: [
         "Service ",
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(SortIcon2, {})
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("th", { children: [
         "Status ",
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(SortIcon2, {})
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("th", { style: { width: 40 } })
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("th", { style: { width: 40 } })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("tbody", { children: customers.map((c2) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("tr", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("input", { type: "checkbox" }) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("tbody", { children: customers.map((c2) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("tr", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("input", { type: "checkbox" }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
           "div",
           {
             className: "sidebar-avatar",
@@ -4014,45 +4427,45 @@ var V1Content2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { cl
             children: c2.name.split(" ").map((n2) => n2[0]).join("")
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-text drp-text--bold", children: c2.name })
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-text drp-text--bold", children: c2.name })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: c2.email }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-text drp-text--sm", children: c2.service }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: c2.email }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-text drp-text--sm", children: c2.service }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
         "span",
         {
           className: `drp-tag drp-tag--dot ${c2.status === "Tag" ? "drp-tag--mint" : "drp-tag--grey"}`,
           children: c2.status === "Tag" ? "Online" : "Away"
         }
       ) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
     ] }, c2.name)) })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(TablePagination2, {})
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(TablePagination2, {})
 ] }) });
-var V2Content2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(TabBar, { active: "All Contacts" }),
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("table", { className: "drp-table", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("tr", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("th", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("input", { type: "checkbox" }) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("th", { children: [
+var V2Content2 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(TabBar, { active: "All Contacts" }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("table", { className: "drp-table", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("tr", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("th", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("input", { type: "checkbox" }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("th", { children: [
         "Name ",
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(SortIcon2, {})
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("th", { children: [
         "Email ",
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(SortIcon2, {})
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("th", { children: [
         "Access ",
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(SortIcon2, {})
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("th", { style: { width: 40 } })
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("th", { style: { width: 40 } })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("tbody", { children: customers.map((c2, i2) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("tr", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("input", { type: "checkbox" }) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("tbody", { children: customers.map((c2, i2) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("tr", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("input", { type: "checkbox" }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
           "div",
           {
             className: "sidebar-avatar",
@@ -4065,48 +4478,48 @@ var V2Content2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { cl
             children: c2.name.split(" ").map((n2) => n2[0]).join("")
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-text drp-text--bold", children: c2.name })
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-text drp-text--bold", children: c2.name })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: c2.email }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "View and edit" }),
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("label", { className: "drp-switch", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("input", { type: "checkbox", defaultChecked: i2 < 6 }),
-          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-switch__track", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-switch__knob" }) })
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: c2.email }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "View and edit" }),
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("label", { className: "drp-switch", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("input", { type: "checkbox", defaultChecked: i2 < 6 }),
+          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-switch__track", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-switch__knob" }) })
         ] })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
     ] }, c2.name)) })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(TablePagination2, {})
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(TablePagination2, {})
 ] }) });
-var V3Content2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(TabBar, { active: "All Contacts" }),
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("table", { className: "drp-table", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("tr", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("th", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("input", { type: "checkbox" }) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("th", { children: [
+var V3Content2 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(TabBar, { active: "All Contacts" }),
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("table", { className: "drp-table", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("tr", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("th", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("input", { type: "checkbox" }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("th", { children: [
         "Name ",
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(SortIcon2, {})
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("th", { children: [
         "Email ",
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(SortIcon2, {})
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("th", { children: [
         "Service ",
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(SortIcon2, {})
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("th", { children: [
         "Status ",
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(SortIcon2, {})
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("th", { style: { width: 40 } })
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("th", { style: { width: 40 } })
     ] }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("tbody", { children: customers.map((c2) => /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("tr", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("input", { type: "checkbox" }) }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("tbody", { children: customers.map((c2) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("tr", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("input", { type: "checkbox" }) }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
           "div",
           {
             className: "sidebar-avatar",
@@ -4119,18 +4532,18 @@ var V3Content2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { cl
             children: c2.name.split(" ").map((n2) => n2[0]).join("")
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-text drp-text--bold", children: c2.name })
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-text drp-text--bold", children: c2.name })
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: c2.email }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-tag", children: c2.service }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-tag drp-tag--filled drp-tag--mint", children: c2.status }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: c2.email }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-tag", children: c2.service }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-tag drp-tag--filled drp-tag--mint", children: c2.status }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
     ] }, c2.name)) })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(TablePagination2, {})
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(TablePagination2, {})
 ] }) });
-var DetailsContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { className: "drp-flex drp-gap-6", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { style: { flex: 1 }, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
+var DetailsContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "drp-flex drp-gap-6", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { style: { flex: 1 }, children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
     "div",
     {
       className: "drp-flex drp-items-center drp-gap-4",
@@ -4139,7 +4552,7 @@ var DetailsContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div",
         borderBottom: "var(--drp-border-thin)"
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
           "div",
           {
             className: "sidebar-avatar",
@@ -4152,25 +4565,25 @@ var DetailsContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div",
             children: "D"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("h2", { className: "drp-h5", children: "Darius Cummings" }),
-          /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "balchen@msn.com" })
+        /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("h2", { className: "drp-h5", children: "Darius Cummings" }),
+          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "balchen@msn.com" })
         ] })
       ]
     }
   ),
-  /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("div", { style: { padding: "var(--drp-space-5)" }, children: /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "drp-flex drp-gap-6 drp-mb-4", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-label", children: "Service" }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("p", { className: "drp-text drp-mt-2", children: "Development" })
+  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { style: { padding: "var(--drp-space-5)" }, children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-flex drp-gap-6 drp-mb-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-label", children: "Service" }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "drp-text drp-mt-2", children: "Development" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-label", children: "Status" }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("p", { className: "drp-mt-2", children: /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-tag drp-tag--dot drp-tag--mint", children: "Online" }) })
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-label", children: "Status" }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "drp-mt-2", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-tag drp-tag--dot drp-tag--mint", children: "Online" }) })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-label", children: "Joined" }),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("p", { className: "drp-text drp-mt-2", children: "Jan 2022" })
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-label", children: "Joined" }),
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "drp-text drp-mt-2", children: "Jan 2022" })
     ] })
   ] }) })
 ] }) }) }) });
@@ -4181,35 +4594,35 @@ var CustomersList = ({
   const renderContent = () => {
     switch (variant) {
       case "v2":
-        return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(V2Content2, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(V2Content2, {});
       case "v3":
-        return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(V3Content2, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(V3Content2, {});
       case "details":
-        return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(DetailsContent2, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(DetailsContent2, {});
       default:
-        return /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(V1Content2, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(V1Content2, {});
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "app-layout", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(DoctorProjectSidebar2, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)("div", { className: "main-content", style: { marginLeft: 160 }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(TopBar3, {}),
+  return /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "app-layout", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(DoctorProjectSidebar2, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "main-content", style: { marginLeft: 160 }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(TopBar3, {}),
       renderContent(),
-      /* @__PURE__ */ (0, import_jsx_runtime45.jsx)(Footer3, {})
+      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(Footer3, {})
     ] })
   ] });
 };
 
 // src/screens/Accounts/AccountsList.tsx
-var import_jsx_runtime46 = require("react/jsx-runtime");
-var DoctorProjectSidebar3 = () => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("aside", { className: "sidebar", style: { width: 280 }, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "sidebar-brand-dot" })
+var import_jsx_runtime56 = require("react/jsx-runtime");
+var DoctorProjectSidebar3 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("aside", { className: "sidebar", style: { width: 280 }, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard", icon: "\u25CE" },
         { label: "Accounts", icon: "\u25A3", active: true },
@@ -4227,23 +4640,23 @@ var DoctorProjectSidebar3 = () => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)
           badgeVariant: "sidebar-badge--green"
         },
         { label: "Reports", icon: "\u25A4" }
-      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
         "button",
         {
           className: `sidebar-nav-item ${item.active ? "active" : ""}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "sidebar-nav-icon", children: item.icon }),
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-            item.badge && /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "sidebar-nav-icon", children: item.icon }),
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
           ]
         },
         item.label
       ))
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "sidebar-nav-label", children: "Cards" }),
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "sidebar-nav-label", children: "Cards" }),
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("button", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
           "span",
           {
             className: "sidebar-avatar",
@@ -4256,10 +4669,10 @@ var DoctorProjectSidebar3 = () => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)
             children: "V"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "sidebar-nav-text", children: "Debit Card **** 7890" })
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "sidebar-nav-text", children: "Debit Card **** 7890" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("button", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
           "span",
           {
             className: "sidebar-avatar",
@@ -4272,10 +4685,10 @@ var DoctorProjectSidebar3 = () => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)
             children: "\u25CF"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "sidebar-nav-text", children: "Credit Card **** 4340" })
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "sidebar-nav-text", children: "Credit Card **** 4340" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("button", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
           "span",
           {
             style: {
@@ -4291,21 +4704,21 @@ var DoctorProjectSidebar3 = () => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)
             children: "+"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "sidebar-nav-text", children: "Open a card" })
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "sidebar-nav-text", children: "Open a card" })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "sidebar-nav-label", children: "Balances" }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "sidebar-nav-label", children: "Balances" }),
       [
         { flag: "\u{1F1FA}\u{1F1F8}", amount: "100,050.75 USD" },
         { flag: "\u{1F1EA}\u{1F1FA}", amount: "10.40 EUR" },
         { flag: "\u{1F1EC}\u{1F1E7}", amount: "95.50 GBP" }
-      ].map((bal) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { style: { fontSize: 18 }, children: bal.flag }),
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "sidebar-nav-text", children: bal.amount })
+      ].map((bal) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("button", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { style: { fontSize: 18 }, children: bal.flag }),
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "sidebar-nav-text", children: bal.amount })
       ] }, bal.amount)),
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("button", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
           "span",
           {
             style: {
@@ -4321,12 +4734,12 @@ var DoctorProjectSidebar3 = () => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)
             children: "+"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "sidebar-nav-text", children: "Open a balance" })
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "sidebar-nav-text", children: "Open a balance" })
       ] })
     ] })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
       "div",
       {
         className: "sidebar-avatar",
@@ -4335,7 +4748,7 @@ var DoctorProjectSidebar3 = () => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)
         }
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
       "span",
       {
         className: "drp-text drp-text--sm",
@@ -4343,13 +4756,13 @@ var DoctorProjectSidebar3 = () => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)
         children: "Henry Richardson"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" })
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" })
   ] })
 ] });
-var TopBar4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: `topbar ${theme === "dark" ? "dark-mode" : ""}`, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("h1", { className: "topbar-title drp-h2", children: "Accounts" }),
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+var TopBar4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: `topbar ${theme === "dark" ? "dark-mode" : ""}`, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("h1", { className: "topbar-title drp-h2", children: "Accounts" }),
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
       "svg",
       {
         width: "20",
@@ -4357,7 +4770,7 @@ var TopBar4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -4368,7 +4781,7 @@ var TopBar4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
       "svg",
       {
         width: "20",
@@ -4376,7 +4789,7 @@ var TopBar4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -4387,8 +4800,8 @@ var TopBar4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
         "svg",
         {
           width: "16",
@@ -4396,7 +4809,7 @@ var TopBar4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -4409,16 +4822,16 @@ var TopBar4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div
       ),
       "Apps"
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { style: { fontSize: 18, lineHeight: 1 }, children: "+" }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { style: { fontSize: 18, lineHeight: 1 }, children: "+" }),
       "Create new"
     ] })
   ] })
 ] });
-var Footer4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: `footer-bar ${theme === "dark" ? "dark-mode" : ""}`, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "footer-link", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+var Footer4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: `footer-bar ${theme === "dark" ? "dark-mode" : ""}`, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("button", { className: "footer-link", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
         "svg",
         {
           width: "16",
@@ -4427,8 +4840,8 @@ var Footer4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
               "path",
               {
                 strokeLinecap: "round",
@@ -4441,12 +4854,12 @@ var Footer4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div
       ),
       "English"
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "footer-link", children: "API" })
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
       "svg",
       {
         width: "16",
@@ -4455,7 +4868,7 @@ var Footer4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -4464,7 +4877,7 @@ var Footer4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -4476,7 +4889,7 @@ var Footer4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
       "svg",
       {
         width: "16",
@@ -4484,7 +4897,7 @@ var Footer4 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -4536,16 +4949,16 @@ var LineChart = ({ theme }) => {
   const areaD = `${pathD} L ${padX + chartW} ${padY + chartH} L ${padX} ${padY + chartH} Z`;
   const lastX = padX + chartW;
   const lastY = padY + chartH - points[points.length - 1] / max * chartH;
-  return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { style: { position: "relative" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { style: { position: "relative" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
       "svg",
       {
         viewBox: `0 0 ${width} ${height}`,
         style: { width: "100%", height: 128 },
         preserveAspectRatio: "none",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("linearGradient", { id: "areaGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("linearGradient", { id: "areaGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
               "stop",
               {
                 offset: "0%",
@@ -4553,7 +4966,7 @@ var LineChart = ({ theme }) => {
                 stopOpacity: "0.3"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
               "stop",
               {
                 offset: "100%",
@@ -4562,8 +4975,8 @@ var LineChart = ({ theme }) => {
               }
             )
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("path", { d: areaD, fill: "url(#areaGrad)" }),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("path", { d: areaD, fill: "url(#areaGrad)" }),
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
             "path",
             {
               d: pathD,
@@ -4572,11 +4985,11 @@ var LineChart = ({ theme }) => {
               strokeWidth: "2.5"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("circle", { cx: lastX, cy: lastY, r: "6", fill: "var(--drp-success)" })
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("circle", { cx: lastX, cy: lastY, r: "6", fill: "var(--drp-success)" })
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
       "div",
       {
         className: "drp-card drp-card--sm",
@@ -4587,37 +5000,37 @@ var LineChart = ({ theme }) => {
           padding: "var(--drp-space-2) var(--drp-space-3)"
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-caption", style: { color: "var(--drp-grey)" }, children: "June 16" }),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-text drp-text--bold", children: "$14.800" })
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-caption", style: { color: "var(--drp-grey)" }, children: "June 16" }),
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-text drp-text--bold", children: "$14.800" })
         ]
       }
     )
   ] });
 };
-var CardRow = ({ icon, cardNumber, balance, blocked, valid, status }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("tr", { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("td", { style: { width: 40 }, children: icon }),
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("td", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: cardNumber }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("br", {}),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-caption", children: "Card number" })
+var CardRow = ({ icon, cardNumber, balance, blocked, valid, status }) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("tr", { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("td", { style: { width: 40 }, children: icon }),
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("td", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: cardNumber }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("br", {}),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-caption", children: "Card number" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("td", { style: { textAlign: "right" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: balance }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("br", {}),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-caption", children: "Balance" })
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("td", { style: { textAlign: "right" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: balance }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("br", {}),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-caption", children: "Balance" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("td", { style: { textAlign: "right" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: blocked }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("br", {}),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-caption", children: "Blocked amount" })
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("td", { style: { textAlign: "right" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: blocked }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("br", {}),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-caption", children: "Blocked amount" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("td", { style: { textAlign: "right" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: valid }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("br", {}),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-caption", children: "Valid" })
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("td", { style: { textAlign: "right" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: valid }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("br", {}),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-caption", children: "Valid" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("span", { className: "drp-tag drp-tag--dot", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("span", { className: "drp-tag drp-tag--dot", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
       "span",
       {
         className: "drp-dot",
@@ -4628,25 +5041,25 @@ var CardRow = ({ icon, cardNumber, balance, blocked, valid, status }) => /* @__P
     ),
     status
   ] }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("td", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("td", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
 ] });
-var V1Content3 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+var V1Content3 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
   "div",
   {
     className: "content",
     style: { padding: "var(--drp-space-6)", overflow: "auto" },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "drp-card", style: { marginBottom: "var(--drp-space-4)" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "drp-card__header", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("h2", { className: "drp-card__title drp-h5", children: "Your cards" }),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: "Open new deposit" })
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "drp-card", style: { marginBottom: "var(--drp-space-4)" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "drp-card__header", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("h2", { className: "drp-card__title drp-h5", children: "Your cards" }),
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: "Open new deposit" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { style: { padding: "var(--drp-space-2) var(--drp-space-4)" }, children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(LineChart, { theme }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("table", { className: "drp-table", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("tbody", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { style: { padding: "var(--drp-space-2) var(--drp-space-4)" }, children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(LineChart, { theme }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("table", { className: "drp-table", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("tbody", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
             CardRow,
             {
-              icon: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              icon: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                 "span",
                 {
                   className: "drp-text drp-text--bold",
@@ -4661,10 +5074,10 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
               status: "Active"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
             CardRow,
             {
-              icon: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              icon: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                 "div",
                 {
                   style: {
@@ -4675,7 +5088,7 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
                     alignItems: "center",
                     justifyContent: "center"
                   },
-                  children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { style: { fontSize: 10, color: "white" }, children: "\u25D1" })
+                  children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { style: { fontSize: 10, color: "white" }, children: "\u25D1" })
                 }
               ),
               cardNumber: "8210 **** **** 4340",
@@ -4685,10 +5098,10 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
               status: "Active"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
             CardRow,
             {
-              icon: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              icon: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                 "div",
                 {
                   style: {
@@ -4699,7 +5112,7 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
                     alignItems: "center",
                     justifyContent: "center"
                   },
-                  children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { style: { fontSize: 10, color: "white" }, children: "\u25D1" })
+                  children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { style: { fontSize: 10, color: "white" }, children: "\u25D1" })
                 }
               ),
               cardNumber: "8210 **** **** 4990",
@@ -4711,12 +5124,12 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
           )
         ] }) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "drp-card", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "drp-card__header", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("h2", { className: "drp-card__title drp-h5", children: "Your deposits" }),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: "Open new deposit" })
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "drp-card", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "drp-card__header", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("h2", { className: "drp-card__title drp-h5", children: "Your deposits" }),
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: "Open new deposit" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("table", { className: "drp-table", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("tbody", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("table", { className: "drp-table", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("tbody", { children: [
           {
             name: "Cumulative deposit",
             balance: "$94,800.50",
@@ -4735,8 +5148,8 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
             initials: "A",
             bg: "var(--drp-grey-light, #999)"
           }
-        ].map((dep, i2) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("td", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+        ].map((dep, i2) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("tr", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("td", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
             "div",
             {
               className: "sidebar-avatar",
@@ -4749,28 +5162,28 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
               children: dep.initials
             }
           ) }),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("td", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.name }),
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("br", {}),
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-caption", children: "Name" })
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("td", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.name }),
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("br", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-caption", children: "Name" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("td", { style: { textAlign: "right" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.balance }),
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("br", {}),
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-caption", children: "Balance" })
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("td", { style: { textAlign: "right" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.balance }),
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("br", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-caption", children: "Balance" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("td", { style: { textAlign: "right" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.accrued }),
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("br", {}),
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-caption", children: "Accured" })
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("td", { style: { textAlign: "right" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.accrued }),
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("br", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-caption", children: "Accured" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("td", { style: { textAlign: "right" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.valid }),
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("br", {}),
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-caption", children: "Valid" })
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("td", { style: { textAlign: "right" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.valid }),
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("br", {}),
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-caption", children: "Valid" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("span", { className: "drp-tag drp-tag--dot", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("span", { className: "drp-tag drp-tag--dot", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
               "span",
               {
                 className: "drp-dot",
@@ -4781,13 +5194,13 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
             ),
             dep.status
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("td", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("td", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
         ] }, i2)) }) })
       ] })
     ]
   }
 );
-var LimitBar = ({ label, spent, left, color, pct }) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+var LimitBar = ({ label, spent, left, color, pct }) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
   "div",
   {
     style: {
@@ -4795,7 +5208,7 @@ var LimitBar = ({ label, spent, left, color, pct }) => /* @__PURE__ */ (0, impor
       borderBottom: "var(--drp-border-light, 1px solid var(--drp-black-10, rgba(0,0,0,0.1)))"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
         "h3",
         {
           className: "drp-text drp-text--sm drp-text--bold",
@@ -4803,12 +5216,12 @@ var LimitBar = ({ label, spent, left, color, pct }) => /* @__PURE__ */ (0, impor
           children: label
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
         "div",
         {
           className: "drp-progress",
           style: { marginBottom: "var(--drp-space-2)" },
-          children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
             "div",
             {
               className: "drp-progress__bar",
@@ -4817,14 +5230,14 @@ var LimitBar = ({ label, spent, left, color, pct }) => /* @__PURE__ */ (0, impor
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "drp-flex drp-justify-between", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("span", { className: "drp-caption", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: spent }),
+      /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "drp-flex drp-justify-between", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("span", { className: "drp-caption", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: spent }),
           " ",
           "Spent"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("span", { className: "drp-caption", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: left }),
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("span", { className: "drp-caption", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: left }),
           " ",
           "Left"
         ] })
@@ -4880,20 +5293,20 @@ var V2Content3 = ({ theme }) => {
       neg: true
     }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
     "div",
     {
       className: "content drp-flex drp-gap-4",
       style: { padding: "var(--drp-space-6)", overflow: "auto" },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
           "div",
           {
             className: "drp-card",
             style: { flex: 1, display: "flex", flexDirection: "column" },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "drp-card__header", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "drp-card__header", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                   "h2",
                   {
                     className: "drp-card__title drp-h5",
@@ -4901,13 +5314,13 @@ var V2Content3 = ({ theme }) => {
                     children: "Your cards"
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "drp-tabs", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "drp-tab drp-tab--active", children: "Overview" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "drp-tab", children: "Currency" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "drp-tab", children: "Statement" })
+                /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "drp-tabs", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "drp-tab drp-tab--active", children: "Overview" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "drp-tab", children: "Currency" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "drp-tab", children: "Statement" })
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
                 "div",
                 {
                   className: "drp-flex drp-gap-6",
@@ -4916,7 +5329,7 @@ var V2Content3 = ({ theme }) => {
                     borderBottom: "var(--drp-border)"
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+                    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
                       "div",
                       {
                         style: {
@@ -4929,7 +5342,7 @@ var V2Content3 = ({ theme }) => {
                           boxShadow: "var(--drp-shadow-md)"
                         },
                         children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { style: { position: "absolute", top: 16, right: 16 }, children: /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+                          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { style: { position: "absolute", top: 16, right: 16 }, children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
                             "div",
                             {
                               style: {
@@ -4941,7 +5354,7 @@ var V2Content3 = ({ theme }) => {
                                 justifyContent: "center"
                               },
                               children: [
-                                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                                /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                                   "div",
                                   {
                                     style: {
@@ -4953,7 +5366,7 @@ var V2Content3 = ({ theme }) => {
                                     }
                                   }
                                 ),
-                                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                                /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                                   "div",
                                   {
                                     style: {
@@ -4968,8 +5381,8 @@ var V2Content3 = ({ theme }) => {
                               ]
                             }
                           ) }),
-                          /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { style: { marginTop: 20 }, children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                          /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { style: { marginTop: 20 }, children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                               "div",
                               {
                                 className: "drp-text drp-text--bold",
@@ -4977,7 +5390,7 @@ var V2Content3 = ({ theme }) => {
                                 children: "3400 5678 9804 3002"
                               }
                             ),
-                            /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                               "div",
                               {
                                 className: "drp-caption",
@@ -4986,9 +5399,9 @@ var V2Content3 = ({ theme }) => {
                               }
                             )
                           ] }),
-                          /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "drp-flex drp-gap-8", style: { marginTop: 16 }, children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                          /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "drp-flex drp-gap-8", style: { marginTop: 16 }, children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { children: [
+                              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                                 "div",
                                 {
                                   className: "drp-text drp-text--sm drp-text--bold",
@@ -4996,7 +5409,7 @@ var V2Content3 = ({ theme }) => {
                                   children: "Barry Armstrong"
                                 }
                               ),
-                              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                                 "div",
                                 {
                                   className: "drp-caption",
@@ -5005,8 +5418,8 @@ var V2Content3 = ({ theme }) => {
                                 }
                               )
                             ] }),
-                            /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                            /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { children: [
+                              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                                 "div",
                                 {
                                   className: "drp-text drp-text--sm drp-text--bold",
@@ -5014,7 +5427,7 @@ var V2Content3 = ({ theme }) => {
                                   children: "06 / 26"
                                 }
                               ),
-                              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                                 "div",
                                 {
                                   className: "drp-caption",
@@ -5027,9 +5440,9 @@ var V2Content3 = ({ theme }) => {
                         ]
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "drp-h2", style: { marginBottom: 4 }, children: "42.800 USD" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "drp-h2", style: { marginBottom: 4 }, children: "42.800 USD" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                         "div",
                         {
                           className: "drp-text drp-text--muted",
@@ -5037,7 +5450,7 @@ var V2Content3 = ({ theme }) => {
                           children: "Available amount"
                         }
                       ),
-                      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                         "div",
                         {
                           className: "drp-text drp-text--bold",
@@ -5045,7 +5458,7 @@ var V2Content3 = ({ theme }) => {
                           children: "UK64CT00000010034567"
                         }
                       ),
-                      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                         "div",
                         {
                           className: "drp-text drp-text--muted",
@@ -5053,12 +5466,12 @@ var V2Content3 = ({ theme }) => {
                           children: "Account number"
                         }
                       ),
-                      /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Get card details" })
+                      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Get card details" })
                     ] })
                   ]
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
                 "div",
                 {
                   className: "drp-flex drp-items-center drp-justify-center drp-gap-2",
@@ -5067,14 +5480,14 @@ var V2Content3 = ({ theme }) => {
                     borderBottom: "var(--drp-border)"
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                       "span",
                       {
                         className: "drp-dot",
                         style: { background: "var(--drp-purple)", width: 8, height: 8 }
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                       "span",
                       {
                         className: "drp-dot",
@@ -5085,7 +5498,7 @@ var V2Content3 = ({ theme }) => {
                         }
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                       "span",
                       {
                         className: "drp-dot",
@@ -5099,10 +5512,10 @@ var V2Content3 = ({ theme }) => {
                   ]
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { style: { padding: "var(--drp-space-5)" }, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("h3", { className: "drp-h6", style: { marginBottom: "var(--drp-space-3)" }, children: "Latest transfers" }),
-                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("table", { className: "drp-table", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("tbody", { children: transfers.map((t2, i2) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("tr", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("td", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { style: { padding: "var(--drp-space-5)" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("h3", { className: "drp-h6", style: { marginBottom: "var(--drp-space-3)" }, children: "Latest transfers" }),
+                /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("table", { className: "drp-table", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("tbody", { children: transfers.map((t2, i2) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("tr", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("td", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                     "div",
                     {
                       className: "sidebar-avatar",
@@ -5115,8 +5528,8 @@ var V2Content3 = ({ theme }) => {
                       children: t2.icon
                     }
                   ) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("td", { children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("td", { children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                       "span",
                       {
                         className: "drp-text drp-text--sm drp-text--bold",
@@ -5129,10 +5542,10 @@ var V2Content3 = ({ theme }) => {
                         children: t2.label
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-caption", children: t2.sub })
+                    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-caption", children: t2.sub })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("td", { style: { textAlign: "right" }, children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("td", { style: { textAlign: "right" }, children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                       "span",
                       {
                         className: "drp-text drp-text--sm drp-text--bold",
@@ -5142,16 +5555,16 @@ var V2Content3 = ({ theme }) => {
                         children: t2.amount
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("br", {}),
-                    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("span", { className: "drp-caption", children: t2.time })
+                    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("br", {}),
+                    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-caption", children: t2.time })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("td", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+                  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("td", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
                 ] }, i2)) }) })
               ] })
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
           "div",
           {
             className: "drp-card",
@@ -5162,9 +5575,9 @@ var V2Content3 = ({ theme }) => {
               flexDirection: "column"
             },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { className: "drp-card__header", children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("h2", { className: "drp-card__title drp-h5", children: "Your limits" }) }),
-              /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { style: { padding: "0 var(--drp-space-5)", flex: 1 }, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "drp-card__header", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("h2", { className: "drp-card__title drp-h5", children: "Your limits" }) }),
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { style: { padding: "0 var(--drp-space-5)", flex: 1 }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                   LimitBar,
                   {
                     label: "ATM Withdrawals",
@@ -5174,7 +5587,7 @@ var V2Content3 = ({ theme }) => {
                     pct: 75
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                   LimitBar,
                   {
                     label: "Daily ATM Withdrawals",
@@ -5184,7 +5597,7 @@ var V2Content3 = ({ theme }) => {
                     pct: 60
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                   LimitBar,
                   {
                     label: "Cash In in ATMs",
@@ -5194,7 +5607,7 @@ var V2Content3 = ({ theme }) => {
                     pct: 15
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                   LimitBar,
                   {
                     label: "Online Purchase",
@@ -5205,8 +5618,8 @@ var V2Content3 = ({ theme }) => {
                   }
                 )
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime46.jsx)("div", { style: { padding: "var(--drp-space-4)" }, children: /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("button", { className: "drp-btn drp-btn--primary drp-btn--block", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { style: { padding: "var(--drp-space-4)" }, children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("button", { className: "drp-btn drp-btn--primary drp-btn--block", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                   "svg",
                   {
                     width: "16",
@@ -5214,7 +5627,7 @@ var V2Content3 = ({ theme }) => {
                     fill: "none",
                     viewBox: "0 0 24 24",
                     stroke: "currentColor",
-                    children: /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(
+                    children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
                       "path",
                       {
                         strokeLinecap: "round",
@@ -5237,18 +5650,18 @@ var V2Content3 = ({ theme }) => {
 var AccountsList = ({
   theme = "light",
   variant = "v1"
-}) => /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "app-layout", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(DoctorProjectSidebar3, {}),
-  /* @__PURE__ */ (0, import_jsx_runtime46.jsxs)("div", { className: "main-content", style: { marginLeft: 280 }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(TopBar4, { theme }),
-    variant === "v1" ? /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(V1Content3, { theme }) : /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(V2Content3, { theme }),
-    /* @__PURE__ */ (0, import_jsx_runtime46.jsx)(Footer4, { theme })
+}) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "app-layout", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(DoctorProjectSidebar3, {}),
+  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "main-content", style: { marginLeft: 280 }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(TopBar4, { theme }),
+    variant === "v1" ? /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(V1Content3, { theme }) : /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(V2Content3, { theme }),
+    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(Footer4, { theme })
   ] })
 ] });
 
 // src/screens/Transactions/TransactionsList.tsx
-var import_react7 = require("react");
-var import_jsx_runtime47 = require("react/jsx-runtime");
+var import_react13 = require("react");
+var import_jsx_runtime57 = require("react/jsx-runtime");
 var DoctorProjectSidebar4 = ({
   variant
 }) => {
@@ -5276,20 +5689,20 @@ var DoctorProjectSidebar4 = ({
     { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-mint)" },
     { name: "Justine Robinson", initials: "JR", bg: "var(--drp-grey)" }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("aside", { className: "sidebar", style: { width: 280 }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "sidebar-brand", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "sidebar-brand-dot" })
+  return /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("aside", { className: "sidebar", style: { width: 280 }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "sidebar-brand", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "sidebar-brand-dot" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("nav", { className: "sidebar-nav", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "sidebar-nav-section", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
-        navItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("nav", { className: "sidebar-nav", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "sidebar-nav-section", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
+        navItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
           "button",
           {
             className: `sidebar-nav-item ${item.active ? "active" : ""}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
                 "svg",
                 {
                   width: "14",
@@ -5297,7 +5710,7 @@ var DoctorProjectSidebar4 = ({
                   fill: "none",
                   viewBox: "0 0 24 24",
                   stroke: "currentColor",
-                  children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                  children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -5308,17 +5721,17 @@ var DoctorProjectSidebar4 = ({
                   )
                 }
               ) }),
-              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-              item.badge && /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+              item.badge && /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
             ]
           },
           item.id
         ))
       ] }),
-      showTeamMembers ? /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "sidebar-team", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
-        teamMembers.map((m3) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "sidebar-team-member", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+      showTeamMembers ? /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "sidebar-team", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
+        teamMembers.map((m3) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "sidebar-team-member", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
             "div",
             {
               className: "sidebar-avatar",
@@ -5331,10 +5744,10 @@ var DoctorProjectSidebar4 = ({
               children: m3.initials[0]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "sidebar-team-name", children: m3.name })
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "sidebar-team-name", children: m3.name })
         ] }, m3.name)),
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "sidebar-see-more", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "sidebar-see-more", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
             "svg",
             {
               width: "12",
@@ -5342,7 +5755,7 @@ var DoctorProjectSidebar4 = ({
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -5353,13 +5766,13 @@ var DoctorProjectSidebar4 = ({
               )
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { children: "See More" })
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { children: "See More" })
         ] })
-      ] }) : /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(import_jsx_runtime47.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "sidebar-nav-section", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "sidebar-nav-label", children: "Cards" }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+      ] }) : /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(import_jsx_runtime57.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "sidebar-nav-section", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "sidebar-nav-label", children: "Cards" }),
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "div",
               {
                 className: "sidebar-avatar",
@@ -5372,10 +5785,10 @@ var DoctorProjectSidebar4 = ({
                 children: "V"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "sidebar-nav-text", children: "Debit Card **** 7890" })
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "sidebar-nav-text", children: "Debit Card **** 7890" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "div",
               {
                 className: "sidebar-avatar",
@@ -5388,10 +5801,10 @@ var DoctorProjectSidebar4 = ({
                 children: "\u25CF"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "sidebar-nav-text", children: "Credit Card **** 4340" })
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "sidebar-nav-text", children: "Credit Card **** 4340" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "div",
               {
                 style: {
@@ -5408,21 +5821,21 @@ var DoctorProjectSidebar4 = ({
                 children: "+"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "sidebar-nav-text", children: "Open a card" })
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "sidebar-nav-text", children: "Open a card" })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "sidebar-nav-section", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "sidebar-nav-label", children: "Balances" }),
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "sidebar-nav-section", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "sidebar-nav-label", children: "Balances" }),
           [
             { flag: "\u{1F1FA}\u{1F1F8}", amount: "100,050.75 USD" },
             { flag: "\u{1F1EA}\u{1F1FA}", amount: "10.40 EUR" },
             { flag: "\u{1F1EC}\u{1F1E7}", amount: "95.50 GBP" }
-          ].map((bal) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { style: { fontSize: 16 }, children: bal.flag }),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "sidebar-nav-text", children: bal.amount })
+          ].map((bal) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { style: { fontSize: 16 }, children: bal.flag }),
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "sidebar-nav-text", children: bal.amount })
           ] }, bal.amount)),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "div",
               {
                 style: {
@@ -5439,13 +5852,13 @@ var DoctorProjectSidebar4 = ({
                 children: "+"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "sidebar-nav-text", children: "Open a balance" })
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "sidebar-nav-text", children: "Open a balance" })
           ] })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "sidebar-user", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "sidebar-user", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
         "div",
         {
           className: "sidebar-avatar",
@@ -5456,15 +5869,15 @@ var DoctorProjectSidebar4 = ({
           }
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
     ] })
   ] });
 };
-var TopBar5 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("h1", { className: "topbar-title", children: "Transactions" }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+var TopBar5 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h1", { className: "topbar-title", children: "Transactions" }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
       "svg",
       {
         width: "16",
@@ -5472,7 +5885,7 @@ var TopBar5 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { clas
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -5483,7 +5896,7 @@ var TopBar5 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { clas
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
       "svg",
       {
         width: "16",
@@ -5491,7 +5904,7 @@ var TopBar5 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { clas
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -5502,8 +5915,8 @@ var TopBar5 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { clas
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
         "svg",
         {
           width: "16",
@@ -5511,7 +5924,7 @@ var TopBar5 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { clas
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -5522,23 +5935,23 @@ var TopBar5 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { clas
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { children: "Apps" })
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { children: "+" }),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { children: "Create new" })
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { children: "+" }),
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer5 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "footer-link", children: "API" })
+var Footer5 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
       "svg",
       {
         width: "16",
@@ -5547,7 +5960,7 @@ var Footer5 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { clas
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -5556,7 +5969,7 @@ var Footer5 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { clas
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -5568,7 +5981,7 @@ var Footer5 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { clas
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
       "svg",
       {
         width: "16",
@@ -5576,7 +5989,7 @@ var Footer5 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { clas
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -5691,7 +6104,7 @@ var TRANSACTIONS = [
     isPositive: false
   }
 ];
-var TxIcon = ({ tx }) => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+var TxIcon = ({ tx }) => /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
   "div",
   {
     className: "sidebar-avatar",
@@ -5705,7 +6118,7 @@ var TxIcon = ({ tx }) => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
     children: tx.icon
   }
 );
-var SortIcon3 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+var SortIcon3 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
   "svg",
   {
     style: {
@@ -5718,7 +6131,7 @@ var SortIcon3 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor",
-    children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
       "path",
       {
         strokeLinecap: "round",
@@ -5729,7 +6142,7 @@ var SortIcon3 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
     )
   }
 );
-var TablePagination3 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+var TablePagination3 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
@@ -5738,8 +6151,8 @@ var TablePagination3 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
       borderTop: "var(--drp-border-thin)"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
           "svg",
           {
             width: "16",
@@ -5747,7 +6160,7 @@ var TablePagination3 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "path",
               {
                 strokeLinecap: "round",
@@ -5760,10 +6173,10 @@ var TablePagination3 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
         ),
         "Prev"
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
         "Next",
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
           "svg",
           {
             width: "16",
@@ -5771,7 +6184,7 @@ var TablePagination3 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "path",
               {
                 strokeLinecap: "round",
@@ -5789,10 +6202,10 @@ var TablePagination3 = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
 var AccountTabBar = ({
   filterLabel = "Apply Filter"
 }) => {
-  const [activeTab, setActiveTab] = (0, import_react7.useState)("All Accounts");
+  const [activeTab, setActiveTab] = (0, import_react13.useState)("All Accounts");
   const tabs = ["All Accounts", "USD Account", "EUR Account", "GBP Account"];
-  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "drp-tabs", children: tabs.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "drp-tabs", children: tabs.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
       "button",
       {
         onClick: () => setActiveTab(tab),
@@ -5801,9 +6214,9 @@ var AccountTabBar = ({
       },
       tab
     )) }),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
           "svg",
           {
             width: "16",
@@ -5811,7 +6224,7 @@ var AccountTabBar = ({
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "path",
               {
                 strokeLinecap: "round",
@@ -5824,8 +6237,8 @@ var AccountTabBar = ({
         ),
         filterLabel
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
           "svg",
           {
             width: "16",
@@ -5833,7 +6246,7 @@ var AccountTabBar = ({
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "path",
               {
                 strokeLinecap: "round",
@@ -5849,9 +6262,9 @@ var AccountTabBar = ({
     ] })
   ] });
 };
-var ListV1Content = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "content", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(AccountTabBar, {}),
-  /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: TRANSACTIONS.map((tx, i2) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+var ListV1Content = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "content", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(AccountTabBar, {}),
+  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: TRANSACTIONS.map((tx, i2) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
     "div",
     {
       className: "drp-flex drp-items-center drp-gap-4",
@@ -5860,13 +6273,13 @@ var ListV1Content = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", 
         borderBottom: i2 < TRANSACTIONS.length - 1 ? "var(--drp-border-thin)" : "none"
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(TxIcon, { tx }),
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { style: { flex: 1, minWidth: 0 }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "drp-text drp-text--bold", children: tx.name }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "drp-caption", children: tx.sub })
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TxIcon, { tx }),
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { style: { flex: 1, minWidth: 0 }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "drp-text drp-text--bold", children: tx.name }),
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "drp-caption", children: tx.sub })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { style: { textAlign: "right", flexShrink: 0 }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { style: { textAlign: "right", flexShrink: 0 }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
             "div",
             {
               className: "drp-text drp-text--bold",
@@ -5876,9 +6289,9 @@ var ListV1Content = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", 
               children: tx.amount
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "drp-caption", children: tx.date })
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "drp-caption", children: tx.date })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." })
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." })
       ]
     },
     i2
@@ -5886,42 +6299,42 @@ var ListV1Content = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", 
 ] });
 var ListV2Content = () => {
   const rows = TRANSACTIONS.slice(0, 9);
-  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "content", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(AccountTabBar, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("table", { className: "drp-table", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("th", { children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "content", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(AccountTabBar, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("table", { className: "drp-table", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("tr", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("th", { children: [
             "Date & Time ",
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon3, {})
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(SortIcon3, {})
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("th", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("th", { children: [
             "Payment ",
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon3, {})
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(SortIcon3, {})
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("th", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("th", { children: [
             "Service ",
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon3, {})
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(SortIcon3, {})
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("th", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("th", { children: [
             "Fee ",
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon3, {})
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(SortIcon3, {})
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("th", { style: { textAlign: "right" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("th", { style: { textAlign: "right" }, children: [
             "Price ",
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon3, {})
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(SortIcon3, {})
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("th", { style: { width: 40 } })
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("th", { style: { width: 40 } })
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("tbody", { children: rows.map((tx, i2) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.date }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(TxIcon, { tx }),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "drp-text drp-text--bold", children: tx.name })
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("tbody", { children: rows.map((tx, i2) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("tr", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.date }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TxIcon, { tx }),
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "drp-text drp-text--bold", children: tx.name })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.sub }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "drp-text drp-text--sm", children: tx.fee }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("td", { style: { textAlign: "right" }, children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.sub }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "drp-text drp-text--sm", children: tx.fee }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("td", { style: { textAlign: "right" }, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
             "span",
             {
               className: "drp-text drp-text--bold",
@@ -5931,20 +6344,20 @@ var ListV2Content = () => {
               children: tx.amount
             }
           ) }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
         ] }, i2)) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(TablePagination3, {})
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TablePagination3, {})
     ] })
   ] });
 };
-var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "drp-overlay", children: /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "drp-overlay", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
   "div",
   {
     className: "drp-modal",
     style: { width: 480, overflow: "hidden", padding: 0 },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
         "div",
         {
           style: {
@@ -5955,7 +6368,7 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
             justifyContent: "between"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "span",
               {
                 className: "drp-text drp-text--bold",
@@ -5963,12 +6376,12 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
                 children: "Transaction details"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "button",
               {
                 className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
                 style: { color: "var(--drp-white)" },
-                children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
                   "svg",
                   {
                     width: "16",
@@ -5976,7 +6389,7 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
                     fill: "none",
                     viewBox: "0 0 24 24",
                     stroke: "currentColor",
-                    children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                    children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
                       "path",
                       {
                         strokeLinecap: "round",
@@ -5992,7 +6405,7 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
         "div",
         {
           style: {
@@ -6003,7 +6416,7 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
             padding: "var(--drp-space-2) var(--drp-space-8) var(--drp-space-6)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "div",
               {
                 className: "sidebar-avatar",
@@ -6019,8 +6432,8 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
                 children: "S"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("h2", { className: "drp-h5", style: { marginBottom: 4 }, children: "2,702.12 USD to James Dean" }),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h2", { className: "drp-h5", style: { marginBottom: 4 }, children: "2,702.12 USD to James Dean" }),
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "p",
               {
                 className: "drp-text drp-text--sm drp-text--muted",
@@ -6028,11 +6441,11 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
                 children: "Completed Thursday 29 April"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "drp-tag drp-tag--mint drp-tag--filled", children: "Paid" })
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "drp-tag drp-tag--mint drp-tag--filled", children: "Paid" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
         "div",
         {
           style: {
@@ -6040,7 +6453,7 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
             borderTop: "var(--drp-border-thin)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
               "div",
               {
                 style: {
@@ -6051,19 +6464,19 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
                   paddingBottom: "var(--drp-space-4)"
                 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Send To" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "drp-text drp-text--bold", children: "James Dean" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "drp-text drp-text--sm drp-text--muted", children: "james.dea89@gmail.com" })
+                  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Send To" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "drp-text drp-text--bold", children: "James Dean" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "drp-text drp-text--sm drp-text--muted", children: "james.dea89@gmail.com" })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { style: { textAlign: "right" }, children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Amount" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "drp-text drp-text--bold", children: "2,702.12 USD" })
+                  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { style: { textAlign: "right" }, children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Amount" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "drp-text drp-text--bold", children: "2,702.12 USD" })
                   ] })
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "div",
               {
                 style: {
@@ -6072,7 +6485,7 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
                 }
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
               "div",
               {
                 style: {
@@ -6083,23 +6496,23 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
                   paddingBottom: "var(--drp-space-6)"
                 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Bank Details" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "drp-text drp-text--sm", children: "GE91TB7752145031788598" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "drp-text drp-text--sm", children: "TBCBGE22" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "drp-text drp-text--sm", children: "Transfer #241894617" })
+                  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Bank Details" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "drp-text drp-text--sm", children: "GE91TB7752145031788598" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "drp-text drp-text--sm", children: "TBCBGE22" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "drp-text drp-text--sm", children: "Transfer #241894617" })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { style: { textAlign: "right" }, children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Exchange Rate" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("p", { className: "drp-text drp-text--sm", children: "1.00000" })
+                  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { style: { textAlign: "right" }, children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Exchange Rate" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "drp-text drp-text--sm", children: "1.00000" })
                   ] })
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "drp-flex drp-gap-4", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "drp-flex drp-gap-4", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: [
                 "Print",
-                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
                   "svg",
                   {
                     width: "16",
@@ -6107,7 +6520,7 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
                     fill: "none",
                     viewBox: "0 0 24 24",
                     stroke: "currentColor",
-                    children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                    children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
                       "path",
                       {
                         strokeLinecap: "round",
@@ -6119,9 +6532,9 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
                   }
                 )
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: [
                 "Issue Refund",
-                /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
                   "svg",
                   {
                     width: "16",
@@ -6129,7 +6542,7 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
                     fill: "none",
                     viewBox: "0 0 24 24",
                     stroke: "currentColor",
-                    children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                    children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
                       "path",
                       {
                         strokeLinecap: "round",
@@ -6150,11 +6563,11 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { 
 ) });
 var InvoiceContent = () => {
   const rows = TRANSACTIONS.slice(0, 9);
-  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(import_jsx_runtime47.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "content", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { className: "drp-tabs", children: ["All Accounts", "USD Account", "EUR Account", "GBP Account"].map(
-          (tab) => /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(import_jsx_runtime57.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "content", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "drp-tabs", children: ["All Accounts", "USD Account", "EUR Account", "GBP Account"].map(
+          (tab) => /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
             "button",
             {
               className: `drp-tab ${tab === "All Accounts" ? "drp-tab--active" : ""}`,
@@ -6163,9 +6576,9 @@ var InvoiceContent = () => {
             tab
           )
         ) }),
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "svg",
               {
                 width: "16",
@@ -6173,7 +6586,7 @@ var InvoiceContent = () => {
                 fill: "none",
                 viewBox: "0 0 24 24",
                 stroke: "currentColor",
-                children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -6186,8 +6599,8 @@ var InvoiceContent = () => {
             ),
             "August 2023"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "svg",
               {
                 width: "16",
@@ -6195,7 +6608,7 @@ var InvoiceContent = () => {
                 fill: "none",
                 viewBox: "0 0 24 24",
                 stroke: "currentColor",
-                children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -6210,40 +6623,40 @@ var InvoiceContent = () => {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("table", { className: "drp-table", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("tr", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("table", { className: "drp-table", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("tr", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("th", { children: [
               "Date & Time ",
-              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon3, {})
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(SortIcon3, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("th", { children: [
               "Payment ",
-              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon3, {})
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(SortIcon3, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("th", { children: [
               "Service ",
-              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon3, {})
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(SortIcon3, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("th", { children: [
               "Fee ",
-              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon3, {})
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(SortIcon3, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("th", { style: { textAlign: "right" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("th", { style: { textAlign: "right" }, children: [
               "Price ",
-              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(SortIcon3, {})
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(SortIcon3, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("th", { style: { width: 40 } })
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("th", { style: { width: 40 } })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("tbody", { children: rows.map((tx, i2) => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("tr", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.date }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(TxIcon, { tx }),
-              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "drp-text drp-text--bold", children: tx.name })
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("tbody", { children: rows.map((tx, i2) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("tr", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.date }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TxIcon, { tx }),
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "drp-text drp-text--bold", children: tx.name })
             ] }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.sub }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("span", { className: "drp-text drp-text--sm", children: tx.fee }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("td", { style: { textAlign: "right" }, children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.sub }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "drp-text drp-text--sm", children: tx.fee }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("td", { style: { textAlign: "right" }, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
               "span",
               {
                 className: "drp-text drp-text--bold",
@@ -6253,16 +6666,16 @@ var InvoiceContent = () => {
                 children: tx.amount
               }
             ) }),
-            /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
           ] }, i2)) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(TablePagination3, {})
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TablePagination3, {})
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(InvoiceModal, {})
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(InvoiceModal, {})
   ] });
 };
-var EmptyContent = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+var EmptyContent = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
   "div",
   {
     className: "content",
@@ -6275,7 +6688,7 @@ var EmptyContent = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
       overflow: "hidden"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
         "div",
         {
           style: {
@@ -6291,7 +6704,7 @@ var EmptyContent = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
           }
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
         "div",
         {
           style: {
@@ -6307,7 +6720,7 @@ var EmptyContent = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
           }
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
         "div",
         {
           style: {
@@ -6323,8 +6736,8 @@ var EmptyContent = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
           }
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "drp-empty", style: { position: "relative", zIndex: 1 }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("div", { style: { marginBottom: "var(--drp-space-6)" }, children: /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "drp-empty", style: { position: "relative", zIndex: 1 }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { style: { marginBottom: "var(--drp-space-6)" }, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
           "svg",
           {
             width: "64",
@@ -6334,14 +6747,14 @@ var EmptyContent = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
             viewBox: "0 0 64 64",
             stroke: "currentColor",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("rect", { x: "8", y: "32", width: "12", height: "24", rx: "2", strokeWidth: 3 }),
-              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("rect", { x: "26", y: "20", width: "12", height: "36", rx: "2", strokeWidth: 3 }),
-              /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("rect", { x: "44", y: "8", width: "12", height: "48", rx: "2", strokeWidth: 3 })
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("rect", { x: "8", y: "32", width: "12", height: "24", rx: "2", strokeWidth: 3 }),
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("rect", { x: "26", y: "20", width: "12", height: "36", rx: "2", strokeWidth: 3 }),
+              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("rect", { x: "44", y: "8", width: "12", height: "48", rx: "2", strokeWidth: 3 })
             ]
           }
         ) }),
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)("h2", { className: "drp-h2", style: { marginBottom: "var(--drp-space-3)" }, children: "No transactions found?" }),
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h2", { className: "drp-h2", style: { marginBottom: "var(--drp-space-3)" }, children: "No transactions found?" }),
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
           "p",
           {
             className: "drp-text drp-text--sm drp-text--muted",
@@ -6353,8 +6766,8 @@ var EmptyContent = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
             children: "Try to make payments for your bills and products or create a new currency account from scratch."
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("button", { className: "drp-btn drp-btn--primary", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "drp-btn drp-btn--primary", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
             "svg",
             {
               width: "16",
@@ -6362,7 +6775,7 @@ var EmptyContent = () => /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)(
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -6386,32 +6799,32 @@ var TransactionsList = ({
   const renderContent = () => {
     switch (variant) {
       case "listV1":
-        return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ListV1Content, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(ListV1Content, {});
       case "listV2":
-        return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ListV2Content, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(ListV2Content, {});
       case "invoice":
-        return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(InvoiceContent, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(InvoiceContent, {});
       case "empty":
-        return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(EmptyContent, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(EmptyContent, {});
       default:
-        return /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(ListV1Content, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(ListV1Content, {});
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "app-layout", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(DoctorProjectSidebar4, { variant }),
-    /* @__PURE__ */ (0, import_jsx_runtime47.jsxs)("div", { className: "main-content", style: { marginLeft: 280 }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(TopBar5, {}),
+  return /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "app-layout", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(DoctorProjectSidebar4, { variant }),
+    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "main-content", style: { marginLeft: 280 }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TopBar5, {}),
       renderContent(),
-      /* @__PURE__ */ (0, import_jsx_runtime47.jsx)(Footer5, {})
+      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Footer5, {})
     ] })
   ] });
 };
 
 // src/screens/Contacts/ContactsList.tsx
-var import_jsx_runtime48 = require("react/jsx-runtime");
+var import_jsx_runtime58 = require("react/jsx-runtime");
 var Avatar2 = ({ name, bg }) => {
   const initials = name.split(" ").map((n2) => n2[0]).slice(0, 2).join("");
-  return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
     "div",
     {
       className: "sidebar-avatar",
@@ -6426,14 +6839,14 @@ var Avatar2 = ({ name, bg }) => {
     }
   );
 };
-var ContactsSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("aside", { className: "sidebar", style: { width: 155 }, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "sidebar-brand-name", style: { fontSize: 18 }, children: "Doctor Project" }),
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "sidebar-brand-dot" })
+var ContactsSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("aside", { className: "sidebar", style: { width: 155 }, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "sidebar-brand-name", style: { fontSize: 18 }, children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "sidebar-nav-label", style: { fontSize: 10 }, children: "Navigation" }),
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "sidebar-nav-label", style: { fontSize: 10 }, children: "Navigation" }),
       [
         {
           label: "Dashboard",
@@ -6464,12 +6877,12 @@ var ContactsSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("asid
           label: "Analytics",
           icon: "M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
         }
-      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
         "button",
         {
           className: `sidebar-nav-item ${item.active ? "active" : ""}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
               "svg",
               {
                 width: "16",
@@ -6477,7 +6890,7 @@ var ContactsSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("asid
                 fill: "none",
                 viewBox: "0 0 24 24",
                 stroke: "currentColor",
-                children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -6488,8 +6901,8 @@ var ContactsSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("asid
                 )
               }
             ) }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "sidebar-nav-text", style: { fontSize: 12 }, children: item.label }),
-            item.badge && /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "sidebar-nav-text", style: { fontSize: 12 }, children: item.label }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
               "span",
               {
                 className: `sidebar-badge ${item.badgeVariant}`,
@@ -6502,14 +6915,14 @@ var ContactsSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("asid
         item.label
       ))
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "sidebar-team-label", style: { fontSize: 10 }, children: "Team Members" }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "sidebar-team-label", style: { fontSize: 10 }, children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-grey)" },
         { name: "Thanawan Chadee", bg: "var(--drp-orange)" },
         { name: "Justine Robinson", bg: "var(--drp-pink)" }
-      ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+      ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
           "div",
           {
             className: "sidebar-avatar",
@@ -6522,10 +6935,10 @@ var ContactsSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("asid
             children: member.name[0]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "sidebar-team-name", style: { fontSize: 12 }, children: member.name })
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "sidebar-team-name", style: { fontSize: 12 }, children: member.name })
       ] }, member.name)),
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "sidebar-see-more", style: { fontSize: 12 }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "sidebar-see-more", style: { fontSize: 12 }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
           "svg",
           {
             width: "14",
@@ -6533,7 +6946,7 @@ var ContactsSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("asid
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
               "path",
               {
                 strokeLinecap: "round",
@@ -6548,8 +6961,8 @@ var ContactsSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("asid
       ] })
     ] })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
       "div",
       {
         className: "sidebar-avatar",
@@ -6560,7 +6973,7 @@ var ContactsSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("asid
         }
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
       "span",
       {
         className: "drp-text",
@@ -6568,7 +6981,7 @@ var ContactsSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("asid
         children: "Henry Richardson"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
       "button",
       {
         className: "drp-btn drp-btn--ghost drp-btn--sm",
@@ -6578,10 +6991,10 @@ var ContactsSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("asid
     )
   ] })
 ] });
-var TopBar6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("h1", { className: "topbar-title drp-h2", children: "Contacts" }),
-  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+var TopBar6 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("h1", { className: "topbar-title drp-h2", children: "Contacts" }),
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
       "svg",
       {
         width: "20",
@@ -6589,7 +7002,7 @@ var TopBar6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { clas
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -6600,7 +7013,7 @@ var TopBar6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { clas
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
       "svg",
       {
         width: "20",
@@ -6608,7 +7021,7 @@ var TopBar6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { clas
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -6619,17 +7032,17 @@ var TopBar6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { clas
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "topbar-apps-btn", children: "\xB7\xB7\xB7 Apps" }),
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { style: { fontSize: 16, lineHeight: 1 }, children: "+" }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "topbar-apps-btn", children: "\xB7\xB7\xB7 Apps" }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { style: { fontSize: 16, lineHeight: 1 }, children: "+" }),
       "Create new"
     ] })
   ] })
 ] });
-var Footer6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "footer-link", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+var Footer6 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "footer-link", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
         "svg",
         {
           width: "16",
@@ -6638,8 +7051,8 @@ var Footer6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { clas
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
               "path",
               {
                 strokeLinecap: "round",
@@ -6652,12 +7065,12 @@ var Footer6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { clas
       ),
       "English"
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "footer-link", children: "API" })
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
       "svg",
       {
         width: "16",
@@ -6666,7 +7079,7 @@ var Footer6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { clas
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -6675,7 +7088,7 @@ var Footer6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { clas
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -6687,7 +7100,7 @@ var Footer6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { clas
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
       "svg",
       {
         width: "16",
@@ -6695,7 +7108,7 @@ var Footer6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { clas
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -6708,7 +7121,7 @@ var Footer6 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { clas
     ) })
   ] })
 ] });
-var SortIcon4 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+var SortIcon4 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
   "svg",
   {
     width: "14",
@@ -6717,7 +7130,7 @@ var SortIcon4 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
     viewBox: "0 0 24 24",
     stroke: "currentColor",
     style: { display: "inline", marginLeft: 4, verticalAlign: "middle" },
-    children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
       "path",
       {
         strokeLinecap: "round",
@@ -6853,8 +7266,8 @@ var StatusDot2 = ({
   status
 }) => {
   if (status === "Online") {
-    return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("span", { className: "drp-tag drp-tag--dot", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("span", { className: "drp-tag drp-tag--dot", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
         "span",
         {
           className: "drp-dot",
@@ -6865,18 +7278,18 @@ var StatusDot2 = ({
     ] });
   }
   if (status === "Offline") {
-    return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("span", { className: "drp-tag drp-tag--dot", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-dot", style: { background: "var(--drp-error)" } }),
+    return /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("span", { className: "drp-tag drp-tag--dot", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "drp-dot", style: { background: "var(--drp-error)" } }),
       "Offline"
     ] });
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Away" });
+  return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Away" });
 };
-var Toggle = ({ on }) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("label", { className: "drp-switch", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("input", { type: "checkbox", checked: on, readOnly: true }),
-  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-switch__track", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-switch__knob" }) })
+var Toggle = ({ on }) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("label", { className: "drp-switch", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("input", { type: "checkbox", checked: on, readOnly: true }),
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "drp-switch__track", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "drp-switch__knob" }) })
 ] });
-var TabBar2 = ({ active }) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+var TabBar2 = ({ active }) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
@@ -6885,7 +7298,7 @@ var TabBar2 = ({ active }) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
       borderBottom: "var(--drp-border)"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "drp-tabs", children: ["All Contacts", "Teammates", "Customers"].map((tab) => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "drp-tabs", children: ["All Contacts", "Teammates", "Customers"].map((tab) => /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
         "button",
         {
           className: `drp-tab ${tab === active ? "drp-tab--active" : ""}`,
@@ -6893,9 +7306,9 @@ var TabBar2 = ({ active }) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
         },
         tab
       )) }),
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-flex drp-gap-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-flex drp-gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
             "svg",
             {
               width: "16",
@@ -6903,7 +7316,7 @@ var TabBar2 = ({ active }) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -6916,14 +7329,14 @@ var TabBar2 = ({ active }) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
           ),
           "Sort: A-Z"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "\xB7\xB7\xB7 Bulk Actions" })
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "\xB7\xB7\xB7 Bulk Actions" })
       ] })
     ]
   }
 );
-var Pagination2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-pagination", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "drp-pagination__btn", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+var Pagination2 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-pagination", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "drp-pagination__btn", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
       "svg",
       {
         width: "16",
@@ -6931,7 +7344,7 @@ var Pagination2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { 
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -6944,10 +7357,10 @@ var Pagination2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { 
     ),
     "Prev"
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-pagination__info", children: "Page 1 of 10" }),
-  /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "drp-pagination__btn", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "drp-pagination__info", children: "Page 1 of 10" }),
+  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "drp-pagination__btn", children: [
     "Next",
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
       "svg",
       {
         width: "16",
@@ -6955,7 +7368,7 @@ var Pagination2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { 
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -6968,7 +7381,7 @@ var Pagination2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { 
     )
   ] })
 ] });
-var V1Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+var V1Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
   "div",
   {
     className: "content",
@@ -6976,46 +7389,46 @@ var V1Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
       overflow: "auto",
       padding: "var(--drp-space-4) var(--drp-space-6)"
     },
-    children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-card", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(TabBar2, { active: "All Contacts" }),
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("table", { className: "drp-table", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("th", { style: { width: 32 } }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("th", { children: [
+    children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-card", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(TabBar2, { active: "All Contacts" }),
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("table", { className: "drp-table", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("tr", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("th", { style: { width: 32 } }),
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("th", { children: [
             "Name ",
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon4, {})
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(SortIcon4, {})
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("th", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("th", { children: [
             "Email ",
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon4, {})
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(SortIcon4, {})
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("th", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("th", { children: [
             "Service ",
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon4, {})
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(SortIcon4, {})
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("th", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("th", { children: [
             "Status ",
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon4, {})
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(SortIcon4, {})
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("th", { style: { width: 40 } })
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("th", { style: { width: 40 } })
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("tbody", { children: v1Contacts.map((contact) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("input", { type: "checkbox", className: "drp-checkbox" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Avatar2, { name: contact.name, bg: contact.bg }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("tbody", { children: v1Contacts.map((contact) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("tr", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("input", { type: "checkbox", className: "drp-checkbox" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Avatar2, { name: contact.name, bg: contact.bg }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-text drp-text--sm", children: contact.service }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(StatusDot2, { status: contact.status }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "drp-text drp-text--sm", children: contact.service }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(StatusDot2, { status: contact.status }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
         ] }, contact.name)) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Pagination2, {})
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Pagination2, {})
     ] })
   }
 );
-var V2Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+var V2Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
   "div",
   {
     className: "content",
@@ -7023,35 +7436,35 @@ var V2Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
       overflow: "auto",
       padding: "var(--drp-space-4) var(--drp-space-6)"
     },
-    children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-card", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(TabBar2, { active: "All Contacts" }),
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("table", { className: "drp-table", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("th", { style: { width: 32 } }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("th", { children: [
+    children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-card", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(TabBar2, { active: "All Contacts" }),
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("table", { className: "drp-table", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("tr", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("th", { style: { width: 32 } }),
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("th", { children: [
             "Name ",
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon4, {})
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(SortIcon4, {})
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("th", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("th", { children: [
             "Email ",
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon4, {})
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(SortIcon4, {})
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("th", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("th", { children: [
             "Access ",
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon4, {})
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(SortIcon4, {})
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("th", { style: { width: 40 } })
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("th", { style: { width: 40 } })
         ] }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("tbody", { children: v2Contacts.map((contact) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("input", { type: "checkbox", className: "drp-checkbox" }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Avatar2, { name: contact.name, bg: contact.bg }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("tbody", { children: v2Contacts.map((contact) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("tr", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("input", { type: "checkbox", className: "drp-checkbox" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Avatar2, { name: contact.name, bg: contact.bg }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
                 "svg",
                 {
                   width: "14",
@@ -7059,7 +7472,7 @@ var V2Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
                   fill: "none",
                   viewBox: "0 0 24 24",
                   stroke: "currentColor",
-                  children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+                  children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -7072,16 +7485,16 @@ var V2Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
               ),
               "View and edit"
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Toggle, { on: contact.accessOn })
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Toggle, { on: contact.accessOn })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
         ] }, contact.name)) })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Pagination2, {})
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Pagination2, {})
     ] })
   }
 );
-var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
   "div",
   {
     className: "content",
@@ -7091,44 +7504,44 @@ var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
       position: "relative"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-card", style: { opacity: 0.4, pointerEvents: "none" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(TabBar2, { active: "All Contacts" }),
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("table", { className: "drp-table", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("tr", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("th", { style: { width: 32 } }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-card", style: { opacity: 0.4, pointerEvents: "none" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(TabBar2, { active: "All Contacts" }),
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("table", { className: "drp-table", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("tr", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("th", { style: { width: 32 } }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("th", { children: [
               "Name ",
-              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon4, {})
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(SortIcon4, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("th", { children: [
               "Email ",
-              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon4, {})
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(SortIcon4, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("th", { children: [
               "Service ",
-              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon4, {})
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(SortIcon4, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("th", { children: [
               "Status ",
-              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(SortIcon4, {})
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(SortIcon4, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("th", { style: { width: 40 } })
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("th", { style: { width: 40 } })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("tbody", { children: v1Contacts.slice(0, 6).map((contact) => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("tr", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("input", { type: "checkbox", className: "drp-checkbox", readOnly: true }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Avatar2, { name: contact.name, bg: contact.bg }),
-              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("tbody", { children: v1Contacts.slice(0, 6).map((contact) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("tr", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("input", { type: "checkbox", className: "drp-checkbox", readOnly: true }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Avatar2, { name: contact.name, bg: contact.bg }),
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
             ] }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-text drp-text--sm", children: contact.service }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(StatusDot2, { status: contact.status }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("span", { className: "drp-text drp-text--muted", children: "\xB7\xB7\xB7" }) })
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "drp-text drp-text--sm", children: contact.service }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(StatusDot2, { status: contact.status }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "drp-text drp-text--muted", children: "\xB7\xB7\xB7" }) })
           ] }, contact.name)) })
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "drp-overlay", style: { position: "absolute", inset: 0 }, children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-modal", style: { width: 480 }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "drp-overlay", style: { position: "absolute", inset: 0 }, children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-modal", style: { width: 480 }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
           "div",
           {
             className: "drp-flex drp-items-center drp-justify-between",
@@ -7136,8 +7549,8 @@ var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
               padding: "var(--drp-space-6) var(--drp-space-6) var(--drp-space-4)"
             },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("h2", { className: "drp-h4", children: "Latest transactions" }),
-              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon", children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("h2", { className: "drp-h4", children: "Latest transactions" }),
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
                 "svg",
                 {
                   width: "20",
@@ -7145,7 +7558,7 @@ var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
                   fill: "none",
                   viewBox: "0 0 24 24",
                   stroke: "currentColor",
-                  children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+                  children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -7159,13 +7572,13 @@ var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { style: { padding: "0 var(--drp-space-6) var(--drp-space-6)" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { style: { padding: "0 var(--drp-space-6) var(--drp-space-6)" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
             "div",
             {
               className: "drp-flex drp-justify-center",
               style: { marginBottom: "var(--drp-space-4)" },
-              children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { className: "drp-dropzone", style: { width: 112, height: 112 }, children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "drp-dropzone", style: { width: 112, height: 112 }, children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
                 "svg",
                 {
                   width: "32",
@@ -7173,7 +7586,7 @@ var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
                   fill: "none",
                   viewBox: "0 0 24 24",
                   stroke: "currentColor",
-                  children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+                  children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -7186,9 +7599,9 @@ var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
               ) })
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-field", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("label", { className: "drp-label", children: "Full Name" }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-field", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("label", { className: "drp-label", children: "Full Name" }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
               "input",
               {
                 type: "text",
@@ -7197,9 +7610,9 @@ var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-field", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("label", { className: "drp-label", children: "Position" }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-field", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("label", { className: "drp-label", children: "Position" }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
               "input",
               {
                 type: "text",
@@ -7208,9 +7621,9 @@ var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-field", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("label", { className: "drp-label", children: "Phone number" }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-field", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("label", { className: "drp-label", children: "Phone number" }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
               "input",
               {
                 type: "tel",
@@ -7219,9 +7632,9 @@ var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-field", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("label", { className: "drp-label", children: "Email" }),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-field", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("label", { className: "drp-label", children: "Email" }),
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
               "input",
               {
                 type: "email",
@@ -7230,7 +7643,7 @@ var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
             "button",
             {
               className: "drp-btn drp-btn--primary drp-btn--block",
@@ -7243,13 +7656,13 @@ var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
     ]
   }
 );
-var EmptyContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+var EmptyContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
   "div",
   {
     className: "content drp-flex drp-items-center drp-justify-center",
     style: { position: "relative", overflow: "hidden" },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
         "div",
         {
           style: {
@@ -7259,7 +7672,7 @@ var EmptyContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
             pointerEvents: "none"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
               "div",
               {
                 style: {
@@ -7274,7 +7687,7 @@ var EmptyContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
                 }
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
               "div",
               {
                 style: {
@@ -7289,7 +7702,7 @@ var EmptyContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
                 }
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
               "div",
               {
                 style: {
@@ -7307,8 +7720,8 @@ var EmptyContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "drp-empty", style: { position: "relative", zIndex: 1 }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("div", { style: { marginBottom: "var(--drp-space-6)" }, children: /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-empty", style: { position: "relative", zIndex: 1 }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { style: { marginBottom: "var(--drp-space-6)" }, children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
           "svg",
           {
             width: "80",
@@ -7318,8 +7731,8 @@ var EmptyContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
             stroke: "currentColor",
             strokeWidth: 2,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("circle", { cx: "40", cy: "28", r: "14", strokeLinecap: "round" }),
-              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("circle", { cx: "40", cy: "28", r: "14", strokeLinecap: "round" }),
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -7327,7 +7740,7 @@ var EmptyContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
                   d: "M14 68c0-14.36 11.64-26 26-26s26 11.64 26 26"
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
                 "line",
                 {
                   x1: "58",
@@ -7341,21 +7754,21 @@ var EmptyContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
             ]
           }
         ) }),
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("h2", { className: "drp-h3", style: { marginBottom: "var(--drp-space-2)" }, children: "No contacts found?" }),
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("h2", { className: "drp-h3", style: { marginBottom: "var(--drp-space-2)" }, children: "No contacts found?" }),
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
           "p",
           {
             className: "drp-text drp-text--muted",
             style: { marginBottom: "var(--drp-space-8)" },
             children: [
               "Try to add more contacts from your personal",
-              /* @__PURE__ */ (0, import_jsx_runtime48.jsx)("br", {}),
+              /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("br", {}),
               "account or invite your friends."
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("button", { className: "drp-btn drp-btn--outline", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "drp-btn drp-btn--outline", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
             "svg",
             {
               width: "16",
@@ -7363,7 +7776,7 @@ var EmptyContent2 = () => /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)(
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -7387,27 +7800,27 @@ var ContactsList = ({
   const renderContent = () => {
     switch (variant) {
       case "v2":
-        return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(V2Content4, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(V2Content4, {});
       case "new-contact":
-        return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(NewContactModal, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(NewContactModal, {});
       case "empty":
-        return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(EmptyContent2, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(EmptyContent2, {});
       default:
-        return /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(V1Content4, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(V1Content4, {});
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "app-layout", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(ContactsSidebar, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime48.jsxs)("div", { className: "main-content", style: { marginLeft: 155 }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(TopBar6, {}),
+  return /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "app-layout", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(ContactsSidebar, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "main-content", style: { marginLeft: 155 }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(TopBar6, {}),
       renderContent(),
-      /* @__PURE__ */ (0, import_jsx_runtime48.jsx)(Footer6, {})
+      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Footer6, {})
     ] })
   ] });
 };
 
 // src/screens/Sales/SalesList.tsx
-var import_jsx_runtime49 = require("react/jsx-runtime");
+var import_jsx_runtime59 = require("react/jsx-runtime");
 var DoctorProjectSidebar5 = () => {
   const navItems = [
     { id: "dashboard", label: "Dashboard" },
@@ -7433,20 +7846,20 @@ var DoctorProjectSidebar5 = () => {
     { name: "Thanawan Chadee", bg: "var(--drp-mint)" },
     { name: "Justine Robinson", bg: "var(--drp-purple)" }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("aside", { className: "sidebar", style: { width: 200 }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "sidebar-brand", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "sidebar-brand-dot" })
+  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("aside", { className: "sidebar", style: { width: 200 }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "sidebar-brand", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "sidebar-brand-dot" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("nav", { className: "sidebar-nav", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "sidebar-nav-section", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "sidebar-nav-label", style: { fontSize: 10 }, children: "Navigation" }),
-        navItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("nav", { className: "sidebar-nav", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "sidebar-nav-section", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "sidebar-nav-label", style: { fontSize: 10 }, children: "Navigation" }),
+        navItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
           "button",
           {
             className: `sidebar-nav-item ${item.active ? "active" : ""}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
                 "svg",
                 {
                   width: "14",
@@ -7454,7 +7867,7 @@ var DoctorProjectSidebar5 = () => {
                   fill: "none",
                   viewBox: "0 0 24 24",
                   stroke: "currentColor",
-                  children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+                  children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -7465,17 +7878,17 @@ var DoctorProjectSidebar5 = () => {
                   )
                 }
               ) }),
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-              item.badge && /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+              item.badge && /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
             ]
           },
           item.id
         ))
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "sidebar-team", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("div", { className: "sidebar-team-label", style: { fontSize: 10 }, children: "Team Members" }),
-        teamMembers.map((m3) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "sidebar-team-member", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "sidebar-team", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "sidebar-team-label", style: { fontSize: 10 }, children: "Team Members" }),
+        teamMembers.map((m3) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "sidebar-team-member", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
             "div",
             {
               className: "sidebar-avatar",
@@ -7488,10 +7901,10 @@ var DoctorProjectSidebar5 = () => {
               children: m3.name[0]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "sidebar-team-name", style: { fontSize: 13 }, children: m3.name })
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "sidebar-team-name", style: { fontSize: 13 }, children: m3.name })
         ] }, m3.name)),
-        /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "sidebar-see-more", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "sidebar-see-more", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
             "svg",
             {
               width: "12",
@@ -7499,7 +7912,7 @@ var DoctorProjectSidebar5 = () => {
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -7514,8 +7927,8 @@ var DoctorProjectSidebar5 = () => {
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "sidebar-user", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "sidebar-user", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
         "div",
         {
           className: "sidebar-avatar",
@@ -7526,7 +7939,7 @@ var DoctorProjectSidebar5 = () => {
           }
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
         "span",
         {
           className: "drp-text drp-text--sm",
@@ -7534,7 +7947,7 @@ var DoctorProjectSidebar5 = () => {
           children: "Henry Richardson"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
         "button",
         {
           className: "drp-btn drp-btn--ghost drp-btn--sm",
@@ -7545,13 +7958,13 @@ var DoctorProjectSidebar5 = () => {
     ] })
   ] });
 };
-var TopBar7 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("h1", { className: "topbar-title drp-h3", children: "Sales" }),
-  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "topbar-icon-btn", children: "\xB7\xB7\xB7" }),
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "topbar-icon-btn", children: "\xB7\xB7\xB7" }),
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+var TopBar7 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("h1", { className: "topbar-title drp-h3", children: "Sales" }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "topbar-icon-btn", children: "\xB7\xB7\xB7" }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "topbar-icon-btn", children: "\xB7\xB7\xB7" }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
         "svg",
         {
           width: "16",
@@ -7559,7 +7972,7 @@ var TopBar7 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { clas
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -7572,16 +7985,16 @@ var TopBar7 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { clas
       ),
       "Apps"
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { style: { fontSize: 16, lineHeight: 1 }, children: "+" }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { style: { fontSize: 16, lineHeight: 1 }, children: "+" }),
       "Create new"
     ] })
   ] })
 ] });
-var Footer7 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "footer-link", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+var Footer7 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "footer-link", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
         "svg",
         {
           width: "16",
@@ -7590,8 +8003,8 @@ var Footer7 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { clas
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
               "path",
               {
                 strokeLinecap: "round",
@@ -7604,12 +8017,12 @@ var Footer7 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { clas
       ),
       "English"
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "footer-link", children: "API" })
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
       "svg",
       {
         width: "16",
@@ -7618,7 +8031,7 @@ var Footer7 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { clas
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -7627,7 +8040,7 @@ var Footer7 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { clas
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -7639,7 +8052,7 @@ var Footer7 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { clas
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
       "svg",
       {
         width: "16",
@@ -7647,7 +8060,7 @@ var Footer7 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { clas
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -7660,7 +8073,7 @@ var Footer7 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { clas
     ) })
   ] })
 ] });
-var SortIcon5 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+var SortIcon5 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
   "svg",
   {
     width: "12",
@@ -7674,7 +8087,7 @@ var SortIcon5 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
       verticalAlign: "middle",
       color: "var(--drp-grey)"
     },
-    children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
       "path",
       {
         strokeLinecap: "round",
@@ -7685,9 +8098,9 @@ var SortIcon5 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
     )
   }
 );
-var TablePagination4 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "drp-pagination", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "drp-pagination__btn", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+var TablePagination4 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-pagination", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "drp-pagination__btn", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
       "svg",
       {
         width: "16",
@@ -7695,7 +8108,7 @@ var TablePagination4 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -7708,10 +8121,10 @@ var TablePagination4 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div
     ),
     "Prev"
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-pagination__info", children: "Page 1 of 10" }),
-  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "drp-pagination__btn", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-pagination__info", children: "Page 1 of 10" }),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "drp-pagination__btn", children: [
     "Next",
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
       "svg",
       {
         width: "16",
@@ -7719,7 +8132,7 @@ var TablePagination4 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -7732,15 +8145,15 @@ var TablePagination4 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div
     )
   ] })
 ] });
-var FilterBar2 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+var FilterBar2 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
     style: { marginBottom: "var(--drp-space-4)" },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
             "svg",
             {
               width: "14",
@@ -7748,7 +8161,7 @@ var FilterBar2 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -7761,9 +8174,9 @@ var FilterBar2 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
           ),
           "All Filters"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
           "All Customers",
-          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
             "svg",
             {
               width: "12",
@@ -7771,7 +8184,7 @@ var FilterBar2 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -7783,9 +8196,9 @@ var FilterBar2 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
             }
           )
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
           "A-Z",
-          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
             "svg",
             {
               width: "12",
@@ -7793,7 +8206,7 @@ var FilterBar2 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -7806,8 +8219,8 @@ var FilterBar2 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
           "svg",
           {
             width: "16",
@@ -7815,7 +8228,7 @@ var FilterBar2 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
               "path",
               {
                 strokeLinecap: "round",
@@ -7833,7 +8246,7 @@ var FilterBar2 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
 );
 var ProductThumb2 = ({
   color = "var(--drp-cream)"
-}) => /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
   "div",
   {
     style: {
@@ -7845,7 +8258,7 @@ var ProductThumb2 = ({
       justifyContent: "center",
       flexShrink: 0
     },
-    children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
       "svg",
       {
         width: "20",
@@ -7853,7 +8266,7 @@ var ProductThumb2 = ({
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "var(--drp-grey)",
-        children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -7958,58 +8371,58 @@ var v1Sales = [
     thumb: "#ffe4e6"
   }
 ];
-var V1Content5 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+var V1Content5 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
   "div",
   {
     className: "content",
     style: { overflow: "auto", padding: "var(--drp-space-5)" },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(FilterBar2, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "drp-card", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("table", { className: "drp-table", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("tr", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("th", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("input", { type: "checkbox", className: "drp-checkbox" }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(FilterBar2, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-card", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("table", { className: "drp-table", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("tr", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("th", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("input", { type: "checkbox", className: "drp-checkbox" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("th", { children: [
               "Date ",
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon5, {})
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("th", { children: [
               "Product ",
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon5, {})
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("th", { children: [
               "Type ",
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon5, {})
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("th", { children: [
               "Qty. ",
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon5, {})
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("th", { children: [
               "Amount ",
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon5, {})
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("th", { children: [
               "Status ",
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon5, {})
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("th", { style: { width: 40 } })
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("th", { style: { width: 40 } })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("tbody", { children: v1Sales.map((s2) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("tr", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("input", { type: "checkbox", className: "drp-checkbox" }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: s2.date }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(ProductThumb2, { color: s2.thumb }),
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.product })
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("tbody", { children: v1Sales.map((s2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("tr", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("input", { type: "checkbox", className: "drp-checkbox" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: s2.date }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ProductThumb2, { color: s2.thumb }),
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.product })
             ] }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: s2.type }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-text drp-text--sm", children: s2.qty }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.amount }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-tag drp-tag--mint drp-tag--filled", children: s2.status }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: s2.type }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-text drp-text--sm", children: s2.qty }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.amount }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-tag drp-tag--mint drp-tag--filled", children: s2.status }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
           ] }, s2.id)) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(TablePagination4, {})
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(TablePagination4, {})
       ] })
     ]
   }
@@ -8107,71 +8520,71 @@ var v2Sales = [
     thumb: "#e0e7ff"
   }
 ];
-var V2Content5 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
+var V2Content5 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
   "div",
   {
     className: "content",
     style: { overflow: "auto", padding: "var(--drp-space-5)" },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(FilterBar2, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "drp-card", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("table", { className: "drp-table", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("tr", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("th", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("input", { type: "checkbox", className: "drp-checkbox" }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("th", { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(FilterBar2, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-card", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("table", { className: "drp-table", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("tr", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("th", { style: { width: 40 }, children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("input", { type: "checkbox", className: "drp-checkbox" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("th", { children: [
               "Date ",
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon5, {})
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("th", { children: [
               "Product ",
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon5, {})
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("th", { children: [
               "Customer ",
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon5, {})
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("th", { children: [
               "Amount ",
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon5, {})
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("th", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("th", { children: [
               "Status ",
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(SortIcon5, {})
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("th", { style: { width: 40 } })
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("th", { style: { width: 40 } })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("tbody", { children: v2Sales.map((s2) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("tr", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("input", { type: "checkbox", className: "drp-checkbox" }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: s2.date }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(ProductThumb2, { color: s2.thumb }),
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.product }),
-                /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("br", {}),
-                /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-caption", children: s2.order })
+          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("tbody", { children: v2Sales.map((s2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("tr", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("input", { type: "checkbox", className: "drp-checkbox" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: s2.date }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ProductThumb2, { color: s2.thumb }),
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.product }),
+                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("br", {}),
+                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-caption", children: s2.order })
               ] })
             ] }) }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("td", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.customer }),
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("br", {}),
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-caption", children: s2.email })
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("td", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.customer }),
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("br", {}),
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-caption", children: s2.email })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("td", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.amount }),
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("br", {}),
-              /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("span", { className: "drp-caption", children: s2.tax })
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("td", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.amount }),
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("br", {}),
+              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-caption", children: s2.tax })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
               "span",
               {
                 className: `drp-tag ${s2.shipped ? "drp-tag--mint drp-tag--filled" : "drp-tag--mint"}`,
                 children: s2.status
               }
             ) }),
-            /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime49.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
           ] }, s2.id)) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(TablePagination4, {})
+        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(TablePagination4, {})
       ] })
     ]
   }
@@ -8179,18 +8592,18 @@ var V2Content5 = () => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)(
 var SalesList = ({
   theme = "light",
   variant = "v1"
-}) => /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "app-layout", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(DoctorProjectSidebar5, {}),
-  /* @__PURE__ */ (0, import_jsx_runtime49.jsxs)("div", { className: "main-content", style: { marginLeft: 200 }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(TopBar7, {}),
-    variant === "v1" ? /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(V1Content5, {}) : /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(V2Content5, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime49.jsx)(Footer7, {})
+}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "app-layout", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(DoctorProjectSidebar5, {}),
+  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "main-content", style: { marginLeft: 200 }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(TopBar7, {}),
+    variant === "v1" ? /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(V1Content5, {}) : /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(V2Content5, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(Footer7, {})
   ] })
 ] });
 
 // src/screens/Inbox/InboxList.tsx
-var import_react8 = require("react");
-var import_jsx_runtime50 = require("react/jsx-runtime");
+var import_react14 = require("react");
+var import_jsx_runtime60 = require("react/jsx-runtime");
 var InboxSidebar = () => {
   const navItems = [
     {
@@ -8221,30 +8634,30 @@ var InboxSidebar = () => {
     { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-purple)" },
     { name: "Justine Robinson", initials: "JR", bg: "var(--drp-blue)" }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("aside", { className: "sidebar", style: { width: 200 }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "sidebar-brand", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "sidebar-brand-dot" })
+  return /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("aside", { className: "sidebar", style: { width: 200 }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "sidebar-brand", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "sidebar-brand-dot" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("nav", { className: "sidebar-nav", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "sidebar-nav-section", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
-        navItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("nav", { className: "sidebar-nav", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "sidebar-nav-section", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
+        navItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
           "button",
           {
             className: `sidebar-nav-item ${item.active ? "active" : ""}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-              item.badge && /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
+              /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+              item.badge && /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
             ]
           },
           item.id
         ))
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "sidebar-team", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
-        teamMembers.map((m3) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "sidebar-team-member", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "sidebar-team", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
+        teamMembers.map((m3) => /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "sidebar-team-member", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
             "div",
             {
               className: "sidebar-avatar",
@@ -8257,10 +8670,10 @@ var InboxSidebar = () => {
               children: m3.initials[0]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "sidebar-team-name", style: { fontSize: 12 }, children: m3.name })
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "sidebar-team-name", style: { fontSize: 12 }, children: m3.name })
         ] }, m3.name)),
-        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "sidebar-see-more", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "sidebar-see-more", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
             "svg",
             {
               width: "12",
@@ -8268,7 +8681,7 @@ var InboxSidebar = () => {
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -8279,12 +8692,12 @@ var InboxSidebar = () => {
               )
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { children: "See More" })
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { children: "See More" })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "sidebar-user", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "sidebar-user", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
         "div",
         {
           className: "sidebar-avatar",
@@ -8295,16 +8708,16 @@ var InboxSidebar = () => {
           }
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "sidebar-user-name", style: { fontSize: 12 }, children: "Henry Richardson" }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { className: "sidebar-user-name", style: { fontSize: 12 }, children: "Henry Richardson" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
     ] })
   ] });
 };
 var InboxTopBar = ({
   showBack = false
-}) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "topbar-left", children: [
-    showBack && /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "topbar-left", children: [
+    showBack && /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
       "svg",
       {
         width: "16",
@@ -8312,7 +8725,7 @@ var InboxTopBar = ({
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -8323,13 +8736,13 @@ var InboxTopBar = ({
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("h1", { className: "topbar-title", children: "Inbox" })
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("h1", { className: "topbar-title", children: "Inbox" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "topbar-icon-btn", children: "..." }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "topbar-icon-btn", children: "..." }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "topbar-icon-btn", children: "..." }),
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "topbar-icon-btn", children: "..." }),
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
         "svg",
         {
           width: "16",
@@ -8337,7 +8750,7 @@ var InboxTopBar = ({
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -8348,23 +8761,23 @@ var InboxTopBar = ({
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { children: "Apps" })
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { children: "+" }),
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { children: "Create new" })
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { children: "+" }),
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var InboxFooter = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "footer-link", children: "API" })
+var InboxFooter = () => /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
       "svg",
       {
         width: "16",
@@ -8373,7 +8786,7 @@ var InboxFooter = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { 
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -8382,7 +8795,7 @@ var InboxFooter = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { 
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -8394,7 +8807,7 @@ var InboxFooter = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { 
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
       "svg",
       {
         width: "16",
@@ -8402,7 +8815,7 @@ var InboxFooter = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { 
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -8441,7 +8854,7 @@ var Avatar3 = ({
   const color = avatarColors[name] ?? "var(--drp-grey)";
   const dims = size === "sm" ? 24 : size === "lg" ? 36 : 32;
   const fs = size === "sm" ? 10 : size === "lg" ? 14 : 12;
-  return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
     "div",
     {
       className: "sidebar-avatar",
@@ -8538,15 +8951,15 @@ var mailItems = [
   }
 ];
 var MailListVariant = () => {
-  const [activeTab, setActiveTab] = (0, import_react8.useState)("Incoming");
+  const [activeTab, setActiveTab] = (0, import_react14.useState)("Incoming");
   const tabs = ["Incoming", "Sent", "Drafts", "Deleted"];
-  return /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_jsx_runtime50.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxTopBar, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "content", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(import_jsx_runtime60.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(InboxTopBar, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "content", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
               "svg",
               {
                 width: "14",
@@ -8554,7 +8967,7 @@ var MailListVariant = () => {
                 fill: "none",
                 stroke: "currentColor",
                 viewBox: "0 0 24 24",
-                children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -8567,7 +8980,7 @@ var MailListVariant = () => {
             ),
             "Compose Email"
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "drp-tabs", children: tabs.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { className: "drp-tabs", children: tabs.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
             "button",
             {
               onClick: () => setActiveTab(tab),
@@ -8577,7 +8990,7 @@ var MailListVariant = () => {
             tab
           )) })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
           "div",
           {
             className: "drp-flex drp-items-center drp-gap-2",
@@ -8587,7 +9000,7 @@ var MailListVariant = () => {
               background: "var(--drp-white)"
             },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                 "svg",
                 {
                   width: "14",
@@ -8596,7 +9009,7 @@ var MailListVariant = () => {
                   fill: "none",
                   stroke: "currentColor",
                   viewBox: "0 0 24 24",
-                  children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                  children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -8607,7 +9020,7 @@ var MailListVariant = () => {
                   )
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                 "input",
                 {
                   type: "text",
@@ -8627,7 +9040,7 @@ var MailListVariant = () => {
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: mailItems.map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: mailItems.map((item, idx) => /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
         "div",
         {
           className: "drp-flex drp-items-center drp-gap-3",
@@ -8637,14 +9050,14 @@ var MailListVariant = () => {
             cursor: "pointer"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
               "div",
               {
                 className: "drp-flex drp-items-center drp-gap-2",
                 style: { flexShrink: 0 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("input", { type: "checkbox" }) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("input", { type: "checkbox" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                     "button",
                     {
                       className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
@@ -8655,7 +9068,7 @@ var MailListVariant = () => {
                 ]
               }
             ),
-            item.starred ? /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            item.starred ? /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
               "svg",
               {
                 width: "14",
@@ -8663,11 +9076,11 @@ var MailListVariant = () => {
                 style: { color: "var(--drp-yellow)", flexShrink: 0 },
                 fill: "currentColor",
                 viewBox: "0 0 24 24",
-                children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("path", { d: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" })
+                children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("path", { d: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" })
               }
-            ) : /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { style: { width: 14, height: 14, flexShrink: 0 } }),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: item.sender, size: "md" }),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            ) : /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { style: { width: 14, height: 14, flexShrink: 0 } }),
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Avatar3, { name: item.sender, size: "md" }),
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
               "span",
               {
                 className: "drp-text drp-text--bold",
@@ -8682,13 +9095,13 @@ var MailListVariant = () => {
                 children: item.sender
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
               "div",
               {
                 className: "drp-flex drp-items-center drp-gap-2",
                 style: { flex: 1, minWidth: 0 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                     "span",
                     {
                       className: "drp-text drp-text--bold",
@@ -8701,7 +9114,7 @@ var MailListVariant = () => {
                       children: item.title
                     }
                   ),
-                  item.subtitle && /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                  item.subtitle && /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                     "span",
                     {
                       className: "drp-text drp-text--sm drp-text--muted",
@@ -8716,18 +9129,18 @@ var MailListVariant = () => {
                 ]
               }
             ),
-            item.attachments.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            item.attachments.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
               "div",
               {
                 className: "drp-flex drp-items-center drp-gap-1",
                 style: { flexShrink: 0 },
-                children: item.attachments.map((att) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+                children: item.attachments.map((att) => /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
                   "span",
                   {
                     className: "drp-tag drp-tag--sm",
                     style: { fontSize: 10 },
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                         "span",
                         {
                           className: "drp-tag--dot",
@@ -8741,7 +9154,7 @@ var MailListVariant = () => {
                 ))
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
               "span",
               {
                 className: "drp-text drp-text--sm drp-text--muted",
@@ -8754,7 +9167,7 @@ var MailListVariant = () => {
                 children: item.time
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
               "button",
               {
                 className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
@@ -8766,20 +9179,20 @@ var MailListVariant = () => {
         },
         item.id
       )) }),
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
         "div",
         {
           className: "drp-flex drp-items-center drp-justify-between",
           style: { marginTop: "var(--drp-space-4)" },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Prev" }),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Next" })
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Prev" }),
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Next" })
           ]
         }
       )
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxFooter, {})
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(InboxFooter, {})
   ] });
 };
 var chatMessages = [
@@ -8833,10 +9246,10 @@ var chatMessages = [
     time: "08:01PM"
   }
 ];
-var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_jsx_runtime50.Fragment, { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxTopBar, {}),
-  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-gap-4", style: { flex: 1, minHeight: 0 }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(import_jsx_runtime60.Fragment, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(InboxTopBar, {}),
+  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-gap-4", style: { flex: 1, minHeight: 0 }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
       "div",
       {
         className: "drp-card",
@@ -8849,7 +9262,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
           flexDirection: "column"
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
             "div",
             {
               className: "drp-flex drp-items-center drp-justify-between",
@@ -8858,8 +9271,8 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                 borderBottom: "var(--drp-border-thin)"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                     "svg",
                     {
                       width: "14",
@@ -8867,7 +9280,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                       fill: "none",
                       stroke: "currentColor",
                       viewBox: "0 0 24 24",
-                      children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                      children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                         "path",
                         {
                           strokeLinecap: "round",
@@ -8880,8 +9293,8 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                   ),
                   "Compose"
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-1", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-1", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                     "svg",
                     {
                       width: "14",
@@ -8889,7 +9302,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                       fill: "none",
                       stroke: "currentColor",
                       viewBox: "0 0 24 24",
-                      children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                      children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                         "path",
                         {
                           strokeLinecap: "round",
@@ -8900,7 +9313,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                       )
                     }
                   ) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                     "svg",
                     {
                       width: "14",
@@ -8908,7 +9321,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                       fill: "none",
                       stroke: "currentColor",
                       viewBox: "0 0 24 24",
-                      children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                      children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                         "path",
                         {
                           strokeLinecap: "round",
@@ -8923,7 +9336,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { style: { flex: 1, overflow: "auto" }, children: chatMessages.map((msg, idx) => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { style: { flex: 1, overflow: "auto" }, children: chatMessages.map((msg, idx) => /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
             "div",
             {
               className: "drp-flex drp-items-start drp-gap-2",
@@ -8933,15 +9346,15 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                 cursor: "pointer"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: msg.sender, size: "md" }),
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { style: { flex: 1, minWidth: 0 }, children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Avatar3, { name: msg.sender, size: "md" }),
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { style: { flex: 1, minWidth: 0 }, children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
                     "div",
                     {
                       className: "drp-flex drp-items-center drp-justify-between",
                       style: { marginBottom: 2 },
                       children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                           "span",
                           {
                             className: "drp-text drp-text--bold",
@@ -8954,7 +9367,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                             children: msg.sender
                           }
                         ),
-                        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                           "span",
                           {
                             className: "drp-caption",
@@ -8965,7 +9378,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                       ]
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                     "p",
                     {
                       className: "drp-text drp-text--bold",
@@ -8978,7 +9391,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                       children: msg.subject
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                     "p",
                     {
                       className: "drp-caption",
@@ -8999,7 +9412,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
       "div",
       {
         className: "drp-card",
@@ -9011,7 +9424,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
           flexDirection: "column"
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
             "div",
             {
               className: "drp-flex drp-items-center drp-justify-between",
@@ -9020,10 +9433,10 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                 borderBottom: "var(--drp-border-thin)"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: "\u2039" }),
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Sallie Wade", size: "sm" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: "\u2039" }),
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Avatar3, { name: "Sallie Wade", size: "sm" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                     "span",
                     {
                       className: "drp-text drp-text--bold",
@@ -9032,8 +9445,8 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                     }
                   )
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-1", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-1", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                     "svg",
                     {
                       width: "14",
@@ -9041,7 +9454,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                       fill: "none",
                       stroke: "currentColor",
                       viewBox: "0 0 24 24",
-                      children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                      children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                         "path",
                         {
                           strokeLinecap: "round",
@@ -9052,12 +9465,12 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                       )
                     }
                   ) }),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." })
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." })
                 ] })
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
             "div",
             {
               style: {
@@ -9069,7 +9482,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                 gap: "var(--drp-space-4)"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { style: { display: "flex", justifyContent: "center" }, children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { style: { display: "flex", justifyContent: "center" }, children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                   "span",
                   {
                     className: "drp-tag drp-tag--dark drp-tag--filled",
@@ -9077,7 +9490,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                     children: "48 Messages"
                   }
                 ) }),
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                   "div",
                   {
                     style: {
@@ -9085,7 +9498,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                       justifyContent: "flex-end",
                       gap: "var(--drp-space-2)"
                     },
-                    children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+                    children: /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
                       "div",
                       {
                         style: {
@@ -9095,11 +9508,11 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                           gap: 4
                         },
                         children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "drp-caption", style: { fontSize: 10 }, children: "8:20 PM Gabriela Pires" }),
-                            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Gabriela Pires", size: "sm" })
+                          /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "drp-caption", style: { fontSize: 10 }, children: "8:20 PM Gabriela Pires" }),
+                            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Avatar3, { name: "Gabriela Pires", size: "sm" })
                           ] }),
-                          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                             "div",
                             {
                               style: {
@@ -9117,12 +9530,12 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                     )
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { style: { display: "flex", gap: "var(--drp-space-2)" }, children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: 4 }, children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Sallie Wade", size: "sm" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "drp-caption", style: { fontSize: 10 }, children: "Sallie Wade 8:35 PM" })
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { style: { display: "flex", gap: "var(--drp-space-2)" }, children: /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: 4 }, children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Avatar3, { name: "Sallie Wade", size: "sm" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "drp-caption", style: { fontSize: 10 }, children: "Sallie Wade 8:35 PM" })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                     "div",
                     {
                       style: {
@@ -9134,8 +9547,8 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                       children: "Some graphic designers always manage to produce"
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-gap-2", style: { marginTop: 4 }, children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-gap-2", style: { marginTop: 4 }, children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                       "div",
                       {
                         style: {
@@ -9146,7 +9559,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                         }
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                       "div",
                       {
                         style: {
@@ -9159,7 +9572,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                     )
                   ] })
                 ] }) }),
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                   "div",
                   {
                     style: {
@@ -9167,7 +9580,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                       justifyContent: "flex-end",
                       gap: "var(--drp-space-2)"
                     },
-                    children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+                    children: /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
                       "div",
                       {
                         style: {
@@ -9177,11 +9590,11 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                           gap: 4
                         },
                         children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "drp-caption", style: { fontSize: 10 }, children: "8:40 PM Gabriela Pires" }),
-                            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Gabriela Pires", size: "sm" })
+                          /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "drp-caption", style: { fontSize: 10 }, children: "8:40 PM Gabriela Pires" }),
+                            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Avatar3, { name: "Gabriela Pires", size: "sm" })
                           ] }),
-                          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                             "div",
                             {
                               style: {
@@ -9199,12 +9612,12 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                     )
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { style: { display: "flex", gap: "var(--drp-space-2)" }, children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: 4 }, children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Sallie Wade", size: "sm" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "drp-caption", style: { fontSize: 10 }, children: "Sallie Wade 8:50 PM" })
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { style: { display: "flex", gap: "var(--drp-space-2)" }, children: /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { style: { display: "flex", flexDirection: "column", gap: 4 }, children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Avatar3, { name: "Sallie Wade", size: "sm" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "drp-caption", style: { fontSize: 10 }, children: "Sallie Wade 8:50 PM" })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                     "div",
                     {
                       style: {
@@ -9217,9 +9630,9 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                     }
                   )
                 ] }) }),
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-start drp-gap-2", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Sallie Wade", size: "sm" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-start drp-gap-2", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Avatar3, { name: "Sallie Wade", size: "sm" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                     "div",
                     {
                       style: {
@@ -9227,8 +9640,8 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                         fontSize: 12,
                         padding: "var(--drp-space-2) var(--drp-space-3)"
                       },
-                      children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-1", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                      children: /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-1", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                           "span",
                           {
                             style: {
@@ -9240,7 +9653,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                             }
                           }
                         ),
-                        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                           "span",
                           {
                             style: {
@@ -9252,7 +9665,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                             }
                           }
                         ),
-                        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                           "span",
                           {
                             style: {
@@ -9271,14 +9684,14 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
             "div",
             {
               style: {
                 padding: "var(--drp-space-3) var(--drp-space-4)",
                 borderTop: "var(--drp-border-thin)"
               },
-              children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
                 "div",
                 {
                   className: "drp-flex drp-items-center drp-gap-2",
@@ -9288,8 +9701,8 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                     padding: "var(--drp-space-2) var(--drp-space-3)"
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Gabriela Pires", size: "sm" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Avatar3, { name: "Gabriela Pires", size: "sm" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                       "input",
                       {
                         type: "text",
@@ -9305,14 +9718,14 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                         readOnly: true
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                       "button",
                       {
                         className: "drp-btn drp-btn--primary drp-btn--icon drp-btn--sm",
                         style: { width: 24, height: 24 },
-                        children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                        children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                           "svg",
                           {
                             width: "12",
@@ -9320,7 +9733,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
                             fill: "none",
                             stroke: "currentColor",
                             viewBox: "0 0 24 24",
-                            children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                            children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                               "path",
                               {
                                 strokeLinecap: "round",
@@ -9342,14 +9755,14 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_js
       }
     )
   ] }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxFooter, {})
+  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(InboxFooter, {})
 ] });
-var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_jsx_runtime50.Fragment, { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxTopBar, { showBack: true }),
-  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "content", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(import_jsx_runtime60.Fragment, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(InboxTopBar, { showBack: true }),
+  /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "content", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
           "svg",
           {
             width: "14",
@@ -9357,7 +9770,7 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(im
             fill: "none",
             stroke: "currentColor",
             viewBox: "0 0 24 24",
-            children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
               "path",
               {
                 strokeLinecap: "round",
@@ -9370,9 +9783,9 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(im
         ),
         "Save as draft"
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
             "svg",
             {
               width: "14",
@@ -9380,7 +9793,7 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(im
               fill: "none",
               stroke: "currentColor",
               viewBox: "0 0 24 24",
-              children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -9393,8 +9806,8 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(im
           ),
           "Forward"
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("button", { className: "drp-btn drp-btn--danger drp-btn--sm", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("button", { className: "drp-btn drp-btn--danger drp-btn--sm", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
             "svg",
             {
               width: "14",
@@ -9402,7 +9815,7 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(im
               fill: "none",
               stroke: "currentColor",
               viewBox: "0 0 24 24",
-              children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -9417,18 +9830,18 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(im
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
         "div",
         {
           style: {
             padding: "var(--drp-space-4) var(--drp-space-5)",
             borderBottom: "var(--drp-border-thin)"
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("h2", { className: "drp-h5", children: "Re: Solar experiment lets trade energy among themselves" })
+          children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("h2", { className: "drp-h5", children: "Re: Solar experiment lets trade energy among themselves" })
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
         "div",
         {
           style: {
@@ -9436,58 +9849,58 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(im
             borderBottom: "var(--drp-border-thin)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
               "div",
               {
                 className: "drp-flex drp-items-start drp-justify-between",
                 style: { marginBottom: "var(--drp-space-3)" },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Helena Chavez", size: "lg" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { className: "drp-text drp-text--bold", children: "Helena Chavez" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("p", { className: "drp-caption", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Avatar3, { name: "Helena Chavez", size: "lg" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("p", { className: "drp-text drp-text--bold", children: "Helena Chavez" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("p", { className: "drp-caption", children: [
                         "helena.chavez89@outlook.com",
                         " ",
-                        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { style: { color: "var(--drp-grey)" }, children: "to" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { style: { color: "var(--drp-grey)" }, children: "to" }),
                         " ",
-                        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "me" })
+                        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "me" })
                       ] })
                     ] })
                   ] }),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
                     "div",
                     {
                       className: "drp-flex drp-items-center drp-gap-2",
                       style: { flexShrink: 0 },
                       children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "drp-caption", children: "18 January 2022" }),
-                        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "drp-caption", children: "\xB7" }),
-                        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "drp-caption", children: "11:52AM" })
+                        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "drp-caption", children: "18 January 2022" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "drp-caption", children: "\xB7" }),
+                        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "drp-caption", children: "11:52AM" })
                       ]
                     }
                   )
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
               "div",
               {
                 className: "drp-text drp-text--sm",
                 style: { lineHeight: 1.7, marginBottom: "var(--drp-space-4)" },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { children: "Working outside the office should help de-escalate workplace toxicity. But in reality, dysfunctional workplace culture may actually get worse when you're at home. Instead, her supervisor found new ways to monitor the team virtually" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("br", {}),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { children: "Best Regards," }),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { children: "Helena Chavez" })
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("p", { children: "Working outside the office should help de-escalate workplace toxicity. But in reality, dysfunctional workplace culture may actually get worse when you're at home. Instead, her supervisor found new ways to monitor the team virtually" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("br", {}),
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("p", { children: "Best Regards," }),
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("p", { children: "Helena Chavez" })
                 ]
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "drp-flex drp-gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { className: "drp-flex drp-gap-3", children: [
               "linear-gradient(135deg, var(--drp-purple), var(--drp-blue))",
               "linear-gradient(135deg, var(--drp-blue), var(--drp-mint))",
               "linear-gradient(135deg, var(--drp-pink), var(--drp-orange))"
-            ].map((gradient, i2) => /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            ].map((gradient, i2) => /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
               "div",
               {
                 style: {
@@ -9502,7 +9915,7 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(im
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
         "div",
         {
           style: {
@@ -9512,28 +9925,28 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(im
             padding: "var(--drp-space-2) 0",
             borderBottom: "var(--drp-border-thin)"
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "drp-badge drp-badge--purple", children: "5" })
+          children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "drp-badge drp-badge--purple", children: "5" })
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
         "div",
         {
           style: {
             padding: "var(--drp-space-4) var(--drp-space-5)",
             borderBottom: "var(--drp-border-thin)"
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-start drp-gap-3", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Gladys Kanyinda", size: "lg" }),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { style: { flex: 1 }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("p", { className: "drp-text drp-text--bold", children: "Gladys Kanyinda" }),
-                /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "drp-caption", children: "13 January 2022" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "drp-caption", children: "\xB7" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("span", { className: "drp-caption", children: "10:45AM" })
+          children: /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-start drp-gap-3", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Avatar3, { name: "Gladys Kanyinda", size: "lg" }),
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { style: { flex: 1 }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("p", { className: "drp-text drp-text--bold", children: "Gladys Kanyinda" }),
+                /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "drp-caption", children: "13 January 2022" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "drp-caption", children: "\xB7" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("span", { className: "drp-caption", children: "10:45AM" })
                 ] })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                 "p",
                 {
                   className: "drp-text drp-text--sm drp-text--muted",
@@ -9545,7 +9958,7 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(im
           ] })
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { style: { padding: "var(--drp-space-4) var(--drp-space-5)" }, children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { style: { padding: "var(--drp-space-4) var(--drp-space-5)" }, children: /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
         "div",
         {
           className: "drp-flex drp-items-center drp-gap-3",
@@ -9555,8 +9968,8 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(im
             padding: "var(--drp-space-2) var(--drp-space-4)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(Avatar3, { name: "Helena Chavez", size: "sm" }),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(Avatar3, { name: "Helena Chavez", size: "sm" }),
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
               "input",
               {
                 type: "text",
@@ -9572,14 +9985,14 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(im
                 readOnly: true
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
               "button",
               {
                 className: "drp-btn drp-btn--primary drp-btn--icon drp-btn--sm",
                 style: { width: 24, height: 24 },
-                children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                   "svg",
                   {
                     width: "12",
@@ -9587,7 +10000,7 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(im
                     fill: "none",
                     stroke: "currentColor",
                     viewBox: "0 0 24 24",
-                    children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                    children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                       "path",
                       {
                         strokeLinecap: "round",
@@ -9605,11 +10018,11 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(im
       ) })
     ] })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxFooter, {})
+  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(InboxFooter, {})
 ] });
-var EmptyVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_jsx_runtime50.Fragment, { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxTopBar, {}),
-  /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+var EmptyVariant = () => /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(import_jsx_runtime60.Fragment, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(InboxTopBar, {}),
+  /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
     "div",
     {
       className: "content",
@@ -9622,7 +10035,7 @@ var EmptyVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_j
         overflow: "hidden"
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
           "div",
           {
             style: {
@@ -9640,7 +10053,7 @@ var EmptyVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_j
             }
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
           "div",
           {
             style: {
@@ -9657,7 +10070,7 @@ var EmptyVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_j
             }
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
           "div",
           {
             style: {
@@ -9674,12 +10087,12 @@ var EmptyVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_j
             }
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "drp-empty", style: { position: "relative", zIndex: 1 }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "drp-empty", style: { position: "relative", zIndex: 1 }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
             "div",
             {
               style: { width: 64, height: 64, marginBottom: "var(--drp-space-4)" },
-              children: /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)(
                 "svg",
                 {
                   viewBox: "0 0 64 64",
@@ -9687,7 +10100,7 @@ var EmptyVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_j
                   xmlns: "http://www.w3.org/2000/svg",
                   style: { width: "100%", height: "100%" },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                       "path",
                       {
                         d: "M12 28 C10 20, 16 12, 24 10 C28 9, 36 10, 40 14 C44 8, 52 8, 56 14 C60 20, 58 28, 52 32 L32 52 L12 32 C8 28, 8 24, 12 28 Z",
@@ -9698,7 +10111,7 @@ var EmptyVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_j
                         fill: "none"
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                       "path",
                       {
                         d: "M44 20 C46 16, 50 16, 52 20",
@@ -9713,8 +10126,8 @@ var EmptyVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_j
               )
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("h2", { className: "drp-h2", style: { marginBottom: "var(--drp-space-2)" }, children: "No messages found?" }),
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("h2", { className: "drp-h2", style: { marginBottom: "var(--drp-space-2)" }, children: "No messages found?" }),
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
             "p",
             {
               className: "drp-text drp-text--sm drp-text--muted",
@@ -9726,8 +10139,8 @@ var EmptyVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_j
               children: "Try to add more contacts from your personal account or start new discussion"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("button", { className: "drp-btn drp-btn--primary", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("button", { className: "drp-btn drp-btn--primary", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
               "svg",
               {
                 width: "16",
@@ -9735,7 +10148,7 @@ var EmptyVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_j
                 fill: "none",
                 stroke: "currentColor",
                 viewBox: "0 0 24 24",
-                children: /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -9752,7 +10165,7 @@ var EmptyVariant = () => /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)(import_j
       ]
     }
   ),
-  /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxFooter, {})
+  /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(InboxFooter, {})
 ] });
 var InboxList = ({
   theme = "light",
@@ -9761,24 +10174,24 @@ var InboxList = ({
   const renderContent = () => {
     switch (variant) {
       case "chat":
-        return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(ChatVariant, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(ChatVariant, {});
       case "mail-compose":
-        return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(MailComposeVariant, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(MailComposeVariant, {});
       case "empty":
-        return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(EmptyVariant, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(EmptyVariant, {});
       case "mail-list":
       default:
-        return /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(MailListVariant, {});
+        return /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(MailListVariant, {});
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime50.jsxs)("div", { className: "app-layout", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)(InboxSidebar, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime50.jsx)("div", { className: "main-content", style: { marginLeft: 200 }, children: renderContent() })
+  return /* @__PURE__ */ (0, import_jsx_runtime60.jsxs)("div", { className: "app-layout", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)(InboxSidebar, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime60.jsx)("div", { className: "main-content", style: { marginLeft: 200 }, children: renderContent() })
   ] });
 };
 
 // src/screens/Payments/PaymentsList.tsx
-var import_jsx_runtime51 = require("react/jsx-runtime");
+var import_jsx_runtime61 = require("react/jsx-runtime");
 var DoctorProjectSidebar6 = ({
   variant
 }) => {
@@ -9807,20 +10220,20 @@ var DoctorProjectSidebar6 = ({
     { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-purple)" },
     { name: "Justine Robinson", initials: "JR", bg: "var(--drp-grey)" }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("aside", { className: "sidebar", style: { width: 280 }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "sidebar-brand", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "sidebar-brand-dot" })
+  return /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("aside", { className: "sidebar", style: { width: 280 }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "sidebar-brand", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "sidebar-brand-dot" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("nav", { className: "sidebar-nav", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "sidebar-nav-section", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
-        navItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("nav", { className: "sidebar-nav", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "sidebar-nav-section", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
+        navItems.map((item) => /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
           "button",
           {
             className: `sidebar-nav-item ${item.active ? "active" : ""}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                 "svg",
                 {
                   width: "14",
@@ -9828,7 +10241,7 @@ var DoctorProjectSidebar6 = ({
                   fill: "none",
                   viewBox: "0 0 24 24",
                   stroke: "currentColor",
-                  children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                  children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -9839,17 +10252,17 @@ var DoctorProjectSidebar6 = ({
                   )
                 }
               ) }),
-              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-              item.badge && /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
+              /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+              item.badge && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
             ]
           },
           item.id
         ))
       ] }),
-      showTeamMembers ? /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "sidebar-team", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
-        teamMembers.map((m3) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "sidebar-team-member", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+      showTeamMembers ? /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "sidebar-team", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
+        teamMembers.map((m3) => /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "sidebar-team-member", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
             "div",
             {
               className: "sidebar-avatar",
@@ -9862,10 +10275,10 @@ var DoctorProjectSidebar6 = ({
               children: m3.initials[0]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "sidebar-team-name", children: m3.name })
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "sidebar-team-name", children: m3.name })
         ] }, m3.name)),
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "sidebar-see-more", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "sidebar-see-more", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
             "svg",
             {
               width: "12",
@@ -9873,7 +10286,7 @@ var DoctorProjectSidebar6 = ({
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -9884,13 +10297,13 @@ var DoctorProjectSidebar6 = ({
               )
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { children: "See More" })
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { children: "See More" })
         ] })
-      ] }) : /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(import_jsx_runtime51.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "sidebar-nav-section", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "sidebar-nav-label", children: "Cards" }),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+      ] }) : /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(import_jsx_runtime61.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "sidebar-nav-section", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "sidebar-nav-label", children: "Cards" }),
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
               "div",
               {
                 className: "sidebar-avatar",
@@ -9903,10 +10316,10 @@ var DoctorProjectSidebar6 = ({
                 children: "V"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "sidebar-nav-text", children: "Debit Card **** 7890" })
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "sidebar-nav-text", children: "Debit Card **** 7890" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
               "div",
               {
                 className: "sidebar-avatar",
@@ -9919,10 +10332,10 @@ var DoctorProjectSidebar6 = ({
                 children: "\u25CF"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "sidebar-nav-text", children: "Credit Card **** 4340" })
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "sidebar-nav-text", children: "Credit Card **** 4340" })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
               "div",
               {
                 style: {
@@ -9939,21 +10352,21 @@ var DoctorProjectSidebar6 = ({
                 children: "+"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "sidebar-nav-text", children: "Open a card" })
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "sidebar-nav-text", children: "Open a card" })
           ] })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "sidebar-nav-section", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "sidebar-nav-label", children: "Balances" }),
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "sidebar-nav-section", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "sidebar-nav-label", children: "Balances" }),
           [
             { flag: "\u{1F1FA}\u{1F1F8}", amount: "100,050.75 USD" },
             { flag: "\u{1F1EA}\u{1F1FA}", amount: "10.40 EUR" },
             { flag: "\u{1F1EC}\u{1F1E7}", amount: "95.50 GBP" }
-          ].map((bal) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { style: { fontSize: 16 }, children: bal.flag }),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "sidebar-nav-text", children: bal.amount })
+          ].map((bal) => /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { style: { fontSize: 16 }, children: bal.flag }),
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "sidebar-nav-text", children: bal.amount })
           ] }, bal.amount)),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
               "div",
               {
                 style: {
@@ -9970,13 +10383,13 @@ var DoctorProjectSidebar6 = ({
                 children: "+"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "sidebar-nav-text", children: "Open a balance" })
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "sidebar-nav-text", children: "Open a balance" })
           ] })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "sidebar-user", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "sidebar-user", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
         "div",
         {
           className: "sidebar-avatar",
@@ -9987,17 +10400,17 @@ var DoctorProjectSidebar6 = ({
           }
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
     ] })
   ] });
 };
 var TopBar8 = ({
   title,
   showBack = false
-}) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "topbar-left", children: [
-    showBack && /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "topbar-left", children: [
+    showBack && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
       "svg",
       {
         width: "16",
@@ -10005,7 +10418,7 @@ var TopBar8 = ({
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -10016,10 +10429,10 @@ var TopBar8 = ({
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("h1", { className: "topbar-title", children: title })
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("h1", { className: "topbar-title", children: title })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
       "svg",
       {
         width: "16",
@@ -10027,7 +10440,7 @@ var TopBar8 = ({
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -10038,8 +10451,8 @@ var TopBar8 = ({
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
         "svg",
         {
           width: "16",
@@ -10047,7 +10460,7 @@ var TopBar8 = ({
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -10058,23 +10471,23 @@ var TopBar8 = ({
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { children: "Apps" })
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { children: "+" }),
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { children: "Create new" })
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { children: "+" }),
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer8 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "footer-link", children: "API" })
+var Footer8 = () => /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
       "svg",
       {
         width: "16",
@@ -10083,7 +10496,7 @@ var Footer8 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { clas
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -10092,7 +10505,7 @@ var Footer8 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { clas
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -10104,7 +10517,7 @@ var Footer8 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { clas
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
       "svg",
       {
         width: "16",
@@ -10112,7 +10525,7 @@ var Footer8 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { clas
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -10133,12 +10546,12 @@ var CurrencyFlag = ({
     EUR: "\u{1F1EA}\u{1F1FA}",
     GBP: "\u{1F1EC}\u{1F1E7}"
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("span", { className: "drp-flex drp-items-center drp-gap-1", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { style: { fontSize: 14 }, children: flags[currency] }),
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: currency })
+  return /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("span", { className: "drp-flex drp-items-center drp-gap-1", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { style: { fontSize: 14 }, children: flags[currency] }),
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: currency })
   ] });
 };
-var CategoryCard = ({ icon, title, subtitle }) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+var CategoryCard = ({ icon, title, subtitle }) => /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
   "button",
   {
     className: "drp-card",
@@ -10151,7 +10564,7 @@ var CategoryCard = ({ icon, title, subtitle }) => /* @__PURE__ */ (0, import_jsx
       cursor: "pointer"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
         "div",
         {
           style: {
@@ -10167,9 +10580,9 @@ var CategoryCard = ({ icon, title, subtitle }) => /* @__PURE__ */ (0, import_jsx
           children: icon
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { style: { textAlign: "left" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "drp-text drp-text--bold", children: title }),
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "drp-caption", children: subtitle })
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { style: { textAlign: "left" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "drp-text drp-text--bold", children: title }),
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "drp-caption", children: subtitle })
       ] })
     ]
   }
@@ -10239,8 +10652,8 @@ var recentTransfers = [
     initials: "XZ"
   }
 ];
-var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-flex drp-gap-4", style: { minHeight: 0, flex: 1 }, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-flex drp-gap-4", style: { minHeight: 0, flex: 1 }, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
     "div",
     {
       className: "drp-card",
@@ -10252,7 +10665,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
         flexDirection: "column"
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
           "div",
           {
             className: "drp-flex drp-items-center drp-justify-between",
@@ -10261,8 +10674,8 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
               borderBottom: "var(--drp-border-thin)"
             },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("h2", { className: "drp-h5", children: "Make a payment" }),
-              /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+              /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("h2", { className: "drp-h5", children: "Make a payment" }),
+              /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
                 "div",
                 {
                   className: "drp-flex drp-items-center drp-gap-2",
@@ -10271,7 +10684,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                     border: "var(--drp-border-thin)"
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                       "svg",
                       {
                         width: "16",
@@ -10280,7 +10693,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                         fill: "none",
                         viewBox: "0 0 24 24",
                         stroke: "currentColor",
-                        children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                        children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                           "path",
                           {
                             strokeLinecap: "round",
@@ -10291,14 +10704,14 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                         )
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Search" })
+                    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Search" })
                   ]
                 }
               )
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
           "div",
           {
             style: {
@@ -10307,8 +10720,8 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
               padding: "var(--drp-space-5) var(--drp-space-6)"
             },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { style: { marginBottom: "var(--drp-space-5)" }, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { style: { marginBottom: "var(--drp-space-5)" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                   "p",
                   {
                     className: "drp-caption",
@@ -10316,7 +10729,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                     children: "Payment categories"
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
                   "div",
                   {
                     style: {
@@ -10325,10 +10738,10 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                       gap: "var(--drp-space-3)"
                     },
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                         CategoryCard,
                         {
-                          icon: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                          icon: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                             "svg",
                             {
                               width: "24",
@@ -10336,7 +10749,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                               fill: "none",
                               viewBox: "0 0 24 24",
                               stroke: "currentColor",
-                              children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                              children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                                 "path",
                                 {
                                   strokeLinecap: "round",
@@ -10351,10 +10764,10 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                           subtitle: "156 contacts"
                         }
                       ),
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                         CategoryCard,
                         {
-                          icon: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                          icon: /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
                             "svg",
                             {
                               width: "24",
@@ -10363,7 +10776,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                               viewBox: "0 0 24 24",
                               stroke: "currentColor",
                               children: [
-                                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                                   "rect",
                                   {
                                     x: "3",
@@ -10374,7 +10787,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                                     strokeWidth: 2
                                   }
                                 ),
-                                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                                   "rect",
                                   {
                                     x: "14",
@@ -10385,7 +10798,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                                     strokeWidth: 2
                                   }
                                 ),
-                                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                                   "rect",
                                   {
                                     x: "14",
@@ -10396,7 +10809,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                                     strokeWidth: 2
                                   }
                                 ),
-                                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                                   "rect",
                                   {
                                     x: "3",
@@ -10418,8 +10831,8 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                   }
                 )
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { style: { marginBottom: "var(--drp-space-5)" }, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { style: { marginBottom: "var(--drp-space-5)" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                   "p",
                   {
                     className: "drp-caption",
@@ -10427,7 +10840,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                     children: "Service providers"
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
                   "div",
                   {
                     style: {
@@ -10436,10 +10849,10 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                       gap: "var(--drp-space-3)"
                     },
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                         CategoryCard,
                         {
-                          icon: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                          icon: /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
                             "svg",
                             {
                               width: "24",
@@ -10448,7 +10861,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                               viewBox: "0 0 24 24",
                               stroke: "currentColor",
                               children: [
-                                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                                   "rect",
                                   {
                                     x: "5",
@@ -10459,7 +10872,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                                     strokeWidth: 2
                                   }
                                 ),
-                                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                                   "path",
                                   {
                                     strokeLinecap: "round",
@@ -10474,10 +10887,10 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                           subtitle: "Top up your balance instantly"
                         }
                       ),
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                         CategoryCard,
                         {
-                          icon: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                          icon: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                             "svg",
                             {
                               width: "24",
@@ -10485,7 +10898,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                               fill: "none",
                               viewBox: "0 0 24 24",
                               stroke: "currentColor",
-                              children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                              children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                                 "path",
                                 {
                                   strokeLinecap: "round",
@@ -10500,10 +10913,10 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                           subtitle: "Check your home utility bills"
                         }
                       ),
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                         CategoryCard,
                         {
-                          icon: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                          icon: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                             "svg",
                             {
                               width: "24",
@@ -10511,7 +10924,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                               fill: "none",
                               viewBox: "0 0 24 24",
                               stroke: "currentColor",
-                              children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                              children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                                 "path",
                                 {
                                   strokeLinecap: "round",
@@ -10526,10 +10939,10 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                           subtitle: "Pay car fines, taxes, and service"
                         }
                       ),
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                         CategoryCard,
                         {
-                          icon: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                          icon: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                             "svg",
                             {
                               width: "24",
@@ -10537,7 +10950,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                               fill: "none",
                               viewBox: "0 0 24 24",
                               stroke: "currentColor",
-                              children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                              children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                                 "path",
                                 {
                                   strokeLinecap: "round",
@@ -10556,8 +10969,8 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                   }
                 )
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { children: [
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { children: [
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                   "h3",
                   {
                     className: "drp-h5",
@@ -10593,7 +11006,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                     time: "14 Aug 4:20 AM",
                     positive: false
                   }
-                ].map((tx, i2) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                ].map((tx, i2) => /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
                   "div",
                   {
                     className: "drp-flex drp-items-center drp-gap-3",
@@ -10602,7 +11015,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                       borderBottom: i2 < 2 ? "var(--drp-border-thin)" : "none"
                     },
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                         "div",
                         {
                           className: "sidebar-avatar",
@@ -10616,12 +11029,12 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                           children: tx.initials
                         }
                       ),
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { style: { flex: 1, minWidth: 0 }, children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "drp-text drp-text--bold", children: tx.label }),
-                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "drp-caption", children: tx.sub })
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { style: { flex: 1, minWidth: 0 }, children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "drp-text drp-text--bold", children: tx.label }),
+                        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "drp-caption", children: tx.sub })
                       ] }),
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { style: { textAlign: "right", flexShrink: 0 }, children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { style: { textAlign: "right", flexShrink: 0 }, children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                           "div",
                           {
                             className: "drp-text drp-text--bold",
@@ -10631,14 +11044,14 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                             children: tx.amount
                           }
                         ),
-                        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "drp-caption", children: tx.time })
+                        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "drp-caption", children: tx.time })
                       ] }),
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." })
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." })
                     ]
                   },
                   i2
                 )),
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                   "button",
                   {
                     className: "drp-btn drp-btn--outline drp-btn--block drp-btn--sm",
@@ -10653,7 +11066,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
       ]
     }
   ),
-  /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
     "div",
     {
       className: "drp-card",
@@ -10666,17 +11079,17 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
         flexDirection: "column"
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
           "div",
           {
             style: {
               padding: "var(--drp-space-5)",
               borderBottom: "var(--drp-border-thin)"
             },
-            children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("h2", { className: "drp-h6", children: "Recent transfers" })
+            children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("h2", { className: "drp-h6", children: "Recent transfers" })
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { style: { flex: 1, overflow: "auto" }, children: recentTransfers.map((contact, i2) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { style: { flex: 1, overflow: "auto" }, children: recentTransfers.map((contact, i2) => /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
           "div",
           {
             className: "drp-flex drp-items-center drp-gap-3",
@@ -10685,7 +11098,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
               borderBottom: i2 < recentTransfers.length - 1 ? "var(--drp-border-thin)" : "none"
             },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                 "div",
                 {
                   className: "sidebar-avatar",
@@ -10699,8 +11112,8 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                   children: contact.initials
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { style: { flex: 1, minWidth: 0 }, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { style: { flex: 1, minWidth: 0 }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                   "div",
                   {
                     className: "drp-text drp-text--bold",
@@ -10712,7 +11125,7 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                     children: contact.name
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                   "div",
                   {
                     className: "drp-caption",
@@ -10725,19 +11138,19 @@ var ListContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { c
                   }
                 )
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(CurrencyFlag, { currency: contact.currency })
+              /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(CurrencyFlag, { currency: contact.currency })
             ]
           },
           i2
         )) }),
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
           "div",
           {
             style: {
               padding: "var(--drp-space-4)",
               borderTop: "var(--drp-border-thin)"
             },
-            children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--block drp-btn--sm", children: "See all contacts" })
+            children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--block drp-btn--sm", children: "See all contacts" })
           }
         )
       ]
@@ -10753,7 +11166,7 @@ var DetailIcon = ({ icon }) => {
   };
   switch (icon) {
     case "person":
-      return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("svg", { style: s2, fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("svg", { style: s2, fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
         "path",
         {
           strokeLinecap: "round",
@@ -10764,7 +11177,7 @@ var DetailIcon = ({ icon }) => {
       ) });
     case "routing":
     case "type":
-      return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("svg", { style: s2, fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("svg", { style: s2, fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
         "path",
         {
           strokeLinecap: "round",
@@ -10775,7 +11188,7 @@ var DetailIcon = ({ icon }) => {
       ) });
     case "account":
     case "currency":
-      return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("svg", { style: s2, fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+      return /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("svg", { style: s2, fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
         "path",
         {
           strokeLinecap: "round",
@@ -10785,18 +11198,18 @@ var DetailIcon = ({ icon }) => {
         }
       ) });
     default:
-      return /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { style: { width: 16, height: 16 }, children: "\u2022" });
+      return /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { style: { width: 16, height: 16 }, children: "\u2022" });
   }
 };
-var DetailsContent3 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import_jsx_runtime51.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { style: { flex: 1, position: "relative", overflow: "hidden" }, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { style: { opacity: 0.3, pointerEvents: "none" }, children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(ListContent, {}) }),
-  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "drp-overlay", style: { position: "absolute" }, children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+var DetailsContent3 = () => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(import_jsx_runtime61.Fragment, { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { style: { flex: 1, position: "relative", overflow: "hidden" }, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { style: { opacity: 0.3, pointerEvents: "none" }, children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(ListContent, {}) }),
+  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "drp-overlay", style: { position: "absolute" }, children: /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
     "div",
     {
       className: "drp-modal",
       style: { width: 460, overflow: "hidden", padding: 0 },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
           "div",
           {
             style: {
@@ -10807,7 +11220,7 @@ var DetailsContent3 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import
               justifyContent: "space-between"
             },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                 "h2",
                 {
                   className: "drp-text drp-text--bold",
@@ -10815,12 +11228,12 @@ var DetailsContent3 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import
                   children: "Recipient details"
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                 "button",
                 {
                   className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
                   style: { color: "var(--drp-white)" },
-                  children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                  children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                     "svg",
                     {
                       width: "16",
@@ -10828,7 +11241,7 @@ var DetailsContent3 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import
                       fill: "none",
                       viewBox: "0 0 24 24",
                       stroke: "currentColor",
-                      children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                         "path",
                         {
                           strokeLinecap: "round",
@@ -10844,7 +11257,7 @@ var DetailsContent3 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import
             ]
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
           "div",
           {
             style: {
@@ -10854,7 +11267,7 @@ var DetailsContent3 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import
               paddingBottom: "var(--drp-space-8)",
               paddingTop: "var(--drp-space-2)"
             },
-            children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
               "div",
               {
                 className: "sidebar-avatar",
@@ -10869,8 +11282,8 @@ var DetailsContent3 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import
             )
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { style: { padding: "var(--drp-space-6) var(--drp-space-8)" }, children: [
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { style: { padding: "var(--drp-space-6) var(--drp-space-8)" }, children: [
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
             "div",
             {
               style: {
@@ -10878,8 +11291,8 @@ var DetailsContent3 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import
                 marginBottom: "var(--drp-space-6)"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("h3", { className: "drp-h5", children: "Rustem Tolstobrov" }),
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("p", { className: "drp-text drp-text--sm drp-text--muted", children: "Account ending in 3456" })
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("h3", { className: "drp-h5", children: "Rustem Tolstobrov" }),
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("p", { className: "drp-text drp-text--sm drp-text--muted", children: "Account ending in 3456" })
               ]
             }
           ),
@@ -10897,7 +11310,7 @@ var DetailsContent3 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import
               value: "\u{1F1FA}\u{1F1F8} USD"
             },
             { icon: "type", label: "Account type", value: "Checking" }
-          ].map((row, i2) => /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+          ].map((row, i2) => /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
             "div",
             {
               className: "drp-flex drp-items-center drp-justify-between",
@@ -10906,23 +11319,23 @@ var DetailsContent3 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import
                 borderBottom: "var(--drp-border-dashed)"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(DetailIcon, { icon: row.icon }),
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: row.label })
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(DetailIcon, { icon: row.icon }),
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: row.label })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--bold", children: row.value })
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--bold", children: row.value })
               ]
             },
             i2
           )),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
             "div",
             {
               className: "drp-flex drp-gap-4",
               style: { marginTop: "var(--drp-space-6)" },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Send Funds" }),
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Edit Details" })
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Send Funds" }),
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Edit Details" })
               ]
             }
           )
@@ -10931,12 +11344,12 @@ var DetailsContent3 = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(import
     }
   ) })
 ] }) });
-var SendMoneyContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+var SendMoneyContent = () => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
   "div",
   {
     className: "content",
     style: { display: "flex", justifyContent: "center" },
-    children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
       "div",
       {
         style: {
@@ -10945,9 +11358,9 @@ var SendMoneyContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
           padding: "var(--drp-space-10) var(--drp-space-4)"
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: "drp-label", children: "Select recipient" }),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("label", { className: "drp-label", children: "Select recipient" }),
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
               "div",
               {
                 className: "drp-input",
@@ -10957,8 +11370,8 @@ var SendMoneyContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
                   justifyContent: "space-between"
                 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--bold", children: "Rustem Tolstobrov" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--bold", children: "Rustem Tolstobrov" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                     "svg",
                     {
                       width: "16",
@@ -10967,7 +11380,7 @@ var SendMoneyContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
                       fill: "none",
                       viewBox: "0 0 24 24",
                       stroke: "currentColor",
-                      children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                         "path",
                         {
                           strokeLinecap: "round",
@@ -10982,9 +11395,9 @@ var SendMoneyContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: "drp-label", children: "Select payment account" }),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("label", { className: "drp-label", children: "Select payment account" }),
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
               "div",
               {
                 className: "drp-input",
@@ -10994,18 +11407,18 @@ var SendMoneyContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
                   justifyContent: "space-between"
                 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--bold", children: "Debit Card **** 7890" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("label", { className: "drp-switch", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("input", { type: "checkbox", defaultChecked: true }),
-                    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-switch__track" })
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--bold", children: "Debit Card **** 7890" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("label", { className: "drp-switch", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("input", { type: "checkbox", defaultChecked: true }),
+                    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-switch__track" })
                   ] })
                 ]
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: "drp-label", children: "You will send" }),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("label", { className: "drp-label", children: "You will send" }),
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
               "div",
               {
                 className: "drp-input",
@@ -11015,13 +11428,13 @@ var SendMoneyContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
                   justifyContent: "space-between"
                 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--muted", children: "1,290.00" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "USD" })
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--muted", children: "1,290.00" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "USD" })
                 ]
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
             "div",
             {
               style: {
@@ -11029,43 +11442,43 @@ var SendMoneyContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
                 paddingLeft: "var(--drp-space-4)"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
                   "div",
                   {
                     className: "drp-flex drp-items-center drp-gap-3",
                     style: { marginBottom: "var(--drp-space-2)" },
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                         "span",
                         {
                           className: "drp-tag--dot",
                           style: { background: "var(--drp-black)" }
                         }
                       ),
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Conversion fee" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "9.50 USD" })
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Conversion fee" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "9.50 USD" })
                     ]
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                     "span",
                     {
                       className: "drp-tag--dot",
                       style: { background: "var(--drp-black)" }
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Transfer fee" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "5.50 USD" })
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Transfer fee" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "5.50 USD" })
                 ] })
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: "drp-label", children: "Delivery time" }),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "drp-input", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--muted", children: "Standard Transfer 1-3 days" }) })
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("label", { className: "drp-label", children: "Delivery time" }),
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "drp-input", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--muted", children: "Standard Transfer 1-3 days" }) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
             "p",
             {
               className: "drp-caption",
@@ -11073,21 +11486,21 @@ var SendMoneyContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
               children: "Transfers made on weekends or holidays take longer. All transfers are subject to review and could be delayed or stopped if we identify an issue."
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-flex drp-gap-4", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Cancel" }),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "drp-btn drp-btn--primary", style: { flex: 1 }, children: "Continue" })
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-flex drp-gap-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Cancel" }),
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--primary", style: { flex: 1 }, children: "Continue" })
           ] })
         ]
       }
     )
   }
 );
-var PayUtilitiesContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+var PayUtilitiesContent = () => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
   "div",
   {
     className: "content",
     style: { display: "flex", justifyContent: "center" },
-    children: /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
       "div",
       {
         style: {
@@ -11096,9 +11509,9 @@ var PayUtilitiesContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
           padding: "var(--drp-space-10) var(--drp-space-4)"
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: "drp-label", children: "Utilities" }),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("label", { className: "drp-label", children: "Utilities" }),
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
               "div",
               {
                 className: "drp-input",
@@ -11108,8 +11521,8 @@ var PayUtilitiesContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
                   justifyContent: "space-between"
                 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--bold", children: "Mobile Networks" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--bold", children: "Mobile Networks" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                     "svg",
                     {
                       width: "16",
@@ -11118,7 +11531,7 @@ var PayUtilitiesContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
                       fill: "none",
                       viewBox: "0 0 24 24",
                       stroke: "currentColor",
-                      children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                         "path",
                         {
                           strokeLinecap: "round",
@@ -11133,9 +11546,9 @@ var PayUtilitiesContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: "drp-label", children: "Service provider" }),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("label", { className: "drp-label", children: "Service provider" }),
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
               "div",
               {
                 className: "drp-input",
@@ -11145,8 +11558,8 @@ var PayUtilitiesContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
                   justifyContent: "space-between"
                 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--bold", children: "Vodafone" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--bold", children: "Vodafone" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                     "div",
                     {
                       style: {
@@ -11158,7 +11571,7 @@ var PayUtilitiesContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
                         justifyContent: "center",
                         border: "2px solid var(--drp-pink)"
                       },
-                      children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                         "div",
                         {
                           style: {
@@ -11175,9 +11588,9 @@ var PayUtilitiesContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: "drp-label", children: "You will send" }),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("label", { className: "drp-label", children: "You will send" }),
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
               "div",
               {
                 className: "drp-input",
@@ -11187,13 +11600,13 @@ var PayUtilitiesContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
                   justifyContent: "space-between"
                 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--muted", children: "15.50" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "USD" })
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--muted", children: "15.50" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "USD" })
                 ]
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
             "div",
             {
               style: {
@@ -11201,43 +11614,43 @@ var PayUtilitiesContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
                 paddingLeft: "var(--drp-space-4)"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)(
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)(
                   "div",
                   {
                     className: "drp-flex drp-items-center drp-gap-3",
                     style: { marginBottom: "var(--drp-space-2)" },
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                         "span",
                         {
                           className: "drp-tag--dot",
                           style: { background: "var(--drp-black)" }
                         }
                       ),
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Conversion fee" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "9.50 USD" })
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Conversion fee" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "9.50 USD" })
                     ]
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
                     "span",
                     {
                       className: "drp-tag--dot",
                       style: { background: "var(--drp-black)" }
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Transfer fee" }),
-                  /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "5.50 USD" })
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Transfer fee" }),
+                  /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "5.50 USD" })
                 ] })
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("label", { className: "drp-label", children: "Delivery time" }),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("div", { className: "drp-input", children: /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("span", { className: "drp-text drp-text--muted", children: "Instant" }) })
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("label", { className: "drp-label", children: "Delivery time" }),
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { className: "drp-input", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--muted", children: "Instant" }) })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
             "p",
             {
               className: "drp-caption",
@@ -11245,9 +11658,9 @@ var PayUtilitiesContent = () => /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(
               children: "Transfers made on weekends or holidays take longer. All transfers are subject to review and could be delayed or stopped if we identify an issue."
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "drp-flex drp-gap-4", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Cancel" }),
-            /* @__PURE__ */ (0, import_jsx_runtime51.jsx)("button", { className: "drp-btn drp-btn--primary", style: { flex: 1 }, children: "Continue" })
+          /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-flex drp-gap-4", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Cancel" }),
+            /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--primary", style: { flex: 1 }, children: "Continue" })
           ] })
         ]
       }
@@ -11265,29 +11678,29 @@ var PaymentsList = ({
     "pay-utilities": "Pay for utilities"
   };
   const showBack = variant === "send-money" || variant === "pay-utilities";
-  return /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "app-layout", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(DoctorProjectSidebar6, { variant }),
-    /* @__PURE__ */ (0, import_jsx_runtime51.jsxs)("div", { className: "main-content", style: { marginLeft: 280 }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(TopBar8, { title: titleMap[variant], showBack }),
-      variant === "list" && /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(ListContent, {}),
-      variant === "details" && /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(DetailsContent3, {}),
-      variant === "send-money" && /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(SendMoneyContent, {}),
-      variant === "pay-utilities" && /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(PayUtilitiesContent, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime51.jsx)(Footer8, {})
+  return /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "app-layout", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(DoctorProjectSidebar6, { variant }),
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "main-content", style: { marginLeft: 280 }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(TopBar8, { title: titleMap[variant], showBack }),
+      variant === "list" && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(ListContent, {}),
+      variant === "details" && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(DetailsContent3, {}),
+      variant === "send-money" && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(SendMoneyContent, {}),
+      variant === "pay-utilities" && /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(PayUtilitiesContent, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(Footer8, {})
     ] })
   ] });
 };
 
 // src/screens/Education/EducationCourses.tsx
-var import_jsx_runtime52 = require("react/jsx-runtime");
-var EducationSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "sidebar-brand-dot" })
+var import_jsx_runtime62 = require("react/jsx-runtime");
+var EducationSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Explore Courses", active: true },
         { label: "Degrees" },
@@ -11295,13 +11708,13 @@ var EducationSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("asi
         { label: "Universities" },
         { label: "Schedule", badge: "PR", badgeType: "purple" },
         { label: "Knowledge Base" }
-      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
         "a",
         {
           className: `sidebar-nav-item${item.active ? " active" : ""}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-            item.badge && /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
               "span",
               {
                 className: `sidebar-badge sidebar-badge--${item.badgeType}`,
@@ -11313,21 +11726,21 @@ var EducationSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("asi
         item.label
       ))
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-orange)" },
         { name: "Thanawan Chadee", bg: "var(--drp-purple)" },
         { name: "Justine Robinson", bg: "var(--drp-info)" }
-      ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "sidebar-team-name", children: member.name })
+      ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { className: "sidebar-team-name", children: member.name })
       ] }, member.name)),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "sidebar-see-more", children: "See More" })
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { className: "sidebar-see-more", children: "See More" })
     ] })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
       "div",
       {
         className: "sidebar-avatar",
@@ -11335,14 +11748,14 @@ var EducationSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("asi
         children: "H"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var EducationTopBar = () => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("header", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("h1", { className: "topbar-title", children: "Courses" }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+var EducationTopBar = () => /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("header", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("h1", { className: "topbar-title", children: "Courses" }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
       "svg",
       {
         width: "18",
@@ -11352,12 +11765,12 @@ var EducationTopBar = () => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("head
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
-          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "m21 21-4.35-4.35" })
+          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
+          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("path", { d: "m21 21-4.35-4.35" })
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
       "svg",
       {
         width: "18",
@@ -11367,22 +11780,22 @@ var EducationTopBar = () => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("head
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" }),
-          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M13.73 21a2 2 0 0 1-3.46 0" })
+          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("path", { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" }),
+          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("path", { d: "M13.73 21a2 2 0 0 1-3.46 0" })
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "currentColor", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("rect", { x: "2", y: "2", width: "9", height: "9" }),
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("rect", { x: "13", y: "2", width: "9", height: "9" }),
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("rect", { x: "2", y: "13", width: "9", height: "9" }),
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("rect", { x: "13", y: "13", width: "9", height: "9" })
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "currentColor", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("rect", { x: "2", y: "2", width: "9", height: "9" }),
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("rect", { x: "13", y: "2", width: "9", height: "9" }),
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("rect", { x: "2", y: "13", width: "9", height: "9" }),
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("rect", { x: "13", y: "13", width: "9", height: "9" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { children: "Apps" })
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
         "svg",
         {
           width: "14",
@@ -11392,25 +11805,25 @@ var EducationTopBar = () => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("head
           stroke: "currentColor",
           strokeWidth: "2.5",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("circle", { cx: "12", cy: "12", r: "10" }),
-            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M12 8v8M8 12h8" })
+            /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("circle", { cx: "12", cy: "12", r: "10" }),
+            /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("path", { d: "M12 8v8M8 12h8" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { children: "Create new" })
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var EducationFooter = () => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "footer-link", children: "API" })
+var EducationFooter = () => /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "footer-icon-btn footer-icon-btn--accent", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M12 3a9 9 0 1 0 9 9H12z" }) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("button", { className: "footer-icon-btn footer-icon-btn--accent", children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("path", { d: "M12 3a9 9 0 1 0 9 9H12z" }) }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
       "svg",
       {
         width: "13",
@@ -11420,8 +11833,8 @@ var EducationFooter = () => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("foot
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("circle", { cx: "12", cy: "12", r: "4" }),
-          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" })
+          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("circle", { cx: "12", cy: "12", r: "4" }),
+          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("path", { d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" })
         ]
       }
     ) })
@@ -11443,7 +11856,7 @@ var TrendingCard = ({
   courseCount,
   imageKey,
   large
-}) => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
   "div",
   {
     className: "drp-card--interactive",
@@ -11456,7 +11869,7 @@ var TrendingCard = ({
       border: "var(--drp-border)"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
         "img",
         {
           src: courseImages[imageKey],
@@ -11470,7 +11883,7 @@ var TrendingCard = ({
           }
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
         "div",
         {
           style: {
@@ -11480,7 +11893,7 @@ var TrendingCard = ({
           }
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
         "div",
         {
           style: {
@@ -11488,7 +11901,7 @@ var TrendingCard = ({
             top: "var(--drp-space-2)",
             right: "var(--drp-space-2)"
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
             "span",
             {
               className: "drp-tag drp-tag--filled",
@@ -11501,7 +11914,7 @@ var TrendingCard = ({
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
         "div",
         {
           style: {
@@ -11512,7 +11925,7 @@ var TrendingCard = ({
             padding: "var(--drp-space-3)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
               "p",
               {
                 className: "drp-text drp-text--bold",
@@ -11520,7 +11933,7 @@ var TrendingCard = ({
                 children: title
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
               "p",
               {
                 className: "drp-text drp-text--sm",
@@ -11540,13 +11953,13 @@ var DegreeCard = ({
   mode,
   icon,
   imageKey
-}) => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
   "div",
   {
     className: "drp-card drp-card--interactive",
     style: { padding: 0, overflow: "hidden" },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { style: { height: 144, overflow: "hidden" }, children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { style: { height: 144, overflow: "hidden" }, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
         "img",
         {
           src: courseImages[imageKey],
@@ -11554,8 +11967,8 @@ var DegreeCard = ({
           style: { width: "100%", height: "100%", objectFit: "cover" }
         }
       ) }),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { style: { padding: "var(--drp-space-3)" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { style: { padding: "var(--drp-space-3)" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
           "p",
           {
             className: "drp-text drp-text--bold drp-text--sm",
@@ -11563,7 +11976,7 @@ var DegreeCard = ({
             children: title
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
           "p",
           {
             className: "drp-text drp-text--sm drp-text--muted",
@@ -11571,22 +11984,22 @@ var DegreeCard = ({
             children: university
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "drp-tag", style: { fontSize: "var(--drp-text-xs)" }, children: mode }),
-          icon && /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "drp-text drp-text--muted", children: icon })
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { className: "drp-tag", style: { fontSize: "var(--drp-text-xs)" }, children: mode }),
+          icon && /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { className: "drp-text drp-text--muted", children: icon })
         ] })
       ] })
     ]
   }
 );
-var CoursePagination = () => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+var CoursePagination = () => /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
     style: { padding: "var(--drp-space-4) 0" },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
           "svg",
           {
             width: "14",
@@ -11595,15 +12008,15 @@ var CoursePagination = () => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
             fill: "none",
             stroke: "currentColor",
             strokeWidth: "2",
-            children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M15 18l-6-6 6-6" })
+            children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("path", { d: "M15 18l-6-6 6-6" })
           }
         ),
         "Prev"
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
         "Next",
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
           "svg",
           {
             width: "14",
@@ -11612,7 +12025,7 @@ var CoursePagination = () => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
             fill: "none",
             stroke: "currentColor",
             strokeWidth: "2",
-            children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "M9 18l6-6-6-6" })
+            children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("path", { d: "M9 18l6-6-6-6" })
           }
         )
       ] })
@@ -11622,7 +12035,7 @@ var CoursePagination = () => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
 var CoursesHero = ({
   title = "Explore Topics and Skills",
   placeholder = "What do you want to learn?"
-}) => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
   "div",
   {
     style: {
@@ -11633,7 +12046,7 @@ var CoursesHero = ({
       position: "relative"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
         "h2",
         {
           className: "drp-h2 drp-text-center",
@@ -11641,7 +12054,7 @@ var CoursesHero = ({
           children: title
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
         "div",
         {
           style: {
@@ -11651,7 +12064,7 @@ var CoursesHero = ({
             marginBottom: "var(--drp-space-3)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
               "input",
               {
                 className: "drp-input",
@@ -11660,7 +12073,7 @@ var CoursesHero = ({
                 readOnly: true
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
               "button",
               {
                 className: "drp-btn drp-btn--primary drp-btn--icon drp-btn--sm",
@@ -11670,7 +12083,7 @@ var CoursesHero = ({
                   top: "50%",
                   transform: "translateY(-50%)"
                 },
-                children: /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
                   "svg",
                   {
                     width: "13",
@@ -11680,8 +12093,8 @@ var CoursesHero = ({
                     stroke: "white",
                     strokeWidth: "2.5",
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("path", { d: "m21 21-4.35-4.35" })
+                      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("path", { d: "m21 21-4.35-4.35" })
                     ]
                   }
                 )
@@ -11690,7 +12103,7 @@ var CoursesHero = ({
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("p", { className: "drp-text drp-text--sm drp-text--muted drp-text-center", children: "For example: UI and UX development" })
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("p", { className: "drp-text drp-text--sm drp-text--muted drp-text-center", children: "For example: UI and UX development" })
     ]
   }
 );
@@ -11700,13 +12113,13 @@ var CourseCategoryCard = ({
   duration,
   type,
   imageKey
-}) => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
   "div",
   {
     className: "drp-card drp-card--interactive",
     style: { padding: 0, overflow: "hidden" },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { style: { height: 144, overflow: "hidden" }, children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { style: { height: 144, overflow: "hidden" }, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
         "img",
         {
           src: courseImages[imageKey],
@@ -11714,8 +12127,8 @@ var CourseCategoryCard = ({
           style: { width: "100%", height: "100%", objectFit: "cover" }
         }
       ) }),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { style: { padding: "var(--drp-space-3)" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { style: { padding: "var(--drp-space-3)" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
           "p",
           {
             className: "drp-text drp-text--bold drp-text--sm",
@@ -11723,7 +12136,7 @@ var CourseCategoryCard = ({
             children: title
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
           "p",
           {
             className: "drp-text drp-text--sm drp-text--muted",
@@ -11731,9 +12144,9 @@ var CourseCategoryCard = ({
             children: university
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "drp-tag", style: { fontSize: "var(--drp-text-xs)" }, children: type }),
-          /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: duration })
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { className: "drp-tag", style: { fontSize: "var(--drp-text-xs)" }, children: type }),
+          /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: duration })
         ] })
       ] })
     ]
@@ -11794,8 +12207,8 @@ var SuggestedSearches = () => {
     { label: "Developer", active: false },
     { label: "Managing director", active: false }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { style: { marginBottom: "var(--drp-space-5)" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { style: { marginBottom: "var(--drp-space-5)" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted",
@@ -11803,7 +12216,7 @@ var SuggestedSearches = () => {
         children: "Suggested course searches"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "drp-flex drp-flex-wrap drp-gap-2", children: searches.map((s2) => /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { className: "drp-flex drp-flex-wrap drp-gap-2", children: searches.map((s2) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
       "button",
       {
         className: `drp-tag${s2.active ? " drp-tag--filled drp-tag--purple" : ""}`,
@@ -11872,19 +12285,19 @@ var EducationCourses = ({
       imageKey: "global-public-health"
     }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "app-layout", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(EducationSidebar, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "main-content", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(EducationTopBar, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { style: { flex: 1, overflow: "auto" }, children: view === "courses" ? /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(import_jsx_runtime52.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(CoursesHero, {}),
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { className: "app-layout", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(EducationSidebar, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { className: "main-content", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(EducationTopBar, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { style: { flex: 1, overflow: "auto" }, children: view === "courses" ? /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(import_jsx_runtime62.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(CoursesHero, {}),
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
           "div",
           {
             style: { padding: "0 var(--drp-space-6) var(--drp-space-2)" },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { style: { marginBottom: "var(--drp-space-6)" }, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { style: { marginBottom: "var(--drp-space-6)" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
                   "h3",
                   {
                     className: "drp-h6",
@@ -11892,7 +12305,7 @@ var EducationCourses = ({
                     children: "Trending today"
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+                /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
                   "div",
                   {
                     style: {
@@ -11902,17 +12315,17 @@ var EducationCourses = ({
                       gap: "var(--drp-space-3)"
                     },
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { style: { gridRow: "1 / 3" }, children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(TrendingCard, { ...trendingCards[0], large: true }) }),
-                      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(TrendingCard, { ...trendingCards[1] }),
-                      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(TrendingCard, { ...trendingCards[2] }),
-                      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(TrendingCard, { ...trendingCards[3] }),
-                      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(TrendingCard, { ...trendingCards[4] })
+                      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { style: { gridRow: "1 / 3" }, children: /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TrendingCard, { ...trendingCards[0], large: true }) }),
+                      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TrendingCard, { ...trendingCards[1] }),
+                      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TrendingCard, { ...trendingCards[2] }),
+                      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TrendingCard, { ...trendingCards[3] }),
+                      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(TrendingCard, { ...trendingCards[4] })
                     ]
                   }
                 )
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { style: { marginBottom: "var(--drp-space-4)" }, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { style: { marginBottom: "var(--drp-space-4)" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
                   "h3",
                   {
                     className: "drp-h6",
@@ -11920,28 +12333,28 @@ var EducationCourses = ({
                     children: "Earn Your Degree"
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "drp-grid-3", children: degreeCards.map((card) => /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(DegreeCard, { ...card }, card.title)) })
+                /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { className: "drp-grid-3", children: degreeCards.map((card) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(DegreeCard, { ...card }, card.title)) })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(CoursePagination, {})
+              /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(CoursePagination, {})
             ]
           }
         )
-      ] }) : /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(import_jsx_runtime52.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+      ] }) : /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(import_jsx_runtime62.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
           CoursesHero,
           {
             title: "Software Development",
             placeholder: "Mobile and Web Design"
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)(
           "div",
           {
             style: { padding: "0 var(--drp-space-6) var(--drp-space-2)" },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(SuggestedSearches, {}),
-              /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { style: { marginBottom: "var(--drp-space-3)" }, children: [
-                /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(SuggestedSearches, {}),
+              /* @__PURE__ */ (0, import_jsx_runtime62.jsxs)("div", { style: { marginBottom: "var(--drp-space-3)" }, children: [
+                /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(
                   "h3",
                   {
                     className: "drp-h6",
@@ -11949,29 +12362,29 @@ var EducationCourses = ({
                     children: "Earn Your Degree"
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "drp-grid-3", children: categorySpecializations.map((card) => /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(CourseCategoryCard, { ...card }, card.title)) })
+                /* @__PURE__ */ (0, import_jsx_runtime62.jsx)("div", { className: "drp-grid-3", children: categorySpecializations.map((card) => /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(CourseCategoryCard, { ...card }, card.title)) })
               ] }),
-              /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(CoursePagination, {})
+              /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(CoursePagination, {})
             ]
           }
         )
       ] }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(EducationFooter, {})
+      /* @__PURE__ */ (0, import_jsx_runtime62.jsx)(EducationFooter, {})
     ] })
   ] });
 };
 
 // src/screens/Calendar/CalendarEvent.tsx
-var import_react9 = require("react");
-var import_jsx_runtime53 = require("react/jsx-runtime");
-var CalendarSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "sidebar-brand-dot" })
+var import_react15 = require("react");
+var import_jsx_runtime63 = require("react/jsx-runtime");
+var CalendarSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard", badge: 15, badgeType: "purple" },
         { label: "Projects" },
@@ -11980,13 +12393,13 @@ var CalendarSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("asid
         { label: "File Manager", badge: 14, badgeType: "green" },
         { label: "Calendar", active: true },
         { label: "Inbox" }
-      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
         "a",
         {
           className: `sidebar-nav-item${item.active ? " active" : ""}`,
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-            item.badge && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+            item.badge && /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
               "span",
               {
                 className: `sidebar-badge sidebar-badge--${item.badgeType}`,
@@ -11998,21 +12411,21 @@ var CalendarSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("asid
         item.label
       ))
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-orange)" },
         { name: "Thanawan Chadee", bg: "var(--drp-purple)" },
         { name: "Justine Robinson", bg: "var(--drp-info)" }
-      ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
-        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "sidebar-team-name", children: member.name })
+      ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
+        /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "sidebar-team-name", children: member.name })
       ] }, member.name)),
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "sidebar-see-more", children: "See More" })
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("div", { className: "sidebar-see-more", children: "See More" })
     ] })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
       "div",
       {
         className: "sidebar-avatar",
@@ -12020,14 +12433,14 @@ var CalendarSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("asid
         children: "H"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var TopBar9 = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("header", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("h1", { className: "topbar-title", children: "Calendar" }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+var TopBar9 = () => /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("header", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("h1", { className: "topbar-title", children: "Calendar" }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
       "svg",
       {
         width: "20",
@@ -12037,12 +12450,12 @@ var TopBar9 = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("header", { c
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
-          /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("path", { d: "m21 21-4.35-4.35" })
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("path", { d: "m21 21-4.35-4.35" })
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
       "svg",
       {
         width: "20",
@@ -12052,22 +12465,22 @@ var TopBar9 = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("header", { c
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("path", { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" }),
-          /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("path", { d: "M13.73 21a2 2 0 0 1-3.46 0" })
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("path", { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" }),
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("path", { d: "M13.73 21a2 2 0 0 1-3.46 0" })
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("svg", { width: "18", height: "18", viewBox: "0 0 24 24", fill: "currentColor", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("rect", { x: "2", y: "2", width: "9", height: "9" }),
-        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("rect", { x: "13", y: "2", width: "9", height: "9" }),
-        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("rect", { x: "2", y: "13", width: "9", height: "9" }),
-        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("rect", { x: "13", y: "13", width: "9", height: "9" })
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("svg", { width: "18", height: "18", viewBox: "0 0 24 24", fill: "currentColor", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("rect", { x: "2", y: "2", width: "9", height: "9" }),
+        /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("rect", { x: "13", y: "2", width: "9", height: "9" }),
+        /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("rect", { x: "2", y: "13", width: "9", height: "9" }),
+        /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("rect", { x: "13", y: "13", width: "9", height: "9" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { children: "Apps" })
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
         "svg",
         {
           width: "18",
@@ -12076,28 +12489,28 @@ var TopBar9 = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("header", { c
           fill: "none",
           stroke: "currentColor",
           strokeWidth: "2.5",
-          children: /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("path", { d: "M12 5v14M5 12h14" })
+          children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("path", { d: "M12 5v14M5 12h14" })
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { children: "Create new" })
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var CalendarNav = ({ view, onViewChange, dateLabel }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+var CalendarNav = ({ view, onViewChange, dateLabel }) => /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
     style: { padding: "var(--drp-space-4) var(--drp-space-6)" },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "drp-btn-group", children: [
-          /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "\u2039" }),
-          /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "\u203A" })
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "drp-btn-group", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "\u2039" }),
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "\u203A" })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "drp-h5", children: dateLabel })
+        /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "drp-h5", children: dateLabel })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "drp-tabs", children: ["Month", "Week", "Day"].map((v3) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("div", { className: "drp-tabs", children: ["Month", "Week", "Day"].map((v3) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
           "button",
           {
             onClick: () => onViewChange(v3.toLowerCase()),
@@ -12106,7 +12519,7 @@ var CalendarNav = ({ view, onViewChange, dateLabel }) => /* @__PURE__ */ (0, imp
           },
           v3
         )) }),
-        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Sort: A-Z" })
+        /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Sort: A-Z" })
       ] })
     ]
   }
@@ -12116,15 +12529,15 @@ var eventColorMap = {
   purple: { tag: "drp-tag--purple", dot: "var(--drp-purple)" },
   yellow: { tag: "drp-tag--yellow", dot: "var(--drp-yellow)" }
 };
-var EventPill = ({ label, color, small }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+var EventPill = ({ label, color, small }) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
   "span",
   {
     className: `drp-tag drp-tag--dot ${eventColorMap[color].tag}`,
     style: small ? { maxWidth: 100, fontSize: "var(--drp-text-xs)", padding: "2px 8px" } : void 0,
-    children: /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "drp-truncate", children: label })
+    children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "drp-truncate", children: label })
   }
 );
-var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
   "div",
   {
     style: {
@@ -12137,7 +12550,7 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
       zIndex: "var(--drp-z-modal)"
     },
     onClick: onClose,
-    children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
       "div",
       {
         className: "drp-card",
@@ -12148,18 +12561,18 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
         },
         onClick: (e2) => e2.stopPropagation(),
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
             "div",
             {
               className: "drp-flex drp-items-center drp-justify-between",
               style: { marginBottom: "var(--drp-space-1)" },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "drp-tag drp-tag--filled", children: "7:30 am" }),
-                /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "..." })
+                /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "drp-tag drp-tag--filled", children: "7:30 am" }),
+                /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "..." })
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
             "h2",
             {
               className: "drp-h3",
@@ -12170,7 +12583,7 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
               children: "Design a new dashboard for client"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
             "p",
             {
               className: "drp-text drp-text--sm drp-text--muted",
@@ -12178,14 +12591,14 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
               children: "Task created on 7 Jun 2022"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
             "div",
             {
               className: "drp-flex drp-gap-6",
               style: { marginBottom: "var(--drp-space-5)" },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
                     "p",
                     {
                       className: "drp-label",
@@ -12193,13 +12606,13 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
                       children: "Assigned to"
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "drp-flex drp-items-center", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "drp-flex drp-items-center", children: [
                     [
                       "var(--drp-orange)",
                       "var(--drp-purple)",
                       "var(--drp-info)",
                       "var(--drp-mint)"
-                    ].map((c2, i2) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+                    ].map((c2, i2) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
                       "div",
                       {
                         className: "sidebar-avatar",
@@ -12213,7 +12626,7 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
                       },
                       i2
                     )),
-                    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
                       "div",
                       {
                         style: {
@@ -12232,8 +12645,8 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
                     )
                   ] })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
                     "p",
                     {
                       className: "drp-label",
@@ -12241,15 +12654,15 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
                       children: "Due to"
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "drp-tag", children: "15 Aug 2023" }),
-                    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "drp-tag drp-tag--filled drp-tag--purple", children: "Business" })
+                  /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "drp-tag", children: "15 Aug 2023" }),
+                    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "drp-tag drp-tag--filled drp-tag--purple", children: "Business" })
                   ] })
                 ] })
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
             "div",
             {
               style: {
@@ -12258,8 +12671,8 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
                 marginBottom: "var(--drp-space-4)"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("h3", { className: "drp-h6", style: { marginBottom: "var(--drp-space-2)" }, children: "Description" }),
-                /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("h3", { className: "drp-h6", style: { marginBottom: "var(--drp-space-2)" }, children: "Description" }),
+                /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
                   "p",
                   {
                     className: "drp-text drp-text--sm drp-text--muted",
@@ -12270,7 +12683,7 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
             "div",
             {
               className: "drp-flex drp-items-center drp-gap-2",
@@ -12279,7 +12692,7 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
                 padding: "var(--drp-space-2) var(--drp-space-3)"
               },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
                   "input",
                   {
                     className: "drp-input",
@@ -12293,8 +12706,8 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
                     readOnly: true
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "+" }),
-                /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "drp-btn drp-btn--primary drp-btn--icon drp-btn--sm", children: "\u203A" })
+                /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "+" }),
+                /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("button", { className: "drp-btn drp-btn--primary drp-btn--icon drp-btn--sm", children: "\u203A" })
               ]
             }
           )
@@ -12385,7 +12798,7 @@ var weeks = [
 var MonthView = ({
   showModal,
   onToggle
-}) => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
   "div",
   {
     style: {
@@ -12395,8 +12808,8 @@ var MonthView = ({
       position: "relative"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
           "div",
           {
             style: {
@@ -12404,7 +12817,7 @@ var MonthView = ({
               gridTemplateColumns: "repeat(7, 1fr)",
               borderBottom: "var(--drp-border-thin)"
             },
-            children: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d2) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+            children: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d2) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
               "div",
               {
                 className: "drp-label drp-text-center",
@@ -12415,7 +12828,7 @@ var MonthView = ({
             ))
           }
         ),
-        weeks.map((week, wi) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+        weeks.map((week, wi) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
           "div",
           {
             style: {
@@ -12423,7 +12836,7 @@ var MonthView = ({
               gridTemplateColumns: "repeat(7, 1fr)",
               borderBottom: wi < weeks.length - 1 ? "var(--drp-border-thin)" : "none"
             },
-            children: week.map((cell, ci) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+            children: week.map((cell, ci) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
               "div",
               {
                 onClick: cell.day ? onToggle : void 0,
@@ -12434,8 +12847,8 @@ var MonthView = ({
                   cursor: cell.day ? "pointer" : "default",
                   background: cell.day ? "var(--drp-white)" : "var(--drp-cream)"
                 },
-                children: cell.day && /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(import_jsx_runtime53.Fragment, { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+                children: cell.day && /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(import_jsx_runtime63.Fragment, { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
                     "div",
                     {
                       className: "drp-text drp-text--sm drp-text--bold",
@@ -12446,7 +12859,7 @@ var MonthView = ({
                       children: cell.day
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { className: "drp-flex-col drp-gap-1", children: cell.events.map((e2, ei) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("div", { className: "drp-flex-col drp-gap-1", children: cell.events.map((e2, ei) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
                     EventPill,
                     {
                       label: e2.label,
@@ -12463,7 +12876,7 @@ var MonthView = ({
           wi
         ))
       ] }),
-      showModal && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(EventModal, { onClose: onToggle })
+      showModal && /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(EventModal, { onClose: onToggle })
     ]
   }
 );
@@ -12494,7 +12907,7 @@ var eventBgMap = {
   purple: "var(--drp-purple-20)",
   yellow: "rgba(250, 232, 164, 0.2)"
 };
-var DayView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+var DayView = () => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
   "div",
   {
     style: {
@@ -12502,8 +12915,8 @@ var DayView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
       overflow: "auto",
       padding: "0 var(--drp-space-6) var(--drp-space-6)"
     },
-    children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
         "div",
         {
           className: "drp-text drp-text--bold drp-text-center",
@@ -12516,7 +12929,7 @@ var DayView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
       ),
       timeSlots.map((slot, i2) => {
         const ev = dayEvents[i2];
-        return /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+        return /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
           "div",
           {
             style: {
@@ -12525,7 +12938,7 @@ var DayView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
               borderBottom: i2 < timeSlots.length - 1 ? "var(--drp-border-thin)" : "none"
             },
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
                 "div",
                 {
                   className: "drp-text drp-text--sm drp-text--muted drp-text-right",
@@ -12537,7 +12950,7 @@ var DayView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
                   children: slot
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
                 "div",
                 {
                   style: {
@@ -12546,7 +12959,7 @@ var DayView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
                     display: "flex",
                     alignItems: "center"
                   },
-                  children: ev && /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+                  children: ev && /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
                     "div",
                     {
                       className: "drp-flex drp-items-center drp-gap-2",
@@ -12556,7 +12969,7 @@ var DayView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
                         width: "100%"
                       },
                       children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+                        /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
                           "span",
                           {
                             className: "drp-dot",
@@ -12567,8 +12980,8 @@ var DayView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
                             }
                           }
                         ),
-                        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: ev.time }),
-                        /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: ev.label })
+                        /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: ev.time }),
+                        /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: ev.label })
                       ]
                     }
                   )
@@ -12633,7 +13046,7 @@ var weekCols = [
   },
   { label: "Sun, 9", events: {} }
 ];
-var WeekView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+var WeekView = () => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
   "div",
   {
     style: {
@@ -12641,8 +13054,8 @@ var WeekView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
       overflow: "auto",
       padding: "0 var(--drp-space-6) var(--drp-space-6)"
     },
-    children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
         "div",
         {
           style: {
@@ -12651,8 +13064,8 @@ var WeekView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
             borderBottom: "var(--drp-border-thin)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("div", { style: { borderRight: "var(--drp-border-thin)" } }),
-            weekCols.map((d2) => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("div", { style: { borderRight: "var(--drp-border-thin)" } }),
+            weekCols.map((d2) => /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
               "div",
               {
                 className: "drp-label drp-text-center",
@@ -12667,7 +13080,7 @@ var WeekView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
           ]
         }
       ),
-      timeSlots.map((slot, si) => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+      timeSlots.map((slot, si) => /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
         "div",
         {
           style: {
@@ -12676,7 +13089,7 @@ var WeekView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
             borderBottom: si < timeSlots.length - 1 ? "var(--drp-border-thin)" : "none"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
               "div",
               {
                 className: "drp-text drp-text--sm drp-text--muted drp-text-right",
@@ -12689,7 +13102,7 @@ var WeekView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
             ),
             weekCols.map((day, di) => {
               const ev = day.events[si];
-              return /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+              return /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
                 "div",
                 {
                   style: {
@@ -12700,7 +13113,7 @@ var WeekView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
                     alignItems: "flex-start",
                     paddingTop: "var(--drp-space-2)"
                   },
-                  children: ev && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(EventPill, { label: ev.label, color: ev.color, small: true })
+                  children: ev && /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(EventPill, { label: ev.label, color: ev.color, small: true })
                 },
                 di
               );
@@ -12712,16 +13125,16 @@ var WeekView = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
     ] })
   }
 );
-var FooterBar = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("span", { className: "footer-link", children: "API" })
+var FooterBar = () => /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "footer-icon-btn footer-icon-btn--accent", children: /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("path", { d: "M12 3a9 9 0 1 0 9 9H12z" }) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("button", { className: "footer-icon-btn footer-icon-btn--accent", children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("path", { d: "M12 3a9 9 0 1 0 9 9H12z" }) }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)(
       "svg",
       {
         width: "13",
@@ -12731,8 +13144,8 @@ var FooterBar = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("footer", {
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("circle", { cx: "12", cy: "12", r: "4" }),
-          /* @__PURE__ */ (0, import_jsx_runtime53.jsx)("path", { d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" })
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("circle", { cx: "12", cy: "12", r: "4" }),
+          /* @__PURE__ */ (0, import_jsx_runtime63.jsx)("path", { d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" })
         ]
       }
     ) })
@@ -12741,18 +13154,18 @@ var FooterBar = () => /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("footer", {
 var CalendarEvent = ({
   defaultView = "month"
 }) => {
-  const [view, setView] = (0, import_react9.useState)(defaultView);
-  const [showModal, setShowModal] = (0, import_react9.useState)(defaultView === "month");
+  const [view, setView] = (0, import_react15.useState)(defaultView);
+  const [showModal, setShowModal] = (0, import_react15.useState)(defaultView === "month");
   const dateLabels = {
     month: "September 2022",
     week: "September 3 - 9, 2022",
     day: "September 3 - 9, 2022"
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "app-layout", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(CalendarSidebar, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime53.jsxs)("div", { className: "main-content", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(TopBar9, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "app-layout", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(CalendarSidebar, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime63.jsxs)("div", { className: "main-content", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(TopBar9, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
         CalendarNav,
         {
           view,
@@ -12763,31 +13176,31 @@ var CalendarEvent = ({
           dateLabel: dateLabels[view]
         }
       ),
-      view === "month" && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(
+      view === "month" && /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(
         MonthView,
         {
           showModal,
           onToggle: () => setShowModal((s2) => !s2)
         }
       ),
-      view === "day" && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(DayView, {}),
-      view === "week" && /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(WeekView, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime53.jsx)(FooterBar, {})
+      view === "day" && /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(DayView, {}),
+      view === "week" && /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(WeekView, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime63.jsx)(FooterBar, {})
     ] })
   ] });
 };
 
 // src/screens/Support/SupportHome.tsx
-var import_react10 = __toESM(require("react"), 1);
-var import_jsx_runtime54 = require("react/jsx-runtime");
-var SupportSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "sidebar-brand-dot" })
+var import_react16 = __toESM(require("react"), 1);
+var import_jsx_runtime64 = require("react/jsx-runtime");
+var SupportSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard", badge: 15, badgeType: "purple" },
         { label: "Projects" },
@@ -12796,9 +13209,9 @@ var SupportSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("aside
         { label: "File Manager", badge: 14, badgeType: "green" },
         { label: "Calendar" },
         { label: "Inbox" }
-      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("a", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-        item.badge && /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("a", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+        item.badge && /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
           "span",
           {
             className: `sidebar-badge sidebar-badge--${item.badgeType}`,
@@ -12807,21 +13220,21 @@ var SupportSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("aside
         )
       ] }, item.label))
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-orange)" },
         { name: "Thanawan Chadee", bg: "var(--drp-purple)" },
         { name: "Justine Robinson", bg: "var(--drp-info)" }
-      ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
-        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "sidebar-team-name", children: member.name })
+      ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
+        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("span", { className: "sidebar-team-name", children: member.name })
       ] }, member.name)),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "sidebar-see-more", children: "See More" })
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { className: "sidebar-see-more", children: "See More" })
     ] })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
       "div",
       {
         className: "sidebar-avatar",
@@ -12829,14 +13242,14 @@ var SupportSidebar = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("aside
         children: "H"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var SupportTopBar = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("header", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("h1", { className: "topbar-title", children: "Help Center" }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+var SupportTopBar = () => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("header", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("h1", { className: "topbar-title", children: "Help Center" }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
       "svg",
       {
         width: "18",
@@ -12846,12 +13259,12 @@ var SupportTopBar = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("header
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "m21 21-4.35-4.35" })
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("path", { d: "m21 21-4.35-4.35" })
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
       "svg",
       {
         width: "18",
@@ -12861,22 +13274,22 @@ var SupportTopBar = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("header
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" }),
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M13.73 21a2 2 0 0 1-3.46 0" })
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("path", { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" }),
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("path", { d: "M13.73 21a2 2 0 0 1-3.46 0" })
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "currentColor", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("rect", { x: "2", y: "2", width: "9", height: "9" }),
-        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("rect", { x: "13", y: "2", width: "9", height: "9" }),
-        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("rect", { x: "2", y: "13", width: "9", height: "9" }),
-        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("rect", { x: "13", y: "13", width: "9", height: "9" })
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "currentColor", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("rect", { x: "2", y: "2", width: "9", height: "9" }),
+        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("rect", { x: "13", y: "2", width: "9", height: "9" }),
+        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("rect", { x: "2", y: "13", width: "9", height: "9" }),
+        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("rect", { x: "13", y: "13", width: "9", height: "9" })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { children: "Apps" })
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
         "svg",
         {
           width: "14",
@@ -12886,25 +13299,25 @@ var SupportTopBar = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("header
           stroke: "currentColor",
           strokeWidth: "2.5",
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("circle", { cx: "12", cy: "12", r: "10" }),
-            /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M12 8v8M8 12h8" })
+            /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("circle", { cx: "12", cy: "12", r: "10" }),
+            /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("path", { d: "M12 8v8M8 12h8" })
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { children: "Create new" })
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var SupportFooter = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "footer-link", children: "API" })
+var SupportFooter = () => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "footer-icon-btn footer-icon-btn--accent", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M12 3a9 9 0 1 0 9 9H12z" }) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("button", { className: "footer-icon-btn footer-icon-btn--accent", children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("path", { d: "M12 3a9 9 0 1 0 9 9H12z" }) }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
       "svg",
       {
         width: "13",
@@ -12914,8 +13327,8 @@ var SupportFooter = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("footer
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("circle", { cx: "12", cy: "12", r: "4" }),
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" })
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("circle", { cx: "12", cy: "12", r: "4" }),
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("path", { d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" })
         ]
       }
     ) })
@@ -12924,7 +13337,7 @@ var SupportFooter = () => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("footer
 var SupportHero = ({
   searchPlaceholder = "Search help articles",
   searchValue
-}) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
   "div",
   {
     style: {
@@ -12934,7 +13347,7 @@ var SupportHero = ({
       background: "radial-gradient(ellipse at 70% 50%, var(--drp-purple-20) 0%, transparent 65%), var(--drp-cream)"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
         "h2",
         {
           className: "drp-h2 drp-text-center",
@@ -12942,7 +13355,7 @@ var SupportHero = ({
           children: "How can we help you?"
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
         "div",
         {
           style: {
@@ -12952,7 +13365,7 @@ var SupportHero = ({
             marginBottom: "var(--drp-space-3)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
               "input",
               {
                 className: "drp-input",
@@ -12962,7 +13375,7 @@ var SupportHero = ({
                 readOnly: true
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
               "button",
               {
                 className: "drp-btn drp-btn--primary drp-btn--icon drp-btn--sm",
@@ -12972,7 +13385,7 @@ var SupportHero = ({
                   top: "50%",
                   transform: "translateY(-50%)"
                 },
-                children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
                   "svg",
                   {
                     width: "13",
@@ -12982,8 +13395,8 @@ var SupportHero = ({
                     stroke: "white",
                     strokeWidth: "2.5",
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "m21 21-4.35-4.35" })
+                      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("circle", { cx: "11", cy: "11", r: "8" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("path", { d: "m21 21-4.35-4.35" })
                     ]
                   }
                 )
@@ -12992,7 +13405,7 @@ var SupportHero = ({
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "drp-text drp-text--sm drp-text--muted drp-text-center", children: "For example: How to create an account" })
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("p", { className: "drp-text drp-text--sm drp-text--muted drp-text-center", children: "For example: How to create an account" })
     ]
   }
 );
@@ -13001,13 +13414,13 @@ var ProductCategoryCard = ({
   color,
   title,
   description
-}) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
   "div",
   {
     className: "drp-card drp-card--interactive",
     style: { padding: "var(--drp-space-3)" },
-    children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
         "div",
         {
           style: {
@@ -13025,9 +13438,9 @@ var ProductCategoryCard = ({
           children: letter
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "drp-text drp-text--bold drp-text--sm", children: title }),
-        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("p", { className: "drp-text drp-text--bold drp-text--sm", children: title }),
+        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
           "p",
           {
             className: "drp-text drp-text--sm drp-text--muted",
@@ -13043,13 +13456,13 @@ var HelpArticleCard = ({
   title,
   category,
   description
-}) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
   "div",
   {
     className: "drp-card drp-card--interactive",
     style: { padding: "var(--drp-space-4)" },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
         "span",
         {
           className: "drp-tag drp-tag--filled drp-tag--purple",
@@ -13057,7 +13470,7 @@ var HelpArticleCard = ({
           children: category
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
         "p",
         {
           className: "drp-text drp-text--bold drp-text--sm",
@@ -13068,7 +13481,7 @@ var HelpArticleCard = ({
           children: title
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
         "p",
         {
           className: "drp-text drp-text--sm drp-text--muted",
@@ -13076,7 +13489,7 @@ var HelpArticleCard = ({
           children: description
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
         "button",
         {
           className: "drp-btn drp-btn--ghost drp-btn--sm drp-btn--purple",
@@ -13094,15 +13507,15 @@ var HelpArticleCard = ({
     ]
   }
 );
-var Breadcrumb = ({ items }) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+var Breadcrumb = ({ items }) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
   "div",
   {
     className: "drp-flex drp-items-center drp-gap-1",
     style: {
       padding: "var(--drp-space-4) var(--drp-space-6) var(--drp-space-2)"
     },
-    children: items.map((item, i2) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(import_react10.default.Fragment, { children: [
-      i2 > 0 && /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+    children: items.map((item, i2) => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_react16.default.Fragment, { children: [
+      i2 > 0 && /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
         "svg",
         {
           width: "12",
@@ -13111,10 +13524,10 @@ var Breadcrumb = ({ items }) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
           fill: "none",
           stroke: "var(--drp-grey)",
           strokeWidth: "2",
-          children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M9 18l6-6-6-6" })
+          children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("path", { d: "M9 18l6-6-6-6" })
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
         "span",
         {
           className: `drp-text drp-text--sm ${i2 === items.length - 1 ? "drp-text--bold" : "drp-text--muted"}`,
@@ -13136,11 +13549,11 @@ var ArticleSidebarNav = () => {
     { label: "Asset Directory" },
     { label: "Top of mind" }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
     "div",
     {
       style: { width: 192, flexShrink: 0, paddingTop: "var(--drp-space-2)" },
-      children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("nav", { children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("nav", { children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
         "div",
         {
           className: `drp-text drp-text--sm ${item.active ? "drp-text--purple drp-text--bold" : ""}`,
@@ -13160,13 +13573,13 @@ var RelatedArticleRow = ({
   title,
   date,
   tag
-}) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
   "div",
   {
     className: "drp-card drp-card--interactive",
     style: { padding: "var(--drp-space-4)" },
-    children: /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-4", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+    children: /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-4", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
         "div",
         {
           style: {
@@ -13183,9 +13596,9 @@ var RelatedArticleRow = ({
           children: icon
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "drp-text drp-text--bold drp-text--sm", children: title }),
-        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("p", { className: "drp-text drp-text--bold drp-text--sm", children: title }),
+        /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
           "p",
           {
             className: "drp-text drp-text--sm drp-text--muted",
@@ -13201,13 +13614,13 @@ var RelatedArticleRow = ({
     ] })
   }
 );
-var SearchResultRow = ({ title, excerpt }) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+var SearchResultRow = ({ title, excerpt }) => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
   "div",
   {
     className: "drp-card drp-card--interactive",
     style: { padding: "var(--drp-space-4)" },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
         "p",
         {
           className: "drp-text drp-text--bold drp-text--sm",
@@ -13215,7 +13628,7 @@ var SearchResultRow = ({ title, excerpt }) => /* @__PURE__ */ (0, import_jsx_run
           children: title
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
         "p",
         {
           className: "drp-text drp-text--sm drp-text--muted",
@@ -13223,7 +13636,7 @@ var SearchResultRow = ({ title, excerpt }) => /* @__PURE__ */ (0, import_jsx_run
           children: excerpt
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
         "button",
         {
           className: "drp-btn drp-btn--ghost drp-btn--sm",
@@ -13375,20 +13788,20 @@ var searchResults = [
   }
 ];
 var SupportHome = ({ view = "home" }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "app-layout", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SupportSidebar, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { className: "main-content", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SupportTopBar, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { style: { flex: 1, overflow: "auto" }, children: [
-        view === "home" && /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(import_jsx_runtime54.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SupportHero, {}),
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { className: "app-layout", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SupportSidebar, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { className: "main-content", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SupportTopBar, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { style: { flex: 1, overflow: "auto" }, children: [
+        view === "home" && /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_jsx_runtime64.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SupportHero, {}),
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
             "div",
             {
               style: { padding: "0 var(--drp-space-6) var(--drp-space-4)" },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { style: { marginBottom: "var(--drp-space-6)" }, children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { style: { marginBottom: "var(--drp-space-6)" }, children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                     "h3",
                     {
                       className: "drp-h6",
@@ -13396,7 +13809,7 @@ var SupportHome = ({ view = "home" }) => {
                       children: "Products"
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "drp-grid-3", children: products.map((p3) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { className: "drp-grid-3", children: products.map((p3) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                     ProductCategoryCard,
                     {
                       ...p3
@@ -13404,8 +13817,8 @@ var SupportHome = ({ view = "home" }) => {
                     `${p3.title}-${p3.description}`
                   )) })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                     "h3",
                     {
                       className: "drp-h6",
@@ -13413,22 +13826,22 @@ var SupportHome = ({ view = "home" }) => {
                       children: "Popular help topics"
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "drp-grid-3", children: popularArticles.map((a2) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(HelpArticleCard, { ...a2 }, a2.title)) })
+                  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { className: "drp-grid-3", children: popularArticles.map((a2) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(HelpArticleCard, { ...a2 }, a2.title)) })
                 ] })
               ]
             }
           )
         ] }),
-        view === "categories" && /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(import_jsx_runtime54.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Breadcrumb, { items: ["Help Center", "Categories", "..."] }),
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SupportHero, {}),
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+        view === "categories" && /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_jsx_runtime64.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Breadcrumb, { items: ["Help Center", "Categories", "..."] }),
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SupportHero, {}),
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
             "div",
             {
               style: { padding: "0 var(--drp-space-6) var(--drp-space-4)" },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { style: { marginBottom: "var(--drp-space-6)" }, children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { style: { marginBottom: "var(--drp-space-6)" }, children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                     "h3",
                     {
                       className: "drp-h6",
@@ -13436,7 +13849,7 @@ var SupportHome = ({ view = "home" }) => {
                       children: "Product categories"
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "drp-grid-3", children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { className: "drp-grid-3", children: [
                     {
                       letter: "G",
                       color: "var(--drp-info)",
@@ -13458,19 +13871,19 @@ var SupportHome = ({ view = "home" }) => {
                       description: "Buying, selling or transferring crypto\nUnderstanding crypto compliance",
                       articles: 3
                     }
-                  ].map((cat) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+                  ].map((cat) => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
                     "div",
                     {
                       className: "drp-card drp-card--interactive",
                       style: { padding: "var(--drp-space-4)" },
                       children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+                        /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
                           "div",
                           {
                             className: "drp-flex drp-items-center drp-gap-3",
                             style: { marginBottom: "var(--drp-space-3)" },
                             children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                              /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                                 "div",
                                 {
                                   style: {
@@ -13488,11 +13901,11 @@ var SupportHome = ({ view = "home" }) => {
                                   children: cat.letter
                                 }
                               ),
-                              /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("p", { className: "drp-text drp-text--bold drp-text--sm", children: cat.title })
+                              /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("p", { className: "drp-text drp-text--bold drp-text--sm", children: cat.title })
                             ]
                           }
                         ),
-                        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { style: { marginBottom: "var(--drp-space-3)" }, children: cat.description.split("\n").map((line) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { style: { marginBottom: "var(--drp-space-3)" }, children: cat.description.split("\n").map((line) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                           "p",
                           {
                             className: "drp-text drp-text--sm drp-text--muted",
@@ -13501,7 +13914,7 @@ var SupportHome = ({ view = "home" }) => {
                           },
                           line
                         )) }),
-                        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                           "button",
                           {
                             className: "drp-btn drp-btn--ghost drp-btn--sm",
@@ -13520,8 +13933,8 @@ var SupportHome = ({ view = "home" }) => {
                     cat.title
                   )) })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                     "h3",
                     {
                       className: "drp-h6",
@@ -13529,22 +13942,22 @@ var SupportHome = ({ view = "home" }) => {
                       children: "Top community posts"
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "drp-flex-col drp-gap-2", children: topCommunityPosts.map((post) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(RelatedArticleRow, { ...post }, post.title)) })
+                  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { className: "drp-flex-col drp-gap-2", children: topCommunityPosts.map((post) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(RelatedArticleRow, { ...post }, post.title)) })
                 ] })
               ]
             }
           )
         ] }),
-        view === "article" && /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(import_jsx_runtime54.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(Breadcrumb, { items: ["Help Center", "Account", "Funds reports"] }),
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+        view === "article" && /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_jsx_runtime64.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(Breadcrumb, { items: ["Help Center", "Account", "Funds reports"] }),
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
             "div",
             {
               className: "drp-flex drp-gap-6",
               style: { padding: "0 var(--drp-space-6) var(--drp-space-4)" },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { style: { flex: 1, minWidth: 0 }, children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { style: { flex: 1, minWidth: 0 }, children: [
+                  /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                     "h1",
                     {
                       className: "drp-h2",
@@ -13552,13 +13965,13 @@ var SupportHome = ({ view = "home" }) => {
                       children: "Getting started: funds reports"
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+                  /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
                     "div",
                     {
                       className: "drp-card",
                       style: { marginBottom: "var(--drp-space-4)" },
                       children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                           "p",
                           {
                             className: "drp-text drp-text--sm",
@@ -13570,7 +13983,7 @@ var SupportHome = ({ view = "home" }) => {
                             children: "There is no better advertisement campaign that is low cost and also successful at the same time. Great business ideas when utilized effectively can save lots of money. This is not only easy for those who work full-time as an advertiser."
                           }
                         ),
-                        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                           "div",
                           {
                             style: {
@@ -13578,12 +13991,12 @@ var SupportHome = ({ view = "home" }) => {
                               padding: "var(--drp-space-4)",
                               marginBottom: "var(--drp-space-4)"
                             },
-                            children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("ol", { style: { listStyle: "none", padding: 0, margin: 0 }, children: [
+                            children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("ol", { style: { listStyle: "none", padding: 0, margin: 0 }, children: [
                               "Fliers and business cards can be tacked on such bulletin boards.",
                               "But before doing so, check out with the human resource department",
                               "Parents are required to be in regular touch with the teachers to know",
                               "Do not miss this opportunity and spread the word. Hand them the business card"
-                            ].map((item, i2) => /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+                            ].map((item, i2) => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
                               "li",
                               {
                                 className: "drp-text drp-text--sm drp-text--bold",
@@ -13598,7 +14011,7 @@ var SupportHome = ({ view = "home" }) => {
                             )) })
                           }
                         ),
-                        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                           "p",
                           {
                             className: "drp-text drp-text--sm",
@@ -13610,7 +14023,7 @@ var SupportHome = ({ view = "home" }) => {
                             children: "Get involved with fundraiser at schools, as it's a nice approach to market business. Prior to handing out the order received, collect all necessary information like business card pack, fliers, with proper information."
                           }
                         ),
-                        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                           "p",
                           {
                             className: "drp-text drp-text--sm drp-text--muted",
@@ -13621,8 +14034,8 @@ var SupportHome = ({ view = "home" }) => {
                       ]
                     }
                   ),
-                  /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("div", { children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                  /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", { children: [
+                    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                       "h3",
                       {
                         className: "drp-h6",
@@ -13630,28 +14043,28 @@ var SupportHome = ({ view = "home" }) => {
                         children: "This also may help you"
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("div", { className: "drp-flex-col drp-gap-2", children: relatedArticles.map((a2) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(RelatedArticleRow, { ...a2 }, a2.title)) })
+                    /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { className: "drp-flex-col drp-gap-2", children: relatedArticles.map((a2) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(RelatedArticleRow, { ...a2 }, a2.title)) })
                   ] })
                 ] }),
-                /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(ArticleSidebarNav, {})
+                /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(ArticleSidebarNav, {})
               ]
             }
           )
         ] }),
-        view === "search" && /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(import_jsx_runtime54.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+        view === "search" && /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(import_jsx_runtime64.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
             SupportHero,
             {
               searchPlaceholder: "Search help articles",
               searchValue: "Account"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
             "div",
             {
               style: { padding: "0 var(--drp-space-6) var(--drp-space-4)" },
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                   "p",
                   {
                     className: "drp-text drp-text--bold drp-text--sm",
@@ -13659,22 +14072,22 @@ var SupportHome = ({ view = "home" }) => {
                     children: "Search results"
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                   "div",
                   {
                     className: "drp-flex-col drp-gap-3",
                     style: { marginBottom: "var(--drp-space-6)" },
-                    children: searchResults.map((r2) => /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SearchResultRow, { ...r2 }, r2.title))
+                    children: searchResults.map((r2) => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SearchResultRow, { ...r2 }, r2.title))
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)(
+                /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
                   "div",
                   {
                     className: "drp-flex drp-items-center drp-justify-between",
                     style: { padding: "var(--drp-space-4) 0" },
                     children: [
-                      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
-                        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                      /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
+                        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                           "svg",
                           {
                             width: "14",
@@ -13683,15 +14096,15 @@ var SupportHome = ({ view = "home" }) => {
                             fill: "none",
                             stroke: "currentColor",
                             strokeWidth: "2",
-                            children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M15 18l-6-6 6-6" })
+                            children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("path", { d: "M15 18l-6-6 6-6" })
                           }
                         ),
                         "Prev"
                       ] }),
-                      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
-                      /* @__PURE__ */ (0, import_jsx_runtime54.jsxs)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
+                      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
+                      /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
                         "Next",
-                        /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
+                        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
                           "svg",
                           {
                             width: "14",
@@ -13700,7 +14113,7 @@ var SupportHome = ({ view = "home" }) => {
                             fill: "none",
                             stroke: "currentColor",
                             strokeWidth: "2",
-                            children: /* @__PURE__ */ (0, import_jsx_runtime54.jsx)("path", { d: "M9 18l6-6-6-6" })
+                            children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("path", { d: "M9 18l6-6-6-6" })
                           }
                         )
                       ] })
@@ -13712,22 +14125,22 @@ var SupportHome = ({ view = "home" }) => {
           )
         ] })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(SupportFooter, {})
+      /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(SupportFooter, {})
     ] })
   ] });
 };
 
 // src/screens/ProfileSettings/ProfileAccount.tsx
-var import_react11 = require("react");
-var import_jsx_runtime55 = require("react/jsx-runtime");
-var DoctorProjectSidebar7 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "sidebar-brand-dot" })
+var import_react17 = require("react");
+var import_jsx_runtime65 = require("react/jsx-runtime");
+var DoctorProjectSidebar7 = () => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard", badge: 15, badgeType: "purple" },
         { label: "Projects" },
@@ -13736,9 +14149,9 @@ var DoctorProjectSidebar7 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)
         { label: "File Manager", badge: 14, badgeType: "green" },
         { label: "Calendar" },
         { label: "Inbox" }
-      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("a", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-        item.badge && /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("a", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+        item.badge && /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
           "span",
           {
             className: `sidebar-badge sidebar-badge--${item.badgeType}`,
@@ -13747,18 +14160,18 @@ var DoctorProjectSidebar7 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)
         )
       ] }, item.label))
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-info)" },
         { name: "Thanawan Chadee", bg: "var(--drp-orange)" },
         { name: "Justine Robinson", bg: "var(--drp-success)" }
-      ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "sidebar-team-name", children: member.name })
+      ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
+        /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "sidebar-team-name", children: member.name })
       ] }, member.name)),
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "sidebar-see-more", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "sidebar-see-more", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
           "svg",
           {
             width: "16",
@@ -13767,15 +14180,15 @@ var DoctorProjectSidebar7 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)
             fill: "none",
             stroke: "currentColor",
             strokeWidth: "2",
-            children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("polyline", { points: "6 9 12 15 18 9" })
+            children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("polyline", { points: "6 9 12 15 18 9" })
           }
         ),
         "See More"
       ] })
     ] })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
       "div",
       {
         className: "sidebar-avatar",
@@ -13783,14 +14196,14 @@ var DoctorProjectSidebar7 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)
         children: "H"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var TopBar10 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("header", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("h1", { className: "topbar-title", children: "Profile Settings" }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+var TopBar10 = () => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("header", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("h1", { className: "topbar-title", children: "Profile Settings" }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
       "svg",
       {
         width: "20",
@@ -13799,7 +14212,7 @@ var TopBar10 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("header", { 
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -13809,7 +14222,7 @@ var TopBar10 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("header", { 
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
       "svg",
       {
         width: "20",
@@ -13818,7 +14231,7 @@ var TopBar10 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("header", { 
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -13828,8 +14241,8 @@ var TopBar10 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("header", { 
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
         "svg",
         {
           width: "18",
@@ -13838,7 +14251,7 @@ var TopBar10 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("header", { 
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           strokeWidth: "2",
-          children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -13848,10 +14261,10 @@ var TopBar10 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("header", { 
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { children: "Apps" })
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
         "svg",
         {
           width: "18",
@@ -13860,7 +14273,7 @@ var TopBar10 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("header", { 
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           strokeWidth: "2.5",
-          children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -13870,19 +14283,19 @@ var TopBar10 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("header", { 
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { children: "Create new" })
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer9 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "footer-link", children: "API" })
+var Footer9 = () => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(
       "svg",
       {
         width: "16",
@@ -13892,7 +14305,7 @@ var Footer9 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("footer", { c
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -13900,7 +14313,7 @@ var Footer9 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("footer", { c
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -13911,7 +14324,7 @@ var Footer9 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("footer", { c
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
       "svg",
       {
         width: "16",
@@ -13920,7 +14333,7 @@ var Footer9 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("footer", { c
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -13932,8 +14345,8 @@ var Footer9 = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("footer", { c
     ) })
   ] })
 ] });
-var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { style: { width: 280, flexShrink: 0, padding: "var(--drp-space-6)" }, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { style: { width: 280, flexShrink: 0, padding: "var(--drp-space-6)" }, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(
     "div",
     {
       style: {
@@ -13944,7 +14357,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div
         marginBottom: "var(--drp-space-4)"
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
           "img",
           {
             src: "https://i.pravatar.cc/80?img=47",
@@ -13955,7 +14368,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div
             }
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
           "div",
           {
             style: {
@@ -13975,8 +14388,8 @@ var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div
       ]
     }
   ),
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("h2", { className: "drp-h5", style: { marginBottom: 2 }, children: "Laquita Elliott" }),
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("h2", { className: "drp-h5", style: { marginBottom: 2 }, children: "Laquita Elliott" }),
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
     "p",
     {
       className: "drp-text drp-text--sm drp-text--muted",
@@ -13984,7 +14397,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div
       children: "elliott.laquita@gmail.com"
     }
   ),
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(
     "p",
     {
       className: "drp-text drp-text--sm",
@@ -13994,12 +14407,12 @@ var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div
       },
       children: [
         "Happiness is not something readymade.",
-        /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("br", {}),
+        /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("br", {}),
         "It comes from your own actions."
       ]
     }
   ),
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
     "span",
     {
       className: "drp-tag",
@@ -14007,8 +14420,8 @@ var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div
       children: "Designer"
     }
   ),
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(
       "div",
       {
         style: {
@@ -14016,12 +14429,12 @@ var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div
           borderBottom: "var(--drp-border-dashed)"
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-h5", children: "296" }),
-              /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-badge drp-badge--pink", children: "-8" })
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "drp-h5", children: "296" }),
+              /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "drp-badge drp-badge--pink", children: "-8" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
               "svg",
               {
                 width: "16",
@@ -14030,7 +14443,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div
                 viewBox: "0 0 24 24",
                 stroke: "var(--drp-grey)",
                 strokeWidth: "2",
-                children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -14041,7 +14454,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
             "p",
             {
               className: "drp-text drp-text--sm drp-text--muted",
@@ -14052,7 +14465,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(
       "div",
       {
         style: {
@@ -14060,12 +14473,12 @@ var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div
           borderBottom: "var(--drp-border-dashed)"
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-h5", children: "18" }),
-              /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-badge drp-badge--mint", children: "5" })
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+              /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "drp-h5", children: "18" }),
+              /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "drp-badge drp-badge--mint", children: "5" })
             ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
               "svg",
               {
                 width: "16",
@@ -14074,7 +14487,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div
                 viewBox: "0 0 24 24",
                 stroke: "var(--drp-grey)",
                 strokeWidth: "2",
-                children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -14085,7 +14498,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
             "p",
             {
               className: "drp-text drp-text--sm drp-text--muted",
@@ -14096,9 +14509,9 @@ var ProfileSidePanel = () => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { style: { paddingTop: "var(--drp-space-3)" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("span", { className: "drp-h5", children: "$36" }),
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { style: { paddingTop: "var(--drp-space-3)" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "drp-h5", children: "$36" }),
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
         "p",
         {
           className: "drp-text drp-text--sm drp-text--muted",
@@ -14116,13 +14529,13 @@ var TABS = [
   { key: "apis", label: "APIs" },
   { key: "notifications", label: "Notifications" }
 ];
-var ProfileTabBar = ({ activeTab, onTabChange }) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+var ProfileTabBar = ({ activeTab, onTabChange }) => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(
   "div",
   {
     className: "drp-flex drp-items-center drp-gap-1",
     style: { marginBottom: "var(--drp-space-4)", flexShrink: 0 },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { className: "drp-tabs", children: TABS.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("div", { className: "drp-tabs", children: TABS.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
         "button",
         {
           onClick: () => onTabChange(tab.key),
@@ -14131,14 +14544,14 @@ var ProfileTabBar = ({ activeTab, onTabChange }) => /* @__PURE__ */ (0, import_j
         },
         tab.key
       )) }),
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
     ]
   }
 );
 var ContentCard = ({
   title,
   children
-}) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(
   "div",
   {
     className: "drp-card",
@@ -14150,17 +14563,17 @@ var ContentCard = ({
       padding: 0
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
         "div",
         {
           style: {
             padding: "var(--drp-space-4) var(--drp-space-6)",
             borderBottom: "var(--drp-border-thin)"
           },
-          children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("h2", { className: "drp-h5", children: title })
+          children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("h2", { className: "drp-h5", children: title })
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
         "div",
         {
           style: {
@@ -14171,7 +14584,7 @@ var ContentCard = ({
           children
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(
         "div",
         {
           className: "drp-flex drp-items-center drp-justify-between",
@@ -14180,8 +14593,8 @@ var ContentCard = ({
             borderTop: "var(--drp-border-thin)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
-            /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
+            /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
+            /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
           ]
         }
       )
@@ -14191,9 +14604,9 @@ var ContentCard = ({
 var FieldRow = ({
   label,
   value
-}) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)("p", { className: "drp-label", style: { marginBottom: "var(--drp-space-1)" }, children: label }),
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("p", { className: "drp-label", style: { marginBottom: "var(--drp-space-1)" }, children: label }),
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
     "p",
     {
       className: "drp-text drp-text--bold drp-text--sm",
@@ -14209,11 +14622,11 @@ var ProfileLayout = ({
   activeTab,
   onTabChange,
   children
-}) => /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(DoctorProjectSidebar7, {}),
-  /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "main-content", style: { overflow: "hidden" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(TopBar10, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(DoctorProjectSidebar7, {}),
+  /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "main-content", style: { overflow: "hidden" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(TopBar10, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(
       "div",
       {
         className: "drp-flex",
@@ -14224,32 +14637,32 @@ var ProfileLayout = ({
           gap: "var(--drp-space-6)"
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(ProfileSidePanel, {}),
-          /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
-            /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(ProfileTabBar, { activeTab, onTabChange }),
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(ProfileSidePanel, {}),
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
+            /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(ProfileTabBar, { activeTab, onTabChange }),
             children
           ] })
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(Footer9, {})
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Footer9, {})
   ] })
 ] });
 var ProfileAccount = () => {
-  const [activeTab, setActiveTab] = (0, import_react11.useState)("account");
-  return /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(ProfileLayout, { activeTab, onTabChange: setActiveTab, children: /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(ContentCard, { title: "Public account details", children: /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-flex-col drp-gap-4", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(FieldRow, { label: "Full name", value: "Henry Richardson" }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(FieldRow, { label: "Country", value: "United States" }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(FieldRow, { label: "City", value: "New Castle" }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-form-row", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(FieldRow, { label: "Date of birth", value: "January 24, 1983" }),
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(FieldRow, { label: "Gender", value: "Male" })
+  const [activeTab, setActiveTab] = (0, import_react17.useState)("account");
+  return /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(ProfileLayout, { activeTab, onTabChange: setActiveTab, children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(ContentCard, { title: "Public account details", children: /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "drp-flex-col drp-gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(FieldRow, { label: "Full name", value: "Henry Richardson" }),
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(FieldRow, { label: "Country", value: "United States" }),
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(FieldRow, { label: "City", value: "New Castle" }),
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "drp-form-row", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(FieldRow, { label: "Date of birth", value: "January 24, 1983" }),
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(FieldRow, { label: "Gender", value: "Male" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsxs)("div", { className: "drp-form-row", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(FieldRow, { label: "Email address", value: "seb.bennett@gmail.com" }),
-      /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(FieldRow, { label: "Phone number", value: "+995 590 558 124" })
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "drp-form-row", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(FieldRow, { label: "Email address", value: "seb.bennett@gmail.com" }),
+      /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(FieldRow, { label: "Phone number", value: "+995 590 558 124" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime55.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
       FieldRow,
       {
         label: "Address",
@@ -14260,14 +14673,14 @@ var ProfileAccount = () => {
 };
 
 // src/screens/ProfileSettings/ProfileNotifications.tsx
-var import_react12 = require("react");
-var import_jsx_runtime56 = require("react/jsx-runtime");
-var Toggle2 = ({ enabled, onChange }) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("label", { className: "drp-switch", onClick: () => onChange(!enabled), children: [
-  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("input", { type: "checkbox", checked: enabled, onChange: () => {
+var import_react18 = require("react");
+var import_jsx_runtime66 = require("react/jsx-runtime");
+var Toggle2 = ({ enabled, onChange }) => /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("label", { className: "drp-switch", onClick: () => onChange(!enabled), children: [
+  /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("input", { type: "checkbox", checked: enabled, onChange: () => {
   } }),
-  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-switch__track", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "drp-switch__knob" }) })
+  /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("span", { className: "drp-switch__track", children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("span", { className: "drp-switch__knob" }) })
 ] });
-var NotifRow = ({ label, description, enabled, onChange }) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
+var NotifRow = ({ label, description, enabled, onChange }) => /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
@@ -14276,22 +14689,22 @@ var NotifRow = ({ label, description, enabled, onChange }) => /* @__PURE__ */ (0
       borderBottom: "var(--drp-border-thin)"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("p", { className: "drp-label", style: { marginBottom: 2 }, children: label }),
-        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("p", { className: "drp-text drp-text--bold drp-text--sm", children: description })
+      /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("p", { className: "drp-label", style: { marginBottom: 2 }, children: label }),
+        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("p", { className: "drp-text drp-text--bold drp-text--sm", children: description })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(Toggle2, { enabled, onChange })
+      /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Toggle2, { enabled, onChange })
     ]
   }
 );
-var DoctorProjectSidebar8 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "sidebar-brand-dot" })
+var DoctorProjectSidebar8 = () => /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard", badge: 15, badgeType: "purple" },
         { label: "Projects" },
@@ -14300,9 +14713,9 @@ var DoctorProjectSidebar8 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)
         { label: "File Manager", badge: 14, badgeType: "green" },
         { label: "Calendar" },
         { label: "Inbox" }
-      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("a", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-        item.badge && /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("a", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+        item.badge && /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
           "span",
           {
             className: `sidebar-badge sidebar-badge--${item.badgeType}`,
@@ -14311,21 +14724,21 @@ var DoctorProjectSidebar8 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)
         )
       ] }, item.label))
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-info)" },
         { name: "Thanawan Chadee", bg: "var(--drp-orange)" },
         { name: "Justine Robinson", bg: "var(--drp-success)" }
-      ].map((m3) => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "sidebar-avatar", style: { background: m3.bg }, children: m3.name[0] }),
-        /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "sidebar-team-name", children: m3.name })
+      ].map((m3) => /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("div", { className: "sidebar-avatar", style: { background: m3.bg }, children: m3.name[0] }),
+        /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("span", { className: "sidebar-team-name", children: m3.name })
       ] }, m3.name)),
-      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "sidebar-see-more", children: "See More" })
+      /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("div", { className: "sidebar-see-more", children: "See More" })
     ] })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
       "div",
       {
         className: "sidebar-avatar",
@@ -14333,14 +14746,14 @@ var DoctorProjectSidebar8 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)
         children: "H"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var TopBar11 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("header", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("h1", { className: "topbar-title", children: "Profile Settings" }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+var TopBar11 = () => /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("header", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("h1", { className: "topbar-title", children: "Profile Settings" }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
       "svg",
       {
         width: "20",
@@ -14349,7 +14762,7 @@ var TopBar11 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("header", { 
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -14359,7 +14772,7 @@ var TopBar11 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("header", { 
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
       "svg",
       {
         width: "20",
@@ -14368,7 +14781,7 @@ var TopBar11 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("header", { 
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -14378,9 +14791,9 @@ var TopBar11 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("header", { 
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "topbar-apps-btn", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { children: "Apps" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("button", { className: "topbar-apps-btn", children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("span", { children: "Apps" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
         "svg",
         {
           width: "18",
@@ -14389,7 +14802,7 @@ var TopBar11 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("header", { 
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           strokeWidth: "2.5",
-          children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -14399,19 +14812,19 @@ var TopBar11 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("header", { 
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { children: "Create new" })
+      /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer10 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("span", { className: "footer-link", children: "API" })
+var Footer10 = () => /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(
       "svg",
       {
         width: "16",
@@ -14421,12 +14834,12 @@ var Footer10 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("footer", { 
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("circle", { cx: "12", cy: "12", r: "3" }),
-          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("path", { d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" })
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("circle", { cx: "12", cy: "12", r: "3" }),
+          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("path", { d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" })
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
       "svg",
       {
         width: "16",
@@ -14435,7 +14848,7 @@ var Footer10 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("footer", { 
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -14448,8 +14861,8 @@ var Footer10 = () => /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("footer", { 
   ] })
 ] });
 var ProfileNotifications = () => {
-  const [activeTab, setActiveTab] = (0, import_react12.useState)("notifications");
-  const [settings, setSettings] = (0, import_react12.useState)({
+  const [activeTab, setActiveTab] = (0, import_react18.useState)("notifications");
+  const [settings, setSettings] = (0, import_react18.useState)({
     productUpdates: true,
     reminders: false,
     promotions: true,
@@ -14463,11 +14876,11 @@ var ProfileNotifications = () => {
     { key: "apis", label: "APIs" },
     { key: "notifications", label: "Notifications" }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(DoctorProjectSidebar8, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "main-content", style: { overflow: "hidden" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(TopBar11, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(DoctorProjectSidebar8, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("div", { className: "main-content", style: { overflow: "hidden" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(TopBar11, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(
         "div",
         {
           className: "drp-flex",
@@ -14478,15 +14891,15 @@ var ProfileNotifications = () => {
             gap: "var(--drp-space-6)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(ProfileSidePanel, {}),
-            /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(ProfileSidePanel, {}),
+            /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(
                 "div",
                 {
                   className: "drp-flex drp-items-center drp-gap-1",
                   style: { marginBottom: "var(--drp-space-4)", flexShrink: 0 },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { className: "drp-tabs", children: TABS4.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("div", { className: "drp-tabs", children: TABS4.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
                       "button",
                       {
                         onClick: () => setActiveTab(tab.key),
@@ -14495,11 +14908,11 @@ var ProfileNotifications = () => {
                       },
                       tab.key
                     )) }),
-                    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
+                    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
                   ]
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
+              /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(
                 "div",
                 {
                   className: "drp-card",
@@ -14511,17 +14924,17 @@ var ProfileNotifications = () => {
                     padding: 0
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
                       "div",
                       {
                         style: {
                           padding: "var(--drp-space-4) var(--drp-space-6)",
                           borderBottom: "var(--drp-border-thin)"
                         },
-                        children: /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("h2", { className: "drp-h5", children: "Notifications" })
+                        children: /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("h2", { className: "drp-h5", children: "Notifications" })
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
+                    /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(
                       "div",
                       {
                         style: {
@@ -14530,7 +14943,7 @@ var ProfileNotifications = () => {
                           overflowY: "auto"
                         },
                         children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+                          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
                             NotifRow,
                             {
                               label: "Product updates",
@@ -14539,7 +14952,7 @@ var ProfileNotifications = () => {
                               onChange: (v3) => setSettings({ ...settings, productUpdates: v3 })
                             }
                           ),
-                          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+                          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
                             NotifRow,
                             {
                               label: "Reminders",
@@ -14548,7 +14961,7 @@ var ProfileNotifications = () => {
                               onChange: (v3) => setSettings({ ...settings, reminders: v3 })
                             }
                           ),
-                          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+                          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
                             NotifRow,
                             {
                               label: "Promotions and tips",
@@ -14557,7 +14970,7 @@ var ProfileNotifications = () => {
                               onChange: (v3) => setSettings({ ...settings, promotions: v3 })
                             }
                           ),
-                          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+                          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
                             NotifRow,
                             {
                               label: "Policy and community",
@@ -14566,7 +14979,7 @@ var ProfileNotifications = () => {
                               onChange: (v3) => setSettings({ ...settings, policy: v3 })
                             }
                           ),
-                          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(
+                          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(
                             NotifRow,
                             {
                               label: "Account support",
@@ -14578,7 +14991,7 @@ var ProfileNotifications = () => {
                         ]
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime56.jsxs)(
+                    /* @__PURE__ */ (0, import_jsx_runtime66.jsxs)(
                       "div",
                       {
                         className: "drp-flex drp-items-center drp-justify-between",
@@ -14587,8 +15000,8 @@ var ProfileNotifications = () => {
                           borderTop: "var(--drp-border-thin)"
                         },
                         children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
-                          /* @__PURE__ */ (0, import_jsx_runtime56.jsx)("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
+                          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
+                          /* @__PURE__ */ (0, import_jsx_runtime66.jsx)("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
                         ]
                       }
                     )
@@ -14599,22 +15012,22 @@ var ProfileNotifications = () => {
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime56.jsx)(Footer10, {})
+      /* @__PURE__ */ (0, import_jsx_runtime66.jsx)(Footer10, {})
     ] })
   ] });
 };
 
 // src/screens/ProfileSettings/ProfileSecurity.tsx
-var import_react13 = require("react");
-var import_jsx_runtime57 = require("react/jsx-runtime");
-var DoctorProjectSidebar9 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "sidebar-brand-dot" })
+var import_react19 = require("react");
+var import_jsx_runtime67 = require("react/jsx-runtime");
+var DoctorProjectSidebar9 = () => /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard", badge: 15, badgeType: "purple" },
         { label: "Projects" },
@@ -14623,9 +15036,9 @@ var DoctorProjectSidebar9 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)
         { label: "File Manager", badge: 14, badgeType: "green" },
         { label: "Calendar" },
         { label: "Inbox" }
-      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("a", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-        item.badge && /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("a", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+        item.badge && /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
           "span",
           {
             className: `sidebar-badge sidebar-badge--${item.badgeType}`,
@@ -14634,21 +15047,21 @@ var DoctorProjectSidebar9 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)
         )
       ] }, item.label))
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-info)" },
         { name: "Thanawan Chadee", bg: "var(--drp-orange)" },
         { name: "Justine Robinson", bg: "var(--drp-success)" }
-      ].map((m3) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "sidebar-avatar", style: { background: m3.bg }, children: m3.name[0] }),
-        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "sidebar-team-name", children: m3.name })
+      ].map((m3) => /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("div", { className: "sidebar-avatar", style: { background: m3.bg }, children: m3.name[0] }),
+        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("span", { className: "sidebar-team-name", children: m3.name })
       ] }, m3.name)),
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "sidebar-see-more", children: "See More" })
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("div", { className: "sidebar-see-more", children: "See More" })
     ] })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
       "div",
       {
         className: "sidebar-avatar",
@@ -14656,14 +15069,14 @@ var DoctorProjectSidebar9 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)
         children: "H"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var TopBar12 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("header", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h1", { className: "topbar-title", children: "Profile Settings" }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+var TopBar12 = () => /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("header", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("h1", { className: "topbar-title", children: "Profile Settings" }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
       "svg",
       {
         width: "20",
@@ -14672,7 +15085,7 @@ var TopBar12 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("header", { 
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -14682,7 +15095,7 @@ var TopBar12 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("header", { 
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
       "svg",
       {
         width: "20",
@@ -14691,7 +15104,7 @@ var TopBar12 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("header", { 
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -14701,8 +15114,8 @@ var TopBar12 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("header", { 
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
         "svg",
         {
           width: "18",
@@ -14711,7 +15124,7 @@ var TopBar12 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("header", { 
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           strokeWidth: "2",
-          children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -14721,10 +15134,10 @@ var TopBar12 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("header", { 
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { children: "Apps" })
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
         "svg",
         {
           width: "18",
@@ -14733,7 +15146,7 @@ var TopBar12 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("header", { 
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           strokeWidth: "2.5",
-          children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -14743,19 +15156,19 @@ var TopBar12 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("header", { 
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { children: "Create new" })
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer11 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("span", { className: "footer-link", children: "API" })
+var Footer11 = () => /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(
       "svg",
       {
         width: "16",
@@ -14765,7 +15178,7 @@ var Footer11 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("footer", { 
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -14773,7 +15186,7 @@ var Footer11 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("footer", { 
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -14784,7 +15197,7 @@ var Footer11 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("footer", { 
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
       "svg",
       {
         width: "16",
@@ -14793,7 +15206,7 @@ var Footer11 = () => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("footer", { 
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -14815,9 +15228,9 @@ var TABS2 = [
 var FieldRow2 = ({
   label,
   value
-}) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "drp-label", style: { marginBottom: "var(--drp-space-1)" }, children: label }),
-  /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("p", { className: "drp-label", style: { marginBottom: "var(--drp-space-1)" }, children: label }),
+  /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
     "p",
     {
       className: "drp-text drp-text--bold drp-text--sm",
@@ -14829,7 +15242,7 @@ var FieldRow2 = ({
     }
   )
 ] });
-var SessionRow = ({ date, device, isCurrent, icon }) => /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
+var SessionRow = ({ date, device, isCurrent, icon }) => /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(
   "div",
   {
     className: "drp-flex drp-items-center drp-gap-4",
@@ -14838,7 +15251,7 @@ var SessionRow = ({ date, device, isCurrent, icon }) => /* @__PURE__ */ (0, impo
       borderBottom: "var(--drp-border-thin)"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
         "div",
         {
           style: {
@@ -14850,7 +15263,7 @@ var SessionRow = ({ date, device, isCurrent, icon }) => /* @__PURE__ */ (0, impo
             color: "var(--drp-grey)",
             flexShrink: 0
           },
-          children: icon === "laptop" ? /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
+          children: icon === "laptop" ? /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(
             "svg",
             {
               width: "24",
@@ -14860,11 +15273,11 @@ var SessionRow = ({ date, device, isCurrent, icon }) => /* @__PURE__ */ (0, impo
               stroke: "currentColor",
               strokeWidth: "1.5",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("rect", { x: "2", y: "4", width: "20", height: "14", rx: "0" }),
-                /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("path", { d: "M0 20h24", strokeLinecap: "round" })
+                /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("rect", { x: "2", y: "4", width: "20", height: "14", rx: "0" }),
+                /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("path", { d: "M0 20h24", strokeLinecap: "round" })
               ]
             }
-          ) : /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+          ) : /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
             "svg",
             {
               width: "20",
@@ -14873,26 +15286,26 @@ var SessionRow = ({ date, device, isCurrent, icon }) => /* @__PURE__ */ (0, impo
               viewBox: "0 0 24 24",
               stroke: "currentColor",
               strokeWidth: "1.5",
-              children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("rect", { x: "5", y: "2", width: "14", height: "20", rx: "0" })
+              children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("rect", { x: "5", y: "2", width: "14", height: "20", rx: "0" })
             }
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { style: { flex: 1 }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "drp-text drp-text--sm drp-text--muted", children: date }),
-        /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("p", { className: "drp-text drp-text--bold drp-text--sm", children: device })
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { style: { flex: 1 }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("p", { className: "drp-text drp-text--sm drp-text--muted", children: date }),
+        /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("p", { className: "drp-text drp-text--bold drp-text--sm", children: device })
       ] }),
-      isCurrent && /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--primary", children: "Current session" })
+      isCurrent && /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--primary", children: "Current session" })
     ]
   }
 );
 var ProfileSecurity = () => {
-  const [activeTab, setActiveTab] = (0, import_react13.useState)("security");
-  return /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(DoctorProjectSidebar9, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "main-content", style: { overflow: "hidden" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(TopBar12, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
+  const [activeTab, setActiveTab] = (0, import_react19.useState)("security");
+  return /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(DoctorProjectSidebar9, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { className: "main-content", style: { overflow: "hidden" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(TopBar12, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(
         "div",
         {
           className: "drp-flex",
@@ -14903,15 +15316,15 @@ var ProfileSecurity = () => {
             gap: "var(--drp-space-6)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(ProfileSidePanel, {}),
-            /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(ProfileSidePanel, {}),
+            /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(
                 "div",
                 {
                   className: "drp-flex drp-items-center drp-gap-1",
                   style: { marginBottom: "var(--drp-space-4)", flexShrink: 0 },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { className: "drp-tabs", children: TABS2.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("div", { className: "drp-tabs", children: TABS2.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
                       "button",
                       {
                         onClick: () => setActiveTab(tab.key),
@@ -14920,11 +15333,11 @@ var ProfileSecurity = () => {
                       },
                       tab.key
                     )) }),
-                    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
+                    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
                   ]
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
+              /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(
                 "div",
                 {
                   className: "drp-card",
@@ -14936,17 +15349,17 @@ var ProfileSecurity = () => {
                     padding: 0
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
                       "div",
                       {
                         style: {
                           padding: "var(--drp-space-4) var(--drp-space-6)",
                           borderBottom: "var(--drp-border-thin)"
                         },
-                        children: /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("h2", { className: "drp-h5", children: "Login details" })
+                        children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("h2", { className: "drp-h5", children: "Login details" })
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
+                    /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(
                       "div",
                       {
                         style: {
@@ -14955,21 +15368,21 @@ var ProfileSecurity = () => {
                           overflowY: "auto"
                         },
                         children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "drp-flex-col drp-gap-4", children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(FieldRow2, { label: "Current password", value: "\u2022\u2022\u2022\u2022\u2022\u2022" }),
-                            /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { className: "drp-form-row", children: [
-                              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+                          /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { className: "drp-flex-col drp-gap-4", children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(FieldRow2, { label: "Current password", value: "\u2022\u2022\u2022\u2022\u2022\u2022" }),
+                            /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { className: "drp-form-row", children: [
+                              /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
                                 FieldRow2,
                                 {
                                   label: "Security questions",
                                   value: "Your fathers name"
                                 }
                               ),
-                              /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(FieldRow2, { label: "2-Step verification", value: "Enabled" })
+                              /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(FieldRow2, { label: "2-Step verification", value: "Enabled" })
                             ] })
                           ] }),
-                          /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)("div", { style: { paddingTop: "var(--drp-space-4)" }, children: [
-                            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+                          /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)("div", { style: { paddingTop: "var(--drp-space-4)" }, children: [
+                            /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
                               "h3",
                               {
                                 className: "drp-h6",
@@ -14977,7 +15390,7 @@ var ProfileSecurity = () => {
                                 children: "Security credentials"
                               }
                             ),
-                            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+                            /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
                               SessionRow,
                               {
                                 icon: "laptop",
@@ -14986,7 +15399,7 @@ var ProfileSecurity = () => {
                                 isCurrent: true
                               }
                             ),
-                            /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(
+                            /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
                               SessionRow,
                               {
                                 icon: "phone",
@@ -14998,7 +15411,7 @@ var ProfileSecurity = () => {
                         ]
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime57.jsxs)(
+                    /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(
                       "div",
                       {
                         className: "drp-flex drp-items-center drp-justify-between",
@@ -15007,8 +15420,8 @@ var ProfileSecurity = () => {
                           borderTop: "var(--drp-border-thin)"
                         },
                         children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
-                          /* @__PURE__ */ (0, import_jsx_runtime57.jsx)("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
+                          /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
+                          /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
                         ]
                       }
                     )
@@ -15019,22 +15432,22 @@ var ProfileSecurity = () => {
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime57.jsx)(Footer11, {})
+      /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(Footer11, {})
     ] })
   ] });
 };
 
 // src/screens/ProfileSettings/ProfileSocial.tsx
-var import_react14 = require("react");
-var import_jsx_runtime58 = require("react/jsx-runtime");
-var DoctorProjectSidebar10 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "sidebar-brand-dot" })
+var import_react20 = require("react");
+var import_jsx_runtime68 = require("react/jsx-runtime");
+var DoctorProjectSidebar10 = () => /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard", badge: 15, badgeType: "purple" },
         { label: "Projects" },
@@ -15043,9 +15456,9 @@ var DoctorProjectSidebar10 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs
         { label: "File Manager", badge: 14, badgeType: "green" },
         { label: "Calendar" },
         { label: "Inbox" }
-      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("a", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-        item.badge && /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+      ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("a", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+        item.badge && /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
           "span",
           {
             className: `sidebar-badge sidebar-badge--${item.badgeType}`,
@@ -15054,21 +15467,21 @@ var DoctorProjectSidebar10 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs
         )
       ] }, item.label))
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-info)" },
         { name: "Thanawan Chadee", bg: "var(--drp-orange)" },
         { name: "Justine Robinson", bg: "var(--drp-success)" }
-      ].map((m3) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "sidebar-avatar", style: { background: m3.bg }, children: m3.name[0] }),
-        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "sidebar-team-name", children: m3.name })
+      ].map((m3) => /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("div", { className: "sidebar-avatar", style: { background: m3.bg }, children: m3.name[0] }),
+        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("span", { className: "sidebar-team-name", children: m3.name })
       ] }, m3.name)),
-      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "sidebar-see-more", children: "See More" })
+      /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("div", { className: "sidebar-see-more", children: "See More" })
     ] })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
       "div",
       {
         className: "sidebar-avatar",
@@ -15076,14 +15489,14 @@ var DoctorProjectSidebar10 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs
         children: "H"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var TopBar13 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("header", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("h1", { className: "topbar-title", children: "Profile Settings" }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+var TopBar13 = () => /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("header", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("h1", { className: "topbar-title", children: "Profile Settings" }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
       "svg",
       {
         width: "20",
@@ -15092,7 +15505,7 @@ var TopBar13 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("header", { 
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -15102,7 +15515,7 @@ var TopBar13 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("header", { 
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
       "svg",
       {
         width: "20",
@@ -15111,7 +15524,7 @@ var TopBar13 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("header", { 
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -15121,8 +15534,8 @@ var TopBar13 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("header", { 
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
         "svg",
         {
           width: "18",
@@ -15131,7 +15544,7 @@ var TopBar13 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("header", { 
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           strokeWidth: "2",
-          children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -15141,10 +15554,10 @@ var TopBar13 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("header", { 
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { children: "Apps" })
+      /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
         "svg",
         {
           width: "18",
@@ -15153,7 +15566,7 @@ var TopBar13 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("header", { 
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           strokeWidth: "2.5",
-          children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -15163,19 +15576,19 @@ var TopBar13 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("header", { 
           )
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { children: "Create new" })
+      /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer12 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("span", { className: "footer-link", children: "API" })
+var Footer12 = () => /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(
       "svg",
       {
         width: "16",
@@ -15185,7 +15598,7 @@ var Footer12 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("footer", { 
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -15193,7 +15606,7 @@ var Footer12 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("footer", { 
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -15204,7 +15617,7 @@ var Footer12 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("footer", { 
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
       "svg",
       {
         width: "16",
@@ -15213,7 +15626,7 @@ var Footer12 = () => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("footer", { 
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -15232,7 +15645,7 @@ var TABS3 = [
   { key: "apis", label: "APIs" },
   { key: "notifications", label: "Notifications" }
 ];
-var SocialRow = ({ account }) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+var SocialRow = ({ account }) => /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(
   "div",
   {
     className: "drp-flex drp-items-center drp-gap-4",
@@ -15241,7 +15654,7 @@ var SocialRow = ({ account }) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
       borderBottom: "var(--drp-border-thin)"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
         "div",
         {
           style: {
@@ -15258,11 +15671,11 @@ var SocialRow = ({ account }) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
           children: account.icon
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { style: { flex: 1 }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("p", { className: "drp-label", style: { marginBottom: "var(--drp-space-1)" }, children: account.name }),
-        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("p", { className: "drp-text drp-text--bold drp-text--sm", children: account.value ?? "Not connected" })
+      /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { style: { flex: 1 }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("p", { className: "drp-label", style: { marginBottom: "var(--drp-space-1)" }, children: account.name }),
+        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("p", { className: "drp-text drp-text--bold drp-text--sm", children: account.value ?? "Not connected" })
       ] }),
-      !account.value && /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+      !account.value && /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(
         "button",
         {
           className: "drp-btn drp-btn--ghost drp-btn--sm",
@@ -15274,7 +15687,7 @@ var SocialRow = ({ account }) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
             boxShadow: "none"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
               "svg",
               {
                 width: "16",
@@ -15283,7 +15696,7 @@ var SocialRow = ({ account }) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
                 viewBox: "0 0 24 24",
                 stroke: "currentColor",
                 strokeWidth: "2",
-                children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+                children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -15301,39 +15714,39 @@ var SocialRow = ({ account }) => /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
   }
 );
 var ProfileSocial = () => {
-  const [activeTab, setActiveTab] = (0, import_react14.useState)("social");
+  const [activeTab, setActiveTab] = (0, import_react20.useState)("social");
   const socialAccounts = [
     {
       name: "Facebook",
       value: "https://www.facebook.com/whiteui.store",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" }) })
+      icon: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("path", { d: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" }) })
     },
     {
       name: "Twitter",
       value: null,
-      icon: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" }) })
+      icon: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("path", { d: "M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" }) })
     },
     {
       name: "Dropbox",
       value: "@whiteui.store",
-      icon: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M12 2L6 7l6 5-6 5 6 5 6-5-6-5 6-5-6-5zm-6 17l6-5 6 5-6 5-6-5z" }) })
+      icon: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("path", { d: "M12 2L6 7l6 5-6 5 6 5 6-5-6-5 6-5-6-5zm-6 17l6-5 6 5-6 5-6-5z" }) })
     },
     {
       name: "Google",
       value: null,
-      icon: /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" }),
-        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" }),
-        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" }),
-        /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" })
+      icon: /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("path", { d: "M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" }),
+        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("path", { d: "M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" }),
+        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("path", { d: "M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" }),
+        /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("path", { d: "M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" })
       ] })
     }
   ];
-  return /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(DoctorProjectSidebar10, {}),
-    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "main-content", style: { overflow: "hidden" }, children: [
-      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(TopBar13, {}),
-      /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(DoctorProjectSidebar10, {}),
+    /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { className: "main-content", style: { overflow: "hidden" }, children: [
+      /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(TopBar13, {}),
+      /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(
         "div",
         {
           className: "drp-flex",
@@ -15344,15 +15757,15 @@ var ProfileSocial = () => {
             gap: "var(--drp-space-6)"
           },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(ProfileSidePanel, {}),
-            /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
-              /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+            /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(ProfileSidePanel, {}),
+            /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
+              /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(
                 "div",
                 {
                   className: "drp-flex drp-items-center drp-gap-1",
                   style: { marginBottom: "var(--drp-space-4)", flexShrink: 0 },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { className: "drp-tabs", children: TABS3.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("div", { className: "drp-tabs", children: TABS3.map((tab) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
                       "button",
                       {
                         onClick: () => setActiveTab(tab.key),
@@ -15361,11 +15774,11 @@ var ProfileSocial = () => {
                       },
                       tab.key
                     )) }),
-                    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
+                    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
                   ]
                 }
               ),
-              /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+              /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(
                 "div",
                 {
                   className: "drp-card",
@@ -15377,17 +15790,17 @@ var ProfileSocial = () => {
                     padding: 0
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
                       "div",
                       {
                         style: {
                           padding: "var(--drp-space-4) var(--drp-space-6)",
                           borderBottom: "var(--drp-border-thin)"
                         },
-                        children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("h2", { className: "drp-h5", children: "Social profiles" })
+                        children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("h2", { className: "drp-h5", children: "Social profiles" })
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+                    /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(
                       "div",
                       {
                         style: {
@@ -15396,8 +15809,8 @@ var ProfileSocial = () => {
                           overflowY: "auto"
                         },
                         children: [
-                          socialAccounts.map((account) => /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(SocialRow, { account }, account.name)),
-                          /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+                          socialAccounts.map((account) => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(SocialRow, { account }, account.name)),
+                          /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(
                             "button",
                             {
                               className: "drp-btn drp-btn--ghost drp-btn--sm",
@@ -15411,14 +15824,14 @@ var ProfileSocial = () => {
                                 padding: 0
                               },
                               children: [
-                                /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(
+                                /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
                                   "svg",
                                   {
                                     width: "20",
                                     height: "20",
                                     fill: "currentColor",
                                     viewBox: "0 0 24 24",
-                                    children: /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" })
+                                    children: /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" })
                                   }
                                 ),
                                 "Add More"
@@ -15428,7 +15841,7 @@ var ProfileSocial = () => {
                         ]
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime58.jsxs)(
+                    /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(
                       "div",
                       {
                         className: "drp-flex drp-items-center drp-justify-between",
@@ -15437,8 +15850,8 @@ var ProfileSocial = () => {
                           borderTop: "var(--drp-border-thin)"
                         },
                         children: [
-                          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
-                          /* @__PURE__ */ (0, import_jsx_runtime58.jsx)("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
+                          /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
+                          /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
                         ]
                       }
                     )
@@ -15449,27 +15862,38 @@ var ProfileSocial = () => {
           ]
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime58.jsx)(Footer12, {})
+      /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(Footer12, {})
     ] })
   ] });
 };
 
 // src/screens/Reports/ChartContainer.tsx
-var import_jsx_runtime59 = require("react/jsx-runtime");
+var import_react21 = require("react");
+var import_chart = require("chart.js");
+var import_react_chartjs_2 = require("react-chartjs-2");
+var import_jsx_runtime69 = require("react/jsx-runtime");
+import_chart.Chart.register(
+  import_chart.RadialLinearScale,
+  import_chart.ArcElement,
+  import_chart.PointElement,
+  import_chart.LineElement,
+  import_chart.Tooltip,
+  import_chart.Legend
+);
 var DoctorProjectSidebar11 = ({
   active = "Analytics"
-}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "sidebar-brand-dot" })
+}) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("p", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("p", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         {
           label: "Dashboard",
-          icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+          icon: /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
             "svg",
             {
               className: "sidebar-nav-icon",
@@ -15477,8 +15901,8 @@ var DoctorProjectSidebar11 = ({
               viewBox: "0 0 24 24",
               stroke: "currentColor",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { x: "3", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
-                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("rect", { x: "3", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
+                /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                   "rect",
                   {
                     x: "14",
@@ -15489,7 +15913,7 @@ var DoctorProjectSidebar11 = ({
                     strokeWidth: 2
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                   "rect",
                   {
                     x: "3",
@@ -15500,7 +15924,7 @@ var DoctorProjectSidebar11 = ({
                     strokeWidth: 2
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                   "rect",
                   {
                     x: "14",
@@ -15517,14 +15941,14 @@ var DoctorProjectSidebar11 = ({
         },
         {
           label: "Products",
-          icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          icon: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "svg",
             {
               className: "sidebar-nav-icon",
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -15538,14 +15962,14 @@ var DoctorProjectSidebar11 = ({
         },
         {
           label: "Contacts",
-          icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          icon: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "svg",
             {
               className: "sidebar-nav-icon",
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -15561,14 +15985,14 @@ var DoctorProjectSidebar11 = ({
           label: "Customers",
           badge: 15,
           badgeVariant: "purple",
-          icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          icon: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "svg",
             {
               className: "sidebar-nav-icon",
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -15584,14 +16008,14 @@ var DoctorProjectSidebar11 = ({
           label: "Sales",
           badge: 14,
           badgeVariant: "green",
-          icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          icon: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "svg",
             {
               className: "sidebar-nav-icon",
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -15605,14 +16029,14 @@ var DoctorProjectSidebar11 = ({
         },
         {
           label: "Analytics",
-          icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          icon: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "svg",
             {
               className: "sidebar-nav-icon",
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -15626,14 +16050,14 @@ var DoctorProjectSidebar11 = ({
         }
       ].map((item) => {
         const isActive = item.label === active;
-        return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+        return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
           "button",
           {
             className: `sidebar-nav-item${isActive ? " active" : ""}`,
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "sidebar-nav-icon", children: item.icon }),
-              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-              item.badge && /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { className: "sidebar-nav-icon", children: item.icon }),
+              /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+              item.badge && /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                 "span",
                 {
                   className: `sidebar-badge sidebar-badge--${item.badgeVariant}`,
@@ -15646,24 +16070,24 @@ var DoctorProjectSidebar11 = ({
         );
       })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("p", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("p", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", color: "#FF6C01" },
         { name: "Thanawan Chadee", color: "#E99898" },
         { name: "Justine Robinson", color: "#FAE8A4" }
-      ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      ].map((member) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "div",
           {
             className: "sidebar-avatar",
             style: { background: member.color }
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "sidebar-team-name", children: member.name })
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { className: "sidebar-team-name", children: member.name })
       ] }, member.name)),
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "sidebar-see-more", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("button", { className: "sidebar-see-more", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -15672,12 +16096,12 @@ var DoctorProjectSidebar11 = ({
             d: "M19 9l-7 7-7-7"
           }
         ) }),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { children: "See More" })
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { children: "See More" })
       ] })
     ] })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       "div",
       {
         className: "sidebar-avatar",
@@ -15686,14 +16110,14 @@ var DoctorProjectSidebar11 = ({
         }
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "sidebar-user-menu-btn", children: "\xB7\xB7\xB7" })
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "sidebar-user-info", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("button", { className: "sidebar-user-menu-btn", children: "\xB7\xB7\xB7" })
   ] })
 ] });
-var TopBar14 = ({ title }) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("header", { className: "topbar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("h1", { className: "topbar-title", children: title }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+var TopBar14 = ({ title }) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("header", { className: "topbar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("h1", { className: "topbar-title", children: title }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       "path",
       {
         strokeLinecap: "round",
@@ -15702,7 +16126,7 @@ var TopBar14 = ({ title }) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("he
         d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
       }
     ) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       "path",
       {
         strokeLinecap: "round",
@@ -15711,8 +16135,8 @@ var TopBar14 = ({ title }) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("he
         d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
       }
     ) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
         "path",
         {
           strokeLinecap: "round",
@@ -15721,12 +16145,12 @@ var TopBar14 = ({ title }) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("he
           d: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
         }
       ) }),
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { children: "Apps" })
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: [
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -15736,19 +16160,19 @@ var TopBar14 = ({ title }) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("he
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { children: "Create new" })
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer13 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "footer-links", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+var Footer13 = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "footer-links", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
       "a",
       {
         className: "footer-link",
         style: { display: "flex", alignItems: "center", gap: "6px" },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
             "svg",
             {
               style: { width: 16, height: 16 },
@@ -15756,8 +16180,8 @@ var Footer13 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("footer", { 
               viewBox: "0 0 24 24",
               stroke: "currentColor",
               children: [
-                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
-                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+                /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -15772,12 +16196,12 @@ var Footer13 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("footer", { 
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("a", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("a", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("a", { className: "footer-link", children: "API" })
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("a", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("a", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("a", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "footer-right", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "footer-right", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
       "svg",
       {
         style: { width: 16, height: 16 },
@@ -15785,7 +16209,7 @@ var Footer13 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("footer", { 
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -15794,7 +16218,7 @@ var Footer13 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("footer", { 
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -15806,14 +16230,14 @@ var Footer13 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("footer", { 
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("button", { className: "footer-icon-btn", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       "svg",
       {
         style: { width: 16, height: 16 },
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "path",
           {
             strokeLinecap: "round",
@@ -15826,7 +16250,7 @@ var Footer13 = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("footer", { 
     ) })
   ] })
 ] });
-var CalendarIcon = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+var CalendarIcon = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
   "svg",
   {
     style: { width: 20, height: 20, color: "var(--drp-grey)" },
@@ -15834,8 +16258,8 @@ var CalendarIcon = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
     viewBox: "0 0 24 24",
     stroke: "currentColor",
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { x: "3", y: "4", width: "18", height: "18", rx: "0", strokeWidth: 2 }),
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("path", { strokeLinecap: "round", strokeWidth: 2, d: "M16 2v4M8 2v4M3 10h18" })
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("rect", { x: "3", y: "4", width: "18", height: "18", rx: "0", strokeWidth: 2 }),
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("path", { strokeLinecap: "round", strokeWidth: 2, d: "M16 2v4M8 2v4M3 10h18" })
     ]
   }
 );
@@ -15844,10 +16268,10 @@ var ChartCardWrapper = ({
   children,
   legend,
   className = ""
-}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: `drp-chart-card ${className}`, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-chart-header", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("h2", { className: "drp-chart-title", children: title }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: `drp-chart-card ${className}`, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-chart-header", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("h2", { className: "drp-chart-title", children: title }),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
       "div",
       {
         style: {
@@ -15856,22 +16280,22 @@ var ChartCardWrapper = ({
           gap: "var(--drp-space-4)"
         },
         children: [
-          legend && /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "drp-chart-legend", children: legend.map((l2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-chart-legend__item", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          legend && /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "drp-chart-legend", children: legend.map((l2) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-chart-legend__item", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "span",
               {
                 className: "drp-chart-legend__dot",
                 style: { backgroundColor: l2.color }
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { children: l2.label })
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { children: l2.label })
           ] }, l2.label)) }),
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(CalendarIcon, {})
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(CalendarIcon, {})
         ]
       }
     )
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "drp-chart-container", style: { height: "auto" }, children })
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "drp-chart-container", style: { height: "auto" }, children })
 ] });
 var BarChartSVG = ({
   data,
@@ -15890,7 +16314,7 @@ var BarChartSVG = ({
   const barW = Math.floor(chartW / data.length) * 0.45;
   const gap = chartW / data.length;
   const yLines = [0, 100, 200, 300, 400, 500];
-  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
     "svg",
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
@@ -15898,8 +16322,8 @@ var BarChartSVG = ({
       children: [
         yLines.map((v3) => {
           const y2 = padTop + chartH - v3 / maxValue * chartH;
-          return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "line",
               {
                 x1: padLeft,
@@ -15912,7 +16336,7 @@ var BarChartSVG = ({
                 opacity: 0.3
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "text",
               {
                 x: padLeft - 5,
@@ -15931,8 +16355,8 @@ var BarChartSVG = ({
           const y2 = padTop + chartH - barH;
           const bgH = chartH;
           const bgY = padTop;
-          return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "rect",
               {
                 x: x3,
@@ -15944,7 +16368,7 @@ var BarChartSVG = ({
                 opacity: 0.12
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "rect",
               {
                 x: x3,
@@ -15955,7 +16379,7 @@ var BarChartSVG = ({
                 fill: "var(--drp-purple)"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "text",
               {
                 x: padLeft + i2 * gap + gap / 2,
@@ -15985,7 +16409,7 @@ var HBarChartSVG = ({ data, height = 260 }) => {
   const barH = rowH * 0.35;
   const absMax = Math.max(...data.map((d2) => d2.maxValue));
   const xTicks = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1e3];
-  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
     "svg",
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
@@ -15993,8 +16417,8 @@ var HBarChartSVG = ({ data, height = 260 }) => {
       children: [
         xTicks.map((v3) => {
           const x3 = padLeft + v3 / absMax * chartW;
-          return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "line",
               {
                 x1: x3,
@@ -16007,7 +16431,7 @@ var HBarChartSVG = ({ data, height = 260 }) => {
                 opacity: 0.3
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "text",
               {
                 x: x3,
@@ -16024,8 +16448,8 @@ var HBarChartSVG = ({ data, height = 260 }) => {
           const y2 = padTop + i2 * rowH + rowH / 2 - barH / 2;
           const bgW = item.maxValue / absMax * chartW;
           const fgW = item.value / absMax * chartW;
-          return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "text",
               {
                 x: padLeft - 5,
@@ -16036,7 +16460,7 @@ var HBarChartSVG = ({ data, height = 260 }) => {
                 children: item.label
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "line",
               {
                 x1: padLeft,
@@ -16049,7 +16473,7 @@ var HBarChartSVG = ({ data, height = 260 }) => {
                 opacity: 0.2
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "rect",
               {
                 x: padLeft,
@@ -16061,7 +16485,7 @@ var HBarChartSVG = ({ data, height = 260 }) => {
                 opacity: 0.12
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "rect",
               {
                 x: padLeft,
@@ -16112,27 +16536,27 @@ var WaveChartSVG = ({
   const yLines = [0, 100, 200, 300, 400, 500];
   const n2 = dataBlue.length;
   const toPoint = (val, i2) => ({
-    x: padLeft + i2 / (n2 - 1) * chartW,
+    x: n2 > 1 ? padLeft + i2 / (n2 - 1) * chartW : padLeft,
     y: padTop + chartH - val / maxValue * chartH
   });
   const bluePoints = dataBlue.map(toPoint);
   const greenPoints = dataGreen.map(toPoint);
-  const bluePath = smooth ? smoothPath(bluePoints) : linePath(bluePoints);
-  const greenPath = smooth ? smoothPath(greenPoints) : linePath(greenPoints);
-  const blueAreaClose = `L ${bluePoints[n2 - 1].x} ${padTop + chartH} L ${bluePoints[0].x} ${padTop + chartH} Z`;
-  const greenAreaClose = `L ${greenPoints[n2 - 1].x} ${padTop + chartH} L ${greenPoints[0].x} ${padTop + chartH} Z`;
+  const bluePath = bluePoints.length > 1 ? smooth ? smoothPath(bluePoints) : linePath(bluePoints) : "";
+  const greenPath = greenPoints.length > 1 ? smooth ? smoothPath(greenPoints) : linePath(greenPoints) : "";
+  const blueAreaClose = bluePoints.length > 1 ? `L ${bluePoints[bluePoints.length - 1].x} ${padTop + chartH} L ${bluePoints[0].x} ${padTop + chartH} Z` : "";
+  const greenAreaClose = greenPoints.length > 1 ? `L ${greenPoints[greenPoints.length - 1].x} ${padTop + chartH} L ${greenPoints[0].x} ${padTop + chartH} Z` : "";
   const tooltipIdx = Math.floor(n2 / 2);
   const tooltipPt = bluePoints[tooltipIdx];
-  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
     "svg",
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
       style: { width: "100%", height },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("defs", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("linearGradient", { id: "waveBlueGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("stop", { offset: "0%", stopColor: "var(--drp-purple)", stopOpacity: "0.15" }),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("defs", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("linearGradient", { id: "waveBlueGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("stop", { offset: "0%", stopColor: "var(--drp-purple)", stopOpacity: "0.15" }),
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "stop",
               {
                 offset: "100%",
@@ -16141,15 +16565,15 @@ var WaveChartSVG = ({
               }
             )
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("linearGradient", { id: "waveGreenGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("stop", { offset: "0%", stopColor: "var(--drp-mint)", stopOpacity: "0.15" }),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("stop", { offset: "100%", stopColor: "var(--drp-mint)", stopOpacity: "0.02" })
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("linearGradient", { id: "waveGreenGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("stop", { offset: "0%", stopColor: "var(--drp-mint)", stopOpacity: "0.15" }),
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("stop", { offset: "100%", stopColor: "var(--drp-mint)", stopOpacity: "0.02" })
           ] })
         ] }),
         yLines.map((v3) => {
           const y2 = padTop + chartH - v3 / maxValue * chartH;
-          return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "line",
               {
                 x1: padLeft,
@@ -16162,7 +16586,7 @@ var WaveChartSVG = ({
                 opacity: 0.3
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "text",
               {
                 x: padLeft - 5,
@@ -16175,9 +16599,9 @@ var WaveChartSVG = ({
             )
           ] }, v3);
         }),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("path", { d: bluePath + blueAreaClose, fill: "url(#waveBlueGrad)" }),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("path", { d: greenPath + greenAreaClose, fill: "url(#waveGreenGrad)" }),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("path", { d: bluePath + blueAreaClose, fill: "url(#waveBlueGrad)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("path", { d: greenPath + greenAreaClose, fill: "url(#waveGreenGrad)" }),
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "path",
           {
             d: greenPath,
@@ -16186,7 +16610,7 @@ var WaveChartSVG = ({
             strokeWidth: 2
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "path",
           {
             d: bluePath,
@@ -16195,7 +16619,7 @@ var WaveChartSVG = ({
             strokeWidth: 2
           }
         ),
-        labels.map((lbl, i2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        labels.map((lbl, i2) => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "text",
           {
             x: padLeft + i2 / (n2 - 1) * chartW,
@@ -16207,8 +16631,8 @@ var WaveChartSVG = ({
           },
           i2
         )),
-        showTooltip && /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        showTooltip && /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("g", { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "circle",
             {
               cx: tooltipPt.x,
@@ -16219,7 +16643,7 @@ var WaveChartSVG = ({
               strokeWidth: 2
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "rect",
             {
               x: tooltipPt.x + 10,
@@ -16232,7 +16656,7 @@ var WaveChartSVG = ({
               strokeWidth: 1
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "text",
             {
               x: tooltipPt.x + 55,
@@ -16243,7 +16667,7 @@ var WaveChartSVG = ({
               children: "June 16"
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "text",
             {
               x: tooltipPt.x + 55,
@@ -16279,7 +16703,7 @@ var DoubleBarChartSVG = ({
   const slotW = chartW / n2;
   const barW = slotW * 0.28;
   const yLines = [0, 100, 200, 300, 400, 500];
-  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
     "svg",
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
@@ -16287,8 +16711,8 @@ var DoubleBarChartSVG = ({
       children: [
         yLines.map((v3) => {
           const y2 = padTop + chartH - v3 / maxValue * chartH;
-          return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "line",
               {
                 x1: padLeft,
@@ -16301,7 +16725,7 @@ var DoubleBarChartSVG = ({
                 opacity: 0.3
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "text",
               {
                 x: padLeft - 5,
@@ -16321,8 +16745,8 @@ var DoubleBarChartSVG = ({
           const centerX = padLeft + i2 * slotW + slotW / 2;
           const gX = centerX - barW - 2;
           const pX = centerX + 2;
-          return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("g", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "rect",
               {
                 x: gX,
@@ -16333,7 +16757,7 @@ var DoubleBarChartSVG = ({
                 fill: "var(--drp-mint)"
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "rect",
               {
                 x: pX,
@@ -16345,7 +16769,7 @@ var DoubleBarChartSVG = ({
                 opacity: 0.5
               }
             ),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "text",
               {
                 x: centerX,
@@ -16362,203 +16786,108 @@ var DoubleBarChartSVG = ({
     }
   );
 };
-var PolarChartSVG = ({
+var PolarChartComponent = ({
   variant = "radar",
-  height = 300
+  height = 320
 }) => {
-  const cx = 160;
-  const cy = 160;
-  const maxR = 110;
-  const rings = [0.2, 0.4, 0.6, 0.8, 1];
-  const directions = [
-    "North",
-    "North\nEast",
-    "East",
-    "South\nEast",
-    "South",
-    "South\nWest",
-    "West",
-    "North\nWest"
-  ];
-  const n2 = directions.length;
-  const series1 = [0.95, 0.7, 0.55, 0.8, 0.45, 0.6, 0.9, 0.75];
-  const series2 = [0.5, 0.85, 0.4, 0.6, 0.9, 0.35, 0.7, 0.5];
-  const angleOffset = -Math.PI / 2;
-  const getPoint = (r2, i2) => {
-    const angle = angleOffset + i2 / n2 * 2 * Math.PI;
-    return {
-      x: cx + r2 * maxR * Math.cos(angle),
-      y: cy + r2 * maxR * Math.sin(angle)
-    };
-  };
-  const polyPath = (values) => values.map((v3, i2) => {
-    const pt = getPoint(v3, i2);
-    return `${i2 === 0 ? "M" : "L"} ${pt.x} ${pt.y}`;
-  }).join(" ") + " Z";
   if (variant === "segments") {
-    const segmentColors = [
-      "var(--drp-yellow)",
-      "var(--drp-pink)",
-      "#93c5fd",
-      "var(--drp-mint)",
-      "#f9a8d4",
-      "var(--drp-purple)"
-    ];
-    const segValues = [0.6, 0.45, 0.7, 0.5, 0.55, 0.65];
-    const segN = segValues.length;
-    const wedgeAngle = 2 * Math.PI / segN;
-    const segPaths = segValues.map((v3, i2) => {
-      const startAngle = angleOffset + i2 * wedgeAngle;
-      const endAngle = startAngle + wedgeAngle;
-      const r2 = v3 * maxR;
-      const x1 = cx + r2 * Math.cos(startAngle);
-      const y1 = cy + r2 * Math.sin(startAngle);
-      const x22 = cx + r2 * Math.cos(endAngle);
-      const y2 = cy + r2 * Math.sin(endAngle);
-      return `M ${cx} ${cy} L ${x1} ${y1} A ${r2} ${r2} 0 0 1 ${x22} ${y2} Z`;
-    });
-    return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("svg", { viewBox: "0 0 320 320", style: { width: "100%", height }, children: [
-      rings.map((r2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-        "circle",
+    const data = {
+      labels: [
+        "Category A",
+        "Category B",
+        "Category C",
+        "Category D",
+        "Category E",
+        "Category F"
+      ],
+      datasets: [
         {
-          cx,
-          cy,
-          r: r2 * maxR,
-          fill: "none",
-          stroke: "var(--drp-grey)",
-          strokeWidth: 0.8,
-          opacity: 0.3
-        },
-        r2
-      )),
-      Array.from({ length: segN }).map((_3, i2) => {
-        const angle = angleOffset + i2 / segN * 2 * Math.PI;
-        return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "line",
-          {
-            x1: cx,
-            y1: cy,
-            x2: cx + maxR * Math.cos(angle),
-            y2: cy + maxR * Math.sin(angle),
-            stroke: "var(--drp-grey)",
-            strokeWidth: 0.8,
-            strokeDasharray: "3,2",
-            opacity: 0.3
-          },
-          i2
-        );
-      }),
-      segPaths.map((d2, i2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("path", { d: d2, fill: segmentColors[i2], opacity: 0.75 }, i2)),
-      directions.slice(0, 8).map((dir, i2) => {
-        const angle = angleOffset + i2 / n2 * 2 * Math.PI;
-        const labelR = maxR + 22;
-        const lx = cx + labelR * Math.cos(angle);
-        const ly = cy + labelR * Math.sin(angle);
-        const lines = dir.split("\n");
-        return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "text",
-          {
-            x: lx,
-            y: ly,
-            textAnchor: "middle",
-            dominantBaseline: "middle",
-            fontSize: 9,
-            fill: "var(--drp-grey)",
-            children: lines.map((line, j3) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-              "tspan",
-              {
-                x: lx,
-                dy: j3 === 0 ? lines.length > 1 ? -6 : 0 : 12,
-                children: line
-              },
-              j3
-            ))
-          },
-          i2
-        );
-      })
-    ] });
-  }
-  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("svg", { viewBox: "0 0 320 320", style: { width: "100%", height }, children: [
-    rings.map((r2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-      "circle",
-      {
-        cx,
-        cy,
-        r: r2 * maxR,
-        fill: "none",
-        stroke: "var(--drp-grey)",
-        strokeWidth: 0.8,
-        opacity: 0.3
+          data: [60, 45, 70, 50, 55, 65],
+          backgroundColor: [
+            "rgba(255, 193, 7, 0.75)",
+            // yellow
+            "rgba(255, 105, 135, 0.75)",
+            // pink
+            "rgba(147, 197, 253, 0.75)",
+            // light blue
+            "rgba(0, 200, 150, 0.75)",
+            // mint
+            "rgba(249, 168, 212, 0.75)",
+            // rose
+            "rgba(99, 29, 237, 0.75)"
+            // purple
+          ],
+          borderColor: [
+            "#FFC107",
+            "#FF6987",
+            "#93c5fd",
+            "#00C896",
+            "#f9a8d4",
+            "#631DED"
+          ],
+          borderWidth: 2
+        }
+      ]
+    };
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false }
       },
-      r2
-    )),
-    Array.from({ length: n2 }).map((_3, i2) => {
-      const pt = getPoint(1, i2);
-      return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-        "line",
-        {
-          x1: cx,
-          y1: cy,
-          x2: pt.x,
-          y2: pt.y,
-          stroke: "var(--drp-grey)",
-          strokeWidth: 0.8,
-          strokeDasharray: "3,2",
-          opacity: 0.3
-        },
-        i2
-      );
-    }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-      "path",
-      {
-        d: polyPath(series2),
-        fill: "var(--drp-mint)",
-        fillOpacity: 0.3,
-        stroke: "var(--drp-mint)",
-        strokeWidth: 1.5
+      scales: {
+        r: {
+          grid: { color: "rgba(102, 102, 102, 0.2)" },
+          ticks: { display: false }
+        }
       }
-    ),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-      "path",
+    };
+    return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { style: { height, width: "100%" }, children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_react_chartjs_2.PolarArea, { data, options }) });
+  }
+  const radarData = {
+    labels: ["North", "NE", "East", "SE", "South", "SW", "West", "NW"],
+    datasets: [
       {
-        d: polyPath(series1),
-        fill: "var(--drp-purple)",
-        fillOpacity: 0.25,
-        stroke: "var(--drp-purple)",
-        strokeWidth: 1.5
+        label: "Series A",
+        data: [95, 70, 55, 80, 45, 60, 90, 75],
+        backgroundColor: "rgba(99, 29, 237, 0.2)",
+        borderColor: "#631DED",
+        borderWidth: 2,
+        pointBackgroundColor: "#631DED",
+        pointRadius: 3
+      },
+      {
+        label: "Series B",
+        data: [50, 85, 40, 60, 90, 35, 70, 50],
+        backgroundColor: "rgba(0, 200, 150, 0.2)",
+        borderColor: "#00C896",
+        borderWidth: 2,
+        pointBackgroundColor: "#00C896",
+        pointRadius: 3
       }
-    ),
-    directions.map((dir, i2) => {
-      const angle = angleOffset + i2 / n2 * 2 * Math.PI;
-      const labelR = maxR + 22;
-      const lx = cx + labelR * Math.cos(angle);
-      const ly = cy + labelR * Math.sin(angle);
-      const lines = dir.split("\n");
-      return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-        "text",
-        {
-          x: lx,
-          y: ly,
-          textAnchor: "middle",
-          dominantBaseline: "middle",
-          fontSize: 9,
-          fill: "var(--drp-grey)",
-          children: lines.map((line, j3) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-            "tspan",
-            {
-              x: lx,
-              dy: j3 === 0 ? lines.length > 1 ? -6 : 0 : 12,
-              children: line
-            },
-            j3
-          ))
-        },
-        i2
-      );
-    })
-  ] });
+    ]
+  };
+  const radarOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false }
+    },
+    scales: {
+      r: {
+        beginAtZero: true,
+        max: 100,
+        grid: { color: "rgba(102, 102, 102, 0.2)" },
+        angleLines: { color: "rgba(102, 102, 102, 0.2)" },
+        ticks: { display: false },
+        pointLabels: {
+          font: { size: 11 },
+          color: "#666666"
+        }
+      }
+    }
+  };
+  return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { style: { height, width: "100%" }, children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(import_react_chartjs_2.Radar, { data: radarData, options: radarOptions }) });
 };
 var Sparkline = ({
   color,
@@ -16575,14 +16904,14 @@ var Sparkline = ({
   }));
   const d2 = points.map((p3, i2) => `${i2 === 0 ? "M" : "L"} ${p3.x} ${p3.y}`).join(" ");
   const areaClose = `L ${points[points.length - 1].x} ${h2} L 0 ${h2} Z`;
-  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+  return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
     "svg",
     {
       viewBox: `0 0 ${w3} ${h2}`,
       style: { width: 80, height: 40 },
       preserveAspectRatio: "none",
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
           "linearGradient",
           {
             id: `sparkGrad${color.replace("#", "")}`,
@@ -16591,19 +16920,19 @@ var Sparkline = ({
             x2: "0",
             y2: "1",
             children: [
-              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("stop", { offset: "0%", stopColor: color, stopOpacity: "0.3" }),
-              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("stop", { offset: "100%", stopColor: color, stopOpacity: "0.05" })
+              /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("stop", { offset: "0%", stopColor: color, stopOpacity: "0.3" }),
+              /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("stop", { offset: "100%", stopColor: color, stopOpacity: "0.05" })
             ]
           }
         ) }),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "path",
           {
             d: d2 + areaClose,
             fill: `url(#sparkGrad${color.replace("#", "")})`
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("path", { d: d2, fill: "none", stroke: color, strokeWidth: "2" })
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("path", { d: d2, fill: "none", stroke: color, strokeWidth: "2" })
       ]
     }
   );
@@ -16618,7 +16947,7 @@ var BarSparkline = ({
   const n2 = values.length;
   const bw = w3 / n2 * 0.55;
   const gap = w3 / n2;
-  return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
     "svg",
     {
       viewBox: `0 0 ${w3} ${h2}`,
@@ -16627,7 +16956,7 @@ var BarSparkline = ({
       children: values.map((v3, i2) => {
         const barH = v3 / max * h2 * 0.9;
         const x3 = i2 * gap + gap / 2 - bw / 2;
-        return /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "rect",
           {
             x: x3,
@@ -16663,8 +16992,8 @@ var DonutChart = ({
       "var(--drp-mint)"
     ];
     const radii = [R3, R3 - 20, R3 - 40];
-    return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("svg", { viewBox: "0 0 240 240", style: { width: "100%", height }, children: [
-      radii.map((rad, i2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("svg", { viewBox: "0 0 240 240", style: { width: "100%", height }, children: [
+      radii.map((rad, i2) => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
         "circle",
         {
           cx,
@@ -16676,8 +17005,8 @@ var DonutChart = ({
         },
         i2
       )),
-      label && /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(import_jsx_runtime59.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      label && /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(import_jsx_runtime69.Fragment, { children: [
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "text",
           {
             x: cx,
@@ -16689,7 +17018,7 @@ var DonutChart = ({
             children: label
           }
         ),
-        sublabel && /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        sublabel && /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "text",
           {
             x: cx,
@@ -16733,10 +17062,10 @@ var DonutChart = ({
       showLabel: showSegmentLabels && pct > 5
     };
   });
-  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("svg", { viewBox: "0 0 240 240", style: { width: "100%", height }, children: [
-    paths.map((p3, i2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("path", { d: p3.d, fill: p3.color }, i2)),
+  return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("svg", { viewBox: "0 0 240 240", style: { width: "100%", height }, children: [
+    paths.map((p3, i2) => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("path", { d: p3.d, fill: p3.color }, i2)),
     paths.map(
-      (p3, i2) => p3.showLabel && /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+      (p3, i2) => p3.showLabel && /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
         "text",
         {
           x: p3.lx,
@@ -16754,8 +17083,8 @@ var DonutChart = ({
         i2
       )
     ),
-    label && /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(import_jsx_runtime59.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    label && /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(import_jsx_runtime69.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
         "text",
         {
           x: cx,
@@ -16767,7 +17096,7 @@ var DonutChart = ({
           children: label
         }
       ),
-      sublabel && /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      sublabel && /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
         "text",
         {
           x: cx,
@@ -16781,174 +17110,188 @@ var DonutChart = ({
     ] })
   ] });
 };
-var WorldMapSVG = () => {
-  return /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
-    "svg",
-    {
-      viewBox: "0 0 800 420",
-      style: { width: "100%", height: 350 },
-      preserveAspectRatio: "xMidYMid meet",
-      children: [
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { width: "800", height: "420", fill: "var(--drp-cream)" }),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "path",
-          {
-            d: "M 110 60 L 210 50 L 240 70 L 250 120 L 230 160 L 200 180 L 180 200 L 160 220 L 140 200 L 120 170 L 100 140 L 90 100 Z",
-            fill: "var(--drp-grey)",
-            opacity: 0.2
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "path",
-          {
-            d: "M 180 230 L 220 220 L 240 250 L 250 300 L 240 350 L 210 380 L 185 370 L 170 340 L 165 290 L 170 260 Z",
-            fill: "var(--drp-grey)",
-            opacity: 0.2
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "path",
-          {
-            d: "M 360 60 L 420 55 L 440 80 L 430 110 L 400 120 L 375 115 L 355 90 Z",
-            fill: "var(--drp-grey)",
-            opacity: 0.2
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "path",
-          {
-            d: "M 360 130 L 420 125 L 445 160 L 440 230 L 410 290 L 380 310 L 355 280 L 340 230 L 345 170 Z",
-            fill: "var(--drp-grey)",
-            opacity: 0.2
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "path",
-          {
-            d: "M 450 50 L 650 45 L 680 80 L 700 130 L 670 170 L 620 200 L 560 210 L 510 190 L 470 160 L 440 120 L 445 80 Z",
-            fill: "var(--drp-grey)",
-            opacity: 0.2
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "path",
-          {
-            d: "M 600 280 L 680 265 L 720 290 L 720 340 L 690 365 L 640 360 L 600 340 L 590 310 Z",
-            fill: "var(--drp-grey)",
-            opacity: 0.2
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "path",
-          {
-            d: "M 110 60 L 210 50 L 240 70 L 250 120 L 230 160 L 200 180 L 180 200 L 160 220 L 140 200 L 120 170 L 100 140 L 90 100 Z",
-            fill: "var(--drp-purple)",
-            opacity: 0.75
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "path",
-          {
-            d: "M 160 200 L 195 192 L 200 220 L 185 235 L 165 230 Z",
-            fill: "var(--drp-pink)",
-            opacity: 0.85
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "path",
-          {
-            d: "M 180 230 L 220 220 L 240 250 L 250 300 L 240 350 L 210 380 L 185 370 L 170 340 L 165 290 L 170 260 Z",
-            fill: "#17a2b8",
-            opacity: 0.8
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "path",
-          {
-            d: "M 370 68 L 395 65 L 408 82 L 400 100 L 378 98 L 365 82 Z",
-            fill: "var(--drp-mint)",
-            opacity: 0.8
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "path",
-          {
-            d: "M 480 58 L 640 52 L 670 90 L 655 150 L 600 185 L 540 190 L 500 165 L 468 130 L 462 90 Z",
-            fill: "#FF6C01",
-            opacity: 0.75
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "path",
-          {
-            d: "M 620 195 L 650 185 L 660 210 L 640 225 L 618 215 Z",
-            fill: "var(--drp-purple)",
-            opacity: 0.7
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "path",
-          {
-            d: "M 600 280 L 680 265 L 720 290 L 720 340 L 690 365 L 640 360 L 600 340 L 590 310 Z",
-            fill: "var(--drp-pink)",
-            opacity: 0.8
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "rect",
-          {
-            x: "545",
-            y: "135",
-            width: "85",
-            height: "38",
-            rx: "0",
-            fill: "var(--drp-surface)",
-            stroke: "var(--drp-black)",
-            strokeWidth: 1
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "text",
-          {
-            x: "587",
-            y: "153",
-            textAnchor: "middle",
-            fontSize: 9,
-            fill: "var(--drp-grey)",
-            children: "$14.800"
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-          "polygon",
-          {
-            points: "555,173 575,173 565,183",
-            fill: "var(--drp-surface)",
-            stroke: "var(--drp-black)",
-            strokeWidth: 0.5
-          }
-        ),
-        [
-          { color: "var(--drp-yellow)", label: "Yellow", x: 230 },
-          { color: "var(--drp-purple)", label: "Blue", x: 305 },
-          { color: "var(--drp-mint)", label: "Green", x: 370 },
-          { color: "var(--drp-pink)", label: "Red", x: 440 },
-          { color: "#6f42c1", label: "Dark Blue", x: 508 }
-        ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("g", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
-            "rect",
-            {
-              x: item.x - 5,
-              y: 397,
-              width: 10,
-              height: 10,
-              fill: item.color
+var WORLD_ATLAS_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+var WorldMapChart = () => {
+  const canvasRef = (0, import_react21.useRef)(null);
+  const chartRef = (0, import_react21.useRef)(null);
+  const [loading, setLoading] = (0, import_react21.useState)(true);
+  const [error, setError] = (0, import_react21.useState)(null);
+  (0, import_react21.useEffect)(() => {
+    let cancelled = false;
+    const init = async () => {
+      try {
+        const geoModule = await import("chartjs-chart-geo");
+        const topoModule = await import("topojson-client");
+        import_chart.Chart.register(
+          geoModule.ChoroplethController,
+          geoModule.GeoFeature,
+          geoModule.ColorScale,
+          geoModule.ProjectionScale
+        );
+        const res = await fetch(WORLD_ATLAS_URL);
+        const topology = await res.json();
+        if (cancelled) return;
+        const countries = topoModule.feature(
+          topology,
+          topology.objects.countries
+        ).features;
+        const sampleValues = {
+          "840": 10,
+          "826": 6,
+          "250": 3,
+          "246": 2,
+          "040": 1,
+          "528": 1,
+          "400": 1,
+          "380": 1
+        };
+        if (!canvasRef.current) return;
+        if (chartRef.current) {
+          chartRef.current.destroy();
+        }
+        chartRef.current = new import_chart.Chart(canvasRef.current, {
+          type: "choropleth",
+          data: {
+            labels: countries.map((c2) => c2.properties?.name || c2.id),
+            datasets: [
+              {
+                label: "Products",
+                data: countries.map((c2) => ({
+                  feature: c2,
+                  value: sampleValues[c2.id] || 0
+                }))
+              }
+            ]
+          },
+          options: {
+            showOutline: true,
+            showGraticule: false,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              projection: {
+                axis: "x",
+                projection: "equalEarth"
+              },
+              color: {
+                axis: "x",
+                quantize: 5,
+                legend: { position: "bottom-right" },
+                interpolate: (v3) => {
+                  const r2 = Math.round(99 + (1 - v3) * 156);
+                  const g2 = Math.round(29 + (1 - v3) * 226);
+                  const b2 = Math.round(237 + (1 - v3) * 18);
+                  return `rgba(${r2}, ${g2}, ${b2}, ${v3 < 0.05 ? 0.1 : 0.8})`;
+                }
+              }
             }
-          ),
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("text", { x: item.x + 10, y: 406, fontSize: 10, fill: "var(--drp-grey)", children: item.label })
-        ] }, item.label))
-      ]
-    }
-  );
+          }
+        });
+        setLoading(false);
+      } catch (err) {
+        if (!cancelled) {
+          setError("Failed to load map data");
+          setLoading(false);
+        }
+      }
+    };
+    init();
+    return () => {
+      cancelled = true;
+      if (chartRef.current) {
+        chartRef.current.destroy();
+        chartRef.current = null;
+      }
+    };
+  }, []);
+  if (error) {
+    return /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+      "div",
+      {
+        style: {
+          height: 350,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#666"
+        },
+        children: error
+      }
+    );
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { style: { position: "relative", height: 350, width: "100%" }, children: [
+    loading && /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+      "div",
+      {
+        style: {
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#666"
+        },
+        children: "Loading map..."
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("canvas", { ref: canvasRef, style: { width: "100%", height: "100%" } }),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+      "div",
+      {
+        style: {
+          display: "flex",
+          justifyContent: "center",
+          gap: 16,
+          marginTop: 8,
+          flexWrap: "wrap"
+        },
+        children: [
+          { color: "#631DED", label: "United States (10)" },
+          { color: "#7B3DEF", label: "United Kingdom (6)" },
+          { color: "#9460F2", label: "France (3)" },
+          { color: "#AD83F5", label: "Finland (2)" },
+          { color: "#C6A6F8", label: "Austria (1)" },
+          { color: "#C6A6F8", label: "Netherlands (1)" },
+          { color: "#C6A6F8", label: "Jordan (1)" },
+          { color: "#C6A6F8", label: "Italy (1)" }
+        ].map((item) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
+          "div",
+          {
+            style: { display: "flex", alignItems: "center", gap: 4 },
+            children: [
+              /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+                "span",
+                {
+                  style: {
+                    width: 10,
+                    height: 10,
+                    borderRadius: "50%",
+                    backgroundColor: item.color,
+                    display: "inline-block"
+                  }
+                }
+              ),
+              /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { style: { fontSize: 11, color: "#666" }, children: item.label })
+            ]
+          },
+          item.label
+        ))
+      }
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
+      "p",
+      {
+        style: {
+          textAlign: "center",
+          fontSize: 11,
+          color: "#999",
+          marginTop: 4
+        },
+        children: "Location data: 29 of 266 products (11%)"
+      }
+    )
+  ] });
 };
 var StatCard1 = ({
   label,
@@ -16957,8 +17300,8 @@ var StatCard1 = ({
   badgeColor,
   description,
   trend = "up"
-}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-stat-card", style: { flex: 1 }, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-stat-card", style: { flex: 1 }, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
     "div",
     {
       style: {
@@ -16968,15 +17311,15 @@ var StatCard1 = ({
         marginBottom: "var(--drp-space-1)"
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-stat-card__label", children: label }),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { className: "drp-stat-card__label", children: label }),
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "svg",
           {
             style: { width: 16, height: 16, color: "var(--drp-grey)" },
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "path",
               {
                 strokeLinecap: "round",
@@ -16990,8 +17333,8 @@ var StatCard1 = ({
       ]
     }
   ),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "drp-stat-card__value", children: value }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "drp-stat-card__value", children: value }),
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
     "div",
     {
       style: {
@@ -17001,8 +17344,8 @@ var StatCard1 = ({
         marginTop: "var(--drp-space-1)"
       },
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-caption", children: description }),
-        badge && /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { className: "drp-caption", children: description }),
+        badge && /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "span",
           {
             className: `drp-stat-card__badge ${trend === "up" ? "drp-stat-card__badge--up" : "drp-stat-card__badge--down"}`,
@@ -17020,10 +17363,10 @@ var StatCard2 = ({
   left,
   barColor,
   pct
-}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-stat-card", style: { flex: 1 }, children: [
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "drp-stat-card__label", children: label }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "drp-stat-card__value", children: value }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-stat-card", style: { flex: 1 }, children: [
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "drp-stat-card__label", children: label }),
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "drp-stat-card__value", children: value }),
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
     "div",
     {
       style: {
@@ -17033,7 +17376,7 @@ var StatCard2 = ({
         marginTop: "var(--drp-space-2)",
         marginBottom: "var(--drp-space-2)"
       },
-      children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
         "div",
         {
           style: { height: "100%", width: `${pct}%`, backgroundColor: barColor }
@@ -17041,13 +17384,13 @@ var StatCard2 = ({
       )
     }
   ),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { style: { display: "flex", justifyContent: "space-between" }, children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("span", { className: "drp-caption", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("strong", { children: spent }),
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { style: { display: "flex", justifyContent: "space-between" }, children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("span", { className: "drp-caption", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("strong", { children: spent }),
       " Spent"
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("span", { className: "drp-caption", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("strong", { children: left }),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("span", { className: "drp-caption", children: [
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("strong", { children: left }),
       " Left"
     ] })
   ] })
@@ -17060,7 +17403,7 @@ var StatCard3 = ({
   changeColor,
   chartColor,
   chartValues
-}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
   "div",
   {
     className: "drp-stat-card",
@@ -17071,11 +17414,11 @@ var StatCard3 = ({
       gap: "var(--drp-space-4)"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { style: { flex: 1 }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "drp-stat-card__label", children: label }),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "drp-stat-card__value", children: value }),
-        sub && /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { className: "drp-caption", children: sub }),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { style: { flex: 1 }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "drp-stat-card__label", children: label }),
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "drp-stat-card__value", children: value }),
+        sub && /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { className: "drp-caption", children: sub }),
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "span",
           {
             style: {
@@ -17087,7 +17430,7 @@ var StatCard3 = ({
           }
         )
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(BarSparkline, { color: chartColor, values: chartValues })
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(BarSparkline, { color: chartColor, values: chartValues })
     ]
   }
 );
@@ -17097,7 +17440,7 @@ var StatCard4 = ({
   label,
   chartColor,
   chartValues
-}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
   "div",
   {
     className: "drp-stat-card",
@@ -17108,7 +17451,7 @@ var StatCard4 = ({
       gap: "var(--drp-space-3)"
     },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
         "div",
         {
           style: {
@@ -17124,8 +17467,8 @@ var StatCard4 = ({
           children: icon
         }
       ),
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { style: { flex: 1 }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { style: { flex: 1 }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "div",
           {
             className: "drp-stat-card__value",
@@ -17133,9 +17476,9 @@ var StatCard4 = ({
             children: value
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "drp-caption", children: label })
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "drp-caption", children: label })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(Sparkline, { color: chartColor, values: chartValues })
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(Sparkline, { color: chartColor, values: chartValues })
     ]
   }
 );
@@ -17282,11 +17625,11 @@ var DOUBLE_PURPLE_4 = [210, 60, 400, 60];
 var ReportScreen = ({
   children,
   active = "Analytics"
-}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "app-layout", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(DoctorProjectSidebar11, { active }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "main-content", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(TopBar14, { title: "Reports" }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "app-layout", children: [
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(DoctorProjectSidebar11, { active }),
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "main-content", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(TopBar14, { title: "Reports" }),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "content", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       "div",
       {
         style: {
@@ -17297,12 +17640,12 @@ var ReportScreen = ({
         children
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(Footer13, {})
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(Footer13, {})
   ] })
 ] });
-var BarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScreen, { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+var BarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(ReportScreen, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       StatCard1,
       {
         label: "Balance",
@@ -17312,7 +17655,7 @@ var BarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScre
         trend: "up"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       StatCard1,
       {
         label: "Money in",
@@ -17322,7 +17665,7 @@ var BarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScre
         trend: "down"
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       StatCard1,
       {
         label: "Money out",
@@ -17333,7 +17676,7 @@ var BarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScre
       }
     )
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
     BarChartSVG,
     {
       data: BAR_DATA_12,
@@ -17342,7 +17685,7 @@ var BarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScre
       height: 220
     }
   ) }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
     BarChartSVG,
     {
       data: BAR_DATA_12,
@@ -17351,8 +17694,8 @@ var BarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScre
       height: 220
     }
   ) }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 8 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Bars 8 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       BarChartSVG,
       {
         data: BAR_DATA_8,
@@ -17361,7 +17704,7 @@ var BarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScre
         height: 200
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 4 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Bars 4 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       BarChartSVG,
       {
         data: BAR_DATA_4,
@@ -17372,9 +17715,9 @@ var BarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScre
     ) })
   ] })
 ] });
-var BarsHorizontalScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScreen, { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+var BarsHorizontalScreen = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(ReportScreen, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       StatCard2,
       {
         label: "Balance",
@@ -17385,7 +17728,7 @@ var BarsHorizontalScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
         pct: 50
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       StatCard2,
       {
         label: "Money in",
@@ -17396,7 +17739,7 @@ var BarsHorizontalScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
         pct: 50
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       StatCard2,
       {
         label: "Money out",
@@ -17408,19 +17751,19 @@ var BarsHorizontalScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
       }
     )
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(HBarChartSVG, { data: HBAR_DATA_12, height: 260 }) }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 8 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(HBarChartSVG, { data: HBAR_DATA_8, height: 240 }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 4 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(HBarChartSVG, { data: HBAR_DATA_4, height: 240 }) })
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(HBarChartSVG, { data: HBAR_DATA_12, height: 260 }) }),
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Bars 8 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(HBarChartSVG, { data: HBAR_DATA_8, height: 240 }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Bars 4 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(HBarChartSVG, { data: HBAR_DATA_4, height: 240 }) })
   ] })
 ] });
-var ChartGeometricScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScreen, { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
+var ChartGeometricScreen = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(ReportScreen, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
     { label: "Balance", value: "$80,470.50", color: "var(--drp-mint)" },
     { label: "Money in", value: "$60,930.50", color: "var(--drp-yellow)" },
     { label: "Money out", value: "$42,890.30", color: "var(--drp-pink)" }
-  ].map((s2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-stat-card", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+  ].map((s2) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-stat-card", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
       "div",
       {
         style: {
@@ -17429,11 +17772,11 @@ var ChartGeometricScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
           justifyContent: "space-between"
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "drp-stat-card__label", children: s2.label }),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "drp-stat-card__value", children: s2.value })
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "drp-stat-card__label", children: s2.label }),
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "drp-stat-card__value", children: s2.value })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { style: { width: 24, height: 24, color: "var(--drp-grey)" }, children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { style: { width: 24, height: 24, color: "var(--drp-grey)" }, children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -17445,7 +17788,7 @@ var ChartGeometricScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
         ]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       "div",
       {
         style: {
@@ -17456,7 +17799,7 @@ var ChartGeometricScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
       }
     )
   ] }, s2.label)) }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
     ChartCardWrapper,
     {
       title: "Wave 12 columns",
@@ -17464,7 +17807,7 @@ var ChartGeometricScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
         { color: "var(--drp-purple)", label: "Blue Tag" },
         { color: "var(--drp-mint)", label: "Green Tag" }
       ],
-      children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
         WaveChartSVG,
         {
           dataBlue: GEO_BLUE_12,
@@ -17478,8 +17821,8 @@ var ChartGeometricScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
       )
     }
   ),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       ChartCardWrapper,
       {
         title: "Wave 8 columns",
@@ -17487,7 +17830,7 @@ var ChartGeometricScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
           { color: "var(--drp-purple)", label: "Blue Tag" },
           { color: "var(--drp-mint)", label: "Green Tag" }
         ],
-        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           WaveChartSVG,
           {
             dataBlue: GEO_BLUE_8,
@@ -17501,7 +17844,7 @@ var ChartGeometricScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
         )
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Wave 4 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Wave 4 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       WaveChartSVG,
       {
         dataBlue: GEO_BLUE_4,
@@ -17515,9 +17858,9 @@ var ChartGeometricScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
     ) })
   ] })
 ] });
-var ChartWaveScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScreen, { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+var ChartWaveScreen = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(ReportScreen, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       StatCard3,
       {
         label: "Dropbox",
@@ -17529,7 +17872,7 @@ var ChartWaveScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repor
         chartValues: [30, 45, 40, 55, 50, 65, 60]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       StatCard3,
       {
         label: "Amazon AWS",
@@ -17541,7 +17884,7 @@ var ChartWaveScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repor
         chartValues: [60, 55, 50, 45, 40, 35, 38]
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       StatCard3,
       {
         label: "Google Cloud",
@@ -17554,7 +17897,7 @@ var ChartWaveScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repor
       }
     )
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
     ChartCardWrapper,
     {
       title: "Wave 12 columns",
@@ -17562,7 +17905,7 @@ var ChartWaveScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repor
         { color: "var(--drp-purple)", label: "Blue Tag" },
         { color: "var(--drp-mint)", label: "Green Tag" }
       ],
-      children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
         WaveChartSVG,
         {
           dataBlue: WAVE_BLUE_12,
@@ -17576,8 +17919,8 @@ var ChartWaveScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repor
       )
     }
   ),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       ChartCardWrapper,
       {
         title: "Wave 8 columns",
@@ -17585,7 +17928,7 @@ var ChartWaveScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repor
           { color: "var(--drp-purple)", label: "Blue Tag" },
           { color: "var(--drp-mint)", label: "Green Tag" }
         ],
-        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           WaveChartSVG,
           {
             dataBlue: WAVE_BLUE_8,
@@ -17599,7 +17942,7 @@ var ChartWaveScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repor
         )
       }
     ),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Wave 4 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Wave 4 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       WaveChartSVG,
       {
         dataBlue: WAVE_BLUE_4,
@@ -17613,8 +17956,8 @@ var ChartWaveScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repor
     ) })
   ] })
 ] });
-var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScreen, { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(ReportScreen, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
     ChartCardWrapper,
     {
       title: "Bars 12 columns",
@@ -17623,7 +17966,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
         { color: "var(--drp-purple)", label: "Green Tag" }
       ],
       children: [
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           "div",
           {
             className: "drp-stat-grid drp-stat-grid--3",
@@ -17650,9 +17993,9 @@ var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
                 change: "+10%",
                 pos: true
               }
-            ].map((s2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { children: [
-              /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "drp-caption", children: s2.label }),
-              /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+            ].map((s2) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { children: [
+              /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "drp-caption", children: s2.label }),
+              /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
                 "div",
                 {
                   style: {
@@ -17661,7 +18004,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
                     gap: "var(--drp-space-2)"
                   },
                   children: [
-                    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                       "span",
                       {
                         style: {
@@ -17672,7 +18015,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
                         children: s2.value
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                       "span",
                       {
                         style: {
@@ -17682,7 +18025,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
                         children: s2.change
                       }
                     ),
-                    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                       "svg",
                       {
                         style: {
@@ -17693,7 +18036,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
                         fill: "none",
                         viewBox: "0 0 24 24",
                         stroke: "currentColor",
-                        children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+                        children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                           "path",
                           {
                             strokeLinecap: "round",
@@ -17710,7 +18053,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
             ] }, s2.label))
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
           DoubleBarChartSVG,
           {
             dataGreen: DOUBLE_GREEN_12,
@@ -17723,7 +18066,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
       ]
     }
   ),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
     DoubleBarChartSVG,
     {
       dataGreen: DOUBLE_GREEN_12,
@@ -17733,8 +18076,8 @@ var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
       height: 220
     }
   ) }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 8 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Bars 8 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       DoubleBarChartSVG,
       {
         dataGreen: DOUBLE_GREEN_8,
@@ -17744,7 +18087,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
         height: 200
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Bars 4 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Bars 4 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       DoubleBarChartSVG,
       {
         dataGreen: DOUBLE_GREEN_4,
@@ -17756,10 +18099,10 @@ var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
     ) })
   ] })
 ] });
-var MiscScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScreen, { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Map 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(WorldMapSVG, {}) }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Pie chart 6 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+var MiscScreen = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(ReportScreen, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Map 12 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(WorldMapChart, {}) }),
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Pie chart 6 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
       "div",
       {
         style: {
@@ -17768,7 +18111,7 @@ var MiscScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScre
           alignItems: "center"
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             DonutChart,
             {
               emptyRings: true,
@@ -17778,7 +18121,7 @@ var MiscScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScre
               segments: []
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "div",
             {
               className: "drp-chart-legend drp-chart-legend--center",
@@ -17787,22 +18130,22 @@ var MiscScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScre
                 { color: "var(--drp-yellow)", label: "Yellow Tag" },
                 { color: "var(--drp-purple)", label: "Blue Tag" },
                 { color: "var(--drp-mint)", label: "Green Tag" }
-              ].map((l2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-chart-legend__item", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              ].map((l2) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-chart-legend__item", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                   "span",
                   {
                     className: "drp-chart-legend__dot",
                     style: { backgroundColor: l2.color }
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { children: l2.label })
+                /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { children: l2.label })
               ] }, l2.label))
             }
           )
         ]
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Pie chart 6 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Pie chart 6 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
       "div",
       {
         style: {
@@ -17811,7 +18154,7 @@ var MiscScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScre
           alignItems: "center"
         },
         children: [
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             DonutChart,
             {
               label: "$80,720.50",
@@ -17827,7 +18170,7 @@ var MiscScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScre
               ]
             }
           ),
-          /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "div",
             {
               className: "drp-chart-legend drp-chart-legend--center",
@@ -17838,15 +18181,15 @@ var MiscScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScre
                 { color: "var(--drp-mint)", label: "Green" },
                 { color: "var(--drp-pink)", label: "Red" },
                 { color: "#6f42c1", label: "Dark Blue" }
-              ].map((l2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-chart-legend__item", children: [
-                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+              ].map((l2) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-chart-legend__item", children: [
+                /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
                   "span",
                   {
                     className: "drp-chart-legend__dot",
                     style: { backgroundColor: l2.color }
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("span", { children: l2.label })
+                /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("span", { children: l2.label })
               ] }, l2.label))
             }
           )
@@ -17855,10 +18198,10 @@ var MiscScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScre
     ) })
   ] })
 ] });
-var PolarChartScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(ReportScreen, { children: [
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
+var PolarChartScreen = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(ReportScreen, { children: [
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
     {
-      icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+      icon: /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
         "svg",
         {
           fill: "none",
@@ -17866,10 +18209,10 @@ var PolarChartScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
           stroke: "currentColor",
           style: { width: 20, height: 20 },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { x: "3", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { x: "14", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { x: "3", y: "14", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { x: "14", y: "14", width: "7", height: "7", rx: "0", strokeWidth: 2 })
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("rect", { x: "3", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("rect", { x: "14", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("rect", { x: "3", y: "14", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("rect", { x: "14", y: "14", width: "7", height: "7", rx: "0", strokeWidth: 2 })
           ]
         }
       ),
@@ -17879,7 +18222,7 @@ var PolarChartScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
       values: [30, 50, 35, 55, 45, 60, 55, 70]
     },
     {
-      icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+      icon: /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
         "svg",
         {
           fill: "none",
@@ -17887,8 +18230,8 @@ var PolarChartScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
           stroke: "currentColor",
           style: { width: 20, height: 20 },
           children: [
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("rect", { x: "3", y: "4", width: "18", height: "18", rx: "0", strokeWidth: 2 }),
-            /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("rect", { x: "3", y: "4", width: "18", height: "18", rx: "0", strokeWidth: 2 }),
+            /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
               "path",
               {
                 strokeLinecap: "round",
@@ -17905,14 +18248,14 @@ var PolarChartScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
       values: [55, 45, 60, 50, 65, 55, 70, 60]
     },
     {
-      icon: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+      icon: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
         "svg",
         {
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           style: { width: 20, height: 20 },
-          children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+          children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
             "path",
             {
               strokeLinecap: "round",
@@ -17928,7 +18271,7 @@ var PolarChartScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
       color: "var(--drp-purple)",
       values: [40, 55, 45, 60, 50, 65, 55, 70]
     }
-  ].map((s2) => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  ].map((s2) => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
     StatCard4,
     {
       icon: s2.icon,
@@ -17939,12 +18282,12 @@ var PolarChartScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
     },
     s2.label
   )) }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Polar chart 6 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { style: { display: "flex", justifyContent: "center" }, children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(PolarChartSVG, { variant: "radar", height: 320 }) }) }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Polar chart 6 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { style: { display: "flex", justifyContent: "center" }, children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(PolarChartSVG, { variant: "segments", height: 320 }) }) })
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Polar chart 6 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { style: { display: "flex", justifyContent: "center" }, children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(PolarChartComponent, { variant: "radar", height: 320 }) }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Polar chart 6 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { style: { display: "flex", justifyContent: "center" }, children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(PolarChartComponent, { variant: "segments", height: 320 }) }) })
   ] }),
-  /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Wave 6 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+  /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Wave 6 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       WaveChartSVG,
       {
         dataBlue: [280, 160, 130, 250, 290, 240],
@@ -17956,7 +18299,7 @@ var PolarChartScreen = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(Repo
         showTooltip: true
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartCardWrapper, { title: "Wave 6 columns", children: /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(
+    /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartCardWrapper, { title: "Wave 6 columns", children: /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(
       WaveChartSVG,
       {
         dataBlue: [
@@ -17987,26 +18330,26 @@ var ChartContainer = ({
   title,
   subtitle,
   children
-}) => /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)(
+}) => /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)(
   "div",
   {
     style: { maxWidth: 1200, margin: "0 auto", padding: "var(--drp-space-6)" },
     children: [
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsxs)("div", { style: { marginBottom: "var(--drp-space-8)" }, children: [
-        /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("h1", { className: "drp-h2", children: title }),
-        subtitle && /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("p", { className: "drp-caption", style: { marginTop: "var(--drp-space-2)" }, children: subtitle })
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsxs)("div", { style: { marginBottom: "var(--drp-space-8)" }, children: [
+        /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("h1", { className: "drp-h2", children: title }),
+        subtitle && /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("p", { className: "drp-caption", style: { marginTop: "var(--drp-space-2)" }, children: subtitle })
       ] }),
-      /* @__PURE__ */ (0, import_jsx_runtime59.jsx)("div", { className: "drp-chart-grid drp-chart-grid--2", children })
+      /* @__PURE__ */ (0, import_jsx_runtime69.jsx)("div", { className: "drp-chart-grid drp-chart-grid--2", children })
     ]
   }
 );
-var ChartBarVariant = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(BarsScreen, {});
-var ChartPolarVariant = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(PolarChartScreen, {});
-var ChartWaveVariant = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartWaveScreen, {});
-var ChartGeometricVariant = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(ChartGeometricScreen, {});
-var ChartHorizontalBarsVariant = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(BarsHorizontalScreen, {});
-var ChartDoubleBarsVariant = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(DoubleBarsScreen, {});
-var ChartMiscVariant = () => /* @__PURE__ */ (0, import_jsx_runtime59.jsx)(MiscScreen, {});
+var ChartBarVariant = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(BarsScreen, {});
+var ChartPolarVariant = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(PolarChartScreen, {});
+var ChartWaveVariant = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartWaveScreen, {});
+var ChartGeometricVariant = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(ChartGeometricScreen, {});
+var ChartHorizontalBarsVariant = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(BarsHorizontalScreen, {});
+var ChartDoubleBarsVariant = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(DoubleBarsScreen, {});
+var ChartMiscVariant = () => /* @__PURE__ */ (0, import_jsx_runtime69.jsx)(MiscScreen, {});
 
 // node_modules/@faker-js/faker/dist/chunk-KERBADJJ.js
 var e = [{ name: "Aegean Airlines", iataCode: "A3" }, { name: "Aeroflot", iataCode: "SU" }, { name: "Aerolineas Argentinas", iataCode: "AR" }, { name: "Aeromexico", iataCode: "AM" }, { name: "Air Algerie", iataCode: "AH" }, { name: "Air Arabia", iataCode: "G9" }, { name: "Air Canada", iataCode: "AC" }, { name: "Air China", iataCode: "CA" }, { name: "Air Europa", iataCode: "UX" }, { name: "Air France", iataCode: "AF" }, { name: "Air India", iataCode: "AI" }, { name: "Air Mauritius", iataCode: "MK" }, { name: "Air New Zealand", iataCode: "NZ" }, { name: "Air Niugini", iataCode: "PX" }, { name: "Air Tahiti", iataCode: "VT" }, { name: "Air Tahiti Nui", iataCode: "TN" }, { name: "Air Transat", iataCode: "TS" }, { name: "AirAsia X", iataCode: "D7" }, { name: "AirAsia", iataCode: "AK" }, { name: "Aircalin", iataCode: "SB" }, { name: "Alaska Airlines", iataCode: "AS" }, { name: "Alitalia", iataCode: "AZ" }, { name: "All Nippon Airways", iataCode: "NH" }, { name: "Allegiant Air", iataCode: "G4" }, { name: "American Airlines", iataCode: "AA" }, { name: "Asiana Airlines", iataCode: "OZ" }, { name: "Avianca", iataCode: "AV" }, { name: "Azul Linhas Aereas Brasileiras", iataCode: "AD" }, { name: "Azur Air", iataCode: "ZF" }, { name: "Beijing Capital Airlines", iataCode: "JD" }, { name: "Boliviana de Aviacion", iataCode: "OB" }, { name: "British Airways", iataCode: "BA" }, { name: "Cathay Pacific", iataCode: "CX" }, { name: "Cebu Pacific Air", iataCode: "5J" }, { name: "China Airlines", iataCode: "CI" }, { name: "China Eastern Airlines", iataCode: "MU" }, { name: "China Southern Airlines", iataCode: "CZ" }, { name: "Condor", iataCode: "DE" }, { name: "Copa Airlines", iataCode: "CM" }, { name: "Delta Air Lines", iataCode: "DL" }, { name: "Easyfly", iataCode: "VE" }, { name: "EasyJet", iataCode: "U2" }, { name: "EcoJet", iataCode: "8J" }, { name: "Egyptair", iataCode: "MS" }, { name: "El Al", iataCode: "LY" }, { name: "Emirates Airlines", iataCode: "EK" }, { name: "Ethiopian Airlines", iataCode: "ET" }, { name: "Etihad Airways", iataCode: "EY" }, { name: "EVA Air", iataCode: "BR" }, { name: "Fiji Airways", iataCode: "FJ" }, { name: "Finnair", iataCode: "AY" }, { name: "Flybondi", iataCode: "FO" }, { name: "Flydubai", iataCode: "FZ" }, { name: "FlySafair", iataCode: "FA" }, { name: "Frontier Airlines", iataCode: "F9" }, { name: "Garuda Indonesia", iataCode: "GA" }, { name: "Go First", iataCode: "G8" }, { name: "Gol Linhas Aereas Inteligentes", iataCode: "G3" }, { name: "Hainan Airlines", iataCode: "HU" }, { name: "Hawaiian Airlines", iataCode: "HA" }, { name: "IndiGo Airlines", iataCode: "6E" }, { name: "Japan Airlines", iataCode: "JL" }, { name: "Jeju Air", iataCode: "7C" }, { name: "Jet2", iataCode: "LS" }, { name: "JetBlue Airways", iataCode: "B6" }, { name: "JetSMART", iataCode: "JA" }, { name: "Juneyao Airlines", iataCode: "HO" }, { name: "Kenya Airways", iataCode: "KQ" }, { name: "KLM Royal Dutch Airlines", iataCode: "KL" }, { name: "Korean Air", iataCode: "KE" }, { name: "Kulula.com", iataCode: "MN" }, { name: "LATAM Airlines", iataCode: "LA" }, { name: "Lion Air", iataCode: "JT" }, { name: "LOT Polish Airlines", iataCode: "LO" }, { name: "Lufthansa", iataCode: "LH" }, { name: "Libyan Airlines", iataCode: "LN" }, { name: "Linea Aerea Amaszonas", iataCode: "Z8" }, { name: "Malaysia Airlines", iataCode: "MH" }, { name: "Nordwind Airlines", iataCode: "N4" }, { name: "Norwegian Air Shuttle", iataCode: "DY" }, { name: "Oman Air", iataCode: "WY" }, { name: "Pakistan International Airlines", iataCode: "PK" }, { name: "Pegasus Airlines", iataCode: "PC" }, { name: "Philippine Airlines", iataCode: "PR" }, { name: "Qantas Group", iataCode: "QF" }, { name: "Qatar Airways", iataCode: "QR" }, { name: "Republic Airways", iataCode: "YX" }, { name: "Royal Air Maroc", iataCode: "AT" }, { name: "Ryanair", iataCode: "FR" }, { name: "S7 Airlines", iataCode: "S7" }, { name: "SAS", iataCode: "SK" }, { name: "Satena", iataCode: "9R" }, { name: "Saudia", iataCode: "SV" }, { name: "Shandong Airlines", iataCode: "SC" }, { name: "Sichuan Airlines", iataCode: "3U" }, { name: "Singapore Airlines", iataCode: "SQ" }, { name: "Sky Airline", iataCode: "H2" }, { name: "SkyWest Airlines", iataCode: "OO" }, { name: "South African Airways", iataCode: "SA" }, { name: "Southwest Airlines", iataCode: "WN" }, { name: "SpiceJet", iataCode: "SG" }, { name: "Spirit Airlines", iataCode: "NK" }, { name: "Spring Airlines", iataCode: "9S" }, { name: "SriLankan Airlines", iataCode: "UL" }, { name: "Star Peru", iataCode: "2I" }, { name: "Sun Country Airlines", iataCode: "SY" }, { name: "SunExpress", iataCode: "XQ" }, { name: "TAP Air Portugal", iataCode: "TP" }, { name: "Thai AirAsia", iataCode: "FD" }, { name: "Thai Airways", iataCode: "TG" }, { name: "TUI Airways", iataCode: "BY" }, { name: "Tunisair", iataCode: "TU" }, { name: "Turkish Airlines", iataCode: "TK" }, { name: "Ukraine International", iataCode: "PS" }, { name: "United Airlines", iataCode: "UA" }, { name: "Ural Airlines", iataCode: "U6" }, { name: "VietJet Air", iataCode: "VJ" }, { name: "Vietnam Airlines", iataCode: "VN" }, { name: "Virgin Atlantic Airways", iataCode: "VS" }, { name: "Virgin Australia", iataCode: "VA" }, { name: "VivaAerobus", iataCode: "VB" }, { name: "VOEPASS Linhas Aereas", iataCode: "2Z" }, { name: "Volaris", iataCode: "Y4" }, { name: "WestJet", iataCode: "WS" }, { name: "Wingo", iataCode: "P5" }, { name: "Wizz Air", iataCode: "W6" }];
@@ -20179,13 +20522,18 @@ var menuItems = generateMenuItems();
   Checkbox,
   ContactsList,
   Counter,
+  CtaBanner,
   CustomersList,
   DashboardLayout,
   Divider,
+  Dropzone,
   EducationCourses,
   EmptyState,
+  FeatureList,
   Footer,
+  Heading,
   Hero,
+  Icon,
   InboxList,
   Input,
   ListScreen,
@@ -20210,6 +20558,7 @@ var menuItems = generateMenuItems();
   SignIn,
   SignUp,
   Skeleton,
+  Spinner,
   StatCard,
   StatusDot,
   SupportHome,
@@ -20217,7 +20566,10 @@ var menuItems = generateMenuItems();
   Table,
   Tabs,
   Tag,
+  Testimonial,
+  Text,
   Textarea,
+  Toast,
   Tooltip,
   TopBar,
   Topbar,
