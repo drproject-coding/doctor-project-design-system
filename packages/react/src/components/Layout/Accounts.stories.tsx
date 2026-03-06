@@ -49,7 +49,7 @@ const BankingSidebar = ({
         letterSpacing: "0.08em",
       }}
     >
-      BRUDDLE
+      Doctor Project
     </h2>
 
     {/* Navigation */}
@@ -392,7 +392,7 @@ const CreditCardDisplay = ({
       >
         {card.type === "debit" ? "Debit" : "Credit"}
       </span>
-      <span style={{ fontSize: "11px", opacity: 0.7 }}>BRUDDLE</span>
+      <span style={{ fontSize: "11px", opacity: 0.7 }}>Doctor Project</span>
     </div>
     <div
       style={{

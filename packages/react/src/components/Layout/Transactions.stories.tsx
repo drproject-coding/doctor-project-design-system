@@ -48,7 +48,7 @@ const BankingSidebar = ({
         letterSpacing: "0.08em",
       }}
     >
-      BRUDDLE
+      Doctor Project
     </h2>
 
     {/* Navigation */}

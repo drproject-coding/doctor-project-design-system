@@ -49,7 +49,7 @@ const BankingSidebar = ({
         textTransform: "uppercase",
       }}
     >
-      Bruddle
+      Doctor Project
     </h2>
 
     {/* Navigation */}

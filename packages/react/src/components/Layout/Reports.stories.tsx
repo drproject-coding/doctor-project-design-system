@@ -38,7 +38,7 @@ const ReportsSidebar = () => (
         letterSpacing: "0.08em",
       }}
     >
-      BRUDDLE
+      Doctor Project
     </h2>
     <nav style={{ display: "flex", flexDirection: "column", gap: "2px" }}>
       {reportNavItems.map((item) => {

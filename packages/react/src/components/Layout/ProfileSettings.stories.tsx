@@ -36,7 +36,7 @@ const BankingSidebar = ({ activeLabel = "" }: { activeLabel?: string }) => (
         textTransform: "uppercase",
       }}
     >
-      Bruddle
+      Doctor Project
     </h2>
 
     {/* Navigation */}
