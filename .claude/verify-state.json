@@ -1,10 +1,16 @@
 {
-  "session_id": "verify-2026-03-02-0145",
-  "execute_session_id": "direct-build",
-  "branch": "main",
-  "started_at": "2026-03-02T01:45:00Z",
+  "session_id": "verify-2026-03-06-0030",
+  "execute_session_id": "subagent-driven-2026-03-06",
+  "branch": "feat/design-system-screens",
+  "started_at": "2026-03-06T00:30:00+01:00",
   "status": "completed",
   "phases": {
+    "test_suite": {
+      "status": "skipped"
+    },
+    "lint": {
+      "status": "skipped"
+    },
     "type_check": {
       "status": "PASS"
     },
@@ -20,13 +26,13 @@
   },
   "all_checks_passed": true,
   "human_checkpoint": {
-    "prompted_at": "2026-03-02T01:54:00Z",
+    "prompted_at": "2026-03-06T00:35:00+01:00",
     "decision": "ready_to_ship",
     "caveats": []
   },
   "unlock_ship": true,
-  "verified_at": "2026-03-05T01:15:26+01:00",
-  "verified_manifest": "06dbfe005814144967f821491af46e54dd7fd22b3a109bda42fa5a5902276bf2",
-  "verified_commit_sha": "14628e8cff6ac0f5f591869027adb0cdbb2dc51a",
-  "verified_file_count": 179
+  "verified_at": "2026-03-06T02:07:00+01:00",
+  "verified_manifest": "ade64be56b2e1b0201a44eeb8b9b5a4c2590e39156c8c95d3059d29678330cfd",
+  "verified_commit_sha": "ae84d6336a9ac8ee5c24e08104eaa90e3669e8bf",
+  "verified_file_count": 331
 }
