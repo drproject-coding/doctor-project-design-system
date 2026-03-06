@@ -1,4 +1,5 @@
 import React from "react";
+import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
 const TopBar: React.FC<{ title?: string; showBack?: boolean }> = ({
   title = "Products",
@@ -47,7 +48,7 @@ const TopBar: React.FC<{ title?: string; showBack?: boolean }> = ({
         <span>Apps</span>
       </button>
       <button className="topbar-create-btn">
-        <span>+</span>
+        <Pictogram name="Add" size={20} aria-hidden={true} />
         <span>Create new</span>
       </button>
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
 
 export interface Contact {
@@ -76,7 +77,7 @@ const TopBar: React.FC = () => (
       </button>
       <button className="topbar-apps-btn">··· Apps</button>
       <button className="topbar-create-btn">
-        <span style={{ fontSize: 16, lineHeight: 1 }}>+</span>
+        <Pictogram name="Add" size={20} aria-hidden={true} />
         Create new
       </button>
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
 
 export interface Customer {
@@ -69,7 +70,7 @@ const TopBar: React.FC = () => (
         <span>Apps</span>
       </button>
       <button className="topbar-create-btn">
-        <span>+</span>
+        <Pictogram name="Add" size={20} aria-hidden={true} />
         <span>Create new</span>
       </button>
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
 
 interface AccountsListProps {
@@ -60,7 +61,7 @@ const TopBar: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => (
         Apps
       </button>
       <button className="topbar-create-btn">
-        <span style={{ fontSize: 18, lineHeight: 1 }}>+</span>
+        <Pictogram name="Add" size={20} aria-hidden={true} />
         Create new
       </button>
     </div>

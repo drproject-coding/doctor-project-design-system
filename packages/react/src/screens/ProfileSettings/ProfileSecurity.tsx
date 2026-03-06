@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ProfileSidePanel } from "./ProfileAccount";
+import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
 
 type TabKey = "account" | "security" | "social" | "apis" | "notifications";
@@ -64,20 +65,7 @@ const TopBar: React.FC = () => (
         <span>Apps</span>
       </button>
       <button className="topbar-create-btn">
-        <svg
-          width="18"
-          height="18"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth="2.5"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M12 4v16m8-8H4"
-          />
-        </svg>
+        <Pictogram name="Add" size={20} aria-hidden={true} />
         <span>Create new</span>
       </button>
     </div>

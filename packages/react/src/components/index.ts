@@ -213,3 +213,8 @@ export type {
   EducationView,
   ChartContainerProps,
 } from "../screens";
+
+
+export { Pictogram } from "./Pictogram/Pictogram";
+export type { PictogramProps } from "./Pictogram/Pictogram";
+export type { PictogramName } from "./Pictogram/pictograms";

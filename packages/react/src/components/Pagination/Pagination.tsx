@@ -1,3 +1,6 @@
+import React from "react";
+import { Pictogram } from "../Pictogram/Pictogram";
+
 type PaginationVariant = "dark" | "transparent";
 
 export interface PaginationProps {
@@ -34,7 +37,7 @@ export function Pagination({
           disabled={currentPage <= 1}
           aria-label="Go to previous page"
         >
-          ‹
+          <Pictogram name="Left arrow" size={20} aria-hidden={true} />
         </button>
         {pages.map((page) => (
           <button
@@ -53,7 +56,7 @@ export function Pagination({
           disabled={currentPage >= totalPages}
           aria-label="Go to next page"
         >
-          ›
+          <Pictogram name="Right" size={20} aria-hidden={true} />
         </button>
       </div>
     </nav>

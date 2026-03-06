@@ -9,6 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import { PolarArea, Radar } from "react-chartjs-2";
+import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
 
 ChartJS.register(

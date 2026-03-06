@@ -1,4 +1,5 @@
 import React from "react";
+import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
 
 // ─── Top Bar ──────────────────────────────────────────────────────────────────

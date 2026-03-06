@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
 // ─── Top Bar ─────────────────────────────────────────────────────────────────
 
@@ -48,7 +49,7 @@ const InboxTopBar: React.FC<{ showBack?: boolean }> = ({
         <span>Apps</span>
       </button>
       <button className="topbar-create-btn">
-        <span>+</span>
+        <Pictogram name="Add" size={20} aria-hidden={true} />
         <span>Create new</span>
       </button>
     </div>
