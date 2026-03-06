@@ -38,6 +38,7 @@ export function Alert({
   const styles = variantStyles[variant];
   return (
     <div
+      role="alert"
       className={className}
       style={{
         padding: "16px 20px",
@@ -49,7 +50,10 @@ export function Alert({
         alignItems: "flex-start",
       }}
     >
-      <span style={{ fontWeight: 700, fontSize: "16px", flexShrink: 0 }}>
+      <span
+        style={{ fontWeight: 700, fontSize: "16px", flexShrink: 0 }}
+        aria-hidden="true"
+      >
         {styles.icon}
       </span>
       <div style={{ flex: 1 }}>
@@ -59,8 +63,7 @@ export function Alert({
               fontFamily: "var(--drp-font-primary)",
               fontWeight: 700,
               fontSize: "14px",
-              marginBottom: "4px",
-              margin: title ? "0 0 4px" : "0",
+              margin: "0 0 4px",
             }}
           >
             {title}
@@ -71,6 +74,7 @@ export function Alert({
       {onClose && (
         <button
           onClick={onClose}
+          aria-label="Close alert"
           style={{
             background: "none",
             border: "none",

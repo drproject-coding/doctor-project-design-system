@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import type { ReactNode, DragEvent, ChangeEvent } from "react";
+import type { ReactNode, DragEvent, ChangeEvent, KeyboardEvent } from "react";
 
 export interface DropzoneProps {
   onFiles?: (files: File[]) => void;
@@ -7,6 +7,7 @@ export interface DropzoneProps {
   hint?: string;
   icon?: ReactNode;
   className?: string;
+  "aria-label"?: string;
 }
 
 export function Dropzone({
@@ -15,6 +16,7 @@ export function Dropzone({
   hint = "PNG, JPG, PDF up to 10MB",
   icon = "↑",
   className = "",
+  "aria-label": ariaLabel = "Upload file",
 }: DropzoneProps) {
   const [active, setActive] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -40,6 +42,13 @@ export function Dropzone({
     if (files.length) onFiles?.(files);
   }
 
+  function handleKeyDown(e: KeyboardEvent) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      inputRef.current?.click();
+    }
+  }
+
   const classes = [
     "drp-dropzone",
     active ? "drp-dropzone--active" : "",
@@ -51,10 +60,14 @@ export function Dropzone({
   return (
     <div
       className={classes}
+      role="button"
+      tabIndex={0}
+      aria-label={ariaLabel}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
       onClick={() => inputRef.current?.click()}
+      onKeyDown={handleKeyDown}
     >
       <input
         ref={inputRef}

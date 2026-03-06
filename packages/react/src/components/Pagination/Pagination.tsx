@@ -26,30 +26,36 @@ export function Pagination({
   const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
   return (
-    <div className={containerClasses}>
-      <button
-        className="drp-pagination__btn"
-        onClick={() => onPageChange(currentPage - 1)}
-        disabled={currentPage <= 1}
-      >
-        ‹
-      </button>
-      {pages.map((page) => (
+    <nav aria-label="Pagination">
+      <div className={containerClasses}>
         <button
-          key={page}
-          className={`drp-pagination__page ${page === currentPage ? "drp-pagination__page--active" : ""}`}
-          onClick={() => onPageChange(page)}
+          className="drp-pagination__btn"
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage <= 1}
+          aria-label="Go to previous page"
         >
-          {page}
+          ‹
         </button>
-      ))}
-      <button
-        className="drp-pagination__btn"
-        onClick={() => onPageChange(currentPage + 1)}
-        disabled={currentPage >= totalPages}
-      >
-        ›
-      </button>
-    </div>
+        {pages.map((page) => (
+          <button
+            key={page}
+            className={`drp-pagination__page ${page === currentPage ? "drp-pagination__page--active" : ""}`}
+            onClick={() => onPageChange(page)}
+            aria-label={`Page ${page}`}
+            aria-current={page === currentPage ? "page" : undefined}
+          >
+            {page}
+          </button>
+        ))}
+        <button
+          className="drp-pagination__btn"
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage >= totalPages}
+          aria-label="Go to next page"
+        >
+          ›
+        </button>
+      </div>
+    </nav>
   );
 }

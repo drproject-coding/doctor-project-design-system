@@ -25,6 +25,7 @@ export function EmptyState({
       }}
     >
       <div
+        aria-hidden="true"
         style={{
           fontSize: "48px",
           marginBottom: "16px",
@@ -40,7 +41,6 @@ export function EmptyState({
           fontFamily: "var(--drp-font-primary)",
           fontSize: "18px",
           fontWeight: 700,
-          marginBottom: "8px",
           margin: "0 0 8px",
         }}
       >
@@ -50,7 +50,7 @@ export function EmptyState({
         <p
           style={{
             fontSize: "13px",
-            color: "#666",
+            color: "var(--drp-text-secondary, #666)",
             maxWidth: "400px",
             margin: "0 auto 20px",
           }}

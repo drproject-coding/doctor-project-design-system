@@ -18,9 +18,12 @@ export function Toast({ variant, message, icon, className = "" }: ToastProps) {
     .filter(Boolean)
     .join(" ");
 
+  const role =
+    variant === "error" || variant === "warning" ? "alert" : "status";
+
   return (
-    <div className={classes} role="status">
-      {icon && <span>{icon}</span>}
+    <div className={classes} role={role}>
+      {icon && <span aria-hidden="true">{icon}</span>}
       <span>{message}</span>
     </div>
   );

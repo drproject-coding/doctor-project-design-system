@@ -6,27 +6,30 @@ export interface StatCardProps {
 
 export function StatCard({ value, label, className = "" }: StatCardProps) {
   return (
-    <div
+    <dl
       className={`drp-stat-card ${className}`}
       style={{
         textAlign: "center",
         padding: "var(--drp-space-8)",
         border: "var(--drp-border-chunk)",
         background: "var(--drp-surface)",
+        margin: 0,
       }}
     >
-      <p
+      <dd
         style={{
           fontFamily: "var(--drp-font-primary)",
           fontSize: "3.5rem",
           fontWeight: 800,
           color: "var(--drp-purple)",
           lineHeight: 1,
+          fontVariantNumeric: "tabular-nums",
+          margin: 0,
         }}
       >
         {value}
-      </p>
-      <p
+      </dd>
+      <dt
         style={{
           fontFamily: "var(--drp-font-primary)",
           fontSize: "var(--drp-text-sm)",
@@ -37,7 +40,7 @@ export function StatCard({ value, label, className = "" }: StatCardProps) {
         }}
       >
         {label}
-      </p>
-    </div>
+      </dt>
+    </dl>
   );
 }
