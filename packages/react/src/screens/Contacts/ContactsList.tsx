@@ -871,7 +871,7 @@ export const ContactsList: React.FC<ContactsListProps> = ({
   return (
     <div className="app-layout">
       <AppSidebar activeId="contacts" />
-      <div className="main-content" style={{ marginLeft: 155 }}>
+      <div className="main-content">
         <TopBar />
         {renderContent()}
         <Footer />

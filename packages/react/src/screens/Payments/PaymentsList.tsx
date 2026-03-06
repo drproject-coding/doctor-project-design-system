@@ -1237,7 +1237,7 @@ export const PaymentsList: React.FC<PaymentsListProps> = ({
   return (
     <div className="app-layout">
       <AppSidebar activeId="payments" />
-      <div className="main-content" style={{ marginLeft: 280 }}>
+      <div className="main-content">
         <TopBar title={titleMap[variant]} showBack={showBack} />
 
         {variant === "list" && <ListContent />}

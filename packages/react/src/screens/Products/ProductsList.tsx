@@ -951,7 +951,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({
   return (
     <div className="app-layout">
       <AppSidebar activeId="products" />
-      <div className="main-content" style={{ marginLeft: 200 }}>
+      <div className="main-content">
         <TopBar
           title={variant === "details" ? "Product Details" : "Products"}
           showBack={variant === "details"}

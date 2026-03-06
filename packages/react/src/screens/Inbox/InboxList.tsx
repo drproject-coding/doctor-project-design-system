@@ -1400,7 +1400,7 @@ export const InboxList: React.FC<InboxListProps> = ({
   return (
     <div className="app-layout">
       <AppSidebar activeId="inbox" />
-      <div className="main-content" style={{ marginLeft: 200 }}>
+      <div className="main-content">
         {renderContent()}
       </div>
     </div>

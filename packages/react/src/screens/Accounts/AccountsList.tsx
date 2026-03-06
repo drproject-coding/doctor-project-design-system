@@ -844,7 +844,7 @@ export const AccountsList: React.FC<AccountsListProps> = ({
 }) => (
   <div className="app-layout">
     <AppSidebar activeId="accounts" />
-    <div className="main-content" style={{ marginLeft: 280 }}>
+    <div className="main-content">
       <TopBar theme={theme} />
       {variant === "v1" ? (
         <V1Content theme={theme} />

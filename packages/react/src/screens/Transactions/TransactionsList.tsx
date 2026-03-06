@@ -980,7 +980,7 @@ export const TransactionsList: React.FC<TransactionsListProps> = ({
   return (
     <div className="app-layout">
       <AppSidebar activeId="transactions" />
-      <div className="main-content" style={{ marginLeft: 280 }}>
+      <div className="main-content">
         <TopBar />
         {renderContent()}
         <Footer />

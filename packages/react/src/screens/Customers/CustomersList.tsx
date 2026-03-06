@@ -581,7 +581,7 @@ export const CustomersList: React.FC<CustomersListProps> = ({
   return (
     <div className="app-layout">
       <AppSidebar activeId="customers" />
-      <div className="main-content" style={{ marginLeft: 160 }}>
+      <div className="main-content">
         <TopBar />
         {renderContent()}
         <Footer />

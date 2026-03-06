@@ -648,7 +648,7 @@ export const SalesList: React.FC<SalesListProps> = ({
 }) => (
   <div className="app-layout">
     <AppSidebar activeId="sales" />
-    <div className="main-content" style={{ marginLeft: 200 }}>
+    <div className="main-content">
       <TopBar />
       {variant === "v1" ? <V1Content /> : <V2Content />}
       <Footer />
