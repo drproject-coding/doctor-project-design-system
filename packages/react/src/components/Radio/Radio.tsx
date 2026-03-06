@@ -7,12 +7,14 @@ export interface RadioProps extends Omit<
   label: string;
   color?: "pink" | "purple";
   dark?: boolean;
+  error?: boolean;
 }
 
 export function Radio({
   label,
   color,
   dark,
+  error,
   className = "",
   ...props
 }: RadioProps) {
@@ -20,6 +22,7 @@ export function Radio({
     "drp-radio",
     color && `drp-radio--${color}`,
     dark && "drp-radio--dark",
+    error && "drp-radio--error",
     className,
   ]
     .filter(Boolean)
