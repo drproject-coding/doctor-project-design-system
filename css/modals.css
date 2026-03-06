@@ -2,7 +2,6 @@
    DOCTORPROJECT DESIGN SYSTEM — MODALS & OVERLAYS
    ============================================================ */
 
-
 /* ──────────────────────────────────────────────
    MODAL / OVERLAY
    ────────────────────────────────────────────── */
@@ -39,7 +38,7 @@
   justify-content: space-between;
   padding: var(--drp-space-4) var(--drp-space-6);
   background: var(--drp-purple);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .drp-modal__title {
@@ -53,18 +52,22 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
+  /* Visual size 28px, touch target expanded to 44px via negative margin + padding */
+  width: 44px;
+  height: 44px;
+  margin: -8px -8px -8px 0;
   background: transparent;
   border: none;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 20px;
   cursor: pointer;
   opacity: 0.8;
   transition: opacity var(--drp-duration-fast) var(--drp-ease);
 }
 
-.drp-modal__close:hover { opacity: 1; }
+.drp-modal__close:hover {
+  opacity: 1;
+}
 
 .drp-modal__body {
   padding: var(--drp-space-6);
@@ -77,7 +80,6 @@
   padding: var(--drp-space-4) var(--drp-space-6);
   border-top: var(--drp-border-dotted);
 }
-
 
 /* ──────────────────────────────────────────────
    TOOLTIP
@@ -109,7 +111,7 @@
 }
 
 .drp-tooltip-text::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 100%;
   left: 50%;
@@ -122,7 +124,6 @@
   opacity: 1;
   visibility: visible;
 }
-
 
 /* ──────────────────────────────────────────────
    RESPONSIVE — MODALS

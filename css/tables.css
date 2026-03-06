@@ -2,7 +2,6 @@
    DOCTORPROJECT DESIGN SYSTEM — TABLES
    ============================================================ */
 
-
 /* ──────────────────────────────────────────────
    TABLE
    ────────────────────────────────────────────── */
@@ -46,6 +45,17 @@ body.dark-mode .drp-table th {
   background: rgba(255, 255, 255, 0.04);
 }
 
+/* ──────────────────────────────────────────────
+   TABLE SCROLL WRAPPER
+   Used by Table.tsx — wraps drp-table for horizontal scrolling on small viewports.
+   Usage: <div class="drp-table-scroll"><table class="drp-table">...</table></div>
+   ────────────────────────────────────────────── */
+
+.drp-table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
 
 /* ──────────────────────────────────────────────
    RESPONSIVE — TABLES
