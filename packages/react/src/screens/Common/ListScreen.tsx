@@ -3,17 +3,12 @@ import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { Table } from "../../components/Table";
 import { Pagination } from "../../components/Pagination";
-import {
-  DashboardLayout,
-  DashboardLayoutProps,
-} from "../../components/Layout/DashboardLayout";
+import { AppSidebar } from "../shared/AppSidebar";
 
-export interface ListScreenProps extends Omit<
-  DashboardLayoutProps,
-  "children"
-> {
+export interface ListScreenProps {
   title: string;
   subtitle?: string;
+  activeId?: string;
   data: any[];
   columns: Array<{
     key: string;
@@ -29,13 +24,13 @@ export interface ListScreenProps extends Omit<
 export const ListScreen: React.FC<ListScreenProps> = ({
   title,
   subtitle,
+  activeId,
   data,
   columns,
   onAddClick,
   onRowClick,
   showSearch = true,
   itemsPerPage = 10,
-  ...layoutProps
 }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
@@ -49,57 +44,59 @@ export const ListScreen: React.FC<ListScreenProps> = ({
   const paginatedData = filteredData.slice(startIdx, startIdx + itemsPerPage);
 
   return (
-    <DashboardLayout
-      {...layoutProps}
-      topBarProps={{
-        title,
-        actions: onAddClick && (
-          <Button onClick={onAddClick} className="drp-btn drp-btn--primary">
-            + Add New
-          </Button>
-        ),
-        ...layoutProps.topBarProps,
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "var(--drp-space-6)",
-        }}
-      >
-        {subtitle && <p className="drp-caption">{subtitle}</p>}
+    <div className="app-layout">
+      <AppSidebar activeId={activeId} />
+      <div className="main-content">
+        <header className="topbar">
+          <div className="topbar-left">
+            <h1 className="topbar-title">{title}</h1>
+          </div>
+          {onAddClick && (
+            <div className="topbar-right">
+              <Button onClick={onAddClick} className="drp-btn drp-btn--primary">
+                + Add New
+              </Button>
+            </div>
+          )}
+        </header>
 
-        {showSearch && (
-          <Input
-            placeholder="Search..."
-            value={searchQuery}
-            onChange={(e) => {
-              setSearchQuery(e.target.value);
-              setCurrentPage(1);
-            }}
+        <div
+          className="content"
+          style={{ display: "flex", flexDirection: "column", gap: "var(--drp-space-6)" }}
+        >
+          {subtitle && <p className="drp-caption">{subtitle}</p>}
+
+          {showSearch && (
+            <Input
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => {
+                setSearchQuery(e.target.value);
+                setCurrentPage(1);
+              }}
+            />
+          )}
+
+          <Table
+            columns={columns.map((col) => ({
+              key: col.key,
+              header: col.label,
+              render: col.render
+                ? (row: any) => col.render!(row[col.key])
+                : undefined,
+            }))}
+            data={paginatedData}
           />
-        )}
 
-        <Table
-          columns={columns.map((col) => ({
-            key: col.key,
-            header: col.label,
-            render: col.render
-              ? (row: any) => col.render!(row[col.key])
-              : undefined,
-          }))}
-          data={paginatedData}
-        />
-
-        {totalPages > 1 && (
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            onPageChange={setCurrentPage}
-          />
-        )}
+          {totalPages > 1 && (
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          )}
+        </div>
       </div>
-    </DashboardLayout>
+    </div>
   );
 };

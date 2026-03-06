@@ -17,27 +17,12 @@ const sampleData = [
   { id: "5", name: "Product E", status: "Inactive", price: "$49.99" },
 ];
 
-const sidebarProps = {
-  brandName: "Doctor Project",
-  sections: [
-    {
-      label: "Navigation",
-      items: [
-        { id: "dashboard", label: "Dashboard" },
-        { id: "products", label: "Products", active: true },
-        { id: "customers", label: "Customers" },
-        { id: "orders", label: "Orders" },
-        { id: "settings", label: "Settings" },
-      ],
-    },
-  ],
-};
-
 export const Default: Story = {
   parameters: { layout: "fullscreen" },
   args: {
     title: "Products",
     subtitle: "Manage your product inventory",
+    activeId: "products",
     data: sampleData,
     columns: [
       { key: "id", label: "ID" },
@@ -45,6 +30,5 @@ export const Default: Story = {
       { key: "status", label: "Status" },
       { key: "price", label: "Price" },
     ],
-    sidebarProps,
   },
 };
