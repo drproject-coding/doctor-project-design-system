@@ -7,6 +7,7 @@
 export { SignIn } from "./Auth";
 export { SignUp } from "./Auth";
 export { PasswordReset } from "./Auth";
+export { SignInWithQR } from "./Auth";
 export type { PasswordResetProps } from "./Auth";
 
 // PHASE 2: LIST & TABLE SCREENS - TEMPLATES

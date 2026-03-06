@@ -2,47 +2,37 @@ import React from "react";
 
 export interface TopBarProps {
   title?: string;
-  showIcon?: boolean;
-  theme?: "light" | "dark";
   actions?: React.ReactNode;
-  breadcrumbs?: Array<{ label: string; href?: string }>;
+  menuButton?: boolean;
+  onMenuClick?: () => void;
+  className?: string;
 }
 
 export const TopBar: React.FC<TopBarProps> = ({
   title,
-  showIcon = true,
-  theme = "light",
   actions,
-  breadcrumbs,
+  menuButton = false,
+  onMenuClick,
+  className = "",
 }) => {
   return (
-    <div
-      className={`flex items-center justify-between px-6 py-4 border-b ${
-        theme === "dark"
-          ? "bg-slate-900 border-slate-700"
-          : "bg-white border-gray-200"
-      }`}
-    >
-      <div className="flex items-center gap-4">
-        {breadcrumbs && (
-          <div className="flex items-center gap-2 text-sm text-gray-500">
-            {breadcrumbs.map((crumb, idx) => (
-              <React.Fragment key={idx}>
-                {idx > 0 && <span>/</span>}
-                {crumb.href ? (
-                  <a href={crumb.href} className="hover:text-gray-700">
-                    {crumb.label}
-                  </a>
-                ) : (
-                  <span>{crumb.label}</span>
-                )}
-              </React.Fragment>
-            ))}
-          </div>
+    <header className={`topbar ${className}`}>
+      <div className="topbar-left">
+        {menuButton && (
+          <button className="topbar-menu-btn" onClick={onMenuClick}>
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path d="M3 12h18M3 6h18M3 18h18" />
+            </svg>
+          </button>
         )}
-        {title && <h1 className="text-xl font-semibold">{title}</h1>}
+        {title && <h1 className="topbar-title">{title}</h1>}
       </div>
-      {actions && <div className="flex items-center gap-2">{actions}</div>}
-    </div>
+      {actions && <div className="topbar-right">{actions}</div>}
+    </header>
   );
 };

@@ -3,103 +3,129 @@ import React, { useState } from "react";
 type CalendarView = "month" | "week" | "day";
 
 const CalendarSidebar: React.FC = () => (
-  <div className="w-[280px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0">
-    <div className="px-6 py-5 border-b border-white/10">
-      <div className="flex items-center gap-1">
-        <span className="text-xl font-bold text-white">Doctor Project</span>
-        <span className="w-2 h-2 rounded-full bg-purple-500 mb-3"></span>
-      </div>
+  <aside className="sidebar">
+    <div className="sidebar-brand">
+      <span className="sidebar-brand-name">Doctor Project</span>
+      <span className="sidebar-brand-dot"></span>
     </div>
 
-    <div className="flex-1 overflow-y-auto px-4 py-4 space-y-6">
-      <div>
-        <p className="text-xs text-gray-500 uppercase tracking-widest px-2 mb-2">
-          Navigation
-        </p>
-        <nav className="space-y-1">
-          {[
-            { label: "Dashboard", badge: 15, badgeColor: "bg-purple-600" },
-            { label: "Projects" },
-            { label: "Tasks" },
-            { label: "Kanban Desk", badge: 28, badgeColor: "bg-purple-600" },
-            { label: "File Manager", badge: 14, badgeColor: "bg-green-500" },
-            { label: "Calendar", active: true },
-            { label: "Inbox" },
-          ].map((item) => (
-            <button
-              key={item.label}
-              className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-colors ${
-                item.active
-                  ? "bg-white/10 text-white font-medium"
-                  : "text-gray-400 hover:text-white hover:bg-white/5"
-              }`}
-            >
-              <span>{item.label}</span>
-              {item.badge && (
-                <span
-                  className={`text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`}
-                >
-                  {item.badge}
-                </span>
-              )}
-            </button>
-          ))}
-        </nav>
-      </div>
-
-      <div>
-        <p className="text-xs text-gray-500 uppercase tracking-widest px-2 mb-2">
-          Team Members
-        </p>
-        <div className="space-y-1">
-          {[
-            { name: "Alexandre Paiva", color: "bg-orange-400" },
-            { name: "Thanawan Chadee", color: "bg-purple-500" },
-            { name: "Justine Robinson", color: "bg-blue-400" },
-          ].map((member) => (
-            <button
-              key={member.name}
-              className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5"
-            >
+    <nav className="sidebar-nav">
+      <div className="sidebar-nav-section">
+        <div className="sidebar-nav-label">Navigation</div>
+        {[
+          { label: "Dashboard", badge: 15, badgeType: "purple" as const },
+          { label: "Projects" },
+          { label: "Tasks" },
+          { label: "Kanban Desk", badge: 28, badgeType: "purple" as const },
+          { label: "File Manager", badge: 14, badgeType: "green" as const },
+          { label: "Calendar", active: true },
+          { label: "Inbox" },
+        ].map((item) => (
+          <a
+            key={item.label}
+            className={`sidebar-nav-item${item.active ? " active" : ""}`}
+          >
+            <span className="sidebar-nav-text">{item.label}</span>
+            {item.badge && (
               <span
-                className={`w-7 h-7 rounded-full ${member.color} flex-shrink-0`}
-              ></span>
-              <span>{member.name}</span>
-            </button>
-          ))}
-          <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5">
-            <span className="text-sm">∨ See More</span>
-          </button>
-        </div>
+                className={`sidebar-badge sidebar-badge--${item.badgeType}`}
+              >
+                {item.badge}
+              </span>
+            )}
+          </a>
+        ))}
       </div>
-    </div>
 
-    <div className="px-4 py-4 border-t border-white/10">
-      <div className="flex items-center justify-between px-2">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-500"></div>
-          <span className="text-sm text-gray-200">Henry Richardson</span>
-        </div>
-        <button className="text-gray-500 hover:text-white">···</button>
+      <div className="sidebar-team">
+        <div className="sidebar-team-label">Team Members</div>
+        {[
+          { name: "Alexandre Paiva", bg: "var(--drp-orange)" },
+          { name: "Thanawan Chadee", bg: "var(--drp-purple)" },
+          { name: "Justine Robinson", bg: "var(--drp-info)" },
+        ].map((member) => (
+          <div key={member.name} className="sidebar-team-member">
+            <div className="sidebar-avatar" style={{ background: member.bg }}>
+              {member.name[0]}
+            </div>
+            <span className="sidebar-team-name">{member.name}</span>
+          </div>
+        ))}
+        <div className="sidebar-see-more">See More</div>
       </div>
+    </nav>
+
+    <div className="sidebar-user">
+      <div
+        className="sidebar-avatar"
+        style={{ background: "var(--drp-orange)" }}
+      >
+        H
+      </div>
+      <div className="sidebar-user-info">
+        <div className="sidebar-user-name">Henry Richardson</div>
+      </div>
+      <button className="sidebar-user-menu-btn">...</button>
     </div>
-  </div>
+  </aside>
 );
 
 const TopBar: React.FC = () => (
-  <div className="flex items-center justify-between px-8 py-4 border-b bg-[#f5efe6] border-black/10">
-    <h1 className="text-3xl font-bold text-black">Calendar</h1>
-    <div className="flex items-center gap-4">
-      <button className="text-gray-500 text-lg">···</button>
-      <button className="text-gray-500 text-lg">···</button>
-      <button className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-black/5">
-        ··· Apps
+  <header className="topbar">
+    <div className="topbar-left">
+      <h1 className="topbar-title">Calendar</h1>
+    </div>
+    <div className="topbar-right">
+      <button className="topbar-icon-btn">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
       </button>
-      <button className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg">
-        ··· Create new
+      <button className="topbar-icon-btn">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+          <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+        </svg>
+      </button>
+      <button className="topbar-apps-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <rect x="2" y="2" width="9" height="9" />
+          <rect x="13" y="2" width="9" height="9" />
+          <rect x="2" y="13" width="9" height="9" />
+          <rect x="13" y="13" width="9" height="9" />
+        </svg>
+        <span>Apps</span>
+      </button>
+      <button className="topbar-create-btn">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+        >
+          <path d="M12 5v14M5 12h14" />
+        </svg>
+        <span>Create new</span>
       </button>
     </div>
-  </div>
+  </header>
 );
 
 const CalendarNav: React.FC<{
@@ -107,34 +133,35 @@ const CalendarNav: React.FC<{
   onViewChange: (v: CalendarView) => void;
   dateLabel: string;
 }> = ({ view, onViewChange, dateLabel }) => (
-  <div className="flex items-center justify-between px-6 py-4">
-    <div className="flex items-center gap-3">
-      <div className="flex border border-black/15 rounded-lg overflow-hidden">
-        <button className="px-3 py-1.5 text-sm hover:bg-black/5">‹</button>
-        <button className="px-3 py-1.5 text-sm border-l border-black/15 hover:bg-black/5">
-          ›
+  <div
+    className="drp-flex drp-items-center drp-justify-between"
+    style={{ padding: "var(--drp-space-4) var(--drp-space-6)" }}
+  >
+    <div className="drp-flex drp-items-center drp-gap-3">
+      <div className="drp-btn-group">
+        <button className="drp-btn drp-btn--sm drp-btn--outline">
+          &#8249;
+        </button>
+        <button className="drp-btn drp-btn--sm drp-btn--outline">
+          &#8250;
         </button>
       </div>
-      <span className="text-lg font-semibold text-black">{dateLabel}</span>
+      <span className="drp-h5">{dateLabel}</span>
     </div>
-    <div className="flex items-center gap-3">
-      <div className="flex items-center">
+    <div className="drp-flex drp-items-center drp-gap-3">
+      <div className="drp-tabs">
         {(["Month", "Week", "Day"] as const).map((v) => (
           <button
             key={v}
             onClick={() => onViewChange(v.toLowerCase() as CalendarView)}
-            className={`px-4 py-1.5 text-sm font-medium transition-colors ${
-              view === v.toLowerCase()
-                ? "bg-black text-white rounded-lg"
-                : "text-gray-600 hover:text-black"
-            }`}
+            className={`drp-tab${view === v.toLowerCase() ? " drp-tab--active" : ""}`}
           >
             {v}
           </button>
         ))}
       </div>
-      <button className="flex items-center gap-2 px-4 py-1.5 border border-black/15 rounded-lg text-sm text-gray-700 hover:bg-black/5">
-        ≡ Sort: A-Z
+      <button className="drp-btn drp-btn--sm drp-btn--outline">
+        Sort: A-Z
       </button>
     </div>
   </div>
@@ -142,104 +169,177 @@ const CalendarNav: React.FC<{
 
 type EventColor = "green" | "purple" | "yellow";
 
+const eventColorMap: Record<EventColor, { tag: string; dot: string }> = {
+  green: { tag: "drp-tag--mint", dot: "var(--drp-mint)" },
+  purple: { tag: "drp-tag--purple", dot: "var(--drp-purple)" },
+  yellow: { tag: "drp-tag--yellow", dot: "var(--drp-yellow)" },
+};
+
 const EventPill: React.FC<{
   label: string;
   color: EventColor;
   small?: boolean;
-}> = ({ label, color, small }) => {
-  const cls = {
-    green: "bg-green-50 text-green-700",
-    purple: "bg-purple-50 text-purple-700",
-    yellow: "bg-yellow-50 text-yellow-700",
-  }[color];
-  const dot = {
-    green: "bg-green-400",
-    purple: "bg-purple-400",
-    yellow: "bg-yellow-400",
-  }[color];
-  return (
-    <div
-      className={`flex items-center gap-1 px-2 py-0.5 rounded text-xs font-medium ${cls} ${small ? "max-w-[100px]" : ""}`}
-    >
-      <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${dot}`}></span>
-      <span className="truncate">{label}</span>
-    </div>
-  );
-};
+}> = ({ label, color, small }) => (
+  <span
+    className={`drp-tag drp-tag--dot ${eventColorMap[color].tag}`}
+    style={
+      small
+        ? { maxWidth: 100, fontSize: "var(--drp-text-xs)", padding: "2px 8px" }
+        : undefined
+    }
+  >
+    <span className="drp-truncate">{label}</span>
+  </span>
+);
 
 const EventModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
   <div
-    className="fixed inset-0 bg-black/20 flex items-center justify-center z-50"
+    style={{
+      position: "fixed",
+      inset: 0,
+      background: "rgba(0,0,0,0.2)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      zIndex: "var(--drp-z-modal)",
+    }}
     onClick={onClose}
   >
     <div
-      className="bg-white rounded-2xl shadow-2xl w-[480px] p-6"
+      className="drp-card"
+      style={{
+        width: 480,
+        padding: "var(--drp-space-6)",
+        boxShadow: "var(--drp-shadow-xl)",
+      }}
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="flex items-center justify-between mb-1">
-        <span className="text-xs font-semibold bg-black text-white px-2 py-0.5 rounded">
-          7:30 am
-        </span>
-        <button className="text-gray-400 hover:text-gray-600 text-lg">
-          ···
-        </button>
+      <div
+        className="drp-flex drp-items-center drp-justify-between"
+        style={{ marginBottom: "var(--drp-space-1)" }}
+      >
+        <span className="drp-tag drp-tag--filled">7:30 am</span>
+        <button className="drp-btn drp-btn--ghost drp-btn--sm">...</button>
       </div>
-      <h2 className="text-2xl font-bold text-black mt-3 mb-1">
+      <h2
+        className="drp-h3"
+        style={{
+          marginTop: "var(--drp-space-3)",
+          marginBottom: "var(--drp-space-1)",
+        }}
+      >
         Design a new dashboard for client
       </h2>
-      <p className="text-sm text-gray-500 mb-5">Task created on 7 Jun 2022</p>
+      <p
+        className="drp-text drp-text--sm drp-text--muted"
+        style={{ marginBottom: "var(--drp-space-5)" }}
+      >
+        Task created on 7 Jun 2022
+      </p>
 
-      <div className="flex gap-8 mb-5">
+      <div
+        className="drp-flex drp-gap-6"
+        style={{ marginBottom: "var(--drp-space-5)" }}
+      >
         <div>
-          <p className="text-xs text-gray-500 mb-2">Assigned to</p>
-          <div className="flex items-center">
+          <p
+            className="drp-label"
+            style={{ marginBottom: "var(--drp-space-2)" }}
+          >
+            Assigned to
+          </p>
+          <div className="drp-flex drp-items-center">
             {[
-              "bg-orange-400",
-              "bg-purple-500",
-              "bg-blue-400",
-              "bg-green-400",
+              "var(--drp-orange)",
+              "var(--drp-purple)",
+              "var(--drp-info)",
+              "var(--drp-mint)",
             ].map((c, i) => (
-              <span
+              <div
                 key={i}
-                className={`w-7 h-7 rounded-full ${c} border-2 border-white -ml-1 first:ml-0`}
-              ></span>
+                className="sidebar-avatar"
+                style={{
+                  background: c,
+                  width: 28,
+                  height: 28,
+                  border: "2px solid var(--drp-white)",
+                  marginLeft: i === 0 ? 0 : -4,
+                }}
+              />
             ))}
-            <span className="w-7 h-7 rounded-full border-2 border-dashed border-gray-300 flex items-center justify-center text-gray-400 text-xs -ml-1">
+            <div
+              style={{
+                width: 28,
+                height: 28,
+                border: "var(--drp-border-dashed)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "var(--drp-grey)",
+                fontSize: "var(--drp-text-xs)",
+                marginLeft: -4,
+              }}
+            >
               +
-            </span>
+            </div>
           </div>
         </div>
         <div>
-          <p className="text-xs text-gray-500 mb-2">Due to</p>
-          <div className="flex items-center gap-2">
-            <span className="px-3 py-1 border border-black/15 rounded-lg text-sm font-medium">
-              15 Aug 2023
-            </span>
-            <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-lg text-sm font-medium">
+          <p
+            className="drp-label"
+            style={{ marginBottom: "var(--drp-space-2)" }}
+          >
+            Due to
+          </p>
+          <div className="drp-flex drp-items-center drp-gap-2">
+            <span className="drp-tag">15 Aug 2023</span>
+            <span className="drp-tag drp-tag--filled drp-tag--purple">
               Business
             </span>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-black/10 pt-4 mb-4">
-        <h3 className="text-sm font-semibold text-black mb-2">Description</h3>
-        <p className="text-sm text-gray-600 leading-relaxed">
+      <div
+        style={{
+          borderTop: "var(--drp-border-thin)",
+          paddingTop: "var(--drp-space-4)",
+          marginBottom: "var(--drp-space-4)",
+        }}
+      >
+        <h3 className="drp-h6" style={{ marginBottom: "var(--drp-space-2)" }}>
+          Description
+        </h3>
+        <p
+          className="drp-text drp-text--sm drp-text--muted"
+          style={{ lineHeight: "var(--drp-leading-loose)" }}
+        >
           When I first got into the online advertising business, I was looking
           for the magical combination that would put my website
         </p>
       </div>
 
-      <div className="flex items-center gap-2 border border-black/15 rounded-xl px-3 py-2">
+      <div
+        className="drp-flex drp-items-center drp-gap-2"
+        style={{
+          border: "var(--drp-border)",
+          padding: "var(--drp-space-2) var(--drp-space-3)",
+        }}
+      >
         <input
-          className="flex-1 text-sm text-gray-400 outline-none bg-transparent"
+          className="drp-input"
+          style={{
+            flex: 1,
+            border: "none",
+            boxShadow: "none",
+            padding: "4px 0",
+          }}
           placeholder="Type to add your comment"
           readOnly
         />
-        <button className="text-gray-400 text-lg">☺</button>
-        <button className="text-gray-400 text-lg">+</button>
-        <button className="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center text-white">
-          ›
+        <button className="drp-btn drp-btn--ghost drp-btn--sm">+</button>
+        <button className="drp-btn drp-btn--primary drp-btn--icon drp-btn--sm">
+          &#8250;
         </button>
       </div>
     </div>
@@ -331,13 +431,27 @@ const MonthView: React.FC<{ showModal: boolean; onToggle: () => void }> = ({
   showModal,
   onToggle,
 }) => (
-  <div className="flex-1 overflow-auto px-6 pb-6 relative">
-    <div className="border border-black/10 rounded-xl overflow-hidden bg-white">
-      <div className="grid grid-cols-7 border-b border-black/10">
+  <div
+    style={{
+      flex: 1,
+      overflow: "auto",
+      padding: "0 var(--drp-space-6) var(--drp-space-6)",
+      position: "relative",
+    }}
+  >
+    <div className="drp-card" style={{ padding: 0, overflow: "hidden" }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(7, 1fr)",
+          borderBottom: "var(--drp-border-thin)",
+        }}
+      >
         {["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d) => (
           <div
             key={d}
-            className="py-2 text-center text-xs font-medium text-gray-500"
+            className="drp-label drp-text-center"
+            style={{ padding: "var(--drp-space-2)" }}
           >
             {d}
           </div>
@@ -346,20 +460,37 @@ const MonthView: React.FC<{ showModal: boolean; onToggle: () => void }> = ({
       {weeks.map((week, wi) => (
         <div
           key={wi}
-          className="grid grid-cols-7 border-b last:border-b-0 border-black/10"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(7, 1fr)",
+            borderBottom:
+              wi < weeks.length - 1 ? "var(--drp-border-thin)" : "none",
+          }}
         >
           {week.map((cell, ci) => (
             <div
               key={ci}
               onClick={cell.day ? onToggle : undefined}
-              className={`min-h-[90px] border-r last:border-r-0 border-black/10 p-2 ${cell.day ? "cursor-pointer hover:bg-gray-50" : "bg-gray-50/30"}`}
+              style={{
+                minHeight: 90,
+                borderRight: ci < 6 ? "var(--drp-border-thin)" : "none",
+                padding: "var(--drp-space-2)",
+                cursor: cell.day ? "pointer" : "default",
+                background: cell.day ? "var(--drp-white)" : "var(--drp-cream)",
+              }}
             >
               {cell.day && (
                 <>
-                  <div className="text-xs font-medium text-gray-600 mb-1">
+                  <div
+                    className="drp-text drp-text--sm drp-text--bold"
+                    style={{
+                      marginBottom: "var(--drp-space-1)",
+                      color: "var(--drp-grey)",
+                    }}
+                  >
                     {cell.day}
                   </div>
-                  <div className="space-y-0.5">
+                  <div className="drp-flex-col drp-gap-1">
                     {cell.events.map((e, ei) => (
                       <EventPill
                         key={ei}
@@ -404,10 +535,28 @@ const dayEvents = [
   { time: "7:30 am", label: "Meeting", color: "purple" as EventColor },
 ];
 
+const eventBgMap: Record<EventColor, string> = {
+  green: "rgba(152, 233, 171, 0.2)",
+  purple: "var(--drp-purple-20)",
+  yellow: "rgba(250, 232, 164, 0.2)",
+};
+
 const DayView: React.FC = () => (
-  <div className="flex-1 overflow-auto px-6 pb-6">
-    <div className="border border-black/10 rounded-xl overflow-hidden bg-white">
-      <div className="py-3 px-4 border-b border-black/10 text-sm font-semibold text-gray-700 text-center">
+  <div
+    style={{
+      flex: 1,
+      overflow: "auto",
+      padding: "0 var(--drp-space-6) var(--drp-space-6)",
+    }}
+  >
+    <div className="drp-card" style={{ padding: 0, overflow: "hidden" }}>
+      <div
+        className="drp-text drp-text--bold drp-text-center"
+        style={{
+          padding: "var(--drp-space-3) var(--drp-space-4)",
+          borderBottom: "var(--drp-border-thin)",
+        }}
+      >
         Monday, 3
       </div>
       {timeSlots.map((slot, i) => {
@@ -415,34 +564,52 @@ const DayView: React.FC = () => (
         return (
           <div
             key={slot}
-            className="grid border-b last:border-b-0 border-black/10"
-            style={{ gridTemplateColumns: "64px 1fr" }}
+            style={{
+              display: "grid",
+              gridTemplateColumns: "64px 1fr",
+              borderBottom:
+                i < timeSlots.length - 1 ? "var(--drp-border-thin)" : "none",
+            }}
           >
-            <div className="py-3 px-3 text-xs text-gray-500 text-right border-r border-black/10 self-center">
+            <div
+              className="drp-text drp-text--sm drp-text--muted drp-text-right"
+              style={{
+                padding: "var(--drp-space-3)",
+                borderRight: "var(--drp-border-thin)",
+                alignSelf: "center",
+              }}
+            >
               {slot}
             </div>
-            <div className="py-2 px-3 min-h-[44px] flex items-center">
+            <div
+              style={{
+                padding: "var(--drp-space-2) var(--drp-space-3)",
+                minHeight: 44,
+                display: "flex",
+                alignItems: "center",
+              }}
+            >
               {ev && (
                 <div
-                  className={`flex items-center gap-2 px-3 py-1.5 rounded-lg w-full ${
-                    ev.color === "green"
-                      ? "bg-green-50"
-                      : ev.color === "purple"
-                        ? "bg-purple-50"
-                        : "bg-yellow-50"
-                  }`}
+                  className="drp-flex drp-items-center drp-gap-2"
+                  style={{
+                    padding: "6px var(--drp-space-3)",
+                    background: eventBgMap[ev.color],
+                    width: "100%",
+                  }}
                 >
                   <span
-                    className={`w-2 h-2 rounded-full ${
-                      ev.color === "green"
-                        ? "bg-green-400"
-                        : ev.color === "purple"
-                          ? "bg-purple-400"
-                          : "bg-yellow-400"
-                    }`}
+                    className="drp-dot"
+                    style={{
+                      background: eventColorMap[ev.color].dot,
+                      width: 8,
+                      height: 8,
+                    }}
                   ></span>
-                  <span className="text-xs text-gray-500">{ev.time}</span>
-                  <span className="text-sm font-semibold text-gray-800">
+                  <span className="drp-text drp-text--sm drp-text--muted">
+                    {ev.time}
+                  </span>
+                  <span className="drp-text drp-text--sm drp-text--bold">
                     {ev.label}
                   </span>
                 </div>
@@ -508,17 +675,30 @@ const weekCols = [
 ];
 
 const WeekView: React.FC = () => (
-  <div className="flex-1 overflow-auto px-6 pb-6">
-    <div className="border border-black/10 rounded-xl overflow-hidden bg-white">
+  <div
+    style={{
+      flex: 1,
+      overflow: "auto",
+      padding: "0 var(--drp-space-6) var(--drp-space-6)",
+    }}
+  >
+    <div className="drp-card" style={{ padding: 0, overflow: "hidden" }}>
       <div
-        className="grid border-b border-black/10"
-        style={{ gridTemplateColumns: "64px repeat(7, 1fr)" }}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "64px repeat(7, 1fr)",
+          borderBottom: "var(--drp-border-thin)",
+        }}
       >
-        <div className="border-r border-black/10"></div>
+        <div style={{ borderRight: "var(--drp-border-thin)" }}></div>
         {weekCols.map((d) => (
           <div
             key={d.label}
-            className="py-2 text-center text-xs font-medium text-gray-500 border-r last:border-r-0 border-black/10"
+            className="drp-label drp-text-center"
+            style={{
+              padding: "var(--drp-space-2)",
+              borderRight: "var(--drp-border-thin)",
+            }}
           >
             {d.label}
           </div>
@@ -527,10 +707,20 @@ const WeekView: React.FC = () => (
       {timeSlots.map((slot, si) => (
         <div
           key={slot}
-          className="grid border-b last:border-b-0 border-black/10"
-          style={{ gridTemplateColumns: "64px repeat(7, 1fr)" }}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "64px repeat(7, 1fr)",
+            borderBottom:
+              si < timeSlots.length - 1 ? "var(--drp-border-thin)" : "none",
+          }}
         >
-          <div className="py-3 px-3 text-xs text-gray-500 text-right border-r border-black/10">
+          <div
+            className="drp-text drp-text--sm drp-text--muted drp-text-right"
+            style={{
+              padding: "var(--drp-space-3)",
+              borderRight: "var(--drp-border-thin)",
+            }}
+          >
             {slot}
           </div>
           {weekCols.map((day, di) => {
@@ -540,7 +730,14 @@ const WeekView: React.FC = () => (
             return (
               <div
                 key={di}
-                className="py-1 px-1 border-r last:border-r-0 border-black/10 min-h-[44px] flex items-start pt-2"
+                style={{
+                  padding: "var(--drp-space-1)",
+                  borderRight: di < 6 ? "var(--drp-border-thin)" : "none",
+                  minHeight: 44,
+                  display: "flex",
+                  alignItems: "flex-start",
+                  paddingTop: "var(--drp-space-2)",
+                }}
               >
                 {ev && <EventPill label={ev.label} color={ev.color} small />}
               </div>
@@ -552,21 +749,35 @@ const WeekView: React.FC = () => (
   </div>
 );
 
-const Footer: React.FC = () => (
-  <div className="flex items-center justify-between px-8 py-3 border-t bg-[#f5efe6] border-black/10 text-sm text-gray-500">
-    <div className="flex items-center gap-6">
-      <button className="hover:opacity-80">··· English</button>
-      <button className="hover:opacity-80">Privacy Policy</button>
-      <button className="hover:opacity-80">License</button>
-      <button className="hover:opacity-80">API</button>
+const FooterBar: React.FC = () => (
+  <footer className="footer-bar">
+    <div className="footer-links">
+      <span className="footer-link">English</span>
+      <span className="footer-link">Privacy Policy</span>
+      <span className="footer-link">License</span>
+      <span className="footer-link">API</span>
     </div>
-    <div className="flex items-center gap-2">
-      <button className="px-2 py-1 rounded bg-purple-600 text-white text-xs">
-        ···
+    <div className="footer-right">
+      <button className="footer-icon-btn footer-icon-btn--accent">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3a9 9 0 1 0 9 9H12z" />
+        </svg>
       </button>
-      <button className="px-2 py-1 rounded bg-black/10 text-xs">···</button>
+      <button className="footer-icon-btn">
+        <svg
+          width="13"
+          height="13"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        </svg>
+      </button>
     </div>
-  </div>
+  </footer>
 );
 
 export interface CalendarEventProps {
@@ -586,9 +797,9 @@ export const CalendarEvent: React.FC<CalendarEventProps> = ({
   };
 
   return (
-    <div className="flex h-screen bg-[#f5efe6]">
+    <div className="app-layout">
       <CalendarSidebar />
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="main-content">
         <TopBar />
         <CalendarNav
           view={view}
@@ -606,7 +817,7 @@ export const CalendarEvent: React.FC<CalendarEventProps> = ({
         )}
         {view === "day" && <DayView />}
         {view === "week" && <WeekView />}
-        <Footer />
+        <FooterBar />
       </div>
     </div>
   );

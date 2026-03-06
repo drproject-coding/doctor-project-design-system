@@ -3,7 +3,6 @@
    @font-face declarations + heading/text utility classes.
    ============================================================ */
 
-
 /* ──────────────────────────────────────────────
    FONT FACES
    Visby (primary brand font) + Roboto Flex (fallback)
@@ -11,47 +10,46 @@
    ────────────────────────────────────────────── */
 
 @font-face {
-  font-family: 'Roboto Flex';
-  src: url('../fonts/RobotoFlex-VariableFont.ttf') format('truetype');
+  font-family: "Roboto Flex";
+  src: url("../fonts/RobotoFlex-VariableFont.ttf") format("truetype");
   font-weight: 100 1000;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Visby';
-  src: url('../fonts/VisbyRegular.otf') format('opentype');
+  font-family: "Visby";
+  src: url("../fonts/VisbyRegular.otf") format("opentype");
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Visby';
-  src: url('../fonts/VisbyMedium.otf') format('opentype');
+  font-family: "Visby";
+  src: url("../fonts/VisbyMedium.otf") format("opentype");
   font-weight: 500;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Visby';
-  src: url('../fonts/VisbySemibold.otf') format('opentype');
+  font-family: "Visby";
+  src: url("../fonts/VisbySemibold.otf") format("opentype");
   font-weight: 600;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Visby';
-  src: url('../fonts/VisbyBold.otf') format('opentype');
+  font-family: "Visby";
+  src: url("../fonts/VisbyBold.otf") format("opentype");
   font-weight: 700;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Visby';
-  src: url('../fonts/VisbyHeavy.otf') format('opentype');
+  font-family: "Visby";
+  src: url("../fonts/VisbyHeavy.otf") format("opentype");
   font-weight: 800;
   font-display: swap;
 }
-
 
 /* ──────────────────────────────────────────────
    HEADINGS
@@ -73,12 +71,24 @@
   margin: 0;
 }
 
-.drp-h1 { font-size: var(--drp-text-h1); }
-.drp-h2 { font-size: var(--drp-text-h2); }
-.drp-h3 { font-size: var(--drp-text-h3); }
-.drp-h4 { font-size: var(--drp-text-h4); }
-.drp-h5 { font-size: var(--drp-text-h5); }
-.drp-h6 { font-size: var(--drp-text-h6); }
+.drp-h1 {
+  font-size: var(--drp-text-h1);
+}
+.drp-h2 {
+  font-size: var(--drp-text-h2);
+}
+.drp-h3 {
+  font-size: var(--drp-text-h3);
+}
+.drp-h4 {
+  font-size: var(--drp-text-h4);
+}
+.drp-h5 {
+  font-size: var(--drp-text-h5);
+}
+.drp-h6 {
+  font-size: var(--drp-text-h6);
+}
 
 /* Inverted headings (white on black highlight) */
 .drp-h1--inv,
@@ -91,7 +101,7 @@
   font-weight: var(--drp-weight-bold);
   line-height: var(--drp-leading-tight);
   letter-spacing: var(--drp-tracking-tight);
-  color: #FFFFFF;
+  color: #ffffff;
   background: #000000;
   display: inline;
   padding: 0 4px;
@@ -100,13 +110,24 @@
   -webkit-box-decoration-break: clone;
 }
 
-.drp-h1--inv { font-size: var(--drp-text-h1); }
-.drp-h2--inv { font-size: var(--drp-text-h2); }
-.drp-h3--inv { font-size: var(--drp-text-h3); }
-.drp-h4--inv { font-size: var(--drp-text-h4); }
-.drp-h5--inv { font-size: var(--drp-text-h5); }
-.drp-h6--inv { font-size: var(--drp-text-h6); }
-
+.drp-h1--inv {
+  font-size: var(--drp-text-h1);
+}
+.drp-h2--inv {
+  font-size: var(--drp-text-h2);
+}
+.drp-h3--inv {
+  font-size: var(--drp-text-h3);
+}
+.drp-h4--inv {
+  font-size: var(--drp-text-h4);
+}
+.drp-h5--inv {
+  font-size: var(--drp-text-h5);
+}
+.drp-h6--inv {
+  font-size: var(--drp-text-h6);
+}
 
 /* ──────────────────────────────────────────────
    DISPLAY HEADINGS
@@ -144,7 +165,6 @@
   margin: 0;
 }
 
-
 /* ──────────────────────────────────────────────
    TEXT LABELS
    For buttons, form fields, captions.
@@ -160,25 +180,52 @@
   color: var(--drp-black);
 }
 
-.drp-text--sm  { font-size: var(--drp-text-sm); }
-.drp-text--lg  { font-size: var(--drp-text-lg); }
+.drp-text--xs {
+  font-size: var(--drp-text-xs, 11px);
+}
+.drp-text--sm {
+  font-size: var(--drp-text-sm);
+}
+.drp-text--lg {
+  font-size: var(--drp-text-lg);
+}
 
-.drp-text--medium   { font-weight: var(--drp-weight-medium); }
-.drp-text--semibold  { font-weight: var(--drp-weight-semibold); }
-.drp-text--bold      { font-weight: var(--drp-weight-bold); }
+.drp-text--medium {
+  font-weight: var(--drp-weight-medium);
+}
+.drp-text--semibold {
+  font-weight: var(--drp-weight-semibold);
+}
+.drp-text--bold {
+  font-weight: var(--drp-weight-bold);
+}
 
 /* Text colors */
-.drp-text--muted     { color: var(--drp-grey); }
-.drp-text--purple    { color: var(--drp-purple); }
-.drp-text--mint      { color: var(--drp-mint); }
-.drp-text--pink      { color: var(--drp-pink); }
-.drp-text--yellow    { color: var(--drp-yellow); }
-.drp-text--error     { color: var(--drp-error-dark); }
-.drp-text--success   { color: var(--drp-success-dark); }
+.drp-text--muted {
+  color: var(--drp-grey);
+}
+.drp-text--purple {
+  color: var(--drp-purple);
+}
+.drp-text--mint {
+  color: var(--drp-mint);
+}
+.drp-text--pink {
+  color: var(--drp-pink);
+}
+.drp-text--yellow {
+  color: var(--drp-yellow);
+}
+.drp-text--error {
+  color: var(--drp-error-dark);
+}
+.drp-text--success {
+  color: var(--drp-success-dark);
+}
 
 /* Inverted text (white on black) */
 .drp-text--inv {
-  color: #FFFFFF;
+  color: #ffffff;
   background: #000000;
   display: inline;
   padding: 0 3px;
@@ -186,12 +233,11 @@
 
 /* Inverted text 50% opacity */
 .drp-text--inv-50 {
-  color: #FFFFFF;
-  background: rgba(0, 0, 0, 0.50);
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.5);
   display: inline;
   padding: 0 3px;
 }
-
 
 /* ──────────────────────────────────────────────
    LABEL
@@ -209,14 +255,15 @@
   margin: 0;
 }
 
-.drp-label--purple { color: var(--drp-purple); }
+.drp-label--purple {
+  color: var(--drp-purple);
+}
 .drp-label--inv {
-  color: #FFFFFF;
+  color: #ffffff;
   background: #000000;
   display: inline;
   padding: 1px 4px;
 }
-
 
 /* ──────────────────────────────────────────────
    BODY TEXT SIZES
@@ -242,7 +289,6 @@
   line-height: var(--drp-leading-normal);
   color: var(--drp-black);
 }
-
 
 /* ──────────────────────────────────────────────
    CAPTION

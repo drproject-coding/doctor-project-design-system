@@ -15,69 +15,32 @@ export const SignIn: React.FC = () => {
   return (
     <AuthLayout>
       <div>
-        <h1
-          style={{
-            fontSize: "36px",
-            fontWeight: 800,
-            color: "#121212",
-            lineHeight: 1.1,
-            marginBottom: "8px",
-            letterSpacing: "-0.5px",
-          }}
-        >
+        <h1 className="drp-h2" style={{ marginBottom: "var(--drp-space-2)" }}>
           Sign in
         </h1>
         <p
-          style={{
-            fontSize: "13px",
-            color: "#888",
-            marginBottom: "32px",
-          }}
+          className="drp-text drp-text--sm drp-text--muted"
+          style={{ marginBottom: "var(--drp-space-8)" }}
         >
           Enter your account details or use QR code
         </p>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="drp-form-stack">
           {/* Email field */}
-          <div style={{ marginBottom: "16px" }}>
-            <label
-              style={{
-                display: "block",
-                fontSize: "12px",
-                fontWeight: 600,
-                color: "#444",
-                marginBottom: "6px",
-              }}
-            >
-              Email
-            </label>
-            <div style={{ position: "relative" }}>
+          <div className="drp-field">
+            <label className="drp-field__label">Email</label>
+            <div className="drp-field--has-icon">
               <input
+                className="drp-input"
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="catherine.shaw@gmail.com"
-                style={{
-                  width: "100%",
-                  padding: "11px 40px 11px 14px",
-                  border: "1.5px solid #E0E0E0",
-                  borderRadius: "8px",
-                  fontSize: "13px",
-                  color: "#121212",
-                  background: "#fff",
-                  outline: "none",
-                  boxSizing: "border-box",
-                }}
+                style={{ width: "100%" }}
               />
               {/* Mail icon */}
               <svg
-                style={{
-                  position: "absolute",
-                  right: "12px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  color: "#888",
-                }}
+                className="drp-field__icon"
                 width="16"
                 height="16"
                 viewBox="0 0 24 24"
@@ -86,6 +49,7 @@ export const SignIn: React.FC = () => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                style={{ color: "var(--drp-grey)" }}
               >
                 <rect x="2" y="4" width="20" height="16" rx="2" />
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
@@ -94,35 +58,16 @@ export const SignIn: React.FC = () => {
           </div>
 
           {/* Password field */}
-          <div style={{ marginBottom: "16px" }}>
-            <label
-              style={{
-                display: "block",
-                fontSize: "12px",
-                fontWeight: 600,
-                color: "#444",
-                marginBottom: "6px",
-              }}
-            >
-              Password
-            </label>
-            <div style={{ position: "relative" }}>
+          <div className="drp-field">
+            <label className="drp-field__label">Password</label>
+            <div className="drp-field--has-icon">
               <input
+                className="drp-input"
                 type={showPassword ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
-                style={{
-                  width: "100%",
-                  padding: "11px 40px 11px 14px",
-                  border: "1.5px solid #E0E0E0",
-                  borderRadius: "8px",
-                  fontSize: "13px",
-                  color: "#121212",
-                  background: "#fff",
-                  outline: "none",
-                  boxSizing: "border-box",
-                }}
+                style={{ width: "100%" }}
               />
               <button
                 type="button"
@@ -130,13 +75,12 @@ export const SignIn: React.FC = () => {
                 style={{
                   position: "absolute",
                   right: "12px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
+                  bottom: "12px",
                   background: "none",
                   border: "none",
                   cursor: "pointer",
                   padding: 0,
-                  color: "#888",
+                  color: "var(--drp-grey)",
                 }}
               >
                 {showPassword ? (
@@ -174,45 +118,19 @@ export const SignIn: React.FC = () => {
           </div>
 
           {/* Remember me + Recover password */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              marginBottom: "24px",
-            }}
-          >
-            <label
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "8px",
-                fontSize: "12px",
-                color: "#444",
-                cursor: "pointer",
-              }}
-            >
+          <div className="drp-flex drp-items-center drp-justify-between">
+            <label className="drp-checkbox">
               <input
                 type="checkbox"
                 checked={rememberMe}
                 onChange={(e) => setRememberMe(e.target.checked)}
-                style={{
-                  width: "15px",
-                  height: "15px",
-                  accentColor: "#631DED",
-                  cursor: "pointer",
-                }}
               />
               Remember me
             </label>
             <a
               href="#"
-              style={{
-                fontSize: "12px",
-                color: "#631DED",
-                textDecoration: "none",
-                fontWeight: 500,
-              }}
+              className="drp-text drp-text--sm drp-text--purple drp-text--medium"
+              style={{ textDecoration: "none" }}
             >
               Recover password
             </a>
@@ -221,55 +139,22 @@ export const SignIn: React.FC = () => {
           {/* Log in button */}
           <button
             type="submit"
-            style={{
-              width: "100%",
-              padding: "13px",
-              background: "#121212",
-              color: "#fff",
-              border: "none",
-              borderRadius: "8px",
-              fontSize: "14px",
-              fontWeight: 700,
-              cursor: "pointer",
-              marginBottom: "16px",
-              letterSpacing: "0.2px",
-            }}
+            className="drp-btn drp-btn--dark drp-btn--block"
           >
             Log in
           </button>
 
           {/* OR divider */}
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "12px",
-              marginBottom: "16px",
-            }}
-          >
-            <div style={{ flex: 1, height: "1px", background: "#E0E0E0" }} />
-            <span style={{ fontSize: "12px", color: "#888" }}>or</span>
-            <div style={{ flex: 1, height: "1px", background: "#E0E0E0" }} />
+          <div className="drp-flex drp-items-center drp-gap-3">
+            <div className="drp-divider" style={{ flex: 1, margin: 0 }} />
+            <span className="drp-text drp-text--sm drp-text--muted">or</span>
+            <div className="drp-divider" style={{ flex: 1, margin: 0 }} />
           </div>
 
           {/* Log in with QR code button */}
           <button
             type="button"
-            style={{
-              width: "100%",
-              padding: "12px",
-              background: "transparent",
-              color: "#121212",
-              border: "1.5px solid #E0E0E0",
-              borderRadius: "8px",
-              fontSize: "13px",
-              fontWeight: 600,
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "8px",
-            }}
+            className="drp-btn drp-btn--outline drp-btn--block"
           >
             <svg
               width="16"
@@ -296,21 +181,14 @@ export const SignIn: React.FC = () => {
 
         {/* Sign up link */}
         <p
-          style={{
-            marginTop: "32px",
-            fontSize: "12px",
-            color: "#888",
-            textAlign: "center",
-          }}
+          className="drp-text drp-text--sm drp-text--muted drp-text-center"
+          style={{ marginTop: "var(--drp-space-8)" }}
         >
           You don't have an account?{" "}
           <a
             href="#"
-            style={{
-              color: "#631DED",
-              fontWeight: 600,
-              textDecoration: "none",
-            }}
+            className="drp-text--purple drp-text--semibold"
+            style={{ textDecoration: "none" }}
           >
             Create an account
           </a>

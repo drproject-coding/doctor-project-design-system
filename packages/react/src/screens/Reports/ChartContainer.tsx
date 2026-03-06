@@ -1,260 +1,247 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  ArcElement,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import { PolarArea, Radar } from "react-chartjs-2";
+
+ChartJS.register(
+  RadialLinearScale,
+  ArcElement,
+  PointElement,
+  LineElement,
+  Tooltip,
+  Legend,
+);
 
 // ─── Shared Layout Components ────────────────────────────────────────────────
 
 const DoctorProjectSidebar: React.FC<{ active?: string }> = ({
   active = "Analytics",
 }) => (
-  <div className="w-[220px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0">
+  <aside className="sidebar">
     {/* Logo */}
-    <div className="px-6 py-5">
-      <div className="flex items-center gap-1">
-        <span className="text-xl font-bold text-white">Doctor Project</span>
-        <span className="w-2 h-2 rounded-full bg-purple-500 mb-3 inline-block"></span>
-      </div>
+    <div className="sidebar-brand">
+      <span className="sidebar-brand-name">Doctor Project</span>
+      <span className="sidebar-brand-dot"></span>
     </div>
 
-    <div className="flex-1 overflow-y-auto px-4 py-2 space-y-5">
+    <nav className="sidebar-nav">
       {/* Navigation */}
-      <div>
-        <p className="text-xs text-gray-500 uppercase tracking-widest px-2 mb-2">
-          Navigation
-        </p>
-        <nav className="space-y-0.5">
-          {[
-            {
-              label: "Dashboard",
-              icon: (
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <rect
-                    x="3"
-                    y="3"
-                    width="7"
-                    height="7"
-                    rx="1"
-                    strokeWidth={2}
-                  />
-                  <rect
-                    x="14"
-                    y="3"
-                    width="7"
-                    height="7"
-                    rx="1"
-                    strokeWidth={2}
-                  />
-                  <rect
-                    x="3"
-                    y="14"
-                    width="7"
-                    height="7"
-                    rx="1"
-                    strokeWidth={2}
-                  />
-                  <rect
-                    x="14"
-                    y="14"
-                    width="7"
-                    height="7"
-                    rx="1"
-                    strokeWidth={2}
-                  />
-                </svg>
-              ),
-            },
-            {
-              label: "Products",
-              icon: (
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"
-                  />
-                </svg>
-              ),
-            },
-            {
-              label: "Contacts",
-              icon: (
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"
-                  />
-                </svg>
-              ),
-            },
-            {
-              label: "Customers",
-              badge: 15,
-              badgeColor: "bg-purple-600",
-              icon: (
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                  />
-                </svg>
-              ),
-            },
-            {
-              label: "Sales",
-              badge: 14,
-              badgeColor: "bg-green-500",
-              icon: (
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                  />
-                </svg>
-              ),
-            },
-            {
-              label: "Analytics",
-              icon: (
-                <svg
-                  className="w-4 h-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-                  />
-                </svg>
-              ),
-            },
-          ].map((item) => {
-            const isActive = item.label === active;
-            return (
-              <button
-                key={item.label}
-                className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-sm transition-colors ${
-                  isActive
-                    ? "bg-white/10 text-white font-medium"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
-                }`}
+      <div className="sidebar-nav-section">
+        <p className="sidebar-nav-label">Navigation</p>
+        {[
+          {
+            label: "Dashboard",
+            icon: (
+              <svg
+                className="sidebar-nav-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
               >
-                <div className="flex items-center gap-3">
-                  <span>{item.icon}</span>
-                  <span>{item.label}</span>
-                </div>
-                {item.badge && (
-                  <span
-                    className={`text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`}
-                  >
-                    {item.badge}
-                  </span>
-                )}
-              </button>
-            );
-          })}
-        </nav>
+                <rect x="3" y="3" width="7" height="7" rx="0" strokeWidth={2} />
+                <rect
+                  x="14"
+                  y="3"
+                  width="7"
+                  height="7"
+                  rx="0"
+                  strokeWidth={2}
+                />
+                <rect
+                  x="3"
+                  y="14"
+                  width="7"
+                  height="7"
+                  rx="0"
+                  strokeWidth={2}
+                />
+                <rect
+                  x="14"
+                  y="14"
+                  width="7"
+                  height="7"
+                  rx="0"
+                  strokeWidth={2}
+                />
+              </svg>
+            ),
+          },
+          {
+            label: "Products",
+            icon: (
+              <svg
+                className="sidebar-nav-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"
+                />
+              </svg>
+            ),
+          },
+          {
+            label: "Contacts",
+            icon: (
+              <svg
+                className="sidebar-nav-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0"
+                />
+              </svg>
+            ),
+          },
+          {
+            label: "Customers",
+            badge: 15,
+            badgeVariant: "purple" as const,
+            icon: (
+              <svg
+                className="sidebar-nav-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                />
+              </svg>
+            ),
+          },
+          {
+            label: "Sales",
+            badge: 14,
+            badgeVariant: "green" as const,
+            icon: (
+              <svg
+                className="sidebar-nav-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                />
+              </svg>
+            ),
+          },
+          {
+            label: "Analytics",
+            icon: (
+              <svg
+                className="sidebar-nav-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                />
+              </svg>
+            ),
+          },
+        ].map((item) => {
+          const isActive = item.label === active;
+          return (
+            <button
+              key={item.label}
+              className={`sidebar-nav-item${isActive ? " active" : ""}`}
+            >
+              <span className="sidebar-nav-icon">{item.icon}</span>
+              <span className="sidebar-nav-text">{item.label}</span>
+              {item.badge && (
+                <span
+                  className={`sidebar-badge sidebar-badge--${item.badgeVariant}`}
+                >
+                  {item.badge}
+                </span>
+              )}
+            </button>
+          );
+        })}
       </div>
 
       {/* Team Members */}
-      <div>
-        <p className="text-xs text-gray-500 uppercase tracking-widest px-2 mb-2">
-          Team Members
-        </p>
-        <div className="space-y-0.5">
-          {[
-            { name: "Alexandre Paiva", color: "bg-orange-500" },
-            { name: "Thanawan Chadee", color: "bg-rose-400" },
-            { name: "Justine Robinson", color: "bg-amber-500" },
-          ].map((member) => (
-            <button
-              key={member.name}
-              className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5"
-            >
-              <div
-                className={`w-6 h-6 rounded-full ${member.color} flex-shrink-0`}
-              ></div>
-              <span className="text-sm">{member.name}</span>
-            </button>
-          ))}
-          <button className="w-full flex items-center gap-2 px-3 py-2 text-sm text-gray-500 hover:text-gray-300">
-            <svg
-              className="w-3 h-3"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-            <span>See More</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    {/* User profile */}
-    <div className="px-4 py-4 border-t border-white/10">
-      <div className="flex items-center justify-between px-2">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-500"></div>
-          <span className="text-sm text-gray-200">Henry Richardson</span>
-        </div>
-        <button className="text-gray-500 hover:text-white text-lg leading-none">
-          ···
+      <div className="sidebar-team">
+        <p className="sidebar-team-label">Team Members</p>
+        {[
+          { name: "Alexandre Paiva", color: "#FF6C01" },
+          { name: "Thanawan Chadee", color: "#E99898" },
+          { name: "Justine Robinson", color: "#FAE8A4" },
+        ].map((member) => (
+          <div key={member.name} className="sidebar-team-member">
+            <div
+              className="sidebar-avatar"
+              style={{ background: member.color }}
+            ></div>
+            <span className="sidebar-team-name">{member.name}</span>
+          </div>
+        ))}
+        <button className="sidebar-see-more">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+          <span>See More</span>
         </button>
       </div>
+    </nav>
+
+    {/* User profile */}
+    <div className="sidebar-user">
+      <div
+        className="sidebar-avatar"
+        style={{
+          background: "linear-gradient(135deg, #FF6C01, var(--drp-pink))",
+        }}
+      ></div>
+      <div className="sidebar-user-info">
+        <span className="sidebar-user-name">Henry Richardson</span>
+      </div>
+      <button className="sidebar-user-menu-btn">···</button>
     </div>
-  </div>
+  </aside>
 );
 
 const TopBar: React.FC<{ title: string }> = ({ title }) => (
-  <div className="flex items-center justify-between px-8 py-4 border-b border-black/10 bg-[#f5efe6]">
-    <h1 className="text-3xl font-bold text-black">{title}</h1>
-    <div className="flex items-center gap-3">
-      <button className="p-2 rounded-lg hover:bg-black/5 text-gray-500">
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
+  <header className="topbar">
+    <div className="topbar-left">
+      <h1 className="topbar-title">{title}</h1>
+    </div>
+    <div className="topbar-right">
+      <button className="topbar-icon-btn">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -263,13 +250,8 @@ const TopBar: React.FC<{ title: string }> = ({ title }) => (
           />
         </svg>
       </button>
-      <button className="p-2 rounded-lg hover:bg-black/5 text-gray-500">
-        <svg
-          className="w-5 h-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
+      <button className="topbar-icon-btn">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -278,13 +260,8 @@ const TopBar: React.FC<{ title: string }> = ({ title }) => (
           />
         </svg>
       </button>
-      <button className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-black/5">
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
+      <button className="topbar-apps-btn">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -292,15 +269,10 @@ const TopBar: React.FC<{ title: string }> = ({ title }) => (
             d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
           />
         </svg>
-        Apps
+        <span>Apps</span>
       </button>
-      <button className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors">
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
+      <button className="topbar-create-btn">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <circle cx="12" cy="12" r="10" strokeWidth={2} />
           <path
             strokeLinecap="round"
@@ -309,18 +281,21 @@ const TopBar: React.FC<{ title: string }> = ({ title }) => (
             d="M12 8v8M8 12h8"
           />
         </svg>
-        Create new
+        <span>Create new</span>
       </button>
     </div>
-  </div>
+  </header>
 );
 
 const Footer: React.FC = () => (
-  <div className="flex items-center justify-between px-8 py-3 border-t border-black/10 text-sm text-gray-500 bg-[#f5efe6]">
-    <div className="flex items-center gap-6">
-      <button className="flex items-center gap-1.5 hover:opacity-80">
+  <footer className="footer-bar">
+    <div className="footer-links">
+      <a
+        className="footer-link"
+        style={{ display: "flex", alignItems: "center", gap: "6px" }}
+      >
         <svg
-          className="w-4 h-4"
+          style={{ width: 16, height: 16 }}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -333,15 +308,15 @@ const Footer: React.FC = () => (
           />
         </svg>
         English
-      </button>
-      <button className="hover:opacity-80">Privacy Policy</button>
-      <button className="hover:opacity-80">License</button>
-      <button className="hover:opacity-80">API</button>
+      </a>
+      <a className="footer-link">Privacy Policy</a>
+      <a className="footer-link">License</a>
+      <a className="footer-link">API</a>
     </div>
-    <div className="flex items-center gap-2">
-      <button className="p-1.5 rounded bg-black/10">
+    <div className="footer-right">
+      <button className="footer-icon-btn">
         <svg
-          className="w-4 h-4"
+          style={{ width: 16, height: 16 }}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -360,9 +335,9 @@ const Footer: React.FC = () => (
           />
         </svg>
       </button>
-      <button className="p-1.5 rounded bg-black/10">
+      <button className="footer-icon-btn">
         <svg
-          className="w-4 h-4"
+          style={{ width: 16, height: 16 }}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -376,17 +351,17 @@ const Footer: React.FC = () => (
         </svg>
       </button>
     </div>
-  </div>
+  </footer>
 );
 
 const CalendarIcon: React.FC = () => (
   <svg
-    className="w-5 h-5 text-gray-400"
+    style={{ width: 20, height: 20, color: "var(--drp-grey)" }}
     fill="none"
     viewBox="0 0 24 24"
     stroke="currentColor"
   >
-    <rect x="3" y="4" width="18" height="18" rx="2" strokeWidth={2} />
+    <rect x="3" y="4" width="18" height="18" rx="0" strokeWidth={2} />
     <path strokeLinecap="round" strokeWidth={2} d="M16 2v4M8 2v4M3 10h18" />
   </svg>
 );
@@ -406,21 +381,25 @@ const ChartCardWrapper: React.FC<ChartCardWrapperProps> = ({
   legend,
   className = "",
 }) => (
-  <div
-    className={`bg-white border border-black/10 rounded-xl overflow-hidden ${className}`}
-  >
-    <div className="flex items-center justify-between px-5 py-4 border-b border-black/5">
-      <h2 className="text-base font-bold text-black">{title}</h2>
-      <div className="flex items-center gap-4">
+  <div className={`drp-chart-card ${className}`}>
+    <div className="drp-chart-header">
+      <h2 className="drp-chart-title">{title}</h2>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: "var(--drp-space-4)",
+        }}
+      >
         {legend && (
-          <div className="flex items-center gap-3">
+          <div className="drp-chart-legend">
             {legend.map((l) => (
-              <div key={l.label} className="flex items-center gap-1.5">
+              <div key={l.label} className="drp-chart-legend__item">
                 <span
-                  className="w-2 h-2 rounded-full inline-block"
+                  className="drp-chart-legend__dot"
                   style={{ backgroundColor: l.color }}
                 ></span>
-                <span className="text-xs text-gray-500">{l.label}</span>
+                <span>{l.label}</span>
               </div>
             ))}
           </div>
@@ -428,7 +407,9 @@ const ChartCardWrapper: React.FC<ChartCardWrapperProps> = ({
         <CalendarIcon />
       </div>
     </div>
-    <div className="p-4">{children}</div>
+    <div className="drp-chart-container" style={{ height: "auto" }}>
+      {children}
+    </div>
   </div>
 );
 
@@ -462,8 +443,7 @@ const BarChartSVG: React.FC<BarChartSVGProps> = ({
   return (
     <svg
       viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-      className="w-full"
-      style={{ height }}
+      style={{ width: "100%", height }}
     >
       {/* Y-axis grid lines */}
       {yLines.map((v) => {
@@ -475,16 +455,17 @@ const BarChartSVG: React.FC<BarChartSVGProps> = ({
               y1={y}
               x2={svgWidth - padRight}
               y2={y}
-              stroke="#ccc"
+              stroke="var(--drp-grey)"
               strokeWidth={0.5}
               strokeDasharray="4,3"
+              opacity={0.3}
             />
             <text
               x={padLeft - 5}
               y={y + 4}
               textAnchor="end"
               fontSize={10}
-              fill="#999"
+              fill="var(--drp-grey)"
             >
               {v}
             </text>
@@ -506,9 +487,9 @@ const BarChartSVG: React.FC<BarChartSVGProps> = ({
               y={bgY}
               width={barW}
               height={bgH}
-              rx={3}
-              fill="#e9d5ff"
-              opacity={0.5}
+              rx={0}
+              fill="var(--drp-purple)"
+              opacity={0.12}
             />
             {/* Foreground bar (purple) */}
             <rect
@@ -516,8 +497,8 @@ const BarChartSVG: React.FC<BarChartSVGProps> = ({
               y={y}
               width={barW}
               height={barH}
-              rx={3}
-              fill="#a855f7"
+              rx={0}
+              fill="var(--drp-purple)"
             />
             {/* X-axis label */}
             <text
@@ -525,7 +506,7 @@ const BarChartSVG: React.FC<BarChartSVGProps> = ({
               y={svgHeight - 5}
               textAnchor="middle"
               fontSize={10}
-              fill="#999"
+              fill="var(--drp-grey)"
             >
               {labels[i]}
             </text>
@@ -560,8 +541,7 @@ const HBarChartSVG: React.FC<HBarChartSVGProps> = ({ data, height = 260 }) => {
   return (
     <svg
       viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-      className="w-full"
-      style={{ height }}
+      style={{ width: "100%", height }}
     >
       {/* X grid lines */}
       {xTicks.map((v) => {
@@ -573,16 +553,17 @@ const HBarChartSVG: React.FC<HBarChartSVGProps> = ({ data, height = 260 }) => {
               y1={padTop}
               x2={x}
               y2={svgHeight - padBottom}
-              stroke="#ccc"
+              stroke="var(--drp-grey)"
               strokeWidth={0.5}
               strokeDasharray="3,3"
+              opacity={0.3}
             />
             <text
               x={x}
               y={svgHeight - padBottom + 14}
               textAnchor="middle"
               fontSize={10}
-              fill="#999"
+              fill="var(--drp-grey)"
             >
               {v}
             </text>
@@ -601,7 +582,7 @@ const HBarChartSVG: React.FC<HBarChartSVGProps> = ({ data, height = 260 }) => {
               y={y + barH / 2 + 4}
               textAnchor="end"
               fontSize={10}
-              fill="#999"
+              fill="var(--drp-grey)"
             >
               {item.label}
             </text>
@@ -611,9 +592,10 @@ const HBarChartSVG: React.FC<HBarChartSVGProps> = ({ data, height = 260 }) => {
               y1={padTop + i * rowH + rowH - 2}
               x2={svgWidth - padRight}
               y2={padTop + i * rowH + rowH - 2}
-              stroke="#eee"
+              stroke="var(--drp-grey)"
               strokeWidth={0.5}
               strokeDasharray="3,3"
+              opacity={0.2}
             />
             {/* Background track */}
             <rect
@@ -621,9 +603,9 @@ const HBarChartSVG: React.FC<HBarChartSVGProps> = ({ data, height = 260 }) => {
               y={y}
               width={bgW}
               height={barH}
-              rx={3}
-              fill="#e9d5ff"
-              opacity={0.5}
+              rx={0}
+              fill="var(--drp-purple)"
+              opacity={0.12}
             />
             {/* Foreground bar */}
             <rect
@@ -631,8 +613,8 @@ const HBarChartSVG: React.FC<HBarChartSVGProps> = ({ data, height = 260 }) => {
               y={y}
               width={fgW}
               height={barH}
-              rx={3}
-              fill="#a855f7"
+              rx={0}
+              fill="var(--drp-purple)"
             />
           </g>
         );
@@ -690,19 +672,35 @@ const WaveChartSVG: React.FC<WaveChartSVGProps> = ({
   const n = dataBlue.length;
 
   const toPoint = (val: number, i: number) => ({
-    x: padLeft + (i / (n - 1)) * chartW,
+    x: n > 1 ? padLeft + (i / (n - 1)) * chartW : padLeft,
     y: padTop + chartH - (val / maxValue) * chartH,
   });
 
   const bluePoints = dataBlue.map(toPoint);
   const greenPoints = dataGreen.map(toPoint);
 
-  const bluePath = smooth ? smoothPath(bluePoints) : linePath(bluePoints);
-  const greenPath = smooth ? smoothPath(greenPoints) : linePath(greenPoints);
+  const bluePath =
+    bluePoints.length > 1
+      ? smooth
+        ? smoothPath(bluePoints)
+        : linePath(bluePoints)
+      : "";
+  const greenPath =
+    greenPoints.length > 1
+      ? smooth
+        ? smoothPath(greenPoints)
+        : linePath(greenPoints)
+      : "";
 
   // Area fill
-  const blueAreaClose = `L ${bluePoints[n - 1].x} ${padTop + chartH} L ${bluePoints[0].x} ${padTop + chartH} Z`;
-  const greenAreaClose = `L ${greenPoints[n - 1].x} ${padTop + chartH} L ${greenPoints[0].x} ${padTop + chartH} Z`;
+  const blueAreaClose =
+    bluePoints.length > 1
+      ? `L ${bluePoints[bluePoints.length - 1].x} ${padTop + chartH} L ${bluePoints[0].x} ${padTop + chartH} Z`
+      : "";
+  const greenAreaClose =
+    greenPoints.length > 1
+      ? `L ${greenPoints[greenPoints.length - 1].x} ${padTop + chartH} L ${greenPoints[0].x} ${padTop + chartH} Z`
+      : "";
 
   // Tooltip at middle point
   const tooltipIdx = Math.floor(n / 2);
@@ -711,17 +709,20 @@ const WaveChartSVG: React.FC<WaveChartSVGProps> = ({
   return (
     <svg
       viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-      className="w-full"
-      style={{ height }}
+      style={{ width: "100%", height }}
     >
       <defs>
         <linearGradient id="waveBlueGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#a855f7" stopOpacity="0.15" />
-          <stop offset="100%" stopColor="#a855f7" stopOpacity="0.02" />
+          <stop offset="0%" stopColor="var(--drp-purple)" stopOpacity="0.15" />
+          <stop
+            offset="100%"
+            stopColor="var(--drp-purple)"
+            stopOpacity="0.02"
+          />
         </linearGradient>
         <linearGradient id="waveGreenGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#86efac" stopOpacity="0.15" />
-          <stop offset="100%" stopColor="#86efac" stopOpacity="0.02" />
+          <stop offset="0%" stopColor="var(--drp-mint)" stopOpacity="0.15" />
+          <stop offset="100%" stopColor="var(--drp-mint)" stopOpacity="0.02" />
         </linearGradient>
       </defs>
 
@@ -735,16 +736,17 @@ const WaveChartSVG: React.FC<WaveChartSVGProps> = ({
               y1={y}
               x2={svgWidth - padRight}
               y2={y}
-              stroke="#ccc"
+              stroke="var(--drp-grey)"
               strokeWidth={0.5}
               strokeDasharray="4,3"
+              opacity={0.3}
             />
             <text
               x={padLeft - 5}
               y={y + 4}
               textAnchor="end"
               fontSize={10}
-              fill="#999"
+              fill="var(--drp-grey)"
             >
               {v}
             </text>
@@ -757,8 +759,18 @@ const WaveChartSVG: React.FC<WaveChartSVGProps> = ({
       <path d={greenPath + greenAreaClose} fill="url(#waveGreenGrad)" />
 
       {/* Lines */}
-      <path d={greenPath} fill="none" stroke="#86efac" strokeWidth={2} />
-      <path d={bluePath} fill="none" stroke="#a855f7" strokeWidth={2} />
+      <path
+        d={greenPath}
+        fill="none"
+        stroke="var(--drp-mint)"
+        strokeWidth={2}
+      />
+      <path
+        d={bluePath}
+        fill="none"
+        stroke="var(--drp-purple)"
+        strokeWidth={2}
+      />
 
       {/* X labels */}
       {labels.map((lbl, i) => (
@@ -768,7 +780,7 @@ const WaveChartSVG: React.FC<WaveChartSVGProps> = ({
           y={svgHeight - 5}
           textAnchor="middle"
           fontSize={10}
-          fill="#999"
+          fill="var(--drp-grey)"
         >
           {lbl}
         </text>
@@ -781,7 +793,7 @@ const WaveChartSVG: React.FC<WaveChartSVGProps> = ({
             cx={tooltipPt.x}
             cy={tooltipPt.y}
             r={6}
-            fill="#a855f7"
+            fill="var(--drp-purple)"
             stroke="white"
             strokeWidth={2}
           />
@@ -790,9 +802,9 @@ const WaveChartSVG: React.FC<WaveChartSVGProps> = ({
             y={tooltipPt.y - 30}
             width={90}
             height={44}
-            rx={6}
-            fill="white"
-            stroke="#e5e7eb"
+            rx={0}
+            fill="var(--drp-surface)"
+            stroke="var(--drp-black)"
             strokeWidth={1}
           />
           <text
@@ -800,7 +812,7 @@ const WaveChartSVG: React.FC<WaveChartSVGProps> = ({
             y={tooltipPt.y - 14}
             textAnchor="middle"
             fontSize={9}
-            fill="#6b7280"
+            fill="var(--drp-grey)"
           >
             June 16
           </text>
@@ -810,7 +822,7 @@ const WaveChartSVG: React.FC<WaveChartSVGProps> = ({
             textAnchor="middle"
             fontSize={13}
             fontWeight="bold"
-            fill="#111"
+            fill="var(--drp-black)"
           >
             $14.800
           </text>
@@ -853,8 +865,7 @@ const DoubleBarChartSVG: React.FC<DoubleBarChartSVGProps> = ({
   return (
     <svg
       viewBox={`0 0 ${svgWidth} ${svgHeight}`}
-      className="w-full"
-      style={{ height }}
+      style={{ width: "100%", height }}
     >
       {yLines.map((v) => {
         const y = padTop + chartH - (v / maxValue) * chartH;
@@ -865,16 +876,17 @@ const DoubleBarChartSVG: React.FC<DoubleBarChartSVGProps> = ({
               y1={y}
               x2={svgWidth - padRight}
               y2={y}
-              stroke="#ccc"
+              stroke="var(--drp-grey)"
               strokeWidth={0.5}
               strokeDasharray="4,3"
+              opacity={0.3}
             />
             <text
               x={padLeft - 5}
               y={y + 4}
               textAnchor="end"
               fontSize={10}
-              fill="#999"
+              fill="var(--drp-grey)"
             >
               {v}
             </text>
@@ -895,23 +907,24 @@ const DoubleBarChartSVG: React.FC<DoubleBarChartSVGProps> = ({
               y={padTop + chartH - gH}
               width={barW}
               height={gH}
-              rx={2}
-              fill="#86efac"
+              rx={0}
+              fill="var(--drp-mint)"
             />
             <rect
               x={pX}
               y={padTop + chartH - pH}
               width={barW}
               height={pH}
-              rx={2}
-              fill="#c4b5fd"
+              rx={0}
+              fill="var(--drp-purple)"
+              opacity={0.5}
             />
             <text
               x={centerX}
               y={svgHeight - 5}
               textAnchor="middle"
               fontSize={10}
-              fill="#999"
+              fill="var(--drp-grey)"
             >
               {labels[i]}
             </text>
@@ -922,223 +935,122 @@ const DoubleBarChartSVG: React.FC<DoubleBarChartSVGProps> = ({
   );
 };
 
-// ─── SVG Polar / Radar Chart ──────────────────────────────────────────────────
+// ─── Chart.js Polar Area Chart ────────────────────────────────────────────────
 
-interface PolarChartSVGProps {
+interface PolarChartProps {
   variant?: "radar" | "segments";
   height?: number;
 }
 
-const PolarChartSVG: React.FC<PolarChartSVGProps> = ({
+const PolarChartComponent: React.FC<PolarChartProps> = ({
   variant = "radar",
-  height = 300,
+  height = 320,
 }) => {
-  const cx = 160;
-  const cy = 160;
-  const maxR = 110;
-  const rings = [0.2, 0.4, 0.6, 0.8, 1.0];
-  const directions = [
-    "North",
-    "North\nEast",
-    "East",
-    "South\nEast",
-    "South",
-    "South\nWest",
-    "West",
-    "North\nWest",
-  ];
-  const n = directions.length;
-
-  // Radar data (two series)
-  const series1 = [0.95, 0.7, 0.55, 0.8, 0.45, 0.6, 0.9, 0.75];
-  const series2 = [0.5, 0.85, 0.4, 0.6, 0.9, 0.35, 0.7, 0.5];
-
-  const angleOffset = -Math.PI / 2;
-  const getPoint = (r: number, i: number) => {
-    const angle = angleOffset + (i / n) * 2 * Math.PI;
-    return {
-      x: cx + r * maxR * Math.cos(angle),
-      y: cy + r * maxR * Math.sin(angle),
-    };
-  };
-
-  const polyPath = (values: number[]) =>
-    values
-      .map((v, i) => {
-        const pt = getPoint(v, i);
-        return `${i === 0 ? "M" : "L"} ${pt.x} ${pt.y}`;
-      })
-      .join(" ") + " Z";
-
   if (variant === "segments") {
-    // Pie-segment style polar chart
-    const segmentColors = [
-      "#fde68a",
-      "#fca5a5",
-      "#93c5fd",
-      "#86efac",
-      "#f9a8d4",
-      "#c4b5fd",
-    ];
-    const segValues = [0.6, 0.45, 0.7, 0.5, 0.55, 0.65];
-    const segN = segValues.length;
-    const wedgeAngle = (2 * Math.PI) / segN;
+    const data = {
+      labels: [
+        "Category A",
+        "Category B",
+        "Category C",
+        "Category D",
+        "Category E",
+        "Category F",
+      ],
+      datasets: [
+        {
+          data: [60, 45, 70, 50, 55, 65],
+          backgroundColor: [
+            "rgba(255, 193, 7, 0.75)", // yellow
+            "rgba(255, 105, 135, 0.75)", // pink
+            "rgba(147, 197, 253, 0.75)", // light blue
+            "rgba(0, 200, 150, 0.75)", // mint
+            "rgba(249, 168, 212, 0.75)", // rose
+            "rgba(99, 29, 237, 0.75)", // purple
+          ],
+          borderColor: [
+            "#FFC107",
+            "#FF6987",
+            "#93c5fd",
+            "#00C896",
+            "#f9a8d4",
+            "#631DED",
+          ],
+          borderWidth: 2,
+        },
+      ],
+    };
 
-    const segPaths = segValues.map((v, i) => {
-      const startAngle = angleOffset + i * wedgeAngle;
-      const endAngle = startAngle + wedgeAngle;
-      const r = v * maxR;
-      const x1 = cx + r * Math.cos(startAngle);
-      const y1 = cy + r * Math.sin(startAngle);
-      const x2 = cx + r * Math.cos(endAngle);
-      const y2 = cy + r * Math.sin(endAngle);
-      return `M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 0 1 ${x2} ${y2} Z`;
-    });
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+      },
+      scales: {
+        r: {
+          grid: { color: "rgba(102, 102, 102, 0.2)" },
+          ticks: { display: false },
+        },
+      },
+    };
 
     return (
-      <svg viewBox="0 0 320 320" className="w-full" style={{ height }}>
-        {/* Rings */}
-        {rings.map((r) => (
-          <circle
-            key={r}
-            cx={cx}
-            cy={cy}
-            r={r * maxR}
-            fill="none"
-            stroke="#e5e7eb"
-            strokeWidth={0.8}
-          />
-        ))}
-        {/* Spokes */}
-        {Array.from({ length: segN }).map((_, i) => {
-          const angle = angleOffset + (i / segN) * 2 * Math.PI;
-          return (
-            <line
-              key={i}
-              x1={cx}
-              y1={cy}
-              x2={cx + maxR * Math.cos(angle)}
-              y2={cy + maxR * Math.sin(angle)}
-              stroke="#d1d5db"
-              strokeWidth={0.8}
-              strokeDasharray="3,2"
-            />
-          );
-        })}
-        {/* Segments */}
-        {segPaths.map((d, i) => (
-          <path key={i} d={d} fill={segmentColors[i]} opacity={0.75} />
-        ))}
-        {/* Direction labels */}
-        {directions.slice(0, 8).map((dir, i) => {
-          const angle = angleOffset + (i / n) * 2 * Math.PI;
-          const labelR = maxR + 22;
-          const lx = cx + labelR * Math.cos(angle);
-          const ly = cy + labelR * Math.sin(angle);
-          const lines = dir.split("\n");
-          return (
-            <text
-              key={i}
-              x={lx}
-              y={ly}
-              textAnchor="middle"
-              dominantBaseline="middle"
-              fontSize={9}
-              fill="#6b7280"
-            >
-              {lines.map((line, j) => (
-                <tspan
-                  key={j}
-                  x={lx}
-                  dy={j === 0 ? (lines.length > 1 ? -6 : 0) : 12}
-                >
-                  {line}
-                </tspan>
-              ))}
-            </text>
-          );
-        })}
-      </svg>
+      <div style={{ height, width: "100%" }}>
+        <PolarArea data={data} options={options} />
+      </div>
     );
   }
 
   // Radar variant
+  const radarData = {
+    labels: ["North", "NE", "East", "SE", "South", "SW", "West", "NW"],
+    datasets: [
+      {
+        label: "Series A",
+        data: [95, 70, 55, 80, 45, 60, 90, 75],
+        backgroundColor: "rgba(99, 29, 237, 0.2)",
+        borderColor: "#631DED",
+        borderWidth: 2,
+        pointBackgroundColor: "#631DED",
+        pointRadius: 3,
+      },
+      {
+        label: "Series B",
+        data: [50, 85, 40, 60, 90, 35, 70, 50],
+        backgroundColor: "rgba(0, 200, 150, 0.2)",
+        borderColor: "#00C896",
+        borderWidth: 2,
+        pointBackgroundColor: "#00C896",
+        pointRadius: 3,
+      },
+    ],
+  };
+
+  const radarOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+    },
+    scales: {
+      r: {
+        beginAtZero: true,
+        max: 100,
+        grid: { color: "rgba(102, 102, 102, 0.2)" },
+        angleLines: { color: "rgba(102, 102, 102, 0.2)" },
+        ticks: { display: false },
+        pointLabels: {
+          font: { size: 11 },
+          color: "#666666",
+        },
+      },
+    },
+  };
+
   return (
-    <svg viewBox="0 0 320 320" className="w-full" style={{ height }}>
-      {/* Rings */}
-      {rings.map((r) => (
-        <circle
-          key={r}
-          cx={cx}
-          cy={cy}
-          r={r * maxR}
-          fill="none"
-          stroke="#e5e7eb"
-          strokeWidth={0.8}
-        />
-      ))}
-      {/* Spokes */}
-      {Array.from({ length: n }).map((_, i) => {
-        const pt = getPoint(1, i);
-        return (
-          <line
-            key={i}
-            x1={cx}
-            y1={cy}
-            x2={pt.x}
-            y2={pt.y}
-            stroke="#d1d5db"
-            strokeWidth={0.8}
-            strokeDasharray="3,2"
-          />
-        );
-      })}
-      {/* Series 2 (green, back) */}
-      <path
-        d={polyPath(series2)}
-        fill="#86efac"
-        fillOpacity={0.3}
-        stroke="#86efac"
-        strokeWidth={1.5}
-      />
-      {/* Series 1 (purple, front) */}
-      <path
-        d={polyPath(series1)}
-        fill="#a855f7"
-        fillOpacity={0.25}
-        stroke="#a855f7"
-        strokeWidth={1.5}
-      />
-      {/* Direction labels */}
-      {directions.map((dir, i) => {
-        const angle = angleOffset + (i / n) * 2 * Math.PI;
-        const labelR = maxR + 22;
-        const lx = cx + labelR * Math.cos(angle);
-        const ly = cy + labelR * Math.sin(angle);
-        const lines = dir.split("\n");
-        return (
-          <text
-            key={i}
-            x={lx}
-            y={ly}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fontSize={9}
-            fill="#6b7280"
-          >
-            {lines.map((line, j) => (
-              <tspan
-                key={j}
-                x={lx}
-                dy={j === 0 ? (lines.length > 1 ? -6 : 0) : 12}
-              >
-                {line}
-              </tspan>
-            ))}
-          </text>
-        );
-      })}
-    </svg>
+    <div style={{ height, width: "100%" }}>
+      <Radar data={radarData} options={radarOptions} />
+    </div>
   );
 };
 
@@ -1170,7 +1082,7 @@ const Sparkline: React.FC<SparklineProps> = ({
   return (
     <svg
       viewBox={`0 0 ${w} ${h}`}
-      className="w-20 h-10"
+      style={{ width: 80, height: 40 }}
       preserveAspectRatio="none"
     >
       <defs>
@@ -1215,7 +1127,7 @@ const BarSparkline: React.FC<BarSparklineProps> = ({
   return (
     <svg
       viewBox={`0 0 ${w} ${h}`}
-      className="w-20 h-12"
+      style={{ width: 80, height: 48 }}
       preserveAspectRatio="none"
     >
       {values.map((v, i) => {
@@ -1228,7 +1140,7 @@ const BarSparkline: React.FC<BarSparklineProps> = ({
             y={h - barH}
             width={bw}
             height={barH}
-            rx={2}
+            rx={0}
             fill={color}
             opacity={0.8}
           />
@@ -1264,10 +1176,14 @@ const DonutChart: React.FC<DonutChartProps> = ({
 
   if (emptyRings) {
     // Three concentric empty circles
-    const colors = ["#a855f7", "#fbbf24", "#86efac"];
+    const colors = [
+      "var(--drp-purple)",
+      "var(--drp-yellow)",
+      "var(--drp-mint)",
+    ];
     const radii = [R, R - 20, R - 40];
     return (
-      <svg viewBox="0 0 240 240" className="w-full" style={{ height }}>
+      <svg viewBox="0 0 240 240" style={{ width: "100%", height }}>
         {radii.map((rad, i) => (
           <circle
             key={i}
@@ -1287,7 +1203,7 @@ const DonutChart: React.FC<DonutChartProps> = ({
               textAnchor="middle"
               fontSize={18}
               fontWeight="bold"
-              fill="#111"
+              fill="var(--drp-black)"
             >
               {label}
             </text>
@@ -1297,7 +1213,7 @@ const DonutChart: React.FC<DonutChartProps> = ({
                 y={cy + 12}
                 textAnchor="middle"
                 fontSize={11}
-                fill="#6b7280"
+                fill="var(--drp-grey)"
               >
                 {sublabel}
               </text>
@@ -1345,7 +1261,7 @@ const DonutChart: React.FC<DonutChartProps> = ({
   });
 
   return (
-    <svg viewBox="0 0 240 240" className="w-full" style={{ height }}>
+    <svg viewBox="0 0 240 240" style={{ width: "100%", height }}>
       {paths.map((p, i) => (
         <path key={i} d={p.d} fill={p.color} />
       ))}
@@ -1374,7 +1290,7 @@ const DonutChart: React.FC<DonutChartProps> = ({
             textAnchor="middle"
             fontSize={18}
             fontWeight="bold"
-            fill="#111"
+            fill="var(--drp-black)"
           >
             {label}
           </text>
@@ -1384,7 +1300,7 @@ const DonutChart: React.FC<DonutChartProps> = ({
               y={cy + 12}
               textAnchor="middle"
               fontSize={11}
-              fill="#6b7280"
+              fill="var(--drp-grey)"
             >
               {sublabel}
             </text>
@@ -1395,139 +1311,208 @@ const DonutChart: React.FC<DonutChartProps> = ({
   );
 };
 
-// ─── World Map SVG (Simplified) ───────────────────────────────────────────────
+// ─── Chart.js World Map (Choropleth) ──────────────────────────────────────────
 
-const WorldMapSVG: React.FC = () => {
-  // Highly simplified continent outlines
+const WORLD_ATLAS_URL =
+  "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+
+const WorldMapChart: React.FC = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const chartRef = useRef<ChartJS | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    const init = async () => {
+      try {
+        // Dynamically import chartjs-chart-geo (it registers itself on Chart.js)
+        const geoModule = await import("chartjs-chart-geo");
+        const topoModule = await import("topojson-client");
+
+        // Register geo controllers
+        ChartJS.register(
+          geoModule.ChoroplethController,
+          geoModule.GeoFeature,
+          geoModule.ColorScale,
+          geoModule.ProjectionScale,
+        );
+
+        // Fetch world topojson
+        const res = await fetch(WORLD_ATLAS_URL);
+        const topology = await res.json();
+
+        if (cancelled) return;
+
+        const countries = (topoModule as any).feature(
+          topology,
+          topology.objects.countries,
+        ).features;
+
+        // Sample data — assign values for highlighted countries
+        const sampleValues: Record<string, number> = {
+          "840": 10,
+          "826": 6,
+          "250": 3,
+          "246": 2,
+          "040": 1,
+          "528": 1,
+          "400": 1,
+          "380": 1,
+        };
+
+        if (!canvasRef.current) return;
+
+        // Destroy previous chart
+        if (chartRef.current) {
+          chartRef.current.destroy();
+        }
+
+        chartRef.current = new ChartJS(canvasRef.current, {
+          type: "choropleth" as any,
+          data: {
+            labels: countries.map((c: any) => c.properties?.name || c.id),
+            datasets: [
+              {
+                label: "Products",
+                data: countries.map((c: any) => ({
+                  feature: c,
+                  value: sampleValues[c.id] || 0,
+                })),
+              },
+            ],
+          },
+          options: {
+            showOutline: true,
+            showGraticule: false,
+            plugins: {
+              legend: { display: false },
+            },
+            scales: {
+              projection: {
+                axis: "x",
+                projection: "equalEarth",
+              } as any,
+              color: {
+                axis: "x",
+                quantize: 5,
+                legend: { position: "bottom-right" },
+                interpolate: (v: number) => {
+                  // Purple scale from light to dark
+                  const r = Math.round(99 + (1 - v) * 156);
+                  const g = Math.round(29 + (1 - v) * 226);
+                  const b = Math.round(237 + (1 - v) * 18);
+                  return `rgba(${r}, ${g}, ${b}, ${v < 0.05 ? 0.1 : 0.8})`;
+                },
+              } as any,
+            },
+          } as any,
+        });
+
+        setLoading(false);
+      } catch (err) {
+        if (!cancelled) {
+          setError("Failed to load map data");
+          setLoading(false);
+        }
+      }
+    };
+
+    init();
+
+    return () => {
+      cancelled = true;
+      if (chartRef.current) {
+        chartRef.current.destroy();
+        chartRef.current = null;
+      }
+    };
+  }, []);
+
+  if (error) {
+    return (
+      <div
+        style={{
+          height: 350,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#666",
+        }}
+      >
+        {error}
+      </div>
+    );
+  }
+
   return (
-    <svg
-      viewBox="0 0 800 420"
-      className="w-full"
-      style={{ height: 350 }}
-      preserveAspectRatio="xMidYMid meet"
-    >
-      {/* Background */}
-      <rect width="800" height="420" fill="#f5f0eb" />
-
-      {/* Base continents (light beige) */}
-      {/* North America (gray base) */}
-      <path
-        d="M 110 60 L 210 50 L 240 70 L 250 120 L 230 160 L 200 180 L 180 200 L 160 220 L 140 200 L 120 170 L 100 140 L 90 100 Z"
-        fill="#d1c5b8"
-        opacity={0.4}
-      />
-      {/* South America (gray base) */}
-      <path
-        d="M 180 230 L 220 220 L 240 250 L 250 300 L 240 350 L 210 380 L 185 370 L 170 340 L 165 290 L 170 260 Z"
-        fill="#d1c5b8"
-        opacity={0.4}
-      />
-      {/* Europe */}
-      <path
-        d="M 360 60 L 420 55 L 440 80 L 430 110 L 400 120 L 375 115 L 355 90 Z"
-        fill="#d1c5b8"
-        opacity={0.4}
-      />
-      {/* Africa */}
-      <path
-        d="M 360 130 L 420 125 L 445 160 L 440 230 L 410 290 L 380 310 L 355 280 L 340 230 L 345 170 Z"
-        fill="#d1c5b8"
-        opacity={0.4}
-      />
-      {/* Asia */}
-      <path
-        d="M 450 50 L 650 45 L 680 80 L 700 130 L 670 170 L 620 200 L 560 210 L 510 190 L 470 160 L 440 120 L 445 80 Z"
-        fill="#d1c5b8"
-        opacity={0.4}
-      />
-      {/* Australia */}
-      <path
-        d="M 600 280 L 680 265 L 720 290 L 720 340 L 690 365 L 640 360 L 600 340 L 590 310 Z"
-        fill="#d1c5b8"
-        opacity={0.4}
-      />
-
-      {/* Colored highlights */}
-      {/* North America - Purple */}
-      <path
-        d="M 110 60 L 210 50 L 240 70 L 250 120 L 230 160 L 200 180 L 180 200 L 160 220 L 140 200 L 120 170 L 100 140 L 90 100 Z"
-        fill="#a855f7"
-        opacity={0.75}
-      />
-      {/* Mexico - Pink */}
-      <path
-        d="M 160 200 L 195 192 L 200 220 L 185 235 L 165 230 Z"
-        fill="#ec4899"
-        opacity={0.85}
-      />
-      {/* South America - Cyan */}
-      <path
-        d="M 180 230 L 220 220 L 240 250 L 250 300 L 240 350 L 210 380 L 185 370 L 170 340 L 165 290 L 170 260 Z"
-        fill="#06b6d4"
-        opacity={0.8}
-      />
-      {/* Europe small – green */}
-      <path
-        d="M 370 68 L 395 65 L 408 82 L 400 100 L 378 98 L 365 82 Z"
-        fill="#22c55e"
-        opacity={0.8}
-      />
-      {/* Asia - Gold/Orange */}
-      <path
-        d="M 480 58 L 640 52 L 670 90 L 655 150 L 600 185 L 540 190 L 500 165 L 468 130 L 462 90 Z"
-        fill="#d97706"
-        opacity={0.75}
-      />
-      {/* South East Asia small */}
-      <path
-        d="M 620 195 L 650 185 L 660 210 L 640 225 L 618 215 Z"
-        fill="#7c3aed"
-        opacity={0.7}
-      />
-      {/* Australia - Pink/Red */}
-      <path
-        d="M 600 280 L 680 265 L 720 290 L 720 340 L 690 365 L 640 360 L 600 340 L 590 310 Z"
-        fill="#f87171"
-        opacity={0.8}
-      />
-
-      {/* Tooltip */}
-      <rect
-        x="545"
-        y="135"
-        width="85"
-        height="38"
-        rx="6"
-        fill="white"
-        stroke="#e5e7eb"
-        strokeWidth={1}
-      />
-      <text x="587" y="153" textAnchor="middle" fontSize={9} fill="#6b7280">
-        $14.800
-      </text>
-      <polygon
-        points="555,173 575,173 565,183"
-        fill="white"
-        stroke="#e5e7eb"
-        strokeWidth={0.5}
-      />
+    <div style={{ position: "relative", height: 350, width: "100%" }}>
+      {loading && (
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            color: "#666",
+          }}
+        >
+          Loading map...
+        </div>
+      )}
+      <canvas ref={canvasRef} style={{ width: "100%", height: "100%" }} />
 
       {/* Legend */}
-      {[
-        { color: "#fbbf24", label: "Yellow", x: 230 },
-        { color: "#a855f7", label: "Blue", x: 305 },
-        { color: "#86efac", label: "Green", x: 370 },
-        { color: "#f87171", label: "Red", x: 440 },
-        { color: "#4f46e5", label: "Dark Blue", x: 508 },
-      ].map((item) => (
-        <g key={item.label}>
-          <circle cx={item.x} cy={402} r={5} fill={item.color} />
-          <text x={item.x + 10} y={406} fontSize={10} fill="#6b7280">
-            {item.label}
-          </text>
-        </g>
-      ))}
-    </svg>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: 16,
+          marginTop: 8,
+          flexWrap: "wrap",
+        }}
+      >
+        {[
+          { color: "#631DED", label: "United States (10)" },
+          { color: "#7B3DEF", label: "United Kingdom (6)" },
+          { color: "#9460F2", label: "France (3)" },
+          { color: "#AD83F5", label: "Finland (2)" },
+          { color: "#C6A6F8", label: "Austria (1)" },
+          { color: "#C6A6F8", label: "Netherlands (1)" },
+          { color: "#C6A6F8", label: "Jordan (1)" },
+          { color: "#C6A6F8", label: "Italy (1)" },
+        ].map((item) => (
+          <div
+            key={item.label}
+            style={{ display: "flex", alignItems: "center", gap: 4 }}
+          >
+            <span
+              style={{
+                width: 10,
+                height: 10,
+                borderRadius: "50%",
+                backgroundColor: item.color,
+                display: "inline-block",
+              }}
+            />
+            <span style={{ fontSize: 11, color: "#666" }}>{item.label}</span>
+          </div>
+        ))}
+      </div>
+
+      <p
+        style={{
+          textAlign: "center",
+          fontSize: 11,
+          color: "#999",
+          marginTop: 4,
+        }}
+      >
+        Location data: 29 of 266 products (11%)
+      </p>
+    </div>
   );
 };
 
@@ -1546,15 +1531,22 @@ const StatCard1: React.FC<StatCard1Props> = ({
   label,
   value,
   badge,
-  badgeColor = "bg-green-100 text-green-700",
+  badgeColor,
   description,
   trend = "up",
 }) => (
-  <div className="bg-white border border-black/10 rounded-xl p-4 flex-1">
-    <div className="flex items-center justify-between mb-1">
-      <span className="text-xs text-gray-500">{label}</span>
+  <div className="drp-stat-card" style={{ flex: 1 }}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginBottom: "var(--drp-space-1)",
+      }}
+    >
+      <span className="drp-stat-card__label">{label}</span>
       <svg
-        className="w-4 h-4 text-gray-400"
+        style={{ width: 16, height: 16, color: "var(--drp-grey)" }}
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -1571,12 +1563,19 @@ const StatCard1: React.FC<StatCard1Props> = ({
         />
       </svg>
     </div>
-    <div className="text-2xl font-bold text-black mb-0.5">{value}</div>
-    <div className="flex items-center gap-2">
-      <span className="text-xs text-gray-500">{description}</span>
+    <div className="drp-stat-card__value">{value}</div>
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "var(--drp-space-2)",
+        marginTop: "var(--drp-space-1)",
+      }}
+    >
+      <span className="drp-caption">{description}</span>
       {badge && (
         <span
-          className={`text-xs font-medium px-1.5 py-0.5 rounded ${badgeColor}`}
+          className={`drp-stat-card__badge ${trend === "up" ? "drp-stat-card__badge--up" : "drp-stat-card__badge--down"}`}
         >
           {badge}
         </span>
@@ -1602,21 +1601,28 @@ const StatCard2: React.FC<StatCard2Props> = ({
   barColor,
   pct,
 }) => (
-  <div className="bg-white border border-black/10 rounded-xl p-4 flex-1">
-    <div className="text-xs text-gray-500 mb-0.5">{label}</div>
-    <div className="text-2xl font-bold text-black mb-2">{value}</div>
-    <div className="h-1.5 rounded-full bg-gray-100 mb-2">
+  <div className="drp-stat-card" style={{ flex: 1 }}>
+    <div className="drp-stat-card__label">{label}</div>
+    <div className="drp-stat-card__value">{value}</div>
+    <div
+      style={{
+        height: 6,
+        background: "var(--drp-grey)",
+        opacity: 0.15,
+        marginTop: "var(--drp-space-2)",
+        marginBottom: "var(--drp-space-2)",
+      }}
+    >
       <div
-        className="h-full rounded-full"
-        style={{ width: `${pct}%`, backgroundColor: barColor }}
+        style={{ height: "100%", width: `${pct}%`, backgroundColor: barColor }}
       ></div>
     </div>
-    <div className="flex justify-between text-xs text-gray-500">
-      <span>
-        <span className="font-medium text-gray-800">{spent}</span> Spent
+    <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <span className="drp-caption">
+        <strong>{spent}</strong> Spent
       </span>
-      <span>
-        <span className="font-medium text-gray-800">{left}</span> Left
+      <span className="drp-caption">
+        <strong>{left}</strong> Left
       </span>
     </div>
   </div>
@@ -1641,12 +1647,28 @@ const StatCard3: React.FC<StatCard3Props> = ({
   chartColor,
   chartValues,
 }) => (
-  <div className="bg-white border border-black/10 rounded-xl p-4 flex-1 flex items-center gap-4">
-    <div className="flex-1">
-      <div className="text-xs text-gray-500 mb-0.5">{label}</div>
-      <div className="text-2xl font-bold text-black">{value}</div>
-      <div className="text-xs text-gray-500 mt-0.5">{sub}</div>
-      <span className={`text-xs font-medium ${changeColor}`}>{change}</span>
+  <div
+    className="drp-stat-card"
+    style={{
+      flex: 1,
+      display: "flex",
+      alignItems: "center",
+      gap: "var(--drp-space-4)",
+    }}
+  >
+    <div style={{ flex: 1 }}>
+      <div className="drp-stat-card__label">{label}</div>
+      <div className="drp-stat-card__value">{value}</div>
+      {sub && <span className="drp-caption">{sub}</span>}
+      <span
+        style={{
+          fontSize: "var(--drp-text-xs)",
+          fontWeight: "var(--drp-weight-medium)",
+          color: changeColor,
+        }}
+      >
+        {change}
+      </span>
     </div>
     <BarSparkline color={chartColor} values={chartValues} />
   </div>
@@ -1667,13 +1689,37 @@ const StatCard4: React.FC<StatCard4Props> = ({
   chartColor,
   chartValues,
 }) => (
-  <div className="bg-white border border-black/10 rounded-xl p-4 flex-1 flex items-center gap-3">
-    <div className="w-10 h-10 border border-black/10 rounded-lg flex items-center justify-center text-gray-500 flex-shrink-0">
+  <div
+    className="drp-stat-card"
+    style={{
+      flex: 1,
+      display: "flex",
+      alignItems: "center",
+      gap: "var(--drp-space-3)",
+    }}
+  >
+    <div
+      style={{
+        width: 40,
+        height: 40,
+        border: "var(--drp-border-thin)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        color: "var(--drp-grey)",
+        flexShrink: 0,
+      }}
+    >
       {icon}
     </div>
-    <div className="flex-1">
-      <div className="text-xl font-bold text-black">{value}</div>
-      <div className="text-xs text-gray-500">{label}</div>
+    <div style={{ flex: 1 }}>
+      <div
+        className="drp-stat-card__value"
+        style={{ fontSize: "var(--drp-text-h5)" }}
+      >
+        {value}
+      </div>
+      <div className="drp-caption">{label}</div>
     </div>
     <Sparkline color={chartColor} values={chartValues} />
   </div>
@@ -1773,11 +1819,21 @@ const ReportScreen: React.FC<ReportScreenProps> = ({
   children,
   active = "Analytics",
 }) => (
-  <div className="flex h-screen bg-[#f5efe6]">
+  <div className="app-layout">
     <DoctorProjectSidebar active={active} />
-    <div className="flex-1 flex flex-col overflow-hidden">
+    <div className="main-content">
       <TopBar title="Reports" />
-      <div className="flex-1 overflow-auto p-6 space-y-4">{children}</div>
+      <div className="content">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "var(--drp-space-4)",
+          }}
+        >
+          {children}
+        </div>
+      </div>
       <Footer />
     </div>
   </div>
@@ -1788,12 +1844,11 @@ const ReportScreen: React.FC<ReportScreenProps> = ({
 export const BarsScreen: React.FC = () => (
   <ReportScreen>
     {/* Stat Cards */}
-    <div className="flex gap-4">
+    <div className="drp-stat-grid drp-stat-grid--3">
       <StatCard1
         label="Balance"
         value="$80,470.50"
         badge="+10%"
-        badgeColor="bg-green-100 text-green-700"
         description="Total remaining balance"
         trend="up"
       />
@@ -1801,7 +1856,6 @@ export const BarsScreen: React.FC = () => (
         label="Money in"
         value="$60,930.50"
         badge="-14%"
-        badgeColor="bg-red-100 text-red-600"
         description="Total amount you gained"
         trend="down"
       />
@@ -1809,7 +1863,6 @@ export const BarsScreen: React.FC = () => (
         label="Money out"
         value="$42,890.30"
         badge="+16%"
-        badgeColor="bg-green-100 text-green-700"
         description="Total amount you spent"
         trend="up"
       />
@@ -1836,8 +1889,8 @@ export const BarsScreen: React.FC = () => (
     </ChartCardWrapper>
 
     {/* Bars 8 + 4 cols */}
-    <div className="flex gap-4">
-      <ChartCardWrapper title="Bars 8 columns" className="flex-1">
+    <div className="drp-chart-grid drp-chart-grid--2">
+      <ChartCardWrapper title="Bars 8 columns">
         <BarChartSVG
           data={BAR_DATA_8}
           labels={MONTHS_8}
@@ -1845,7 +1898,7 @@ export const BarsScreen: React.FC = () => (
           height={200}
         />
       </ChartCardWrapper>
-      <ChartCardWrapper title="Bars 4 columns" className="flex-1">
+      <ChartCardWrapper title="Bars 4 columns">
         <BarChartSVG
           data={BAR_DATA_4}
           labels={MONTHS_4}
@@ -1862,13 +1915,13 @@ export const BarsScreen: React.FC = () => (
 export const BarsHorizontalScreen: React.FC = () => (
   <ReportScreen>
     {/* Stat Cards */}
-    <div className="flex gap-4">
+    <div className="drp-stat-grid drp-stat-grid--3">
       <StatCard2
         label="Balance"
         value="$80,470.50"
         spent="1.345"
         left="1.345"
-        barColor="#22c55e"
+        barColor="var(--drp-mint)"
         pct={50}
       />
       <StatCard2
@@ -1876,7 +1929,7 @@ export const BarsHorizontalScreen: React.FC = () => (
         value="$60,930.50"
         spent="1.345"
         left="1.345"
-        barColor="#fbbf24"
+        barColor="var(--drp-yellow)"
         pct={50}
       />
       <StatCard2
@@ -1884,7 +1937,7 @@ export const BarsHorizontalScreen: React.FC = () => (
         value="$42,890.30"
         spent="1.345"
         left="1.345"
-        barColor="#f87171"
+        barColor="var(--drp-pink)"
         pct={50}
       />
     </div>
@@ -1895,11 +1948,11 @@ export const BarsHorizontalScreen: React.FC = () => (
     </ChartCardWrapper>
 
     {/* Bars 8 + 4 cols */}
-    <div className="flex gap-4">
-      <ChartCardWrapper title="Bars 8 columns" className="flex-1">
+    <div className="drp-chart-grid drp-chart-grid--2">
+      <ChartCardWrapper title="Bars 8 columns">
         <HBarChartSVG data={HBAR_DATA_8} height={240} />
       </ChartCardWrapper>
-      <ChartCardWrapper title="Bars 4 columns" className="flex-1">
+      <ChartCardWrapper title="Bars 4 columns">
         <HBarChartSVG data={HBAR_DATA_4} height={240} />
       </ChartCardWrapper>
     </div>
@@ -1911,22 +1964,25 @@ export const BarsHorizontalScreen: React.FC = () => (
 export const ChartGeometricScreen: React.FC = () => (
   <ReportScreen>
     {/* Stat Cards with bar icons */}
-    <div className="flex gap-4">
+    <div className="drp-stat-grid drp-stat-grid--3">
       {[
-        { label: "Balance", value: "$80,470.50", color: "#22c55e" },
-        { label: "Money in", value: "$60,930.50", color: "#fbbf24" },
-        { label: "Money out", value: "$42,890.30", color: "#f87171" },
+        { label: "Balance", value: "$80,470.50", color: "var(--drp-mint)" },
+        { label: "Money in", value: "$60,930.50", color: "var(--drp-yellow)" },
+        { label: "Money out", value: "$42,890.30", color: "var(--drp-pink)" },
       ].map((s) => (
-        <div
-          key={s.label}
-          className="bg-white border border-black/10 rounded-xl p-4 flex-1"
-        >
-          <div className="flex items-start justify-between">
+        <div key={s.label} className="drp-stat-card">
+          <div
+            style={{
+              display: "flex",
+              alignItems: "flex-start",
+              justifyContent: "space-between",
+            }}
+          >
             <div>
-              <div className="text-xs text-gray-500 mb-0.5">{s.label}</div>
-              <div className="text-2xl font-bold text-black">{s.value}</div>
+              <div className="drp-stat-card__label">{s.label}</div>
+              <div className="drp-stat-card__value">{s.value}</div>
             </div>
-            <div className="w-6 h-6 text-gray-400">
+            <div style={{ width: 24, height: 24, color: "var(--drp-grey)" }}>
               <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path
                   strokeLinecap="round"
@@ -1938,8 +1994,11 @@ export const ChartGeometricScreen: React.FC = () => (
             </div>
           </div>
           <div
-            className="h-1 rounded-full mt-3"
-            style={{ backgroundColor: s.color }}
+            style={{
+              height: 4,
+              marginTop: "var(--drp-space-3)",
+              backgroundColor: s.color,
+            }}
           ></div>
         </div>
       ))}
@@ -1949,8 +2008,8 @@ export const ChartGeometricScreen: React.FC = () => (
     <ChartCardWrapper
       title="Wave 12 columns"
       legend={[
-        { color: "#a855f7", label: "Blue Tag" },
-        { color: "#86efac", label: "Green Tag" },
+        { color: "var(--drp-purple)", label: "Blue Tag" },
+        { color: "var(--drp-mint)", label: "Green Tag" },
       ]}
     >
       <WaveChartSVG
@@ -1965,13 +2024,12 @@ export const ChartGeometricScreen: React.FC = () => (
     </ChartCardWrapper>
 
     {/* Wave 8 + 4 cols */}
-    <div className="flex gap-4">
+    <div className="drp-chart-grid drp-chart-grid--2">
       <ChartCardWrapper
         title="Wave 8 columns"
-        className="flex-1"
         legend={[
-          { color: "#a855f7", label: "Blue Tag" },
-          { color: "#86efac", label: "Green Tag" },
+          { color: "var(--drp-purple)", label: "Blue Tag" },
+          { color: "var(--drp-mint)", label: "Green Tag" },
         ]}
       >
         <WaveChartSVG
@@ -1984,7 +2042,7 @@ export const ChartGeometricScreen: React.FC = () => (
           showTooltip
         />
       </ChartCardWrapper>
-      <ChartCardWrapper title="Wave 4 columns" className="flex-1">
+      <ChartCardWrapper title="Wave 4 columns">
         <WaveChartSVG
           dataBlue={GEO_BLUE_4}
           dataGreen={GEO_GREEN_4}
@@ -2004,32 +2062,32 @@ export const ChartGeometricScreen: React.FC = () => (
 export const ChartWaveScreen: React.FC = () => (
   <ReportScreen>
     {/* Stat Cards with bar sparklines */}
-    <div className="flex gap-4">
+    <div className="drp-stat-grid drp-stat-grid--3">
       <StatCard3
         label="Dropbox"
         value="368.4 Gb"
         sub=""
-        change="↑ +0.73%"
-        changeColor="text-green-600"
-        chartColor="#22c55e"
+        change="^ +0.73%"
+        changeColor="var(--drp-mint)"
+        chartColor="var(--drp-mint)"
         chartValues={[30, 45, 40, 55, 50, 65, 60]}
       />
       <StatCard3
         label="Amazon AWS"
         value="82.6 Tb"
         sub=""
-        change="↓ -0.73%"
-        changeColor="text-red-500"
-        chartColor="#fbbf24"
+        change="v -0.73%"
+        changeColor="var(--drp-pink)"
+        chartColor="var(--drp-yellow)"
         chartValues={[60, 55, 50, 45, 40, 35, 38]}
       />
       <StatCard3
         label="Google Cloud"
         value="16.8 Gb"
         sub=""
-        change="↑ +6.59%"
-        changeColor="text-green-600"
-        chartColor="#f87171"
+        change="^ +6.59%"
+        changeColor="var(--drp-mint)"
+        chartColor="var(--drp-pink)"
         chartValues={[25, 30, 35, 40, 38, 45, 50]}
       />
     </div>
@@ -2038,8 +2096,8 @@ export const ChartWaveScreen: React.FC = () => (
     <ChartCardWrapper
       title="Wave 12 columns"
       legend={[
-        { color: "#a855f7", label: "Blue Tag" },
-        { color: "#86efac", label: "Green Tag" },
+        { color: "var(--drp-purple)", label: "Blue Tag" },
+        { color: "var(--drp-mint)", label: "Green Tag" },
       ]}
     >
       <WaveChartSVG
@@ -2054,13 +2112,12 @@ export const ChartWaveScreen: React.FC = () => (
     </ChartCardWrapper>
 
     {/* Wave 8 + 4 cols */}
-    <div className="flex gap-4">
+    <div className="drp-chart-grid drp-chart-grid--2">
       <ChartCardWrapper
         title="Wave 8 columns"
-        className="flex-1"
         legend={[
-          { color: "#a855f7", label: "Blue Tag" },
-          { color: "#86efac", label: "Green Tag" },
+          { color: "var(--drp-purple)", label: "Blue Tag" },
+          { color: "var(--drp-mint)", label: "Green Tag" },
         ]}
       >
         <WaveChartSVG
@@ -2073,7 +2130,7 @@ export const ChartWaveScreen: React.FC = () => (
           showTooltip
         />
       </ChartCardWrapper>
-      <ChartCardWrapper title="Wave 4 columns" className="flex-1">
+      <ChartCardWrapper title="Wave 4 columns">
         <WaveChartSVG
           dataBlue={WAVE_BLUE_4}
           dataGreen={WAVE_GREEN_4}
@@ -2096,12 +2153,18 @@ export const DoubleBarsScreen: React.FC = () => (
     <ChartCardWrapper
       title="Bars 12 columns"
       legend={[
-        { color: "#86efac", label: "Blue Tag" },
-        { color: "#c4b5fd", label: "Green Tag" },
+        { color: "var(--drp-mint)", label: "Blue Tag" },
+        { color: "var(--drp-purple)", label: "Green Tag" },
       ]}
     >
       {/* Mini stats inside */}
-      <div className="flex gap-4 mb-4 border-b border-black/5 pb-4">
+      <div
+        className="drp-stat-grid drp-stat-grid--3"
+        style={{
+          borderBottom: "var(--drp-border-thin)",
+          paddingBottom: "var(--drp-space-4)",
+        }}
+      >
         {[
           {
             label: "Balance",
@@ -2122,17 +2185,38 @@ export const DoubleBarsScreen: React.FC = () => (
             pos: true,
           },
         ].map((s) => (
-          <div key={s.label} className="flex-1">
-            <div className="text-xs text-gray-500">{s.label}</div>
-            <div className="flex items-center gap-2">
-              <span className="text-lg font-bold text-black">{s.value}</span>
+          <div key={s.label}>
+            <div className="drp-caption">{s.label}</div>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "var(--drp-space-2)",
+              }}
+            >
               <span
-                className={`text-xs ${s.pos ? "text-green-600" : "text-red-500"}`}
+                style={{
+                  fontSize: "var(--drp-text-lg)",
+                  fontWeight: "var(--drp-weight-bold)",
+                  color: "var(--drp-black)",
+                }}
+              >
+                {s.value}
+              </span>
+              <span
+                style={{
+                  fontSize: "var(--drp-text-xs)",
+                  color: s.pos ? "var(--drp-mint)" : "var(--drp-pink)",
+                }}
               >
                 {s.change}
               </span>
               <svg
-                className={`w-3 h-3 ${s.pos ? "text-green-600" : "text-red-500"}`}
+                style={{
+                  width: 12,
+                  height: 12,
+                  color: s.pos ? "var(--drp-mint)" : "var(--drp-pink)",
+                }}
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -2173,8 +2257,8 @@ export const DoubleBarsScreen: React.FC = () => (
     </ChartCardWrapper>
 
     {/* Bars 8 + 4 cols */}
-    <div className="flex gap-4">
-      <ChartCardWrapper title="Bars 8 columns" className="flex-1">
+    <div className="drp-chart-grid drp-chart-grid--2">
+      <ChartCardWrapper title="Bars 8 columns">
         <DoubleBarChartSVG
           dataGreen={DOUBLE_GREEN_8}
           dataPurple={DOUBLE_PURPLE_8}
@@ -2183,7 +2267,7 @@ export const DoubleBarsScreen: React.FC = () => (
           height={200}
         />
       </ChartCardWrapper>
-      <ChartCardWrapper title="Bars 4 columns" className="flex-1">
+      <ChartCardWrapper title="Bars 4 columns">
         <DoubleBarChartSVG
           dataGreen={DOUBLE_GREEN_4}
           dataPurple={DOUBLE_PURPLE_4}
@@ -2202,13 +2286,19 @@ export const MiscScreen: React.FC = () => (
   <ReportScreen>
     {/* Map */}
     <ChartCardWrapper title="Map 12 columns">
-      <WorldMapSVG />
+      <WorldMapChart />
     </ChartCardWrapper>
 
     {/* Pie chart 6 cols x2 */}
-    <div className="flex gap-4">
-      <ChartCardWrapper title="Pie chart 6 columns" className="flex-1">
-        <div className="flex flex-col items-center">
+    <div className="drp-chart-grid drp-chart-grid--2">
+      <ChartCardWrapper title="Pie chart 6 columns">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <DonutChart
             emptyRings
             label="$80,720.50"
@@ -2216,52 +2306,64 @@ export const MiscScreen: React.FC = () => (
             height={200}
             segments={[]}
           />
-          <div className="flex items-center gap-4 mt-2">
+          <div
+            className="drp-chart-legend drp-chart-legend--center"
+            style={{ marginTop: "var(--drp-space-2)" }}
+          >
             {[
-              { color: "#fbbf24", label: "Yellow Tag" },
-              { color: "#a855f7", label: "Blue Tag" },
-              { color: "#86efac", label: "Green Tag" },
+              { color: "var(--drp-yellow)", label: "Yellow Tag" },
+              { color: "var(--drp-purple)", label: "Blue Tag" },
+              { color: "var(--drp-mint)", label: "Green Tag" },
             ].map((l) => (
-              <div key={l.label} className="flex items-center gap-1.5">
+              <div key={l.label} className="drp-chart-legend__item">
                 <span
-                  className="w-2 h-2 rounded-full"
+                  className="drp-chart-legend__dot"
                   style={{ backgroundColor: l.color }}
                 ></span>
-                <span className="text-xs text-gray-500">{l.label}</span>
+                <span>{l.label}</span>
               </div>
             ))}
           </div>
         </div>
       </ChartCardWrapper>
-      <ChartCardWrapper title="Pie chart 6 columns" className="flex-1">
-        <div className="flex flex-col items-center">
+      <ChartCardWrapper title="Pie chart 6 columns">
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <DonutChart
             label="$80,720.50"
             sublabel="from all accounts"
             height={200}
             showSegmentLabels
             segments={[
-              { color: "#fbbf24", pct: 8 },
-              { color: "#a855f7", pct: 35 },
-              { color: "#86efac", pct: 30 },
-              { color: "#f87171", pct: 20 },
-              { color: "#4f46e5", pct: 7 },
+              { color: "var(--drp-yellow)", pct: 8 },
+              { color: "var(--drp-purple)", pct: 35 },
+              { color: "var(--drp-mint)", pct: 30 },
+              { color: "var(--drp-pink)", pct: 20 },
+              { color: "#6f42c1", pct: 7 },
             ]}
           />
-          <div className="flex items-center gap-4 mt-2">
+          <div
+            className="drp-chart-legend drp-chart-legend--center"
+            style={{ marginTop: "var(--drp-space-2)" }}
+          >
             {[
-              { color: "#fbbf24", label: "Yellow" },
-              { color: "#a855f7", label: "Blue" },
-              { color: "#86efac", label: "Green" },
-              { color: "#f87171", label: "Red" },
-              { color: "#4f46e5", label: "Dark Blue" },
+              { color: "var(--drp-yellow)", label: "Yellow" },
+              { color: "var(--drp-purple)", label: "Blue" },
+              { color: "var(--drp-mint)", label: "Green" },
+              { color: "var(--drp-pink)", label: "Red" },
+              { color: "#6f42c1", label: "Dark Blue" },
             ].map((l) => (
-              <div key={l.label} className="flex items-center gap-1.5">
+              <div key={l.label} className="drp-chart-legend__item">
                 <span
-                  className="w-2 h-2 rounded-full"
+                  className="drp-chart-legend__dot"
                   style={{ backgroundColor: l.color }}
                 ></span>
-                <span className="text-xs text-gray-500">{l.label}</span>
+                <span>{l.label}</span>
               </div>
             ))}
           </div>
@@ -2276,7 +2378,7 @@ export const MiscScreen: React.FC = () => (
 export const PolarChartScreen: React.FC = () => (
   <ReportScreen>
     {/* Stat Cards with sparklines */}
-    <div className="flex gap-4">
+    <div className="drp-stat-grid drp-stat-grid--3">
       {[
         {
           icon: (
@@ -2284,17 +2386,17 @@ export const PolarChartScreen: React.FC = () => (
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="w-5 h-5"
+              style={{ width: 20, height: 20 }}
             >
-              <rect x="3" y="3" width="7" height="7" rx="1" strokeWidth={2} />
-              <rect x="14" y="3" width="7" height="7" rx="1" strokeWidth={2} />
-              <rect x="3" y="14" width="7" height="7" rx="1" strokeWidth={2} />
-              <rect x="14" y="14" width="7" height="7" rx="1" strokeWidth={2} />
+              <rect x="3" y="3" width="7" height="7" rx="0" strokeWidth={2} />
+              <rect x="14" y="3" width="7" height="7" rx="0" strokeWidth={2} />
+              <rect x="3" y="14" width="7" height="7" rx="0" strokeWidth={2} />
+              <rect x="14" y="14" width="7" height="7" rx="0" strokeWidth={2} />
             </svg>
           ),
           value: "368.4 Gb",
           label: "Dropbox",
-          color: "#a855f7",
+          color: "var(--drp-purple)",
           values: [30, 50, 35, 55, 45, 60, 55, 70],
         },
         {
@@ -2303,9 +2405,9 @@ export const PolarChartScreen: React.FC = () => (
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="w-5 h-5"
+              style={{ width: 20, height: 20 }}
             >
-              <rect x="3" y="4" width="18" height="18" rx="2" strokeWidth={2} />
+              <rect x="3" y="4" width="18" height="18" rx="0" strokeWidth={2} />
               <path
                 strokeLinecap="round"
                 strokeWidth={2}
@@ -2315,7 +2417,7 @@ export const PolarChartScreen: React.FC = () => (
           ),
           value: "82.6 Tb",
           label: "Amazon AWS",
-          color: "#a855f7",
+          color: "var(--drp-purple)",
           values: [55, 45, 60, 50, 65, 55, 70, 60],
         },
         {
@@ -2324,7 +2426,7 @@ export const PolarChartScreen: React.FC = () => (
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              className="w-5 h-5"
+              style={{ width: 20, height: 20 }}
             >
               <path
                 strokeLinecap="round"
@@ -2336,7 +2438,7 @@ export const PolarChartScreen: React.FC = () => (
           ),
           value: "16.8 Gb",
           label: "Google Cloud",
-          color: "#a855f7",
+          color: "var(--drp-purple)",
           values: [40, 55, 45, 60, 50, 65, 55, 70],
         },
       ].map((s) => (
@@ -2352,22 +2454,22 @@ export const PolarChartScreen: React.FC = () => (
     </div>
 
     {/* Polar charts */}
-    <div className="flex gap-4">
-      <ChartCardWrapper title="Polar chart 6 columns" className="flex-1">
-        <div className="flex justify-center">
-          <PolarChartSVG variant="radar" height={320} />
+    <div className="drp-chart-grid drp-chart-grid--2">
+      <ChartCardWrapper title="Polar chart 6 columns">
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <PolarChartComponent variant="radar" height={320} />
         </div>
       </ChartCardWrapper>
-      <ChartCardWrapper title="Polar chart 6 columns" className="flex-1">
-        <div className="flex justify-center">
-          <PolarChartSVG variant="segments" height={320} />
+      <ChartCardWrapper title="Polar chart 6 columns">
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <PolarChartComponent variant="segments" height={320} />
         </div>
       </ChartCardWrapper>
     </div>
 
     {/* Wave 6 cols x2 */}
-    <div className="flex gap-4">
-      <ChartCardWrapper title="Wave 6 columns" className="flex-1">
+    <div className="drp-chart-grid drp-chart-grid--2">
+      <ChartCardWrapper title="Wave 6 columns">
         <WaveChartSVG
           dataBlue={[280, 160, 130, 250, 290, 240]}
           dataGreen={[]}
@@ -2378,7 +2480,7 @@ export const PolarChartScreen: React.FC = () => (
           showTooltip
         />
       </ChartCardWrapper>
-      <ChartCardWrapper title="Wave 6 columns" className="flex-1">
+      <ChartCardWrapper title="Wave 6 columns">
         <WaveChartSVG
           dataBlue={[
             340, 280, 400, 360, 430, 370, 210, 310, 280, 440, 200, 300,
@@ -2408,12 +2510,18 @@ export const ChartContainer: React.FC<ChartContainerProps> = ({
   subtitle,
   children,
 }) => (
-  <div className="max-w-6xl mx-auto p-6">
-    <div className="mb-8">
-      <h1 className="text-3xl font-bold">{title}</h1>
-      {subtitle && <p className="text-gray-600 mt-2">{subtitle}</p>}
+  <div
+    style={{ maxWidth: 1200, margin: "0 auto", padding: "var(--drp-space-6)" }}
+  >
+    <div style={{ marginBottom: "var(--drp-space-8)" }}>
+      <h1 className="drp-h2">{title}</h1>
+      {subtitle && (
+        <p className="drp-caption" style={{ marginTop: "var(--drp-space-2)" }}>
+          {subtitle}
+        </p>
+      )}
     </div>
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">{children}</div>
+    <div className="drp-chart-grid drp-chart-grid--2">{children}</div>
   </div>
 );
 

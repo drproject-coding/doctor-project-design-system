@@ -1,6 +1,4 @@
 import React from "react";
-import { Card } from "../../components/Card";
-import { Badge } from "../../components/Badge";
 
 interface ScreenItem {
   name: string;
@@ -204,81 +202,137 @@ export const ScreensShowcase: React.FC = () => {
   const totalVariants = screens.reduce((sum, s) => sum + s.variants, 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 p-8">
-      <div className="max-w-7xl mx-auto">
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "var(--drp-cream)",
+        padding: "var(--drp-space-8)",
+      }}
+    >
+      <div style={{ maxWidth: 1280, margin: "0 auto" }}>
         {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-5xl font-bold text-slate-900 mb-2">
+        <div style={{ marginBottom: "var(--drp-space-12)" }}>
+          <h1 className="drp-h1" style={{ marginBottom: "var(--drp-space-2)" }}>
             Design System Screens
           </h1>
-          <p className="text-xl text-slate-600 mb-6">
+          <p
+            className="drp-text drp-text--muted"
+            style={{
+              fontSize: "var(--drp-text-lg)",
+              marginBottom: "var(--drp-space-6)",
+            }}
+          >
             Complete showcase of 40+ screens across 15 categories
           </p>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <div className="text-3xl font-bold text-blue-600">
-                {totalScreens}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: "var(--drp-space-4)",
+            }}
+          >
+            {[
+              {
+                value: totalScreens,
+                label: "Screens",
+                color: "var(--drp-info)",
+              },
+              {
+                value: totalVariants,
+                label: "Variants",
+                color: "var(--drp-success)",
+              },
+              {
+                value: categories.length,
+                label: "Categories",
+                color: "var(--drp-purple)",
+              },
+              {
+                value: "30+",
+                label: "Components",
+                color: "var(--drp-orange)",
+              },
+            ].map((stat) => (
+              <div
+                key={stat.label}
+                className="drp-card"
+                style={{ padding: "var(--drp-space-4)" }}
+              >
+                <div
+                  className="drp-h3"
+                  style={{
+                    color: stat.color,
+                    marginBottom: "var(--drp-space-1)",
+                  }}
+                >
+                  {stat.value}
+                </div>
+                <div className="drp-text drp-text--sm drp-text--muted">
+                  {stat.label}
+                </div>
               </div>
-              <div className="text-sm text-slate-600">Screens</div>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <div className="text-3xl font-bold text-green-600">
-                {totalVariants}
-              </div>
-              <div className="text-sm text-slate-600">Variants</div>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <div className="text-3xl font-bold text-purple-600">
-                {categories.length}
-              </div>
-              <div className="text-sm text-slate-600">Categories</div>
-            </div>
-            <div className="bg-white rounded-lg p-4 shadow-sm">
-              <div className="text-3xl font-bold text-orange-600">30+</div>
-              <div className="text-sm text-slate-600">Components</div>
-            </div>
+            ))}
           </div>
         </div>
 
         {/* Screens by Category */}
-        <div className="space-y-12">
+        <div className="drp-flex-col" style={{ gap: "var(--drp-space-12)" }}>
           {categories.map((category) => {
             const categoryScreens = screens.filter(
               (s) => s.category === category,
             );
             return (
               <div key={category}>
-                <div className="mb-6">
-                  <h2 className="text-3xl font-bold text-slate-900">
+                <div style={{ marginBottom: "var(--drp-space-6)" }}>
+                  <h2
+                    className="drp-h2"
+                    style={{ marginBottom: "var(--drp-space-1)" }}
+                  >
                     {category}
                   </h2>
-                  <p className="text-slate-600">
+                  <p className="drp-text drp-text--sm drp-text--muted">
                     {categoryScreens.length} screens
                   </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div
+                  style={{
+                    display: "grid",
+                    gridTemplateColumns: "repeat(3, 1fr)",
+                    gap: "var(--drp-space-6)",
+                  }}
+                >
                   {categoryScreens.map((screen) => (
-                    <Card
+                    <div
                       key={screen.name}
-                      className="p-6 hover:shadow-lg transition-shadow hover:border-blue-200"
+                      className="drp-card drp-card--interactive"
+                      style={{ padding: "var(--drp-space-6)" }}
                     >
-                      <div className="flex items-start justify-between mb-3">
-                        <h3 className="text-lg font-semibold text-slate-900">
-                          {screen.name}
-                        </h3>
-                        <Badge variant="primary">{screen.variants}x</Badge>
+                      <div
+                        className="drp-flex drp-items-center drp-justify-between"
+                        style={{ marginBottom: "var(--drp-space-3)" }}
+                      >
+                        <h3 className="drp-h5">{screen.name}</h3>
+                        <span className="drp-badge drp-badge--purple">
+                          {screen.variants}x
+                        </span>
                       </div>
-                      <p className="text-slate-600 text-sm mb-4">
+                      <p
+                        className="drp-text drp-text--sm drp-text--muted"
+                        style={{ marginBottom: "var(--drp-space-4)" }}
+                      >
                         {screen.description}
                       </p>
-                      <div className="flex gap-2">
-                        <button className="flex-1 px-3 py-2 bg-blue-100 text-blue-700 rounded text-sm font-medium hover:bg-blue-200 transition-colors">
+                      <div className="drp-flex drp-gap-2">
+                        <button
+                          className="drp-btn drp-btn--outline drp-btn--sm"
+                          style={{ flex: 1 }}
+                        >
                           View Story
                         </button>
                       </div>
-                    </Card>
+                    </div>
                   ))}
                 </div>
               </div>
@@ -287,35 +341,84 @@ export const ScreensShowcase: React.FC = () => {
         </div>
 
         {/* Summary */}
-        <div className="mt-16 bg-white rounded-lg p-8 shadow-sm">
-          <h2 className="text-2xl font-bold text-slate-900 mb-4">
+        <div
+          className="drp-card"
+          style={{
+            marginTop: "var(--drp-space-16)",
+            padding: "var(--drp-space-8)",
+          }}
+        >
+          <h2 className="drp-h3" style={{ marginBottom: "var(--drp-space-4)" }}>
             Quick Stats
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: "var(--drp-space-8)",
+              textAlign: "center",
+            }}
+          >
             <div>
-              <div className="text-4xl font-bold text-blue-600 mb-2">
+              <div
+                className="drp-h2"
+                style={{
+                  color: "var(--drp-info)",
+                  marginBottom: "var(--drp-space-2)",
+                }}
+              >
                 {totalScreens}
               </div>
-              <div className="text-slate-600">Total Screens Implemented</div>
+              <div className="drp-text drp-text--muted">
+                Total Screens Implemented
+              </div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-green-600 mb-2">
+              <div
+                className="drp-h2"
+                style={{
+                  color: "var(--drp-success)",
+                  marginBottom: "var(--drp-space-2)",
+                }}
+              >
                 {totalVariants}
               </div>
-              <div className="text-slate-600">Storybook Variants</div>
+              <div className="drp-text drp-text--muted">Storybook Variants</div>
             </div>
             <div>
-              <div className="text-4xl font-bold text-purple-600 mb-2">✅</div>
-              <div className="text-slate-600">All with Mock Data & Stories</div>
+              <div
+                className="drp-h2"
+                style={{
+                  color: "var(--drp-purple)",
+                  marginBottom: "var(--drp-space-2)",
+                }}
+              >
+                All
+              </div>
+              <div className="drp-text drp-text--muted">
+                All with Mock Data & Stories
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Footer */}
-        <div className="mt-8 text-center text-slate-600 text-sm">
-          <p>
+        {/* Footer note */}
+        <div
+          style={{
+            marginTop: "var(--drp-space-8)",
+            textAlign: "center",
+          }}
+        >
+          <p className="drp-text drp-text--sm drp-text--muted">
             View in Storybook:{" "}
-            <code className="bg-slate-200 px-2 py-1 rounded">
+            <code
+              style={{
+                background: "var(--drp-black)",
+                color: "var(--drp-cream)",
+                padding: "2px var(--drp-space-2)",
+                fontSize: "var(--drp-text-xs)",
+              }}
+            >
               npm run storybook
             </code>
           </p>

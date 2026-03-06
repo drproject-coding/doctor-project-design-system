@@ -24,209 +24,232 @@ const DoctorProjectSidebar: React.FC<{ variant: TransactionVariant }> = ({
 }) => {
   const showTeamMembers = variant === "invoice";
 
+  const navItems = [
+    { id: "dashboard", label: "Dashboard" },
+    { id: "accounts", label: "Accounts" },
+    { id: "transactions", label: "Transactions", active: true },
+    {
+      id: "crypto",
+      label: "Crypto Assets",
+      badge: 28,
+      badgeVariant: "sidebar-badge--purple",
+    },
+    {
+      id: "payments",
+      label: "Payments",
+      badge: 14,
+      badgeVariant: "sidebar-badge--green",
+    },
+    { id: "reports", label: "Reports" },
+  ];
+
+  const teamMembers = [
+    { name: "Alexandre Paiva", initials: "AP", bg: "var(--drp-orange)" },
+    { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-mint)" },
+    { name: "Justine Robinson", initials: "JR", bg: "var(--drp-grey)" },
+  ];
+
   return (
-    <div className="w-[280px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0">
-      {/* Logo */}
-      <div className="px-6 py-5 border-b border-white/10">
-        <div className="flex items-center gap-1">
-          <span className="text-xl font-bold text-white">Doctor Project</span>
-          <span className="w-2 h-2 rounded-full bg-purple-500 mb-3"></span>
-        </div>
+    <aside className="sidebar" style={{ width: 280 }}>
+      <div className="sidebar-brand">
+        <span className="sidebar-brand-name" style={{ fontSize: 20 }}>
+          Doctor Project
+        </span>
+        <span className="sidebar-brand-dot" />
       </div>
 
-      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-6">
-        {/* Navigation */}
-        <div>
-          <p className="text-xs text-gray-500 uppercase tracking-widest px-2 mb-2">
-            Navigation
-          </p>
-          <nav className="space-y-1">
-            {[
-              { label: "Dashboard", icon: "◎" },
-              { label: "Accounts", icon: "▣" },
-              { label: "Transactions", icon: "⇄", active: true },
-              {
-                label: "Crypto Assets",
-                icon: "◎",
-                badge: 28,
-                badgeColor: "bg-purple-600",
-              },
-              {
-                label: "Payments",
-                icon: "▦",
-                badge: 14,
-                badgeColor: "bg-green-500",
-              },
-              { label: "Reports", icon: "▤" },
-            ].map((item) => (
-              <button
-                key={item.label}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-colors ${
-                  item.active
-                    ? "bg-white/10 text-white font-medium"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-base">{item.icon}</span>
-                  <span
-                    className={item.active ? "text-purple-400 font-medium" : ""}
-                  >
-                    {item.label}
-                  </span>
-                </div>
-                {item.badge && (
-                  <span
-                    className={`text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`}
-                  >
-                    {item.badge}
-                  </span>
-                )}
-              </button>
-            ))}
-          </nav>
+      <nav className="sidebar-nav">
+        <div className="sidebar-nav-section">
+          <div className="sidebar-nav-label">Navigation</div>
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              className={`sidebar-nav-item ${item.active ? "active" : ""}`}
+            >
+              <span className="sidebar-nav-icon">
+                <svg
+                  width="14"
+                  height="14"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </span>
+              <span className="sidebar-nav-text">{item.label}</span>
+              {item.badge && (
+                <span className={`sidebar-badge ${item.badgeVariant}`}>
+                  {item.badge}
+                </span>
+              )}
+            </button>
+          ))}
         </div>
 
         {showTeamMembers ? (
-          /* Team Members section (Invoice variant) */
-          <div>
-            <p className="text-xs text-gray-500 uppercase tracking-widest px-2 mb-2">
-              Team Members
-            </p>
-            <div className="space-y-1">
-              {[
-                {
-                  name: "Alexandre Paiva",
-                  initials: "AP",
-                  color: "bg-orange-500",
-                },
-                {
-                  name: "Thanawan Chadee",
-                  initials: "TC",
-                  color: "bg-teal-500",
-                },
-                {
-                  name: "Justine Robinson",
-                  initials: "JR",
-                  color: "bg-gray-500",
-                },
-              ].map((member) => (
-                <button
-                  key={member.name}
-                  className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5"
+          <div className="sidebar-team">
+            <div className="sidebar-team-label">Team Members</div>
+            {teamMembers.map((m) => (
+              <div key={m.name} className="sidebar-team-member">
+                <div
+                  className="sidebar-avatar"
+                  style={{
+                    background: m.bg,
+                    width: 28,
+                    height: 28,
+                    fontSize: 11,
+                  }}
                 >
-                  <span
-                    className={`w-7 h-7 rounded-full ${member.color} flex items-center justify-center text-xs font-bold text-white flex-shrink-0`}
-                  >
-                    {member.initials.charAt(0)}
-                  </span>
-                  <span>{member.name}</span>
-                </button>
-              ))}
-              <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5">
-                <span className="text-xs text-gray-500">↓</span>
-                <span>See More</span>
-              </button>
+                  {m.initials[0]}
+                </div>
+                <span className="sidebar-team-name">{m.name}</span>
+              </div>
+            ))}
+            <div className="sidebar-see-more">
+              <svg
+                width="12"
+                height="12"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+              <span>See More</span>
             </div>
           </div>
         ) : (
           <>
             {/* Cards */}
-            <div>
-              <p className="text-xs text-gray-500 uppercase tracking-widest px-2 mb-2">
-                Cards
-              </p>
-              <div className="space-y-1">
-                <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5">
-                  <span className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-xs font-bold text-white">
-                    V
-                  </span>
-                  <span>Debit Card **** 7890</span>
-                </button>
-                <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5">
-                  <span className="w-7 h-7 rounded-full bg-gradient-to-br from-red-500 to-orange-400 flex items-center justify-center text-xs">
-                    ●
-                  </span>
-                  <span>Credit Card **** 4340</span>
-                </button>
-                <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5">
-                  <span className="w-7 h-7 rounded-full border border-dashed border-gray-600 flex items-center justify-center text-lg">
-                    +
-                  </span>
-                  <span>Open a card</span>
-                </button>
-              </div>
+            <div className="sidebar-nav-section">
+              <div className="sidebar-nav-label">Cards</div>
+              <button className="sidebar-nav-item">
+                <div
+                  className="sidebar-avatar"
+                  style={{
+                    background: "var(--drp-blue)",
+                    width: 28,
+                    height: 28,
+                    fontSize: 11,
+                  }}
+                >
+                  V
+                </div>
+                <span className="sidebar-nav-text">Debit Card **** 7890</span>
+              </button>
+              <button className="sidebar-nav-item">
+                <div
+                  className="sidebar-avatar"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, var(--drp-pink), var(--drp-orange))",
+                    width: 28,
+                    height: 28,
+                    fontSize: 11,
+                  }}
+                >
+                  ●
+                </div>
+                <span className="sidebar-nav-text">Credit Card **** 4340</span>
+              </button>
+              <button className="sidebar-nav-item">
+                <div
+                  style={{
+                    width: 28,
+                    height: 28,
+                    border: "1px dashed var(--drp-grey)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 16,
+                    color: "var(--drp-grey)",
+                    flexShrink: 0,
+                  }}
+                >
+                  +
+                </div>
+                <span className="sidebar-nav-text">Open a card</span>
+              </button>
             </div>
 
             {/* Balances */}
-            <div>
-              <p className="text-xs text-gray-500 uppercase tracking-widest px-2 mb-2">
-                Balances
-              </p>
-              <div className="space-y-1">
-                {[
-                  { flag: "🇺🇸", amount: "100,050.75 USD" },
-                  { flag: "🇪🇺", amount: "10.40 EUR" },
-                  { flag: "🇬🇧", amount: "95.50 GBP" },
-                ].map((bal) => (
-                  <button
-                    key={bal.amount}
-                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5"
-                  >
-                    <span className="text-lg">{bal.flag}</span>
-                    <span>{bal.amount}</span>
-                  </button>
-                ))}
-                <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5">
-                  <span className="w-7 h-7 rounded-full border border-dashed border-gray-600 flex items-center justify-center text-lg">
-                    +
-                  </span>
-                  <span>Open a balance</span>
+            <div className="sidebar-nav-section">
+              <div className="sidebar-nav-label">Balances</div>
+              {[
+                { flag: "\u{1F1FA}\u{1F1F8}", amount: "100,050.75 USD" },
+                { flag: "\u{1F1EA}\u{1F1FA}", amount: "10.40 EUR" },
+                { flag: "\u{1F1EC}\u{1F1E7}", amount: "95.50 GBP" },
+              ].map((bal) => (
+                <button key={bal.amount} className="sidebar-nav-item">
+                  <span style={{ fontSize: 16 }}>{bal.flag}</span>
+                  <span className="sidebar-nav-text">{bal.amount}</span>
                 </button>
-              </div>
+              ))}
+              <button className="sidebar-nav-item">
+                <div
+                  style={{
+                    width: 28,
+                    height: 28,
+                    border: "1px dashed var(--drp-grey)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 16,
+                    color: "var(--drp-grey)",
+                    flexShrink: 0,
+                  }}
+                >
+                  +
+                </div>
+                <span className="sidebar-nav-text">Open a balance</span>
+              </button>
             </div>
           </>
         )}
-      </div>
+      </nav>
 
-      {/* User profile */}
-      <div className="px-4 py-4 border-t border-white/10">
-        <div className="flex items-center justify-between px-2">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 overflow-hidden flex-shrink-0">
-              <div className="w-full h-full bg-gradient-to-br from-orange-400 to-pink-500" />
-            </div>
-            <span className="text-sm text-gray-200">Henry Richardson</span>
-          </div>
-          <button className="text-gray-500 hover:text-white">···</button>
+      <div className="sidebar-user">
+        <div
+          className="sidebar-avatar"
+          style={{
+            background:
+              "linear-gradient(135deg, var(--drp-orange), var(--drp-pink))",
+            width: 32,
+            height: 32,
+          }}
+        />
+        <div className="sidebar-user-info">
+          <div className="sidebar-user-name">Henry Richardson</div>
         </div>
+        <button className="sidebar-user-menu-btn">...</button>
       </div>
-    </div>
+    </aside>
   );
 };
 
 // ─── Top bar ──────────────────────────────────────────────────────────────────
 
-const TopBar: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => (
-  <div
-    className={`flex items-center justify-between px-8 py-4 border-b flex-shrink-0 ${
-      theme === "dark"
-        ? "bg-[#111111] border-white/10"
-        : "bg-[#f5efe6] border-black/10"
-    }`}
-  >
-    <h1
-      className={`text-3xl font-bold ${theme === "dark" ? "text-white" : "text-black"}`}
-    >
-      Transactions
-    </h1>
-    <div className="flex items-center gap-4">
-      {/* Search icon */}
-      <button
-        className={`p-2 rounded-lg ${theme === "dark" ? "text-gray-400 hover:bg-white/10" : "text-gray-500 hover:bg-black/5"}`}
-      >
+const TopBar: React.FC = () => (
+  <div className="topbar">
+    <div className="topbar-left">
+      <h1 className="topbar-title">Transactions</h1>
+    </div>
+    <div className="topbar-right">
+      <button className="topbar-icon-btn">
         <svg
-          className="w-5 h-5"
+          width="16"
+          height="16"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -239,12 +262,10 @@ const TopBar: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => (
           />
         </svg>
       </button>
-      {/* Bell icon */}
-      <button
-        className={`p-2 rounded-lg ${theme === "dark" ? "text-gray-400 hover:bg-white/10" : "text-gray-500 hover:bg-black/5"}`}
-      >
+      <button className="topbar-icon-btn">
         <svg
-          className="w-5 h-5"
+          width="16"
+          height="16"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -257,12 +278,10 @@ const TopBar: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => (
           />
         </svg>
       </button>
-      {/* Apps button */}
-      <button
-        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium ${theme === "dark" ? "text-gray-200 hover:bg-white/10" : "text-gray-700 hover:bg-black/5"}`}
-      >
+      <button className="topbar-apps-btn">
         <svg
-          className="w-4 h-4"
+          width="16"
+          height="16"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -274,12 +293,11 @@ const TopBar: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => (
             d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
           />
         </svg>
-        Apps
+        <span>Apps</span>
       </button>
-      {/* Create new button */}
-      <button className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors">
-        <span className="text-lg leading-none">+</span>
-        Create new
+      <button className="topbar-create-btn">
+        <span>+</span>
+        <span>Create new</span>
       </button>
     </div>
   </div>
@@ -287,41 +305,19 @@ const TopBar: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => (
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
 
-const Footer: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => (
-  <div
-    className={`flex items-center justify-between px-8 py-3 border-t text-sm flex-shrink-0 ${
-      theme === "dark"
-        ? "bg-[#111111] border-white/10 text-gray-500"
-        : "bg-[#f5efe6] border-black/10 text-gray-500"
-    }`}
-  >
-    <div className="flex items-center gap-6">
-      <button className="flex items-center gap-1.5 hover:opacity-80">
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <circle cx="12" cy="12" r="10" strokeWidth={2} />
-          <path
-            strokeLinecap="round"
-            strokeWidth={2}
-            d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
-          />
-        </svg>
-        English
-      </button>
-      <button className="hover:opacity-80">Privacy Policy</button>
-      <button className="hover:opacity-80">License</button>
-      <button className="hover:opacity-80">API</button>
+const Footer: React.FC = () => (
+  <div className="footer-bar">
+    <div className="footer-links">
+      <span className="footer-link">English</span>
+      <span className="footer-link">Privacy Policy</span>
+      <span className="footer-link">License</span>
+      <span className="footer-link">API</span>
     </div>
-    <div className="flex items-center gap-2">
-      <button
-        className={`p-1.5 rounded ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`}
-      >
+    <div className="footer-right">
+      <button className="footer-icon-btn">
         <svg
-          className="w-4 h-4"
+          width="16"
+          height="16"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -340,11 +336,10 @@ const Footer: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => (
           />
         </svg>
       </button>
-      <button
-        className={`p-1.5 rounded ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`}
-      >
+      <button className="footer-icon-btn">
         <svg
-          className="w-4 h-4"
+          width="16"
+          height="16"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -366,7 +361,6 @@ const Footer: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => (
 interface TxRow {
   icon: string;
   iconBg: string;
-  iconType: "letter" | "image";
   name: string;
   sub: string;
   date: string;
@@ -378,8 +372,7 @@ interface TxRow {
 const TRANSACTIONS: TxRow[] = [
   {
     icon: "V",
-    iconBg: "bg-red-600",
-    iconType: "letter",
+    iconBg: "var(--drp-pink)",
     name: "Vodafone account top up  ****04",
     sub: "Phone payment",
     date: "4 Aug 1:00 PM",
@@ -389,8 +382,7 @@ const TRANSACTIONS: TxRow[] = [
   },
   {
     icon: "C",
-    iconBg: "bg-blue-500",
-    iconType: "letter",
+    iconBg: "var(--drp-blue)",
     name: "Money transfer to John Doe",
     sub: "Bank transfer",
     date: "5 Aug 3:00 PM",
@@ -400,8 +392,7 @@ const TRANSACTIONS: TxRow[] = [
   },
   {
     icon: "A",
-    iconBg: "bg-red-500",
-    iconType: "letter",
+    iconBg: "var(--drp-pink)",
     name: "ATM Cash withdrawal",
     sub: "Cash",
     date: "6 Aug 2:15 AM",
@@ -411,8 +402,7 @@ const TRANSACTIONS: TxRow[] = [
   },
   {
     icon: "a",
-    iconBg: "bg-orange-400",
-    iconType: "letter",
+    iconBg: "var(--drp-orange)",
     name: "Online purchase on Amazon.com",
     sub: "Online payment",
     date: "7 Aug 5:40 PM",
@@ -422,8 +412,7 @@ const TRANSACTIONS: TxRow[] = [
   },
   {
     icon: "I",
-    iconBg: "bg-gradient-to-br from-gray-800 to-gray-600",
-    iconType: "letter",
+    iconBg: "var(--drp-black)",
     name: "Income payment for projects",
     sub: "Bank transfer",
     date: "7 Aug 6:20 PM",
@@ -433,8 +422,7 @@ const TRANSACTIONS: TxRow[] = [
   },
   {
     icon: "A",
-    iconBg: "bg-pink-400",
-    iconType: "letter",
+    iconBg: "var(--drp-pink)",
     name: "Monthly home rent",
     sub: "Bank transfer",
     date: "8 Aug 1:00 AM",
@@ -444,8 +432,7 @@ const TRANSACTIONS: TxRow[] = [
   },
   {
     icon: "I",
-    iconBg: "bg-gradient-to-br from-gray-800 to-gray-600",
-    iconType: "letter",
+    iconBg: "var(--drp-black)",
     name: "Income payment for provided services",
     sub: "Bank transfer",
     date: "10 Aug 4:50 PM",
@@ -455,8 +442,7 @@ const TRANSACTIONS: TxRow[] = [
   },
   {
     icon: "P",
-    iconBg: "bg-blue-600",
-    iconType: "letter",
+    iconBg: "var(--drp-blue)",
     name: "Online purchase at Ebay.com",
     sub: "Online payment",
     date: "12 Aug 3:10 PM",
@@ -466,8 +452,7 @@ const TRANSACTIONS: TxRow[] = [
   },
   {
     icon: "S",
-    iconBg: "bg-purple-500",
-    iconType: "letter",
+    iconBg: "var(--drp-purple)",
     name: "IOfinance UI kit purchase",
     sub: "Online payment",
     date: "14 Aug 4:20 AM",
@@ -477,8 +462,7 @@ const TRANSACTIONS: TxRow[] = [
   },
   {
     icon: "W",
-    iconBg: "bg-cyan-500",
-    iconType: "letter",
+    iconBg: "var(--drp-mint)",
     name: "Intenet payment",
     sub: "Utility payment",
     date: "14 Aug 7:00 AM",
@@ -488,63 +472,121 @@ const TRANSACTIONS: TxRow[] = [
   },
 ];
 
+// ─── Transaction icon ─────────────────────────────────────────────────────────
+
+const TxIcon: React.FC<{ tx: TxRow }> = ({ tx }) => (
+  <div
+    className="sidebar-avatar"
+    style={{
+      background: tx.iconBg,
+      width: 40,
+      height: 40,
+      fontSize: 14,
+      flexShrink: 0,
+    }}
+  >
+    {tx.icon}
+  </div>
+);
+
+// ─── Sort icon ────────────────────────────────────────────────────────────────
+
+const SortIcon: React.FC = () => (
+  <svg
+    style={{
+      width: 12,
+      height: 12,
+      display: "inline-block",
+      marginLeft: 4,
+      color: "var(--drp-grey)",
+    }}
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"
+    />
+  </svg>
+);
+
+// ─── Pagination ───────────────────────────────────────────────────────────────
+
+const TablePagination: React.FC = () => (
+  <div
+    className="drp-flex drp-items-center drp-justify-between"
+    style={{
+      padding: "var(--drp-space-3) var(--drp-space-4)",
+      borderTop: "var(--drp-border-thin)",
+    }}
+  >
+    <button className="drp-btn drp-btn--outline drp-btn--sm">
+      <svg
+        width="16"
+        height="16"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M15 19l-7-7 7-7"
+        />
+      </svg>
+      Prev
+    </button>
+    <span className="drp-text drp-text--sm drp-text--muted">Page 1 of 10</span>
+    <button className="drp-btn drp-btn--outline drp-btn--sm">
+      Next
+      <svg
+        width="16"
+        height="16"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth={2}
+          d="M9 5l7 7-7 7"
+        />
+      </svg>
+    </button>
+  </div>
+);
+
 // ─── Account tabs + filter bar ────────────────────────────────────────────────
 
-const AccountTabBar: React.FC<{
-  theme: "light" | "dark";
-  filterLabel?: string;
-}> = ({ theme, filterLabel = "Apply Filter" }) => {
+const AccountTabBar: React.FC<{ filterLabel?: string }> = ({
+  filterLabel = "Apply Filter",
+}) => {
   const [activeTab, setActiveTab] = useState("All Accounts");
   const tabs = ["All Accounts", "USD Account", "EUR Account", "GBP Account"];
 
-  const btnBase =
-    "px-4 py-2 rounded-lg text-sm font-medium transition-colors border";
-
   return (
-    <div className="flex items-center justify-between mb-4">
-      <div className="flex items-center gap-1">
-        {tabs.map((tab) => {
-          const isActive = tab === activeTab;
-          if (isActive) {
-            return (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium ${
-                  theme === "dark"
-                    ? "bg-white text-black"
-                    : "bg-black text-white"
-                }`}
-              >
-                {tab}
-              </button>
-            );
-          }
-          return (
-            <button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                theme === "dark"
-                  ? "text-gray-400 hover:text-white"
-                  : "text-gray-600 hover:text-black"
-              }`}
-            >
-              {tab}
-            </button>
-          );
-        })}
+    <div className="drp-flex drp-items-center drp-justify-between drp-mb-4">
+      <div className="drp-tabs">
+        {tabs.map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            className={`drp-tab ${tab === activeTab ? "drp-tab--active" : ""}`}
+          >
+            {tab}
+          </button>
+        ))}
       </div>
-      <div className="flex items-center gap-2">
-        <button
-          className={`flex items-center gap-2 ${btnBase} ${
-            theme === "dark"
-              ? "border-white/20 text-white hover:bg-white/10"
-              : "border-black/20 text-black hover:bg-black/5"
-          }`}
-        >
+      <div className="drp-flex drp-items-center drp-gap-2">
+        <button className="drp-btn drp-btn--outline drp-btn--sm">
           <svg
-            className="w-4 h-4"
+            width="16"
+            height="16"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -558,15 +600,10 @@ const AccountTabBar: React.FC<{
           </svg>
           {filterLabel}
         </button>
-        <button
-          className={`flex items-center gap-2 ${btnBase} ${
-            theme === "dark"
-              ? "border-white/20 text-white hover:bg-white/10"
-              : "border-black/20 text-black hover:bg-black/5"
-          }`}
-        >
+        <button className="drp-btn drp-btn--outline drp-btn--sm">
           <svg
-            className="w-4 h-4"
+            width="16"
+            height="16"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -585,201 +622,121 @@ const AccountTabBar: React.FC<{
   );
 };
 
-// ─── Transaction icon ─────────────────────────────────────────────────────────
-
-const TxIcon: React.FC<{ tx: TxRow }> = ({ tx }) => (
-  <div
-    className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 ${tx.iconBg}`}
-  >
-    {tx.icon}
-  </div>
-);
-
 // ─── List V1 content ──────────────────────────────────────────────────────────
 
-const ListV1Content: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => {
-  const cardBg =
-    theme === "dark"
-      ? "bg-[#1a1a1a] border-white/10"
-      : "bg-white border-black/10";
-  const rowBorder = theme === "dark" ? "border-white/5" : "border-black/5";
-
-  return (
-    <div className="flex-1 overflow-auto p-6">
-      <AccountTabBar theme={theme} />
-      <div className={`rounded-xl border ${cardBg} overflow-hidden`}>
-        {TRANSACTIONS.map((tx, i) => (
-          <div
-            key={i}
-            className={`flex items-center gap-4 px-5 py-4 border-b last:border-b-0 ${rowBorder}`}
-          >
-            <TxIcon tx={tx} />
-            <div className="flex-1 min-w-0">
-              <div
-                className={`text-sm font-semibold ${theme === "dark" ? "text-white" : "text-black"}`}
-              >
-                {tx.name}
-              </div>
-              <div className="text-xs text-gray-500">{tx.sub}</div>
-            </div>
-            <div className="text-right flex-shrink-0">
-              <div
-                className={`text-sm font-semibold ${tx.isPositive ? "text-green-500" : theme === "dark" ? "text-white" : "text-black"}`}
-              >
-                {tx.amount}
-              </div>
-              <div className="text-xs text-gray-500">{tx.date}</div>
-            </div>
-            <button className="text-gray-400 hover:text-gray-600 flex-shrink-0 ml-2">
-              ···
-            </button>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-};
-
-// ─── List V2 content ──────────────────────────────────────────────────────────
-
-const SortIcon: React.FC = () => (
-  <svg
-    className="w-3 h-3 inline ml-1"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke="currentColor"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth={2}
-      d="M19 9l-7 7-7-7"
-    />
-  </svg>
-);
-
-const ListV2Content: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => {
-  const cardBg =
-    theme === "dark"
-      ? "bg-[#1a1a1a] border-white/10"
-      : "bg-white border-black/10";
-  const headerBg =
-    theme === "dark" ? "bg-[#222] text-gray-400" : "bg-gray-50 text-gray-500";
-  const rowBorder = theme === "dark" ? "border-white/5" : "border-black/5";
-  const cellText = theme === "dark" ? "text-white" : "text-black";
-
-  const rows = TRANSACTIONS.slice(0, 9);
-
-  return (
-    <div className="flex-1 overflow-auto p-6 flex flex-col">
-      <AccountTabBar theme={theme} />
-      <div className={`rounded-xl border ${cardBg} overflow-hidden flex-1`}>
-        {/* Table header */}
+const ListV1Content: React.FC = () => (
+  <div className="content">
+    <AccountTabBar />
+    <div className="drp-card" style={{ padding: 0, overflow: "hidden" }}>
+      {TRANSACTIONS.map((tx, i) => (
         <div
-          className={`grid grid-cols-[1fr_2fr_1fr_0.7fr_0.9fr_auto] gap-4 px-5 py-3 text-xs font-medium ${headerBg} border-b ${theme === "dark" ? "border-white/10" : "border-black/10"}`}
+          key={i}
+          className="drp-flex drp-items-center drp-gap-4"
+          style={{
+            padding: "var(--drp-space-4) var(--drp-space-5)",
+            borderBottom:
+              i < TRANSACTIONS.length - 1 ? "var(--drp-border-thin)" : "none",
+          }}
         >
-          <div>
-            Date &amp; Time <SortIcon />
+          <TxIcon tx={tx} />
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <div className="drp-text drp-text--bold">{tx.name}</div>
+            <div className="drp-caption">{tx.sub}</div>
           </div>
-          <div>
-            Payment <SortIcon />
-          </div>
-          <div>
-            Service <SortIcon />
-          </div>
-          <div>
-            Fee <SortIcon />
-          </div>
-          <div className="text-right">
-            Price <SortIcon />
-          </div>
-          <div className="w-6"></div>
-        </div>
-        {/* Rows */}
-        {rows.map((tx, i) => (
-          <div
-            key={i}
-            className={`grid grid-cols-[1fr_2fr_1fr_0.7fr_0.9fr_auto] gap-4 px-5 py-4 items-center border-b last:border-b-0 ${rowBorder}`}
-          >
+          <div style={{ textAlign: "right", flexShrink: 0 }}>
             <div
-              className={`text-sm ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}
-            >
-              {tx.date}
-            </div>
-            <div className="flex items-center gap-3 min-w-0">
-              <TxIcon tx={tx} />
-              <span className={`text-sm font-semibold truncate ${cellText}`}>
-                {tx.name}
-              </span>
-            </div>
-            <div
-              className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}
-            >
-              {tx.sub}
-            </div>
-            <div className={`text-sm ${cellText}`}>{tx.fee}</div>
-            <div
-              className={`text-sm font-semibold text-right ${tx.isPositive ? "text-green-500" : cellText}`}
+              className="drp-text drp-text--bold"
+              style={{
+                color: tx.isPositive ? "var(--drp-mint)" : "var(--drp-black)",
+              }}
             >
               {tx.amount}
             </div>
-            <button className="text-gray-400 hover:text-gray-600 w-6">
-              ···
-            </button>
+            <div className="drp-caption">{tx.date}</div>
           </div>
-        ))}
-      </div>
-      {/* Pagination */}
-      <div className="flex items-center justify-between mt-4">
-        <button
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium border ${
-            theme === "dark"
-              ? "border-white/20 text-white hover:bg-white/10"
-              : "border-black/20 text-black hover:bg-black/5"
-          }`}
-        >
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-          Prev
-        </button>
-        <span
-          className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}
-        >
-          Page 1 of 10
-        </span>
-        <button
-          className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium border ${
-            theme === "dark"
-              ? "border-white/20 text-white hover:bg-white/10"
-              : "border-black/20 text-black hover:bg-black/5"
-          }`}
-        >
-          Next
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
-        </button>
+          <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+            ...
+          </button>
+        </div>
+      ))}
+    </div>
+  </div>
+);
+
+// ─── List V2 content ──────────────────────────────────────────────────────────
+
+const ListV2Content: React.FC = () => {
+  const rows = TRANSACTIONS.slice(0, 9);
+
+  return (
+    <div className="content">
+      <AccountTabBar />
+      <div className="drp-card" style={{ padding: 0, overflow: "hidden" }}>
+        <table className="drp-table">
+          <thead>
+            <tr>
+              <th>
+                Date &amp; Time <SortIcon />
+              </th>
+              <th>
+                Payment <SortIcon />
+              </th>
+              <th>
+                Service <SortIcon />
+              </th>
+              <th>
+                Fee <SortIcon />
+              </th>
+              <th style={{ textAlign: "right" }}>
+                Price <SortIcon />
+              </th>
+              <th style={{ width: 40 }}></th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((tx, i) => (
+              <tr key={i}>
+                <td>
+                  <span className="drp-text drp-text--sm drp-text--muted">
+                    {tx.date}
+                  </span>
+                </td>
+                <td>
+                  <div className="drp-flex drp-items-center drp-gap-3">
+                    <TxIcon tx={tx} />
+                    <span className="drp-text drp-text--bold">{tx.name}</span>
+                  </div>
+                </td>
+                <td>
+                  <span className="drp-text drp-text--sm drp-text--muted">
+                    {tx.sub}
+                  </span>
+                </td>
+                <td>
+                  <span className="drp-text drp-text--sm">{tx.fee}</span>
+                </td>
+                <td style={{ textAlign: "right" }}>
+                  <span
+                    className="drp-text drp-text--bold"
+                    style={{
+                      color: tx.isPositive
+                        ? "var(--drp-mint)"
+                        : "var(--drp-black)",
+                    }}
+                  >
+                    {tx.amount}
+                  </span>
+                </td>
+                <td>
+                  <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                    ...
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <TablePagination />
       </div>
     </div>
   );
@@ -787,25 +744,159 @@ const ListV2Content: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => {
 
 // ─── Invoice modal ────────────────────────────────────────────────────────────
 
-const InvoiceModal: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => {
-  const modalBg = theme === "dark" ? "bg-[#111111]" : "bg-white";
-  const textPrimary = theme === "dark" ? "text-white" : "text-black";
-  const textMuted = "text-gray-500";
-  const divider = theme === "dark" ? "border-white/10" : "border-black/10";
-
-  return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black/50">
+const InvoiceModal: React.FC = () => (
+  <div className="drp-overlay">
+    <div
+      className="drp-modal"
+      style={{ width: 480, overflow: "hidden", padding: 0 }}
+    >
+      {/* Purple header */}
       <div
-        className={`w-[480px] rounded-2xl overflow-hidden shadow-2xl ${modalBg}`}
+        style={{
+          background: "var(--drp-purple)",
+          padding: "var(--drp-space-5) var(--drp-space-6)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "between",
+        }}
       >
-        {/* Purple header */}
-        <div className="bg-[#6B47DC] px-6 py-5 flex items-center justify-between relative">
-          <span className="text-white font-semibold text-base">
-            Transaction details
-          </span>
-          <button className="text-white/80 hover:text-white">
+        <span
+          className="drp-text drp-text--bold"
+          style={{ color: "var(--drp-white)", flex: 1 }}
+        >
+          Transaction details
+        </span>
+        <button
+          className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm"
+          style={{ color: "var(--drp-white)" }}
+        >
+          <svg
+            width="16"
+            height="16"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </div>
+
+      {/* Avatar + details */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          marginTop: -24,
+          padding: "var(--drp-space-2) var(--drp-space-8) var(--drp-space-6)",
+        }}
+      >
+        <div
+          className="sidebar-avatar"
+          style={{
+            width: 56,
+            height: 56,
+            background: "var(--drp-cream)",
+            border: "4px solid var(--drp-white)",
+            fontSize: 20,
+            color: "var(--drp-black)",
+            marginBottom: "var(--drp-space-4)",
+          }}
+        >
+          S
+        </div>
+        <h2 className="drp-h5" style={{ marginBottom: 4 }}>
+          2,702.12 USD to James Dean
+        </h2>
+        <p
+          className="drp-text drp-text--sm drp-text--muted"
+          style={{ marginBottom: "var(--drp-space-3)" }}
+        >
+          Completed Thursday 29 April
+        </p>
+        <span className="drp-tag drp-tag--mint drp-tag--filled">Paid</span>
+      </div>
+
+      {/* Details */}
+      <div
+        style={{
+          padding: "0 var(--drp-space-8) var(--drp-space-6)",
+          borderTop: "var(--drp-border-thin)",
+        }}
+      >
+        {/* Send To / Amount */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "var(--drp-space-4)",
+            paddingTop: "var(--drp-space-5)",
+            paddingBottom: "var(--drp-space-4)",
+          }}
+        >
+          <div>
+            <p className="drp-caption" style={{ marginBottom: 4 }}>
+              Send To
+            </p>
+            <p className="drp-text drp-text--bold">James Dean</p>
+            <p className="drp-text drp-text--sm drp-text--muted">
+              james.dea89@gmail.com
+            </p>
+          </div>
+          <div style={{ textAlign: "right" }}>
+            <p className="drp-caption" style={{ marginBottom: 4 }}>
+              Amount
+            </p>
+            <p className="drp-text drp-text--bold">2,702.12 USD</p>
+          </div>
+        </div>
+
+        <div
+          style={{
+            borderTop: "var(--drp-border-dashed)",
+            margin: "var(--drp-space-2) 0",
+          }}
+        />
+
+        {/* Bank Details / Exchange Rate */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1fr 1fr",
+            gap: "var(--drp-space-4)",
+            paddingTop: "var(--drp-space-4)",
+            paddingBottom: "var(--drp-space-6)",
+          }}
+        >
+          <div>
+            <p className="drp-caption" style={{ marginBottom: 4 }}>
+              Bank Details
+            </p>
+            <p className="drp-text drp-text--sm">GE91TB7752145031788598</p>
+            <p className="drp-text drp-text--sm">TBCBGE22</p>
+            <p className="drp-text drp-text--sm">Transfer #241894617</p>
+          </div>
+          <div style={{ textAlign: "right" }}>
+            <p className="drp-caption" style={{ marginBottom: 4 }}>
+              Exchange Rate
+            </p>
+            <p className="drp-text drp-text--sm">1.00000</p>
+          </div>
+        </div>
+
+        {/* Actions */}
+        <div className="drp-flex drp-gap-4">
+          <button className="drp-btn drp-btn--outline" style={{ flex: 1 }}>
+            Print
             <svg
-              className="w-5 h-5"
+              width="16"
+              height="16"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -814,169 +905,60 @@ const InvoiceModal: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => {
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
+                d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
+              />
+            </svg>
+          </button>
+          <button className="drp-btn drp-btn--outline" style={{ flex: 1 }}>
+            Issue Refund
+            <svg
+              width="16"
+              height="16"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
               />
             </svg>
           </button>
         </div>
-
-        {/* Avatar overlapping header/body */}
-        <div className="flex flex-col items-center -mt-6 px-8 pt-2 pb-6">
-          <div className="w-14 h-14 rounded-full bg-white border-4 border-white shadow flex items-center justify-center text-xl font-bold text-gray-800 mb-4">
-            S
-          </div>
-          <h2 className={`text-2xl font-bold text-center mb-1 ${textPrimary}`}>
-            2,702.12 USD to James Dean
-          </h2>
-          <p className={`text-sm ${textMuted} mb-3`}>
-            Completed Thursday 29 April
-          </p>
-          {/* Paid badge */}
-          <span className="px-5 py-1.5 bg-green-400 text-white text-sm font-semibold rounded-full">
-            Paid
-          </span>
-        </div>
-
-        {/* Details */}
-        <div className={`px-8 pb-6 border-t ${divider}`}>
-          {/* Send To / Amount */}
-          <div className="grid grid-cols-2 gap-4 pt-5 pb-4">
-            <div>
-              <p className={`text-xs ${textMuted} mb-1`}>Send To</p>
-              <p className={`text-sm font-semibold ${textPrimary}`}>
-                James Dean
-              </p>
-              <p className={`text-sm ${textMuted}`}>james.dea89@gmail.com</p>
-            </div>
-            <div className="text-right">
-              <p className={`text-xs ${textMuted} mb-1`}>Amount</p>
-              <p className={`text-sm font-semibold ${textPrimary}`}>
-                2,702.12 USD
-              </p>
-            </div>
-          </div>
-
-          {/* Dotted divider */}
-          <div className={`border-t border-dashed ${divider} my-2`} />
-
-          {/* Bank Details / Exchange Rate */}
-          <div className="grid grid-cols-2 gap-4 pt-4 pb-6">
-            <div>
-              <p className={`text-xs ${textMuted} mb-1`}>Bank Details</p>
-              <p className={`text-sm ${textPrimary}`}>
-                GE91TB77521450317885​98
-              </p>
-              <p className={`text-sm ${textPrimary}`}>TBCBGE22</p>
-              <p className={`text-sm ${textPrimary}`}>Transfer #241894617</p>
-            </div>
-            <div className="text-right">
-              <p className={`text-xs ${textMuted} mb-1`}>Exchange Rate</p>
-              <p className={`text-sm ${textPrimary}`}>1.00000</p>
-            </div>
-          </div>
-
-          {/* Actions */}
-          <div className="grid grid-cols-2 gap-4">
-            <button
-              className={`flex items-center justify-center gap-2 py-3 rounded-xl border text-sm font-semibold transition-colors ${
-                theme === "dark"
-                  ? "border-white/20 text-white hover:bg-white/10"
-                  : "border-black/20 text-black hover:bg-black/5"
-              }`}
-            >
-              Print
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"
-                />
-              </svg>
-            </button>
-            <button
-              className={`flex items-center justify-center gap-2 py-3 rounded-xl border text-sm font-semibold transition-colors ${
-                theme === "dark"
-                  ? "border-white/20 text-white hover:bg-white/10"
-                  : "border-black/20 text-black hover:bg-black/5"
-              }`}
-            >
-              Issue Refund
-              <svg
-                className="w-4 h-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 // ─── Invoice variant: list v2 + modal ─────────────────────────────────────────
 
-const InvoiceContent: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => {
-  const cardBg =
-    theme === "dark"
-      ? "bg-[#1a1a1a] border-white/10"
-      : "bg-white border-black/10";
-  const headerBg =
-    theme === "dark" ? "bg-[#222] text-gray-400" : "bg-gray-50 text-gray-500";
-  const rowBorder = theme === "dark" ? "border-white/5" : "border-black/5";
-  const cellText = theme === "dark" ? "text-white" : "text-black";
-
+const InvoiceContent: React.FC = () => {
   const rows = TRANSACTIONS.slice(0, 9);
 
   return (
     <>
-      <div className="flex-1 overflow-auto p-6 flex flex-col">
-        {/* Filter bar shows August 2023 label */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-1">
+      <div className="content">
+        {/* Filter bar with August 2023 label */}
+        <div className="drp-flex drp-items-center drp-justify-between drp-mb-4">
+          <div className="drp-tabs">
             {["All Accounts", "USD Account", "EUR Account", "GBP Account"].map(
               (tab) => (
                 <button
                   key={tab}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    tab === "All Accounts"
-                      ? theme === "dark"
-                        ? "bg-white text-black"
-                        : "bg-black text-white"
-                      : theme === "dark"
-                        ? "text-gray-400 hover:text-white"
-                        : "text-gray-600 hover:text-black"
-                  }`}
+                  className={`drp-tab ${tab === "All Accounts" ? "drp-tab--active" : ""}`}
                 >
                   {tab}
                 </button>
               ),
             )}
           </div>
-          <div className="flex items-center gap-2">
-            <button
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium border ${
-                theme === "dark"
-                  ? "border-white/20 text-white hover:bg-white/10"
-                  : "border-black/20 text-black hover:bg-black/5"
-              }`}
-            >
+          <div className="drp-flex drp-items-center drp-gap-2">
+            <button className="drp-btn drp-btn--outline drp-btn--sm">
               <svg
-                className="w-4 h-4"
+                width="16"
+                height="16"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -990,15 +972,10 @@ const InvoiceContent: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => {
               </svg>
               August 2023
             </button>
-            <button
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium border ${
-                theme === "dark"
-                  ? "border-white/20 text-white hover:bg-white/10"
-                  : "border-black/20 text-black hover:bg-black/5"
-              }`}
-            >
+            <button className="drp-btn drp-btn--outline drp-btn--sm">
               <svg
-                className="w-4 h-4"
+                width="16"
+                height="16"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -1015,160 +992,146 @@ const InvoiceContent: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => {
           </div>
         </div>
 
-        <div className={`rounded-xl border ${cardBg} overflow-hidden flex-1`}>
-          {/* Table header */}
-          <div
-            className={`grid grid-cols-[1fr_2fr_1fr_0.7fr_0.9fr_auto] gap-4 px-5 py-3 text-xs font-medium ${headerBg} border-b ${theme === "dark" ? "border-white/10" : "border-black/10"}`}
-          >
-            <div>
-              Date &amp; Time <SortIcon />
-            </div>
-            <div>
-              Payment <SortIcon />
-            </div>
-            <div>
-              Service <SortIcon />
-            </div>
-            <div>
-              Fee <SortIcon />
-            </div>
-            <div className="text-right">
-              Price <SortIcon />
-            </div>
-            <div className="w-6"></div>
-          </div>
-          {rows.map((tx, i) => (
-            <div
-              key={i}
-              className={`grid grid-cols-[1fr_2fr_1fr_0.7fr_0.9fr_auto] gap-4 px-5 py-4 items-center border-b last:border-b-0 ${rowBorder}`}
-            >
-              <div
-                className={`text-sm ${theme === "dark" ? "text-gray-300" : "text-gray-600"}`}
-              >
-                {tx.date}
-              </div>
-              <div className="flex items-center gap-3 min-w-0">
-                <TxIcon tx={tx} />
-                <span className={`text-sm font-semibold truncate ${cellText}`}>
-                  {tx.name}
-                </span>
-              </div>
-              <div
-                className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-500"}`}
-              >
-                {tx.sub}
-              </div>
-              <div className={`text-sm ${cellText}`}>{tx.fee}</div>
-              <div
-                className={`text-sm font-semibold text-right ${tx.isPositive ? "text-green-500" : cellText}`}
-              >
-                {tx.amount}
-              </div>
-              <button className="text-gray-400 hover:text-gray-600 w-6">
-                ···
-              </button>
-            </div>
-          ))}
-        </div>
-
-        {/* Pagination */}
-        <div className="flex items-center justify-between mt-4">
-          <button
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium border ${
-              theme === "dark"
-                ? "border-white/20 text-white hover:bg-white/10"
-                : "border-black/20 text-black hover:bg-black/5"
-            }`}
-          >
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-            Prev
-          </button>
-          <span
-            className={`text-sm ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}
-          >
-            Page 1 of 10
-          </span>
-          <button
-            className={`flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium border ${
-              theme === "dark"
-                ? "border-white/20 text-white hover:bg-white/10"
-                : "border-black/20 text-black hover:bg-black/5"
-            }`}
-          >
-            Prev
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </button>
+        <div className="drp-card" style={{ padding: 0, overflow: "hidden" }}>
+          <table className="drp-table">
+            <thead>
+              <tr>
+                <th>
+                  Date &amp; Time <SortIcon />
+                </th>
+                <th>
+                  Payment <SortIcon />
+                </th>
+                <th>
+                  Service <SortIcon />
+                </th>
+                <th>
+                  Fee <SortIcon />
+                </th>
+                <th style={{ textAlign: "right" }}>
+                  Price <SortIcon />
+                </th>
+                <th style={{ width: 40 }}></th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((tx, i) => (
+                <tr key={i}>
+                  <td>
+                    <span className="drp-text drp-text--sm drp-text--muted">
+                      {tx.date}
+                    </span>
+                  </td>
+                  <td>
+                    <div className="drp-flex drp-items-center drp-gap-3">
+                      <TxIcon tx={tx} />
+                      <span className="drp-text drp-text--bold">{tx.name}</span>
+                    </div>
+                  </td>
+                  <td>
+                    <span className="drp-text drp-text--sm drp-text--muted">
+                      {tx.sub}
+                    </span>
+                  </td>
+                  <td>
+                    <span className="drp-text drp-text--sm">{tx.fee}</span>
+                  </td>
+                  <td style={{ textAlign: "right" }}>
+                    <span
+                      className="drp-text drp-text--bold"
+                      style={{
+                        color: tx.isPositive
+                          ? "var(--drp-mint)"
+                          : "var(--drp-black)",
+                      }}
+                    >
+                      {tx.amount}
+                    </span>
+                  </td>
+                  <td>
+                    <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                      ...
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <TablePagination />
         </div>
       </div>
 
       {/* Modal overlay */}
-      <InvoiceModal theme={theme} />
+      <InvoiceModal />
     </>
   );
 };
 
 // ─── Empty state content ──────────────────────────────────────────────────────
 
-const EmptyContent: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => (
-  <div className="flex-1 overflow-hidden relative flex items-center justify-center">
+const EmptyContent: React.FC = () => (
+  <div
+    className="content"
+    style={{
+      position: "relative",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      flex: 1,
+      overflow: "hidden",
+    }}
+  >
     {/* Decorative blobs */}
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Large yellow/green blob top-right */}
-      <div
-        className="absolute -top-20 right-0 w-[500px] h-[500px] rounded-full opacity-70"
-        style={{
-          background:
-            "radial-gradient(circle, #f0e040 0%, #b8e040 40%, transparent 70%)",
-        }}
-      />
-      {/* Purple blob left-center */}
-      <div
-        className="absolute top-1/4 left-0 w-[300px] h-[300px] rounded-full opacity-60"
-        style={{
-          background:
-            "radial-gradient(circle, #7c3aed 0%, #a855f7 40%, transparent 70%)",
-        }}
-      />
-      {/* Pink/orange blob bottom-right */}
-      <div
-        className="absolute bottom-0 right-1/4 w-[250px] h-[250px] rounded-full opacity-50"
-        style={{
-          background:
-            "radial-gradient(circle, #f97316 0%, #ec4899 50%, transparent 70%)",
-        }}
-      />
-    </div>
+    <div
+      style={{
+        position: "absolute",
+        top: -80,
+        right: 0,
+        width: 500,
+        height: 500,
+        borderRadius: "50%",
+        opacity: 0.7,
+        background:
+          "radial-gradient(circle, var(--drp-yellow) 0%, var(--drp-mint) 40%, transparent 70%)",
+        pointerEvents: "none",
+      }}
+    />
+    <div
+      style={{
+        position: "absolute",
+        top: "25%",
+        left: 0,
+        width: 300,
+        height: 300,
+        borderRadius: "50%",
+        opacity: 0.6,
+        background:
+          "radial-gradient(circle, var(--drp-purple) 0%, var(--drp-purple) 40%, transparent 70%)",
+        pointerEvents: "none",
+      }}
+    />
+    <div
+      style={{
+        position: "absolute",
+        bottom: 0,
+        right: "25%",
+        width: 250,
+        height: 250,
+        borderRadius: "50%",
+        opacity: 0.5,
+        background:
+          "radial-gradient(circle, var(--drp-orange) 0%, var(--drp-pink) 50%, transparent 70%)",
+        pointerEvents: "none",
+      }}
+    />
 
     {/* Content */}
-    <div className="relative z-10 flex flex-col items-center text-center px-8">
-      {/* Bar chart icon */}
-      <div className="mb-6">
+    <div className="drp-empty" style={{ position: "relative", zIndex: 1 }}>
+      <div style={{ marginBottom: "var(--drp-space-6)" }}>
         <svg
-          className={`w-16 h-16 ${theme === "dark" ? "text-white" : "text-black"}`}
+          width="64"
+          height="64"
+          style={{ color: "var(--drp-black)" }}
           fill="none"
           viewBox="0 0 64 64"
           stroke="currentColor"
@@ -1178,20 +1141,24 @@ const EmptyContent: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => (
           <rect x="44" y="8" width="12" height="48" rx="2" strokeWidth={3} />
         </svg>
       </div>
-      <h2
-        className={`text-4xl font-bold mb-3 ${theme === "dark" ? "text-white" : "text-black"}`}
-      >
+      <h2 className="drp-h2" style={{ marginBottom: "var(--drp-space-3)" }}>
         No transactions found?
       </h2>
       <p
-        className={`text-sm mb-8 max-w-xs ${theme === "dark" ? "text-gray-400" : "text-gray-600"}`}
+        className="drp-text drp-text--sm drp-text--muted"
+        style={{
+          marginBottom: "var(--drp-space-8)",
+          maxWidth: 320,
+          textAlign: "center",
+        }}
       >
         Try to make payments for your bills and products or create a new
         currency account from scratch.
       </p>
-      <button className="flex items-center gap-2 px-6 py-3 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-full transition-colors">
+      <button className="drp-btn drp-btn--primary">
         <svg
-          className="w-4 h-4"
+          width="16"
+          height="16"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -1215,30 +1182,28 @@ export const TransactionsList: React.FC<TransactionsListProps> = ({
   theme = "light",
   variant = "listV1",
 }) => {
-  const bg = theme === "dark" ? "bg-[#0d0d0d]" : "bg-[#f5efe6]";
-
   const renderContent = () => {
     switch (variant) {
       case "listV1":
-        return <ListV1Content theme={theme} />;
+        return <ListV1Content />;
       case "listV2":
-        return <ListV2Content theme={theme} />;
+        return <ListV2Content />;
       case "invoice":
-        return <InvoiceContent theme={theme} />;
+        return <InvoiceContent />;
       case "empty":
-        return <EmptyContent theme={theme} />;
+        return <EmptyContent />;
       default:
-        return <ListV1Content theme={theme} />;
+        return <ListV1Content />;
     }
   };
 
   return (
-    <div className={`flex h-screen ${bg}`}>
+    <div className="app-layout">
       <DoctorProjectSidebar variant={variant} />
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <TopBar theme={theme} />
+      <div className="main-content" style={{ marginLeft: 280 }}>
+        <TopBar />
         {renderContent()}
-        <Footer theme={theme} />
+        <Footer />
       </div>
     </div>
   );

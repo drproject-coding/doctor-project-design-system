@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 export type PaymentsTheme = "light" | "dark";
 
-// Legacy type – kept for backwards-compatible barrel exports
+// Legacy type -- kept for backwards-compatible barrel exports
 export interface Payment {
   id: string;
   method: string;
@@ -26,300 +26,241 @@ export interface PaymentsListProps {
 // Sidebar
 // ─────────────────────────────────────────────────────────────────────────────
 
-interface SidebarProps {
-  variant: PaymentsVariant;
-}
-
-const DoctorProjectSidebar: React.FC<SidebarProps> = ({ variant }) => {
+const DoctorProjectSidebar: React.FC<{ variant: PaymentsVariant }> = ({
+  variant,
+}) => {
   const showTeamMembers = variant === "details";
 
+  const navItems = [
+    { id: "dashboard", label: "Dashboard" },
+    { id: "accounts", label: "Accounts" },
+    { id: "transactions", label: "Transactions" },
+    {
+      id: "crypto",
+      label: "Crypto Assets",
+      badge: 28,
+      badgeVariant: "sidebar-badge--purple",
+    },
+    {
+      id: "payments",
+      label: "Payments",
+      badge: 14,
+      badgeVariant: "sidebar-badge--green",
+      active: true,
+    },
+    { id: "reports", label: "Reports" },
+  ];
+
+  const teamMembers = [
+    { name: "Alexandre Paiva", initials: "AP", bg: "var(--drp-orange)" },
+    { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-purple)" },
+    { name: "Justine Robinson", initials: "JR", bg: "var(--drp-grey)" },
+  ];
+
   return (
-    <div className="w-[280px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0">
-      {/* Logo */}
-      <div className="px-6 py-5 border-b border-white/10">
-        <div className="flex items-center gap-1">
-          <span className="text-xl font-bold text-white">Doctor Project</span>
-          <span className="w-2 h-2 rounded-full bg-purple-500 mb-3"></span>
-        </div>
+    <aside className="sidebar" style={{ width: 280 }}>
+      <div className="sidebar-brand">
+        <span className="sidebar-brand-name" style={{ fontSize: 20 }}>
+          Doctor Project
+        </span>
+        <span className="sidebar-brand-dot" />
       </div>
 
-      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-6">
-        {/* Navigation */}
-        <div>
-          <p className="text-xs text-gray-500 uppercase tracking-widest px-2 mb-2">
-            Navigation
-          </p>
-          <nav className="space-y-1">
-            {[
-              { label: "Dashboard", icon: "dashboard" },
-              { label: "Accounts", icon: "accounts" },
-              { label: "Transactions", icon: "transactions" },
-              {
-                label: "Crypto Assets",
-                icon: "crypto",
-                badge: 28,
-                badgeColor: "bg-purple-600",
-              },
-              {
-                label: "Payments",
-                icon: "payments",
-                badge: 14,
-                badgeColor: "bg-green-500",
-                active: true,
-              },
-              { label: "Reports", icon: "reports" },
-            ].map((item) => (
-              <button
-                key={item.label}
-                className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-colors ${
-                  item.active
-                    ? "bg-white/10 text-white font-medium"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
-                }`}
-              >
-                <div className="flex items-center gap-3">
-                  <NavIcon icon={item.icon} />
-                  <span>{item.label}</span>
-                </div>
-                {item.badge && (
-                  <span
-                    className={`text-xs text-white px-1.5 py-0.5 rounded ${item.badgeColor}`}
-                  >
-                    {item.badge}
-                  </span>
-                )}
-              </button>
-            ))}
-          </nav>
+      <nav className="sidebar-nav">
+        <div className="sidebar-nav-section">
+          <div className="sidebar-nav-label">Navigation</div>
+          {navItems.map((item) => (
+            <button
+              key={item.id}
+              className={`sidebar-nav-item ${item.active ? "active" : ""}`}
+            >
+              <span className="sidebar-nav-icon">
+                <svg
+                  width="14"
+                  height="14"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </span>
+              <span className="sidebar-nav-text">{item.label}</span>
+              {item.badge && (
+                <span className={`sidebar-badge ${item.badgeVariant}`}>
+                  {item.badge}
+                </span>
+              )}
+            </button>
+          ))}
         </div>
 
         {showTeamMembers ? (
-          /* Team Members section – shown in Details variant */
-          <div>
-            <p className="text-xs text-gray-500 uppercase tracking-widest px-2 mb-2">
-              Team Members
-            </p>
-            <div className="space-y-1">
-              {[
-                { name: "Alexandre Paiva", color: "bg-orange-500" },
-                { name: "Thanawan Chadee", color: "bg-purple-500" },
-                { name: "Justine Robinson", color: "bg-gray-500" },
-              ].map((member) => (
-                <button
-                  key={member.name}
-                  className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5"
+          <div className="sidebar-team">
+            <div className="sidebar-team-label">Team Members</div>
+            {teamMembers.map((m) => (
+              <div key={m.name} className="sidebar-team-member">
+                <div
+                  className="sidebar-avatar"
+                  style={{
+                    background: m.bg,
+                    width: 28,
+                    height: 28,
+                    fontSize: 11,
+                  }}
                 >
-                  <div
-                    className={`w-7 h-7 rounded-full ${member.color} flex-shrink-0`}
-                  ></div>
-                  <span>{member.name}</span>
-                </button>
-              ))}
-              <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5">
-                <span className="text-gray-500 text-sm">⌄ See More</span>
-              </button>
+                  {m.initials[0]}
+                </div>
+                <span className="sidebar-team-name">{m.name}</span>
+              </div>
+            ))}
+            <div className="sidebar-see-more">
+              <svg
+                width="12"
+                height="12"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+              <span>See More</span>
             </div>
           </div>
         ) : (
           <>
             {/* Cards */}
-            <div>
-              <p className="text-xs text-gray-500 uppercase tracking-widest px-2 mb-2">
-                Cards
-              </p>
-              <div className="space-y-1">
-                <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5">
-                  <span className="w-7 h-7 rounded-full bg-blue-600 flex items-center justify-center text-xs font-bold text-white flex-shrink-0">
-                    V
-                  </span>
-                  <span>Debit Card **** 7890</span>
-                </button>
-                <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5">
-                  <span className="w-7 h-7 rounded-full bg-gradient-to-br from-red-500 to-orange-400 flex items-center justify-center text-xs flex-shrink-0">
-                    ●
-                  </span>
-                  <span>Credit Card **** 4340</span>
-                </button>
-                <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5">
-                  <span className="w-7 h-7 rounded-full border border-dashed border-gray-600 flex items-center justify-center text-lg flex-shrink-0">
-                    +
-                  </span>
-                  <span>Open a card</span>
-                </button>
-              </div>
+            <div className="sidebar-nav-section">
+              <div className="sidebar-nav-label">Cards</div>
+              <button className="sidebar-nav-item">
+                <div
+                  className="sidebar-avatar"
+                  style={{
+                    background: "var(--drp-blue)",
+                    width: 28,
+                    height: 28,
+                    fontSize: 11,
+                  }}
+                >
+                  V
+                </div>
+                <span className="sidebar-nav-text">Debit Card **** 7890</span>
+              </button>
+              <button className="sidebar-nav-item">
+                <div
+                  className="sidebar-avatar"
+                  style={{
+                    background:
+                      "linear-gradient(135deg, var(--drp-pink), var(--drp-orange))",
+                    width: 28,
+                    height: 28,
+                    fontSize: 11,
+                  }}
+                >
+                  ●
+                </div>
+                <span className="sidebar-nav-text">Credit Card **** 4340</span>
+              </button>
+              <button className="sidebar-nav-item">
+                <div
+                  style={{
+                    width: 28,
+                    height: 28,
+                    border: "1px dashed var(--drp-grey)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 16,
+                    color: "var(--drp-grey)",
+                    flexShrink: 0,
+                  }}
+                >
+                  +
+                </div>
+                <span className="sidebar-nav-text">Open a card</span>
+              </button>
             </div>
 
             {/* Balances */}
-            <div>
-              <p className="text-xs text-gray-500 uppercase tracking-widest px-2 mb-2">
-                Balances
-              </p>
-              <div className="space-y-1">
-                {[
-                  { flag: "🇺🇸", amount: "100,050.75 USD" },
-                  { flag: "🇪🇺", amount: "10.40 EUR" },
-                  { flag: "🇬🇧", amount: "95.50 GBP" },
-                ].map((bal) => (
-                  <button
-                    key={bal.amount}
-                    className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-white/5"
-                  >
-                    <span className="text-lg">{bal.flag}</span>
-                    <span>{bal.amount}</span>
-                  </button>
-                ))}
-                <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm text-gray-400 hover:text-white hover:bg-white/5">
-                  <span className="w-7 h-7 rounded-full border border-dashed border-gray-600 flex items-center justify-center text-lg">
-                    +
-                  </span>
-                  <span>Open a balance</span>
+            <div className="sidebar-nav-section">
+              <div className="sidebar-nav-label">Balances</div>
+              {[
+                { flag: "\u{1F1FA}\u{1F1F8}", amount: "100,050.75 USD" },
+                { flag: "\u{1F1EA}\u{1F1FA}", amount: "10.40 EUR" },
+                { flag: "\u{1F1EC}\u{1F1E7}", amount: "95.50 GBP" },
+              ].map((bal) => (
+                <button key={bal.amount} className="sidebar-nav-item">
+                  <span style={{ fontSize: 16 }}>{bal.flag}</span>
+                  <span className="sidebar-nav-text">{bal.amount}</span>
                 </button>
-              </div>
+              ))}
+              <button className="sidebar-nav-item">
+                <div
+                  style={{
+                    width: 28,
+                    height: 28,
+                    border: "1px dashed var(--drp-grey)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: 16,
+                    color: "var(--drp-grey)",
+                    flexShrink: 0,
+                  }}
+                >
+                  +
+                </div>
+                <span className="sidebar-nav-text">Open a balance</span>
+              </button>
             </div>
           </>
         )}
-      </div>
+      </nav>
 
-      {/* User profile */}
-      <div className="px-4 py-4 border-t border-white/10">
-        <div className="flex items-center justify-between px-2">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex-shrink-0"></div>
-            <span className="text-sm text-gray-200">Henry Richardson</span>
-          </div>
-          <button className="text-gray-500 hover:text-white">···</button>
+      <div className="sidebar-user">
+        <div
+          className="sidebar-avatar"
+          style={{
+            background:
+              "linear-gradient(135deg, var(--drp-orange), var(--drp-pink))",
+            width: 32,
+            height: 32,
+          }}
+        />
+        <div className="sidebar-user-info">
+          <div className="sidebar-user-name">Henry Richardson</div>
         </div>
+        <button className="sidebar-user-menu-btn">...</button>
       </div>
-    </div>
+    </aside>
   );
-};
-
-// Small nav icon components using inline SVG
-const NavIcon: React.FC<{ icon: string }> = ({ icon }) => {
-  const cls = "w-4 h-4 flex-shrink-0";
-  switch (icon) {
-    case "dashboard":
-      return (
-        <svg
-          className={cls}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <circle cx="12" cy="12" r="10" strokeWidth={2} />
-          <circle cx="12" cy="12" r="3" strokeWidth={2} />
-        </svg>
-      );
-    case "accounts":
-      return (
-        <svg
-          className={cls}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <rect x="3" y="3" width="7" height="7" rx="1" strokeWidth={2} />
-          <rect x="14" y="3" width="7" height="7" rx="1" strokeWidth={2} />
-          <rect x="14" y="14" width="7" height="7" rx="1" strokeWidth={2} />
-          <rect x="3" y="14" width="7" height="7" rx="1" strokeWidth={2} />
-        </svg>
-      );
-    case "transactions":
-      return (
-        <svg
-          className={cls}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M8 7h12m0 0l-4-4m4 4l-4 4M4 17h12m0 0l-4-4m4 4l-4 4"
-          />
-        </svg>
-      );
-    case "crypto":
-      return (
-        <svg
-          className={cls}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <circle cx="12" cy="12" r="10" strokeWidth={2} />
-          <circle cx="12" cy="12" r="4" strokeWidth={2} />
-        </svg>
-      );
-    case "payments":
-      return (
-        <svg
-          className={cls}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <rect x="2" y="5" width="20" height="14" rx="2" strokeWidth={2} />
-          <path strokeLinecap="round" strokeWidth={2} d="M2 10h20" />
-        </svg>
-      );
-    case "reports":
-      return (
-        <svg
-          className={cls}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-          />
-        </svg>
-      );
-    default:
-      return <span className={cls}>•</span>;
-  }
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Top Bar
 // ─────────────────────────────────────────────────────────────────────────────
 
-interface TopBarProps {
-  theme: PaymentsTheme;
-  title: string;
-  showBack?: boolean;
-  showSearch?: boolean;
-}
-
-const TopBar: React.FC<TopBarProps> = ({
-  theme,
+const TopBar: React.FC<{ title: string; showBack?: boolean }> = ({
   title,
   showBack = false,
-  showSearch = false,
 }) => (
-  <div
-    className={`flex items-center justify-between px-8 py-4 border-b flex-shrink-0 ${
-      theme === "dark"
-        ? "bg-[#111111] border-white/10"
-        : "bg-[#f5efe6] border-black/10"
-    }`}
-  >
-    <div className="flex items-center gap-3">
+  <div className="topbar">
+    <div className="topbar-left">
       {showBack && (
-        <button
-          className={`w-9 h-9 flex items-center justify-center border rounded-lg ${
-            theme === "dark"
-              ? "border-white/20 text-white hover:bg-white/10"
-              : "border-black/20 text-black hover:bg-black/5"
-          }`}
-        >
+        <button className="drp-btn drp-btn--outline drp-btn--icon drp-btn--sm">
           <svg
-            className="w-4 h-4"
+            width="16"
+            height="16"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -333,37 +274,13 @@ const TopBar: React.FC<TopBarProps> = ({
           </svg>
         </button>
       )}
-      <h1
-        className={`text-3xl font-bold ${theme === "dark" ? "text-white" : "text-black"}`}
-      >
-        {title}
-      </h1>
+      <h1 className="topbar-title">{title}</h1>
     </div>
-    <div className="flex items-center gap-4">
-      {showSearch && (
-        <button
-          className={`p-2 rounded-lg ${theme === "dark" ? "text-gray-400 hover:bg-white/10" : "text-gray-500 hover:bg-black/5"}`}
-        >
-          <svg
-            className="w-5 h-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-            />
-          </svg>
-        </button>
-      )}
-      <button
-        className={`p-2 rounded-lg ${theme === "dark" ? "text-gray-400 hover:bg-white/10" : "text-gray-500 hover:bg-black/5"}`}
-      >
+    <div className="topbar-right">
+      <button className="topbar-icon-btn">
         <svg
-          className="w-5 h-5"
+          width="16"
+          height="16"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -376,11 +293,10 @@ const TopBar: React.FC<TopBarProps> = ({
           />
         </svg>
       </button>
-      <button
-        className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium ${theme === "dark" ? "text-gray-200 hover:bg-white/10" : "text-gray-700 hover:bg-black/5"}`}
-      >
+      <button className="topbar-apps-btn">
         <svg
-          className="w-4 h-4"
+          width="16"
+          height="16"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -392,11 +308,11 @@ const TopBar: React.FC<TopBarProps> = ({
             d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
           />
         </svg>
-        Apps
+        <span>Apps</span>
       </button>
-      <button className="flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg transition-colors">
-        <span className="text-lg leading-none">+</span>
-        Create new
+      <button className="topbar-create-btn">
+        <span>+</span>
+        <span>Create new</span>
       </button>
     </div>
   </div>
@@ -406,41 +322,19 @@ const TopBar: React.FC<TopBarProps> = ({
 // Footer
 // ─────────────────────────────────────────────────────────────────────────────
 
-const Footer: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => (
-  <div
-    className={`flex items-center justify-between px-8 py-3 border-t text-sm flex-shrink-0 ${
-      theme === "dark"
-        ? "bg-[#111111] border-white/10 text-gray-500"
-        : "bg-[#f5efe6] border-black/10 text-gray-500"
-    }`}
-  >
-    <div className="flex items-center gap-6">
-      <button className="flex items-center gap-1.5 hover:opacity-80">
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <circle cx="12" cy="12" r="10" strokeWidth={2} />
-          <path
-            strokeLinecap="round"
-            strokeWidth={2}
-            d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
-          />
-        </svg>
-        English
-      </button>
-      <button className="hover:opacity-80">Privacy Policy</button>
-      <button className="hover:opacity-80">License</button>
-      <button className="hover:opacity-80">API</button>
+const Footer: React.FC = () => (
+  <div className="footer-bar">
+    <div className="footer-links">
+      <span className="footer-link">English</span>
+      <span className="footer-link">Privacy Policy</span>
+      <span className="footer-link">License</span>
+      <span className="footer-link">API</span>
     </div>
-    <div className="flex items-center gap-2">
-      <button
-        className={`p-1.5 rounded ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`}
-      >
+    <div className="footer-right">
+      <button className="footer-icon-btn">
         <svg
-          className="w-4 h-4"
+          width="16"
+          height="16"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -459,11 +353,10 @@ const Footer: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => (
           />
         </svg>
       </button>
-      <button
-        className={`p-1.5 rounded ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`}
-      >
+      <button className="footer-icon-btn">
         <svg
-          className="w-4 h-4"
+          width="16"
+          height="16"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -487,17 +380,62 @@ const Footer: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => (
 const CurrencyFlag: React.FC<{ currency: "USD" | "EUR" | "GBP" }> = ({
   currency,
 }) => {
-  const flags: Record<string, string> = { USD: "🇺🇸", EUR: "🇪🇺", GBP: "🇬🇧" };
+  const flags: Record<string, string> = {
+    USD: "\u{1F1FA}\u{1F1F8}",
+    EUR: "\u{1F1EA}\u{1F1FA}",
+    GBP: "\u{1F1EC}\u{1F1E7}",
+  };
   return (
-    <span className="flex items-center gap-1 text-sm">
-      <span>{flags[currency]}</span>
-      <span className="text-gray-400 font-medium">{currency}</span>
+    <span className="drp-flex drp-items-center drp-gap-1">
+      <span style={{ fontSize: 14 }}>{flags[currency]}</span>
+      <span className="drp-text drp-text--sm drp-text--muted">{currency}</span>
     </span>
   );
 };
 
 // ─────────────────────────────────────────────────────────────────────────────
-// List variant content (main Payments page)
+// Payment category card
+// ─────────────────────────────────────────────────────────────────────────────
+
+const CategoryCard: React.FC<{
+  icon: React.ReactNode;
+  title: string;
+  subtitle: string;
+}> = ({ icon, title, subtitle }) => (
+  <button
+    className="drp-card"
+    style={{
+      display: "flex",
+      alignItems: "center",
+      gap: "var(--drp-space-4)",
+      padding: "var(--drp-space-4)",
+      border: "1px dashed var(--drp-black)",
+      cursor: "pointer",
+    }}
+  >
+    <div
+      style={{
+        width: 48,
+        height: 48,
+        background: "var(--drp-purple)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexShrink: 0,
+        color: "var(--drp-white)",
+      }}
+    >
+      {icon}
+    </div>
+    <div style={{ textAlign: "left" }}>
+      <div className="drp-text drp-text--bold">{title}</div>
+      <div className="drp-caption">{subtitle}</div>
+    </div>
+  </button>
+);
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Recent transfers data
 // ─────────────────────────────────────────────────────────────────────────────
 
 const recentTransfers = [
@@ -505,94 +443,105 @@ const recentTransfers = [
     name: "Harrison Phillips",
     account: "Account ending in 1435",
     currency: "USD" as const,
-    avatarColor: "bg-gray-400",
+    bg: "var(--drp-grey)",
     initials: "HP",
   },
   {
     name: "Rustem Tolstobrov",
     account: "Account ending in 3456",
     currency: "USD" as const,
-    avatarColor: "bg-orange-400",
+    bg: "var(--drp-orange)",
     initials: "RT",
   },
   {
     name: "Alicia Puma",
     account: "Account ending in 1223",
     currency: "USD" as const,
-    avatarColor: "bg-purple-400",
+    bg: "var(--drp-purple)",
     initials: "AP",
   },
   {
     name: "Nonkosi Joyi",
     account: "Account ending in 1156",
     currency: "EUR" as const,
-    avatarColor: "bg-blue-500",
+    bg: "var(--drp-blue)",
     initials: "NJ",
   },
   {
     name: "Evelyn Allen",
     account: "Account ending in 1439",
     currency: "EUR" as const,
-    avatarColor: "bg-pink-400",
+    bg: "var(--drp-pink)",
     initials: "EA",
   },
   {
     name: "Justine Marshall",
     account: "Account ending in 1567",
     currency: "USD" as const,
-    avatarColor: "bg-green-500",
+    bg: "var(--drp-mint)",
     initials: "JM",
   },
   {
     name: "Yi Chun-Hwa",
     account: "Account ending in 1890",
     currency: "GBP" as const,
-    avatarColor: "bg-yellow-500",
+    bg: "var(--drp-yellow)",
     initials: "YC",
   },
   {
     name: "Emmy Elsner",
     account: "Account ending in 1546",
     currency: "EUR" as const,
-    avatarColor: "bg-indigo-400",
+    bg: "var(--drp-purple)",
     initials: "EE",
   },
   {
     name: "Xian Zhou",
     account: "Account ending in 1498",
     currency: "USD" as const,
-    avatarColor: "bg-red-400",
+    bg: "var(--drp-pink)",
     initials: "XZ",
   },
 ];
 
-const ListContent: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => {
-  const cardBg =
-    theme === "dark"
-      ? "bg-[#1a1a1a] border-white/10"
-      : "bg-white border-black/10";
-  const textPrimary = theme === "dark" ? "text-white" : "text-black";
-  const textSecondary = "text-gray-500";
-  const divider = theme === "dark" ? "border-white/5" : "border-black/5";
-  const inputBg =
-    theme === "dark"
-      ? "bg-[#2a2a2a] border-white/10 text-white placeholder-gray-500"
-      : "bg-white border-black/15 text-black placeholder-gray-400";
+// ─────────────────────────────────────────────────────────────────────────────
+// List variant content (main Payments page)
+// ─────────────────────────────────────────────────────────────────────────────
 
-  return (
-    <div className="flex-1 overflow-auto p-6 flex gap-4">
+const ListContent: React.FC = () => (
+  <div className="content">
+    <div className="drp-flex drp-gap-4" style={{ minHeight: 0, flex: 1 }}>
       {/* Left: Make a payment */}
       <div
-        className={`flex-1 rounded-xl border ${cardBg} overflow-hidden flex flex-col`}
+        className="drp-card"
+        style={{
+          flex: 1,
+          padding: 0,
+          overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
+        }}
       >
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-inherit">
-          <h2 className={`text-xl font-bold ${textPrimary}`}>Make a payment</h2>
+        <div
+          className="drp-flex drp-items-center drp-justify-between"
+          style={{
+            padding: "var(--drp-space-5) var(--drp-space-6)",
+            borderBottom: "var(--drp-border-thin)",
+          }}
+        >
+          <h2 className="drp-h5">Make a payment</h2>
           <div
-            className={`flex items-center gap-2 px-4 py-2 border rounded-lg ${inputBg}`}
+            className="drp-flex drp-items-center drp-gap-2"
+            style={{
+              padding: "var(--drp-space-2) var(--drp-space-4)",
+              border: "var(--drp-border-thin)",
+            }}
           >
             <svg
-              className="w-4 h-4 text-gray-400"
+              width="16"
+              height="16"
+              style={{ color: "var(--drp-grey)" }}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -604,24 +553,39 @@ const ListContent: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => {
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               />
             </svg>
-            <span className="text-sm text-gray-400">Search</span>
+            <span className="drp-text drp-text--sm drp-text--muted">
+              Search
+            </span>
           </div>
         </div>
 
-        <div className="flex-1 overflow-auto px-6 py-5 space-y-5">
+        <div
+          style={{
+            flex: 1,
+            overflow: "auto",
+            padding: "var(--drp-space-5) var(--drp-space-6)",
+          }}
+        >
           {/* Payment categories */}
-          <div>
-            <p className={`text-sm mb-3 ${textSecondary}`}>
+          <div style={{ marginBottom: "var(--drp-space-5)" }}>
+            <p
+              className="drp-caption"
+              style={{ marginBottom: "var(--drp-space-3)" }}
+            >
               Payment categories
             </p>
-            <div className="grid grid-cols-2 gap-3">
-              {/* Transfer to someone */}
-              <button
-                className={`flex items-center gap-4 p-4 border border-dashed rounded-xl hover:bg-white/5 transition-colors ${theme === "dark" ? "border-white/20" : "border-black/20"}`}
-              >
-                <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "var(--drp-space-3)",
+              }}
+            >
+              <CategoryCard
+                icon={
                   <svg
-                    className="w-6 h-6 text-white"
+                    width="24"
+                    height="24"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -633,22 +597,15 @@ const ListContent: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => {
                       d="M8 7h12m0 0l-4-4m4 4l-4 4M4 17h12m0 0l-4-4m4 4l-4 4"
                     />
                   </svg>
-                </div>
-                <div className="text-left">
-                  <div className={`text-sm font-semibold ${textPrimary}`}>
-                    Transfer to someone
-                  </div>
-                  <div className={`text-xs ${textSecondary}`}>156 contacts</div>
-                </div>
-              </button>
-
-              {/* Pay for utilities */}
-              <button
-                className={`flex items-center gap-4 p-4 border border-dashed rounded-xl hover:bg-white/5 transition-colors ${theme === "dark" ? "border-white/20" : "border-black/20"}`}
-              >
-                <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                }
+                title="Transfer to someone"
+                subtitle="156 contacts"
+              />
+              <CategoryCard
+                icon={
                   <svg
-                    className="w-6 h-6 text-white"
+                    width="24"
+                    height="24"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -686,30 +643,33 @@ const ListContent: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => {
                       strokeWidth={2}
                     />
                   </svg>
-                </div>
-                <div className="text-left">
-                  <div className={`text-sm font-semibold ${textPrimary}`}>
-                    Pay for utilities
-                  </div>
-                  <div className={`text-xs ${textSecondary}`}>
-                    98 service providers
-                  </div>
-                </div>
-              </button>
+                }
+                title="Pay for utilities"
+                subtitle="98 service providers"
+              />
             </div>
           </div>
 
           {/* Service providers */}
-          <div>
-            <p className={`text-sm mb-3 ${textSecondary}`}>Service providers</p>
-            <div className="grid grid-cols-2 gap-3">
-              {/* Mobile Networks */}
-              <button
-                className={`flex items-center gap-4 p-4 border border-dashed rounded-xl hover:bg-white/5 transition-colors ${theme === "dark" ? "border-white/20" : "border-black/20"}`}
-              >
-                <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
+          <div style={{ marginBottom: "var(--drp-space-5)" }}>
+            <p
+              className="drp-caption"
+              style={{ marginBottom: "var(--drp-space-3)" }}
+            >
+              Service providers
+            </p>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "var(--drp-space-3)",
+              }}
+            >
+              <CategoryCard
+                icon={
                   <svg
-                    className="w-6 h-6 text-white"
+                    width="24"
+                    height="24"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -728,24 +688,15 @@ const ListContent: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => {
                       d="M12 18h.01"
                     />
                   </svg>
-                </div>
-                <div className="text-left">
-                  <div className={`text-sm font-semibold ${textPrimary}`}>
-                    Mobile Networks
-                  </div>
-                  <div className={`text-xs ${textSecondary}`}>
-                    Top up your balance instantly
-                  </div>
-                </div>
-              </button>
-
-              {/* Utilities */}
-              <button
-                className={`flex items-center gap-4 p-4 border border-dashed rounded-xl hover:bg-white/5 transition-colors ${theme === "dark" ? "border-white/20" : "border-black/20"}`}
-              >
-                <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                }
+                title="Mobile Networks"
+                subtitle="Top up your balance instantly"
+              />
+              <CategoryCard
+                icon={
                   <svg
-                    className="w-6 h-6 text-white"
+                    width="24"
+                    height="24"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -757,24 +708,15 @@ const ListContent: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => {
                       d="M13 10V3L4 14h7v7l9-11h-7z"
                     />
                   </svg>
-                </div>
-                <div className="text-left">
-                  <div className={`text-sm font-semibold ${textPrimary}`}>
-                    Utilities
-                  </div>
-                  <div className={`text-xs ${textSecondary}`}>
-                    Check your home utility bills
-                  </div>
-                </div>
-              </button>
-
-              {/* Government */}
-              <button
-                className={`flex items-center gap-4 p-4 border border-dashed rounded-xl hover:bg-white/5 transition-colors ${theme === "dark" ? "border-white/20" : "border-black/20"}`}
-              >
-                <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                }
+                title="Utilities"
+                subtitle="Check your home utility bills"
+              />
+              <CategoryCard
+                icon={
                   <svg
-                    className="w-6 h-6 text-white"
+                    width="24"
+                    height="24"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -786,24 +728,15 @@ const ListContent: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => {
                       d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                     />
                   </svg>
-                </div>
-                <div className="text-left">
-                  <div className={`text-sm font-semibold ${textPrimary}`}>
-                    Government
-                  </div>
-                  <div className={`text-xs ${textSecondary}`}>
-                    Pay car fines, taxes, and service
-                  </div>
-                </div>
-              </button>
-
-              {/* Internet Providers */}
-              <button
-                className={`flex items-center gap-4 p-4 border border-dashed rounded-xl hover:bg-white/5 transition-colors ${theme === "dark" ? "border-white/20" : "border-black/20"}`}
-              >
-                <div className="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                }
+                title="Government"
+                subtitle="Pay car fines, taxes, and service"
+              />
+              <CategoryCard
+                icon={
                   <svg
-                    className="w-6 h-6 text-white"
+                    width="24"
+                    height="24"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -815,93 +748,97 @@ const ListContent: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => {
                       d="M13 10V3L4 14h7v7l9-11h-7z"
                     />
                   </svg>
-                </div>
-                <div className="text-left">
-                  <div className={`text-sm font-semibold ${textPrimary}`}>
-                    Internet Providers
-                  </div>
-                  <div className={`text-xs ${textSecondary}`}>
-                    Find Internet provider in your area
-                  </div>
-                </div>
-              </button>
+                }
+                title="Internet Providers"
+                subtitle="Find Internet provider in your area"
+              />
             </div>
           </div>
 
           {/* Latest transfers */}
           <div>
-            <h3 className={`text-xl font-bold mb-3 ${textPrimary}`}>
+            <h3
+              className="drp-h5"
+              style={{ marginBottom: "var(--drp-space-3)" }}
+            >
               Latest transfers
             </h3>
-            <div>
-              {[
-                {
-                  initials: "I",
-                  iconBg: "bg-gradient-to-br from-gray-700 to-gray-900",
-                  label: "Income payment for provided services",
-                  sub: "Bank transfer",
-                  amount: "+ $11,400.00",
-                  time: "10 Aug 4:50 PM",
-                  positive: true,
-                },
-                {
-                  initials: "P",
-                  iconBg: "bg-blue-500",
-                  label: "Online purchase at Ebay.com",
-                  sub: "Online payment",
-                  amount: "- $396.00",
-                  time: "12 Aug 3:10 PM",
-                  positive: false,
-                },
-                {
-                  initials: "S",
-                  iconBg: "bg-blue-400",
-                  label: "IOfinance UI kit purchase",
-                  sub: "Online payment",
-                  amount: "- $28.00",
-                  time: "14 Aug 4:20 AM",
-                  positive: false,
-                },
-              ].map((tx, i) => (
+            {[
+              {
+                initials: "I",
+                iconBg: "var(--drp-black)",
+                label: "Income payment for provided services",
+                sub: "Bank transfer",
+                amount: "+ $11,400.00",
+                time: "10 Aug 4:50 PM",
+                positive: true,
+              },
+              {
+                initials: "P",
+                iconBg: "var(--drp-blue)",
+                label: "Online purchase at Ebay.com",
+                sub: "Online payment",
+                amount: "- $396.00",
+                time: "12 Aug 3:10 PM",
+                positive: false,
+              },
+              {
+                initials: "S",
+                iconBg: "var(--drp-blue)",
+                label: "IOfinance UI kit purchase",
+                sub: "Online payment",
+                amount: "- $28.00",
+                time: "14 Aug 4:20 AM",
+                positive: false,
+              },
+            ].map((tx, i) => (
+              <div
+                key={i}
+                className="drp-flex drp-items-center drp-gap-3"
+                style={{
+                  padding: "var(--drp-space-3) 0",
+                  borderBottom: i < 2 ? "var(--drp-border-thin)" : "none",
+                }}
+              >
                 <div
-                  key={i}
-                  className={`flex items-center gap-3 py-3.5 border-b last:border-b-0 ${divider}`}
+                  className="sidebar-avatar"
+                  style={{
+                    background: tx.iconBg,
+                    width: 40,
+                    height: 40,
+                    fontSize: 14,
+                    flexShrink: 0,
+                  }}
                 >
-                  <div
-                    className={`w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold flex-shrink-0 ${tx.iconBg}`}
-                  >
-                    {tx.initials}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className={`text-sm font-semibold ${textPrimary}`}>
-                      {tx.label}
-                    </div>
-                    <div className={`text-xs ${textSecondary}`}>{tx.sub}</div>
-                  </div>
-                  <div className="text-right flex-shrink-0">
-                    <div
-                      className={`text-sm font-semibold ${tx.positive ? "text-green-500" : textPrimary}`}
-                    >
-                      {tx.amount}
-                    </div>
-                    <div className={`text-xs ${textSecondary}`}>{tx.time}</div>
-                  </div>
-                  <button
-                    className={`${textSecondary} hover:opacity-70 flex-shrink-0`}
-                  >
-                    ···
-                  </button>
+                  {tx.initials}
                 </div>
-              ))}
-            </div>
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div className="drp-text drp-text--bold">{tx.label}</div>
+                  <div className="drp-caption">{tx.sub}</div>
+                </div>
+                <div style={{ textAlign: "right", flexShrink: 0 }}>
+                  <div
+                    className="drp-text drp-text--bold"
+                    style={{
+                      color: tx.positive
+                        ? "var(--drp-mint)"
+                        : "var(--drp-black)",
+                    }}
+                  >
+                    {tx.amount}
+                  </div>
+                  <div className="drp-caption">{tx.time}</div>
+                </div>
+                <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                  ...
+                </button>
+              </div>
+            ))}
             <button
-              className={`w-full mt-3 py-3 border rounded-xl text-sm font-medium flex items-center justify-center gap-2 transition-colors ${
-                theme === "dark"
-                  ? "border-white/10 text-gray-400 hover:bg-white/5"
-                  : "border-black/15 text-gray-600 hover:bg-black/5"
-              }`}
+              className="drp-btn drp-btn--outline drp-btn--block drp-btn--sm"
+              style={{ marginTop: "var(--drp-space-3)" }}
             >
-              ··· See all transactions
+              See all transactions
             </button>
           </div>
         </div>
@@ -909,31 +846,68 @@ const ListContent: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => {
 
       {/* Right: Recent transfers */}
       <div
-        className={`w-[300px] flex-shrink-0 rounded-xl border ${cardBg} overflow-hidden flex flex-col`}
+        className="drp-card"
+        style={{
+          width: 300,
+          flexShrink: 0,
+          padding: 0,
+          overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
+        }}
       >
-        <div className="px-5 py-5 border-b border-inherit">
-          <h2 className={`text-lg font-bold ${textPrimary}`}>
-            Recent transfers
-          </h2>
+        <div
+          style={{
+            padding: "var(--drp-space-5)",
+            borderBottom: "var(--drp-border-thin)",
+          }}
+        >
+          <h2 className="drp-h6">Recent transfers</h2>
         </div>
-        <div className="flex-1 overflow-auto">
+        <div style={{ flex: 1, overflow: "auto" }}>
           {recentTransfers.map((contact, i) => (
             <div
               key={i}
-              className={`flex items-center gap-3 px-5 py-3.5 border-b last:border-b-0 ${divider}`}
+              className="drp-flex drp-items-center drp-gap-3"
+              style={{
+                padding: "var(--drp-space-3) var(--drp-space-5)",
+                borderBottom:
+                  i < recentTransfers.length - 1
+                    ? "var(--drp-border-thin)"
+                    : "none",
+              }}
             >
               <div
-                className={`w-9 h-9 rounded-full ${contact.avatarColor} flex items-center justify-center text-white text-xs font-bold flex-shrink-0`}
+                className="sidebar-avatar"
+                style={{
+                  background: contact.bg,
+                  width: 36,
+                  height: 36,
+                  fontSize: 11,
+                  flexShrink: 0,
+                }}
               >
                 {contact.initials}
               </div>
-              <div className="flex-1 min-w-0">
+              <div style={{ flex: 1, minWidth: 0 }}>
                 <div
-                  className={`text-sm font-semibold truncate ${textPrimary}`}
+                  className="drp-text drp-text--bold"
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
                 >
                   {contact.name}
                 </div>
-                <div className={`text-xs truncate ${textSecondary}`}>
+                <div
+                  className="drp-caption"
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                  }}
+                >
                   {contact.account}
                 </div>
               </div>
@@ -941,180 +915,36 @@ const ListContent: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => {
             </div>
           ))}
         </div>
-        <div className="p-4 border-t border-inherit">
-          <button
-            className={`w-full py-3 border rounded-xl text-sm font-medium flex items-center justify-center gap-2 transition-colors ${
-              theme === "dark"
-                ? "border-white/10 text-gray-400 hover:bg-white/5"
-                : "border-black/15 text-gray-600 hover:bg-black/5"
-            }`}
-          >
-            ··· See all contacts
+        <div
+          style={{
+            padding: "var(--drp-space-4)",
+            borderTop: "var(--drp-border-thin)",
+          }}
+        >
+          <button className="drp-btn drp-btn--outline drp-btn--block drp-btn--sm">
+            See all contacts
           </button>
         </div>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 // ─────────────────────────────────────────────────────────────────────────────
-// Details Modal overlay variant
+// Detail icon helper
 // ─────────────────────────────────────────────────────────────────────────────
 
-const DetailsContent: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => {
-  const overlayBg = theme === "dark" ? "bg-black/70" : "bg-black/40";
-  const modalBg = theme === "dark" ? "bg-[#1a1a1a]" : "bg-white";
-  const textPrimary = theme === "dark" ? "text-white" : "text-black";
-  const textSecondary = "text-gray-500";
-  const divider = theme === "dark" ? "border-white/10" : "border-black/10";
-  const rowHover = theme === "dark" ? "hover:bg-white/5" : "hover:bg-black/5";
-
-  return (
-    <>
-      {/* Background – blurred list */}
-      <div className="flex-1 relative overflow-hidden">
-        <div className="opacity-30 pointer-events-none">
-          <ListContent theme={theme} />
-        </div>
-
-        {/* Modal overlay */}
-        <div
-          className={`absolute inset-0 ${overlayBg} flex items-center justify-center`}
-        >
-          <div
-            className={`w-[460px] rounded-2xl shadow-2xl overflow-hidden ${modalBg}`}
-          >
-            {/* Modal header – purple */}
-            <div className="bg-purple-600 px-6 py-4 flex items-center justify-between">
-              <h2 className="text-white font-bold text-lg">
-                Recipient details
-              </h2>
-              <button className="text-white/80 hover:text-white">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-
-            {/* Divider */}
-            <div
-              className={`h-px ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`}
-            ></div>
-
-            {/* Avatar area – still purple bg */}
-            <div className="bg-purple-600 flex justify-center pb-8 pt-2">
-              <div className="w-16 h-16 rounded-full bg-gray-300 border-4 border-white overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-orange-300 to-amber-500"></div>
-              </div>
-            </div>
-
-            {/* Content */}
-            <div className={`px-8 py-6 ${modalBg}`}>
-              <div className="text-center mb-6">
-                <h3 className={`text-xl font-bold ${textPrimary}`}>
-                  Rustem Tolstobrov
-                </h3>
-                <p className={`text-sm ${textSecondary}`}>
-                  Account ending in 3456
-                </p>
-              </div>
-
-              {/* Detail rows */}
-              {[
-                {
-                  icon: "person",
-                  label: "Account holder name",
-                  value: "Rustem Tolstobrov",
-                },
-                {
-                  icon: "routing",
-                  label: "Routing number",
-                  value: "017062169",
-                },
-                {
-                  icon: "account",
-                  label: "Account number",
-                  value: "8910242076",
-                },
-                {
-                  icon: "currency",
-                  label: "Currency",
-                  value: "🇺🇸 USD",
-                },
-                {
-                  icon: "type",
-                  label: "Account type",
-                  value: "Checking",
-                },
-              ].map((row, i) => (
-                <div
-                  key={i}
-                  className={`flex items-center justify-between py-3.5 border-b border-dashed ${rowHover} transition-colors ${divider}`}
-                >
-                  <div className="flex items-center gap-3">
-                    <DetailIcon icon={row.icon} theme={theme} />
-                    <span className={`text-sm ${textSecondary}`}>
-                      {row.label}
-                    </span>
-                  </div>
-                  <span className={`text-sm font-bold ${textPrimary}`}>
-                    {row.value}
-                  </span>
-                </div>
-              ))}
-
-              {/* Action buttons */}
-              <div className="flex gap-4 mt-6">
-                <button
-                  className={`flex-1 py-3 border rounded-xl text-sm font-bold transition-colors ${
-                    theme === "dark"
-                      ? "border-white/20 text-white hover:bg-white/10"
-                      : "border-black/20 text-black hover:bg-black/5"
-                  }`}
-                >
-                  Send Funds
-                </button>
-                <button
-                  className={`flex-1 py-3 border rounded-xl text-sm font-bold transition-colors ${
-                    theme === "dark"
-                      ? "border-white/20 text-white hover:bg-white/10"
-                      : "border-black/20 text-black hover:bg-black/5"
-                  }`}
-                >
-                  Edit Details
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
-
-const DetailIcon: React.FC<{ icon: string; theme: PaymentsTheme }> = ({
-  icon,
-}) => {
-  const cls = "w-4 h-4 text-gray-400 flex-shrink-0";
+const DetailIcon: React.FC<{ icon: string }> = ({ icon }) => {
+  const s: React.CSSProperties = {
+    width: 16,
+    height: 16,
+    color: "var(--drp-grey)",
+    flexShrink: 0,
+  };
   switch (icon) {
     case "person":
       return (
-        <svg
-          className={cls}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
+        <svg style={s} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -1124,13 +954,9 @@ const DetailIcon: React.FC<{ icon: string; theme: PaymentsTheme }> = ({
         </svg>
       );
     case "routing":
+    case "type":
       return (
-        <svg
-          className={cls}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
+        <svg style={s} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -1140,335 +966,480 @@ const DetailIcon: React.FC<{ icon: string; theme: PaymentsTheme }> = ({
         </svg>
       );
     case "account":
-      return (
-        <svg
-          className={cls}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-          />
-        </svg>
-      );
     case "currency":
       return (
-        <svg
-          className={cls}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
+        <svg style={s} fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
             d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"
-          />
-        </svg>
-      );
-    case "type":
-      return (
-        <svg
-          className={cls}
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
           />
         </svg>
       );
     default:
-      return <span className="w-4 h-4">•</span>;
+      return <span style={{ width: 16, height: 16 }}>&#x2022;</span>;
   }
 };
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Details Modal overlay variant
+// ─────────────────────────────────────────────────────────────────────────────
+
+const DetailsContent: React.FC = () => (
+  <>
+    {/* Background -- blurred list */}
+    <div style={{ flex: 1, position: "relative", overflow: "hidden" }}>
+      <div style={{ opacity: 0.3, pointerEvents: "none" }}>
+        <ListContent />
+      </div>
+
+      {/* Modal overlay */}
+      <div className="drp-overlay" style={{ position: "absolute" }}>
+        <div
+          className="drp-modal"
+          style={{ width: 460, overflow: "hidden", padding: 0 }}
+        >
+          {/* Modal header -- purple */}
+          <div
+            style={{
+              background: "var(--drp-purple)",
+              padding: "var(--drp-space-4) var(--drp-space-6)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
+          >
+            <h2
+              className="drp-text drp-text--bold"
+              style={{ color: "var(--drp-white)" }}
+            >
+              Recipient details
+            </h2>
+            <button
+              className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm"
+              style={{ color: "var(--drp-white)" }}
+            >
+              <svg
+                width="16"
+                height="16"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+
+          {/* Avatar area -- still purple bg */}
+          <div
+            style={{
+              background: "var(--drp-purple)",
+              display: "flex",
+              justifyContent: "center",
+              paddingBottom: "var(--drp-space-8)",
+              paddingTop: "var(--drp-space-2)",
+            }}
+          >
+            <div
+              className="sidebar-avatar"
+              style={{
+                width: 64,
+                height: 64,
+                background:
+                  "linear-gradient(135deg, var(--drp-orange), var(--drp-yellow))",
+                border: "4px solid var(--drp-white)",
+                fontSize: 20,
+              }}
+            />
+          </div>
+
+          {/* Content */}
+          <div style={{ padding: "var(--drp-space-6) var(--drp-space-8)" }}>
+            <div
+              style={{
+                textAlign: "center",
+                marginBottom: "var(--drp-space-6)",
+              }}
+            >
+              <h3 className="drp-h5">Rustem Tolstobrov</h3>
+              <p className="drp-text drp-text--sm drp-text--muted">
+                Account ending in 3456
+              </p>
+            </div>
+
+            {/* Detail rows */}
+            {[
+              {
+                icon: "person",
+                label: "Account holder name",
+                value: "Rustem Tolstobrov",
+              },
+              { icon: "routing", label: "Routing number", value: "017062169" },
+              { icon: "account", label: "Account number", value: "8910242076" },
+              {
+                icon: "currency",
+                label: "Currency",
+                value: "\u{1F1FA}\u{1F1F8} USD",
+              },
+              { icon: "type", label: "Account type", value: "Checking" },
+            ].map((row, i) => (
+              <div
+                key={i}
+                className="drp-flex drp-items-center drp-justify-between"
+                style={{
+                  padding: "var(--drp-space-3) 0",
+                  borderBottom: "var(--drp-border-dashed)",
+                }}
+              >
+                <div className="drp-flex drp-items-center drp-gap-3">
+                  <DetailIcon icon={row.icon} />
+                  <span className="drp-text drp-text--sm drp-text--muted">
+                    {row.label}
+                  </span>
+                </div>
+                <span className="drp-text drp-text--bold">{row.value}</span>
+              </div>
+            ))}
+
+            {/* Action buttons */}
+            <div
+              className="drp-flex drp-gap-4"
+              style={{ marginTop: "var(--drp-space-6)" }}
+            >
+              <button className="drp-btn drp-btn--outline" style={{ flex: 1 }}>
+                Send Funds
+              </button>
+              <button className="drp-btn drp-btn--outline" style={{ flex: 1 }}>
+                Edit Details
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </>
+);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Send Money variant
 // ─────────────────────────────────────────────────────────────────────────────
 
-const SendMoneyContent: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => {
-  const textPrimary = theme === "dark" ? "text-white" : "text-black";
-  const textSecondary = "text-gray-500";
-  const inputBg =
-    theme === "dark"
-      ? "bg-[#1a1a1a] border-white/10 text-white"
-      : "bg-white border-black/15 text-black";
-  const selectBg =
-    theme === "dark"
-      ? "bg-[#1a1a1a] border-white/10 text-white"
-      : "bg-white border-black/15 text-black";
-  const placeholderColor = theme === "dark" ? "text-gray-600" : "text-gray-400";
-
-  return (
-    <div className="flex-1 overflow-auto">
-      <div className="max-w-lg mx-auto py-10 px-4 space-y-6">
-        {/* Select recipient */}
-        <div>
-          <label className={`block text-sm font-semibold mb-2 ${textPrimary}`}>
-            Select recipient
-          </label>
-          <div
-            className={`flex items-center justify-between px-4 py-3.5 border rounded-xl ${selectBg}`}
+const SendMoneyContent: React.FC = () => (
+  <div
+    className="content"
+    style={{ display: "flex", justifyContent: "center" }}
+  >
+    <div
+      style={{
+        maxWidth: 480,
+        width: "100%",
+        padding: "var(--drp-space-10) var(--drp-space-4)",
+      }}
+    >
+      {/* Select recipient */}
+      <div className="drp-field" style={{ marginBottom: "var(--drp-space-6)" }}>
+        <label className="drp-label">Select recipient</label>
+        <div
+          className="drp-input"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <span className="drp-text drp-text--bold">Rustem Tolstobrov</span>
+          <svg
+            width="16"
+            height="16"
+            style={{ color: "var(--drp-grey)" }}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            <span className={`text-sm font-medium ${textPrimary}`}>
-              Rustem Tolstobrov
-            </span>
-            <svg
-              className="w-5 h-5 text-gray-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </div>
-        </div>
-
-        {/* Select payment account */}
-        <div>
-          <label className={`block text-sm font-semibold mb-2 ${textPrimary}`}>
-            Select payment account
-          </label>
-          <div
-            className={`flex items-center justify-between px-4 py-3.5 border rounded-xl ${selectBg}`}
-          >
-            <span className={`text-sm font-medium ${textPrimary}`}>
-              Debit Card **** 7890
-            </span>
-            {/* Toggle switch – off state */}
-            <div
-              className={`w-10 h-5 rounded-full relative ${theme === "dark" ? "bg-gray-700" : "bg-gray-200"}`}
-            >
-              <div className="w-4 h-4 bg-white rounded-full absolute top-0.5 right-0.5 shadow"></div>
-            </div>
-          </div>
-        </div>
-
-        {/* You will send */}
-        <div>
-          <label className={`block text-sm font-semibold mb-2 ${textPrimary}`}>
-            You will send
-          </label>
-          <div
-            className={`flex items-center justify-between px-4 py-3.5 border rounded-xl ${inputBg}`}
-          >
-            <span className={`text-sm ${placeholderColor}`}>1,290.00</span>
-            <span className={`text-sm font-medium ${textSecondary}`}>USD</span>
-          </div>
-        </div>
-
-        {/* Fee breakdown */}
-        <div className="space-y-2 pl-4">
-          <div className="flex items-center gap-3">
-            <div
-              className={`w-2 h-2 rounded-full flex-shrink-0 ${theme === "dark" ? "bg-white" : "bg-black"}`}
-            ></div>
-            <span className={`text-sm ${textSecondary}`}>Conversion fee</span>
-            <span className={`text-sm font-semibold ml-1 ${textPrimary}`}>
-              9.50 USD
-            </span>
-          </div>
-          <div className="flex items-center gap-3">
-            <div
-              className={`w-2 h-2 rounded-full flex-shrink-0 ${theme === "dark" ? "bg-white" : "bg-black"}`}
-            ></div>
-            <span className={`text-sm ${textSecondary}`}>Transfer fee</span>
-            <span className={`text-sm font-semibold ml-1 ${textPrimary}`}>
-              5.50 USD
-            </span>
-          </div>
-        </div>
-
-        {/* Delivery time */}
-        <div>
-          <label className={`block text-sm font-semibold mb-2 ${textPrimary}`}>
-            Delivery time
-          </label>
-          <div className={`px-4 py-3.5 border rounded-xl ${selectBg}`}>
-            <span className={`text-sm ${placeholderColor}`}>
-              Standard Transfer 1-3 days
-            </span>
-          </div>
-        </div>
-
-        {/* Disclaimer */}
-        <p className={`text-xs leading-relaxed ${textSecondary}`}>
-          Transfers made on weekends or holidays take longer. All transfers are
-          subject to review and could be delayed or stopped if we identify an
-          issue.
-        </p>
-
-        {/* Action buttons */}
-        <div className="flex gap-4 pt-4">
-          <button
-            className={`flex-1 py-4 border rounded-xl text-sm font-bold transition-colors ${
-              theme === "dark"
-                ? "border-white/20 text-white hover:bg-white/10"
-                : "border-black/20 text-black hover:bg-black/5"
-            }`}
-          >
-            Cancel
-          </button>
-          <button className="flex-1 py-4 bg-purple-600 hover:bg-purple-700 text-white text-sm font-bold rounded-xl transition-colors">
-            Continue
-          </button>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
         </div>
       </div>
+
+      {/* Select payment account */}
+      <div className="drp-field" style={{ marginBottom: "var(--drp-space-6)" }}>
+        <label className="drp-label">Select payment account</label>
+        <div
+          className="drp-input"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <span className="drp-text drp-text--bold">Debit Card **** 7890</span>
+          <label className="drp-switch">
+            <input type="checkbox" defaultChecked />
+            <span className="drp-switch__track" />
+          </label>
+        </div>
+      </div>
+
+      {/* You will send */}
+      <div className="drp-field" style={{ marginBottom: "var(--drp-space-6)" }}>
+        <label className="drp-label">You will send</label>
+        <div
+          className="drp-input"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <span className="drp-text drp-text--muted">1,290.00</span>
+          <span className="drp-text drp-text--sm drp-text--muted">USD</span>
+        </div>
+      </div>
+
+      {/* Fee breakdown */}
+      <div
+        style={{
+          marginBottom: "var(--drp-space-6)",
+          paddingLeft: "var(--drp-space-4)",
+        }}
+      >
+        <div
+          className="drp-flex drp-items-center drp-gap-3"
+          style={{ marginBottom: "var(--drp-space-2)" }}
+        >
+          <span
+            className="drp-tag--dot"
+            style={{ background: "var(--drp-black)" }}
+          />
+          <span className="drp-text drp-text--sm drp-text--muted">
+            Conversion fee
+          </span>
+          <span className="drp-text drp-text--bold" style={{ marginLeft: 4 }}>
+            9.50 USD
+          </span>
+        </div>
+        <div className="drp-flex drp-items-center drp-gap-3">
+          <span
+            className="drp-tag--dot"
+            style={{ background: "var(--drp-black)" }}
+          />
+          <span className="drp-text drp-text--sm drp-text--muted">
+            Transfer fee
+          </span>
+          <span className="drp-text drp-text--bold" style={{ marginLeft: 4 }}>
+            5.50 USD
+          </span>
+        </div>
+      </div>
+
+      {/* Delivery time */}
+      <div className="drp-field" style={{ marginBottom: "var(--drp-space-6)" }}>
+        <label className="drp-label">Delivery time</label>
+        <div className="drp-input">
+          <span className="drp-text drp-text--muted">
+            Standard Transfer 1-3 days
+          </span>
+        </div>
+      </div>
+
+      {/* Disclaimer */}
+      <p
+        className="drp-caption"
+        style={{ marginBottom: "var(--drp-space-6)", lineHeight: 1.6 }}
+      >
+        Transfers made on weekends or holidays take longer. All transfers are
+        subject to review and could be delayed or stopped if we identify an
+        issue.
+      </p>
+
+      {/* Action buttons */}
+      <div className="drp-flex drp-gap-4">
+        <button className="drp-btn drp-btn--outline" style={{ flex: 1 }}>
+          Cancel
+        </button>
+        <button className="drp-btn drp-btn--primary" style={{ flex: 1 }}>
+          Continue
+        </button>
+      </div>
     </div>
-  );
-};
+  </div>
+);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Pay for Utilities variant
 // ─────────────────────────────────────────────────────────────────────────────
 
-const PayUtilitiesContent: React.FC<{ theme: PaymentsTheme }> = ({ theme }) => {
-  const textPrimary = theme === "dark" ? "text-white" : "text-black";
-  const textSecondary = "text-gray-500";
-  const inputBg =
-    theme === "dark"
-      ? "bg-[#1a1a1a] border-white/10 text-white"
-      : "bg-white border-black/15 text-black";
-  const selectBg =
-    theme === "dark"
-      ? "bg-[#1a1a1a] border-white/10 text-white"
-      : "bg-white border-black/15 text-black";
-  const placeholderColor = theme === "dark" ? "text-gray-600" : "text-gray-400";
-
-  return (
-    <div className="flex-1 overflow-auto">
-      <div className="max-w-lg mx-auto py-10 px-4 space-y-6">
-        {/* Utilities */}
-        <div>
-          <label className={`block text-sm font-semibold mb-2 ${textPrimary}`}>
-            Utilities
-          </label>
-          <div
-            className={`flex items-center justify-between px-4 py-3.5 border rounded-xl ${selectBg}`}
+const PayUtilitiesContent: React.FC = () => (
+  <div
+    className="content"
+    style={{ display: "flex", justifyContent: "center" }}
+  >
+    <div
+      style={{
+        maxWidth: 480,
+        width: "100%",
+        padding: "var(--drp-space-10) var(--drp-space-4)",
+      }}
+    >
+      {/* Utilities */}
+      <div className="drp-field" style={{ marginBottom: "var(--drp-space-6)" }}>
+        <label className="drp-label">Utilities</label>
+        <div
+          className="drp-input"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <span className="drp-text drp-text--bold">Mobile Networks</span>
+          <svg
+            width="16"
+            height="16"
+            style={{ color: "var(--drp-grey)" }}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
           >
-            <span className={`text-sm font-medium ${textPrimary}`}>
-              Mobile Networks
-            </span>
-            <svg
-              className="w-5 h-5 text-gray-400"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </div>
-        </div>
-
-        {/* Service provider */}
-        <div>
-          <label className={`block text-sm font-semibold mb-2 ${textPrimary}`}>
-            Service provider
-          </label>
-          <div
-            className={`flex items-center justify-between px-4 py-3.5 border rounded-xl ${selectBg}`}
-          >
-            <span className={`text-sm font-medium ${textPrimary}`}>
-              Vodafone
-            </span>
-            {/* Vodafone logo approximation */}
-            <div className="w-6 h-6 rounded-full bg-red-600 border-2 border-red-400 flex items-center justify-center">
-              <div className="w-3 h-3 rounded-full border-2 border-white"></div>
-            </div>
-          </div>
-        </div>
-
-        {/* You will send */}
-        <div>
-          <label className={`block text-sm font-semibold mb-2 ${textPrimary}`}>
-            You will send
-          </label>
-          <div
-            className={`flex items-center justify-between px-4 py-3.5 border rounded-xl ${inputBg}`}
-          >
-            <span className={`text-sm ${placeholderColor}`}>15.50</span>
-            <span className={`text-sm font-medium ${textSecondary}`}>USD</span>
-          </div>
-        </div>
-
-        {/* Fee breakdown */}
-        <div className="space-y-2 pl-4">
-          <div className="flex items-center gap-3">
-            <div
-              className={`w-2 h-2 rounded-full flex-shrink-0 ${theme === "dark" ? "bg-white" : "bg-black"}`}
-            ></div>
-            <span className={`text-sm ${textSecondary}`}>Conversion fee</span>
-            <span className={`text-sm font-semibold ml-1 ${textPrimary}`}>
-              9.50 USD
-            </span>
-          </div>
-          <div className="flex items-center gap-3">
-            <div
-              className={`w-2 h-2 rounded-full flex-shrink-0 ${theme === "dark" ? "bg-white" : "bg-black"}`}
-            ></div>
-            <span className={`text-sm ${textSecondary}`}>Transfer fee</span>
-            <span className={`text-sm font-semibold ml-1 ${textPrimary}`}>
-              5.50 USD
-            </span>
-          </div>
-        </div>
-
-        {/* Delivery time */}
-        <div>
-          <label className={`block text-sm font-semibold mb-2 ${textPrimary}`}>
-            Delivery time
-          </label>
-          <div className={`px-4 py-3.5 border rounded-xl ${selectBg}`}>
-            <span className={`text-sm ${placeholderColor}`}>Instant</span>
-          </div>
-        </div>
-
-        {/* Disclaimer */}
-        <p className={`text-xs leading-relaxed ${textSecondary}`}>
-          Transfers made on weekends or holidays take longer. All transfers are
-          subject to review and could be delayed or stopped if we identify an
-          issue.
-        </p>
-
-        {/* Action buttons */}
-        <div className="flex gap-4 pt-4">
-          <button
-            className={`flex-1 py-4 border rounded-xl text-sm font-bold transition-colors ${
-              theme === "dark"
-                ? "border-white/20 text-white hover:bg-white/10"
-                : "border-black/20 text-black hover:bg-black/5"
-            }`}
-          >
-            Cancel
-          </button>
-          <button className="flex-1 py-4 bg-purple-600 hover:bg-purple-700 text-white text-sm font-bold rounded-xl transition-colors">
-            Continue
-          </button>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
         </div>
       </div>
+
+      {/* Service provider */}
+      <div className="drp-field" style={{ marginBottom: "var(--drp-space-6)" }}>
+        <label className="drp-label">Service provider</label>
+        <div
+          className="drp-input"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <span className="drp-text drp-text--bold">Vodafone</span>
+          <div
+            style={{
+              width: 24,
+              height: 24,
+              background: "var(--drp-pink)",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              border: "2px solid var(--drp-pink)",
+            }}
+          >
+            <div
+              style={{
+                width: 12,
+                height: 12,
+                border: "2px solid var(--drp-white)",
+                borderRadius: "50%",
+              }}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* You will send */}
+      <div className="drp-field" style={{ marginBottom: "var(--drp-space-6)" }}>
+        <label className="drp-label">You will send</label>
+        <div
+          className="drp-input"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <span className="drp-text drp-text--muted">15.50</span>
+          <span className="drp-text drp-text--sm drp-text--muted">USD</span>
+        </div>
+      </div>
+
+      {/* Fee breakdown */}
+      <div
+        style={{
+          marginBottom: "var(--drp-space-6)",
+          paddingLeft: "var(--drp-space-4)",
+        }}
+      >
+        <div
+          className="drp-flex drp-items-center drp-gap-3"
+          style={{ marginBottom: "var(--drp-space-2)" }}
+        >
+          <span
+            className="drp-tag--dot"
+            style={{ background: "var(--drp-black)" }}
+          />
+          <span className="drp-text drp-text--sm drp-text--muted">
+            Conversion fee
+          </span>
+          <span className="drp-text drp-text--bold" style={{ marginLeft: 4 }}>
+            9.50 USD
+          </span>
+        </div>
+        <div className="drp-flex drp-items-center drp-gap-3">
+          <span
+            className="drp-tag--dot"
+            style={{ background: "var(--drp-black)" }}
+          />
+          <span className="drp-text drp-text--sm drp-text--muted">
+            Transfer fee
+          </span>
+          <span className="drp-text drp-text--bold" style={{ marginLeft: 4 }}>
+            5.50 USD
+          </span>
+        </div>
+      </div>
+
+      {/* Delivery time */}
+      <div className="drp-field" style={{ marginBottom: "var(--drp-space-6)" }}>
+        <label className="drp-label">Delivery time</label>
+        <div className="drp-input">
+          <span className="drp-text drp-text--muted">Instant</span>
+        </div>
+      </div>
+
+      {/* Disclaimer */}
+      <p
+        className="drp-caption"
+        style={{ marginBottom: "var(--drp-space-6)", lineHeight: 1.6 }}
+      >
+        Transfers made on weekends or holidays take longer. All transfers are
+        subject to review and could be delayed or stopped if we identify an
+        issue.
+      </p>
+
+      {/* Action buttons */}
+      <div className="drp-flex drp-gap-4">
+        <button className="drp-btn drp-btn--outline" style={{ flex: 1 }}>
+          Cancel
+        </button>
+        <button className="drp-btn drp-btn--primary" style={{ flex: 1 }}>
+          Continue
+        </button>
+      </div>
     </div>
-  );
-};
+  </div>
+);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Main exported component
@@ -1478,8 +1449,6 @@ export const PaymentsList: React.FC<PaymentsListProps> = ({
   theme = "light",
   variant = "list",
 }) => {
-  const bg = theme === "dark" ? "bg-[#0d0d0d]" : "bg-[#f5efe6]";
-
   const titleMap: Record<PaymentsVariant, string> = {
     list: "Payments",
     details: "Payments",
@@ -1488,26 +1457,19 @@ export const PaymentsList: React.FC<PaymentsListProps> = ({
   };
 
   const showBack = variant === "send-money" || variant === "pay-utilities";
-  const showSearchIcon =
-    variant === "send-money" || variant === "pay-utilities";
 
   return (
-    <div className={`flex h-screen ${bg} overflow-hidden`}>
+    <div className="app-layout">
       <DoctorProjectSidebar variant={variant} />
-      <div className="flex-1 flex flex-col overflow-hidden min-w-0">
-        <TopBar
-          theme={theme}
-          title={titleMap[variant]}
-          showBack={showBack}
-          showSearch={showSearchIcon}
-        />
+      <div className="main-content" style={{ marginLeft: 280 }}>
+        <TopBar title={titleMap[variant]} showBack={showBack} />
 
-        {variant === "list" && <ListContent theme={theme} />}
-        {variant === "details" && <DetailsContent theme={theme} />}
-        {variant === "send-money" && <SendMoneyContent theme={theme} />}
-        {variant === "pay-utilities" && <PayUtilitiesContent theme={theme} />}
+        {variant === "list" && <ListContent />}
+        {variant === "details" && <DetailsContent />}
+        {variant === "send-money" && <SendMoneyContent />}
+        {variant === "pay-utilities" && <PayUtilitiesContent />}
 
-        <Footer theme={theme} />
+        <Footer />
       </div>
     </div>
   );

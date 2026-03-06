@@ -26,3 +26,21 @@ export const Group: Story = {
     </div>
   ),
 };
+
+export const Error: Story = {
+  args: { label: "Invalid selection", name: "error", error: true },
+};
+
+/** Error state within a group */
+export const GroupWithError: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+      <Radio name="plan-err" label="Free" error />
+      <Radio name="plan-err" label="Pro" error />
+      <Radio name="plan-err" label="Enterprise" error />
+      <span style={{ fontSize: 12, color: "var(--drp-error-dark)" }}>
+        Please select a plan
+      </span>
+    </div>
+  ),
+};

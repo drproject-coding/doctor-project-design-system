@@ -28,41 +28,22 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
     }
   };
 
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    padding: "11px 40px 11px 14px",
-    border: "1.5px solid #E0E0E0",
-    borderRadius: "8px",
-    fontSize: "13px",
-    color: "#121212",
-    background: "#fff",
-    outline: "none",
-    boxSizing: "border-box",
-  };
-
   return (
     <AuthLayout>
       <div>
         {mode === "request" ? (
           <>
             <h1
-              style={{
-                fontSize: "40px",
-                fontWeight: 800,
-                color: "#121212",
-                lineHeight: 1.05,
-                marginBottom: "12px",
-                letterSpacing: "-0.5px",
-              }}
+              className="drp-h1"
+              style={{ marginBottom: "var(--drp-space-3)" }}
             >
               Forgot password?
             </h1>
             <p
+              className="drp-text drp-text--sm drp-text--muted"
               style={{
-                fontSize: "13px",
-                color: "#888",
-                marginBottom: "28px",
-                lineHeight: 1.6,
+                marginBottom: "var(--drp-space-6)",
+                lineHeight: "var(--drp-leading-loose)",
                 maxWidth: "320px",
               }}
             >
@@ -72,50 +53,30 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
             </p>
 
             {submitted ? (
-              <div
-                style={{
-                  background: "#f0fdf4",
-                  border: "1.5px solid #86efac",
-                  color: "#166534",
-                  padding: "12px 16px",
-                  borderRadius: "8px",
-                  fontSize: "13px",
-                }}
-              >
-                Check your email for reset instructions.
+              <div className="drp-alert drp-alert--success">
+                <div className="drp-alert__content">
+                  <p className="drp-text drp-text--sm">
+                    Check your email for reset instructions.
+                  </p>
+                </div>
               </div>
             ) : (
-              <form onSubmit={handleRequestReset}>
+              <form onSubmit={handleRequestReset} className="drp-form-stack">
                 {/* Email field */}
-                <div style={{ marginBottom: "24px" }}>
-                  <label
-                    style={{
-                      display: "block",
-                      fontSize: "12px",
-                      fontWeight: 600,
-                      color: "#444",
-                      marginBottom: "6px",
-                    }}
-                  >
-                    Email
-                  </label>
-                  <div style={{ position: "relative" }}>
+                <div className="drp-field">
+                  <label className="drp-field__label">Email</label>
+                  <div className="drp-field--has-icon">
                     <input
+                      className="drp-input"
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="catherine.shaw@gmail.com"
-                      style={inputStyle}
+                      style={{ width: "100%" }}
                     />
                     {/* Mail icon */}
                     <svg
-                      style={{
-                        position: "absolute",
-                        right: "12px",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        color: "#888",
-                      }}
+                      className="drp-field__icon"
                       width="16"
                       height="16"
                       viewBox="0 0 24 24"
@@ -124,6 +85,7 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
+                      style={{ color: "var(--drp-grey)" }}
                     >
                       <rect x="2" y="4" width="20" height="16" rx="2" />
                       <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
@@ -133,18 +95,7 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
 
                 <button
                   type="submit"
-                  style={{
-                    width: "100%",
-                    padding: "13px",
-                    background: "#631DED",
-                    color: "#fff",
-                    border: "none",
-                    borderRadius: "8px",
-                    fontSize: "14px",
-                    fontWeight: 700,
-                    cursor: "pointer",
-                    letterSpacing: "0.2px",
-                  }}
+                  className="drp-btn drp-btn--primary drp-btn--block"
                 >
                   Start recovery
                 </button>
@@ -152,21 +103,14 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
             )}
 
             <p
-              style={{
-                marginTop: "24px",
-                fontSize: "12px",
-                color: "#888",
-                textAlign: "center",
-              }}
+              className="drp-text drp-text--sm drp-text--muted drp-text-center"
+              style={{ marginTop: "var(--drp-space-6)" }}
             >
               Already registered?{" "}
               <a
                 href="#"
-                style={{
-                  color: "#631DED",
-                  fontWeight: 600,
-                  textDecoration: "none",
-                }}
+                className="drp-text--purple drp-text--semibold"
+                style={{ textDecoration: "none" }}
               >
                 Sign in to your account
               </a>
@@ -175,48 +119,30 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
         ) : (
           <>
             <h1
-              style={{
-                fontSize: "36px",
-                fontWeight: 800,
-                color: "#121212",
-                lineHeight: 1.1,
-                marginBottom: "8px",
-                letterSpacing: "-0.5px",
-              }}
+              className="drp-h2"
+              style={{ marginBottom: "var(--drp-space-2)" }}
             >
               Reset Password
             </h1>
             <p
-              style={{
-                fontSize: "13px",
-                color: "#888",
-                marginBottom: "28px",
-              }}
+              className="drp-text drp-text--sm drp-text--muted"
+              style={{ marginBottom: "var(--drp-space-6)" }}
             >
               Enter your new password below
             </p>
 
-            <form onSubmit={handleResetPassword}>
+            <form onSubmit={handleResetPassword} className="drp-form-stack">
               {/* New Password */}
-              <div style={{ marginBottom: "16px" }}>
-                <label
-                  style={{
-                    display: "block",
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    color: "#444",
-                    marginBottom: "6px",
-                  }}
-                >
-                  New Password
-                </label>
-                <div style={{ position: "relative" }}>
+              <div className="drp-field">
+                <label className="drp-field__label">New Password</label>
+                <div className="drp-field--has-icon">
                   <input
+                    className="drp-input"
                     type={showPassword ? "text" : "password"}
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     placeholder="Enter new password"
-                    style={inputStyle}
+                    style={{ width: "100%" }}
                   />
                   <button
                     type="button"
@@ -224,13 +150,12 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
                     style={{
                       position: "absolute",
                       right: "12px",
-                      top: "50%",
-                      transform: "translateY(-50%)",
+                      bottom: "12px",
                       background: "none",
                       border: "none",
                       cursor: "pointer",
                       padding: 0,
-                      color: "#888",
+                      color: "var(--drp-grey)",
                     }}
                   >
                     <svg
@@ -251,25 +176,16 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
               </div>
 
               {/* Confirm Password */}
-              <div style={{ marginBottom: "24px" }}>
-                <label
-                  style={{
-                    display: "block",
-                    fontSize: "12px",
-                    fontWeight: 600,
-                    color: "#444",
-                    marginBottom: "6px",
-                  }}
-                >
-                  Confirm Password
-                </label>
-                <div style={{ position: "relative" }}>
+              <div className="drp-field">
+                <label className="drp-field__label">Confirm Password</label>
+                <div className="drp-field--has-icon">
                   <input
+                    className="drp-input"
                     type={showPassword ? "text" : "password"}
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="Confirm new password"
-                    style={inputStyle}
+                    style={{ width: "100%" }}
                   />
                   <button
                     type="button"
@@ -277,13 +193,12 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
                     style={{
                       position: "absolute",
                       right: "12px",
-                      top: "50%",
-                      transform: "translateY(-50%)",
+                      bottom: "12px",
                       background: "none",
                       border: "none",
                       cursor: "pointer",
                       padding: 0,
-                      color: "#888",
+                      color: "var(--drp-grey)",
                     }}
                   >
                     <svg
@@ -305,18 +220,7 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
 
               <button
                 type="submit"
-                style={{
-                  width: "100%",
-                  padding: "13px",
-                  background: "#631DED",
-                  color: "#fff",
-                  border: "none",
-                  borderRadius: "8px",
-                  fontSize: "14px",
-                  fontWeight: 700,
-                  cursor: "pointer",
-                  letterSpacing: "0.2px",
-                }}
+                className="drp-btn drp-btn--primary drp-btn--block"
               >
                 Reset Password
               </button>

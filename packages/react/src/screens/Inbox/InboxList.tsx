@@ -2,116 +2,176 @@ import React, { useState } from "react";
 
 // ─── Sidebar ────────────────────────────────────────────────────────────────
 
-const InboxSidebar: React.FC = () => (
-  <div className="w-[200px] min-h-screen bg-[#111111] flex flex-col text-white flex-shrink-0">
-    <div className="px-5 py-5 border-b border-white/10">
-      <div className="flex items-center gap-0.5">
-        <span className="text-xl font-bold text-white">Doctor Project</span>
-        <span className="w-2 h-2 rounded-full bg-purple-500 mb-3 flex-shrink-0"></span>
-      </div>
-    </div>
+const InboxSidebar: React.FC = () => {
+  const navItems = [
+    {
+      id: "dashboard",
+      label: "Dashboard",
+      badge: 15,
+      badgeVariant: "sidebar-badge--purple",
+    },
+    { id: "projects", label: "Projects" },
+    { id: "tasks", label: "Tasks" },
+    {
+      id: "kanban",
+      label: "Kanban Desk",
+      badge: 28,
+      badgeVariant: "sidebar-badge--purple",
+    },
+    {
+      id: "filemanager",
+      label: "File Manager",
+      badge: 14,
+      badgeVariant: "sidebar-badge--green",
+    },
+    { id: "calendar", label: "Calendar" },
+    { id: "inbox", label: "Inbox", active: true },
+  ];
 
-    <div className="flex-1 overflow-y-auto px-3 py-4 space-y-5">
-      <div>
-        <p className="text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2">
-          Navigation
-        </p>
-        <nav className="space-y-0.5">
-          {[
-            { label: "Dashboard", badge: 15, badgeColor: "bg-purple-600" },
-            { label: "Projects" },
-            { label: "Tasks" },
-            { label: "Kanban Desk", badge: 28, badgeColor: "bg-purple-600" },
-            { label: "File Manager", badge: 14, badgeColor: "bg-green-500" },
-            { label: "Calendar" },
-            { label: "Inbox", active: true },
-          ].map((item) => (
+  const teamMembers = [
+    { name: "Alexandre Paiva", initials: "AP", bg: "var(--drp-orange)" },
+    { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-purple)" },
+    { name: "Justine Robinson", initials: "JR", bg: "var(--drp-blue)" },
+  ];
+
+  return (
+    <aside className="sidebar" style={{ width: 200 }}>
+      <div className="sidebar-brand">
+        <span className="sidebar-brand-name" style={{ fontSize: 20 }}>
+          Doctor Project
+        </span>
+        <span className="sidebar-brand-dot" />
+      </div>
+
+      <nav className="sidebar-nav">
+        <div className="sidebar-nav-section">
+          <div className="sidebar-nav-label">Navigation</div>
+          {navItems.map((item) => (
             <button
-              key={item.label}
-              className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs transition-colors ${
-                item.active
-                  ? "bg-white/10 text-white font-medium"
-                  : "text-gray-400 hover:text-white hover:bg-white/5"
-              }`}
+              key={item.id}
+              className={`sidebar-nav-item ${item.active ? "active" : ""}`}
             >
-              <span>{item.label}</span>
+              <span className="sidebar-nav-text">{item.label}</span>
               {item.badge && (
-                <span
-                  className={`text-[10px] text-white px-1.5 py-0.5 rounded ${item.badgeColor}`}
-                >
+                <span className={`sidebar-badge ${item.badgeVariant}`}>
                   {item.badge}
                 </span>
               )}
             </button>
           ))}
-        </nav>
-      </div>
+        </div>
 
-      <div>
-        <p className="text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2">
-          Team Members
-        </p>
-        <div className="space-y-0.5">
-          {[
-            { name: "Alexandre Paiva", color: "bg-orange-400" },
-            { name: "Thanawan Chadee", color: "bg-purple-500" },
-            { name: "Justine Robinson", color: "bg-blue-400" },
-          ].map((member) => (
-            <button
-              key={member.name}
-              className="w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-white/5"
-            >
-              <span
-                className={`w-6 h-6 rounded-full ${member.color} flex-shrink-0`}
-              ></span>
-              <span className="truncate">{member.name}</span>
-            </button>
+        <div className="sidebar-team">
+          <div className="sidebar-team-label">Team Members</div>
+          {teamMembers.map((m) => (
+            <div key={m.name} className="sidebar-team-member">
+              <div
+                className="sidebar-avatar"
+                style={{
+                  background: m.bg,
+                  width: 24,
+                  height: 24,
+                  fontSize: 10,
+                }}
+              >
+                {m.initials[0]}
+              </div>
+              <span className="sidebar-team-name" style={{ fontSize: 12 }}>
+                {m.name}
+              </span>
+            </div>
           ))}
-          <button className="w-full flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5">
-            <span>∨ See More</span>
-          </button>
+          <div className="sidebar-see-more">
+            <svg
+              width="12"
+              height="12"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+            <span>See More</span>
+          </div>
         </div>
-      </div>
-    </div>
+      </nav>
 
-    <div className="px-3 py-4 border-t border-white/10">
-      <div className="flex items-center justify-between px-2">
-        <div className="flex items-center gap-2">
-          <div className="w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex-shrink-0"></div>
-          <span className="text-xs text-gray-200 truncate">
+      <div className="sidebar-user">
+        <div
+          className="sidebar-avatar"
+          style={{
+            background:
+              "linear-gradient(135deg, var(--drp-orange), var(--drp-pink))",
+            width: 28,
+            height: 28,
+          }}
+        />
+        <div className="sidebar-user-info">
+          <div className="sidebar-user-name" style={{ fontSize: 12 }}>
             Henry Richardson
-          </span>
+          </div>
         </div>
-        <button className="text-gray-500 hover:text-white text-sm flex-shrink-0">
-          ···
-        </button>
+        <button className="sidebar-user-menu-btn">...</button>
       </div>
-    </div>
-  </div>
-);
+    </aside>
+  );
+};
 
 // ─── Top Bar ─────────────────────────────────────────────────────────────────
 
 const InboxTopBar: React.FC<{ showBack?: boolean }> = ({
   showBack = false,
 }) => (
-  <div className="flex items-center justify-between px-6 py-3 border-b bg-[#f5efe6] border-black/10 flex-shrink-0">
-    <div className="flex items-center gap-3">
+  <div className="topbar">
+    <div className="topbar-left">
       {showBack && (
-        <button className="flex items-center justify-center w-8 h-8 border border-black/15 rounded-lg text-gray-600 hover:bg-black/5 text-sm">
-          ←
+        <button className="drp-btn drp-btn--outline drp-btn--icon drp-btn--sm">
+          <svg
+            width="16"
+            height="16"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
+          </svg>
         </button>
       )}
-      <h1 className="text-2xl font-bold text-black">Inbox</h1>
+      <h1 className="topbar-title">Inbox</h1>
     </div>
-    <div className="flex items-center gap-3">
-      <button className="text-gray-500 text-sm hover:text-gray-700">···</button>
-      <button className="text-gray-500 text-sm hover:text-gray-700">···</button>
-      <button className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-gray-700 hover:bg-black/5 border border-black/10">
-        ··· Apps
+    <div className="topbar-right">
+      <button className="topbar-icon-btn">...</button>
+      <button className="topbar-icon-btn">...</button>
+      <button className="topbar-apps-btn">
+        <svg
+          width="16"
+          height="16"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
+          />
+        </svg>
+        <span>Apps</span>
       </button>
-      <button className="flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-xs font-medium rounded-lg">
-        ··· Create new
+      <button className="topbar-create-btn">
+        <span>+</span>
+        <span>Create new</span>
       </button>
     </div>
   </div>
@@ -120,20 +180,52 @@ const InboxTopBar: React.FC<{ showBack?: boolean }> = ({
 // ─── Footer ───────────────────────────────────────────────────────────────────
 
 const InboxFooter: React.FC = () => (
-  <div className="flex items-center justify-between px-6 py-2.5 border-t bg-[#f5efe6] border-black/10 text-xs text-gray-500 flex-shrink-0">
-    <div className="flex items-center gap-5">
-      <button className="hover:opacity-80 flex items-center gap-1">
-        ··· English
-      </button>
-      <button className="hover:opacity-80">Privacy Policy</button>
-      <button className="hover:opacity-80">License</button>
-      <button className="hover:opacity-80">API</button>
+  <div className="footer-bar">
+    <div className="footer-links">
+      <span className="footer-link">English</span>
+      <span className="footer-link">Privacy Policy</span>
+      <span className="footer-link">License</span>
+      <span className="footer-link">API</span>
     </div>
-    <div className="flex items-center gap-1.5">
-      <button className="px-2 py-1 rounded bg-purple-600 text-white text-xs">
-        ···
+    <div className="footer-right">
+      <button className="footer-icon-btn">
+        <svg
+          width="16"
+          height="16"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+          />
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+          />
+        </svg>
       </button>
-      <button className="px-2 py-1 rounded bg-black/10 text-xs">···</button>
+      <button className="footer-icon-btn">
+        <svg
+          width="16"
+          height="16"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+          />
+        </svg>
+      </button>
     </div>
   </div>
 );
@@ -141,22 +233,22 @@ const InboxFooter: React.FC = () => (
 // ─── Avatar ───────────────────────────────────────────────────────────────────
 
 const avatarColors: Record<string, string> = {
-  "Helena Chavez": "bg-rose-400",
-  "Sallie Wade": "bg-purple-500",
-  "Blake Howard": "bg-green-500",
-  "Devin Williams": "bg-blue-500",
-  "Raymond Gomez": "bg-orange-400",
-  "Daya Chitanis": "bg-teal-500",
-  "Samuil Sadovsky": "bg-orange-400",
-  "Ishaaq El Vohra": "bg-purple-400",
-  "Jaquon Hart": "bg-blue-500",
-  "Sebastian Bennett": "bg-rose-400",
-  "Anaru Hakopa": "bg-green-500",
-  "Rey Milbourne": "bg-teal-500",
-  "Fua Lamba": "bg-yellow-500",
-  "Sang Young-Il": "bg-indigo-500",
-  "Gladys Kanyinda": "bg-teal-400",
-  "Gabriela Pires": "bg-orange-400",
+  "Helena Chavez": "var(--drp-pink)",
+  "Sallie Wade": "var(--drp-purple)",
+  "Blake Howard": "var(--drp-mint)",
+  "Devin Williams": "var(--drp-blue)",
+  "Raymond Gomez": "var(--drp-orange)",
+  "Daya Chitanis": "var(--drp-mint)",
+  "Samuil Sadovsky": "var(--drp-orange)",
+  "Ishaaq El Vohra": "var(--drp-purple)",
+  "Jaquon Hart": "var(--drp-blue)",
+  "Sebastian Bennett": "var(--drp-pink)",
+  "Anaru Hakopa": "var(--drp-mint)",
+  "Rey Milbourne": "var(--drp-mint)",
+  "Fua Lamba": "var(--drp-yellow)",
+  "Sang Young-Il": "var(--drp-purple)",
+  "Gladys Kanyinda": "var(--drp-mint)",
+  "Gabriela Pires": "var(--drp-orange)",
 };
 
 const Avatar: React.FC<{ name: string; size?: "sm" | "md" | "lg" }> = ({
@@ -168,16 +260,20 @@ const Avatar: React.FC<{ name: string; size?: "sm" | "md" | "lg" }> = ({
     .slice(0, 2)
     .map((n) => n[0])
     .join("");
-  const color = avatarColors[name] ?? "bg-gray-400";
-  const sizeClass =
-    size === "sm"
-      ? "w-6 h-6 text-[10px]"
-      : size === "lg"
-        ? "w-9 h-9 text-sm"
-        : "w-8 h-8 text-xs";
+  const color = avatarColors[name] ?? "var(--drp-grey)";
+  const dims = size === "sm" ? 24 : size === "lg" ? 36 : 32;
+  const fs = size === "sm" ? 10 : size === "lg" ? 14 : 12;
+
   return (
     <div
-      className={`${sizeClass} ${color} rounded-full flex items-center justify-center text-white font-semibold flex-shrink-0`}
+      className="sidebar-avatar"
+      style={{
+        background: color,
+        width: dims,
+        height: dims,
+        fontSize: fs,
+        flexShrink: 0,
+      }}
     >
       {initials}
     </div>
@@ -198,7 +294,7 @@ const mailItems = [
     subtitle: "Subtitle",
     time: "28 days ago",
     starred: false,
-    attachments: [],
+    attachments: [] as { name: string; color: string }[],
   },
   {
     id: "2",
@@ -207,7 +303,7 @@ const mailItems = [
     subtitle: "Driver Messages That Drive",
     time: "23 hours ago",
     starred: false,
-    attachments: [],
+    attachments: [] as { name: string; color: string }[],
   },
   {
     id: "3",
@@ -217,8 +313,8 @@ const mailItems = [
     time: "6 days ago",
     starred: false,
     attachments: [
-      { name: "app design.sketch", color: "bg-orange-400" },
-      { name: "spendings.pdf", color: "bg-red-400" },
+      { name: "app design.sketch", color: "var(--drp-orange)" },
+      { name: "spendings.pdf", color: "var(--drp-pink)" },
     ],
   },
   {
@@ -228,7 +324,7 @@ const mailItems = [
     subtitle: "Evidence That Robots",
     time: "5 months ago",
     starred: true,
-    attachments: [],
+    attachments: [] as { name: string; color: string }[],
   },
   {
     id: "5",
@@ -237,7 +333,7 @@ const mailItems = [
     subtitle: "Detailing Amazon's Custom-Clothing",
     time: "58 mins ago",
     starred: true,
-    attachments: [],
+    attachments: [] as { name: string; color: string }[],
   },
   {
     id: "6",
@@ -247,9 +343,9 @@ const mailItems = [
     time: "7 days ago",
     starred: false,
     attachments: [
-      { name: "money transfer.pdf", color: "bg-red-400" },
-      { name: "work scope.xls", color: "bg-green-500" },
-      { name: "content articles.docx", color: "bg-blue-400" },
+      { name: "money transfer.pdf", color: "var(--drp-pink)" },
+      { name: "work scope.xls", color: "var(--drp-mint)" },
+      { name: "content articles.docx", color: "var(--drp-blue)" },
     ],
   },
   {
@@ -259,7 +355,7 @@ const mailItems = [
     subtitle: "No Longer a Dream",
     time: "7 days ago",
     starred: true,
-    attachments: [],
+    attachments: [] as { name: string; color: string }[],
   },
   {
     id: "8",
@@ -268,7 +364,7 @@ const mailItems = [
     subtitle: "Changes to Tech Worker Visas Are Cosmetic",
     time: "2 weeks ago",
     starred: false,
-    attachments: [],
+    attachments: [] as { name: string; color: string }[],
   },
 ];
 
@@ -277,15 +373,16 @@ const MailListVariant: React.FC = () => {
   const tabs: MailTab[] = ["Incoming", "Sent", "Drafts", "Deleted"];
 
   return (
-    <div className="flex-1 flex flex-col overflow-hidden">
+    <>
       <InboxTopBar />
-      <div className="flex-1 overflow-auto px-5 py-4">
+      <div className="content">
         {/* Toolbar */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <button className="flex items-center gap-1.5 px-3 py-2 border border-black/15 rounded-lg text-xs font-medium text-gray-700 hover:bg-black/5 bg-white">
+        <div className="drp-flex drp-items-center drp-justify-between drp-mb-4">
+          <div className="drp-flex drp-items-center drp-gap-3">
+            <button className="drp-btn drp-btn--outline drp-btn--sm">
               <svg
-                className="w-3 h-3"
+                width="14"
+                height="14"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -299,26 +396,30 @@ const MailListVariant: React.FC = () => {
               </svg>
               Compose Email
             </button>
-            {/* Tabs */}
-            <div className="flex items-center rounded-lg overflow-hidden border border-black/10">
+            <div className="drp-tabs">
               {tabs.map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
-                  className={`px-4 py-2 text-xs font-medium transition-colors ${
-                    activeTab === tab
-                      ? "bg-black text-white"
-                      : "bg-white text-gray-600 hover:bg-gray-50"
-                  }`}
+                  className={`drp-tab ${activeTab === tab ? "drp-tab--active" : ""}`}
                 >
                   {tab}
                 </button>
               ))}
             </div>
           </div>
-          <div className="flex items-center gap-2 px-3 py-2 border border-black/15 rounded-lg bg-white">
+          <div
+            className="drp-flex drp-items-center drp-gap-2"
+            style={{
+              padding: "var(--drp-space-2) var(--drp-space-3)",
+              border: "var(--drp-border-thin)",
+              background: "var(--drp-white)",
+            }}
+          >
             <svg
-              className="w-3 h-3 text-gray-400"
+              width="14"
+              height="14"
+              style={{ color: "var(--drp-grey)" }}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -333,97 +434,165 @@ const MailListVariant: React.FC = () => {
             <input
               type="text"
               placeholder="Type to search..."
-              className="text-xs text-gray-400 bg-transparent outline-none w-36"
+              className="drp-input"
+              style={{
+                border: "none",
+                padding: 0,
+                width: 140,
+                fontSize: 12,
+                background: "transparent",
+              }}
               readOnly
             />
           </div>
         </div>
 
         {/* Table */}
-        <div className="bg-white rounded-xl border border-black/10 overflow-hidden">
+        <div className="drp-card" style={{ padding: 0, overflow: "hidden" }}>
           {mailItems.map((item, idx) => (
             <div
               key={item.id}
-              className={`flex items-center gap-3 px-4 py-3 hover:bg-gray-50 cursor-pointer transition-colors ${
-                idx !== mailItems.length - 1 ? "border-b border-black/5" : ""
-              }`}
+              className="drp-flex drp-items-center drp-gap-3"
+              style={{
+                padding: "var(--drp-space-3) var(--drp-space-4)",
+                borderBottom:
+                  idx !== mailItems.length - 1
+                    ? "var(--drp-border-thin)"
+                    : "none",
+                cursor: "pointer",
+              }}
             >
               {/* Checkbox */}
-              <div className="flex items-center gap-2 flex-shrink-0">
-                <div className="w-4 h-4 border border-gray-300 rounded"></div>
-                <button className="text-gray-300 hover:text-gray-500 text-xs">
-                  ···
+              <div
+                className="drp-flex drp-items-center drp-gap-2"
+                style={{ flexShrink: 0 }}
+              >
+                <label className="drp-checkbox">
+                  <input type="checkbox" />
+                </label>
+                <button
+                  className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm"
+                  style={{ fontSize: 10 }}
+                >
+                  ...
                 </button>
               </div>
               {/* Star */}
               {item.starred ? (
                 <svg
-                  className="w-3.5 h-3.5 text-yellow-400 flex-shrink-0"
+                  width="14"
+                  height="14"
+                  style={{ color: "var(--drp-yellow)", flexShrink: 0 }}
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
                 </svg>
               ) : (
-                <div className="w-3.5 h-3.5 flex-shrink-0"></div>
+                <div style={{ width: 14, height: 14, flexShrink: 0 }} />
               )}
               {/* Avatar */}
               <Avatar name={item.sender} size="md" />
               {/* Sender */}
-              <span className="text-sm font-semibold text-gray-900 w-32 flex-shrink-0 truncate">
+              <span
+                className="drp-text drp-text--bold"
+                style={{
+                  width: 128,
+                  flexShrink: 0,
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  fontSize: 13,
+                }}
+              >
                 {item.sender}
               </span>
               {/* Title + subtitle */}
-              <div className="flex items-center gap-2 flex-1 min-w-0">
-                <span className="text-sm text-gray-800 font-medium truncate">
+              <div
+                className="drp-flex drp-items-center drp-gap-2"
+                style={{ flex: 1, minWidth: 0 }}
+              >
+                <span
+                  className="drp-text drp-text--bold"
+                  style={{
+                    overflow: "hidden",
+                    textOverflow: "ellipsis",
+                    whiteSpace: "nowrap",
+                    fontSize: 13,
+                  }}
+                >
                   {item.title}
                 </span>
                 {item.subtitle && (
-                  <span className="text-sm text-gray-400 truncate hidden md:block">
+                  <span
+                    className="drp-text drp-text--sm drp-text--muted"
+                    style={{
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
                     {item.subtitle}
                   </span>
                 )}
               </div>
               {/* Attachments */}
               {item.attachments.length > 0 && (
-                <div className="flex items-center gap-1 flex-shrink-0">
+                <div
+                  className="drp-flex drp-items-center drp-gap-1"
+                  style={{ flexShrink: 0 }}
+                >
                   {item.attachments.map((att) => (
                     <span
                       key={att.name}
-                      className="flex items-center gap-1 px-2 py-0.5 bg-gray-100 rounded text-[10px] text-gray-600"
+                      className="drp-tag drp-tag--sm"
+                      style={{ fontSize: 10 }}
                     >
                       <span
-                        className={`w-1.5 h-1.5 rounded-full ${att.color}`}
-                      ></span>
+                        className="drp-tag--dot"
+                        style={{ background: att.color }}
+                      />
                       {att.name}
                     </span>
                   ))}
                 </div>
               )}
               {/* Time */}
-              <span className="text-xs text-gray-400 flex-shrink-0 w-20 text-right">
+              <span
+                className="drp-text drp-text--sm drp-text--muted"
+                style={{
+                  flexShrink: 0,
+                  width: 80,
+                  textAlign: "right",
+                  fontSize: 12,
+                }}
+              >
                 {item.time}
               </span>
-              <button className="text-gray-300 hover:text-gray-500 text-xs flex-shrink-0">
-                ···
+              <button
+                className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm"
+                style={{ flexShrink: 0 }}
+              >
+                ...
               </button>
             </div>
           ))}
         </div>
 
         {/* Pagination */}
-        <div className="flex items-center justify-between mt-4">
-          <button className="flex items-center gap-1 px-3 py-1.5 border border-black/15 rounded-lg text-xs text-gray-700 hover:bg-black/5 bg-white">
-            ‹ Prev
-          </button>
-          <span className="text-xs text-gray-500">Page 1 of 10</span>
-          <button className="flex items-center gap-1 px-3 py-1.5 border border-black/15 rounded-lg text-xs text-gray-700 hover:bg-black/5 bg-white">
-            Next ›
-          </button>
+        <div
+          className="drp-flex drp-items-center drp-justify-between"
+          style={{ marginTop: "var(--drp-space-4)" }}
+        >
+          <button className="drp-btn drp-btn--outline drp-btn--sm">Prev</button>
+          <span className="drp-text drp-text--sm drp-text--muted">
+            Page 1 of 10
+          </span>
+          <button className="drp-btn drp-btn--outline drp-btn--sm">Next</button>
         </div>
       </div>
       <InboxFooter />
-    </div>
+    </>
   );
 };
 
@@ -484,33 +653,34 @@ const chatMessages = [
 ];
 
 const ChatVariant: React.FC = () => (
-  <div className="flex-1 flex flex-col overflow-hidden">
+  <>
     <InboxTopBar />
-    <div className="flex-1 flex overflow-hidden px-5 py-4 gap-4">
-      {/* Left Panel: Message List */}
-      <div className="w-[280px] flex-shrink-0 bg-white rounded-xl border border-black/10 flex flex-col overflow-hidden">
-        {/* Compose + Filter/Search */}
-        <div className="flex items-center justify-between p-3 border-b border-black/8">
-          <button className="flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 text-white text-xs font-medium rounded-lg hover:bg-purple-700">
-            <svg
-              className="w-3 h-3"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
-              />
-            </svg>
-            Compose
-          </button>
-          <div className="flex items-center gap-1">
-            <button className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-gray-100 text-gray-500">
+    <div className="content">
+      <div className="drp-flex drp-gap-4" style={{ flex: 1, minHeight: 0 }}>
+        {/* Left Panel: Message List */}
+        <div
+          className="drp-card"
+          style={{
+            width: 280,
+            flexShrink: 0,
+            padding: 0,
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {/* Compose + Filter/Search */}
+          <div
+            className="drp-flex drp-items-center drp-justify-between"
+            style={{
+              padding: "var(--drp-space-3)",
+              borderBottom: "var(--drp-border-thin)",
+            }}
+          >
+            <button className="drp-btn drp-btn--primary drp-btn--sm">
               <svg
-                className="w-3.5 h-3.5"
+                width="14"
+                height="14"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -519,227 +689,430 @@ const ChatVariant: React.FC = () => (
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"
+                  d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"
                 />
               </svg>
+              Compose
             </button>
-            <button className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-gray-100 text-gray-500">
-              <svg
-                className="w-3.5 h-3.5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            <div className="drp-flex drp-items-center drp-gap-1">
+              <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                <svg
+                  width="14"
+                  height="14"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.414V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.586L3.293 6.707A1 1 0 013 6V4z"
+                  />
+                </svg>
+              </button>
+              <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                <svg
+                  width="14"
+                  height="14"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          {/* Message items */}
+          <div style={{ flex: 1, overflow: "auto" }}>
+            {chatMessages.map((msg, idx) => (
+              <div
+                key={msg.id}
+                className="drp-flex drp-items-start drp-gap-2"
+                style={{
+                  padding: "var(--drp-space-2) var(--drp-space-3)",
+                  borderBottom:
+                    idx !== chatMessages.length - 1
+                      ? "var(--drp-border-thin)"
+                      : "none",
+                  cursor: "pointer",
+                }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </button>
+                <Avatar name={msg.sender} size="md" />
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div
+                    className="drp-flex drp-items-center drp-justify-between"
+                    style={{ marginBottom: 2 }}
+                  >
+                    <span
+                      className="drp-text drp-text--bold"
+                      style={{
+                        fontSize: 12,
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        whiteSpace: "nowrap",
+                      }}
+                    >
+                      {msg.sender}
+                    </span>
+                    <span
+                      className="drp-caption"
+                      style={{ flexShrink: 0, marginLeft: 4, fontSize: 10 }}
+                    >
+                      {msg.time}
+                    </span>
+                  </div>
+                  <p
+                    className="drp-text drp-text--bold"
+                    style={{
+                      fontSize: 12,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {msg.subject}
+                  </p>
+                  <p
+                    className="drp-caption"
+                    style={{
+                      fontSize: 10,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {msg.preview}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Message items */}
-        <div className="flex-1 overflow-y-auto">
-          {chatMessages.map((msg, idx) => (
+        {/* Right Panel: Chat Conversation */}
+        <div
+          className="drp-card"
+          style={{
+            flex: 1,
+            padding: 0,
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {/* Chat header */}
+          <div
+            className="drp-flex drp-items-center drp-justify-between"
+            style={{
+              padding: "var(--drp-space-3) var(--drp-space-4)",
+              borderBottom: "var(--drp-border-thin)",
+            }}
+          >
+            <button className="drp-btn drp-btn--outline drp-btn--icon drp-btn--sm">
+              &#x2039;
+            </button>
+            <div className="drp-flex drp-items-center drp-gap-2">
+              <Avatar name="Sallie Wade" size="sm" />
+              <span
+                className="drp-text drp-text--bold"
+                style={{ fontSize: 13 }}
+              >
+                Sallie Wade
+              </span>
+            </div>
+            <div className="drp-flex drp-items-center drp-gap-1">
+              <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                <svg
+                  width="14"
+                  height="14"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                  />
+                </svg>
+              </button>
+              <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                ...
+              </button>
+            </div>
+          </div>
+
+          {/* Messages */}
+          <div
+            style={{
+              flex: 1,
+              overflow: "auto",
+              padding: "var(--drp-space-4)",
+              display: "flex",
+              flexDirection: "column",
+              gap: "var(--drp-space-4)",
+            }}
+          >
+            {/* 48 Messages divider */}
+            <div style={{ display: "flex", justifyContent: "center" }}>
+              <span
+                className="drp-tag drp-tag--dark drp-tag--filled"
+                style={{ fontSize: 10 }}
+              >
+                48 Messages
+              </span>
+            </div>
+
+            {/* Message: Gabriela (right) */}
             <div
-              key={msg.id}
-              className={`flex items-start gap-2.5 px-3 py-2.5 cursor-pointer hover:bg-gray-50 transition-colors ${
-                idx !== chatMessages.length - 1 ? "border-b border-black/5" : ""
-              }`}
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                gap: "var(--drp-space-2)",
+              }}
             >
-              <Avatar name={msg.sender} size="md" />
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center justify-between mb-0.5">
-                  <span className="text-xs font-semibold text-gray-900 truncate">
-                    {msg.sender}
-                  </span>
-                  <span className="text-[10px] text-gray-400 flex-shrink-0 ml-1">
-                    {msg.time}
-                  </span>
-                </div>
-                <p className="text-xs font-medium text-gray-700 truncate">
-                  {msg.subject}
-                </p>
-                <p className="text-[10px] text-gray-400 truncate">
-                  {msg.preview}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Right Panel: Chat Conversation */}
-      <div className="flex-1 bg-white rounded-xl border border-black/10 flex flex-col overflow-hidden">
-        {/* Chat header */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-black/8">
-          <button className="w-7 h-7 flex items-center justify-center rounded-lg border border-black/10 hover:bg-gray-50 text-gray-500 text-sm">
-            ‹
-          </button>
-          <div className="flex items-center gap-2">
-            <Avatar name="Sallie Wade" size="sm" />
-            <span className="text-sm font-semibold text-gray-900">
-              Sallie Wade
-            </span>
-          </div>
-          <div className="flex items-center gap-1">
-            <button className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-gray-100 text-gray-500">
-              <svg
-                className="w-3.5 h-3.5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
+                  gap: 4,
+                }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
-                />
-              </svg>
-            </button>
-            <button className="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-gray-100 text-gray-500 text-sm">
-              ···
-            </button>
-          </div>
-        </div>
-
-        {/* Messages */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4">
-          {/* 48 Messages divider */}
-          <div className="flex justify-center">
-            <span className="px-3 py-1 bg-gray-800 text-white text-[10px] rounded-full">
-              48 Messages
-            </span>
-          </div>
-
-          {/* Message: Gabriela (right) */}
-          <div className="flex items-end justify-end gap-2">
-            <div className="flex flex-col items-end gap-1">
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] text-gray-400">
-                  8:20 PM Gabriela Pires
-                </span>
-                <Avatar name="Gabriela Pires" size="sm" />
-              </div>
-              <div className="bg-purple-600 text-white text-xs px-3 py-2 rounded-xl rounded-tr-sm max-w-[200px]">
-                Freelance Design Tricks
-              </div>
-            </div>
-          </div>
-
-          {/* Message: Sallie (left) */}
-          <div className="flex items-start gap-2">
-            <div className="flex flex-col gap-1">
-              <div className="flex items-center gap-2">
-                <Avatar name="Sallie Wade" size="sm" />
-                <span className="text-[10px] text-gray-400">
-                  Sallie Wade 8:35 PM
-                </span>
-              </div>
-              <div className="bg-gray-100 text-gray-800 text-xs px-3 py-2 rounded-xl rounded-tl-sm max-w-[250px]">
-                Some graphic designers always manage to produce
-              </div>
-              {/* Image attachments */}
-              <div className="flex gap-2 mt-1">
-                <div className="w-20 h-14 bg-gradient-to-br from-purple-300 to-indigo-400 rounded-lg overflow-hidden flex-shrink-0">
-                  <div className="w-full h-full opacity-70 bg-gradient-to-tr from-purple-200 to-blue-300"></div>
+                <div className="drp-flex drp-items-center drp-gap-2">
+                  <span className="drp-caption" style={{ fontSize: 10 }}>
+                    8:20 PM Gabriela Pires
+                  </span>
+                  <Avatar name="Gabriela Pires" size="sm" />
                 </div>
-                <div className="w-20 h-14 bg-gradient-to-br from-blue-300 to-cyan-400 rounded-lg overflow-hidden flex-shrink-0">
-                  <div className="w-full h-full opacity-70 bg-gradient-to-tr from-blue-200 to-teal-300"></div>
+                <div
+                  style={{
+                    background: "var(--drp-purple)",
+                    color: "var(--drp-white)",
+                    fontSize: 12,
+                    padding: "var(--drp-space-2) var(--drp-space-3)",
+                    maxWidth: 200,
+                  }}
+                >
+                  Freelance Design Tricks
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Message: Gabriela (right) */}
-          <div className="flex items-end justify-end gap-2">
-            <div className="flex flex-col items-end gap-1">
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] text-gray-400">
-                  8:40 PM Gabriela Pires
-                </span>
-                <Avatar name="Gabriela Pires" size="sm" />
-              </div>
-              <div className="bg-purple-600 text-white text-xs px-3 py-2 rounded-xl rounded-tr-sm max-w-[260px]">
-                Attending a trade show can be a very effective method
+            {/* Message: Sallie (left) */}
+            <div style={{ display: "flex", gap: "var(--drp-space-2)" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                <div className="drp-flex drp-items-center drp-gap-2">
+                  <Avatar name="Sallie Wade" size="sm" />
+                  <span className="drp-caption" style={{ fontSize: 10 }}>
+                    Sallie Wade 8:35 PM
+                  </span>
+                </div>
+                <div
+                  style={{
+                    background: "var(--drp-cream)",
+                    fontSize: 12,
+                    padding: "var(--drp-space-2) var(--drp-space-3)",
+                    maxWidth: 250,
+                  }}
+                >
+                  Some graphic designers always manage to produce
+                </div>
+                {/* Image attachments */}
+                <div className="drp-flex drp-gap-2" style={{ marginTop: 4 }}>
+                  <div
+                    style={{
+                      width: 80,
+                      height: 56,
+                      background:
+                        "linear-gradient(135deg, var(--drp-purple), var(--drp-blue))",
+                      flexShrink: 0,
+                    }}
+                  />
+                  <div
+                    style={{
+                      width: 80,
+                      height: 56,
+                      background:
+                        "linear-gradient(135deg, var(--drp-blue), var(--drp-mint))",
+                      flexShrink: 0,
+                    }}
+                  />
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Message: Sallie (left) */}
-          <div className="flex items-start gap-2">
-            <div className="flex flex-col gap-1">
-              <div className="flex items-center gap-2">
-                <Avatar name="Sallie Wade" size="sm" />
-                <span className="text-[10px] text-gray-400">
-                  Sallie Wade 8:50 PM
-                </span>
-              </div>
-              <div className="bg-gray-100 text-gray-800 text-xs px-3 py-2 rounded-xl rounded-tl-sm max-w-[200px]">
-                Advertising on a budget part
-              </div>
-            </div>
-          </div>
-
-          {/* Message: Sallie typing */}
-          <div className="flex items-start gap-2">
-            <Avatar name="Sallie Wade" size="sm" />
-            <div className="bg-gray-100 text-gray-800 text-xs px-3 py-2 rounded-xl rounded-tl-sm">
-              <div className="flex items-center gap-1">
-                <span
-                  className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"
-                  style={{ animationDelay: "0ms" }}
-                ></span>
-                <span
-                  className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"
-                  style={{ animationDelay: "150ms" }}
-                ></span>
-                <span
-                  className="w-1.5 h-1.5 bg-gray-400 rounded-full animate-bounce"
-                  style={{ animationDelay: "300ms" }}
-                ></span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Compose bar */}
-        <div className="px-4 py-3 border-t border-black/8">
-          <div className="flex items-center gap-2 bg-gray-50 border border-black/10 rounded-xl px-3 py-2">
-            <Avatar name="Gabriela Pires" size="sm" />
-            <input
-              type="text"
-              placeholder="Type to add something"
-              className="flex-1 text-xs text-gray-400 bg-transparent outline-none"
-              readOnly
-            />
-            <button className="text-gray-400 text-sm">···</button>
-            <button className="text-gray-400 text-sm">···</button>
-            <button className="w-6 h-6 bg-purple-600 rounded-lg flex items-center justify-center text-white">
-              <svg
-                className="w-3 h-3"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+            {/* Message: Gabriela (right) */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "flex-end",
+                gap: "var(--drp-space-2)",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-end",
+                  gap: 4,
+                }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </button>
+                <div className="drp-flex drp-items-center drp-gap-2">
+                  <span className="drp-caption" style={{ fontSize: 10 }}>
+                    8:40 PM Gabriela Pires
+                  </span>
+                  <Avatar name="Gabriela Pires" size="sm" />
+                </div>
+                <div
+                  style={{
+                    background: "var(--drp-purple)",
+                    color: "var(--drp-white)",
+                    fontSize: 12,
+                    padding: "var(--drp-space-2) var(--drp-space-3)",
+                    maxWidth: 260,
+                  }}
+                >
+                  Attending a trade show can be a very effective method
+                </div>
+              </div>
+            </div>
+
+            {/* Message: Sallie (left) */}
+            <div style={{ display: "flex", gap: "var(--drp-space-2)" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+                <div className="drp-flex drp-items-center drp-gap-2">
+                  <Avatar name="Sallie Wade" size="sm" />
+                  <span className="drp-caption" style={{ fontSize: 10 }}>
+                    Sallie Wade 8:50 PM
+                  </span>
+                </div>
+                <div
+                  style={{
+                    background: "var(--drp-cream)",
+                    fontSize: 12,
+                    padding: "var(--drp-space-2) var(--drp-space-3)",
+                    maxWidth: 200,
+                  }}
+                >
+                  Advertising on a budget part
+                </div>
+              </div>
+            </div>
+
+            {/* Message: Sallie typing */}
+            <div className="drp-flex drp-items-start drp-gap-2">
+              <Avatar name="Sallie Wade" size="sm" />
+              <div
+                style={{
+                  background: "var(--drp-cream)",
+                  fontSize: 12,
+                  padding: "var(--drp-space-2) var(--drp-space-3)",
+                }}
+              >
+                <div className="drp-flex drp-items-center drp-gap-1">
+                  <span
+                    style={{
+                      width: 6,
+                      height: 6,
+                      background: "var(--drp-grey)",
+                      borderRadius: "50%",
+                      display: "inline-block",
+                    }}
+                  />
+                  <span
+                    style={{
+                      width: 6,
+                      height: 6,
+                      background: "var(--drp-grey)",
+                      borderRadius: "50%",
+                      display: "inline-block",
+                    }}
+                  />
+                  <span
+                    style={{
+                      width: 6,
+                      height: 6,
+                      background: "var(--drp-grey)",
+                      borderRadius: "50%",
+                      display: "inline-block",
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Compose bar */}
+          <div
+            style={{
+              padding: "var(--drp-space-3) var(--drp-space-4)",
+              borderTop: "var(--drp-border-thin)",
+            }}
+          >
+            <div
+              className="drp-flex drp-items-center drp-gap-2"
+              style={{
+                background: "var(--drp-cream)",
+                border: "var(--drp-border-thin)",
+                padding: "var(--drp-space-2) var(--drp-space-3)",
+              }}
+            >
+              <Avatar name="Gabriela Pires" size="sm" />
+              <input
+                type="text"
+                placeholder="Type to add something"
+                className="drp-input"
+                style={{
+                  flex: 1,
+                  border: "none",
+                  padding: 0,
+                  background: "transparent",
+                  fontSize: 12,
+                }}
+                readOnly
+              />
+              <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                ...
+              </button>
+              <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+                ...
+              </button>
+              <button
+                className="drp-btn drp-btn--primary drp-btn--icon drp-btn--sm"
+                style={{ width: 24, height: 24 }}
+              >
+                <svg
+                  width="12"
+                  height="12"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
     <InboxFooter />
-  </div>
+  </>
 );
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -747,14 +1120,15 @@ const ChatVariant: React.FC = () => (
 // ─────────────────────────────────────────────────────────────────────────────
 
 const MailComposeVariant: React.FC = () => (
-  <div className="flex-1 flex flex-col overflow-hidden">
+  <>
     <InboxTopBar showBack />
-    <div className="flex-1 overflow-auto px-5 py-4">
+    <div className="content">
       {/* Action bar */}
-      <div className="flex items-center justify-between mb-4">
-        <button className="flex items-center gap-1.5 px-3 py-2 border border-black/15 rounded-lg text-xs font-medium text-gray-700 hover:bg-black/5 bg-white">
+      <div className="drp-flex drp-items-center drp-justify-between drp-mb-4">
+        <button className="drp-btn drp-btn--outline drp-btn--sm">
           <svg
-            className="w-3 h-3"
+            width="14"
+            height="14"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -768,10 +1142,11 @@ const MailComposeVariant: React.FC = () => (
           </svg>
           Save as draft
         </button>
-        <div className="flex items-center gap-2">
-          <button className="flex items-center gap-1.5 px-3 py-2 bg-white border border-black/15 rounded-lg text-xs font-medium text-gray-700 hover:bg-gray-50">
+        <div className="drp-flex drp-items-center drp-gap-2">
+          <button className="drp-btn drp-btn--outline drp-btn--sm">
             <svg
-              className="w-3 h-3"
+              width="14"
+              height="14"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -785,9 +1160,10 @@ const MailComposeVariant: React.FC = () => (
             </svg>
             Forward
           </button>
-          <button className="flex items-center gap-1.5 px-3 py-2 bg-white border border-black/15 rounded-lg text-xs font-medium text-red-600 hover:bg-red-50">
+          <button className="drp-btn drp-btn--danger drp-btn--sm">
             <svg
-              className="w-3 h-3"
+              width="14"
+              height="14"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -805,37 +1181,56 @@ const MailComposeVariant: React.FC = () => (
       </div>
 
       {/* Email thread */}
-      <div className="bg-white rounded-xl border border-black/10 overflow-hidden">
+      <div className="drp-card" style={{ padding: 0, overflow: "hidden" }}>
         {/* Email subject */}
-        <div className="px-5 py-4 border-b border-black/8">
-          <h2 className="text-base font-bold text-gray-900">
+        <div
+          style={{
+            padding: "var(--drp-space-4) var(--drp-space-5)",
+            borderBottom: "var(--drp-border-thin)",
+          }}
+        >
+          <h2 className="drp-h5">
             Re: Solar experiment lets trade energy among themselves
           </h2>
         </div>
 
         {/* First email */}
-        <div className="px-5 py-4 border-b border-black/8">
-          <div className="flex items-start justify-between mb-3">
-            <div className="flex items-center gap-3">
+        <div
+          style={{
+            padding: "var(--drp-space-4) var(--drp-space-5)",
+            borderBottom: "var(--drp-border-thin)",
+          }}
+        >
+          <div
+            className="drp-flex drp-items-start drp-justify-between"
+            style={{ marginBottom: "var(--drp-space-3)" }}
+          >
+            <div className="drp-flex drp-items-center drp-gap-3">
               <Avatar name="Helena Chavez" size="lg" />
               <div>
-                <p className="text-sm font-semibold text-gray-900">
-                  Helena Chavez
-                </p>
-                <p className="text-xs text-gray-400">
+                <p className="drp-text drp-text--bold">Helena Chavez</p>
+                <p className="drp-caption">
                   helena.chavez89@outlook.com{" "}
-                  <span className="text-gray-300">to</span>{" "}
-                  <span className="text-gray-500">me</span>
+                  <span style={{ color: "var(--drp-grey)" }}>to</span>{" "}
+                  <span className="drp-text drp-text--sm drp-text--muted">
+                    me
+                  </span>
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-2 text-xs text-gray-400 flex-shrink-0">
-              <span>18 January 2022</span>
-              <span>·</span>
-              <span>11:52AM</span>
+            <div
+              className="drp-flex drp-items-center drp-gap-2"
+              style={{ flexShrink: 0 }}
+            >
+              <span className="drp-caption">18 January 2022</span>
+              <span className="drp-caption">&#xb7;</span>
+              <span className="drp-caption">11:52AM</span>
             </div>
           </div>
-          <div className="text-sm text-gray-700 leading-relaxed mb-4">
+          <div
+            className="drp-text drp-text--sm"
+            style={{ lineHeight: 1.7, marginBottom: "var(--drp-space-4)" }}
+          >
             <p>
               Working outside the office should help de-escalate workplace
               toxicity. But in reality, dysfunctional workplace culture may
@@ -847,43 +1242,60 @@ const MailComposeVariant: React.FC = () => (
             <p>Helena Chavez</p>
           </div>
           {/* Image attachments */}
-          <div className="flex gap-3">
+          <div className="drp-flex drp-gap-3">
             {[
-              "from-purple-300 to-indigo-400",
-              "from-blue-300 to-cyan-400",
-              "from-rose-300 to-pink-400",
+              "linear-gradient(135deg, var(--drp-purple), var(--drp-blue))",
+              "linear-gradient(135deg, var(--drp-blue), var(--drp-mint))",
+              "linear-gradient(135deg, var(--drp-pink), var(--drp-orange))",
             ].map((gradient, i) => (
               <div
                 key={i}
-                className={`w-28 h-20 bg-gradient-to-br ${gradient} rounded-lg flex-shrink-0`}
-              ></div>
+                style={{
+                  width: 112,
+                  height: 80,
+                  background: gradient,
+                  flexShrink: 0,
+                }}
+              />
             ))}
           </div>
         </div>
 
         {/* 5 replies divider */}
-        <div className="flex items-center justify-center py-2 border-b border-black/8">
-          <span className="w-6 h-6 flex items-center justify-center bg-purple-600 text-white text-[10px] rounded-full font-semibold">
-            5
-          </span>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "var(--drp-space-2) 0",
+            borderBottom: "var(--drp-border-thin)",
+          }}
+        >
+          <span className="drp-badge drp-badge--purple">5</span>
         </div>
 
         {/* Second email reply */}
-        <div className="px-5 py-4 border-b border-black/8">
-          <div className="flex items-start gap-3">
+        <div
+          style={{
+            padding: "var(--drp-space-4) var(--drp-space-5)",
+            borderBottom: "var(--drp-border-thin)",
+          }}
+        >
+          <div className="drp-flex drp-items-start drp-gap-3">
             <Avatar name="Gladys Kanyinda" size="lg" />
-            <div className="flex-1">
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-semibold text-gray-900">
-                  Gladys Kanyinda
-                </p>
-                <div className="flex items-center gap-2 text-xs text-gray-400">
-                  <span>13 January 2022</span>
-                  <span>·</span>
-                  <span>10:45AM</span>
+            <div style={{ flex: 1 }}>
+              <div className="drp-flex drp-items-center drp-justify-between">
+                <p className="drp-text drp-text--bold">Gladys Kanyinda</p>
+                <div className="drp-flex drp-items-center drp-gap-2">
+                  <span className="drp-caption">13 January 2022</span>
+                  <span className="drp-caption">&#xb7;</span>
+                  <span className="drp-caption">10:45AM</span>
                 </div>
               </div>
-              <p className="text-xs text-gray-500 mt-0.5">
+              <p
+                className="drp-text drp-text--sm drp-text--muted"
+                style={{ marginTop: 4 }}
+              >
                 Toxic work cultures can have major impacts on employee wellbeing
               </p>
             </div>
@@ -891,20 +1303,42 @@ const MailComposeVariant: React.FC = () => (
         </div>
 
         {/* Compose bar */}
-        <div className="px-5 py-4">
-          <div className="flex items-center gap-3 bg-gray-50 border border-black/10 rounded-xl px-4 py-2.5">
+        <div style={{ padding: "var(--drp-space-4) var(--drp-space-5)" }}>
+          <div
+            className="drp-flex drp-items-center drp-gap-3"
+            style={{
+              background: "var(--drp-cream)",
+              border: "var(--drp-border-thin)",
+              padding: "var(--drp-space-2) var(--drp-space-4)",
+            }}
+          >
             <Avatar name="Helena Chavez" size="sm" />
             <input
               type="text"
               placeholder="Type to add something"
-              className="flex-1 text-sm text-gray-400 bg-transparent outline-none"
+              className="drp-input"
+              style={{
+                flex: 1,
+                border: "none",
+                padding: 0,
+                background: "transparent",
+                fontSize: 13,
+              }}
               readOnly
             />
-            <button className="text-gray-400 text-sm">···</button>
-            <button className="text-gray-400 text-sm">···</button>
-            <button className="w-6 h-6 bg-purple-600 rounded-lg flex items-center justify-center text-white">
+            <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+              ...
+            </button>
+            <button className="drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm">
+              ...
+            </button>
+            <button
+              className="drp-btn drp-btn--primary drp-btn--icon drp-btn--sm"
+              style={{ width: 24, height: 24 }}
+            >
               <svg
-                className="w-3 h-3"
+                width="12"
+                height="12"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -922,7 +1356,7 @@ const MailComposeVariant: React.FC = () => (
       </div>
     </div>
     <InboxFooter />
-  </div>
+  </>
 );
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -930,27 +1364,81 @@ const MailComposeVariant: React.FC = () => (
 // ─────────────────────────────────────────────────────────────────────────────
 
 const EmptyVariant: React.FC = () => (
-  <div className="flex-1 flex flex-col overflow-hidden">
+  <>
     <InboxTopBar />
-    <div className="flex-1 flex items-center justify-center relative overflow-hidden">
+    <div
+      className="content"
+      style={{
+        flex: 1,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        position: "relative",
+        overflow: "hidden",
+      }}
+    >
       {/* Decorative blobs */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/4 w-64 h-64 bg-gradient-to-br from-yellow-300 to-orange-300 rounded-full opacity-60 blur-3xl"></div>
-      <div className="absolute bottom-0 right-1/4 w-56 h-56 bg-gradient-to-br from-purple-400 to-violet-500 rounded-full opacity-50 blur-3xl"></div>
-      <div className="absolute top-1/4 right-0 w-48 h-48 bg-gradient-to-br from-rose-300 to-pink-400 rounded-full opacity-40 blur-3xl"></div>
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: "50%",
+          transform: "translateX(-25%)",
+          width: 256,
+          height: 256,
+          background:
+            "radial-gradient(circle, var(--drp-yellow) 0%, var(--drp-orange) 50%, transparent 70%)",
+          borderRadius: "50%",
+          opacity: 0.6,
+          filter: "blur(48px)",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: 0,
+          right: "25%",
+          width: 224,
+          height: 224,
+          background:
+            "radial-gradient(circle, var(--drp-purple) 0%, var(--drp-purple) 50%, transparent 70%)",
+          borderRadius: "50%",
+          opacity: 0.5,
+          filter: "blur(48px)",
+          pointerEvents: "none",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          top: "25%",
+          right: 0,
+          width: 192,
+          height: 192,
+          background:
+            "radial-gradient(circle, var(--drp-pink) 0%, var(--drp-pink) 50%, transparent 70%)",
+          borderRadius: "50%",
+          opacity: 0.4,
+          filter: "blur(48px)",
+          pointerEvents: "none",
+        }}
+      />
 
       {/* Empty state content */}
-      <div className="relative z-10 flex flex-col items-center text-center">
-        {/* Doodle/icon */}
-        <div className="w-16 h-16 mb-4">
+      <div className="drp-empty" style={{ position: "relative", zIndex: 1 }}>
+        <div
+          style={{ width: 64, height: 64, marginBottom: "var(--drp-space-4)" }}
+        >
           <svg
             viewBox="0 0 64 64"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            className="w-full h-full"
+            style={{ width: "100%", height: "100%" }}
           >
             <path
               d="M12 28 C10 20, 16 12, 24 10 C28 9, 36 10, 40 14 C44 8, 52 8, 56 14 C60 20, 58 28, 52 32 L32 52 L12 32 C8 28, 8 24, 12 28 Z"
-              stroke="#111"
+              stroke="var(--drp-black)"
               strokeWidth="2.5"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -958,23 +1446,31 @@ const EmptyVariant: React.FC = () => (
             />
             <path
               d="M44 20 C46 16, 50 16, 52 20"
-              stroke="#111"
+              stroke="var(--drp-black)"
               strokeWidth="2"
               strokeLinecap="round"
               fill="none"
             />
           </svg>
         </div>
-        <h2 className="text-2xl font-bold text-gray-900 mb-2">
+        <h2 className="drp-h2" style={{ marginBottom: "var(--drp-space-2)" }}>
           No messages found?
         </h2>
-        <p className="text-sm text-gray-500 mb-6 max-w-xs">
+        <p
+          className="drp-text drp-text--sm drp-text--muted"
+          style={{
+            marginBottom: "var(--drp-space-6)",
+            maxWidth: 320,
+            textAlign: "center",
+          }}
+        >
           Try to add more contacts from your personal account or start new
           discussion
         </p>
-        <button className="flex items-center gap-2 px-5 py-2.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-xl transition-colors">
+        <button className="drp-btn drp-btn--primary">
           <svg
-            className="w-4 h-4"
+            width="16"
+            height="16"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -991,7 +1487,7 @@ const EmptyVariant: React.FC = () => (
       </div>
     </div>
     <InboxFooter />
-  </div>
+  </>
 );
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -1024,11 +1520,11 @@ export const InboxList: React.FC<InboxListProps> = ({
   };
 
   return (
-    <div
-      className={`flex h-screen ${theme === "dark" ? "dark" : ""} bg-[#f5efe6]`}
-    >
+    <div className="app-layout">
       <InboxSidebar />
-      {renderContent()}
+      <div className="main-content" style={{ marginLeft: 200 }}>
+        {renderContent()}
+      </div>
     </div>
   );
 };

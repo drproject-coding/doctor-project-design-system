@@ -15,6 +15,10 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   size?: ButtonSize;
   block?: boolean;
   icon?: boolean;
+  /** Icon element placed before the label */
+  iconLeft?: ReactNode;
+  /** Icon element placed after the label */
+  iconRight?: ReactNode;
   children: ReactNode;
 }
 
@@ -23,6 +27,8 @@ export function Button({
   size,
   block,
   icon,
+  iconLeft,
+  iconRight,
   className = "",
   children,
   ...props
@@ -40,7 +46,9 @@ export function Button({
 
   return (
     <button className={classes} {...props}>
+      {iconLeft && <span className="drp-btn__icon">{iconLeft}</span>}
       {children}
+      {iconRight && <span className="drp-btn__icon">{iconRight}</span>}
     </button>
   );
 }

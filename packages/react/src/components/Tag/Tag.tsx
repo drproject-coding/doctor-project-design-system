@@ -1,6 +1,15 @@
 import type { ReactNode } from "react";
 
-type TagColor = "purple" | "mint" | "pink" | "yellow" | "grey";
+type TagColor =
+  | "purple"
+  | "mint"
+  | "pink"
+  | "yellow"
+  | "grey"
+  | "orange"
+  | "light"
+  | "teal"
+  | "black";
 
 export interface TagProps {
   children: ReactNode;
@@ -8,6 +17,10 @@ export interface TagProps {
   filled?: boolean;
   dark?: boolean;
   dot?: boolean;
+  /** Alias for `dot` — show a leading legend dot */
+  legend?: boolean;
+  /** Icon element placed before the label */
+  icon?: ReactNode;
   closeable?: boolean;
   onClose?: () => void;
   className?: string;
@@ -19,16 +32,19 @@ export function Tag({
   filled,
   dark,
   dot,
+  legend,
+  icon,
   closeable,
   onClose,
   className = "",
 }: TagProps) {
+  const showDot = dot || legend;
   const classes = [
     "drp-tag",
     color && `drp-tag--${color}`,
     filled && "drp-tag--filled",
     dark && "drp-tag--dark",
-    dot && "drp-tag--dot",
+    showDot && "drp-tag--dot",
     closeable && "drp-tag--closeable",
     className,
   ]
@@ -37,6 +53,7 @@ export function Tag({
 
   return (
     <span className={classes}>
+      {icon && <span className="drp-tag__icon">{icon}</span>}
       {children}
       {closeable && (
         <button className="drp-tag__close" onClick={onClose}>

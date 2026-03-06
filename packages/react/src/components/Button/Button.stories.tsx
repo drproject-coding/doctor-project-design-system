@@ -1,6 +1,58 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
 
+const ArrowRight = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M3 8H13M13 8L9 4M13 8L9 12"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
+);
+
+const PlusIcon = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M8 3V13M3 8H13"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </svg>
+);
+
+const StarIcon = () => (
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 16 16"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M8 1L10 6H15L11 9L12.5 14L8 11L3.5 14L5 9L1 6H6L8 1Z"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      fill="currentColor"
+    />
+  </svg>
+);
+
 const meta: Meta<typeof Button> = {
   title: "Components/Button",
   component: Button,
@@ -21,6 +73,7 @@ const meta: Meta<typeof Button> = {
     },
     size: { control: "select", options: [undefined, "sm", "lg"] },
     block: { control: "boolean" },
+    icon: { control: "boolean" },
     disabled: { control: "boolean" },
   },
 };
@@ -76,6 +129,80 @@ export const AllVariants: Story = {
       <Button variant="danger">Danger</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="dark">Dark</Button>
+    </div>
+  ),
+};
+
+/** Icon placed before label (Icon + Label layout) */
+export const IconLeft: Story = {
+  args: {
+    variant: "primary",
+    iconLeft: <PlusIcon />,
+    children: "Create",
+  },
+};
+
+/** Icon placed after label (Label + Icon layout) */
+export const IconRight: Story = {
+  args: {
+    variant: "primary",
+    iconRight: <ArrowRight />,
+    children: "Next",
+  },
+};
+
+/** Icon-only button (square) */
+export const IconOnly: Story = {
+  args: {
+    variant: "outline",
+    icon: true,
+    children: <StarIcon />,
+  },
+};
+
+/** Figma variants: Filled (primary), Outline, Transparent (ghost) */
+export const FigmaVariants: Story = {
+  render: () => (
+    <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+      <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+        <strong style={{ width: 100, fontSize: 12 }}>Filled:</strong>
+        <Button variant="primary">Label</Button>
+        <Button variant="primary" iconLeft={<PlusIcon />}>
+          Label
+        </Button>
+        <Button variant="primary" iconRight={<ArrowRight />}>
+          Label
+        </Button>
+        <Button variant="primary" icon>
+          <StarIcon />
+        </Button>
+      </div>
+      <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+        <strong style={{ width: 100, fontSize: 12 }}>Outline:</strong>
+        <Button variant="outline">Label</Button>
+        <Button variant="outline" iconLeft={<PlusIcon />}>
+          Label
+        </Button>
+        <Button variant="outline" iconRight={<ArrowRight />}>
+          Label
+        </Button>
+        <Button variant="outline" icon>
+          <StarIcon />
+        </Button>
+      </div>
+      <div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+        <strong style={{ width: 100, fontSize: 12 }}>Transparent:</strong>
+        <Button variant="ghost">Label</Button>
+        <Button variant="ghost" iconLeft={<PlusIcon />}>
+          Label
+        </Button>
+        <Button variant="ghost" iconRight={<ArrowRight />}>
+          Label
+        </Button>
+        <Button variant="ghost" icon>
+          <StarIcon />
+        </Button>
+      </div>
     </div>
   ),
 };

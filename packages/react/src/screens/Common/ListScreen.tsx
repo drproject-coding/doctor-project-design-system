@@ -53,12 +53,22 @@ export const ListScreen: React.FC<ListScreenProps> = ({
       {...layoutProps}
       topBarProps={{
         title,
-        actions: onAddClick && <Button onClick={onAddClick}>+ Add New</Button>,
+        actions: onAddClick && (
+          <Button onClick={onAddClick} className="drp-btn drp-btn--primary">
+            + Add New
+          </Button>
+        ),
         ...layoutProps.topBarProps,
       }}
     >
-      <div className="space-y-6">
-        {subtitle && <p className="text-gray-600">{subtitle}</p>}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "var(--drp-space-6)",
+        }}
+      >
+        {subtitle && <p className="drp-caption">{subtitle}</p>}
 
         {showSearch && (
           <Input

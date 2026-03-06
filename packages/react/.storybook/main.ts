@@ -16,6 +16,10 @@ const config: StorybookConfig = {
       from: "../../../fonts",
       to: "/fonts",
     },
+    {
+      from: "../../../css",
+      to: "/css",
+    },
   ],
   docs: {
     autodocs: "tag",

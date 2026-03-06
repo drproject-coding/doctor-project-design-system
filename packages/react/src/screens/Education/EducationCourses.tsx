@@ -2,239 +2,166 @@ import React from "react";
 
 // ─── Sidebar ─────────────────────────────────────────────────────────────────
 
-const EducationSidebar: React.FC<{ theme?: "light" | "dark" }> = ({
-  theme = "light",
-}) => {
-  const bg = theme === "dark" ? "bg-[#111111]" : "bg-[#111111]";
-  return (
-    <div
-      className={`w-[200px] min-h-screen ${bg} flex flex-col text-white flex-shrink-0`}
-    >
-      {/* Logo */}
-      <div className="px-5 py-5 border-b border-white/10">
-        <div className="flex items-center gap-1">
-          <span className="text-lg font-bold text-white">Doctor Project</span>
-          <span className="w-2 h-2 rounded-full bg-purple-500 mb-3"></span>
-        </div>
-      </div>
-
-      {/* Navigation */}
-      <div className="flex-1 overflow-y-auto px-3 py-4 space-y-5">
-        <div>
-          <p className="text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2">
-            Navigation
-          </p>
-          <nav className="space-y-0.5">
-            {[
-              { label: "Explore Courses", active: true },
-              { label: "Degrees" },
-              { label: "Students" },
-              { label: "Universities" },
-              { label: "Schedule", badge: "PR", badgeColor: "bg-purple-600" },
-              { label: "Knowledge Base" },
-            ].map((item) => (
-              <button
-                key={item.label}
-                className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs transition-colors ${
-                  item.active
-                    ? "bg-purple-600 text-white font-medium"
-                    : "text-gray-400 hover:text-white hover:bg-white/5"
-                }`}
-              >
-                <span>{item.label}</span>
-                {item.badge && (
-                  <span
-                    className={`text-[10px] text-white px-1.5 py-0.5 rounded ${item.badgeColor}`}
-                  >
-                    {item.badge}
-                  </span>
-                )}
-              </button>
-            ))}
-          </nav>
-        </div>
-
-        {/* Team Members */}
-        <div>
-          <p className="text-[10px] text-gray-500 uppercase tracking-widest px-2 mb-2">
-            Team Members
-          </p>
-          <div className="space-y-0.5">
-            {[
-              { name: "Alexandre Paiva", color: "bg-orange-400" },
-              { name: "Thanawan Chadee", color: "bg-purple-500" },
-              { name: "Justine Robinson", color: "bg-blue-400" },
-            ].map((member) => (
-              <button
-                key={member.name}
-                className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-white/5"
-              >
-                <span
-                  className={`w-6 h-6 rounded-full ${member.color} flex-shrink-0`}
-                ></span>
-                <span>{member.name}</span>
-              </button>
-            ))}
-            <button className="w-full flex items-center gap-2 px-3 py-2 rounded-lg text-xs text-gray-400 hover:text-white hover:bg-white/5">
-              <span className="text-xs">&#8964; See More</span>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Footer user */}
-      <div className="px-3 py-4 border-t border-white/10">
-        <div className="flex items-center justify-between px-2">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-orange-400 to-pink-500"></div>
-            <span className="text-xs text-gray-200">Henry Richardson</span>
-          </div>
-          <button className="text-gray-500 hover:text-white text-xs">
-            &middot;&middot;&middot;
-          </button>
-        </div>
-      </div>
+const EducationSidebar: React.FC = () => (
+  <aside className="sidebar">
+    <div className="sidebar-brand">
+      <span className="sidebar-brand-name">Doctor Project</span>
+      <span className="sidebar-brand-dot"></span>
     </div>
-  );
-};
+
+    <nav className="sidebar-nav">
+      <div className="sidebar-nav-section">
+        <div className="sidebar-nav-label">Navigation</div>
+        {[
+          { label: "Explore Courses", active: true },
+          { label: "Degrees" },
+          { label: "Students" },
+          { label: "Universities" },
+          { label: "Schedule", badge: "PR", badgeType: "purple" as const },
+          { label: "Knowledge Base" },
+        ].map((item) => (
+          <a
+            key={item.label}
+            className={`sidebar-nav-item${item.active ? " active" : ""}`}
+          >
+            <span className="sidebar-nav-text">{item.label}</span>
+            {item.badge && (
+              <span
+                className={`sidebar-badge sidebar-badge--${item.badgeType}`}
+              >
+                {item.badge}
+              </span>
+            )}
+          </a>
+        ))}
+      </div>
+
+      <div className="sidebar-team">
+        <div className="sidebar-team-label">Team Members</div>
+        {[
+          { name: "Alexandre Paiva", bg: "var(--drp-orange)" },
+          { name: "Thanawan Chadee", bg: "var(--drp-purple)" },
+          { name: "Justine Robinson", bg: "var(--drp-info)" },
+        ].map((member) => (
+          <div key={member.name} className="sidebar-team-member">
+            <div className="sidebar-avatar" style={{ background: member.bg }}>
+              {member.name[0]}
+            </div>
+            <span className="sidebar-team-name">{member.name}</span>
+          </div>
+        ))}
+        <div className="sidebar-see-more">See More</div>
+      </div>
+    </nav>
+
+    <div className="sidebar-user">
+      <div
+        className="sidebar-avatar"
+        style={{ background: "var(--drp-orange)" }}
+      >
+        H
+      </div>
+      <div className="sidebar-user-info">
+        <div className="sidebar-user-name">Henry Richardson</div>
+      </div>
+      <button className="sidebar-user-menu-btn">...</button>
+    </div>
+  </aside>
+);
 
 // ─── Top Bar ──────────────────────────────────────────────────────────────────
 
-const EducationTopBar: React.FC<{ theme?: "light" | "dark" }> = ({
-  theme = "light",
-}) => {
-  const bg =
-    theme === "dark"
-      ? "bg-[#0d0d0d] border-white/10"
-      : "bg-white border-black/10";
-  const text = theme === "dark" ? "text-white" : "text-black";
-  const iconColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
-  const appsBtn =
-    theme === "dark"
-      ? "text-gray-300 hover:bg-white/10"
-      : "text-gray-700 hover:bg-black/5";
-  return (
-    <div
-      className={`flex items-center justify-between px-6 py-3.5 border-b ${bg}`}
-    >
-      <h1 className={`text-2xl font-bold ${text}`}>Courses</h1>
-      <div className="flex items-center gap-3">
-        {/* search icon */}
-        <button className={`${iconColor}`}>
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.35-4.35" />
-          </svg>
-        </button>
-        {/* bell icon */}
-        <button className={`${iconColor}`}>
-          <svg
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-          </svg>
-        </button>
-        {/* Apps */}
-        <button
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-sm font-medium ${appsBtn}`}
-        >
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-            <rect x="2" y="2" width="9" height="9" rx="1" />
-            <rect x="13" y="2" width="9" height="9" rx="1" />
-            <rect x="2" y="13" width="9" height="9" rx="1" />
-            <rect x="13" y="13" width="9" height="9" rx="1" />
-          </svg>
-          Apps
-        </button>
-        {/* Create new */}
-        <button className="flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 hover:bg-purple-700 text-white text-sm font-medium rounded-lg">
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <path d="M12 8v8M8 12h8" />
-          </svg>
-          Create new
-        </button>
-      </div>
+const EducationTopBar: React.FC = () => (
+  <header className="topbar">
+    <div className="topbar-left">
+      <h1 className="topbar-title">Courses</h1>
     </div>
-  );
-};
+    <div className="topbar-right">
+      <button className="topbar-icon-btn">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+      </button>
+      <button className="topbar-icon-btn">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+          <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+        </svg>
+      </button>
+      <button className="topbar-apps-btn">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+          <rect x="2" y="2" width="9" height="9" />
+          <rect x="13" y="2" width="9" height="9" />
+          <rect x="2" y="13" width="9" height="9" />
+          <rect x="13" y="13" width="9" height="9" />
+        </svg>
+        <span>Apps</span>
+      </button>
+      <button className="topbar-create-btn">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.5"
+        >
+          <circle cx="12" cy="12" r="10" />
+          <path d="M12 8v8M8 12h8" />
+        </svg>
+        <span>Create new</span>
+      </button>
+    </div>
+  </header>
+);
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
 
-const EducationFooter: React.FC<{ theme?: "light" | "dark" }> = ({
-  theme = "light",
-}) => {
-  const bg =
-    theme === "dark"
-      ? "bg-[#0d0d0d] border-white/10"
-      : "bg-[#f5efe6] border-black/10";
-  const textColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
-  return (
-    <div
-      className={`flex items-center justify-between px-8 py-3 border-t ${bg} text-sm ${textColor}`}
-    >
-      <div className="flex items-center gap-6">
-        <button className="flex items-center gap-1.5 hover:opacity-80">
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-          </svg>
-          English
-        </button>
-        <button className="hover:opacity-80">Privacy Policy</button>
-        <button className="hover:opacity-80">License</button>
-        <button className="hover:opacity-80">API</button>
-      </div>
-      <div className="flex items-center gap-2">
-        <button className="w-7 h-7 rounded flex items-center justify-center bg-purple-600 text-white">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 3a9 9 0 1 0 9 9H12z" />
-          </svg>
-        </button>
-        <button className="w-7 h-7 rounded flex items-center justify-center bg-black/10">
-          <svg
-            width="13"
-            height="13"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <circle cx="12" cy="12" r="4" />
-            <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-          </svg>
-        </button>
-      </div>
+const EducationFooter: React.FC = () => (
+  <footer className="footer-bar">
+    <div className="footer-links">
+      <span className="footer-link">English</span>
+      <span className="footer-link">Privacy Policy</span>
+      <span className="footer-link">License</span>
+      <span className="footer-link">API</span>
     </div>
-  );
-};
+    <div className="footer-right">
+      <button className="footer-icon-btn footer-icon-btn--accent">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3a9 9 0 1 0 9 9H12z" />
+        </svg>
+      </button>
+      <button className="footer-icon-btn">
+        <svg
+          width="13"
+          height="13"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+        >
+          <circle cx="12" cy="12" r="4" />
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+        </svg>
+      </button>
+    </div>
+  </footer>
+);
 
 // ─── Course Image Placeholders ────────────────────────────────────────────────
 
@@ -256,7 +183,7 @@ const courseImages: Record<string, string> = {
     "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=400&q=70",
 };
 
-// ─── Trending Card (large left) ───────────────────────────────────────────────
+// ─── Trending Card ───────────────────────────────────────────────────────────
 
 interface TrendingCardProps {
   title: string;
@@ -264,7 +191,6 @@ interface TrendingCardProps {
   courseCount: number;
   imageKey: string;
   large?: boolean;
-  theme?: "light" | "dark";
 }
 
 const TrendingCard: React.FC<TrendingCardProps> = ({
@@ -273,35 +199,75 @@ const TrendingCard: React.FC<TrendingCardProps> = ({
   courseCount,
   imageKey,
   large,
-  theme = "light",
-}) => {
-  return (
+}) => (
+  <div
+    className="drp-card--interactive"
+    style={{
+      position: "relative",
+      overflow: "hidden",
+      cursor: "pointer",
+      minHeight: large ? 220 : 100,
+      gridRow: large ? "1 / 3" : undefined,
+      border: "var(--drp-border)",
+    }}
+  >
+    <img
+      src={courseImages[imageKey]}
+      alt={title}
+      style={{
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+      }}
+    />
     <div
-      className={`relative rounded-xl overflow-hidden cursor-pointer ${large ? "row-span-2" : ""}`}
-      style={{ minHeight: large ? 220 : 100 }}
+      style={{
+        position: "absolute",
+        inset: 0,
+        background:
+          "linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.2), transparent)",
+      }}
+    />
+    <div
+      style={{
+        position: "absolute",
+        top: "var(--drp-space-2)",
+        right: "var(--drp-space-2)",
+      }}
     >
-      <img
-        src={courseImages[imageKey]}
-        alt={title}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-      {/* badge top-right */}
-      <div className="absolute top-2 right-2">
-        <span className="bg-black/60 text-white text-[10px] px-2 py-0.5 rounded-full backdrop-blur-sm">
-          {courseCount} Courses
-        </span>
-      </div>
-      {/* bottom text */}
-      <div className="absolute bottom-0 left-0 right-0 p-3">
-        <p className="text-white font-semibold text-sm leading-tight">
-          {title}
-        </p>
-        <p className="text-gray-300 text-[11px] mt-0.5">{duration}</p>
-      </div>
+      <span
+        className="drp-tag drp-tag--filled"
+        style={{ fontSize: "var(--drp-text-xs)" }}
+      >
+        {courseCount} Courses
+      </span>
     </div>
-  );
-};
+    <div
+      style={{
+        position: "absolute",
+        bottom: 0,
+        left: 0,
+        right: 0,
+        padding: "var(--drp-space-3)",
+      }}
+    >
+      <p
+        className="drp-text drp-text--bold"
+        style={{ color: "#fff", fontSize: "var(--drp-text-sm)" }}
+      >
+        {title}
+      </p>
+      <p
+        className="drp-text drp-text--sm"
+        style={{ color: "var(--drp-grey-light)", marginTop: 2 }}
+      >
+        {duration}
+      </p>
+    </div>
+  </div>
+);
 
 // ─── Degree Card ──────────────────────────────────────────────────────────────
 
@@ -311,7 +277,6 @@ interface DegreeCardProps {
   mode: string;
   icon?: React.ReactNode;
   imageKey: string;
-  theme?: "light" | "dark";
 }
 
 const DegreeCard: React.FC<DegreeCardProps> = ({
@@ -320,153 +285,143 @@ const DegreeCard: React.FC<DegreeCardProps> = ({
   mode,
   icon,
   imageKey,
-  theme = "light",
-}) => {
-  const cardBg =
-    theme === "dark"
-      ? "bg-[#1a1a1a] border-white/10"
-      : "bg-white border-black/10";
-  const titleColor = theme === "dark" ? "text-white" : "text-black";
-  const subtitleColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
-  const modeBtnBg =
-    theme === "dark"
-      ? "border-white/20 text-gray-300"
-      : "border-black/20 text-gray-600";
-
-  return (
-    <div
-      className={`rounded-xl overflow-hidden border ${cardBg} cursor-pointer hover:shadow-md transition-shadow`}
-    >
-      <div className="h-36 overflow-hidden">
-        <img
-          src={courseImages[imageKey]}
-          alt={title}
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="p-3">
-        <p className={`font-semibold text-sm leading-tight mb-1 ${titleColor}`}>
-          {title}
-        </p>
-        <p className={`text-[11px] mb-2 ${subtitleColor}`}>{university}</p>
-        <div className="flex items-center justify-between">
-          <button
-            className={`text-[11px] px-2.5 py-1 rounded border ${modeBtnBg}`}
-          >
-            {mode}
-          </button>
-          {icon && <span className={`${subtitleColor} text-base`}>{icon}</span>}
-        </div>
+}) => (
+  <div
+    className="drp-card drp-card--interactive"
+    style={{ padding: 0, overflow: "hidden" }}
+  >
+    <div style={{ height: 144, overflow: "hidden" }}>
+      <img
+        src={courseImages[imageKey]}
+        alt={title}
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      />
+    </div>
+    <div style={{ padding: "var(--drp-space-3)" }}>
+      <p
+        className="drp-text drp-text--bold drp-text--sm"
+        style={{ marginBottom: "var(--drp-space-1)" }}
+      >
+        {title}
+      </p>
+      <p
+        className="drp-text drp-text--sm drp-text--muted"
+        style={{ marginBottom: "var(--drp-space-2)" }}
+      >
+        {university}
+      </p>
+      <div className="drp-flex drp-items-center drp-justify-between">
+        <span className="drp-tag" style={{ fontSize: "var(--drp-text-xs)" }}>
+          {mode}
+        </span>
+        {icon && <span className="drp-text drp-text--muted">{icon}</span>}
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 // ─── Pagination ───────────────────────────────────────────────────────────────
 
-const CoursePagination: React.FC<{ theme?: "light" | "dark" }> = ({
-  theme = "light",
-}) => {
-  const btnBase =
-    theme === "dark"
-      ? "border-white/20 text-gray-300 hover:bg-white/10"
-      : "border-black/20 text-gray-600 hover:bg-black/5";
-  const textColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
-  return (
-    <div
-      className={`flex items-center justify-between py-4 px-1 ${textColor} text-sm`}
+const CoursePagination: React.FC = () => (
+  <div
+    className="drp-flex drp-items-center drp-justify-between"
+    style={{ padding: "var(--drp-space-4) 0" }}
+  >
+    <button className="drp-btn drp-btn--sm drp-btn--outline">
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+      Prev
+    </button>
+    <span className="drp-text drp-text--sm drp-text--muted">Page 1 of 10</span>
+    <button className="drp-btn drp-btn--sm drp-btn--outline">
+      Next
+      <svg
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+      >
+        <path d="M9 18l6-6-6-6" />
+      </svg>
+    </button>
+  </div>
+);
+
+// ─── Hero Section ─────────────────────────────────────────────────────────────
+
+const CoursesHero: React.FC<{ title?: string; placeholder?: string }> = ({
+  title = "Explore Topics and Skills",
+  placeholder = "What do you want to learn?",
+}) => (
+  <div
+    style={{
+      margin: "var(--drp-space-6)",
+      padding: "var(--drp-space-10) var(--drp-space-8)",
+      border: "var(--drp-border)",
+      background:
+        "radial-gradient(ellipse at 70% 50%, var(--drp-purple-20) 0%, transparent 65%), var(--drp-cream)",
+      position: "relative",
+    }}
+  >
+    <h2
+      className="drp-h2 drp-text-center"
+      style={{ marginBottom: "var(--drp-space-6)" }}
     >
-      <button
-        className={`flex items-center gap-1.5 px-3 py-1.5 border rounded-lg text-xs ${btnBase}`}
-      >
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <path d="M15 18l-6-6 6-6" />
-        </svg>
-        Prev
-      </button>
-      <span className="text-xs">Page 1 of 10</span>
-      <button
-        className={`flex items-center gap-1.5 px-3 py-1.5 border rounded-lg text-xs ${btnBase}`}
-      >
-        Next
-        <svg
-          width="14"
-          height="14"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <path d="M9 18l6-6-6-6" />
-        </svg>
-      </button>
-    </div>
-  );
-};
-
-// ─── Hero Section (Courses main page) ────────────────────────────────────────
-
-const CoursesHero: React.FC<{ theme?: "light" | "dark" }> = ({
-  theme = "light",
-}) => {
-  const headingColor = theme === "dark" ? "text-white" : "text-black";
-  const inputBg =
-    theme === "dark"
-      ? "bg-[#1a1a1a] border-white/20 text-white placeholder-gray-500"
-      : "bg-white border-black/20 text-black placeholder-gray-400";
-  const hintColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
-
-  return (
+      {title}
+    </h2>
     <div
-      className="relative mx-6 mt-6 rounded-2xl overflow-hidden px-8 py-10 mb-6"
       style={{
-        background:
-          theme === "dark"
-            ? "radial-gradient(ellipse at 70% 50%, rgba(120,60,200,0.35) 0%, transparent 65%), #0d0d0d"
-            : "radial-gradient(ellipse at 70% 50%, rgba(180,120,255,0.35) 0%, transparent 65%), #f5efe6",
+        maxWidth: 480,
+        margin: "0 auto",
+        position: "relative",
+        marginBottom: "var(--drp-space-3)",
       }}
     >
-      <h2
-        className={`text-4xl font-bold text-center mb-6 ${headingColor}`}
-        style={{ letterSpacing: "-0.02em" }}
+      <input
+        className="drp-input"
+        style={{ width: "100%", paddingRight: 44 }}
+        placeholder={placeholder}
+        readOnly
+      />
+      <button
+        className="drp-btn drp-btn--primary drp-btn--icon drp-btn--sm"
+        style={{
+          position: "absolute",
+          right: 8,
+          top: "50%",
+          transform: "translateY(-50%)",
+        }}
       >
-        Explore Topics and Skills
-      </h2>
-      <div className="max-w-lg mx-auto relative mb-3">
-        <input
-          className={`w-full px-4 py-2.5 pr-10 rounded-xl border text-sm outline-none ${inputBg}`}
-          placeholder="What do you want to learn?"
-          readOnly
-        />
-        <button className="absolute right-2.5 top-1/2 -translate-y-1/2 w-7 h-7 bg-purple-600 rounded-lg flex items-center justify-center">
-          <svg
-            width="13"
-            height="13"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="white"
-            strokeWidth="2.5"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.35-4.35" />
-          </svg>
-        </button>
-      </div>
-      <p className={`text-center text-xs ${hintColor}`}>
-        For example: UI and UX development
-      </p>
+        <svg
+          width="13"
+          height="13"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="white"
+          strokeWidth="2.5"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+      </button>
     </div>
-  );
-};
+    <p className="drp-text drp-text--sm drp-text--muted drp-text-center">
+      For example: UI and UX development
+    </p>
+  </div>
+);
 
-// ─── Category View (Courses Category screen) ─────────────────────────────────
+// ─── Category Card ────────────────────────────────────────────────────────────
 
 interface CourseCategoryCardProps {
   title: string;
@@ -474,7 +429,6 @@ interface CourseCategoryCardProps {
   duration: string;
   type: "Course" | "Specialization";
   imageKey: string;
-  theme?: "light" | "dark";
 }
 
 const CourseCategoryCard: React.FC<CourseCategoryCardProps> = ({
@@ -483,47 +437,42 @@ const CourseCategoryCard: React.FC<CourseCategoryCardProps> = ({
   duration,
   type,
   imageKey,
-  theme = "light",
-}) => {
-  const cardBg =
-    theme === "dark"
-      ? "bg-[#1a1a1a] border-white/10"
-      : "bg-white border-black/10";
-  const titleColor = theme === "dark" ? "text-white" : "text-black";
-  const subtitleColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
-  const typeBtnBg =
-    theme === "dark"
-      ? "border-white/20 text-gray-300"
-      : "border-black/20 text-gray-600";
-
-  return (
-    <div
-      className={`rounded-xl overflow-hidden border ${cardBg} cursor-pointer hover:shadow-md transition-shadow`}
-    >
-      <div className="h-36 overflow-hidden">
-        <img
-          src={courseImages[imageKey]}
-          alt={title}
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="p-3">
-        <p className={`font-semibold text-sm leading-tight mb-1 ${titleColor}`}>
-          {title}
-        </p>
-        <p className={`text-[11px] mb-2 ${subtitleColor}`}>{university}</p>
-        <div className="flex items-center gap-2">
-          <span
-            className={`text-[10px] px-2 py-0.5 border rounded ${typeBtnBg}`}
-          >
-            {type}
-          </span>
-          <span className={`text-[10px] ${subtitleColor}`}>{duration}</span>
-        </div>
+}) => (
+  <div
+    className="drp-card drp-card--interactive"
+    style={{ padding: 0, overflow: "hidden" }}
+  >
+    <div style={{ height: 144, overflow: "hidden" }}>
+      <img
+        src={courseImages[imageKey]}
+        alt={title}
+        style={{ width: "100%", height: "100%", objectFit: "cover" }}
+      />
+    </div>
+    <div style={{ padding: "var(--drp-space-3)" }}>
+      <p
+        className="drp-text drp-text--bold drp-text--sm"
+        style={{ marginBottom: "var(--drp-space-1)" }}
+      >
+        {title}
+      </p>
+      <p
+        className="drp-text drp-text--sm drp-text--muted"
+        style={{ marginBottom: "var(--drp-space-2)" }}
+      >
+        {university}
+      </p>
+      <div className="drp-flex drp-items-center drp-gap-2">
+        <span className="drp-tag" style={{ fontSize: "var(--drp-text-xs)" }}>
+          {type}
+        </span>
+        <span className="drp-text drp-text--sm drp-text--muted">
+          {duration}
+        </span>
       </div>
     </div>
-  );
-};
+  </div>
+);
 
 const categorySpecializations = [
   {
@@ -570,18 +519,9 @@ const categorySpecializations = [
   },
 ];
 
-// ─── Suggested Course Searches ────────────────────────────────────────────────
+// ─── Suggested Searches ──────────────────────────────────────────────────────
 
-const SuggestedSearches: React.FC<{ theme?: "light" | "dark" }> = ({
-  theme = "light",
-}) => {
-  const labelColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
-  const activePill = "bg-purple-600 text-white";
-  const inactivePill =
-    theme === "dark"
-      ? "bg-[#1a1a1a] border-white/20 text-gray-300 hover:bg-white/10"
-      : "bg-white border-black/15 text-gray-600 hover:bg-black/5";
-
+const SuggestedSearches: React.FC = () => {
   const searches = [
     { label: "Frontend", active: false },
     { label: "JavaScript", active: true },
@@ -594,13 +534,18 @@ const SuggestedSearches: React.FC<{ theme?: "light" | "dark" }> = ({
   ];
 
   return (
-    <div className="mb-5">
-      <p className={`text-xs mb-2 ${labelColor}`}>Suggested course searches</p>
-      <div className="flex flex-wrap gap-2">
+    <div style={{ marginBottom: "var(--drp-space-5)" }}>
+      <p
+        className="drp-text drp-text--sm drp-text--muted"
+        style={{ marginBottom: "var(--drp-space-2)" }}
+      >
+        Suggested course searches
+      </p>
+      <div className="drp-flex drp-flex-wrap drp-gap-2">
         {searches.map((s) => (
           <button
             key={s.label}
-            className={`text-xs px-3 py-1.5 rounded-full border ${s.active ? activePill : inactivePill}`}
+            className={`drp-tag${s.active ? " drp-tag--filled drp-tag--purple" : ""}`}
           >
             {s.label}
           </button>
@@ -620,13 +565,8 @@ export interface EducationCoursesProps {
 }
 
 export const EducationCourses: React.FC<EducationCoursesProps> = ({
-  theme = "light",
   view = "courses",
 }) => {
-  const contentBg = theme === "dark" ? "bg-[#0d0d0d]" : "bg-[#f5efe6]";
-  const sectionTitleColor = theme === "dark" ? "text-white" : "text-black";
-  const subtitleColor = theme === "dark" ? "text-gray-400" : "text-gray-500";
-
   const trendingCards = [
     {
       title: "Data Science",
@@ -673,145 +613,103 @@ export const EducationCourses: React.FC<EducationCoursesProps> = ({
       title: "Online Master of Computer Science",
       university: "Arizona State University",
       mode: "Remote",
-      icon: "⚙",
+      icon: "\u2699",
       imageKey: "computer-science-online",
     },
     {
       title: "Global Master of Public Health and Science",
       university: "Imperial College London",
       mode: "Remote",
-      icon: "♦",
+      icon: "\u2666",
       imageKey: "global-public-health",
     },
   ];
 
   return (
-    <div className="flex h-screen">
-      <EducationSidebar theme={theme} />
+    <div className="app-layout">
+      <EducationSidebar />
+      <div className="main-content">
+        <EducationTopBar />
 
-      <div className={`flex-1 flex flex-col overflow-hidden ${contentBg}`}>
-        <EducationTopBar theme={theme} />
-
-        <div className="flex-1 overflow-auto">
+        <div style={{ flex: 1, overflow: "auto" }}>
           {view === "courses" ? (
             <>
-              <CoursesHero theme={theme} />
-
-              <div className="px-6 pb-2">
-                {/* Trending Today */}
-                <div className="mb-6">
+              <CoursesHero />
+              <div
+                style={{ padding: "0 var(--drp-space-6) var(--drp-space-2)" }}
+              >
+                <div style={{ marginBottom: "var(--drp-space-6)" }}>
                   <h3
-                    className={`text-sm font-semibold mb-3 ${sectionTitleColor}`}
+                    className="drp-h6"
+                    style={{ marginBottom: "var(--drp-space-3)" }}
                   >
                     Trending today
                   </h3>
-                  {/* Mosaic grid: large left, 2x2 right */}
                   <div
-                    className="grid gap-3"
                     style={{
+                      display: "grid",
                       gridTemplateColumns: "1fr 1fr 1fr",
                       gridTemplateRows: "auto auto",
+                      gap: "var(--drp-space-3)",
                     }}
                   >
-                    {/* Large card spans 2 rows */}
                     <div style={{ gridRow: "1 / 3" }}>
-                      <TrendingCard {...trendingCards[0]} theme={theme} large />
+                      <TrendingCard {...trendingCards[0]} large />
                     </div>
-                    <TrendingCard {...trendingCards[1]} theme={theme} />
-                    <TrendingCard {...trendingCards[2]} theme={theme} />
-                    <TrendingCard {...trendingCards[3]} theme={theme} />
-                    <TrendingCard {...trendingCards[4]} theme={theme} />
+                    <TrendingCard {...trendingCards[1]} />
+                    <TrendingCard {...trendingCards[2]} />
+                    <TrendingCard {...trendingCards[3]} />
+                    <TrendingCard {...trendingCards[4]} />
                   </div>
                 </div>
 
-                {/* Earn Your Degree */}
-                <div className="mb-4">
+                <div style={{ marginBottom: "var(--drp-space-4)" }}>
                   <h3
-                    className={`text-sm font-semibold mb-3 ${sectionTitleColor}`}
+                    className="drp-h6"
+                    style={{ marginBottom: "var(--drp-space-3)" }}
                   >
                     Earn Your Degree
                   </h3>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="drp-grid-3">
                     {degreeCards.map((card) => (
-                      <DegreeCard key={card.title} {...card} theme={theme} />
+                      <DegreeCard key={card.title} {...card} />
                     ))}
                   </div>
                 </div>
 
-                <CoursePagination theme={theme} />
+                <CoursePagination />
               </div>
             </>
           ) : (
-            /* Category view */
             <>
+              <CoursesHero
+                title="Software Development"
+                placeholder="Mobile and Web Design"
+              />
               <div
-                className="relative mx-6 mt-6 rounded-2xl overflow-hidden px-8 py-10 mb-6"
-                style={{
-                  background:
-                    theme === "dark"
-                      ? "radial-gradient(ellipse at 70% 50%, rgba(120,60,200,0.35) 0%, transparent 65%), #0d0d0d"
-                      : "radial-gradient(ellipse at 70% 50%, rgba(180,120,255,0.35) 0%, transparent 65%), #f5efe6",
-                }}
+                style={{ padding: "0 var(--drp-space-6) var(--drp-space-2)" }}
               >
-                <h2
-                  className={`text-4xl font-bold text-center mb-6 ${sectionTitleColor}`}
-                  style={{ letterSpacing: "-0.02em" }}
-                >
-                  Software Development
-                </h2>
-                <div className="max-w-lg mx-auto relative mb-3">
-                  <input
-                    className={`w-full px-4 py-2.5 pr-10 rounded-xl text-sm outline-none ${
-                      theme === "dark"
-                        ? "bg-[#1a1a1a] border border-white/20 text-white placeholder-gray-500"
-                        : "bg-white border border-black/20 text-black placeholder-gray-400"
-                    }`}
-                    placeholder="Mobile and Web Design"
-                    readOnly
-                  />
-                  <button className="absolute right-2.5 top-1/2 -translate-y-1/2 w-7 h-7 bg-purple-600 rounded-lg flex items-center justify-center">
-                    <svg
-                      width="13"
-                      height="13"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="white"
-                      strokeWidth="2.5"
-                    >
-                      <circle cx="11" cy="11" r="8" />
-                      <path d="m21 21-4.35-4.35" />
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-              <div className="px-6 pb-2">
-                <SuggestedSearches theme={theme} />
-
-                <div className="mb-3">
+                <SuggestedSearches />
+                <div style={{ marginBottom: "var(--drp-space-3)" }}>
                   <h3
-                    className={`text-sm font-semibold mb-3 ${sectionTitleColor}`}
+                    className="drp-h6"
+                    style={{ marginBottom: "var(--drp-space-3)" }}
                   >
                     Earn Your Degree
                   </h3>
-                  <div className="grid grid-cols-3 gap-3">
+                  <div className="drp-grid-3">
                     {categorySpecializations.map((card) => (
-                      <CourseCategoryCard
-                        key={card.title}
-                        {...card}
-                        theme={theme}
-                      />
+                      <CourseCategoryCard key={card.title} {...card} />
                     ))}
                   </div>
                 </div>
-
-                <CoursePagination theme={theme} />
+                <CoursePagination />
               </div>
             </>
           )}
         </div>
 
-        <EducationFooter theme={theme} />
+        <EducationFooter />
       </div>
     </div>
   );

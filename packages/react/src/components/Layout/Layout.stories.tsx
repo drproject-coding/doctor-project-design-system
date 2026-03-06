@@ -1,3 +1,4 @@
+import React from "react";
 import type { Meta, StoryObj } from "@storybook/react";
 import { AppShell, Sidebar, Topbar } from "./Layout";
 import { DashboardLayout } from "./DashboardLayout";
@@ -13,98 +14,63 @@ export default meta;
 type Story = StoryObj<typeof AppShell>;
 
 const SidebarContent = () => (
-  <div style={{ padding: "16px" }}>
-    <h2
-      style={{
-        fontSize: "18px",
-        fontWeight: 800,
-        marginBottom: "24px",
-        fontFamily: "var(--drp-font-primary)",
-      }}
-    >
-      DOCTOR PROJECT
-    </h2>
-    <nav style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-      {menuItems.map((item) => (
-        <a
-          key={item.label}
-          href={item.href}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            gap: "12px",
-            padding: "10px 12px",
-            textDecoration: "none",
-            color: "inherit",
-            fontFamily: "var(--drp-font-primary)",
-            fontSize: "14px",
-            fontWeight: 600,
-          }}
-        >
-          <span
-            style={{
-              width: 20,
-              height: 20,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            dangerouslySetInnerHTML={{ __html: item.iconSvg }}
-          />
-          <span>{item.label}</span>
-          {item.badge && (
+  <>
+    <div className="sidebar-brand">
+      <span className="sidebar-brand-name">Doctor Project</span>
+      <span className="sidebar-brand-dot" />
+    </div>
+    <nav className="sidebar-nav">
+      <div className="sidebar-nav-section">
+        <div className="sidebar-nav-label">Navigation</div>
+        {menuItems.map((item) => (
+          <a key={item.label} href={item.href} className="sidebar-nav-item">
             <span
-              className="drp-badge drp-badge--filled"
-              style={{ marginLeft: "auto" }}
-            >
-              {item.badge}
-            </span>
-          )}
-        </a>
-      ))}
+              className="sidebar-nav-icon"
+              dangerouslySetInnerHTML={{ __html: item.iconSvg }}
+            />
+            <span className="sidebar-nav-text">{item.label}</span>
+            {item.badge && (
+              <span className="sidebar-badge sidebar-badge--purple">
+                {item.badge}
+              </span>
+            )}
+          </a>
+        ))}
+      </div>
     </nav>
-  </div>
+  </>
 );
 
 const TopbarContent = () => (
-  <div
-    style={{
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "space-between",
-      width: "100%",
-      padding: "0 24px",
-    }}
-  >
-    <h1
-      style={{
-        fontSize: "16px",
-        fontWeight: 700,
-        fontFamily: "var(--drp-font-primary)",
-        textTransform: "uppercase",
-        letterSpacing: "0.05em",
-      }}
-    >
-      Dashboard
-    </h1>
-    <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-      <span className="drp-badge drp-badge--filled">3</span>
-      <div
-        className="drp-avatar drp-avatar--sm"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontWeight: 700,
-          background: "var(--drp-purple-20)",
-          color: "var(--drp-purple)",
-          fontSize: "14px",
-        }}
-      >
-        JD
-      </div>
+  <>
+    <div className="topbar-left">
+      <h1 className="topbar-title">Dashboard</h1>
     </div>
-  </div>
+    <div className="topbar-right">
+      <button className="topbar-icon-btn">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+        </svg>
+        <span className="notification-dot" />
+      </button>
+      <button className="topbar-create-btn">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth={2}
+        >
+          <path d="M12 4v16m8-8H4" />
+        </svg>
+        Create New
+      </button>
+    </div>
+  </>
 );
 
 export const Default: Story = {
@@ -121,18 +87,7 @@ export const Default: Story = {
             <TopbarContent />
           </Topbar>
         }
-        footer={
-          <span
-            style={{
-              padding: "0 24px",
-              fontFamily: "var(--drp-font-primary)",
-              fontSize: "12px",
-              color: "#666",
-            }}
-          >
-            © 2026 Doctor Project Design System
-          </span>
-        }
+        footer={<span className="footer-link">© 2026 Doctor Project</span>}
       >
         <div style={{ padding: "24px" }}>
           <div
@@ -149,27 +104,8 @@ export const Default: Story = {
                 className="drp-card drp-card--sm"
                 style={{ padding: "16px" }}
               >
-                <p
-                  style={{
-                    margin: 0,
-                    fontSize: "12px",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.05em",
-                    color: "#666",
-                    fontFamily: "var(--drp-font-primary)",
-                    fontWeight: 600,
-                  }}
-                >
-                  {s.label}
-                </p>
-                <p
-                  style={{
-                    margin: "4px 0",
-                    fontSize: "28px",
-                    fontWeight: 700,
-                    fontFamily: "var(--drp-font-primary)",
-                  }}
-                >
+                <p className="drp-label">{s.label}</p>
+                <p className="drp-display-md" style={{ margin: "4px 0" }}>
                   {s.value}
                 </p>
                 <p
@@ -177,7 +113,10 @@ export const Default: Story = {
                     margin: 0,
                     fontSize: "12px",
                     fontWeight: 600,
-                    color: s.trend === "up" ? "#00AA00" : "#FF4444",
+                    color:
+                      s.trend === "up"
+                        ? "var(--drp-success)"
+                        : "var(--drp-error)",
                   }}
                 >
                   {s.change}
@@ -186,17 +125,10 @@ export const Default: Story = {
             ))}
           </div>
           <div className="drp-card" style={{ padding: "24px" }}>
-            <h3
-              style={{
-                fontFamily: "var(--drp-font-primary)",
-                fontWeight: 700,
-                fontSize: "16px",
-                marginBottom: "16px",
-              }}
-            >
+            <h3 className="drp-h4" style={{ marginBottom: "16px" }}>
               Recent Activity
             </h3>
-            <p style={{ color: "#666", fontFamily: "var(--drp-font-primary)" }}>
+            <p className="drp-text--secondary">
               Dashboard content would go here — charts, tables, activity
               feeds...
             </p>
@@ -211,24 +143,36 @@ export const Dashboard: Story = {
   render: () => (
     <DashboardLayout
       sidebarProps={{
-        items: [
-          { id: "dashboard", label: "Dashboard", icon: "📊", active: true },
-          { id: "products", label: "Products", icon: "📦" },
-          { id: "customers", label: "Customers", icon: "👥" },
-          { id: "payments", label: "Payments", icon: "💳" },
+        sections: [
+          {
+            label: "Navigation",
+            items: [
+              {
+                id: "dashboard",
+                label: "Dashboard",
+                icon: <span>◎</span>,
+                active: true,
+              },
+              { id: "products", label: "Products", icon: <span>▣</span> },
+              { id: "customers", label: "Customers", icon: <span>▥</span> },
+              {
+                id: "payments",
+                label: "Payments",
+                icon: <span>▦</span>,
+                badge: 3,
+              },
+            ],
+          },
         ],
       }}
       topBarProps={{
         title: "Dashboard",
-        breadcrumbs: [{ label: "Home", href: "/" }],
       }}
     >
-      <div style={{ padding: "24px" }}>
-        <h2 style={{ marginTop: 0 }}>Welcome to Dashboard</h2>
-        <p>
-          This is the DashboardLayout component combining TopBar and Sidebar.
-        </p>
-      </div>
+      <h2 className="drp-h3">Welcome to Dashboard</h2>
+      <p className="drp-text--secondary">
+        This is the DashboardLayout component combining TopBar and Sidebar.
+      </p>
     </DashboardLayout>
   ),
 };
