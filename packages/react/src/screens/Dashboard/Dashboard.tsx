@@ -7,6 +7,8 @@ import { Input } from "../../components/Input";
 import { ProgressBar } from "../../components/ProgressBar";
 import { Avatar } from "../../components/Avatar";
 import { Alert } from "../../components/Alert";
+import { ResponsiveGrid } from "../../components/ResponsiveGrid/ResponsiveGrid";
+import { EmptyState } from "../../components/EmptyState";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -411,15 +413,20 @@ export function Dashboard() {
               Admin
             </div>
           </div>
-          <span
+          <button
+            aria-label="User options"
             style={{
+              background: "none",
+              border: "none",
               color: "rgba(255,255,255,0.3)",
               fontSize: 16,
               cursor: "pointer",
+              padding: "4px",
+              lineHeight: 1,
             }}
           >
             ···
-          </span>
+          </button>
         </div>
       </aside>
 
@@ -484,9 +491,7 @@ export function Dashboard() {
           </Card>
 
           {/* Charts row */}
-          <div
-            style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}
-          >
+          <ResponsiveGrid cols={2} colsSm={1} gap="16px">
             {/* Purchase Overview */}
             <Card>
               <CardHeader
@@ -657,7 +662,7 @@ export function Dashboard() {
                 </div>
               </div>
             </Card>
-          </div>
+          </ResponsiveGrid>
 
           {/* Search + Filter */}
           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
@@ -683,6 +688,16 @@ export function Dashboard() {
 
           {/* Product list */}
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+            {filtered.length === 0 && (
+              <EmptyState
+                title="No products found"
+                description={
+                  search
+                    ? `No results for "${search}"`
+                    : "No products match the selected filter."
+                }
+              />
+            )}
             {filtered.map((product) => (
               <Card key={product.id} style={{ padding: "14px 18px" }}>
                 <div

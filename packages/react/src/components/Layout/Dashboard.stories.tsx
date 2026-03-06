@@ -341,6 +341,7 @@ export const DashboardPage: StoryObj = {
                           <StatusDot
                             color={color}
                             pulse={row.status === "Active"}
+                            aria-hidden={true}
                           />
                           <span>{String(row.status)}</span>
                         </div>

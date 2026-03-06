@@ -731,7 +731,10 @@ export const ProfileSettings: StoryObj = {
                         {setting.description}
                       </p>
                     </div>
-                    <Switch defaultChecked={setting.defaultChecked} />
+                    <Switch
+                      defaultChecked={setting.defaultChecked}
+                      aria-label={setting.label}
+                    />
                   </div>
                   {i < notificationSettings.length - 1 && <Divider />}
                 </div>

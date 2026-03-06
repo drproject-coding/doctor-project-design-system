@@ -30,7 +30,7 @@ const DoctorProjectSidebar: React.FC = () => (
           { label: "Calendar" },
           { label: "Inbox" },
         ].map((item) => (
-          <a key={item.label} className="sidebar-nav-item">
+          <a key={item.label} href="#" className="sidebar-nav-item">
             <span className="sidebar-nav-text">{item.label}</span>
             {item.badge && (
               <span
@@ -83,7 +83,9 @@ const DoctorProjectSidebar: React.FC = () => (
       <div className="sidebar-user-info">
         <div className="sidebar-user-name">Henry Richardson</div>
       </div>
-      <button className="sidebar-user-menu-btn">...</button>
+      <button className="sidebar-user-menu-btn" aria-label="User menu">
+        ...
+      </button>
     </div>
   </aside>
 );
@@ -173,10 +175,10 @@ const TopBar: React.FC = () => (
 const Footer: React.FC = () => (
   <footer className="footer-bar">
     <div className="footer-links">
-      <span className="footer-link">English</span>
-      <span className="footer-link">Privacy Policy</span>
-      <span className="footer-link">License</span>
-      <span className="footer-link">API</span>
+      <button className="footer-link">English</button>
+      <button className="footer-link">Privacy Policy</button>
+      <button className="footer-link">License</button>
+      <button className="footer-link">API</button>
     </div>
     <div className="footer-right">
       <button className="footer-icon-btn">

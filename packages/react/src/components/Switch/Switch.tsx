@@ -1,11 +1,10 @@
 import type { InputHTMLAttributes } from "react";
 
-export interface SwitchProps extends Omit<
-  InputHTMLAttributes<HTMLInputElement>,
-  "type"
-> {
-  label?: string;
-}
+type SwitchBaseProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
+
+export type SwitchProps =
+  | (SwitchBaseProps & { label: string; "aria-label"?: string })
+  | (SwitchBaseProps & { label?: never; "aria-label": string });
 
 export function Switch({ label, ...props }: SwitchProps) {
   return (
