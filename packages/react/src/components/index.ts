@@ -124,6 +124,24 @@ export type {
   SidebarTeamMember,
 } from "./Sidebar";
 
+export { Testimonial } from "./Testimonial";
+export type { TestimonialProps } from "./Testimonial";
+
+export { Spinner } from "./Spinner";
+export type { SpinnerProps } from "./Spinner";
+
+export { Toast } from "./Toast";
+export type { ToastProps, ToastVariant } from "./Toast";
+
+export { Dropzone } from "./Dropzone";
+export type { DropzoneProps } from "./Dropzone";
+
+export { FeatureList } from "./FeatureList";
+export type { FeatureListProps, FeatureItem } from "./FeatureList";
+
+export { CtaBanner } from "./CtaBanner";
+export type { CtaBannerProps } from "./CtaBanner";
+
 // ============================================================================
 // ALL SCREENS EXPORTED FOR EASY DISCOVERY
 // ============================================================================
