@@ -1,71 +1,5 @@
 import React from "react";
-
-// ─── Sidebar ─────────────────────────────────────────────────────────────────
-
-const SupportSidebar: React.FC = () => (
-  <aside className="sidebar">
-    <div className="sidebar-brand">
-      <span className="sidebar-brand-name">Doctor Project</span>
-      <span className="sidebar-brand-dot"></span>
-    </div>
-
-    <nav className="sidebar-nav">
-      <div className="sidebar-nav-section">
-        <div className="sidebar-nav-label">Navigation</div>
-        {[
-          { label: "Dashboard", badge: 15, badgeType: "purple" as const },
-          { label: "Projects" },
-          { label: "Tasks" },
-          { label: "Kanban Desk", badge: 28, badgeType: "purple" as const },
-          { label: "File Manager", badge: 14, badgeType: "green" as const },
-          { label: "Calendar" },
-          { label: "Inbox" },
-        ].map((item) => (
-          <a key={item.label} className="sidebar-nav-item">
-            <span className="sidebar-nav-text">{item.label}</span>
-            {item.badge && (
-              <span
-                className={`sidebar-badge sidebar-badge--${item.badgeType}`}
-              >
-                {item.badge}
-              </span>
-            )}
-          </a>
-        ))}
-      </div>
-
-      <div className="sidebar-team">
-        <div className="sidebar-team-label">Team Members</div>
-        {[
-          { name: "Alexandre Paiva", bg: "var(--drp-orange)" },
-          { name: "Thanawan Chadee", bg: "var(--drp-purple)" },
-          { name: "Justine Robinson", bg: "var(--drp-info)" },
-        ].map((member) => (
-          <div key={member.name} className="sidebar-team-member">
-            <div className="sidebar-avatar" style={{ background: member.bg }}>
-              {member.name[0]}
-            </div>
-            <span className="sidebar-team-name">{member.name}</span>
-          </div>
-        ))}
-        <div className="sidebar-see-more">See More</div>
-      </div>
-    </nav>
-
-    <div className="sidebar-user">
-      <div
-        className="sidebar-avatar"
-        style={{ background: "var(--drp-orange)" }}
-      >
-        H
-      </div>
-      <div className="sidebar-user-info">
-        <div className="sidebar-user-name">Henry Richardson</div>
-      </div>
-      <button className="sidebar-user-menu-btn">...</button>
-    </div>
-  </aside>
-);
+import { AppSidebar } from "../shared/AppSidebar";
 
 // ─── Top Bar ──────────────────────────────────────────────────────────────────
 
@@ -653,7 +587,7 @@ const searchResults: SearchResultProps[] = [
 export const SupportHome: React.FC<SupportHomeProps> = ({ view = "home" }) => {
   return (
     <div className="app-layout">
-      <SupportSidebar />
+      <AppSidebar activeId="support" />
       <div className="main-content">
         <SupportTopBar />
 

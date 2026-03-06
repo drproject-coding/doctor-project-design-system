@@ -1,127 +1,5 @@
 import React, { useState } from "react";
-
-// ─── Sidebar ────────────────────────────────────────────────────────────────
-
-const InboxSidebar: React.FC = () => {
-  const navItems = [
-    {
-      id: "dashboard",
-      label: "Dashboard",
-      badge: 15,
-      badgeVariant: "sidebar-badge--purple",
-    },
-    { id: "projects", label: "Projects" },
-    { id: "tasks", label: "Tasks" },
-    {
-      id: "kanban",
-      label: "Kanban Desk",
-      badge: 28,
-      badgeVariant: "sidebar-badge--purple",
-    },
-    {
-      id: "filemanager",
-      label: "File Manager",
-      badge: 14,
-      badgeVariant: "sidebar-badge--green",
-    },
-    { id: "calendar", label: "Calendar" },
-    { id: "inbox", label: "Inbox", active: true },
-  ];
-
-  const teamMembers = [
-    { name: "Alexandre Paiva", initials: "AP", bg: "var(--drp-orange)" },
-    { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-purple)" },
-    { name: "Justine Robinson", initials: "JR", bg: "var(--drp-blue)" },
-  ];
-
-  return (
-    <aside className="sidebar" style={{ width: 200 }}>
-      <div className="sidebar-brand">
-        <span className="sidebar-brand-name" style={{ fontSize: 20 }}>
-          Doctor Project
-        </span>
-        <span className="sidebar-brand-dot" />
-      </div>
-
-      <nav className="sidebar-nav">
-        <div className="sidebar-nav-section">
-          <div className="sidebar-nav-label">Navigation</div>
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              className={`sidebar-nav-item ${item.active ? "active" : ""}`}
-            >
-              <span className="sidebar-nav-text">{item.label}</span>
-              {item.badge && (
-                <span className={`sidebar-badge ${item.badgeVariant}`}>
-                  {item.badge}
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
-
-        <div className="sidebar-team">
-          <div className="sidebar-team-label">Team Members</div>
-          {teamMembers.map((m) => (
-            <div key={m.name} className="sidebar-team-member">
-              <div
-                className="sidebar-avatar"
-                style={{
-                  background: m.bg,
-                  width: 24,
-                  height: 24,
-                  fontSize: 10,
-                }}
-              >
-                {m.initials[0]}
-              </div>
-              <span className="sidebar-team-name" style={{ fontSize: 12 }}>
-                {m.name}
-              </span>
-            </div>
-          ))}
-          <div className="sidebar-see-more">
-            <svg
-              width="12"
-              height="12"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-            <span>See More</span>
-          </div>
-        </div>
-      </nav>
-
-      <div className="sidebar-user">
-        <div
-          className="sidebar-avatar"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--drp-orange), var(--drp-pink))",
-            width: 28,
-            height: 28,
-          }}
-        />
-        <div className="sidebar-user-info">
-          <div className="sidebar-user-name" style={{ fontSize: 12 }}>
-            Henry Richardson
-          </div>
-        </div>
-        <button className="sidebar-user-menu-btn">...</button>
-      </div>
-    </aside>
-  );
-};
-
+import { AppSidebar } from "../shared/AppSidebar";
 // ─── Top Bar ─────────────────────────────────────────────────────────────────
 
 const InboxTopBar: React.FC<{ showBack?: boolean }> = ({
@@ -1521,7 +1399,7 @@ export const InboxList: React.FC<InboxListProps> = ({
 
   return (
     <div className="app-layout">
-      <InboxSidebar />
+      <AppSidebar activeId="inbox" />
       <div className="main-content" style={{ marginLeft: 200 }}>
         {renderContent()}
       </div>

@@ -1,155 +1,10 @@
 import React from "react";
+import { AppSidebar } from "../shared/AppSidebar";
 
 interface AccountsListProps {
   theme?: "light" | "dark";
   variant?: "v1" | "v2";
 }
-
-const DoctorProjectSidebar: React.FC = () => (
-  <aside className="sidebar" style={{ width: 280 }}>
-    <div className="sidebar-brand">
-      <span className="sidebar-brand-name">Doctor Project</span>
-      <span className="sidebar-brand-dot" />
-    </div>
-
-    <nav className="sidebar-nav">
-      <div className="sidebar-nav-section">
-        <div className="sidebar-nav-label">Navigation</div>
-        {[
-          { label: "Dashboard", icon: "◎" },
-          { label: "Accounts", icon: "▣", active: true },
-          { label: "Transactions", icon: "⇄" },
-          {
-            label: "Crypto Assets",
-            icon: "◎",
-            badge: 28,
-            badgeVariant: "sidebar-badge--purple",
-          },
-          {
-            label: "Payments",
-            icon: "▦",
-            badge: 14,
-            badgeVariant: "sidebar-badge--green",
-          },
-          { label: "Reports", icon: "▤" },
-        ].map((item) => (
-          <button
-            key={item.label}
-            className={`sidebar-nav-item ${item.active ? "active" : ""}`}
-          >
-            <span className="sidebar-nav-icon">{item.icon}</span>
-            <span className="sidebar-nav-text">{item.label}</span>
-            {item.badge && (
-              <span className={`sidebar-badge ${item.badgeVariant}`}>
-                {item.badge}
-              </span>
-            )}
-          </button>
-        ))}
-      </div>
-
-      {/* Cards */}
-      <div className="sidebar-nav-section">
-        <div className="sidebar-nav-label">Cards</div>
-        <button className="sidebar-nav-item">
-          <span
-            className="sidebar-avatar"
-            style={{
-              background: "var(--drp-info)",
-              width: 28,
-              height: 28,
-              fontSize: 12,
-            }}
-          >
-            V
-          </span>
-          <span className="sidebar-nav-text">Debit Card **** 7890</span>
-        </button>
-        <button className="sidebar-nav-item">
-          <span
-            className="sidebar-avatar"
-            style={{
-              background: "var(--drp-error)",
-              width: 28,
-              height: 28,
-              fontSize: 12,
-            }}
-          >
-            ●
-          </span>
-          <span className="sidebar-nav-text">Credit Card **** 4340</span>
-        </button>
-        <button className="sidebar-nav-item">
-          <span
-            style={{
-              width: 28,
-              height: 28,
-              border: "1px dashed var(--drp-grey)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 18,
-              color: "var(--drp-grey)",
-            }}
-          >
-            +
-          </span>
-          <span className="sidebar-nav-text">Open a card</span>
-        </button>
-      </div>
-
-      {/* Balances */}
-      <div className="sidebar-nav-section">
-        <div className="sidebar-nav-label">Balances</div>
-        {[
-          { flag: "\u{1F1FA}\u{1F1F8}", amount: "100,050.75 USD" },
-          { flag: "\u{1F1EA}\u{1F1FA}", amount: "10.40 EUR" },
-          { flag: "\u{1F1EC}\u{1F1E7}", amount: "95.50 GBP" },
-        ].map((bal) => (
-          <button key={bal.amount} className="sidebar-nav-item">
-            <span style={{ fontSize: 18 }}>{bal.flag}</span>
-            <span className="sidebar-nav-text">{bal.amount}</span>
-          </button>
-        ))}
-        <button className="sidebar-nav-item">
-          <span
-            style={{
-              width: 28,
-              height: 28,
-              border: "1px dashed var(--drp-grey)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 18,
-              color: "var(--drp-grey)",
-            }}
-          >
-            +
-          </span>
-          <span className="sidebar-nav-text">Open a balance</span>
-        </button>
-      </div>
-    </nav>
-
-    {/* User profile */}
-    <div className="sidebar-user">
-      <div
-        className="sidebar-avatar"
-        style={{
-          background:
-            "linear-gradient(135deg, var(--drp-orange), var(--drp-pink))",
-        }}
-      />
-      <span
-        className="drp-text drp-text--sm"
-        style={{ color: "var(--drp-cream)" }}
-      >
-        Henry Richardson
-      </span>
-      <button className="drp-btn drp-btn--ghost drp-btn--sm">···</button>
-    </div>
-  </aside>
-);
 
 const TopBar: React.FC<{ theme: "light" | "dark" }> = ({ theme }) => (
   <div className={`topbar ${theme === "dark" ? "dark-mode" : ""}`}>
@@ -988,7 +843,7 @@ export const AccountsList: React.FC<AccountsListProps> = ({
   variant = "v1",
 }) => (
   <div className="app-layout">
-    <DoctorProjectSidebar />
+    <AppSidebar activeId="accounts" />
     <div className="main-content" style={{ marginLeft: 280 }}>
       <TopBar theme={theme} />
       {variant === "v1" ? (

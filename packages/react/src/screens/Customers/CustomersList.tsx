@@ -1,4 +1,5 @@
 import React from "react";
+import { AppSidebar } from "../shared/AppSidebar";
 
 export interface Customer {
   id: string;
@@ -11,114 +12,6 @@ export interface CustomersListProps {
   theme?: "light" | "dark";
   variant?: "v1" | "v2" | "v3" | "details";
 }
-
-// ─── Sidebar ────────────────────────────────────────────────────────────────
-
-const DoctorProjectSidebar: React.FC = () => (
-  <aside className="sidebar" style={{ width: 160 }}>
-    <div className="sidebar-brand" style={{ padding: "20px 16px" }}>
-      <span className="sidebar-brand-name" style={{ fontSize: 18 }}>
-        Doctor Project
-      </span>
-      <span className="sidebar-brand-dot" />
-    </div>
-
-    <nav className="sidebar-nav">
-      <div className="sidebar-nav-section">
-        <div className="sidebar-nav-label">Navigation</div>
-        {[
-          { label: "Dashboard" },
-          { label: "Products" },
-          { label: "Contacts" },
-          {
-            label: "Customers",
-            active: true,
-            badge: 15,
-            badgeVariant: "sidebar-badge--purple",
-          },
-          { label: "Sales", badge: 14, badgeVariant: "sidebar-badge--green" },
-          { label: "Analytics" },
-        ].map((item) => (
-          <button
-            key={item.label}
-            className={`sidebar-nav-item ${item.active ? "active" : ""}`}
-            style={{ fontSize: 12, padding: "8px 10px" }}
-          >
-            <span className="sidebar-nav-text">{item.label}</span>
-            {item.badge && (
-              <span className={`sidebar-badge ${item.badgeVariant}`}>
-                {item.badge}
-              </span>
-            )}
-          </button>
-        ))}
-      </div>
-
-      <div className="sidebar-team">
-        <div className="sidebar-team-label">Team Members</div>
-        {[
-          { name: "Alexandre Paiva", bg: "var(--drp-grey)" },
-          { name: "Thanawan Chadee", bg: "var(--drp-orange)" },
-          { name: "Justine Robinson", bg: "var(--drp-pink)" },
-        ].map((m) => (
-          <div
-            key={m.name}
-            className="sidebar-team-member"
-            style={{ padding: "6px 10px" }}
-          >
-            <div
-              className="sidebar-avatar"
-              style={{ background: m.bg, width: 24, height: 24, fontSize: 10 }}
-            >
-              {m.name[0]}
-            </div>
-            <span className="sidebar-team-name" style={{ fontSize: 12 }}>
-              {m.name}
-            </span>
-          </div>
-        ))}
-        <div
-          className="sidebar-see-more"
-          style={{ fontSize: 11, padding: "6px 10px" }}
-        >
-          <svg
-            width="12"
-            height="12"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-          <span>See More</span>
-        </div>
-      </div>
-    </nav>
-
-    <div className="sidebar-user" style={{ padding: "12px 12px" }}>
-      <div
-        className="sidebar-avatar"
-        style={{
-          background:
-            "linear-gradient(135deg, var(--drp-orange), var(--drp-pink))",
-          width: 28,
-          height: 28,
-        }}
-      />
-      <div className="sidebar-user-info">
-        <div className="sidebar-user-name" style={{ fontSize: 12 }}>
-          Henry Richardson
-        </div>
-      </div>
-      <button className="sidebar-user-menu-btn">...</button>
-    </div>
-  </aside>
-);
 
 const TopBar: React.FC = () => (
   <div className="topbar">
@@ -687,7 +580,7 @@ export const CustomersList: React.FC<CustomersListProps> = ({
 
   return (
     <div className="app-layout">
-      <DoctorProjectSidebar />
+      <AppSidebar activeId="customers" />
       <div className="main-content" style={{ marginLeft: 160 }}>
         <TopBar />
         {renderContent()}

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { AppSidebar } from "../shared/AppSidebar";
 
 type TabKey = "account" | "security" | "social" | "apis" | "notifications";
 
@@ -11,84 +12,6 @@ interface ProfileLayoutProps {
 /* ─────────────────────────────────────────
    Shared: dark sidebar (left navigation)
 ───────────────────────────────────────── */
-const DoctorProjectSidebar: React.FC = () => (
-  <aside className="sidebar">
-    <div className="sidebar-brand">
-      <span className="sidebar-brand-name">Doctor Project</span>
-      <span className="sidebar-brand-dot"></span>
-    </div>
-
-    <nav className="sidebar-nav">
-      <div className="sidebar-nav-section">
-        <div className="sidebar-nav-label">Navigation</div>
-        {[
-          { label: "Dashboard", badge: 15, badgeType: "purple" as const },
-          { label: "Projects" },
-          { label: "Tasks" },
-          { label: "Kanban Desk", badge: 28, badgeType: "purple" as const },
-          { label: "File Manager", badge: 14, badgeType: "green" as const },
-          { label: "Calendar" },
-          { label: "Inbox" },
-        ].map((item) => (
-          <a key={item.label} href="#" className="sidebar-nav-item">
-            <span className="sidebar-nav-text">{item.label}</span>
-            {item.badge && (
-              <span
-                className={`sidebar-badge sidebar-badge--${item.badgeType}`}
-              >
-                {item.badge}
-              </span>
-            )}
-          </a>
-        ))}
-      </div>
-
-      <div className="sidebar-team">
-        <div className="sidebar-team-label">Team Members</div>
-        {[
-          { name: "Alexandre Paiva", bg: "var(--drp-info)" },
-          { name: "Thanawan Chadee", bg: "var(--drp-orange)" },
-          { name: "Justine Robinson", bg: "var(--drp-success)" },
-        ].map((member) => (
-          <div key={member.name} className="sidebar-team-member">
-            <div className="sidebar-avatar" style={{ background: member.bg }}>
-              {member.name[0]}
-            </div>
-            <span className="sidebar-team-name">{member.name}</span>
-          </div>
-        ))}
-        <div className="sidebar-see-more">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-          >
-            <polyline points="6 9 12 15 18 9" />
-          </svg>
-          See More
-        </div>
-      </div>
-    </nav>
-
-    <div className="sidebar-user">
-      <div
-        className="sidebar-avatar"
-        style={{ background: "var(--drp-orange)" }}
-      >
-        H
-      </div>
-      <div className="sidebar-user-info">
-        <div className="sidebar-user-name">Henry Richardson</div>
-      </div>
-      <button className="sidebar-user-menu-btn" aria-label="User menu">
-        ...
-      </button>
-    </div>
-  </aside>
-);
 
 /* ─────────────────────────────────────────
    Shared: top bar
@@ -489,7 +412,7 @@ const ProfileLayout: React.FC<ProfileLayoutProps> = ({
   children,
 }) => (
   <div className="app-layout" style={{ height: "100vh", overflow: "hidden" }}>
-    <DoctorProjectSidebar />
+    <AppSidebar activeId="settings" />
     <div className="main-content" style={{ overflow: "hidden" }}>
       <TopBar />
       <div
