@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { ChartCard } from "../../../../components/Chart/ChartCard";
 
 /* -------------------------------------------------------------------------- */
 /* Data                                                                        */
@@ -314,20 +313,25 @@ export const PaymentMethods: React.FC = () => (
       gap: "var(--drp-space-5)",
     }}
   >
-    <ChartCard title="Spending by Payment Method">
+    <div className="drp-card" style={{ padding: "var(--drp-space-5)" }}>
+      <h3
+        className="drp-card__title"
+        style={{ marginBottom: "var(--drp-space-4)" }}
+      >
+        Spending by Payment Method
+      </h3>
       <div
         style={{
           display: "flex",
           flexDirection: "column",
           gap: "var(--drp-space-3)",
-          marginTop: "var(--drp-space-2)",
         }}
       >
         {CARDS.map((card) => (
           <CardRow key={card.id} card={card} />
         ))}
       </div>
-    </ChartCard>
+    </div>
 
     {/* Summary */}
     <div
