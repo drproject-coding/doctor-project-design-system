@@ -10,20 +10,27 @@ export interface TableProps<T> {
   columns: TableColumn<T>[];
   data: T[];
   className?: string;
+  "aria-label"?: string;
+  caption?: string;
 }
 
 export function Table<T extends Record<string, any>>({
   columns,
   data,
   className = "",
+  "aria-label": ariaLabel,
+  caption,
 }: TableProps<T>) {
   return (
-    <div className="drp-table-scroll">
-      <table className={`drp-table ${className}`}>
+    <div className="drp-table-scroll" style={{ overflowX: "auto" }}>
+      <table className={`drp-table ${className}`} aria-label={ariaLabel}>
+        {caption && <caption>{caption}</caption>}
         <thead>
           <tr>
             {columns.map((col) => (
-              <th key={col.key}>{col.header}</th>
+              <th key={col.key} scope="col">
+                {col.header}
+              </th>
             ))}
           </tr>
         </thead>

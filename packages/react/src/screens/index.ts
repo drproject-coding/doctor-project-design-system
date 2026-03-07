@@ -3,6 +3,9 @@
 // ============================================================================
 // All 40+ screens organized by domain for easy discovery
 
+// DASHBOARD
+export { Dashboard } from "./Dashboard";
+
 // PHASE 1: AUTHENTICATION SCREENS
 export { SignIn } from "./Auth";
 export { SignUp } from "./Auth";

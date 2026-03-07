@@ -28,6 +28,8 @@ export interface SidebarProps {
   teamMembers?: SidebarTeamMember[];
   teamLabel?: string;
   collapsed?: boolean;
+  mobileOpen?: boolean;
+  onToggle?: () => void;
   onItemClick?: (id: string) => void;
   className?: string;
 }
@@ -38,10 +40,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
   teamMembers = [],
   teamLabel = "Team",
   collapsed = false,
+  mobileOpen = false,
+  onToggle,
   onItemClick,
   className = "",
 }) => {
-  const sidebarClass = ["sidebar", collapsed && "collapsed", className]
+  const sidebarClass = [
+    "sidebar",
+    collapsed && "collapsed",
+    mobileOpen && "sidebar--mobile-open",
+    className,
+  ]
     .filter(Boolean)
     .join(" ");
 
@@ -52,7 +61,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
         <span className="sidebar-brand-dot" />
       </div>
 
-      <nav className="sidebar-nav">
+      <nav className="sidebar-nav" aria-label="Main navigation">
         {sections.map((section, sIdx) => (
           <div key={sIdx} className="sidebar-nav-section">
             <div className="sidebar-nav-label">{section.label}</div>
@@ -61,6 +70,8 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 key={item.id}
                 className={`sidebar-nav-item${item.active ? " active" : ""}`}
                 href={item.href || "#"}
+                aria-label={collapsed ? item.label : undefined}
+                aria-current={item.active ? "page" : undefined}
                 onClick={(e) => {
                   e.preventDefault();
                   item.onClick?.();

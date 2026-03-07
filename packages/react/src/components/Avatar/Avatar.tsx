@@ -1,10 +1,14 @@
 type AvatarSize = "sm" | "lg";
 
+const SIZE_PX: Record<string, number> = { sm: 32, lg: 64 };
+
 export interface AvatarProps {
   src?: string;
   alt?: string;
   size?: AvatarSize;
   initials?: string;
+  /** Required when no visible label is present (initials-only avatar) */
+  "aria-label"?: string;
   className?: string;
 }
 
@@ -13,19 +17,25 @@ export function Avatar({
   alt = "",
   size,
   initials,
+  "aria-label": ariaLabel,
   className = "",
 }: AvatarProps) {
   const classes = ["drp-avatar", size && `drp-avatar--${size}`, className]
     .filter(Boolean)
     .join(" ");
 
+  const px = size ? SIZE_PX[size] : 48;
+
   if (src) {
-    return <img className={classes} src={src} alt={alt} />;
+    return (
+      <img className={classes} src={src} alt={alt} width={px} height={px} />
+    );
   }
 
   return (
     <div
       className={classes}
+      aria-label={ariaLabel}
       style={{
         display: "flex",
         alignItems: "center",

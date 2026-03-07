@@ -1,10 +1,117 @@
-// src/components/Button/Button.tsx
+// src/components/Heading/Heading.tsx
 import { jsx } from "react/jsx-runtime";
+function Heading({
+  level = 1,
+  children,
+  uppercase,
+  className = ""
+}) {
+  const Tag2 = `h${level}`;
+  const classes = [`drp-h${level}`, className].filter(Boolean).join(" ");
+  const style = uppercase ? {
+    textTransform: "uppercase",
+    letterSpacing: "var(--drp-tracking-caps)",
+    fontWeight: "var(--drp-weight-heavy)"
+  } : {};
+  return /* @__PURE__ */ jsx(Tag2, { className: classes, style, children });
+}
+
+// src/components/Text/Text.tsx
+import { jsx as jsx2 } from "react/jsx-runtime";
+function Text({
+  size,
+  weight,
+  muted,
+  secondary,
+  as: Tag2 = "p",
+  children,
+  className = ""
+}) {
+  const classes = [
+    "drp-text",
+    size && size !== "md" && `drp-text--${size}`,
+    weight && weight !== "regular" && `drp-text--${weight}`,
+    className
+  ].filter(Boolean).join(" ");
+  const style = {};
+  if (muted) {
+    style.color = "var(--drp-text-muted)";
+  } else if (secondary) {
+    style.color = "var(--drp-text-secondary)";
+  }
+  return /* @__PURE__ */ jsx2(
+    Tag2,
+    {
+      className: classes,
+      style: Object.keys(style).length ? style : void 0,
+      children
+    }
+  );
+}
+
+// src/components/Icon/Icon.tsx
+import { jsx as jsx3 } from "react/jsx-runtime";
+var sizeMap = { sm: 16, md: 20, lg: 24 };
+var iconPaths = {
+  dashboard: "M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0h4",
+  analytics: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0h6m2 0v-4a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2z",
+  users: "M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z",
+  orders: "M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01",
+  products: "M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4",
+  settings: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066zM15 12a3 3 0 11-6 0 3 3 0 016 0z",
+  search: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z",
+  bell: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9",
+  mail: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+  calendar: "M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z",
+  check: "M5 13l4 4L19 7",
+  close: "M6 18L18 6M6 6l12 12",
+  plus: "M12 4v16m8-8H4",
+  minus: "M20 12H4",
+  "arrow-left": "M19 12H5m7-7l-7 7 7 7",
+  "arrow-right": "M5 12h14m-7-7l7 7-7 7",
+  "arrow-up": "M12 19V5m-7 7l7-7 7 7",
+  "arrow-down": "M12 5v14m-7-7l7 7 7-7",
+  edit: "M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z",
+  trash: "M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16",
+  eye: "M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z",
+  "eye-off": "M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.878 9.878L6.59 6.59m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a9.97 9.97 0 01-4.132 5.411m0 0L21 21",
+  filter: "M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z",
+  download: "M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+};
+function Icon({
+  name,
+  size = "md",
+  color = "currentColor",
+  className = ""
+}) {
+  const px = sizeMap[size];
+  return /* @__PURE__ */ jsx3(
+    "svg",
+    {
+      width: px,
+      height: px,
+      viewBox: "0 0 24 24",
+      fill: "none",
+      stroke: color,
+      strokeWidth: 2,
+      strokeLinecap: "round",
+      strokeLinejoin: "round",
+      className: className || void 0,
+      "aria-hidden": "true",
+      children: iconPaths[name].split(" M").map((segment, i2) => /* @__PURE__ */ jsx3("path", { d: i2 === 0 ? segment : `M${segment}` }, i2))
+    }
+  );
+}
+
+// src/components/Button/Button.tsx
+import { jsx as jsx4, jsxs } from "react/jsx-runtime";
 function Button({
   variant,
   size,
   block,
   icon,
+  iconLeft,
+  iconRight,
   className = "",
   children,
   ...props
@@ -17,53 +124,111 @@ function Button({
     icon && "drp-btn--icon",
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ jsx("button", { className: classes, ...props, children });
+  return /* @__PURE__ */ jsxs("button", { className: classes, ...props, children: [
+    iconLeft && /* @__PURE__ */ jsx4("span", { className: "drp-btn__icon", children: iconLeft }),
+    children,
+    iconRight && /* @__PURE__ */ jsx4("span", { className: "drp-btn__icon", children: iconRight })
+  ] });
 }
 
 // src/components/Input/Input.tsx
-import { jsx as jsx2, jsxs } from "react/jsx-runtime";
+import { useId } from "react";
+import { Fragment, jsx as jsx5, jsxs as jsxs2 } from "react/jsx-runtime";
 function Input({
   label,
   error,
   success,
   className = "",
+  id,
+  spellCheck,
+  type,
   ...props
 }) {
+  const generatedId = useId();
+  const inputId = id ?? generatedId;
+  const resolvedSpellCheck = spellCheck ?? (type === "email" || type === "password" ? false : void 0);
   const inputClasses = [
     "drp-input",
     error && "drp-input--error",
     success && "drp-input--success",
     className
   ].filter(Boolean).join(" ");
+  const errorMessage = typeof error === "string" ? /* @__PURE__ */ jsx5("span", { className: "drp-field__error", role: "alert", children: error }) : null;
   if (label) {
-    return /* @__PURE__ */ jsxs("div", { className: "drp-field", children: [
-      /* @__PURE__ */ jsx2("label", { className: "drp-field__label", children: label }),
-      /* @__PURE__ */ jsx2("input", { className: inputClasses, ...props })
+    return /* @__PURE__ */ jsxs2("div", { className: "drp-field", children: [
+      /* @__PURE__ */ jsx5("label", { className: "drp-field__label", htmlFor: inputId, children: label }),
+      /* @__PURE__ */ jsx5(
+        "input",
+        {
+          id: inputId,
+          type,
+          className: inputClasses,
+          spellCheck: resolvedSpellCheck,
+          ...props
+        }
+      ),
+      errorMessage
     ] });
   }
-  return /* @__PURE__ */ jsx2("input", { className: inputClasses, ...props });
+  return /* @__PURE__ */ jsxs2(Fragment, { children: [
+    /* @__PURE__ */ jsx5(
+      "input",
+      {
+        id: inputId,
+        type,
+        className: inputClasses,
+        spellCheck: resolvedSpellCheck,
+        ...props
+      }
+    ),
+    errorMessage
+  ] });
 }
 
 // src/components/Select/Select.tsx
-import { jsx as jsx3, jsxs as jsxs2 } from "react/jsx-runtime";
+import { useId as useId2 } from "react";
+import { Fragment as Fragment2, jsx as jsx6, jsxs as jsxs3 } from "react/jsx-runtime";
 function Select({
   label,
+  error,
+  success,
   className = "",
   children,
+  id,
   ...props
 }) {
-  const selectEl = /* @__PURE__ */ jsx3("select", { className: `drp-select ${className}`, ...props, children });
+  const generatedId = useId2();
+  const selectId = id ?? generatedId;
+  const selectEl = /* @__PURE__ */ jsx6(
+    "select",
+    {
+      id: selectId,
+      className: [
+        "drp-select",
+        error && "drp-select--error",
+        success && "drp-select--success",
+        className
+      ].filter(Boolean).join(" "),
+      ...props,
+      children
+    }
+  );
+  const errorMessage = typeof error === "string" ? /* @__PURE__ */ jsx6("span", { className: "drp-field__error", role: "alert", children: error }) : null;
   if (label) {
-    return /* @__PURE__ */ jsxs2("div", { className: "drp-field", children: [
-      /* @__PURE__ */ jsx3("label", { className: "drp-field__label", children: label }),
-      selectEl
+    return /* @__PURE__ */ jsxs3("div", { className: "drp-field", children: [
+      /* @__PURE__ */ jsx6("label", { className: "drp-field__label", htmlFor: selectId, children: label }),
+      selectEl,
+      errorMessage
     ] });
   }
-  return selectEl;
+  return /* @__PURE__ */ jsxs3(Fragment2, { children: [
+    selectEl,
+    errorMessage
+  ] });
 }
 
 // src/components/Checkbox/Checkbox.tsx
-import { jsx as jsx4, jsxs as jsxs3 } from "react/jsx-runtime";
+import { jsx as jsx7, jsxs as jsxs4 } from "react/jsx-runtime";
 function Checkbox({
   label,
   dark,
@@ -71,18 +236,19 @@ function Checkbox({
   ...props
 }) {
   const classes = ["drp-checkbox", dark && "drp-checkbox--dark", className].filter(Boolean).join(" ");
-  return /* @__PURE__ */ jsxs3("label", { className: classes, children: [
-    /* @__PURE__ */ jsx4("input", { type: "checkbox", ...props }),
+  return /* @__PURE__ */ jsxs4("label", { className: classes, children: [
+    /* @__PURE__ */ jsx7("input", { type: "checkbox", ...props }),
     label
   ] });
 }
 
 // src/components/Radio/Radio.tsx
-import { jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
+import { jsx as jsx8, jsxs as jsxs5 } from "react/jsx-runtime";
 function Radio({
   label,
   color,
   dark,
+  error,
   className = "",
   ...props
 }) {
@@ -90,27 +256,28 @@ function Radio({
     "drp-radio",
     color && `drp-radio--${color}`,
     dark && "drp-radio--dark",
+    error && "drp-radio--error",
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ jsxs4("label", { className: classes, children: [
-    /* @__PURE__ */ jsx5("input", { type: "radio", ...props }),
+  return /* @__PURE__ */ jsxs5("label", { className: classes, children: [
+    /* @__PURE__ */ jsx8("input", { type: "radio", ...props }),
     label
   ] });
 }
 
 // src/components/Switch/Switch.tsx
-import { jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
+import { jsx as jsx9, jsxs as jsxs6 } from "react/jsx-runtime";
 function Switch({ label, ...props }) {
-  return /* @__PURE__ */ jsxs5("label", { className: "drp-switch", children: [
-    /* @__PURE__ */ jsx6("input", { type: "checkbox", ...props }),
-    /* @__PURE__ */ jsx6("span", { className: "drp-switch__track", children: /* @__PURE__ */ jsx6("span", { className: "drp-switch__knob" }) }),
-    label && /* @__PURE__ */ jsx6("span", { children: label })
+  return /* @__PURE__ */ jsxs6("label", { className: "drp-switch", children: [
+    /* @__PURE__ */ jsx9("input", { type: "checkbox", ...props }),
+    /* @__PURE__ */ jsx9("span", { className: "drp-switch__track", children: /* @__PURE__ */ jsx9("span", { className: "drp-switch__knob" }) }),
+    label && /* @__PURE__ */ jsx9("span", { children: label })
   ] });
 }
 
 // src/components/Counter/Counter.tsx
 import { useState } from "react";
-import { jsx as jsx7, jsxs as jsxs6 } from "react/jsx-runtime";
+import { jsx as jsx10, jsxs as jsxs7 } from "react/jsx-runtime";
 function Counter({
   value: controlledValue,
   min = 0,
@@ -124,8 +291,8 @@ function Counter({
     setInternalValue(clamped);
     onChange?.(clamped);
   };
-  return /* @__PURE__ */ jsxs6("div", { className: "drp-counter", children: [
-    /* @__PURE__ */ jsx7(
+  return /* @__PURE__ */ jsxs7("div", { className: "drp-counter", children: [
+    /* @__PURE__ */ jsx10(
       "button",
       {
         className: "drp-counter__btn",
@@ -134,7 +301,7 @@ function Counter({
         children: "\u2212"
       }
     ),
-    /* @__PURE__ */ jsx7(
+    /* @__PURE__ */ jsx10(
       "input",
       {
         className: "drp-counter__value",
@@ -146,7 +313,7 @@ function Counter({
         readOnly: true
       }
     ),
-    /* @__PURE__ */ jsx7(
+    /* @__PURE__ */ jsx10(
       "button",
       {
         className: "drp-counter__btn",
@@ -159,41 +326,45 @@ function Counter({
 }
 
 // src/components/Tag/Tag.tsx
-import { jsx as jsx8, jsxs as jsxs7 } from "react/jsx-runtime";
+import { jsx as jsx11, jsxs as jsxs8 } from "react/jsx-runtime";
 function Tag({
   children,
   color,
   filled,
   dark,
   dot,
+  legend,
+  icon,
   closeable,
   onClose,
   className = ""
 }) {
+  const showDot = dot || legend;
   const classes = [
     "drp-tag",
     color && `drp-tag--${color}`,
     filled && "drp-tag--filled",
     dark && "drp-tag--dark",
-    dot && "drp-tag--dot",
+    showDot && "drp-tag--dot",
     closeable && "drp-tag--closeable",
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ jsxs7("span", { className: classes, children: [
+  return /* @__PURE__ */ jsxs8("span", { className: classes, children: [
+    icon && /* @__PURE__ */ jsx11("span", { className: "drp-tag__icon", children: icon }),
     children,
-    closeable && /* @__PURE__ */ jsx8("button", { className: "drp-tag__close", onClick: onClose, children: "\xD7" })
+    closeable && /* @__PURE__ */ jsx11("button", { className: "drp-tag__close", onClick: onClose, children: "\xD7" })
   ] });
 }
 
 // src/components/Badge/Badge.tsx
-import { jsx as jsx9 } from "react/jsx-runtime";
+import { jsx as jsx12 } from "react/jsx-runtime";
 function Badge({ children, variant, className = "" }) {
   const classes = ["drp-badge", variant && `drp-badge--${variant}`, className].filter(Boolean).join(" ");
-  return /* @__PURE__ */ jsx9("span", { className: classes, children });
+  return /* @__PURE__ */ jsx12("span", { className: classes, children });
 }
 
 // src/components/StatusDot/StatusDot.tsx
-import { jsx as jsx10 } from "react/jsx-runtime";
+import { jsx as jsx13 } from "react/jsx-runtime";
 function StatusDot({ color, pulse, className = "" }) {
   const classes = [
     "drp-dot",
@@ -201,11 +372,11 @@ function StatusDot({ color, pulse, className = "" }) {
     pulse && "drp-dot--pulse",
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ jsx10("span", { className: classes });
+  return /* @__PURE__ */ jsx13("span", { className: classes });
 }
 
 // src/components/ProgressBar/ProgressBar.tsx
-import { jsx as jsx11, jsxs as jsxs8 } from "react/jsx-runtime";
+import { jsx as jsx14, jsxs as jsxs9 } from "react/jsx-runtime";
 function ProgressBar({
   value,
   color,
@@ -219,7 +390,7 @@ function ProgressBar({
     size && `drp-progress--${size}`,
     className
   ].filter(Boolean).join(" ");
-  const bar = /* @__PURE__ */ jsx11("div", { className: progressClasses, children: /* @__PURE__ */ jsx11(
+  const bar = /* @__PURE__ */ jsx14("div", { className: progressClasses, children: /* @__PURE__ */ jsx14(
     "div",
     {
       className: "drp-progress__bar",
@@ -227,10 +398,10 @@ function ProgressBar({
     }
   ) });
   if (label) {
-    return /* @__PURE__ */ jsxs8("div", { className: "drp-progress-group", children: [
-      /* @__PURE__ */ jsxs8("div", { className: "drp-progress-group__label", children: [
-        /* @__PURE__ */ jsx11("span", { children: label }),
-        /* @__PURE__ */ jsxs8("span", { children: [
+    return /* @__PURE__ */ jsxs9("div", { className: "drp-progress-group", children: [
+      /* @__PURE__ */ jsxs9("div", { className: "drp-progress-group__label", children: [
+        /* @__PURE__ */ jsx14("span", { children: label }),
+        /* @__PURE__ */ jsxs9("span", { children: [
           value,
           "%"
         ] })
@@ -242,7 +413,7 @@ function ProgressBar({
 }
 
 // src/components/Avatar/Avatar.tsx
-import { jsx as jsx12 } from "react/jsx-runtime";
+import { jsx as jsx15 } from "react/jsx-runtime";
 function Avatar({
   src,
   alt = "",
@@ -252,9 +423,9 @@ function Avatar({
 }) {
   const classes = ["drp-avatar", size && `drp-avatar--${size}`, className].filter(Boolean).join(" ");
   if (src) {
-    return /* @__PURE__ */ jsx12("img", { className: classes, src, alt });
+    return /* @__PURE__ */ jsx15("img", { className: classes, src, alt });
   }
-  return /* @__PURE__ */ jsx12(
+  return /* @__PURE__ */ jsx15(
     "div",
     {
       className: classes,
@@ -274,16 +445,16 @@ function Avatar({
 }
 
 // src/components/Tooltip/Tooltip.tsx
-import { jsx as jsx13, jsxs as jsxs9 } from "react/jsx-runtime";
+import { jsx as jsx16, jsxs as jsxs10 } from "react/jsx-runtime";
 function Tooltip({ text, children, className = "" }) {
-  return /* @__PURE__ */ jsxs9("span", { className: `drp-tooltip ${className}`, children: [
+  return /* @__PURE__ */ jsxs10("span", { className: `drp-tooltip ${className}`, children: [
     children,
-    /* @__PURE__ */ jsx13("span", { className: "drp-tooltip-text", children: text })
+    /* @__PURE__ */ jsx16("span", { className: "drp-tooltip-text", children: text })
   ] });
 }
 
 // src/components/Card/Card.tsx
-import { jsx as jsx14, jsxs as jsxs10 } from "react/jsx-runtime";
+import { jsx as jsx17, jsxs as jsxs11 } from "react/jsx-runtime";
 function Card({
   variant,
   accent,
@@ -297,48 +468,113 @@ function Card({
     accent && `drp-card--${accent}`,
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ jsx14("div", { className: classes, ...props, children });
+  return /* @__PURE__ */ jsx17("div", { className: classes, ...props, children });
 }
 function CardHeader({ title, subtitle, action }) {
-  return /* @__PURE__ */ jsxs10("div", { className: "drp-card__header", children: [
-    /* @__PURE__ */ jsxs10("div", { children: [
-      /* @__PURE__ */ jsx14("h3", { className: "drp-card__title", children: title }),
-      subtitle && /* @__PURE__ */ jsx14("p", { className: "drp-card__subtitle", children: subtitle })
+  return /* @__PURE__ */ jsxs11("div", { className: "drp-card__header", children: [
+    /* @__PURE__ */ jsxs11("div", { children: [
+      /* @__PURE__ */ jsx17("h3", { className: "drp-card__title", children: title }),
+      subtitle && /* @__PURE__ */ jsx17("p", { className: "drp-card__subtitle", children: subtitle })
     ] }),
     action
   ] });
 }
 
 // src/components/Table/Table.tsx
-import { jsx as jsx15, jsxs as jsxs11 } from "react/jsx-runtime";
+import { jsx as jsx18, jsxs as jsxs12 } from "react/jsx-runtime";
 function Table({
   columns,
   data,
-  className = ""
+  className = "",
+  "aria-label": ariaLabel,
+  caption
 }) {
-  return /* @__PURE__ */ jsx15("div", { className: "drp-table-scroll", children: /* @__PURE__ */ jsxs11("table", { className: `drp-table ${className}`, children: [
-    /* @__PURE__ */ jsx15("thead", { children: /* @__PURE__ */ jsx15("tr", { children: columns.map((col) => /* @__PURE__ */ jsx15("th", { children: col.header }, col.key)) }) }),
-    /* @__PURE__ */ jsx15("tbody", { children: data.map((row, i2) => /* @__PURE__ */ jsx15("tr", { children: columns.map((col) => /* @__PURE__ */ jsx15("td", { children: col.render ? col.render(row) : String(row[col.key] ?? "") }, col.key)) }, i2)) })
+  return /* @__PURE__ */ jsx18("div", { className: "drp-table-scroll", style: { overflowX: "auto" }, children: /* @__PURE__ */ jsxs12("table", { className: `drp-table ${className}`, "aria-label": ariaLabel, children: [
+    caption && /* @__PURE__ */ jsx18("caption", { children: caption }),
+    /* @__PURE__ */ jsx18("thead", { children: /* @__PURE__ */ jsx18("tr", { children: columns.map((col) => /* @__PURE__ */ jsx18("th", { scope: "col", children: col.header }, col.key)) }) }),
+    /* @__PURE__ */ jsx18("tbody", { children: data.map((row, i2) => /* @__PURE__ */ jsx18("tr", { children: columns.map((col) => /* @__PURE__ */ jsx18("td", { children: col.render ? col.render(row) : String(row[col.key] ?? "") }, col.key)) }, i2)) })
   ] }) });
 }
 
 // src/components/Modal/Modal.tsx
-import { jsx as jsx16, jsxs as jsxs12 } from "react/jsx-runtime";
+import { useEffect, useId as useId3, useRef } from "react";
+import { jsx as jsx19, jsxs as jsxs13 } from "react/jsx-runtime";
+var FOCUSABLE_SELECTOR = 'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 function Modal({ open, onClose, title, children, footer }) {
+  const titleId = useId3();
+  const modalRef = useRef(null);
+  const previousFocusRef = useRef(null);
+  useEffect(() => {
+    if (!open) return;
+    previousFocusRef.current = document.activeElement;
+    const timer = setTimeout(() => {
+      const focusable = modalRef.current?.querySelectorAll(FOCUSABLE_SELECTOR);
+      if (focusable && focusable.length > 0) {
+        focusable[0].focus();
+      }
+    }, 0);
+    return () => {
+      clearTimeout(timer);
+      previousFocusRef.current?.focus();
+    };
+  }, [open]);
   if (!open) return null;
-  return /* @__PURE__ */ jsx16("div", { className: "drp-overlay", onClick: onClose, children: /* @__PURE__ */ jsxs12("div", { className: "drp-modal", onClick: (e2) => e2.stopPropagation(), children: [
-    /* @__PURE__ */ jsxs12("div", { className: "drp-modal__header", children: [
-      /* @__PURE__ */ jsx16("h2", { className: "drp-modal__title", children: title }),
-      /* @__PURE__ */ jsx16("button", { className: "drp-modal__close", onClick: onClose, children: "\xD7" })
-    ] }),
-    /* @__PURE__ */ jsx16("div", { className: "drp-modal__body", children }),
-    footer && /* @__PURE__ */ jsx16("div", { className: "drp-modal__footer", children: footer })
-  ] }) });
+  const handleKeyDown = (e2) => {
+    if (e2.key === "Escape") {
+      onClose();
+      return;
+    }
+    if (e2.key === "Tab") {
+      const focusable = modalRef.current?.querySelectorAll(FOCUSABLE_SELECTOR);
+      if (!focusable || focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e2.shiftKey) {
+        if (document.activeElement === first) {
+          e2.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e2.preventDefault();
+          first.focus();
+        }
+      }
+    }
+  };
+  return /* @__PURE__ */ jsx19("div", { className: "drp-overlay", onClick: onClose, children: /* @__PURE__ */ jsxs13(
+    "div",
+    {
+      className: "drp-modal",
+      ref: modalRef,
+      role: "dialog",
+      "aria-modal": "true",
+      "aria-labelledby": titleId,
+      onClick: (e2) => e2.stopPropagation(),
+      onKeyDown: handleKeyDown,
+      children: [
+        /* @__PURE__ */ jsxs13("div", { className: "drp-modal__header", children: [
+          /* @__PURE__ */ jsx19("h2", { className: "drp-modal__title", id: titleId, children: title }),
+          /* @__PURE__ */ jsx19(
+            "button",
+            {
+              className: "drp-modal__close",
+              onClick: onClose,
+              "aria-label": "Close",
+              children: "\xD7"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsx19("div", { className: "drp-modal__body", children }),
+        footer && /* @__PURE__ */ jsx19("div", { className: "drp-modal__footer", children: footer })
+      ]
+    }
+  ) });
 }
 
 // src/components/Tabs/Tabs.tsx
 import { useState as useState2 } from "react";
-import { jsx as jsx17 } from "react/jsx-runtime";
+import { jsx as jsx20 } from "react/jsx-runtime";
 function Tabs({
   items,
   activeKey,
@@ -353,7 +589,7 @@ function Tabs({
     variant && `drp-tabs--${variant}`,
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ jsx17("div", { className: containerClasses, children: items.map((item) => /* @__PURE__ */ jsx17(
+  return /* @__PURE__ */ jsx20("div", { className: containerClasses, children: items.map((item) => /* @__PURE__ */ jsx20(
     "button",
     {
       className: `drp-tab ${current === item.key ? "drp-tab--active" : ""}`,
@@ -368,7 +604,7 @@ function Tabs({
 }
 
 // src/components/Pagination/Pagination.tsx
-import { jsx as jsx18, jsxs as jsxs13 } from "react/jsx-runtime";
+import { jsx as jsx21, jsxs as jsxs14 } from "react/jsx-runtime";
 function Pagination({
   currentPage,
   totalPages,
@@ -382,8 +618,8 @@ function Pagination({
     className
   ].filter(Boolean).join(" ");
   const pages = Array.from({ length: totalPages }, (_3, i2) => i2 + 1);
-  return /* @__PURE__ */ jsxs13("div", { className: containerClasses, children: [
-    /* @__PURE__ */ jsx18(
+  return /* @__PURE__ */ jsxs14("div", { className: containerClasses, children: [
+    /* @__PURE__ */ jsx21(
       "button",
       {
         className: "drp-pagination__btn",
@@ -392,7 +628,7 @@ function Pagination({
         children: "\u2039"
       }
     ),
-    pages.map((page) => /* @__PURE__ */ jsx18(
+    pages.map((page) => /* @__PURE__ */ jsx21(
       "button",
       {
         className: `drp-pagination__page ${page === currentPage ? "drp-pagination__page--active" : ""}`,
@@ -401,7 +637,7 @@ function Pagination({
       },
       page
     )),
-    /* @__PURE__ */ jsx18(
+    /* @__PURE__ */ jsx21(
       "button",
       {
         className: "drp-pagination__btn",
@@ -414,23 +650,23 @@ function Pagination({
 }
 
 // src/components/Layout/Layout.tsx
-import { jsx as jsx19, jsxs as jsxs14 } from "react/jsx-runtime";
+import { jsx as jsx22, jsxs as jsxs15 } from "react/jsx-runtime";
 function AppShell({ sidebar, topbar, children, footer }) {
-  return /* @__PURE__ */ jsxs14("div", { className: "drp-app", children: [
+  return /* @__PURE__ */ jsxs15("div", { className: "app-layout", children: [
     sidebar,
-    /* @__PURE__ */ jsxs14("div", { className: "drp-main-wrapper", children: [
+    /* @__PURE__ */ jsxs15("div", { className: "main-content", children: [
       topbar,
-      /* @__PURE__ */ jsx19("main", { className: "drp-main", children }),
-      footer && /* @__PURE__ */ jsx19("footer", { className: "drp-footer", children: footer })
+      /* @__PURE__ */ jsx22("main", { children }),
+      footer && /* @__PURE__ */ jsx22("footer", { className: "footer-bar", children: footer })
     ] })
   ] });
 }
 function Topbar({ children }) {
-  return /* @__PURE__ */ jsx19("header", { className: "drp-topbar", children });
+  return /* @__PURE__ */ jsx22("header", { className: "topbar", children });
 }
 
 // src/components/TopBar/TopBar.tsx
-import { jsx as jsx20, jsxs as jsxs15 } from "react/jsx-runtime";
+import { jsx as jsx23, jsxs as jsxs16 } from "react/jsx-runtime";
 var TopBar = ({
   title,
   actions,
@@ -438,26 +674,26 @@ var TopBar = ({
   onMenuClick,
   className = ""
 }) => {
-  return /* @__PURE__ */ jsxs15("header", { className: `topbar ${className}`, children: [
-    /* @__PURE__ */ jsxs15("div", { className: "topbar-left", children: [
-      menuButton && /* @__PURE__ */ jsx20("button", { className: "topbar-menu-btn", onClick: onMenuClick, children: /* @__PURE__ */ jsx20(
+  return /* @__PURE__ */ jsxs16("header", { className: `topbar ${className}`, children: [
+    /* @__PURE__ */ jsxs16("div", { className: "topbar-left", children: [
+      menuButton && /* @__PURE__ */ jsx23("button", { className: "topbar-menu-btn", onClick: onMenuClick, children: /* @__PURE__ */ jsx23(
         "svg",
         {
           viewBox: "0 0 24 24",
           fill: "none",
           stroke: "currentColor",
           strokeWidth: 2,
-          children: /* @__PURE__ */ jsx20("path", { d: "M3 12h18M3 6h18M3 18h18" })
+          children: /* @__PURE__ */ jsx23("path", { d: "M3 12h18M3 6h18M3 18h18" })
         }
       ) }),
-      title && /* @__PURE__ */ jsx20("h1", { className: "topbar-title", children: title })
+      title && /* @__PURE__ */ jsx23("h1", { className: "topbar-title", children: title })
     ] }),
-    actions && /* @__PURE__ */ jsx20("div", { className: "topbar-right", children: actions })
+    actions && /* @__PURE__ */ jsx23("div", { className: "topbar-right", children: actions })
   ] });
 };
 
 // src/components/Sidebar/Sidebar.tsx
-import { jsx as jsx21, jsxs as jsxs16 } from "react/jsx-runtime";
+import { jsx as jsx24, jsxs as jsxs17 } from "react/jsx-runtime";
 var Sidebar = ({
   brandName = "Doctor Project",
   sections = [],
@@ -468,14 +704,14 @@ var Sidebar = ({
   className = ""
 }) => {
   const sidebarClass = ["sidebar", collapsed && "collapsed", className].filter(Boolean).join(" ");
-  return /* @__PURE__ */ jsxs16("aside", { className: sidebarClass, children: [
-    /* @__PURE__ */ jsxs16("div", { className: "sidebar-brand", children: [
-      /* @__PURE__ */ jsx21("span", { className: "sidebar-brand-name", children: brandName }),
-      /* @__PURE__ */ jsx21("span", { className: "sidebar-brand-dot" })
+  return /* @__PURE__ */ jsxs17("aside", { className: sidebarClass, children: [
+    /* @__PURE__ */ jsxs17("div", { className: "sidebar-brand", children: [
+      /* @__PURE__ */ jsx24("span", { className: "sidebar-brand-name", children: brandName }),
+      /* @__PURE__ */ jsx24("span", { className: "sidebar-brand-dot" })
     ] }),
-    /* @__PURE__ */ jsx21("nav", { className: "sidebar-nav", children: sections.map((section, sIdx) => /* @__PURE__ */ jsxs16("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ jsx21("div", { className: "sidebar-nav-label", children: section.label }),
-      section.items.map((item) => /* @__PURE__ */ jsxs16(
+    /* @__PURE__ */ jsx24("nav", { className: "sidebar-nav", children: sections.map((section, sIdx) => /* @__PURE__ */ jsxs17("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ jsx24("div", { className: "sidebar-nav-label", children: section.label }),
+      section.items.map((item) => /* @__PURE__ */ jsxs17(
         "a",
         {
           className: `sidebar-nav-item${item.active ? " active" : ""}`,
@@ -486,9 +722,9 @@ var Sidebar = ({
             onItemClick?.(item.id);
           },
           children: [
-            item.icon && /* @__PURE__ */ jsx21("span", { className: "sidebar-nav-icon", children: item.icon }),
-            /* @__PURE__ */ jsx21("span", { className: "sidebar-nav-text", children: item.label }),
-            item.badge !== void 0 && /* @__PURE__ */ jsx21(
+            item.icon && /* @__PURE__ */ jsx24("span", { className: "sidebar-nav-icon", children: item.icon }),
+            /* @__PURE__ */ jsx24("span", { className: "sidebar-nav-text", children: item.label }),
+            item.badge !== void 0 && /* @__PURE__ */ jsx24(
               "span",
               {
                 className: `sidebar-badge sidebar-badge--${item.badgeVariant || "purple"}`,
@@ -500,59 +736,59 @@ var Sidebar = ({
         item.id
       ))
     ] }, sIdx)) }),
-    teamMembers.length > 0 && /* @__PURE__ */ jsxs16("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ jsx21("div", { className: "sidebar-team-label", children: teamLabel }),
-      teamMembers.map((member, idx) => /* @__PURE__ */ jsxs16("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ jsx21("div", { className: "sidebar-avatar", children: member.avatar ? /* @__PURE__ */ jsx21("img", { src: member.avatar, alt: member.name }) : member.initials || member.name.charAt(0).toUpperCase() }),
-        /* @__PURE__ */ jsx21("span", { className: "sidebar-team-name", children: member.name })
+    teamMembers.length > 0 && /* @__PURE__ */ jsxs17("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ jsx24("div", { className: "sidebar-team-label", children: teamLabel }),
+      teamMembers.map((member, idx) => /* @__PURE__ */ jsxs17("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ jsx24("div", { className: "sidebar-avatar", children: member.avatar ? /* @__PURE__ */ jsx24("img", { src: member.avatar, alt: member.name }) : member.initials || member.name.charAt(0).toUpperCase() }),
+        /* @__PURE__ */ jsx24("span", { className: "sidebar-team-name", children: member.name })
       ] }, idx))
     ] })
   ] });
 };
 
 // src/components/Layout/DashboardLayout.tsx
-import { jsx as jsx22, jsxs as jsxs17 } from "react/jsx-runtime";
+import { jsx as jsx25, jsxs as jsxs18 } from "react/jsx-runtime";
 var DashboardLayout = ({
   children,
   sidebarProps,
   topBarProps,
   showSidebar = true
 }) => {
-  return /* @__PURE__ */ jsxs17("div", { className: "app-layout", children: [
-    showSidebar && sidebarProps && /* @__PURE__ */ jsx22(Sidebar, { ...sidebarProps }),
-    /* @__PURE__ */ jsxs17("div", { className: "main-content", children: [
-      topBarProps && /* @__PURE__ */ jsx22(TopBar, { ...topBarProps }),
-      /* @__PURE__ */ jsx22("div", { className: "content", children: /* @__PURE__ */ jsx22("div", { className: "container", children }) })
+  return /* @__PURE__ */ jsxs18("div", { className: "app-layout", children: [
+    showSidebar && sidebarProps && /* @__PURE__ */ jsx25(Sidebar, { ...sidebarProps }),
+    /* @__PURE__ */ jsxs18("div", { className: "main-content", children: [
+      topBarProps && /* @__PURE__ */ jsx25(TopBar, { ...topBarProps }),
+      /* @__PURE__ */ jsx25("div", { className: "content", children: /* @__PURE__ */ jsx25("div", { className: "container", children }) })
     ] })
   ] });
 };
 
 // src/components/Navbar/Navbar.tsx
-import { jsx as jsx23, jsxs as jsxs18 } from "react/jsx-runtime";
+import { jsx as jsx26, jsxs as jsxs19 } from "react/jsx-runtime";
 function Navbar({
   brand,
   children,
   actions,
   className = ""
 }) {
-  return /* @__PURE__ */ jsxs18("nav", { className: `drp-navbar ${className}`, children: [
-    /* @__PURE__ */ jsx23("div", { className: "drp-navbar__brand", children: brand }),
-    /* @__PURE__ */ jsx23("div", { className: "drp-navbar__links", children }),
-    actions && /* @__PURE__ */ jsx23("div", { className: "drp-navbar__actions", children: actions })
+  return /* @__PURE__ */ jsxs19("nav", { className: `drp-navbar ${className}`, children: [
+    /* @__PURE__ */ jsx26("div", { className: "drp-navbar__brand", children: brand }),
+    /* @__PURE__ */ jsx26("div", { className: "drp-navbar__links", children }),
+    actions && /* @__PURE__ */ jsx26("div", { className: "drp-navbar__actions", children: actions })
   ] });
 }
 
 // src/components/Breadcrumbs/Breadcrumbs.tsx
-import { jsx as jsx24, jsxs as jsxs19 } from "react/jsx-runtime";
+import { jsx as jsx27, jsxs as jsxs20 } from "react/jsx-runtime";
 function Breadcrumbs({ items, className = "" }) {
-  return /* @__PURE__ */ jsx24("nav", { className: `drp-breadcrumbs ${className}`, children: items.map((item, i2) => /* @__PURE__ */ jsxs19("span", { children: [
-    i2 > 0 && /* @__PURE__ */ jsx24("span", { className: "drp-breadcrumbs__sep", children: "/" }),
-    item.href ? /* @__PURE__ */ jsx24("a", { className: "drp-breadcrumbs__link", href: item.href, children: item.label }) : /* @__PURE__ */ jsx24("span", { className: "drp-breadcrumbs__current", children: item.label })
+  return /* @__PURE__ */ jsx27("nav", { className: `drp-breadcrumbs ${className}`, children: items.map((item, i2) => /* @__PURE__ */ jsxs20("span", { children: [
+    i2 > 0 && /* @__PURE__ */ jsx27("span", { className: "drp-breadcrumbs__sep", children: "/" }),
+    item.href ? /* @__PURE__ */ jsx27("a", { className: "drp-breadcrumbs__link", href: item.href, children: item.label }) : /* @__PURE__ */ jsx27("span", { className: "drp-breadcrumbs__current", children: item.label })
   ] }, i2)) });
 }
 
 // src/components/Chart/ChartCard.tsx
-import { jsx as jsx25, jsxs as jsxs20 } from "react/jsx-runtime";
+import { jsx as jsx28, jsxs as jsxs21 } from "react/jsx-runtime";
 function ChartCard({
   title,
   subtitle,
@@ -567,21 +803,21 @@ function ChartCard({
     "drp-chart-container",
     size && `drp-chart-container--${size}`
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ jsxs20("div", { className: containerClasses, children: [
-    /* @__PURE__ */ jsxs20("div", { className: "drp-chart-header", children: [
-      /* @__PURE__ */ jsxs20("div", { children: [
-        /* @__PURE__ */ jsx25("h3", { className: "drp-card__title", children: title }),
-        subtitle && /* @__PURE__ */ jsx25("p", { className: "drp-card__subtitle", children: subtitle })
+  return /* @__PURE__ */ jsxs21("div", { className: containerClasses, children: [
+    /* @__PURE__ */ jsxs21("div", { className: "drp-chart-header", children: [
+      /* @__PURE__ */ jsxs21("div", { children: [
+        /* @__PURE__ */ jsx28("h3", { className: "drp-card__title", children: title }),
+        subtitle && /* @__PURE__ */ jsx28("p", { className: "drp-card__subtitle", children: subtitle })
       ] }),
       action
     ] }),
-    /* @__PURE__ */ jsx25("div", { className: bodyClasses, children }),
-    legend && /* @__PURE__ */ jsx25("div", { className: "drp-chart-legend", children: legend })
+    /* @__PURE__ */ jsx28("div", { className: bodyClasses, children }),
+    legend && /* @__PURE__ */ jsx28("div", { className: "drp-chart-legend", children: legend })
   ] });
 }
 
 // src/components/Hero/Hero.tsx
-import { jsx as jsx26, jsxs as jsxs21 } from "react/jsx-runtime";
+import { jsx as jsx29, jsxs as jsxs22 } from "react/jsx-runtime";
 function Hero({
   badge,
   title,
@@ -590,19 +826,19 @@ function Hero({
   visual,
   className = ""
 }) {
-  return /* @__PURE__ */ jsxs21("section", { className: `drp-hero ${className}`, children: [
-    /* @__PURE__ */ jsxs21("div", { className: "drp-hero__content", children: [
-      badge && /* @__PURE__ */ jsx26("div", { className: "drp-hero__badge", children: badge }),
-      /* @__PURE__ */ jsx26("h1", { className: "drp-hero__title", children: title }),
-      subtitle && /* @__PURE__ */ jsx26("p", { className: "drp-hero__subtitle", children: subtitle }),
-      actions && /* @__PURE__ */ jsx26("div", { className: "drp-hero__actions", children: actions })
+  return /* @__PURE__ */ jsxs22("section", { className: `drp-hero ${className}`, children: [
+    /* @__PURE__ */ jsxs22("div", { className: "drp-hero__content", children: [
+      badge && /* @__PURE__ */ jsx29("div", { className: "drp-hero__badge", children: badge }),
+      /* @__PURE__ */ jsx29("h1", { className: "drp-hero__title", children: title }),
+      subtitle && /* @__PURE__ */ jsx29("p", { className: "drp-hero__subtitle", children: subtitle }),
+      actions && /* @__PURE__ */ jsx29("div", { className: "drp-hero__actions", children: actions })
     ] }),
-    visual && /* @__PURE__ */ jsx26("div", { className: "drp-hero__visual", children: visual })
+    visual && /* @__PURE__ */ jsx29("div", { className: "drp-hero__visual", children: visual })
   ] });
 }
 
 // src/components/Marquee/Marquee.tsx
-import { jsx as jsx27 } from "react/jsx-runtime";
+import { jsx as jsx30 } from "react/jsx-runtime";
 function Marquee({
   items,
   separator = "+++",
@@ -613,20 +849,20 @@ function Marquee({
     (item, i2) => i2 < items.length - 1 ? [item, separator] : [item]
   );
   const doubled = [...track, ...track];
-  return /* @__PURE__ */ jsx27("div", { className: `drp-marquee ${className}`, children: /* @__PURE__ */ jsx27(
+  return /* @__PURE__ */ jsx30("div", { className: `drp-marquee ${className}`, children: /* @__PURE__ */ jsx30(
     "div",
     {
       className: "drp-marquee__track",
       style: { animationDuration: `${speed}s` },
-      children: doubled.map((text, i2) => /* @__PURE__ */ jsx27("span", { className: "drp-marquee__item", children: text }, i2))
+      children: doubled.map((text, i2) => /* @__PURE__ */ jsx30("span", { className: "drp-marquee__item", children: text }, i2))
     }
   ) });
 }
 
 // src/components/StatCard/StatCard.tsx
-import { jsx as jsx28, jsxs as jsxs22 } from "react/jsx-runtime";
+import { jsx as jsx31, jsxs as jsxs23 } from "react/jsx-runtime";
 function StatCard({ value, label, className = "" }) {
-  return /* @__PURE__ */ jsxs22(
+  return /* @__PURE__ */ jsxs23(
     "div",
     {
       className: `drp-stat-card ${className}`,
@@ -637,7 +873,7 @@ function StatCard({ value, label, className = "" }) {
         background: "var(--drp-surface)"
       },
       children: [
-        /* @__PURE__ */ jsx28(
+        /* @__PURE__ */ jsx31(
           "p",
           {
             style: {
@@ -650,7 +886,7 @@ function StatCard({ value, label, className = "" }) {
             children: value
           }
         ),
-        /* @__PURE__ */ jsx28(
+        /* @__PURE__ */ jsx31(
           "p",
           {
             style: {
@@ -670,7 +906,7 @@ function StatCard({ value, label, className = "" }) {
 }
 
 // src/components/PricingCard/PricingCard.tsx
-import { jsx as jsx29, jsxs as jsxs23 } from "react/jsx-runtime";
+import { jsx as jsx32, jsxs as jsxs24 } from "react/jsx-runtime";
 function PricingCard({
   title,
   price,
@@ -686,7 +922,7 @@ function PricingCard({
     featured && "drp-pricing--featured",
     className
   ].filter(Boolean).join(" ");
-  return /* @__PURE__ */ jsxs23(
+  return /* @__PURE__ */ jsxs24(
     "div",
     {
       className: classes,
@@ -699,7 +935,7 @@ function PricingCard({
         position: "relative"
       },
       children: [
-        badge && /* @__PURE__ */ jsx29(
+        badge && /* @__PURE__ */ jsx32(
           "div",
           {
             style: {
@@ -719,7 +955,7 @@ function PricingCard({
             children: badge
           }
         ),
-        /* @__PURE__ */ jsx29(
+        /* @__PURE__ */ jsx32(
           "p",
           {
             style: {
@@ -733,7 +969,7 @@ function PricingCard({
             children: title
           }
         ),
-        /* @__PURE__ */ jsx29(
+        /* @__PURE__ */ jsx32(
           "p",
           {
             style: {
@@ -745,7 +981,7 @@ function PricingCard({
             children: price
           }
         ),
-        period && /* @__PURE__ */ jsx29(
+        period && /* @__PURE__ */ jsx32(
           "p",
           {
             style: {
@@ -757,7 +993,7 @@ function PricingCard({
             children: period
           }
         ),
-        /* @__PURE__ */ jsx29(
+        /* @__PURE__ */ jsx32(
           "ul",
           {
             style: {
@@ -766,7 +1002,7 @@ function PricingCard({
               marginBottom: "24px",
               padding: 0
             },
-            children: features.map((f3, i2) => /* @__PURE__ */ jsxs23(
+            children: features.map((f3, i2) => /* @__PURE__ */ jsxs24(
               "li",
               {
                 style: {
@@ -779,7 +1015,7 @@ function PricingCard({
                   gap: "8px"
                 },
                 children: [
-                  /* @__PURE__ */ jsx29(
+                  /* @__PURE__ */ jsx32(
                     "span",
                     {
                       style: {
@@ -803,7 +1039,7 @@ function PricingCard({
 }
 
 // src/components/CaseCard/CaseCard.tsx
-import { jsx as jsx30, jsxs as jsxs24 } from "react/jsx-runtime";
+import { jsx as jsx33, jsxs as jsxs25 } from "react/jsx-runtime";
 function CaseCard({
   image,
   imageLabel,
@@ -814,7 +1050,7 @@ function CaseCard({
   description,
   className = ""
 }) {
-  return /* @__PURE__ */ jsxs24(
+  return /* @__PURE__ */ jsxs25(
     "div",
     {
       className,
@@ -824,7 +1060,7 @@ function CaseCard({
         overflow: "hidden"
       },
       children: [
-        /* @__PURE__ */ jsx30(
+        /* @__PURE__ */ jsx33(
           "div",
           {
             style: {
@@ -842,8 +1078,8 @@ function CaseCard({
             children: image || imageLabel
           }
         ),
-        /* @__PURE__ */ jsxs24("div", { style: { padding: "var(--drp-space-6)" }, children: [
-          /* @__PURE__ */ jsx30(
+        /* @__PURE__ */ jsxs25("div", { style: { padding: "var(--drp-space-6)" }, children: [
+          /* @__PURE__ */ jsx33(
             "p",
             {
               style: {
@@ -856,8 +1092,8 @@ function CaseCard({
               children: stat
             }
           ),
-          /* @__PURE__ */ jsx30("p", { style: { fontSize: "13px", marginBottom: "16px" }, children: statLabel }),
-          /* @__PURE__ */ jsx30(
+          /* @__PURE__ */ jsx33("p", { style: { fontSize: "13px", marginBottom: "16px" }, children: statLabel }),
+          /* @__PURE__ */ jsx33(
             "h3",
             {
               style: {
@@ -869,7 +1105,7 @@ function CaseCard({
               children: title
             }
           ),
-          /* @__PURE__ */ jsx30("p", { style: { fontSize: "13px", color: "#666", lineHeight: 1.6 }, children: description })
+          /* @__PURE__ */ jsx33("p", { style: { fontSize: "13px", color: "#666", lineHeight: 1.6 }, children: description })
         ] })
       ]
     }
@@ -877,7 +1113,7 @@ function CaseCard({
 }
 
 // src/components/Footer/Footer.tsx
-import { jsx as jsx31, jsxs as jsxs25 } from "react/jsx-runtime";
+import { jsx as jsx34, jsxs as jsxs26 } from "react/jsx-runtime";
 function Footer({
   brand,
   tagline,
@@ -886,7 +1122,7 @@ function Footer({
   bottomLinks,
   className = ""
 }) {
-  return /* @__PURE__ */ jsx31(
+  return /* @__PURE__ */ jsx34(
     "footer",
     {
       className,
@@ -896,8 +1132,8 @@ function Footer({
         padding: "var(--drp-space-16, 64px) 0",
         borderTop: "3px solid var(--drp-purple)"
       },
-      children: /* @__PURE__ */ jsxs25("div", { style: { maxWidth: "1440px", margin: "0 auto", padding: "0 24px" }, children: [
-        /* @__PURE__ */ jsxs25(
+      children: /* @__PURE__ */ jsxs26("div", { style: { maxWidth: "1440px", margin: "0 auto", padding: "0 24px" }, children: [
+        /* @__PURE__ */ jsxs26(
           "div",
           {
             style: {
@@ -906,8 +1142,8 @@ function Footer({
               gap: "32px"
             },
             children: [
-              /* @__PURE__ */ jsxs25("div", { children: [
-                /* @__PURE__ */ jsx31(
+              /* @__PURE__ */ jsxs26("div", { children: [
+                /* @__PURE__ */ jsx34(
                   "p",
                   {
                     style: {
@@ -919,10 +1155,10 @@ function Footer({
                     children: brand
                   }
                 ),
-                tagline && /* @__PURE__ */ jsx31("p", { style: { fontSize: "13px", opacity: 0.7, maxWidth: "300px" }, children: tagline })
+                tagline && /* @__PURE__ */ jsx34("p", { style: { fontSize: "13px", opacity: 0.7, maxWidth: "300px" }, children: tagline })
               ] }),
-              columns.map((col) => /* @__PURE__ */ jsxs25("div", { children: [
-                /* @__PURE__ */ jsx31(
+              columns.map((col) => /* @__PURE__ */ jsxs26("div", { children: [
+                /* @__PURE__ */ jsx34(
                   "p",
                   {
                     style: {
@@ -937,7 +1173,7 @@ function Footer({
                     children: col.title
                   }
                 ),
-                /* @__PURE__ */ jsx31(
+                /* @__PURE__ */ jsx34(
                   "ul",
                   {
                     style: {
@@ -947,7 +1183,7 @@ function Footer({
                       flexDirection: "column",
                       gap: "8px"
                     },
-                    children: col.links.map((link) => /* @__PURE__ */ jsx31("li", { children: /* @__PURE__ */ jsx31(
+                    children: col.links.map((link) => /* @__PURE__ */ jsx34("li", { children: /* @__PURE__ */ jsx34(
                       "a",
                       {
                         href: link.href,
@@ -966,7 +1202,7 @@ function Footer({
             ]
           }
         ),
-        (copyright || bottomLinks) && /* @__PURE__ */ jsxs25(
+        (copyright || bottomLinks) && /* @__PURE__ */ jsxs26(
           "div",
           {
             style: {
@@ -978,7 +1214,7 @@ function Footer({
               alignItems: "center"
             },
             children: [
-              copyright && /* @__PURE__ */ jsx31(
+              copyright && /* @__PURE__ */ jsx34(
                 "p",
                 {
                   style: {
@@ -989,7 +1225,7 @@ function Footer({
                   children: copyright
                 }
               ),
-              bottomLinks && /* @__PURE__ */ jsx31("div", { style: { display: "flex", gap: "16px" }, children: bottomLinks.map((link) => /* @__PURE__ */ jsx31(
+              bottomLinks && /* @__PURE__ */ jsx34("div", { style: { display: "flex", gap: "16px" }, children: bottomLinks.map((link) => /* @__PURE__ */ jsx34(
                 "a",
                 {
                   href: link.href,
@@ -1012,41 +1248,50 @@ function Footer({
 }
 
 // src/components/Textarea/Textarea.tsx
-import { jsx as jsx32, jsxs as jsxs26 } from "react/jsx-runtime";
+import { useId as useId4 } from "react";
+import { Fragment as Fragment3, jsx as jsx35, jsxs as jsxs27 } from "react/jsx-runtime";
 function Textarea({
   label,
   error,
   success,
   className = "",
+  id,
   ...props
 }) {
+  const generatedId = useId4();
+  const inputId = id ?? generatedId;
   const classes = [
     "drp-input",
     error && "drp-input--error",
     success && "drp-input--success",
     className
   ].filter(Boolean).join(" ");
+  const errorMessage = typeof error === "string" ? /* @__PURE__ */ jsx35("span", { className: "drp-field__error", role: "alert", children: error }) : null;
   if (label) {
-    return /* @__PURE__ */ jsxs26("div", { className: "drp-field", children: [
-      /* @__PURE__ */ jsx32("label", { className: "drp-field__label", children: label }),
-      /* @__PURE__ */ jsx32("textarea", { className: classes, ...props })
+    return /* @__PURE__ */ jsxs27("div", { className: "drp-field", children: [
+      /* @__PURE__ */ jsx35("label", { className: "drp-field__label", htmlFor: inputId, children: label }),
+      /* @__PURE__ */ jsx35("textarea", { id: inputId, className: classes, ...props }),
+      errorMessage
     ] });
   }
-  return /* @__PURE__ */ jsx32("textarea", { className: classes, ...props });
+  return /* @__PURE__ */ jsxs27(Fragment3, { children: [
+    /* @__PURE__ */ jsx35("textarea", { id: inputId, className: classes, ...props }),
+    errorMessage
+  ] });
 }
 
 // src/components/Loader/Loader.tsx
-import { jsx as jsx33, jsxs as jsxs27 } from "react/jsx-runtime";
+import { jsx as jsx36, jsxs as jsxs28 } from "react/jsx-runtime";
 function Loader({ size, label, className = "" }) {
   const dimension = size === "sm" ? 20 : size === "lg" ? 48 : 32;
   const borderWidth = size === "sm" ? 2 : size === "lg" ? 4 : 3;
-  return /* @__PURE__ */ jsxs27(
+  return /* @__PURE__ */ jsxs28(
     "div",
     {
       className,
       style: { display: "inline-flex", alignItems: "center", gap: "12px" },
       children: [
-        /* @__PURE__ */ jsx33(
+        /* @__PURE__ */ jsx36(
           "div",
           {
             style: {
@@ -1058,7 +1303,7 @@ function Loader({ size, label, className = "" }) {
             }
           }
         ),
-        label && /* @__PURE__ */ jsx33(
+        label && /* @__PURE__ */ jsx36(
           "span",
           {
             style: {
@@ -1071,14 +1316,14 @@ function Loader({ size, label, className = "" }) {
             children: label
           }
         ),
-        /* @__PURE__ */ jsx33("style", { children: `@keyframes drp-spin { to { transform: rotate(360deg); } }` })
+        /* @__PURE__ */ jsx36("style", { children: `@keyframes drp-spin { to { transform: rotate(360deg); } }` })
       ]
     }
   );
 }
 
 // src/components/Skeleton/Skeleton.tsx
-import { Fragment, jsx as jsx34, jsxs as jsxs28 } from "react/jsx-runtime";
+import { Fragment as Fragment4, jsx as jsx37, jsxs as jsxs29 } from "react/jsx-runtime";
 function Skeleton({
   width,
   height,
@@ -1105,14 +1350,14 @@ function Skeleton({
       height: height || "120px"
     });
   }
-  return /* @__PURE__ */ jsxs28(Fragment, { children: [
-    /* @__PURE__ */ jsx34("div", { className, style: baseStyle }),
-    /* @__PURE__ */ jsx34("style", { children: `@keyframes drp-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }` })
+  return /* @__PURE__ */ jsxs29(Fragment4, { children: [
+    /* @__PURE__ */ jsx37("div", { className, style: baseStyle }),
+    /* @__PURE__ */ jsx37("style", { children: `@keyframes drp-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }` })
   ] });
 }
 
 // src/components/Alert/Alert.tsx
-import { jsx as jsx35, jsxs as jsxs29 } from "react/jsx-runtime";
+import { jsx as jsx38, jsxs as jsxs30 } from "react/jsx-runtime";
 var variantStyles = {
   info: {
     bg: "rgba(0,102,255,0.08)",
@@ -1135,9 +1380,10 @@ function Alert({
   className = ""
 }) {
   const styles = variantStyles[variant];
-  return /* @__PURE__ */ jsxs29(
+  return /* @__PURE__ */ jsxs30(
     "div",
     {
+      role: "alert",
       className,
       style: {
         padding: "16px 20px",
@@ -1149,9 +1395,16 @@ function Alert({
         alignItems: "flex-start"
       },
       children: [
-        /* @__PURE__ */ jsx35("span", { style: { fontWeight: 700, fontSize: "16px", flexShrink: 0 }, children: styles.icon }),
-        /* @__PURE__ */ jsxs29("div", { style: { flex: 1 }, children: [
-          title && /* @__PURE__ */ jsx35(
+        /* @__PURE__ */ jsx38(
+          "span",
+          {
+            style: { fontWeight: 700, fontSize: "16px", flexShrink: 0 },
+            "aria-hidden": "true",
+            children: styles.icon
+          }
+        ),
+        /* @__PURE__ */ jsxs30("div", { style: { flex: 1 }, children: [
+          title && /* @__PURE__ */ jsx38(
             "p",
             {
               style: {
@@ -1164,12 +1417,13 @@ function Alert({
               children: title
             }
           ),
-          /* @__PURE__ */ jsx35("div", { style: { fontSize: "13px", lineHeight: 1.5 }, children })
+          /* @__PURE__ */ jsx38("div", { style: { fontSize: "13px", lineHeight: 1.5 }, children })
         ] }),
-        onClose && /* @__PURE__ */ jsx35(
+        onClose && /* @__PURE__ */ jsx38(
           "button",
           {
             onClick: onClose,
+            "aria-label": "Close alert",
             style: {
               background: "none",
               border: "none",
@@ -1188,7 +1442,7 @@ function Alert({
 }
 
 // src/components/EmptyState/EmptyState.tsx
-import { jsx as jsx36, jsxs as jsxs30 } from "react/jsx-runtime";
+import { jsx as jsx39, jsxs as jsxs31 } from "react/jsx-runtime";
 function EmptyState({
   icon = "\u2205",
   title,
@@ -1196,7 +1450,7 @@ function EmptyState({
   action,
   className = ""
 }) {
-  return /* @__PURE__ */ jsxs30(
+  return /* @__PURE__ */ jsxs31(
     "div",
     {
       className: `drp-empty ${className}`,
@@ -1206,7 +1460,7 @@ function EmptyState({
         border: "2px dashed rgba(0,0,0,0.2)"
       },
       children: [
-        /* @__PURE__ */ jsx36(
+        /* @__PURE__ */ jsx39(
           "div",
           {
             style: {
@@ -1219,7 +1473,7 @@ function EmptyState({
             children: icon
           }
         ),
-        /* @__PURE__ */ jsx36(
+        /* @__PURE__ */ jsx39(
           "h3",
           {
             style: {
@@ -1232,7 +1486,7 @@ function EmptyState({
             children: title
           }
         ),
-        description && /* @__PURE__ */ jsx36(
+        description && /* @__PURE__ */ jsx39(
           "p",
           {
             style: {
@@ -1251,10 +1505,10 @@ function EmptyState({
 }
 
 // src/components/Divider/Divider.tsx
-import { jsx as jsx37, jsxs as jsxs31 } from "react/jsx-runtime";
+import { jsx as jsx40, jsxs as jsxs32 } from "react/jsx-runtime";
 function Divider({ label, className = "" }) {
   if (label) {
-    return /* @__PURE__ */ jsxs31(
+    return /* @__PURE__ */ jsxs32(
       "div",
       {
         className: `drp-divider ${className}`,
@@ -1264,13 +1518,13 @@ function Divider({ label, className = "" }) {
           gap: "16px"
         },
         children: [
-          /* @__PURE__ */ jsx37(
+          /* @__PURE__ */ jsx40(
             "div",
             {
               style: { flex: 1, height: "2px", background: "var(--drp-black)" }
             }
           ),
-          /* @__PURE__ */ jsx37(
+          /* @__PURE__ */ jsx40(
             "span",
             {
               style: {
@@ -1284,7 +1538,7 @@ function Divider({ label, className = "" }) {
               children: label
             }
           ),
-          /* @__PURE__ */ jsx37(
+          /* @__PURE__ */ jsx40(
             "div",
             {
               style: { flex: 1, height: "2px", background: "var(--drp-black)" }
@@ -1294,7 +1548,7 @@ function Divider({ label, className = "" }) {
       }
     );
   }
-  return /* @__PURE__ */ jsx37(
+  return /* @__PURE__ */ jsx40(
     "hr",
     {
       className: `drp-divider ${className}`,
@@ -1308,12 +1562,162 @@ function Divider({ label, className = "" }) {
   );
 }
 
+// src/components/Testimonial/Testimonial.tsx
+import { jsx as jsx41, jsxs as jsxs33 } from "react/jsx-runtime";
+function Testimonial({
+  quote,
+  name,
+  role,
+  avatar,
+  className = ""
+}) {
+  return /* @__PURE__ */ jsxs33("div", { className: ["drp-testimonial", className].filter(Boolean).join(" "), children: [
+    /* @__PURE__ */ jsx41("p", { className: "drp-testimonial__quote", children: quote }),
+    /* @__PURE__ */ jsxs33("div", { className: "drp-testimonial__author", children: [
+      avatar && /* @__PURE__ */ jsx41("div", { className: "drp-testimonial__avatar", children: avatar }),
+      /* @__PURE__ */ jsxs33("div", { children: [
+        /* @__PURE__ */ jsx41("div", { className: "drp-testimonial__name", children: name }),
+        role && /* @__PURE__ */ jsx41("div", { className: "drp-testimonial__role", children: role })
+      ] })
+    ] })
+  ] });
+}
+
+// src/components/Spinner/Spinner.tsx
+import { jsx as jsx42 } from "react/jsx-runtime";
+function Spinner({ className = "" }) {
+  return /* @__PURE__ */ jsx42(
+    "div",
+    {
+      className: ["drp-spinner", className].filter(Boolean).join(" "),
+      role: "status",
+      "aria-label": "Loading"
+    }
+  );
+}
+
+// src/components/Toast/Toast.tsx
+import { jsx as jsx43, jsxs as jsxs34 } from "react/jsx-runtime";
+function Toast({ variant, message, icon, className = "" }) {
+  const classes = [
+    "drp-toast",
+    variant ? `drp-toast--${variant}` : "",
+    className
+  ].filter(Boolean).join(" ");
+  return /* @__PURE__ */ jsxs34("div", { className: classes, role: "status", children: [
+    icon && /* @__PURE__ */ jsx43("span", { children: icon }),
+    /* @__PURE__ */ jsx43("span", { children: message })
+  ] });
+}
+
+// src/components/Dropzone/Dropzone.tsx
+import { useState as useState3, useRef as useRef2 } from "react";
+import { jsx as jsx44, jsxs as jsxs35 } from "react/jsx-runtime";
+function Dropzone({
+  onFiles,
+  accept,
+  hint = "PNG, JPG, PDF up to 10MB",
+  icon = "\u2191",
+  className = "",
+  "aria-label": ariaLabel = "Upload file"
+}) {
+  const [active, setActive] = useState3(false);
+  const inputRef = useRef2(null);
+  function handleDragOver(e2) {
+    e2.preventDefault();
+    setActive(true);
+  }
+  function handleDragLeave() {
+    setActive(false);
+  }
+  function handleDrop(e2) {
+    e2.preventDefault();
+    setActive(false);
+    const files = Array.from(e2.dataTransfer.files);
+    if (files.length) onFiles?.(files);
+  }
+  function handleChange(e2) {
+    const files = Array.from(e2.target.files ?? []);
+    if (files.length) onFiles?.(files);
+  }
+  function handleKeyDown(e2) {
+    if (e2.key === "Enter" || e2.key === " ") {
+      e2.preventDefault();
+      inputRef.current?.click();
+    }
+  }
+  const classes = [
+    "drp-dropzone",
+    active ? "drp-dropzone--active" : "",
+    className
+  ].filter(Boolean).join(" ");
+  return /* @__PURE__ */ jsxs35(
+    "div",
+    {
+      className: classes,
+      role: "button",
+      tabIndex: 0,
+      "aria-label": ariaLabel,
+      onDragOver: handleDragOver,
+      onDragLeave: handleDragLeave,
+      onDrop: handleDrop,
+      onClick: () => inputRef.current?.click(),
+      onKeyDown: handleKeyDown,
+      children: [
+        /* @__PURE__ */ jsx44(
+          "input",
+          {
+            ref: inputRef,
+            type: "file",
+            accept,
+            multiple: true,
+            style: { display: "none" },
+            onChange: handleChange
+          }
+        ),
+        /* @__PURE__ */ jsx44("span", { className: "drp-dropzone__icon", children: icon }),
+        /* @__PURE__ */ jsx44("span", { className: "drp-dropzone__text", children: "Drop files here or click to upload" }),
+        hint && /* @__PURE__ */ jsx44("span", { className: "drp-dropzone__hint", children: hint })
+      ]
+    }
+  );
+}
+
+// src/components/FeatureList/FeatureList.tsx
+import { jsx as jsx45, jsxs as jsxs36 } from "react/jsx-runtime";
+function FeatureList({ features, className = "" }) {
+  return /* @__PURE__ */ jsx45("div", { className: ["drp-features", className].filter(Boolean).join(" "), children: features.map((f3, i2) => /* @__PURE__ */ jsxs36("div", { className: "drp-feature", children: [
+    /* @__PURE__ */ jsx45("div", { className: "drp-feature__icon", children: f3.icon }),
+    /* @__PURE__ */ jsx45("div", { className: "drp-feature__title", children: f3.title }),
+    /* @__PURE__ */ jsx45("div", { className: "drp-feature__text", children: f3.text })
+  ] }, i2)) });
+}
+
+// src/components/CtaBanner/CtaBanner.tsx
+import { jsx as jsx46, jsxs as jsxs37 } from "react/jsx-runtime";
+function CtaBanner({
+  title,
+  text,
+  children,
+  className = ""
+}) {
+  return /* @__PURE__ */ jsxs37("div", { className: ["drp-cta", className].filter(Boolean).join(" "), children: [
+    /* @__PURE__ */ jsx46("div", { className: "drp-cta__title", children: title }),
+    text && /* @__PURE__ */ jsx46("p", { className: "drp-cta__text", children: text }),
+    children
+  ] });
+}
+
+// src/screens/Dashboard/Dashboard.tsx
+import { useState as useState4 } from "react";
+import { jsx as jsx47, jsxs as jsxs38 } from "react/jsx-runtime";
+
 // src/screens/Auth/SignIn.tsx
-import { useState as useState3 } from "react";
+import { useState as useState5 } from "react";
 
 // src/screens/Auth/AuthLayout.tsx
-import { jsx as jsx38, jsxs as jsxs32 } from "react/jsx-runtime";
-var DecorativePanel = () => /* @__PURE__ */ jsxs32(
+import { jsx as jsx48, jsxs as jsxs39 } from "react/jsx-runtime";
+var DecorativePanel = () => /* @__PURE__ */ jsxs39(
   "div",
   {
     className: "drp-decorative-panel",
@@ -1325,7 +1729,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
       background: "var(--drp-cream)"
     },
     children: [
-      /* @__PURE__ */ jsx38(
+      /* @__PURE__ */ jsx48(
         "div",
         {
           style: {
@@ -1341,7 +1745,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
           }
         }
       ),
-      /* @__PURE__ */ jsxs32(
+      /* @__PURE__ */ jsxs39(
         "div",
         {
           className: "drp-card",
@@ -1356,7 +1760,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
             background: "var(--drp-white)"
           },
           children: [
-            /* @__PURE__ */ jsx38(
+            /* @__PURE__ */ jsx48(
               "div",
               {
                 className: "drp-caption",
@@ -1364,7 +1768,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
                 children: "NM Tasks"
               }
             ),
-            /* @__PURE__ */ jsx38(
+            /* @__PURE__ */ jsx48(
               "div",
               {
                 className: "drp-flex drp-items-center",
@@ -1374,7 +1778,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
                   height: "36px",
                   marginBottom: "var(--drp-space-2)"
                 },
-                children: [14, 22, 18, 30, 24, 20, 28].map((h2, i2) => /* @__PURE__ */ jsx38(
+                children: [14, 22, 18, 30, 24, 20, 28].map((h2, i2) => /* @__PURE__ */ jsx48(
                   "div",
                   {
                     style: {
@@ -1387,11 +1791,11 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
                 ))
               }
             ),
-            /* @__PURE__ */ jsx38("div", { className: "drp-caption", children: "Mon -- Sun" })
+            /* @__PURE__ */ jsx48("div", { className: "drp-caption", children: "Mon -- Sun" })
           ]
         }
       ),
-      /* @__PURE__ */ jsxs32(
+      /* @__PURE__ */ jsxs39(
         "div",
         {
           className: "drp-card",
@@ -1406,13 +1810,13 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
             background: "var(--drp-white)"
           },
           children: [
-            /* @__PURE__ */ jsxs32(
+            /* @__PURE__ */ jsxs39(
               "div",
               {
                 className: "drp-flex drp-items-center drp-gap-3",
                 style: { marginBottom: "var(--drp-space-3)" },
                 children: [
-                  /* @__PURE__ */ jsx38(
+                  /* @__PURE__ */ jsx48(
                     "div",
                     {
                       style: {
@@ -1423,14 +1827,14 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
                       }
                     }
                   ),
-                  /* @__PURE__ */ jsxs32("div", { children: [
-                    /* @__PURE__ */ jsx38("div", { className: "drp-text drp-text--sm drp-text--bold", children: "Delafaran Sorgato" }),
-                    /* @__PURE__ */ jsx38("div", { className: "drp-caption", children: "in progress" })
+                  /* @__PURE__ */ jsxs39("div", { children: [
+                    /* @__PURE__ */ jsx48("div", { className: "drp-text drp-text--sm drp-text--bold", children: "Delafaran Sorgato" }),
+                    /* @__PURE__ */ jsx48("div", { className: "drp-caption", children: "in progress" })
                   ] })
                 ]
               }
             ),
-            /* @__PURE__ */ jsx38(
+            /* @__PURE__ */ jsx48(
               "div",
               {
                 className: "drp-bg-purple",
@@ -1444,20 +1848,20 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
                 children: "Task"
               }
             ),
-            /* @__PURE__ */ jsxs32("div", { className: "drp-flex drp-gap-3", children: [
-              /* @__PURE__ */ jsxs32("div", { className: "drp-text-center", children: [
-                /* @__PURE__ */ jsx38("div", { className: "drp-text drp-text--bold", children: "$123.20" }),
-                /* @__PURE__ */ jsx38("div", { className: "drp-caption", children: "Est." })
+            /* @__PURE__ */ jsxs39("div", { className: "drp-flex drp-gap-3", children: [
+              /* @__PURE__ */ jsxs39("div", { className: "drp-text-center", children: [
+                /* @__PURE__ */ jsx48("div", { className: "drp-text drp-text--bold", children: "$123.20" }),
+                /* @__PURE__ */ jsx48("div", { className: "drp-caption", children: "Est." })
               ] }),
-              /* @__PURE__ */ jsxs32("div", { className: "drp-text-center", children: [
-                /* @__PURE__ */ jsx38("div", { className: "drp-text drp-text--bold", children: "14" }),
-                /* @__PURE__ */ jsx38("div", { className: "drp-caption", children: "hrs" })
+              /* @__PURE__ */ jsxs39("div", { className: "drp-text-center", children: [
+                /* @__PURE__ */ jsx48("div", { className: "drp-text drp-text--bold", children: "14" }),
+                /* @__PURE__ */ jsx48("div", { className: "drp-caption", children: "hrs" })
               ] })
             ] })
           ]
         }
       ),
-      /* @__PURE__ */ jsx38(
+      /* @__PURE__ */ jsx48(
         "div",
         {
           className: "drp-card",
@@ -1471,10 +1875,10 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
             whiteSpace: "nowrap",
             background: "var(--drp-white)"
           },
-          children: /* @__PURE__ */ jsx38("span", { className: "drp-text drp-text--sm drp-text--semibold", children: "Update design system" })
+          children: /* @__PURE__ */ jsx48("span", { className: "drp-text drp-text--sm drp-text--semibold", children: "Update design system" })
         }
       ),
-      /* @__PURE__ */ jsxs32(
+      /* @__PURE__ */ jsxs39(
         "div",
         {
           className: "drp-card",
@@ -1489,7 +1893,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
             background: "var(--drp-white)"
           },
           children: [
-            /* @__PURE__ */ jsx38(
+            /* @__PURE__ */ jsx48(
               "div",
               {
                 className: "drp-caption",
@@ -1497,9 +1901,9 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
                 children: "Total revenue"
               }
             ),
-            /* @__PURE__ */ jsx38("div", { className: "drp-h4", style: { marginBottom: "var(--drp-space-2)" }, children: "$68,310.28" }),
-            /* @__PURE__ */ jsxs32("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-              /* @__PURE__ */ jsx38(
+            /* @__PURE__ */ jsx48("div", { className: "drp-h4", style: { marginBottom: "var(--drp-space-2)" }, children: "$68,310.28" }),
+            /* @__PURE__ */ jsxs39("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+              /* @__PURE__ */ jsx48(
                 "span",
                 {
                   style: {
@@ -1512,12 +1916,12 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
                   children: "7,384"
                 }
               ),
-              /* @__PURE__ */ jsx38("span", { className: "drp-caption", children: "transactions" })
+              /* @__PURE__ */ jsx48("span", { className: "drp-caption", children: "transactions" })
             ] })
           ]
         }
       ),
-      /* @__PURE__ */ jsxs32(
+      /* @__PURE__ */ jsxs39(
         "div",
         {
           className: "drp-card",
@@ -1532,7 +1936,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
             background: "var(--drp-white)"
           },
           children: [
-            /* @__PURE__ */ jsx38(
+            /* @__PURE__ */ jsx48(
               "div",
               {
                 className: "drp-text drp-text--sm drp-text--semibold",
@@ -1540,7 +1944,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
                 children: "Photobook for family move"
               }
             ),
-            /* @__PURE__ */ jsx38(
+            /* @__PURE__ */ jsx48(
               "div",
               {
                 className: "drp-flex drp-items-center drp-gap-2",
@@ -1551,13 +1955,13 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
                   color: "var(--drp-purple)",
                   fontWeight: "var(--drp-weight-semibold)"
                 },
-                children: /* @__PURE__ */ jsx38("span", { children: "Due on 15 Aug 2025" })
+                children: /* @__PURE__ */ jsx48("span", { children: "Due on 15 Aug 2025" })
               }
             )
           ]
         }
       ),
-      /* @__PURE__ */ jsx38(
+      /* @__PURE__ */ jsx48(
         "div",
         {
           className: "drp-card",
@@ -1570,10 +1974,10 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
             zIndex: 10,
             background: "var(--drp-white)"
           },
-          children: /* @__PURE__ */ jsx38("span", { className: "drp-text drp-text--sm drp-text--semibold", children: "Design tasks" })
+          children: /* @__PURE__ */ jsx48("span", { className: "drp-text drp-text--sm drp-text--semibold", children: "Design tasks" })
         }
       ),
-      /* @__PURE__ */ jsx38(
+      /* @__PURE__ */ jsx48(
         "div",
         {
           className: "drp-card",
@@ -1586,10 +1990,10 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
             zIndex: 10,
             background: "var(--drp-white)"
           },
-          children: /* @__PURE__ */ jsx38("span", { className: "drp-text drp-text--sm", children: "Mockup for task app" })
+          children: /* @__PURE__ */ jsx48("span", { className: "drp-text drp-text--sm", children: "Mockup for task app" })
         }
       ),
-      /* @__PURE__ */ jsx38(
+      /* @__PURE__ */ jsx48(
         "div",
         {
           style: {
@@ -1603,7 +2007,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
           }
         }
       ),
-      /* @__PURE__ */ jsx38(
+      /* @__PURE__ */ jsx48(
         "div",
         {
           style: {
@@ -1617,7 +2021,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
           }
         }
       ),
-      /* @__PURE__ */ jsx38(
+      /* @__PURE__ */ jsx48(
         "div",
         {
           style: {
@@ -1631,7 +2035,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
           }
         }
       ),
-      /* @__PURE__ */ jsx38(
+      /* @__PURE__ */ jsx48(
         "svg",
         {
           style: { position: "absolute", top: "5%", right: "28%", zIndex: 10 },
@@ -1639,7 +2043,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
           height: "40",
           viewBox: "0 0 60 40",
           fill: "none",
-          children: /* @__PURE__ */ jsx38(
+          children: /* @__PURE__ */ jsx48(
             "path",
             {
               d: "M2 20 Q10 5 20 20 Q30 35 40 20 Q50 5 58 20",
@@ -1651,7 +2055,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
           )
         }
       ),
-      /* @__PURE__ */ jsx38(
+      /* @__PURE__ */ jsx48(
         "svg",
         {
           style: { position: "absolute", bottom: "28%", right: "18%", zIndex: 10 },
@@ -1659,7 +2063,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
           height: "34",
           viewBox: "0 0 50 34",
           fill: "none",
-          children: /* @__PURE__ */ jsx38(
+          children: /* @__PURE__ */ jsx48(
             "path",
             {
               d: "M2 17 Q10 4 18 17 Q26 30 34 17 Q42 4 48 17",
@@ -1671,7 +2075,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
           )
         }
       ),
-      /* @__PURE__ */ jsx38("style", { children: `
+      /* @__PURE__ */ jsx48("style", { children: `
       @media (min-width: 1024px) {
         .drp-decorative-panel { display: flex !important; }
       }
@@ -1679,7 +2083,7 @@ var DecorativePanel = () => /* @__PURE__ */ jsxs32(
     ]
   }
 );
-var AuthLayout = ({ children }) => /* @__PURE__ */ jsxs32(
+var AuthLayout = ({ children }) => /* @__PURE__ */ jsxs39(
   "div",
   {
     className: "drp-flex",
@@ -1688,7 +2092,7 @@ var AuthLayout = ({ children }) => /* @__PURE__ */ jsxs32(
       fontFamily: "var(--drp-font-primary)"
     },
     children: [
-      /* @__PURE__ */ jsxs32(
+      /* @__PURE__ */ jsxs39(
         "div",
         {
           className: "drp-flex-col",
@@ -1701,18 +2105,18 @@ var AuthLayout = ({ children }) => /* @__PURE__ */ jsxs32(
             flexShrink: 0
           },
           children: [
-            /* @__PURE__ */ jsx38("div", { style: { marginBottom: "var(--drp-space-12)" }, children: /* @__PURE__ */ jsxs32(
+            /* @__PURE__ */ jsx48("div", { style: { marginBottom: "var(--drp-space-12)" }, children: /* @__PURE__ */ jsxs39(
               "span",
               {
                 className: "drp-h5",
                 style: { fontWeight: "var(--drp-weight-heavy)" },
                 children: [
                   "Doctor Project",
-                  /* @__PURE__ */ jsx38("span", { style: { color: "var(--drp-purple)" }, children: "." })
+                  /* @__PURE__ */ jsx48("span", { style: { color: "var(--drp-purple)" }, children: "." })
                 ]
               }
             ) }),
-            /* @__PURE__ */ jsx38(
+            /* @__PURE__ */ jsx48(
               "div",
               {
                 className: "drp-flex-col",
@@ -1727,25 +2131,25 @@ var AuthLayout = ({ children }) => /* @__PURE__ */ jsxs32(
           ]
         }
       ),
-      /* @__PURE__ */ jsx38(DecorativePanel, {})
+      /* @__PURE__ */ jsx48(DecorativePanel, {})
     ]
   }
 );
 
 // src/screens/Auth/SignIn.tsx
-import { jsx as jsx39, jsxs as jsxs33 } from "react/jsx-runtime";
+import { jsx as jsx49, jsxs as jsxs40 } from "react/jsx-runtime";
 var SignIn = () => {
-  const [email, setEmail] = useState3("catherine.shaw@gmail.com");
-  const [password, setPassword] = useState3("");
-  const [showPassword, setShowPassword] = useState3(false);
-  const [rememberMe, setRememberMe] = useState3(false);
+  const [email, setEmail] = useState5("catherine.shaw@gmail.com");
+  const [password, setPassword] = useState5("");
+  const [showPassword, setShowPassword] = useState5(false);
+  const [rememberMe, setRememberMe] = useState5(false);
   const handleSubmit = (e2) => {
     e2.preventDefault();
     console.log("Sign in:", { email, password, rememberMe });
   };
-  return /* @__PURE__ */ jsx39(AuthLayout, { children: /* @__PURE__ */ jsxs33("div", { children: [
-    /* @__PURE__ */ jsx39("h1", { className: "drp-h2", style: { marginBottom: "var(--drp-space-2)" }, children: "Sign in" }),
-    /* @__PURE__ */ jsx39(
+  return /* @__PURE__ */ jsx49(AuthLayout, { children: /* @__PURE__ */ jsxs40("div", { children: [
+    /* @__PURE__ */ jsx49("h1", { className: "drp-h2", style: { marginBottom: "var(--drp-space-2)" }, children: "Sign in" }),
+    /* @__PURE__ */ jsx49(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted",
@@ -1753,11 +2157,11 @@ var SignIn = () => {
         children: "Enter your account details or use QR code"
       }
     ),
-    /* @__PURE__ */ jsxs33("form", { onSubmit: handleSubmit, className: "drp-form-stack", children: [
-      /* @__PURE__ */ jsxs33("div", { className: "drp-field", children: [
-        /* @__PURE__ */ jsx39("label", { className: "drp-field__label", children: "Email" }),
-        /* @__PURE__ */ jsxs33("div", { className: "drp-field--has-icon", children: [
-          /* @__PURE__ */ jsx39(
+    /* @__PURE__ */ jsxs40("form", { onSubmit: handleSubmit, className: "drp-form-stack", children: [
+      /* @__PURE__ */ jsxs40("div", { className: "drp-field", children: [
+        /* @__PURE__ */ jsx49("label", { className: "drp-field__label", children: "Email" }),
+        /* @__PURE__ */ jsxs40("div", { className: "drp-field--has-icon", children: [
+          /* @__PURE__ */ jsx49(
             "input",
             {
               className: "drp-input",
@@ -1768,7 +2172,7 @@ var SignIn = () => {
               style: { width: "100%" }
             }
           ),
-          /* @__PURE__ */ jsxs33(
+          /* @__PURE__ */ jsxs40(
             "svg",
             {
               className: "drp-field__icon",
@@ -1782,17 +2186,17 @@ var SignIn = () => {
               strokeLinejoin: "round",
               style: { color: "var(--drp-grey)" },
               children: [
-                /* @__PURE__ */ jsx39("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
-                /* @__PURE__ */ jsx39("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
+                /* @__PURE__ */ jsx49("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
+                /* @__PURE__ */ jsx49("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
               ]
             }
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsxs33("div", { className: "drp-field", children: [
-        /* @__PURE__ */ jsx39("label", { className: "drp-field__label", children: "Password" }),
-        /* @__PURE__ */ jsxs33("div", { className: "drp-field--has-icon", children: [
-          /* @__PURE__ */ jsx39(
+      /* @__PURE__ */ jsxs40("div", { className: "drp-field", children: [
+        /* @__PURE__ */ jsx49("label", { className: "drp-field__label", children: "Password" }),
+        /* @__PURE__ */ jsxs40("div", { className: "drp-field--has-icon", children: [
+          /* @__PURE__ */ jsx49(
             "input",
             {
               className: "drp-input",
@@ -1803,7 +2207,7 @@ var SignIn = () => {
               style: { width: "100%" }
             }
           ),
-          /* @__PURE__ */ jsx39(
+          /* @__PURE__ */ jsx49(
             "button",
             {
               type: "button",
@@ -1818,7 +2222,7 @@ var SignIn = () => {
                 padding: 0,
                 color: "var(--drp-grey)"
               },
-              children: showPassword ? /* @__PURE__ */ jsxs33(
+              children: showPassword ? /* @__PURE__ */ jsxs40(
                 "svg",
                 {
                   width: "16",
@@ -1830,12 +2234,12 @@ var SignIn = () => {
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   children: [
-                    /* @__PURE__ */ jsx39("path", { d: "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" }),
-                    /* @__PURE__ */ jsx39("path", { d: "M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" }),
-                    /* @__PURE__ */ jsx39("line", { x1: "1", y1: "1", x2: "23", y2: "23" })
+                    /* @__PURE__ */ jsx49("path", { d: "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" }),
+                    /* @__PURE__ */ jsx49("path", { d: "M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" }),
+                    /* @__PURE__ */ jsx49("line", { x1: "1", y1: "1", x2: "23", y2: "23" })
                   ]
                 }
-              ) : /* @__PURE__ */ jsxs33(
+              ) : /* @__PURE__ */ jsxs40(
                 "svg",
                 {
                   width: "16",
@@ -1847,8 +2251,8 @@ var SignIn = () => {
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   children: [
-                    /* @__PURE__ */ jsx39("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
-                    /* @__PURE__ */ jsx39("circle", { cx: "12", cy: "12", r: "3" })
+                    /* @__PURE__ */ jsx49("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
+                    /* @__PURE__ */ jsx49("circle", { cx: "12", cy: "12", r: "3" })
                   ]
                 }
               )
@@ -1856,9 +2260,9 @@ var SignIn = () => {
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsxs33("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
-        /* @__PURE__ */ jsxs33("label", { className: "drp-checkbox", children: [
-          /* @__PURE__ */ jsx39(
+      /* @__PURE__ */ jsxs40("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
+        /* @__PURE__ */ jsxs40("label", { className: "drp-checkbox", children: [
+          /* @__PURE__ */ jsx49(
             "input",
             {
               type: "checkbox",
@@ -1868,7 +2272,7 @@ var SignIn = () => {
           ),
           "Remember me"
         ] }),
-        /* @__PURE__ */ jsx39(
+        /* @__PURE__ */ jsx49(
           "a",
           {
             href: "#",
@@ -1878,7 +2282,7 @@ var SignIn = () => {
           }
         )
       ] }),
-      /* @__PURE__ */ jsx39(
+      /* @__PURE__ */ jsx49(
         "button",
         {
           type: "submit",
@@ -1886,18 +2290,18 @@ var SignIn = () => {
           children: "Log in"
         }
       ),
-      /* @__PURE__ */ jsxs33("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ jsx39("div", { className: "drp-divider", style: { flex: 1, margin: 0 } }),
-        /* @__PURE__ */ jsx39("span", { className: "drp-text drp-text--sm drp-text--muted", children: "or" }),
-        /* @__PURE__ */ jsx39("div", { className: "drp-divider", style: { flex: 1, margin: 0 } })
+      /* @__PURE__ */ jsxs40("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ jsx49("div", { className: "drp-divider", style: { flex: 1, margin: 0 } }),
+        /* @__PURE__ */ jsx49("span", { className: "drp-text drp-text--sm drp-text--muted", children: "or" }),
+        /* @__PURE__ */ jsx49("div", { className: "drp-divider", style: { flex: 1, margin: 0 } })
       ] }),
-      /* @__PURE__ */ jsxs33(
+      /* @__PURE__ */ jsxs40(
         "button",
         {
           type: "button",
           className: "drp-btn drp-btn--outline drp-btn--block",
           children: [
-            /* @__PURE__ */ jsxs33(
+            /* @__PURE__ */ jsxs40(
               "svg",
               {
                 width: "16",
@@ -1909,10 +2313,10 @@ var SignIn = () => {
                 strokeLinecap: "round",
                 strokeLinejoin: "round",
                 children: [
-                  /* @__PURE__ */ jsx39("rect", { x: "3", y: "3", width: "7", height: "7" }),
-                  /* @__PURE__ */ jsx39("rect", { x: "14", y: "3", width: "7", height: "7" }),
-                  /* @__PURE__ */ jsx39("rect", { x: "3", y: "14", width: "7", height: "7" }),
-                  /* @__PURE__ */ jsx39(
+                  /* @__PURE__ */ jsx49("rect", { x: "3", y: "3", width: "7", height: "7" }),
+                  /* @__PURE__ */ jsx49("rect", { x: "14", y: "3", width: "7", height: "7" }),
+                  /* @__PURE__ */ jsx49("rect", { x: "3", y: "14", width: "7", height: "7" }),
+                  /* @__PURE__ */ jsx49(
                     "path",
                     {
                       d: "M14 14h1v1h-1zM17 14h1v1h-1zM20 14h1v1h-1zM14 17h1v1h-1zM17 17h1v1h-1zM20 17h1v1h-1zM14 20h1v1h-1zM17 20h1v1h-1zM20 20h1v1h-1z",
@@ -1928,7 +2332,7 @@ var SignIn = () => {
         }
       )
     ] }),
-    /* @__PURE__ */ jsxs33(
+    /* @__PURE__ */ jsxs40(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted drp-text-center",
@@ -1936,7 +2340,7 @@ var SignIn = () => {
         children: [
           "You don't have an account?",
           " ",
-          /* @__PURE__ */ jsx39(
+          /* @__PURE__ */ jsx49(
             "a",
             {
               href: "#",
@@ -1952,23 +2356,23 @@ var SignIn = () => {
 };
 
 // src/screens/Auth/SignUp.tsx
-import { useState as useState4 } from "react";
-import { jsx as jsx40, jsxs as jsxs34 } from "react/jsx-runtime";
+import { useState as useState6 } from "react";
+import { jsx as jsx50, jsxs as jsxs41 } from "react/jsx-runtime";
 var SignUp = () => {
-  const [country, setCountry] = useState4("United States");
-  const [countryBusiness, setCountryBusiness] = useState4("");
-  const [email, setEmail] = useState4("catherine.shaw4");
-  const [password, setPassword] = useState4("");
-  const [showPassword, setShowPassword] = useState4(false);
-  const [receiveUpdates, setReceiveUpdates] = useState4(false);
-  const [agreeTerms, setAgreeTerms] = useState4(false);
+  const [country, setCountry] = useState6("United States");
+  const [countryBusiness, setCountryBusiness] = useState6("");
+  const [email, setEmail] = useState6("catherine.shaw4");
+  const [password, setPassword] = useState6("");
+  const [showPassword, setShowPassword] = useState6(false);
+  const [receiveUpdates, setReceiveUpdates] = useState6(false);
+  const [agreeTerms, setAgreeTerms] = useState6(false);
   const handleSubmit = (e2) => {
     e2.preventDefault();
     console.log("Sign up:", { country, countryBusiness, email, password });
   };
-  return /* @__PURE__ */ jsx40(AuthLayout, { children: /* @__PURE__ */ jsxs34("div", { children: [
-    /* @__PURE__ */ jsx40("h1", { className: "drp-h2", style: { marginBottom: "var(--drp-space-2)" }, children: "Sign up" }),
-    /* @__PURE__ */ jsx40(
+  return /* @__PURE__ */ jsx50(AuthLayout, { children: /* @__PURE__ */ jsxs41("div", { children: [
+    /* @__PURE__ */ jsx50("h1", { className: "drp-h2", style: { marginBottom: "var(--drp-space-2)" }, children: "Sign up" }),
+    /* @__PURE__ */ jsx50(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted",
@@ -1976,10 +2380,10 @@ var SignUp = () => {
         children: "Fill out the form below using your current location"
       }
     ),
-    /* @__PURE__ */ jsxs34("form", { onSubmit: handleSubmit, className: "drp-form-stack", children: [
-      /* @__PURE__ */ jsxs34("div", { className: "drp-field", children: [
-        /* @__PURE__ */ jsx40("label", { className: "drp-field__label", children: "Country/Region of Residence" }),
-        /* @__PURE__ */ jsxs34(
+    /* @__PURE__ */ jsxs41("form", { onSubmit: handleSubmit, className: "drp-form-stack", children: [
+      /* @__PURE__ */ jsxs41("div", { className: "drp-field", children: [
+        /* @__PURE__ */ jsx50("label", { className: "drp-field__label", children: "Country/Region of Residence" }),
+        /* @__PURE__ */ jsxs41(
           "select",
           {
             className: "drp-select",
@@ -1987,20 +2391,20 @@ var SignUp = () => {
             onChange: (e2) => setCountry(e2.target.value),
             style: { width: "100%" },
             children: [
-              /* @__PURE__ */ jsx40("option", { value: "United States", children: "United States" }),
-              /* @__PURE__ */ jsx40("option", { value: "United Kingdom", children: "United Kingdom" }),
-              /* @__PURE__ */ jsx40("option", { value: "Canada", children: "Canada" }),
-              /* @__PURE__ */ jsx40("option", { value: "Australia", children: "Australia" }),
-              /* @__PURE__ */ jsx40("option", { value: "Germany", children: "Germany" }),
-              /* @__PURE__ */ jsx40("option", { value: "France", children: "France" })
+              /* @__PURE__ */ jsx50("option", { value: "United States", children: "United States" }),
+              /* @__PURE__ */ jsx50("option", { value: "United Kingdom", children: "United Kingdom" }),
+              /* @__PURE__ */ jsx50("option", { value: "Canada", children: "Canada" }),
+              /* @__PURE__ */ jsx50("option", { value: "Australia", children: "Australia" }),
+              /* @__PURE__ */ jsx50("option", { value: "Germany", children: "Germany" }),
+              /* @__PURE__ */ jsx50("option", { value: "France", children: "France" })
             ]
           }
         )
       ] }),
-      /* @__PURE__ */ jsxs34("div", { className: "drp-field", children: [
-        /* @__PURE__ */ jsx40("label", { className: "drp-field__label", children: "Email" }),
-        /* @__PURE__ */ jsxs34("div", { className: "drp-field--has-icon", children: [
-          /* @__PURE__ */ jsx40(
+      /* @__PURE__ */ jsxs41("div", { className: "drp-field", children: [
+        /* @__PURE__ */ jsx50("label", { className: "drp-field__label", children: "Email" }),
+        /* @__PURE__ */ jsxs41("div", { className: "drp-field--has-icon", children: [
+          /* @__PURE__ */ jsx50(
             "input",
             {
               className: "drp-input",
@@ -2011,7 +2415,7 @@ var SignUp = () => {
               style: { width: "100%" }
             }
           ),
-          /* @__PURE__ */ jsxs34(
+          /* @__PURE__ */ jsxs41(
             "svg",
             {
               className: "drp-field__icon",
@@ -2025,17 +2429,17 @@ var SignUp = () => {
               strokeLinejoin: "round",
               style: { color: "var(--drp-grey)" },
               children: [
-                /* @__PURE__ */ jsx40("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
-                /* @__PURE__ */ jsx40("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
+                /* @__PURE__ */ jsx50("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
+                /* @__PURE__ */ jsx50("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
               ]
             }
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsxs34("div", { className: "drp-field", children: [
-        /* @__PURE__ */ jsx40("label", { className: "drp-field__label", children: "Password" }),
-        /* @__PURE__ */ jsxs34("div", { className: "drp-field--has-icon", children: [
-          /* @__PURE__ */ jsx40(
+      /* @__PURE__ */ jsxs41("div", { className: "drp-field", children: [
+        /* @__PURE__ */ jsx50("label", { className: "drp-field__label", children: "Password" }),
+        /* @__PURE__ */ jsxs41("div", { className: "drp-field--has-icon", children: [
+          /* @__PURE__ */ jsx50(
             "input",
             {
               className: "drp-input",
@@ -2046,7 +2450,7 @@ var SignUp = () => {
               style: { width: "100%" }
             }
           ),
-          /* @__PURE__ */ jsx40(
+          /* @__PURE__ */ jsx50(
             "button",
             {
               type: "button",
@@ -2061,7 +2465,7 @@ var SignUp = () => {
                 padding: 0,
                 color: "var(--drp-grey)"
               },
-              children: showPassword ? /* @__PURE__ */ jsxs34(
+              children: showPassword ? /* @__PURE__ */ jsxs41(
                 "svg",
                 {
                   width: "16",
@@ -2073,12 +2477,12 @@ var SignUp = () => {
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   children: [
-                    /* @__PURE__ */ jsx40("path", { d: "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" }),
-                    /* @__PURE__ */ jsx40("path", { d: "M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" }),
-                    /* @__PURE__ */ jsx40("line", { x1: "1", y1: "1", x2: "23", y2: "23" })
+                    /* @__PURE__ */ jsx50("path", { d: "M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" }),
+                    /* @__PURE__ */ jsx50("path", { d: "M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" }),
+                    /* @__PURE__ */ jsx50("line", { x1: "1", y1: "1", x2: "23", y2: "23" })
                   ]
                 }
-              ) : /* @__PURE__ */ jsxs34(
+              ) : /* @__PURE__ */ jsxs41(
                 "svg",
                 {
                   width: "16",
@@ -2090,8 +2494,8 @@ var SignUp = () => {
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   children: [
-                    /* @__PURE__ */ jsx40("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
-                    /* @__PURE__ */ jsx40("circle", { cx: "12", cy: "12", r: "3" })
+                    /* @__PURE__ */ jsx50("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
+                    /* @__PURE__ */ jsx50("circle", { cx: "12", cy: "12", r: "3" })
                   ]
                 }
               )
@@ -2099,9 +2503,9 @@ var SignUp = () => {
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsxs34("div", { className: "drp-flex-col drp-gap-3", children: [
-        /* @__PURE__ */ jsxs34("label", { className: "drp-checkbox", children: [
-          /* @__PURE__ */ jsx40(
+      /* @__PURE__ */ jsxs41("div", { className: "drp-flex-col drp-gap-3", children: [
+        /* @__PURE__ */ jsxs41("label", { className: "drp-checkbox", children: [
+          /* @__PURE__ */ jsx50(
             "input",
             {
               type: "checkbox",
@@ -2111,8 +2515,8 @@ var SignUp = () => {
           ),
           "I agree to receive email updates"
         ] }),
-        /* @__PURE__ */ jsxs34("label", { className: "drp-checkbox", children: [
-          /* @__PURE__ */ jsx40(
+        /* @__PURE__ */ jsxs41("label", { className: "drp-checkbox", children: [
+          /* @__PURE__ */ jsx50(
             "input",
             {
               type: "checkbox",
@@ -2120,10 +2524,10 @@ var SignUp = () => {
               onChange: (e2) => setAgreeTerms(e2.target.checked)
             }
           ),
-          /* @__PURE__ */ jsxs34("span", { children: [
+          /* @__PURE__ */ jsxs41("span", { children: [
             "I have read and agree to",
             " ",
-            /* @__PURE__ */ jsx40(
+            /* @__PURE__ */ jsx50(
               "a",
               {
                 href: "#",
@@ -2135,7 +2539,7 @@ var SignUp = () => {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsx40(
+      /* @__PURE__ */ jsx50(
         "button",
         {
           type: "submit",
@@ -2144,7 +2548,7 @@ var SignUp = () => {
         }
       )
     ] }),
-    /* @__PURE__ */ jsxs34(
+    /* @__PURE__ */ jsxs41(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted drp-text-center",
@@ -2152,7 +2556,7 @@ var SignUp = () => {
         children: [
           "Already registered?",
           " ",
-          /* @__PURE__ */ jsx40(
+          /* @__PURE__ */ jsx50(
             "a",
             {
               href: "#",
@@ -2168,16 +2572,16 @@ var SignUp = () => {
 };
 
 // src/screens/Auth/PasswordReset.tsx
-import { useState as useState5 } from "react";
-import { Fragment as Fragment2, jsx as jsx41, jsxs as jsxs35 } from "react/jsx-runtime";
+import { useState as useState7 } from "react";
+import { Fragment as Fragment5, jsx as jsx51, jsxs as jsxs42 } from "react/jsx-runtime";
 var PasswordReset = ({
   mode = "request"
 }) => {
-  const [email, setEmail] = useState5("catherine.shaw@gmail.com");
-  const [newPassword, setNewPassword] = useState5("");
-  const [confirmPassword, setConfirmPassword] = useState5("");
-  const [showPassword, setShowPassword] = useState5(false);
-  const [submitted, setSubmitted] = useState5(false);
+  const [email, setEmail] = useState7("catherine.shaw@gmail.com");
+  const [newPassword, setNewPassword] = useState7("");
+  const [confirmPassword, setConfirmPassword] = useState7("");
+  const [showPassword, setShowPassword] = useState7(false);
+  const [submitted, setSubmitted] = useState7(false);
   const handleRequestReset = (e2) => {
     e2.preventDefault();
     if (email) {
@@ -2190,8 +2594,8 @@ var PasswordReset = ({
       console.log("Password reset successful");
     }
   };
-  return /* @__PURE__ */ jsx41(AuthLayout, { children: /* @__PURE__ */ jsx41("div", { children: mode === "request" ? /* @__PURE__ */ jsxs35(Fragment2, { children: [
-    /* @__PURE__ */ jsx41(
+  return /* @__PURE__ */ jsx51(AuthLayout, { children: /* @__PURE__ */ jsx51("div", { children: mode === "request" ? /* @__PURE__ */ jsxs42(Fragment5, { children: [
+    /* @__PURE__ */ jsx51(
       "h1",
       {
         className: "drp-h1",
@@ -2199,7 +2603,7 @@ var PasswordReset = ({
         children: "Forgot password?"
       }
     ),
-    /* @__PURE__ */ jsx41(
+    /* @__PURE__ */ jsx51(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted",
@@ -2211,11 +2615,11 @@ var PasswordReset = ({
         children: "Enter your email address and we'll send you instructions on how to reset your password in a few minutes. You can also add a recovery email if you've never set one before."
       }
     ),
-    submitted ? /* @__PURE__ */ jsx41("div", { className: "drp-alert drp-alert--success", children: /* @__PURE__ */ jsx41("div", { className: "drp-alert__content", children: /* @__PURE__ */ jsx41("p", { className: "drp-text drp-text--sm", children: "Check your email for reset instructions." }) }) }) : /* @__PURE__ */ jsxs35("form", { onSubmit: handleRequestReset, className: "drp-form-stack", children: [
-      /* @__PURE__ */ jsxs35("div", { className: "drp-field", children: [
-        /* @__PURE__ */ jsx41("label", { className: "drp-field__label", children: "Email" }),
-        /* @__PURE__ */ jsxs35("div", { className: "drp-field--has-icon", children: [
-          /* @__PURE__ */ jsx41(
+    submitted ? /* @__PURE__ */ jsx51("div", { className: "drp-alert drp-alert--success", children: /* @__PURE__ */ jsx51("div", { className: "drp-alert__content", children: /* @__PURE__ */ jsx51("p", { className: "drp-text drp-text--sm", children: "Check your email for reset instructions." }) }) }) : /* @__PURE__ */ jsxs42("form", { onSubmit: handleRequestReset, className: "drp-form-stack", children: [
+      /* @__PURE__ */ jsxs42("div", { className: "drp-field", children: [
+        /* @__PURE__ */ jsx51("label", { className: "drp-field__label", children: "Email" }),
+        /* @__PURE__ */ jsxs42("div", { className: "drp-field--has-icon", children: [
+          /* @__PURE__ */ jsx51(
             "input",
             {
               className: "drp-input",
@@ -2226,7 +2630,7 @@ var PasswordReset = ({
               style: { width: "100%" }
             }
           ),
-          /* @__PURE__ */ jsxs35(
+          /* @__PURE__ */ jsxs42(
             "svg",
             {
               className: "drp-field__icon",
@@ -2240,14 +2644,14 @@ var PasswordReset = ({
               strokeLinejoin: "round",
               style: { color: "var(--drp-grey)" },
               children: [
-                /* @__PURE__ */ jsx41("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
-                /* @__PURE__ */ jsx41("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
+                /* @__PURE__ */ jsx51("rect", { x: "2", y: "4", width: "20", height: "16", rx: "2" }),
+                /* @__PURE__ */ jsx51("path", { d: "m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" })
               ]
             }
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsx41(
+      /* @__PURE__ */ jsx51(
         "button",
         {
           type: "submit",
@@ -2256,7 +2660,7 @@ var PasswordReset = ({
         }
       )
     ] }),
-    /* @__PURE__ */ jsxs35(
+    /* @__PURE__ */ jsxs42(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted drp-text-center",
@@ -2264,7 +2668,7 @@ var PasswordReset = ({
         children: [
           "Already registered?",
           " ",
-          /* @__PURE__ */ jsx41(
+          /* @__PURE__ */ jsx51(
             "a",
             {
               href: "#",
@@ -2276,8 +2680,8 @@ var PasswordReset = ({
         ]
       }
     )
-  ] }) : /* @__PURE__ */ jsxs35(Fragment2, { children: [
-    /* @__PURE__ */ jsx41(
+  ] }) : /* @__PURE__ */ jsxs42(Fragment5, { children: [
+    /* @__PURE__ */ jsx51(
       "h1",
       {
         className: "drp-h2",
@@ -2285,7 +2689,7 @@ var PasswordReset = ({
         children: "Reset Password"
       }
     ),
-    /* @__PURE__ */ jsx41(
+    /* @__PURE__ */ jsx51(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted",
@@ -2293,11 +2697,11 @@ var PasswordReset = ({
         children: "Enter your new password below"
       }
     ),
-    /* @__PURE__ */ jsxs35("form", { onSubmit: handleResetPassword, className: "drp-form-stack", children: [
-      /* @__PURE__ */ jsxs35("div", { className: "drp-field", children: [
-        /* @__PURE__ */ jsx41("label", { className: "drp-field__label", children: "New Password" }),
-        /* @__PURE__ */ jsxs35("div", { className: "drp-field--has-icon", children: [
-          /* @__PURE__ */ jsx41(
+    /* @__PURE__ */ jsxs42("form", { onSubmit: handleResetPassword, className: "drp-form-stack", children: [
+      /* @__PURE__ */ jsxs42("div", { className: "drp-field", children: [
+        /* @__PURE__ */ jsx51("label", { className: "drp-field__label", children: "New Password" }),
+        /* @__PURE__ */ jsxs42("div", { className: "drp-field--has-icon", children: [
+          /* @__PURE__ */ jsx51(
             "input",
             {
               className: "drp-input",
@@ -2308,7 +2712,7 @@ var PasswordReset = ({
               style: { width: "100%" }
             }
           ),
-          /* @__PURE__ */ jsx41(
+          /* @__PURE__ */ jsx51(
             "button",
             {
               type: "button",
@@ -2323,7 +2727,7 @@ var PasswordReset = ({
                 padding: 0,
                 color: "var(--drp-grey)"
               },
-              children: /* @__PURE__ */ jsxs35(
+              children: /* @__PURE__ */ jsxs42(
                 "svg",
                 {
                   width: "16",
@@ -2335,8 +2739,8 @@ var PasswordReset = ({
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   children: [
-                    /* @__PURE__ */ jsx41("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
-                    /* @__PURE__ */ jsx41("circle", { cx: "12", cy: "12", r: "3" })
+                    /* @__PURE__ */ jsx51("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
+                    /* @__PURE__ */ jsx51("circle", { cx: "12", cy: "12", r: "3" })
                   ]
                 }
               )
@@ -2344,10 +2748,10 @@ var PasswordReset = ({
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsxs35("div", { className: "drp-field", children: [
-        /* @__PURE__ */ jsx41("label", { className: "drp-field__label", children: "Confirm Password" }),
-        /* @__PURE__ */ jsxs35("div", { className: "drp-field--has-icon", children: [
-          /* @__PURE__ */ jsx41(
+      /* @__PURE__ */ jsxs42("div", { className: "drp-field", children: [
+        /* @__PURE__ */ jsx51("label", { className: "drp-field__label", children: "Confirm Password" }),
+        /* @__PURE__ */ jsxs42("div", { className: "drp-field--has-icon", children: [
+          /* @__PURE__ */ jsx51(
             "input",
             {
               className: "drp-input",
@@ -2358,7 +2762,7 @@ var PasswordReset = ({
               style: { width: "100%" }
             }
           ),
-          /* @__PURE__ */ jsx41(
+          /* @__PURE__ */ jsx51(
             "button",
             {
               type: "button",
@@ -2373,7 +2777,7 @@ var PasswordReset = ({
                 padding: 0,
                 color: "var(--drp-grey)"
               },
-              children: /* @__PURE__ */ jsxs35(
+              children: /* @__PURE__ */ jsxs42(
                 "svg",
                 {
                   width: "16",
@@ -2385,8 +2789,8 @@ var PasswordReset = ({
                   strokeLinecap: "round",
                   strokeLinejoin: "round",
                   children: [
-                    /* @__PURE__ */ jsx41("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
-                    /* @__PURE__ */ jsx41("circle", { cx: "12", cy: "12", r: "3" })
+                    /* @__PURE__ */ jsx51("path", { d: "M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" }),
+                    /* @__PURE__ */ jsx51("circle", { cx: "12", cy: "12", r: "3" })
                   ]
                 }
               )
@@ -2394,7 +2798,7 @@ var PasswordReset = ({
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsx41(
+      /* @__PURE__ */ jsx51(
         "button",
         {
           type: "submit",
@@ -2407,11 +2811,11 @@ var PasswordReset = ({
 };
 
 // src/screens/Auth/SignInWithQR.tsx
-import { jsx as jsx42, jsxs as jsxs36 } from "react/jsx-runtime";
+import { jsx as jsx52, jsxs as jsxs43 } from "react/jsx-runtime";
 
 // src/screens/Common/ListScreen.tsx
-import { useState as useState6 } from "react";
-import { jsx as jsx43, jsxs as jsxs37 } from "react/jsx-runtime";
+import { useState as useState8 } from "react";
+import { jsx as jsx53, jsxs as jsxs44 } from "react/jsx-runtime";
 var ListScreen = ({
   title,
   subtitle,
@@ -2423,24 +2827,24 @@ var ListScreen = ({
   itemsPerPage = 10,
   ...layoutProps
 }) => {
-  const [searchQuery, setSearchQuery] = useState6("");
-  const [currentPage, setCurrentPage] = useState6(1);
+  const [searchQuery, setSearchQuery] = useState8("");
+  const [currentPage, setCurrentPage] = useState8(1);
   const filteredData = data.filter(
     (item) => JSON.stringify(item).toLowerCase().includes(searchQuery.toLowerCase())
   );
   const totalPages = Math.ceil(filteredData.length / itemsPerPage);
   const startIdx = (currentPage - 1) * itemsPerPage;
   const paginatedData = filteredData.slice(startIdx, startIdx + itemsPerPage);
-  return /* @__PURE__ */ jsx43(
+  return /* @__PURE__ */ jsx53(
     DashboardLayout,
     {
       ...layoutProps,
       topBarProps: {
         title,
-        actions: onAddClick && /* @__PURE__ */ jsx43(Button, { onClick: onAddClick, className: "drp-btn drp-btn--primary", children: "+ Add New" }),
+        actions: onAddClick && /* @__PURE__ */ jsx53(Button, { onClick: onAddClick, className: "drp-btn drp-btn--primary", children: "+ Add New" }),
         ...layoutProps.topBarProps
       },
-      children: /* @__PURE__ */ jsxs37(
+      children: /* @__PURE__ */ jsxs44(
         "div",
         {
           style: {
@@ -2449,8 +2853,8 @@ var ListScreen = ({
             gap: "var(--drp-space-6)"
           },
           children: [
-            subtitle && /* @__PURE__ */ jsx43("p", { className: "drp-caption", children: subtitle }),
-            showSearch && /* @__PURE__ */ jsx43(
+            subtitle && /* @__PURE__ */ jsx53("p", { className: "drp-caption", children: subtitle }),
+            showSearch && /* @__PURE__ */ jsx53(
               Input,
               {
                 placeholder: "Search...",
@@ -2461,7 +2865,7 @@ var ListScreen = ({
                 }
               }
             ),
-            /* @__PURE__ */ jsx43(
+            /* @__PURE__ */ jsx53(
               Table,
               {
                 columns: columns.map((col) => ({
@@ -2472,7 +2876,7 @@ var ListScreen = ({
                 data: paginatedData
               }
             ),
-            totalPages > 1 && /* @__PURE__ */ jsx43(
+            totalPages > 1 && /* @__PURE__ */ jsx53(
               Pagination,
               {
                 currentPage,
@@ -2488,7 +2892,7 @@ var ListScreen = ({
 };
 
 // src/screens/Products/ProductsList.tsx
-import { jsx as jsx44, jsxs as jsxs38 } from "react/jsx-runtime";
+import { jsx as jsx54, jsxs as jsxs45 } from "react/jsx-runtime";
 var DoctorProjectSidebar = ({
   activeItem
 }) => {
@@ -2515,20 +2919,20 @@ var DoctorProjectSidebar = ({
     { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-mint)" },
     { name: "Justine Robinson", initials: "JR", bg: "var(--drp-purple)" }
   ];
-  return /* @__PURE__ */ jsxs38("aside", { className: "sidebar", style: { width: 200 }, children: [
-    /* @__PURE__ */ jsxs38("div", { className: "sidebar-brand", children: [
-      /* @__PURE__ */ jsx44("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
-      /* @__PURE__ */ jsx44("span", { className: "sidebar-brand-dot" })
+  return /* @__PURE__ */ jsxs45("aside", { className: "sidebar", style: { width: 200 }, children: [
+    /* @__PURE__ */ jsxs45("div", { className: "sidebar-brand", children: [
+      /* @__PURE__ */ jsx54("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
+      /* @__PURE__ */ jsx54("span", { className: "sidebar-brand-dot" })
     ] }),
-    /* @__PURE__ */ jsxs38("nav", { className: "sidebar-nav", children: [
-      /* @__PURE__ */ jsxs38("div", { className: "sidebar-nav-section", children: [
-        /* @__PURE__ */ jsx44("div", { className: "sidebar-nav-label", children: "Navigation" }),
-        navItems.map((item) => /* @__PURE__ */ jsxs38(
+    /* @__PURE__ */ jsxs45("nav", { className: "sidebar-nav", children: [
+      /* @__PURE__ */ jsxs45("div", { className: "sidebar-nav-section", children: [
+        /* @__PURE__ */ jsx54("div", { className: "sidebar-nav-label", children: "Navigation" }),
+        navItems.map((item) => /* @__PURE__ */ jsxs45(
           "button",
           {
             className: `sidebar-nav-item ${item.id === activeItem ? "active" : ""}`,
             children: [
-              /* @__PURE__ */ jsx44("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ jsx44(
+              /* @__PURE__ */ jsx54("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ jsx54(
                 "svg",
                 {
                   width: "14",
@@ -2536,7 +2940,7 @@ var DoctorProjectSidebar = ({
                   fill: "none",
                   viewBox: "0 0 24 24",
                   stroke: "currentColor",
-                  children: /* @__PURE__ */ jsx44(
+                  children: /* @__PURE__ */ jsx54(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -2547,17 +2951,17 @@ var DoctorProjectSidebar = ({
                   )
                 }
               ) }),
-              /* @__PURE__ */ jsx44("span", { className: "sidebar-nav-text", children: item.label }),
-              item.badge && /* @__PURE__ */ jsx44("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
+              /* @__PURE__ */ jsx54("span", { className: "sidebar-nav-text", children: item.label }),
+              item.badge && /* @__PURE__ */ jsx54("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
             ]
           },
           item.id
         ))
       ] }),
-      /* @__PURE__ */ jsxs38("div", { className: "sidebar-team", children: [
-        /* @__PURE__ */ jsx44("div", { className: "sidebar-team-label", children: "Team Members" }),
-        teamMembers.map((m3) => /* @__PURE__ */ jsxs38("div", { className: "sidebar-team-member", children: [
-          /* @__PURE__ */ jsx44(
+      /* @__PURE__ */ jsxs45("div", { className: "sidebar-team", children: [
+        /* @__PURE__ */ jsx54("div", { className: "sidebar-team-label", children: "Team Members" }),
+        teamMembers.map((m3) => /* @__PURE__ */ jsxs45("div", { className: "sidebar-team-member", children: [
+          /* @__PURE__ */ jsx54(
             "div",
             {
               className: "sidebar-avatar",
@@ -2570,10 +2974,10 @@ var DoctorProjectSidebar = ({
               children: m3.initials[0]
             }
           ),
-          /* @__PURE__ */ jsx44("span", { className: "sidebar-team-name", style: { fontSize: 13 }, children: m3.name })
+          /* @__PURE__ */ jsx54("span", { className: "sidebar-team-name", style: { fontSize: 13 }, children: m3.name })
         ] }, m3.name)),
-        /* @__PURE__ */ jsxs38("div", { className: "sidebar-see-more", children: [
-          /* @__PURE__ */ jsx44(
+        /* @__PURE__ */ jsxs45("div", { className: "sidebar-see-more", children: [
+          /* @__PURE__ */ jsx54(
             "svg",
             {
               width: "12",
@@ -2581,7 +2985,7 @@ var DoctorProjectSidebar = ({
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx44(
+              children: /* @__PURE__ */ jsx54(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -2592,12 +2996,12 @@ var DoctorProjectSidebar = ({
               )
             }
           ),
-          /* @__PURE__ */ jsx44("span", { children: "See More" })
+          /* @__PURE__ */ jsx54("span", { children: "See More" })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs38("div", { className: "sidebar-user", children: [
-      /* @__PURE__ */ jsx44(
+    /* @__PURE__ */ jsxs45("div", { className: "sidebar-user", children: [
+      /* @__PURE__ */ jsx54(
         "div",
         {
           className: "sidebar-avatar",
@@ -2608,17 +3012,17 @@ var DoctorProjectSidebar = ({
           }
         }
       ),
-      /* @__PURE__ */ jsx44("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx44("div", { className: "sidebar-user-name", style: { fontSize: 13 }, children: "Henry Richardson" }) }),
-      /* @__PURE__ */ jsx44("button", { className: "sidebar-user-menu-btn", children: "..." })
+      /* @__PURE__ */ jsx54("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx54("div", { className: "sidebar-user-name", style: { fontSize: 13 }, children: "Henry Richardson" }) }),
+      /* @__PURE__ */ jsx54("button", { className: "sidebar-user-menu-btn", children: "..." })
     ] })
   ] });
 };
 var TopBar2 = ({
   title = "Products",
   showBack
-}) => /* @__PURE__ */ jsxs38("div", { className: "topbar", children: [
-  /* @__PURE__ */ jsxs38("div", { className: "topbar-left", children: [
-    showBack && /* @__PURE__ */ jsx44("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx44(
+}) => /* @__PURE__ */ jsxs45("div", { className: "topbar", children: [
+  /* @__PURE__ */ jsxs45("div", { className: "topbar-left", children: [
+    showBack && /* @__PURE__ */ jsx54("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx54(
       "svg",
       {
         width: "16",
@@ -2626,7 +3030,7 @@ var TopBar2 = ({
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx44(
+        children: /* @__PURE__ */ jsx54(
           "path",
           {
             strokeLinecap: "round",
@@ -2637,13 +3041,13 @@ var TopBar2 = ({
         )
       }
     ) }),
-    /* @__PURE__ */ jsx44("h1", { className: "topbar-title", children: title })
+    /* @__PURE__ */ jsx54("h1", { className: "topbar-title", children: title })
   ] }),
-  /* @__PURE__ */ jsxs38("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx44("button", { className: "topbar-icon-btn", children: "..." }),
-    /* @__PURE__ */ jsx44("button", { className: "topbar-icon-btn", children: "..." }),
-    /* @__PURE__ */ jsxs38("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ jsx44(
+  /* @__PURE__ */ jsxs45("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx54("button", { className: "topbar-icon-btn", children: "..." }),
+    /* @__PURE__ */ jsx54("button", { className: "topbar-icon-btn", children: "..." }),
+    /* @__PURE__ */ jsxs45("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ jsx54(
         "svg",
         {
           width: "16",
@@ -2651,7 +3055,7 @@ var TopBar2 = ({
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ jsx44(
+          children: /* @__PURE__ */ jsx54(
             "path",
             {
               strokeLinecap: "round",
@@ -2662,23 +3066,23 @@ var TopBar2 = ({
           )
         }
       ),
-      /* @__PURE__ */ jsx44("span", { children: "Apps" })
+      /* @__PURE__ */ jsx54("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ jsxs38("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsx44("span", { children: "+" }),
-      /* @__PURE__ */ jsx44("span", { children: "Create new" })
+    /* @__PURE__ */ jsxs45("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsx54("span", { children: "+" }),
+      /* @__PURE__ */ jsx54("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer2 = () => /* @__PURE__ */ jsxs38("div", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs38("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsx44("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ jsx44("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx44("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx44("span", { className: "footer-link", children: "API" })
+var Footer2 = () => /* @__PURE__ */ jsxs45("div", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs45("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsx54("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ jsx54("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx54("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx54("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs38("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx44("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs38(
+  /* @__PURE__ */ jsxs45("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx54("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs45(
       "svg",
       {
         width: "16",
@@ -2687,7 +3091,7 @@ var Footer2 = () => /* @__PURE__ */ jsxs38("div", { className: "footer-bar", chi
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ jsx44(
+          /* @__PURE__ */ jsx54(
             "path",
             {
               strokeLinecap: "round",
@@ -2696,7 +3100,7 @@ var Footer2 = () => /* @__PURE__ */ jsxs38("div", { className: "footer-bar", chi
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ jsx44(
+          /* @__PURE__ */ jsx54(
             "path",
             {
               strokeLinecap: "round",
@@ -2708,7 +3112,7 @@ var Footer2 = () => /* @__PURE__ */ jsxs38("div", { className: "footer-bar", chi
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx44("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx44(
+    /* @__PURE__ */ jsx54("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx54(
       "svg",
       {
         width: "16",
@@ -2716,7 +3120,7 @@ var Footer2 = () => /* @__PURE__ */ jsxs38("div", { className: "footer-bar", chi
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx44(
+        children: /* @__PURE__ */ jsx54(
           "path",
           {
             strokeLinecap: "round",
@@ -2729,7 +3133,7 @@ var Footer2 = () => /* @__PURE__ */ jsxs38("div", { className: "footer-bar", chi
     ) })
   ] })
 ] });
-var SortIcon = () => /* @__PURE__ */ jsx44(
+var SortIcon = () => /* @__PURE__ */ jsx54(
   "svg",
   {
     style: {
@@ -2742,7 +3146,7 @@ var SortIcon = () => /* @__PURE__ */ jsx44(
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor",
-    children: /* @__PURE__ */ jsx44(
+    children: /* @__PURE__ */ jsx54(
       "path",
       {
         strokeLinecap: "round",
@@ -2753,7 +3157,7 @@ var SortIcon = () => /* @__PURE__ */ jsx44(
     )
   }
 );
-var TablePagination = () => /* @__PURE__ */ jsxs38(
+var TablePagination = () => /* @__PURE__ */ jsxs45(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
@@ -2762,8 +3166,8 @@ var TablePagination = () => /* @__PURE__ */ jsxs38(
       borderTop: "var(--drp-border-thin)"
     },
     children: [
-      /* @__PURE__ */ jsxs38("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-        /* @__PURE__ */ jsx44(
+      /* @__PURE__ */ jsxs45("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ jsx54(
           "svg",
           {
             width: "16",
@@ -2771,7 +3175,7 @@ var TablePagination = () => /* @__PURE__ */ jsxs38(
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ jsx44(
+            children: /* @__PURE__ */ jsx54(
               "path",
               {
                 strokeLinecap: "round",
@@ -2784,10 +3188,10 @@ var TablePagination = () => /* @__PURE__ */ jsxs38(
         ),
         "Prev"
       ] }),
-      /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
-      /* @__PURE__ */ jsxs38("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+      /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
+      /* @__PURE__ */ jsxs45("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
         "Next",
-        /* @__PURE__ */ jsx44(
+        /* @__PURE__ */ jsx54(
           "svg",
           {
             width: "16",
@@ -2795,7 +3199,7 @@ var TablePagination = () => /* @__PURE__ */ jsxs38(
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ jsx44(
+            children: /* @__PURE__ */ jsx54(
               "path",
               {
                 strokeLinecap: "round",
@@ -2816,7 +3220,7 @@ var StockBar = ({
   color
 }) => {
   const pct = Math.min(100, Math.round(value / max * 100));
-  return /* @__PURE__ */ jsx44("div", { className: "drp-progress drp-progress--sm", style: { width: 80 }, children: /* @__PURE__ */ jsx44(
+  return /* @__PURE__ */ jsx54("div", { className: "drp-progress drp-progress--sm", style: { width: 80 }, children: /* @__PURE__ */ jsx54(
     "div",
     {
       className: "drp-progress__bar",
@@ -2826,7 +3230,7 @@ var StockBar = ({
 };
 var ProductThumb = ({
   bg = "var(--drp-cream)"
-}) => /* @__PURE__ */ jsx44(
+}) => /* @__PURE__ */ jsx54(
   "div",
   {
     style: {
@@ -2839,7 +3243,7 @@ var ProductThumb = ({
       justifyContent: "center",
       flexShrink: 0
     },
-    children: /* @__PURE__ */ jsx44(
+    children: /* @__PURE__ */ jsx54(
       "svg",
       {
         width: "20",
@@ -2848,7 +3252,7 @@ var ProductThumb = ({
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx44(
+        children: /* @__PURE__ */ jsx54(
           "path",
           {
             strokeLinecap: "round",
@@ -2929,40 +3333,40 @@ var v1Products = [
     thumb: "#e0e7ff"
   }
 ];
-var V1Content = () => /* @__PURE__ */ jsx44("div", { className: "content", children: /* @__PURE__ */ jsxs38("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-  /* @__PURE__ */ jsxs38("table", { className: "drp-table", children: [
-    /* @__PURE__ */ jsx44("thead", { children: /* @__PURE__ */ jsxs38("tr", { children: [
-      /* @__PURE__ */ jsxs38("th", { children: [
+var V1Content = () => /* @__PURE__ */ jsx54("div", { className: "content", children: /* @__PURE__ */ jsxs45("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+  /* @__PURE__ */ jsxs45("table", { className: "drp-table", children: [
+    /* @__PURE__ */ jsx54("thead", { children: /* @__PURE__ */ jsxs45("tr", { children: [
+      /* @__PURE__ */ jsxs45("th", { children: [
         "Name ",
-        /* @__PURE__ */ jsx44(SortIcon, {})
+        /* @__PURE__ */ jsx54(SortIcon, {})
       ] }),
-      /* @__PURE__ */ jsxs38("th", { children: [
+      /* @__PURE__ */ jsxs45("th", { children: [
         "Details ",
-        /* @__PURE__ */ jsx44(SortIcon, {})
+        /* @__PURE__ */ jsx54(SortIcon, {})
       ] }),
-      /* @__PURE__ */ jsxs38("th", { children: [
+      /* @__PURE__ */ jsxs45("th", { children: [
         "Sold ",
-        /* @__PURE__ */ jsx44(SortIcon, {})
+        /* @__PURE__ */ jsx54(SortIcon, {})
       ] }),
-      /* @__PURE__ */ jsxs38("th", { children: [
+      /* @__PURE__ */ jsxs45("th", { children: [
         "Stock ",
-        /* @__PURE__ */ jsx44(SortIcon, {})
+        /* @__PURE__ */ jsx54(SortIcon, {})
       ] }),
-      /* @__PURE__ */ jsxs38("th", { children: [
+      /* @__PURE__ */ jsxs45("th", { children: [
         "Price ",
-        /* @__PURE__ */ jsx44(SortIcon, {})
+        /* @__PURE__ */ jsx54(SortIcon, {})
       ] }),
-      /* @__PURE__ */ jsx44("th", { style: { width: 40 } })
+      /* @__PURE__ */ jsx54("th", { style: { width: 40 } })
     ] }) }),
-    /* @__PURE__ */ jsx44("tbody", { children: v1Products.map((p3) => /* @__PURE__ */ jsxs38("tr", { children: [
-      /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsxs38("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ jsx44(ProductThumb, { bg: p3.thumb }),
-        /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--bold", children: p3.name })
+    /* @__PURE__ */ jsx54("tbody", { children: v1Products.map((p3) => /* @__PURE__ */ jsxs45("tr", { children: [
+      /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsxs45("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ jsx54(ProductThumb, { bg: p3.thumb }),
+        /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--bold", children: p3.name })
       ] }) }),
-      /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.description }) }),
-      /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--sm", children: p3.sold }) }),
-      /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsxs38("div", { className: "drp-flex-col drp-gap-1", children: [
-        /* @__PURE__ */ jsx44(
+      /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.description }) }),
+      /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--sm", children: p3.sold }) }),
+      /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsxs45("div", { className: "drp-flex-col drp-gap-1", children: [
+        /* @__PURE__ */ jsx54(
           StockBar,
           {
             value: p3.stock,
@@ -2970,13 +3374,13 @@ var V1Content = () => /* @__PURE__ */ jsx44("div", { className: "content", child
             color: p3.stockColor
           }
         ),
-        /* @__PURE__ */ jsx44("span", { className: "drp-caption", children: p3.stock.toLocaleString() })
+        /* @__PURE__ */ jsx54("span", { className: "drp-caption", children: p3.stock.toLocaleString() })
       ] }) }),
-      /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--bold", children: p3.price }) }),
-      /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+      /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--bold", children: p3.price }) }),
+      /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
     ] }, p3.id)) })
   ] }),
-  /* @__PURE__ */ jsx44(TablePagination, {})
+  /* @__PURE__ */ jsx54(TablePagination, {})
 ] }) });
 var v2Products = [
   {
@@ -3079,14 +3483,14 @@ var v2Products = [
     price: "$105,50"
   }
 ];
-var FilterBar = () => /* @__PURE__ */ jsxs38("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
-  /* @__PURE__ */ jsxs38("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-    /* @__PURE__ */ jsx44("button", { className: "drp-btn drp-btn--sm drp-btn--primary", children: "All Filters" }),
-    /* @__PURE__ */ jsx44("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "All Customers" }),
-    /* @__PURE__ */ jsx44("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "A-Z" })
+var FilterBar = () => /* @__PURE__ */ jsxs45("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
+  /* @__PURE__ */ jsxs45("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+    /* @__PURE__ */ jsx54("button", { className: "drp-btn drp-btn--sm drp-btn--primary", children: "All Filters" }),
+    /* @__PURE__ */ jsx54("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "All Customers" }),
+    /* @__PURE__ */ jsx54("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "A-Z" })
   ] }),
-  /* @__PURE__ */ jsxs38("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
-    /* @__PURE__ */ jsx44(
+  /* @__PURE__ */ jsxs45("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
+    /* @__PURE__ */ jsx54(
       "svg",
       {
         width: "16",
@@ -3094,7 +3498,7 @@ var FilterBar = () => /* @__PURE__ */ jsxs38("div", { className: "drp-flex drp-i
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx44(
+        children: /* @__PURE__ */ jsx54(
           "path",
           {
             strokeLinecap: "round",
@@ -3108,58 +3512,58 @@ var FilterBar = () => /* @__PURE__ */ jsxs38("div", { className: "drp-flex drp-i
     "Search"
   ] })
 ] });
-var V2Content = () => /* @__PURE__ */ jsxs38("div", { className: "content", children: [
-  /* @__PURE__ */ jsx44(FilterBar, {}),
-  /* @__PURE__ */ jsxs38("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-    /* @__PURE__ */ jsxs38("table", { className: "drp-table", children: [
-      /* @__PURE__ */ jsx44("thead", { children: /* @__PURE__ */ jsxs38("tr", { children: [
-        /* @__PURE__ */ jsx44("th", { style: { width: 40 }, children: /* @__PURE__ */ jsx44("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx44("input", { type: "checkbox" }) }) }),
-        /* @__PURE__ */ jsxs38("th", { children: [
+var V2Content = () => /* @__PURE__ */ jsxs45("div", { className: "content", children: [
+  /* @__PURE__ */ jsx54(FilterBar, {}),
+  /* @__PURE__ */ jsxs45("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+    /* @__PURE__ */ jsxs45("table", { className: "drp-table", children: [
+      /* @__PURE__ */ jsx54("thead", { children: /* @__PURE__ */ jsxs45("tr", { children: [
+        /* @__PURE__ */ jsx54("th", { style: { width: 40 }, children: /* @__PURE__ */ jsx54("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx54("input", { type: "checkbox" }) }) }),
+        /* @__PURE__ */ jsxs45("th", { children: [
           "Product ",
-          /* @__PURE__ */ jsx44(SortIcon, {})
+          /* @__PURE__ */ jsx54(SortIcon, {})
         ] }),
-        /* @__PURE__ */ jsxs38("th", { children: [
+        /* @__PURE__ */ jsxs45("th", { children: [
           "Category ",
-          /* @__PURE__ */ jsx44(SortIcon, {})
+          /* @__PURE__ */ jsx54(SortIcon, {})
         ] }),
-        /* @__PURE__ */ jsxs38("th", { children: [
+        /* @__PURE__ */ jsxs45("th", { children: [
           "Id ",
-          /* @__PURE__ */ jsx44(SortIcon, {})
+          /* @__PURE__ */ jsx54(SortIcon, {})
         ] }),
-        /* @__PURE__ */ jsxs38("th", { children: [
+        /* @__PURE__ */ jsxs45("th", { children: [
           "Avl ",
-          /* @__PURE__ */ jsx44(SortIcon, {})
+          /* @__PURE__ */ jsx54(SortIcon, {})
         ] }),
-        /* @__PURE__ */ jsxs38("th", { children: [
+        /* @__PURE__ */ jsxs45("th", { children: [
           "Color ",
-          /* @__PURE__ */ jsx44(SortIcon, {})
+          /* @__PURE__ */ jsx54(SortIcon, {})
         ] }),
-        /* @__PURE__ */ jsxs38("th", { children: [
+        /* @__PURE__ */ jsxs45("th", { children: [
           "Sales ",
-          /* @__PURE__ */ jsx44(SortIcon, {})
+          /* @__PURE__ */ jsx54(SortIcon, {})
         ] }),
-        /* @__PURE__ */ jsxs38("th", { children: [
+        /* @__PURE__ */ jsxs45("th", { children: [
           "Price ",
-          /* @__PURE__ */ jsx44(SortIcon, {})
+          /* @__PURE__ */ jsx54(SortIcon, {})
         ] }),
-        /* @__PURE__ */ jsx44("th", { style: { width: 40 } })
+        /* @__PURE__ */ jsx54("th", { style: { width: 40 } })
       ] }) }),
-      /* @__PURE__ */ jsx44("tbody", { children: v2Products.map((p3) => /* @__PURE__ */ jsxs38("tr", { children: [
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx44("input", { type: "checkbox" }) }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsxs38("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-          /* @__PURE__ */ jsx44(ProductThumb, {}),
-          /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--bold", children: p3.name })
+      /* @__PURE__ */ jsx54("tbody", { children: v2Products.map((p3) => /* @__PURE__ */ jsxs45("tr", { children: [
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx54("input", { type: "checkbox" }) }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsxs45("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+          /* @__PURE__ */ jsx54(ProductThumb, {}),
+          /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--bold", children: p3.name })
         ] }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-tag", children: p3.category }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.sku }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: `drp-tag ${p3.avlVariant}`, children: p3.avl }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--sm", children: p3.color }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--sm", children: p3.sales }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--bold", children: p3.price }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-tag", children: p3.category }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.sku }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: `drp-tag ${p3.avlVariant}`, children: p3.avl }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--sm", children: p3.color }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--sm", children: p3.sales }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--bold", children: p3.price }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
       ] }, p3.id)) })
     ] }),
-    /* @__PURE__ */ jsx44(TablePagination, {})
+    /* @__PURE__ */ jsx54(TablePagination, {})
   ] })
 ] });
 var v3Products = [
@@ -3254,15 +3658,15 @@ var v3Products = [
     source: "fiverr.com"
   }
 ];
-var V3Content = () => /* @__PURE__ */ jsxs38("div", { className: "content", children: [
-  /* @__PURE__ */ jsxs38("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
-    /* @__PURE__ */ jsxs38("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-      /* @__PURE__ */ jsx44("button", { className: "drp-btn drp-btn--sm drp-btn--primary", children: "All Filters" }),
-      /* @__PURE__ */ jsx44("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Group" }),
-      /* @__PURE__ */ jsx44("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Sort" }),
-      /* @__PURE__ */ jsx44("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: "..." })
+var V3Content = () => /* @__PURE__ */ jsxs45("div", { className: "content", children: [
+  /* @__PURE__ */ jsxs45("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
+    /* @__PURE__ */ jsxs45("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+      /* @__PURE__ */ jsx54("button", { className: "drp-btn drp-btn--sm drp-btn--primary", children: "All Filters" }),
+      /* @__PURE__ */ jsx54("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Group" }),
+      /* @__PURE__ */ jsx54("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Sort" }),
+      /* @__PURE__ */ jsx54("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: "..." })
     ] }),
-    /* @__PURE__ */ jsx44("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx44(
+    /* @__PURE__ */ jsx54("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx54(
       "svg",
       {
         width: "16",
@@ -3270,7 +3674,7 @@ var V3Content = () => /* @__PURE__ */ jsxs38("div", { className: "content", chil
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx44(
+        children: /* @__PURE__ */ jsx54(
           "path",
           {
             strokeLinecap: "round",
@@ -3282,58 +3686,58 @@ var V3Content = () => /* @__PURE__ */ jsxs38("div", { className: "content", chil
       }
     ) })
   ] }),
-  /* @__PURE__ */ jsxs38("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-    /* @__PURE__ */ jsxs38("table", { className: "drp-table", children: [
-      /* @__PURE__ */ jsx44("thead", { children: /* @__PURE__ */ jsxs38("tr", { children: [
-        /* @__PURE__ */ jsx44("th", { style: { width: 40 }, children: /* @__PURE__ */ jsx44("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx44("input", { type: "checkbox" }) }) }),
-        /* @__PURE__ */ jsxs38("th", { children: [
+  /* @__PURE__ */ jsxs45("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+    /* @__PURE__ */ jsxs45("table", { className: "drp-table", children: [
+      /* @__PURE__ */ jsx54("thead", { children: /* @__PURE__ */ jsxs45("tr", { children: [
+        /* @__PURE__ */ jsx54("th", { style: { width: 40 }, children: /* @__PURE__ */ jsx54("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx54("input", { type: "checkbox" }) }) }),
+        /* @__PURE__ */ jsxs45("th", { children: [
           "Name ",
-          /* @__PURE__ */ jsx44(SortIcon, {})
+          /* @__PURE__ */ jsx54(SortIcon, {})
         ] }),
-        /* @__PURE__ */ jsxs38("th", { children: [
+        /* @__PURE__ */ jsxs45("th", { children: [
           "Amount ",
-          /* @__PURE__ */ jsx44(SortIcon, {})
+          /* @__PURE__ */ jsx54(SortIcon, {})
         ] }),
-        /* @__PURE__ */ jsxs38("th", { children: [
+        /* @__PURE__ */ jsxs45("th", { children: [
           "Status ",
-          /* @__PURE__ */ jsx44(SortIcon, {})
+          /* @__PURE__ */ jsx54(SortIcon, {})
         ] }),
-        /* @__PURE__ */ jsxs38("th", { children: [
+        /* @__PURE__ */ jsxs45("th", { children: [
           "Rate ",
-          /* @__PURE__ */ jsx44(SortIcon, {})
+          /* @__PURE__ */ jsx54(SortIcon, {})
         ] }),
-        /* @__PURE__ */ jsxs38("th", { children: [
+        /* @__PURE__ */ jsxs45("th", { children: [
           "Service ",
-          /* @__PURE__ */ jsx44(SortIcon, {})
+          /* @__PURE__ */ jsx54(SortIcon, {})
         ] }),
-        /* @__PURE__ */ jsxs38("th", { children: [
+        /* @__PURE__ */ jsxs45("th", { children: [
           "Date ",
-          /* @__PURE__ */ jsx44(SortIcon, {})
+          /* @__PURE__ */ jsx54(SortIcon, {})
         ] }),
-        /* @__PURE__ */ jsxs38("th", { children: [
+        /* @__PURE__ */ jsxs45("th", { children: [
           "Source ",
-          /* @__PURE__ */ jsx44(SortIcon, {})
+          /* @__PURE__ */ jsx54(SortIcon, {})
         ] }),
-        /* @__PURE__ */ jsx44("th", { style: { width: 40 } })
+        /* @__PURE__ */ jsx54("th", { style: { width: 40 } })
       ] }) }),
-      /* @__PURE__ */ jsx44("tbody", { children: v3Products.map((p3) => /* @__PURE__ */ jsxs38("tr", { children: [
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx44("input", { type: "checkbox" }) }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--bold", children: p3.name }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--bold", children: p3.amount }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-tag drp-tag--filled", children: p3.status }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--bold", children: p3.rate }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-tag", children: p3.service }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.date }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.source }) }),
-        /* @__PURE__ */ jsx44("td", { children: /* @__PURE__ */ jsx44("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+      /* @__PURE__ */ jsx54("tbody", { children: v3Products.map((p3) => /* @__PURE__ */ jsxs45("tr", { children: [
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx54("input", { type: "checkbox" }) }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--bold", children: p3.name }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--bold", children: p3.amount }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-tag drp-tag--filled", children: p3.status }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--bold", children: p3.rate }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-tag", children: p3.service }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.date }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.source }) }),
+        /* @__PURE__ */ jsx54("td", { children: /* @__PURE__ */ jsx54("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
       ] }, p3.id)) })
     ] }),
-    /* @__PURE__ */ jsx44(TablePagination, {})
+    /* @__PURE__ */ jsx54(TablePagination, {})
   ] })
 ] });
-var DetailsContent = () => /* @__PURE__ */ jsx44("div", { className: "content", children: /* @__PURE__ */ jsxs38("div", { className: "drp-flex drp-gap-6", children: [
-  /* @__PURE__ */ jsxs38("div", { style: { width: 220, flexShrink: 0 }, children: [
-    /* @__PURE__ */ jsx44(
+var DetailsContent = () => /* @__PURE__ */ jsx54("div", { className: "content", children: /* @__PURE__ */ jsxs45("div", { className: "drp-flex drp-gap-6", children: [
+  /* @__PURE__ */ jsxs45("div", { style: { width: 220, flexShrink: 0 }, children: [
+    /* @__PURE__ */ jsx54(
       "div",
       {
         style: {
@@ -3345,8 +3749,8 @@ var DetailsContent = () => /* @__PURE__ */ jsx44("div", { className: "content", 
         }
       }
     ),
-    /* @__PURE__ */ jsx44("h2", { className: "drp-h5", style: { marginBottom: "var(--drp-space-1)" }, children: "Neoft UI Kit for NFT Marketplaces" }),
-    /* @__PURE__ */ jsx44(
+    /* @__PURE__ */ jsx54("h2", { className: "drp-h5", style: { marginBottom: "var(--drp-space-1)" }, children: "Neoft UI Kit for NFT Marketplaces" }),
+    /* @__PURE__ */ jsx54(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted",
@@ -3354,9 +3758,9 @@ var DetailsContent = () => /* @__PURE__ */ jsx44("div", { className: "content", 
         children: "250 Pages and 320 symbols for NFT Marketplace UI design"
       }
     ),
-    /* @__PURE__ */ jsx44("span", { className: "drp-tag", children: "Template" }),
-    /* @__PURE__ */ jsxs38("div", { style: { marginTop: "var(--drp-space-5)" }, children: [
-      /* @__PURE__ */ jsxs38(
+    /* @__PURE__ */ jsx54("span", { className: "drp-tag", children: "Template" }),
+    /* @__PURE__ */ jsxs45("div", { style: { marginTop: "var(--drp-space-5)" }, children: [
+      /* @__PURE__ */ jsxs45(
         "div",
         {
           style: {
@@ -3365,22 +3769,22 @@ var DetailsContent = () => /* @__PURE__ */ jsx44("div", { className: "content", 
             marginBottom: "var(--drp-space-4)"
           },
           children: [
-            /* @__PURE__ */ jsxs38(
+            /* @__PURE__ */ jsxs45(
               "div",
               {
                 className: "drp-flex drp-items-center drp-gap-2",
                 style: { marginBottom: 2 },
                 children: [
-                  /* @__PURE__ */ jsx44("span", { className: "drp-h4", children: "296" }),
-                  /* @__PURE__ */ jsx44("span", { className: "drp-badge drp-badge--pink", children: "8+" })
+                  /* @__PURE__ */ jsx54("span", { className: "drp-h4", children: "296" }),
+                  /* @__PURE__ */ jsx54("span", { className: "drp-badge drp-badge--pink", children: "8+" })
                 ]
               }
             ),
-            /* @__PURE__ */ jsx44("span", { className: "drp-caption", children: "New sales" })
+            /* @__PURE__ */ jsx54("span", { className: "drp-caption", children: "New sales" })
           ]
         }
       ),
-      /* @__PURE__ */ jsxs38(
+      /* @__PURE__ */ jsxs45(
         "div",
         {
           style: {
@@ -3389,28 +3793,28 @@ var DetailsContent = () => /* @__PURE__ */ jsx44("div", { className: "content", 
             marginBottom: "var(--drp-space-4)"
           },
           children: [
-            /* @__PURE__ */ jsxs38(
+            /* @__PURE__ */ jsxs45(
               "div",
               {
                 className: "drp-flex drp-items-center drp-gap-2",
                 style: { marginBottom: 2 },
                 children: [
-                  /* @__PURE__ */ jsx44("span", { className: "drp-h4", children: "18" }),
-                  /* @__PURE__ */ jsx44("span", { className: "drp-badge drp-badge--mint", children: "5" })
+                  /* @__PURE__ */ jsx54("span", { className: "drp-h4", children: "18" }),
+                  /* @__PURE__ */ jsx54("span", { className: "drp-badge drp-badge--mint", children: "5" })
                 ]
               }
             ),
-            /* @__PURE__ */ jsx44("span", { className: "drp-caption", children: "Followers" })
+            /* @__PURE__ */ jsx54("span", { className: "drp-caption", children: "Followers" })
           ]
         }
       ),
-      /* @__PURE__ */ jsxs38("div", { children: [
-        /* @__PURE__ */ jsx44("span", { className: "drp-h5", children: "$36" }),
-        /* @__PURE__ */ jsx44("div", { className: "drp-caption", children: "Regular price" })
+      /* @__PURE__ */ jsxs45("div", { children: [
+        /* @__PURE__ */ jsx54("span", { className: "drp-h5", children: "$36" }),
+        /* @__PURE__ */ jsx54("div", { className: "drp-caption", children: "Regular price" })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs38("button", { className: "drp-btn drp-btn--outline drp-btn--sm drp-btn--block drp-mt-4", children: [
-      /* @__PURE__ */ jsx44(
+    /* @__PURE__ */ jsxs45("button", { className: "drp-btn drp-btn--outline drp-btn--sm drp-btn--block drp-mt-4", children: [
+      /* @__PURE__ */ jsx54(
         "svg",
         {
           width: "16",
@@ -3419,7 +3823,7 @@ var DetailsContent = () => /* @__PURE__ */ jsx44("div", { className: "content", 
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ jsx44(
+          children: /* @__PURE__ */ jsx54(
             "path",
             {
               strokeLinecap: "round",
@@ -3433,8 +3837,8 @@ var DetailsContent = () => /* @__PURE__ */ jsx44("div", { className: "content", 
       "Edit product page"
     ] })
   ] }),
-  /* @__PURE__ */ jsx44("div", { style: { flex: 1 }, children: /* @__PURE__ */ jsxs38("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-    /* @__PURE__ */ jsxs38(
+  /* @__PURE__ */ jsx54("div", { style: { flex: 1 }, children: /* @__PURE__ */ jsxs45("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+    /* @__PURE__ */ jsxs45(
       "div",
       {
         className: "drp-flex drp-items-center drp-gap-2",
@@ -3443,13 +3847,13 @@ var DetailsContent = () => /* @__PURE__ */ jsx44("div", { className: "content", 
           borderBottom: "var(--drp-border-thin)"
         },
         children: [
-          /* @__PURE__ */ jsx44("button", { className: "drp-tab drp-tab--active", children: "Overview" }),
-          /* @__PURE__ */ jsx44("button", { className: "drp-tab", children: "Currency" }),
-          /* @__PURE__ */ jsx44("button", { className: "drp-tab", children: "Statement" })
+          /* @__PURE__ */ jsx54("button", { className: "drp-tab drp-tab--active", children: "Overview" }),
+          /* @__PURE__ */ jsx54("button", { className: "drp-tab", children: "Currency" }),
+          /* @__PURE__ */ jsx54("button", { className: "drp-tab", children: "Statement" })
         ]
       }
     ),
-    /* @__PURE__ */ jsx44("div", { style: { padding: "var(--drp-space-5)" }, children: /* @__PURE__ */ jsx44(
+    /* @__PURE__ */ jsx54("div", { style: { padding: "var(--drp-space-5)" }, children: /* @__PURE__ */ jsx54(
       "div",
       {
         style: {
@@ -3461,7 +3865,7 @@ var DetailsContent = () => /* @__PURE__ */ jsx44("div", { className: "content", 
           alignItems: "center",
           justifyContent: "center"
         },
-        children: /* @__PURE__ */ jsx44("span", { className: "drp-text drp-text--muted", children: "Chart placeholder" })
+        children: /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--muted", children: "Chart placeholder" })
       }
     ) })
   ] }) })
@@ -3473,24 +3877,24 @@ var ProductsList = ({
   const renderContent = () => {
     switch (variant) {
       case "v2":
-        return /* @__PURE__ */ jsx44(V2Content, {});
+        return /* @__PURE__ */ jsx54(V2Content, {});
       case "v3":
-        return /* @__PURE__ */ jsx44(V3Content, {});
+        return /* @__PURE__ */ jsx54(V3Content, {});
       case "details":
-        return /* @__PURE__ */ jsx44(DetailsContent, {});
+        return /* @__PURE__ */ jsx54(DetailsContent, {});
       default:
-        return /* @__PURE__ */ jsx44(V1Content, {});
+        return /* @__PURE__ */ jsx54(V1Content, {});
     }
   };
-  return /* @__PURE__ */ jsxs38("div", { className: "app-layout", children: [
-    /* @__PURE__ */ jsx44(
+  return /* @__PURE__ */ jsxs45("div", { className: "app-layout", children: [
+    /* @__PURE__ */ jsx54(
       DoctorProjectSidebar,
       {
         activeItem: variant === "details" ? "products" : "products"
       }
     ),
-    /* @__PURE__ */ jsxs38("div", { className: "main-content", style: { marginLeft: 200 }, children: [
-      /* @__PURE__ */ jsx44(
+    /* @__PURE__ */ jsxs45("div", { className: "main-content", style: { marginLeft: 200 }, children: [
+      /* @__PURE__ */ jsx54(
         TopBar2,
         {
           title: variant === "details" ? "Product Details" : "Products",
@@ -3498,21 +3902,21 @@ var ProductsList = ({
         }
       ),
       renderContent(),
-      /* @__PURE__ */ jsx44(Footer2, {})
+      /* @__PURE__ */ jsx54(Footer2, {})
     ] })
   ] });
 };
 
 // src/screens/Customers/CustomersList.tsx
-import { jsx as jsx45, jsxs as jsxs39 } from "react/jsx-runtime";
-var DoctorProjectSidebar2 = () => /* @__PURE__ */ jsxs39("aside", { className: "sidebar", style: { width: 160 }, children: [
-  /* @__PURE__ */ jsxs39("div", { className: "sidebar-brand", style: { padding: "20px 16px" }, children: [
-    /* @__PURE__ */ jsx45("span", { className: "sidebar-brand-name", style: { fontSize: 18 }, children: "Doctor Project" }),
-    /* @__PURE__ */ jsx45("span", { className: "sidebar-brand-dot" })
+import { jsx as jsx55, jsxs as jsxs46 } from "react/jsx-runtime";
+var DoctorProjectSidebar2 = () => /* @__PURE__ */ jsxs46("aside", { className: "sidebar", style: { width: 160 }, children: [
+  /* @__PURE__ */ jsxs46("div", { className: "sidebar-brand", style: { padding: "20px 16px" }, children: [
+    /* @__PURE__ */ jsx55("span", { className: "sidebar-brand-name", style: { fontSize: 18 }, children: "Doctor Project" }),
+    /* @__PURE__ */ jsx55("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ jsxs39("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ jsxs39("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ jsx45("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ jsxs46("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ jsxs46("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ jsx55("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard" },
         { label: "Products" },
@@ -3525,32 +3929,32 @@ var DoctorProjectSidebar2 = () => /* @__PURE__ */ jsxs39("aside", { className: "
         },
         { label: "Sales", badge: 14, badgeVariant: "sidebar-badge--green" },
         { label: "Analytics" }
-      ].map((item) => /* @__PURE__ */ jsxs39(
+      ].map((item) => /* @__PURE__ */ jsxs46(
         "button",
         {
           className: `sidebar-nav-item ${item.active ? "active" : ""}`,
           style: { fontSize: 12, padding: "8px 10px" },
           children: [
-            /* @__PURE__ */ jsx45("span", { className: "sidebar-nav-text", children: item.label }),
-            item.badge && /* @__PURE__ */ jsx45("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
+            /* @__PURE__ */ jsx55("span", { className: "sidebar-nav-text", children: item.label }),
+            item.badge && /* @__PURE__ */ jsx55("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
           ]
         },
         item.label
       ))
     ] }),
-    /* @__PURE__ */ jsxs39("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ jsx45("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ jsxs46("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ jsx55("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-grey)" },
         { name: "Thanawan Chadee", bg: "var(--drp-orange)" },
         { name: "Justine Robinson", bg: "var(--drp-pink)" }
-      ].map((m3) => /* @__PURE__ */ jsxs39(
+      ].map((m3) => /* @__PURE__ */ jsxs46(
         "div",
         {
           className: "sidebar-team-member",
           style: { padding: "6px 10px" },
           children: [
-            /* @__PURE__ */ jsx45(
+            /* @__PURE__ */ jsx55(
               "div",
               {
                 className: "sidebar-avatar",
@@ -3558,18 +3962,18 @@ var DoctorProjectSidebar2 = () => /* @__PURE__ */ jsxs39("aside", { className: "
                 children: m3.name[0]
               }
             ),
-            /* @__PURE__ */ jsx45("span", { className: "sidebar-team-name", style: { fontSize: 12 }, children: m3.name })
+            /* @__PURE__ */ jsx55("span", { className: "sidebar-team-name", style: { fontSize: 12 }, children: m3.name })
           ]
         },
         m3.name
       )),
-      /* @__PURE__ */ jsxs39(
+      /* @__PURE__ */ jsxs46(
         "div",
         {
           className: "sidebar-see-more",
           style: { fontSize: 11, padding: "6px 10px" },
           children: [
-            /* @__PURE__ */ jsx45(
+            /* @__PURE__ */ jsx55(
               "svg",
               {
                 width: "12",
@@ -3577,7 +3981,7 @@ var DoctorProjectSidebar2 = () => /* @__PURE__ */ jsxs39("aside", { className: "
                 fill: "none",
                 viewBox: "0 0 24 24",
                 stroke: "currentColor",
-                children: /* @__PURE__ */ jsx45(
+                children: /* @__PURE__ */ jsx55(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -3588,14 +3992,14 @@ var DoctorProjectSidebar2 = () => /* @__PURE__ */ jsxs39("aside", { className: "
                 )
               }
             ),
-            /* @__PURE__ */ jsx45("span", { children: "See More" })
+            /* @__PURE__ */ jsx55("span", { children: "See More" })
           ]
         }
       )
     ] })
   ] }),
-  /* @__PURE__ */ jsxs39("div", { className: "sidebar-user", style: { padding: "12px 12px" }, children: [
-    /* @__PURE__ */ jsx45(
+  /* @__PURE__ */ jsxs46("div", { className: "sidebar-user", style: { padding: "12px 12px" }, children: [
+    /* @__PURE__ */ jsx55(
       "div",
       {
         className: "sidebar-avatar",
@@ -3606,14 +4010,14 @@ var DoctorProjectSidebar2 = () => /* @__PURE__ */ jsxs39("aside", { className: "
         }
       }
     ),
-    /* @__PURE__ */ jsx45("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx45("div", { className: "sidebar-user-name", style: { fontSize: 12 }, children: "Henry Richardson" }) }),
-    /* @__PURE__ */ jsx45("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ jsx55("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx55("div", { className: "sidebar-user-name", style: { fontSize: 12 }, children: "Henry Richardson" }) }),
+    /* @__PURE__ */ jsx55("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var TopBar3 = () => /* @__PURE__ */ jsxs39("div", { className: "topbar", children: [
-  /* @__PURE__ */ jsx45("div", { className: "topbar-left", children: /* @__PURE__ */ jsx45("h1", { className: "topbar-title", children: "Customers" }) }),
-  /* @__PURE__ */ jsxs39("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx45("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx45(
+var TopBar3 = () => /* @__PURE__ */ jsxs46("div", { className: "topbar", children: [
+  /* @__PURE__ */ jsx55("div", { className: "topbar-left", children: /* @__PURE__ */ jsx55("h1", { className: "topbar-title", children: "Customers" }) }),
+  /* @__PURE__ */ jsxs46("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx55("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx55(
       "svg",
       {
         width: "20",
@@ -3621,7 +4025,7 @@ var TopBar3 = () => /* @__PURE__ */ jsxs39("div", { className: "topbar", childre
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx45(
+        children: /* @__PURE__ */ jsx55(
           "path",
           {
             strokeLinecap: "round",
@@ -3632,7 +4036,7 @@ var TopBar3 = () => /* @__PURE__ */ jsxs39("div", { className: "topbar", childre
         )
       }
     ) }),
-    /* @__PURE__ */ jsx45("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx45(
+    /* @__PURE__ */ jsx55("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx55(
       "svg",
       {
         width: "20",
@@ -3640,7 +4044,7 @@ var TopBar3 = () => /* @__PURE__ */ jsxs39("div", { className: "topbar", childre
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx45(
+        children: /* @__PURE__ */ jsx55(
           "path",
           {
             strokeLinecap: "round",
@@ -3651,8 +4055,8 @@ var TopBar3 = () => /* @__PURE__ */ jsxs39("div", { className: "topbar", childre
         )
       }
     ) }),
-    /* @__PURE__ */ jsxs39("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ jsx45(
+    /* @__PURE__ */ jsxs46("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ jsx55(
         "svg",
         {
           width: "16",
@@ -3660,7 +4064,7 @@ var TopBar3 = () => /* @__PURE__ */ jsxs39("div", { className: "topbar", childre
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ jsx45(
+          children: /* @__PURE__ */ jsx55(
             "path",
             {
               strokeLinecap: "round",
@@ -3671,23 +4075,23 @@ var TopBar3 = () => /* @__PURE__ */ jsxs39("div", { className: "topbar", childre
           )
         }
       ),
-      /* @__PURE__ */ jsx45("span", { children: "Apps" })
+      /* @__PURE__ */ jsx55("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ jsxs39("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsx45("span", { children: "+" }),
-      /* @__PURE__ */ jsx45("span", { children: "Create new" })
+    /* @__PURE__ */ jsxs46("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsx55("span", { children: "+" }),
+      /* @__PURE__ */ jsx55("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer3 = () => /* @__PURE__ */ jsxs39("div", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs39("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsx45("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ jsx45("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx45("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx45("span", { className: "footer-link", children: "API" })
+var Footer3 = () => /* @__PURE__ */ jsxs46("div", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs46("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsx55("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ jsx55("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx55("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx55("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs39("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx45("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs39(
+  /* @__PURE__ */ jsxs46("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx55("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs46(
       "svg",
       {
         width: "16",
@@ -3696,7 +4100,7 @@ var Footer3 = () => /* @__PURE__ */ jsxs39("div", { className: "footer-bar", chi
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ jsx45(
+          /* @__PURE__ */ jsx55(
             "path",
             {
               strokeLinecap: "round",
@@ -3705,7 +4109,7 @@ var Footer3 = () => /* @__PURE__ */ jsxs39("div", { className: "footer-bar", chi
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ jsx45(
+          /* @__PURE__ */ jsx55(
             "path",
             {
               strokeLinecap: "round",
@@ -3717,7 +4121,7 @@ var Footer3 = () => /* @__PURE__ */ jsxs39("div", { className: "footer-bar", chi
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx45("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx45(
+    /* @__PURE__ */ jsx55("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx55(
       "svg",
       {
         width: "16",
@@ -3725,7 +4129,7 @@ var Footer3 = () => /* @__PURE__ */ jsxs39("div", { className: "footer-bar", chi
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx45(
+        children: /* @__PURE__ */ jsx55(
           "path",
           {
             strokeLinecap: "round",
@@ -3738,7 +4142,7 @@ var Footer3 = () => /* @__PURE__ */ jsxs39("div", { className: "footer-bar", chi
     ) })
   ] })
 ] });
-var SortIcon2 = () => /* @__PURE__ */ jsx45(
+var SortIcon2 = () => /* @__PURE__ */ jsx55(
   "svg",
   {
     style: {
@@ -3751,7 +4155,7 @@ var SortIcon2 = () => /* @__PURE__ */ jsx45(
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor",
-    children: /* @__PURE__ */ jsx45(
+    children: /* @__PURE__ */ jsx55(
       "path",
       {
         strokeLinecap: "round",
@@ -3762,7 +4166,7 @@ var SortIcon2 = () => /* @__PURE__ */ jsx45(
     )
   }
 );
-var TablePagination2 = () => /* @__PURE__ */ jsxs39(
+var TablePagination2 = () => /* @__PURE__ */ jsxs46(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
@@ -3771,9 +4175,9 @@ var TablePagination2 = () => /* @__PURE__ */ jsxs39(
       borderTop: "var(--drp-border-thin)"
     },
     children: [
-      /* @__PURE__ */ jsx45("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Prev" }),
-      /* @__PURE__ */ jsx45("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
-      /* @__PURE__ */ jsx45("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Next" })
+      /* @__PURE__ */ jsx55("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Prev" }),
+      /* @__PURE__ */ jsx55("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
+      /* @__PURE__ */ jsx55("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Next" })
     ]
   }
 );
@@ -3842,7 +4246,7 @@ var customers = [
     bg: "var(--drp-warning)"
   }
 ];
-var TabBar = ({ active }) => /* @__PURE__ */ jsxs39(
+var TabBar = ({ active }) => /* @__PURE__ */ jsxs46(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
@@ -3851,7 +4255,7 @@ var TabBar = ({ active }) => /* @__PURE__ */ jsxs39(
       borderBottom: "var(--drp-border-thin)"
     },
     children: [
-      /* @__PURE__ */ jsx45("div", { className: "drp-tabs", children: ["All Contacts", "Teammates", "Customers"].map((tab) => /* @__PURE__ */ jsx45(
+      /* @__PURE__ */ jsx55("div", { className: "drp-tabs", children: ["All Contacts", "Teammates", "Customers"].map((tab) => /* @__PURE__ */ jsx55(
         "button",
         {
           className: `drp-tab ${tab === active ? "drp-tab--active" : ""}`,
@@ -3859,40 +4263,40 @@ var TabBar = ({ active }) => /* @__PURE__ */ jsxs39(
         },
         tab
       )) }),
-      /* @__PURE__ */ jsxs39("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-        /* @__PURE__ */ jsx45("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Sort: A-Z" }),
-        /* @__PURE__ */ jsx45("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Bulk Actions" })
+      /* @__PURE__ */ jsxs46("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+        /* @__PURE__ */ jsx55("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Sort: A-Z" }),
+        /* @__PURE__ */ jsx55("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Bulk Actions" })
       ] })
     ]
   }
 );
-var V1Content2 = () => /* @__PURE__ */ jsx45("div", { className: "content", children: /* @__PURE__ */ jsxs39("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-  /* @__PURE__ */ jsx45(TabBar, { active: "All Contacts" }),
-  /* @__PURE__ */ jsxs39("table", { className: "drp-table", children: [
-    /* @__PURE__ */ jsx45("thead", { children: /* @__PURE__ */ jsxs39("tr", { children: [
-      /* @__PURE__ */ jsx45("th", { style: { width: 40 }, children: /* @__PURE__ */ jsx45("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx45("input", { type: "checkbox" }) }) }),
-      /* @__PURE__ */ jsxs39("th", { children: [
+var V1Content2 = () => /* @__PURE__ */ jsx55("div", { className: "content", children: /* @__PURE__ */ jsxs46("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+  /* @__PURE__ */ jsx55(TabBar, { active: "All Contacts" }),
+  /* @__PURE__ */ jsxs46("table", { className: "drp-table", children: [
+    /* @__PURE__ */ jsx55("thead", { children: /* @__PURE__ */ jsxs46("tr", { children: [
+      /* @__PURE__ */ jsx55("th", { style: { width: 40 }, children: /* @__PURE__ */ jsx55("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx55("input", { type: "checkbox" }) }) }),
+      /* @__PURE__ */ jsxs46("th", { children: [
         "Name ",
-        /* @__PURE__ */ jsx45(SortIcon2, {})
+        /* @__PURE__ */ jsx55(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ jsxs39("th", { children: [
+      /* @__PURE__ */ jsxs46("th", { children: [
         "Email ",
-        /* @__PURE__ */ jsx45(SortIcon2, {})
+        /* @__PURE__ */ jsx55(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ jsxs39("th", { children: [
+      /* @__PURE__ */ jsxs46("th", { children: [
         "Service ",
-        /* @__PURE__ */ jsx45(SortIcon2, {})
+        /* @__PURE__ */ jsx55(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ jsxs39("th", { children: [
+      /* @__PURE__ */ jsxs46("th", { children: [
         "Status ",
-        /* @__PURE__ */ jsx45(SortIcon2, {})
+        /* @__PURE__ */ jsx55(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ jsx45("th", { style: { width: 40 } })
+      /* @__PURE__ */ jsx55("th", { style: { width: 40 } })
     ] }) }),
-    /* @__PURE__ */ jsx45("tbody", { children: customers.map((c2) => /* @__PURE__ */ jsxs39("tr", { children: [
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsx45("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx45("input", { type: "checkbox" }) }) }),
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsxs39("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ jsx45(
+    /* @__PURE__ */ jsx55("tbody", { children: customers.map((c2) => /* @__PURE__ */ jsxs46("tr", { children: [
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsx55("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx55("input", { type: "checkbox" }) }) }),
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsxs46("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ jsx55(
           "div",
           {
             className: "sidebar-avatar",
@@ -3905,45 +4309,45 @@ var V1Content2 = () => /* @__PURE__ */ jsx45("div", { className: "content", chil
             children: c2.name.split(" ").map((n2) => n2[0]).join("")
           }
         ),
-        /* @__PURE__ */ jsx45("span", { className: "drp-text drp-text--bold", children: c2.name })
+        /* @__PURE__ */ jsx55("span", { className: "drp-text drp-text--bold", children: c2.name })
       ] }) }),
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsx45("span", { className: "drp-text drp-text--sm drp-text--muted", children: c2.email }) }),
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsx45("span", { className: "drp-text drp-text--sm", children: c2.service }) }),
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsx45(
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsx55("span", { className: "drp-text drp-text--sm drp-text--muted", children: c2.email }) }),
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsx55("span", { className: "drp-text drp-text--sm", children: c2.service }) }),
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsx55(
         "span",
         {
           className: `drp-tag drp-tag--dot ${c2.status === "Tag" ? "drp-tag--mint" : "drp-tag--grey"}`,
           children: c2.status === "Tag" ? "Online" : "Away"
         }
       ) }),
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsx45("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsx55("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
     ] }, c2.name)) })
   ] }),
-  /* @__PURE__ */ jsx45(TablePagination2, {})
+  /* @__PURE__ */ jsx55(TablePagination2, {})
 ] }) });
-var V2Content2 = () => /* @__PURE__ */ jsx45("div", { className: "content", children: /* @__PURE__ */ jsxs39("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-  /* @__PURE__ */ jsx45(TabBar, { active: "All Contacts" }),
-  /* @__PURE__ */ jsxs39("table", { className: "drp-table", children: [
-    /* @__PURE__ */ jsx45("thead", { children: /* @__PURE__ */ jsxs39("tr", { children: [
-      /* @__PURE__ */ jsx45("th", { style: { width: 40 }, children: /* @__PURE__ */ jsx45("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx45("input", { type: "checkbox" }) }) }),
-      /* @__PURE__ */ jsxs39("th", { children: [
+var V2Content2 = () => /* @__PURE__ */ jsx55("div", { className: "content", children: /* @__PURE__ */ jsxs46("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+  /* @__PURE__ */ jsx55(TabBar, { active: "All Contacts" }),
+  /* @__PURE__ */ jsxs46("table", { className: "drp-table", children: [
+    /* @__PURE__ */ jsx55("thead", { children: /* @__PURE__ */ jsxs46("tr", { children: [
+      /* @__PURE__ */ jsx55("th", { style: { width: 40 }, children: /* @__PURE__ */ jsx55("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx55("input", { type: "checkbox" }) }) }),
+      /* @__PURE__ */ jsxs46("th", { children: [
         "Name ",
-        /* @__PURE__ */ jsx45(SortIcon2, {})
+        /* @__PURE__ */ jsx55(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ jsxs39("th", { children: [
+      /* @__PURE__ */ jsxs46("th", { children: [
         "Email ",
-        /* @__PURE__ */ jsx45(SortIcon2, {})
+        /* @__PURE__ */ jsx55(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ jsxs39("th", { children: [
+      /* @__PURE__ */ jsxs46("th", { children: [
         "Access ",
-        /* @__PURE__ */ jsx45(SortIcon2, {})
+        /* @__PURE__ */ jsx55(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ jsx45("th", { style: { width: 40 } })
+      /* @__PURE__ */ jsx55("th", { style: { width: 40 } })
     ] }) }),
-    /* @__PURE__ */ jsx45("tbody", { children: customers.map((c2, i2) => /* @__PURE__ */ jsxs39("tr", { children: [
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsx45("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx45("input", { type: "checkbox" }) }) }),
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsxs39("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ jsx45(
+    /* @__PURE__ */ jsx55("tbody", { children: customers.map((c2, i2) => /* @__PURE__ */ jsxs46("tr", { children: [
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsx55("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx55("input", { type: "checkbox" }) }) }),
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsxs46("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ jsx55(
           "div",
           {
             className: "sidebar-avatar",
@@ -3956,48 +4360,48 @@ var V2Content2 = () => /* @__PURE__ */ jsx45("div", { className: "content", chil
             children: c2.name.split(" ").map((n2) => n2[0]).join("")
           }
         ),
-        /* @__PURE__ */ jsx45("span", { className: "drp-text drp-text--bold", children: c2.name })
+        /* @__PURE__ */ jsx55("span", { className: "drp-text drp-text--bold", children: c2.name })
       ] }) }),
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsx45("span", { className: "drp-text drp-text--sm drp-text--muted", children: c2.email }) }),
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsxs39("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ jsx45("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "View and edit" }),
-        /* @__PURE__ */ jsxs39("label", { className: "drp-switch", children: [
-          /* @__PURE__ */ jsx45("input", { type: "checkbox", defaultChecked: i2 < 6 }),
-          /* @__PURE__ */ jsx45("span", { className: "drp-switch__track", children: /* @__PURE__ */ jsx45("span", { className: "drp-switch__knob" }) })
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsx55("span", { className: "drp-text drp-text--sm drp-text--muted", children: c2.email }) }),
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsxs46("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ jsx55("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "View and edit" }),
+        /* @__PURE__ */ jsxs46("label", { className: "drp-switch", children: [
+          /* @__PURE__ */ jsx55("input", { type: "checkbox", defaultChecked: i2 < 6 }),
+          /* @__PURE__ */ jsx55("span", { className: "drp-switch__track", children: /* @__PURE__ */ jsx55("span", { className: "drp-switch__knob" }) })
         ] })
       ] }) }),
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsx45("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsx55("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
     ] }, c2.name)) })
   ] }),
-  /* @__PURE__ */ jsx45(TablePagination2, {})
+  /* @__PURE__ */ jsx55(TablePagination2, {})
 ] }) });
-var V3Content2 = () => /* @__PURE__ */ jsx45("div", { className: "content", children: /* @__PURE__ */ jsxs39("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-  /* @__PURE__ */ jsx45(TabBar, { active: "All Contacts" }),
-  /* @__PURE__ */ jsxs39("table", { className: "drp-table", children: [
-    /* @__PURE__ */ jsx45("thead", { children: /* @__PURE__ */ jsxs39("tr", { children: [
-      /* @__PURE__ */ jsx45("th", { style: { width: 40 }, children: /* @__PURE__ */ jsx45("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx45("input", { type: "checkbox" }) }) }),
-      /* @__PURE__ */ jsxs39("th", { children: [
+var V3Content2 = () => /* @__PURE__ */ jsx55("div", { className: "content", children: /* @__PURE__ */ jsxs46("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+  /* @__PURE__ */ jsx55(TabBar, { active: "All Contacts" }),
+  /* @__PURE__ */ jsxs46("table", { className: "drp-table", children: [
+    /* @__PURE__ */ jsx55("thead", { children: /* @__PURE__ */ jsxs46("tr", { children: [
+      /* @__PURE__ */ jsx55("th", { style: { width: 40 }, children: /* @__PURE__ */ jsx55("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx55("input", { type: "checkbox" }) }) }),
+      /* @__PURE__ */ jsxs46("th", { children: [
         "Name ",
-        /* @__PURE__ */ jsx45(SortIcon2, {})
+        /* @__PURE__ */ jsx55(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ jsxs39("th", { children: [
+      /* @__PURE__ */ jsxs46("th", { children: [
         "Email ",
-        /* @__PURE__ */ jsx45(SortIcon2, {})
+        /* @__PURE__ */ jsx55(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ jsxs39("th", { children: [
+      /* @__PURE__ */ jsxs46("th", { children: [
         "Service ",
-        /* @__PURE__ */ jsx45(SortIcon2, {})
+        /* @__PURE__ */ jsx55(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ jsxs39("th", { children: [
+      /* @__PURE__ */ jsxs46("th", { children: [
         "Status ",
-        /* @__PURE__ */ jsx45(SortIcon2, {})
+        /* @__PURE__ */ jsx55(SortIcon2, {})
       ] }),
-      /* @__PURE__ */ jsx45("th", { style: { width: 40 } })
+      /* @__PURE__ */ jsx55("th", { style: { width: 40 } })
     ] }) }),
-    /* @__PURE__ */ jsx45("tbody", { children: customers.map((c2) => /* @__PURE__ */ jsxs39("tr", { children: [
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsx45("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx45("input", { type: "checkbox" }) }) }),
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsxs39("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ jsx45(
+    /* @__PURE__ */ jsx55("tbody", { children: customers.map((c2) => /* @__PURE__ */ jsxs46("tr", { children: [
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsx55("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx55("input", { type: "checkbox" }) }) }),
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsxs46("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ jsx55(
           "div",
           {
             className: "sidebar-avatar",
@@ -4010,18 +4414,18 @@ var V3Content2 = () => /* @__PURE__ */ jsx45("div", { className: "content", chil
             children: c2.name.split(" ").map((n2) => n2[0]).join("")
           }
         ),
-        /* @__PURE__ */ jsx45("span", { className: "drp-text drp-text--bold", children: c2.name })
+        /* @__PURE__ */ jsx55("span", { className: "drp-text drp-text--bold", children: c2.name })
       ] }) }),
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsx45("span", { className: "drp-text drp-text--sm drp-text--muted", children: c2.email }) }),
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsx45("span", { className: "drp-tag", children: c2.service }) }),
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsx45("span", { className: "drp-tag drp-tag--filled drp-tag--mint", children: c2.status }) }),
-      /* @__PURE__ */ jsx45("td", { children: /* @__PURE__ */ jsx45("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsx55("span", { className: "drp-text drp-text--sm drp-text--muted", children: c2.email }) }),
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsx55("span", { className: "drp-tag", children: c2.service }) }),
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsx55("span", { className: "drp-tag drp-tag--filled drp-tag--mint", children: c2.status }) }),
+      /* @__PURE__ */ jsx55("td", { children: /* @__PURE__ */ jsx55("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
     ] }, c2.name)) })
   ] }),
-  /* @__PURE__ */ jsx45(TablePagination2, {})
+  /* @__PURE__ */ jsx55(TablePagination2, {})
 ] }) });
-var DetailsContent2 = () => /* @__PURE__ */ jsx45("div", { className: "content", children: /* @__PURE__ */ jsx45("div", { className: "drp-flex drp-gap-6", children: /* @__PURE__ */ jsx45("div", { style: { flex: 1 }, children: /* @__PURE__ */ jsxs39("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-  /* @__PURE__ */ jsxs39(
+var DetailsContent2 = () => /* @__PURE__ */ jsx55("div", { className: "content", children: /* @__PURE__ */ jsx55("div", { className: "drp-flex drp-gap-6", children: /* @__PURE__ */ jsx55("div", { style: { flex: 1 }, children: /* @__PURE__ */ jsxs46("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+  /* @__PURE__ */ jsxs46(
     "div",
     {
       className: "drp-flex drp-items-center drp-gap-4",
@@ -4030,7 +4434,7 @@ var DetailsContent2 = () => /* @__PURE__ */ jsx45("div", { className: "content",
         borderBottom: "var(--drp-border-thin)"
       },
       children: [
-        /* @__PURE__ */ jsx45(
+        /* @__PURE__ */ jsx55(
           "div",
           {
             className: "sidebar-avatar",
@@ -4043,25 +4447,25 @@ var DetailsContent2 = () => /* @__PURE__ */ jsx45("div", { className: "content",
             children: "D"
           }
         ),
-        /* @__PURE__ */ jsxs39("div", { children: [
-          /* @__PURE__ */ jsx45("h2", { className: "drp-h5", children: "Darius Cummings" }),
-          /* @__PURE__ */ jsx45("span", { className: "drp-text drp-text--sm drp-text--muted", children: "balchen@msn.com" })
+        /* @__PURE__ */ jsxs46("div", { children: [
+          /* @__PURE__ */ jsx55("h2", { className: "drp-h5", children: "Darius Cummings" }),
+          /* @__PURE__ */ jsx55("span", { className: "drp-text drp-text--sm drp-text--muted", children: "balchen@msn.com" })
         ] })
       ]
     }
   ),
-  /* @__PURE__ */ jsx45("div", { style: { padding: "var(--drp-space-5)" }, children: /* @__PURE__ */ jsxs39("div", { className: "drp-flex drp-gap-6 drp-mb-4", children: [
-    /* @__PURE__ */ jsxs39("div", { children: [
-      /* @__PURE__ */ jsx45("span", { className: "drp-label", children: "Service" }),
-      /* @__PURE__ */ jsx45("p", { className: "drp-text drp-mt-2", children: "Development" })
+  /* @__PURE__ */ jsx55("div", { style: { padding: "var(--drp-space-5)" }, children: /* @__PURE__ */ jsxs46("div", { className: "drp-flex drp-gap-6 drp-mb-4", children: [
+    /* @__PURE__ */ jsxs46("div", { children: [
+      /* @__PURE__ */ jsx55("span", { className: "drp-label", children: "Service" }),
+      /* @__PURE__ */ jsx55("p", { className: "drp-text drp-mt-2", children: "Development" })
     ] }),
-    /* @__PURE__ */ jsxs39("div", { children: [
-      /* @__PURE__ */ jsx45("span", { className: "drp-label", children: "Status" }),
-      /* @__PURE__ */ jsx45("p", { className: "drp-mt-2", children: /* @__PURE__ */ jsx45("span", { className: "drp-tag drp-tag--dot drp-tag--mint", children: "Online" }) })
+    /* @__PURE__ */ jsxs46("div", { children: [
+      /* @__PURE__ */ jsx55("span", { className: "drp-label", children: "Status" }),
+      /* @__PURE__ */ jsx55("p", { className: "drp-mt-2", children: /* @__PURE__ */ jsx55("span", { className: "drp-tag drp-tag--dot drp-tag--mint", children: "Online" }) })
     ] }),
-    /* @__PURE__ */ jsxs39("div", { children: [
-      /* @__PURE__ */ jsx45("span", { className: "drp-label", children: "Joined" }),
-      /* @__PURE__ */ jsx45("p", { className: "drp-text drp-mt-2", children: "Jan 2022" })
+    /* @__PURE__ */ jsxs46("div", { children: [
+      /* @__PURE__ */ jsx55("span", { className: "drp-label", children: "Joined" }),
+      /* @__PURE__ */ jsx55("p", { className: "drp-text drp-mt-2", children: "Jan 2022" })
     ] })
   ] }) })
 ] }) }) }) });
@@ -4072,35 +4476,35 @@ var CustomersList = ({
   const renderContent = () => {
     switch (variant) {
       case "v2":
-        return /* @__PURE__ */ jsx45(V2Content2, {});
+        return /* @__PURE__ */ jsx55(V2Content2, {});
       case "v3":
-        return /* @__PURE__ */ jsx45(V3Content2, {});
+        return /* @__PURE__ */ jsx55(V3Content2, {});
       case "details":
-        return /* @__PURE__ */ jsx45(DetailsContent2, {});
+        return /* @__PURE__ */ jsx55(DetailsContent2, {});
       default:
-        return /* @__PURE__ */ jsx45(V1Content2, {});
+        return /* @__PURE__ */ jsx55(V1Content2, {});
     }
   };
-  return /* @__PURE__ */ jsxs39("div", { className: "app-layout", children: [
-    /* @__PURE__ */ jsx45(DoctorProjectSidebar2, {}),
-    /* @__PURE__ */ jsxs39("div", { className: "main-content", style: { marginLeft: 160 }, children: [
-      /* @__PURE__ */ jsx45(TopBar3, {}),
+  return /* @__PURE__ */ jsxs46("div", { className: "app-layout", children: [
+    /* @__PURE__ */ jsx55(DoctorProjectSidebar2, {}),
+    /* @__PURE__ */ jsxs46("div", { className: "main-content", style: { marginLeft: 160 }, children: [
+      /* @__PURE__ */ jsx55(TopBar3, {}),
       renderContent(),
-      /* @__PURE__ */ jsx45(Footer3, {})
+      /* @__PURE__ */ jsx55(Footer3, {})
     ] })
   ] });
 };
 
 // src/screens/Accounts/AccountsList.tsx
-import { jsx as jsx46, jsxs as jsxs40 } from "react/jsx-runtime";
-var DoctorProjectSidebar3 = () => /* @__PURE__ */ jsxs40("aside", { className: "sidebar", style: { width: 280 }, children: [
-  /* @__PURE__ */ jsxs40("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ jsx46("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ jsx46("span", { className: "sidebar-brand-dot" })
+import { jsx as jsx56, jsxs as jsxs47 } from "react/jsx-runtime";
+var DoctorProjectSidebar3 = () => /* @__PURE__ */ jsxs47("aside", { className: "sidebar", style: { width: 280 }, children: [
+  /* @__PURE__ */ jsxs47("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ jsx56("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ jsx56("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ jsxs40("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ jsxs40("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ jsx46("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ jsxs47("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ jsxs47("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ jsx56("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard", icon: "\u25CE" },
         { label: "Accounts", icon: "\u25A3", active: true },
@@ -4118,23 +4522,23 @@ var DoctorProjectSidebar3 = () => /* @__PURE__ */ jsxs40("aside", { className: "
           badgeVariant: "sidebar-badge--green"
         },
         { label: "Reports", icon: "\u25A4" }
-      ].map((item) => /* @__PURE__ */ jsxs40(
+      ].map((item) => /* @__PURE__ */ jsxs47(
         "button",
         {
           className: `sidebar-nav-item ${item.active ? "active" : ""}`,
           children: [
-            /* @__PURE__ */ jsx46("span", { className: "sidebar-nav-icon", children: item.icon }),
-            /* @__PURE__ */ jsx46("span", { className: "sidebar-nav-text", children: item.label }),
-            item.badge && /* @__PURE__ */ jsx46("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
+            /* @__PURE__ */ jsx56("span", { className: "sidebar-nav-icon", children: item.icon }),
+            /* @__PURE__ */ jsx56("span", { className: "sidebar-nav-text", children: item.label }),
+            item.badge && /* @__PURE__ */ jsx56("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
           ]
         },
         item.label
       ))
     ] }),
-    /* @__PURE__ */ jsxs40("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ jsx46("div", { className: "sidebar-nav-label", children: "Cards" }),
-      /* @__PURE__ */ jsxs40("button", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ jsx46(
+    /* @__PURE__ */ jsxs47("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ jsx56("div", { className: "sidebar-nav-label", children: "Cards" }),
+      /* @__PURE__ */ jsxs47("button", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ jsx56(
           "span",
           {
             className: "sidebar-avatar",
@@ -4147,10 +4551,10 @@ var DoctorProjectSidebar3 = () => /* @__PURE__ */ jsxs40("aside", { className: "
             children: "V"
           }
         ),
-        /* @__PURE__ */ jsx46("span", { className: "sidebar-nav-text", children: "Debit Card **** 7890" })
+        /* @__PURE__ */ jsx56("span", { className: "sidebar-nav-text", children: "Debit Card **** 7890" })
       ] }),
-      /* @__PURE__ */ jsxs40("button", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ jsx46(
+      /* @__PURE__ */ jsxs47("button", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ jsx56(
           "span",
           {
             className: "sidebar-avatar",
@@ -4163,10 +4567,10 @@ var DoctorProjectSidebar3 = () => /* @__PURE__ */ jsxs40("aside", { className: "
             children: "\u25CF"
           }
         ),
-        /* @__PURE__ */ jsx46("span", { className: "sidebar-nav-text", children: "Credit Card **** 4340" })
+        /* @__PURE__ */ jsx56("span", { className: "sidebar-nav-text", children: "Credit Card **** 4340" })
       ] }),
-      /* @__PURE__ */ jsxs40("button", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ jsx46(
+      /* @__PURE__ */ jsxs47("button", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ jsx56(
           "span",
           {
             style: {
@@ -4182,21 +4586,21 @@ var DoctorProjectSidebar3 = () => /* @__PURE__ */ jsxs40("aside", { className: "
             children: "+"
           }
         ),
-        /* @__PURE__ */ jsx46("span", { className: "sidebar-nav-text", children: "Open a card" })
+        /* @__PURE__ */ jsx56("span", { className: "sidebar-nav-text", children: "Open a card" })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs40("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ jsx46("div", { className: "sidebar-nav-label", children: "Balances" }),
+    /* @__PURE__ */ jsxs47("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ jsx56("div", { className: "sidebar-nav-label", children: "Balances" }),
       [
         { flag: "\u{1F1FA}\u{1F1F8}", amount: "100,050.75 USD" },
         { flag: "\u{1F1EA}\u{1F1FA}", amount: "10.40 EUR" },
         { flag: "\u{1F1EC}\u{1F1E7}", amount: "95.50 GBP" }
-      ].map((bal) => /* @__PURE__ */ jsxs40("button", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ jsx46("span", { style: { fontSize: 18 }, children: bal.flag }),
-        /* @__PURE__ */ jsx46("span", { className: "sidebar-nav-text", children: bal.amount })
+      ].map((bal) => /* @__PURE__ */ jsxs47("button", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ jsx56("span", { style: { fontSize: 18 }, children: bal.flag }),
+        /* @__PURE__ */ jsx56("span", { className: "sidebar-nav-text", children: bal.amount })
       ] }, bal.amount)),
-      /* @__PURE__ */ jsxs40("button", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ jsx46(
+      /* @__PURE__ */ jsxs47("button", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ jsx56(
           "span",
           {
             style: {
@@ -4212,12 +4616,12 @@ var DoctorProjectSidebar3 = () => /* @__PURE__ */ jsxs40("aside", { className: "
             children: "+"
           }
         ),
-        /* @__PURE__ */ jsx46("span", { className: "sidebar-nav-text", children: "Open a balance" })
+        /* @__PURE__ */ jsx56("span", { className: "sidebar-nav-text", children: "Open a balance" })
       ] })
     ] })
   ] }),
-  /* @__PURE__ */ jsxs40("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ jsx46(
+  /* @__PURE__ */ jsxs47("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ jsx56(
       "div",
       {
         className: "sidebar-avatar",
@@ -4226,7 +4630,7 @@ var DoctorProjectSidebar3 = () => /* @__PURE__ */ jsxs40("aside", { className: "
         }
       }
     ),
-    /* @__PURE__ */ jsx46(
+    /* @__PURE__ */ jsx56(
       "span",
       {
         className: "drp-text drp-text--sm",
@@ -4234,13 +4638,13 @@ var DoctorProjectSidebar3 = () => /* @__PURE__ */ jsxs40("aside", { className: "
         children: "Henry Richardson"
       }
     ),
-    /* @__PURE__ */ jsx46("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" })
+    /* @__PURE__ */ jsx56("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" })
   ] })
 ] });
-var TopBar4 = ({ theme }) => /* @__PURE__ */ jsxs40("div", { className: `topbar ${theme === "dark" ? "dark-mode" : ""}`, children: [
-  /* @__PURE__ */ jsx46("h1", { className: "topbar-title drp-h2", children: "Accounts" }),
-  /* @__PURE__ */ jsxs40("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx46("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx46(
+var TopBar4 = ({ theme }) => /* @__PURE__ */ jsxs47("div", { className: `topbar ${theme === "dark" ? "dark-mode" : ""}`, children: [
+  /* @__PURE__ */ jsx56("h1", { className: "topbar-title drp-h2", children: "Accounts" }),
+  /* @__PURE__ */ jsxs47("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx56("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx56(
       "svg",
       {
         width: "20",
@@ -4248,7 +4652,7 @@ var TopBar4 = ({ theme }) => /* @__PURE__ */ jsxs40("div", { className: `topbar 
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx46(
+        children: /* @__PURE__ */ jsx56(
           "path",
           {
             strokeLinecap: "round",
@@ -4259,7 +4663,7 @@ var TopBar4 = ({ theme }) => /* @__PURE__ */ jsxs40("div", { className: `topbar 
         )
       }
     ) }),
-    /* @__PURE__ */ jsx46("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx46(
+    /* @__PURE__ */ jsx56("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx56(
       "svg",
       {
         width: "20",
@@ -4267,7 +4671,7 @@ var TopBar4 = ({ theme }) => /* @__PURE__ */ jsxs40("div", { className: `topbar 
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx46(
+        children: /* @__PURE__ */ jsx56(
           "path",
           {
             strokeLinecap: "round",
@@ -4278,8 +4682,8 @@ var TopBar4 = ({ theme }) => /* @__PURE__ */ jsxs40("div", { className: `topbar 
         )
       }
     ) }),
-    /* @__PURE__ */ jsxs40("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ jsx46(
+    /* @__PURE__ */ jsxs47("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ jsx56(
         "svg",
         {
           width: "16",
@@ -4287,7 +4691,7 @@ var TopBar4 = ({ theme }) => /* @__PURE__ */ jsxs40("div", { className: `topbar 
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ jsx46(
+          children: /* @__PURE__ */ jsx56(
             "path",
             {
               strokeLinecap: "round",
@@ -4300,16 +4704,16 @@ var TopBar4 = ({ theme }) => /* @__PURE__ */ jsxs40("div", { className: `topbar 
       ),
       "Apps"
     ] }),
-    /* @__PURE__ */ jsxs40("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsx46("span", { style: { fontSize: 18, lineHeight: 1 }, children: "+" }),
+    /* @__PURE__ */ jsxs47("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsx56("span", { style: { fontSize: 18, lineHeight: 1 }, children: "+" }),
       "Create new"
     ] })
   ] })
 ] });
-var Footer4 = ({ theme }) => /* @__PURE__ */ jsxs40("div", { className: `footer-bar ${theme === "dark" ? "dark-mode" : ""}`, children: [
-  /* @__PURE__ */ jsxs40("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsxs40("button", { className: "footer-link", children: [
-      /* @__PURE__ */ jsxs40(
+var Footer4 = ({ theme }) => /* @__PURE__ */ jsxs47("div", { className: `footer-bar ${theme === "dark" ? "dark-mode" : ""}`, children: [
+  /* @__PURE__ */ jsxs47("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsxs47("button", { className: "footer-link", children: [
+      /* @__PURE__ */ jsxs47(
         "svg",
         {
           width: "16",
@@ -4318,8 +4722,8 @@ var Footer4 = ({ theme }) => /* @__PURE__ */ jsxs40("div", { className: `footer-
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           children: [
-            /* @__PURE__ */ jsx46("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
-            /* @__PURE__ */ jsx46(
+            /* @__PURE__ */ jsx56("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ jsx56(
               "path",
               {
                 strokeLinecap: "round",
@@ -4332,12 +4736,12 @@ var Footer4 = ({ theme }) => /* @__PURE__ */ jsxs40("div", { className: `footer-
       ),
       "English"
     ] }),
-    /* @__PURE__ */ jsx46("button", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx46("button", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx46("button", { className: "footer-link", children: "API" })
+    /* @__PURE__ */ jsx56("button", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx56("button", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx56("button", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs40("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx46("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs40(
+  /* @__PURE__ */ jsxs47("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx56("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs47(
       "svg",
       {
         width: "16",
@@ -4346,7 +4750,7 @@ var Footer4 = ({ theme }) => /* @__PURE__ */ jsxs40("div", { className: `footer-
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ jsx46(
+          /* @__PURE__ */ jsx56(
             "path",
             {
               strokeLinecap: "round",
@@ -4355,7 +4759,7 @@ var Footer4 = ({ theme }) => /* @__PURE__ */ jsxs40("div", { className: `footer-
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ jsx46(
+          /* @__PURE__ */ jsx56(
             "path",
             {
               strokeLinecap: "round",
@@ -4367,7 +4771,7 @@ var Footer4 = ({ theme }) => /* @__PURE__ */ jsxs40("div", { className: `footer-
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx46("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx46(
+    /* @__PURE__ */ jsx56("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx56(
       "svg",
       {
         width: "16",
@@ -4375,7 +4779,7 @@ var Footer4 = ({ theme }) => /* @__PURE__ */ jsxs40("div", { className: `footer-
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx46(
+        children: /* @__PURE__ */ jsx56(
           "path",
           {
             strokeLinecap: "round",
@@ -4427,16 +4831,16 @@ var LineChart = ({ theme }) => {
   const areaD = `${pathD} L ${padX + chartW} ${padY + chartH} L ${padX} ${padY + chartH} Z`;
   const lastX = padX + chartW;
   const lastY = padY + chartH - points[points.length - 1] / max * chartH;
-  return /* @__PURE__ */ jsxs40("div", { style: { position: "relative" }, children: [
-    /* @__PURE__ */ jsxs40(
+  return /* @__PURE__ */ jsxs47("div", { style: { position: "relative" }, children: [
+    /* @__PURE__ */ jsxs47(
       "svg",
       {
         viewBox: `0 0 ${width} ${height}`,
         style: { width: "100%", height: 128 },
         preserveAspectRatio: "none",
         children: [
-          /* @__PURE__ */ jsx46("defs", { children: /* @__PURE__ */ jsxs40("linearGradient", { id: "areaGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
-            /* @__PURE__ */ jsx46(
+          /* @__PURE__ */ jsx56("defs", { children: /* @__PURE__ */ jsxs47("linearGradient", { id: "areaGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+            /* @__PURE__ */ jsx56(
               "stop",
               {
                 offset: "0%",
@@ -4444,7 +4848,7 @@ var LineChart = ({ theme }) => {
                 stopOpacity: "0.3"
               }
             ),
-            /* @__PURE__ */ jsx46(
+            /* @__PURE__ */ jsx56(
               "stop",
               {
                 offset: "100%",
@@ -4453,8 +4857,8 @@ var LineChart = ({ theme }) => {
               }
             )
           ] }) }),
-          /* @__PURE__ */ jsx46("path", { d: areaD, fill: "url(#areaGrad)" }),
-          /* @__PURE__ */ jsx46(
+          /* @__PURE__ */ jsx56("path", { d: areaD, fill: "url(#areaGrad)" }),
+          /* @__PURE__ */ jsx56(
             "path",
             {
               d: pathD,
@@ -4463,11 +4867,11 @@ var LineChart = ({ theme }) => {
               strokeWidth: "2.5"
             }
           ),
-          /* @__PURE__ */ jsx46("circle", { cx: lastX, cy: lastY, r: "6", fill: "var(--drp-success)" })
+          /* @__PURE__ */ jsx56("circle", { cx: lastX, cy: lastY, r: "6", fill: "var(--drp-success)" })
         ]
       }
     ),
-    /* @__PURE__ */ jsxs40(
+    /* @__PURE__ */ jsxs47(
       "div",
       {
         className: "drp-card drp-card--sm",
@@ -4478,37 +4882,37 @@ var LineChart = ({ theme }) => {
           padding: "var(--drp-space-2) var(--drp-space-3)"
         },
         children: [
-          /* @__PURE__ */ jsx46("span", { className: "drp-caption", style: { color: "var(--drp-grey)" }, children: "June 16" }),
-          /* @__PURE__ */ jsx46("span", { className: "drp-text drp-text--bold", children: "$14.800" })
+          /* @__PURE__ */ jsx56("span", { className: "drp-caption", style: { color: "var(--drp-grey)" }, children: "June 16" }),
+          /* @__PURE__ */ jsx56("span", { className: "drp-text drp-text--bold", children: "$14.800" })
         ]
       }
     )
   ] });
 };
-var CardRow = ({ icon, cardNumber, balance, blocked, valid, status }) => /* @__PURE__ */ jsxs40("tr", { children: [
-  /* @__PURE__ */ jsx46("td", { style: { width: 40 }, children: icon }),
-  /* @__PURE__ */ jsxs40("td", { children: [
-    /* @__PURE__ */ jsx46("span", { className: "drp-text drp-text--sm drp-text--bold", children: cardNumber }),
-    /* @__PURE__ */ jsx46("br", {}),
-    /* @__PURE__ */ jsx46("span", { className: "drp-caption", children: "Card number" })
+var CardRow = ({ icon, cardNumber, balance, blocked, valid, status }) => /* @__PURE__ */ jsxs47("tr", { children: [
+  /* @__PURE__ */ jsx56("td", { style: { width: 40 }, children: icon }),
+  /* @__PURE__ */ jsxs47("td", { children: [
+    /* @__PURE__ */ jsx56("span", { className: "drp-text drp-text--sm drp-text--bold", children: cardNumber }),
+    /* @__PURE__ */ jsx56("br", {}),
+    /* @__PURE__ */ jsx56("span", { className: "drp-caption", children: "Card number" })
   ] }),
-  /* @__PURE__ */ jsxs40("td", { style: { textAlign: "right" }, children: [
-    /* @__PURE__ */ jsx46("span", { className: "drp-text drp-text--sm drp-text--bold", children: balance }),
-    /* @__PURE__ */ jsx46("br", {}),
-    /* @__PURE__ */ jsx46("span", { className: "drp-caption", children: "Balance" })
+  /* @__PURE__ */ jsxs47("td", { style: { textAlign: "right" }, children: [
+    /* @__PURE__ */ jsx56("span", { className: "drp-text drp-text--sm drp-text--bold", children: balance }),
+    /* @__PURE__ */ jsx56("br", {}),
+    /* @__PURE__ */ jsx56("span", { className: "drp-caption", children: "Balance" })
   ] }),
-  /* @__PURE__ */ jsxs40("td", { style: { textAlign: "right" }, children: [
-    /* @__PURE__ */ jsx46("span", { className: "drp-text drp-text--sm drp-text--bold", children: blocked }),
-    /* @__PURE__ */ jsx46("br", {}),
-    /* @__PURE__ */ jsx46("span", { className: "drp-caption", children: "Blocked amount" })
+  /* @__PURE__ */ jsxs47("td", { style: { textAlign: "right" }, children: [
+    /* @__PURE__ */ jsx56("span", { className: "drp-text drp-text--sm drp-text--bold", children: blocked }),
+    /* @__PURE__ */ jsx56("br", {}),
+    /* @__PURE__ */ jsx56("span", { className: "drp-caption", children: "Blocked amount" })
   ] }),
-  /* @__PURE__ */ jsxs40("td", { style: { textAlign: "right" }, children: [
-    /* @__PURE__ */ jsx46("span", { className: "drp-text drp-text--sm drp-text--bold", children: valid }),
-    /* @__PURE__ */ jsx46("br", {}),
-    /* @__PURE__ */ jsx46("span", { className: "drp-caption", children: "Valid" })
+  /* @__PURE__ */ jsxs47("td", { style: { textAlign: "right" }, children: [
+    /* @__PURE__ */ jsx56("span", { className: "drp-text drp-text--sm drp-text--bold", children: valid }),
+    /* @__PURE__ */ jsx56("br", {}),
+    /* @__PURE__ */ jsx56("span", { className: "drp-caption", children: "Valid" })
   ] }),
-  /* @__PURE__ */ jsx46("td", { children: /* @__PURE__ */ jsxs40("span", { className: "drp-tag drp-tag--dot", children: [
-    /* @__PURE__ */ jsx46(
+  /* @__PURE__ */ jsx56("td", { children: /* @__PURE__ */ jsxs47("span", { className: "drp-tag drp-tag--dot", children: [
+    /* @__PURE__ */ jsx56(
       "span",
       {
         className: "drp-dot",
@@ -4519,25 +4923,25 @@ var CardRow = ({ icon, cardNumber, balance, blocked, valid, status }) => /* @__P
     ),
     status
   ] }) }),
-  /* @__PURE__ */ jsx46("td", { style: { width: 40 }, children: /* @__PURE__ */ jsx46("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+  /* @__PURE__ */ jsx56("td", { style: { width: 40 }, children: /* @__PURE__ */ jsx56("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
 ] });
-var V1Content3 = ({ theme }) => /* @__PURE__ */ jsxs40(
+var V1Content3 = ({ theme }) => /* @__PURE__ */ jsxs47(
   "div",
   {
     className: "content",
     style: { padding: "var(--drp-space-6)", overflow: "auto" },
     children: [
-      /* @__PURE__ */ jsxs40("div", { className: "drp-card", style: { marginBottom: "var(--drp-space-4)" }, children: [
-        /* @__PURE__ */ jsxs40("div", { className: "drp-card__header", children: [
-          /* @__PURE__ */ jsx46("h2", { className: "drp-card__title drp-h5", children: "Your cards" }),
-          /* @__PURE__ */ jsx46("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: "Open new deposit" })
+      /* @__PURE__ */ jsxs47("div", { className: "drp-card", style: { marginBottom: "var(--drp-space-4)" }, children: [
+        /* @__PURE__ */ jsxs47("div", { className: "drp-card__header", children: [
+          /* @__PURE__ */ jsx56("h2", { className: "drp-card__title drp-h5", children: "Your cards" }),
+          /* @__PURE__ */ jsx56("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: "Open new deposit" })
         ] }),
-        /* @__PURE__ */ jsx46("div", { style: { padding: "var(--drp-space-2) var(--drp-space-4)" }, children: /* @__PURE__ */ jsx46(LineChart, { theme }) }),
-        /* @__PURE__ */ jsx46("table", { className: "drp-table", children: /* @__PURE__ */ jsxs40("tbody", { children: [
-          /* @__PURE__ */ jsx46(
+        /* @__PURE__ */ jsx56("div", { style: { padding: "var(--drp-space-2) var(--drp-space-4)" }, children: /* @__PURE__ */ jsx56(LineChart, { theme }) }),
+        /* @__PURE__ */ jsx56("table", { className: "drp-table", children: /* @__PURE__ */ jsxs47("tbody", { children: [
+          /* @__PURE__ */ jsx56(
             CardRow,
             {
-              icon: /* @__PURE__ */ jsx46(
+              icon: /* @__PURE__ */ jsx56(
                 "span",
                 {
                   className: "drp-text drp-text--bold",
@@ -4552,10 +4956,10 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ jsxs40(
               status: "Active"
             }
           ),
-          /* @__PURE__ */ jsx46(
+          /* @__PURE__ */ jsx56(
             CardRow,
             {
-              icon: /* @__PURE__ */ jsx46(
+              icon: /* @__PURE__ */ jsx56(
                 "div",
                 {
                   style: {
@@ -4566,7 +4970,7 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ jsxs40(
                     alignItems: "center",
                     justifyContent: "center"
                   },
-                  children: /* @__PURE__ */ jsx46("span", { style: { fontSize: 10, color: "white" }, children: "\u25D1" })
+                  children: /* @__PURE__ */ jsx56("span", { style: { fontSize: 10, color: "white" }, children: "\u25D1" })
                 }
               ),
               cardNumber: "8210 **** **** 4340",
@@ -4576,10 +4980,10 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ jsxs40(
               status: "Active"
             }
           ),
-          /* @__PURE__ */ jsx46(
+          /* @__PURE__ */ jsx56(
             CardRow,
             {
-              icon: /* @__PURE__ */ jsx46(
+              icon: /* @__PURE__ */ jsx56(
                 "div",
                 {
                   style: {
@@ -4590,7 +4994,7 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ jsxs40(
                     alignItems: "center",
                     justifyContent: "center"
                   },
-                  children: /* @__PURE__ */ jsx46("span", { style: { fontSize: 10, color: "white" }, children: "\u25D1" })
+                  children: /* @__PURE__ */ jsx56("span", { style: { fontSize: 10, color: "white" }, children: "\u25D1" })
                 }
               ),
               cardNumber: "8210 **** **** 4990",
@@ -4602,12 +5006,12 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ jsxs40(
           )
         ] }) })
       ] }),
-      /* @__PURE__ */ jsxs40("div", { className: "drp-card", children: [
-        /* @__PURE__ */ jsxs40("div", { className: "drp-card__header", children: [
-          /* @__PURE__ */ jsx46("h2", { className: "drp-card__title drp-h5", children: "Your deposits" }),
-          /* @__PURE__ */ jsx46("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: "Open new deposit" })
+      /* @__PURE__ */ jsxs47("div", { className: "drp-card", children: [
+        /* @__PURE__ */ jsxs47("div", { className: "drp-card__header", children: [
+          /* @__PURE__ */ jsx56("h2", { className: "drp-card__title drp-h5", children: "Your deposits" }),
+          /* @__PURE__ */ jsx56("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: "Open new deposit" })
         ] }),
-        /* @__PURE__ */ jsx46("table", { className: "drp-table", children: /* @__PURE__ */ jsx46("tbody", { children: [
+        /* @__PURE__ */ jsx56("table", { className: "drp-table", children: /* @__PURE__ */ jsx56("tbody", { children: [
           {
             name: "Cumulative deposit",
             balance: "$94,800.50",
@@ -4626,8 +5030,8 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ jsxs40(
             initials: "A",
             bg: "var(--drp-grey-light, #999)"
           }
-        ].map((dep, i2) => /* @__PURE__ */ jsxs40("tr", { children: [
-          /* @__PURE__ */ jsx46("td", { style: { width: 40 }, children: /* @__PURE__ */ jsx46(
+        ].map((dep, i2) => /* @__PURE__ */ jsxs47("tr", { children: [
+          /* @__PURE__ */ jsx56("td", { style: { width: 40 }, children: /* @__PURE__ */ jsx56(
             "div",
             {
               className: "sidebar-avatar",
@@ -4640,28 +5044,28 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ jsxs40(
               children: dep.initials
             }
           ) }),
-          /* @__PURE__ */ jsxs40("td", { children: [
-            /* @__PURE__ */ jsx46("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.name }),
-            /* @__PURE__ */ jsx46("br", {}),
-            /* @__PURE__ */ jsx46("span", { className: "drp-caption", children: "Name" })
+          /* @__PURE__ */ jsxs47("td", { children: [
+            /* @__PURE__ */ jsx56("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.name }),
+            /* @__PURE__ */ jsx56("br", {}),
+            /* @__PURE__ */ jsx56("span", { className: "drp-caption", children: "Name" })
           ] }),
-          /* @__PURE__ */ jsxs40("td", { style: { textAlign: "right" }, children: [
-            /* @__PURE__ */ jsx46("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.balance }),
-            /* @__PURE__ */ jsx46("br", {}),
-            /* @__PURE__ */ jsx46("span", { className: "drp-caption", children: "Balance" })
+          /* @__PURE__ */ jsxs47("td", { style: { textAlign: "right" }, children: [
+            /* @__PURE__ */ jsx56("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.balance }),
+            /* @__PURE__ */ jsx56("br", {}),
+            /* @__PURE__ */ jsx56("span", { className: "drp-caption", children: "Balance" })
           ] }),
-          /* @__PURE__ */ jsxs40("td", { style: { textAlign: "right" }, children: [
-            /* @__PURE__ */ jsx46("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.accrued }),
-            /* @__PURE__ */ jsx46("br", {}),
-            /* @__PURE__ */ jsx46("span", { className: "drp-caption", children: "Accured" })
+          /* @__PURE__ */ jsxs47("td", { style: { textAlign: "right" }, children: [
+            /* @__PURE__ */ jsx56("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.accrued }),
+            /* @__PURE__ */ jsx56("br", {}),
+            /* @__PURE__ */ jsx56("span", { className: "drp-caption", children: "Accured" })
           ] }),
-          /* @__PURE__ */ jsxs40("td", { style: { textAlign: "right" }, children: [
-            /* @__PURE__ */ jsx46("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.valid }),
-            /* @__PURE__ */ jsx46("br", {}),
-            /* @__PURE__ */ jsx46("span", { className: "drp-caption", children: "Valid" })
+          /* @__PURE__ */ jsxs47("td", { style: { textAlign: "right" }, children: [
+            /* @__PURE__ */ jsx56("span", { className: "drp-text drp-text--sm drp-text--bold", children: dep.valid }),
+            /* @__PURE__ */ jsx56("br", {}),
+            /* @__PURE__ */ jsx56("span", { className: "drp-caption", children: "Valid" })
           ] }),
-          /* @__PURE__ */ jsx46("td", { children: /* @__PURE__ */ jsxs40("span", { className: "drp-tag drp-tag--dot", children: [
-            /* @__PURE__ */ jsx46(
+          /* @__PURE__ */ jsx56("td", { children: /* @__PURE__ */ jsxs47("span", { className: "drp-tag drp-tag--dot", children: [
+            /* @__PURE__ */ jsx56(
               "span",
               {
                 className: "drp-dot",
@@ -4672,13 +5076,13 @@ var V1Content3 = ({ theme }) => /* @__PURE__ */ jsxs40(
             ),
             dep.status
           ] }) }),
-          /* @__PURE__ */ jsx46("td", { style: { width: 40 }, children: /* @__PURE__ */ jsx46("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+          /* @__PURE__ */ jsx56("td", { style: { width: 40 }, children: /* @__PURE__ */ jsx56("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
         ] }, i2)) }) })
       ] })
     ]
   }
 );
-var LimitBar = ({ label, spent, left, color, pct }) => /* @__PURE__ */ jsxs40(
+var LimitBar = ({ label, spent, left, color, pct }) => /* @__PURE__ */ jsxs47(
   "div",
   {
     style: {
@@ -4686,7 +5090,7 @@ var LimitBar = ({ label, spent, left, color, pct }) => /* @__PURE__ */ jsxs40(
       borderBottom: "var(--drp-border-light, 1px solid var(--drp-black-10, rgba(0,0,0,0.1)))"
     },
     children: [
-      /* @__PURE__ */ jsx46(
+      /* @__PURE__ */ jsx56(
         "h3",
         {
           className: "drp-text drp-text--sm drp-text--bold",
@@ -4694,12 +5098,12 @@ var LimitBar = ({ label, spent, left, color, pct }) => /* @__PURE__ */ jsxs40(
           children: label
         }
       ),
-      /* @__PURE__ */ jsx46(
+      /* @__PURE__ */ jsx56(
         "div",
         {
           className: "drp-progress",
           style: { marginBottom: "var(--drp-space-2)" },
-          children: /* @__PURE__ */ jsx46(
+          children: /* @__PURE__ */ jsx56(
             "div",
             {
               className: "drp-progress__bar",
@@ -4708,14 +5112,14 @@ var LimitBar = ({ label, spent, left, color, pct }) => /* @__PURE__ */ jsxs40(
           )
         }
       ),
-      /* @__PURE__ */ jsxs40("div", { className: "drp-flex drp-justify-between", children: [
-        /* @__PURE__ */ jsxs40("span", { className: "drp-caption", children: [
-          /* @__PURE__ */ jsx46("span", { className: "drp-text drp-text--sm drp-text--bold", children: spent }),
+      /* @__PURE__ */ jsxs47("div", { className: "drp-flex drp-justify-between", children: [
+        /* @__PURE__ */ jsxs47("span", { className: "drp-caption", children: [
+          /* @__PURE__ */ jsx56("span", { className: "drp-text drp-text--sm drp-text--bold", children: spent }),
           " ",
           "Spent"
         ] }),
-        /* @__PURE__ */ jsxs40("span", { className: "drp-caption", children: [
-          /* @__PURE__ */ jsx46("span", { className: "drp-text drp-text--sm drp-text--bold", children: left }),
+        /* @__PURE__ */ jsxs47("span", { className: "drp-caption", children: [
+          /* @__PURE__ */ jsx56("span", { className: "drp-text drp-text--sm drp-text--bold", children: left }),
           " ",
           "Left"
         ] })
@@ -4771,20 +5175,20 @@ var V2Content3 = ({ theme }) => {
       neg: true
     }
   ];
-  return /* @__PURE__ */ jsxs40(
+  return /* @__PURE__ */ jsxs47(
     "div",
     {
       className: "content drp-flex drp-gap-4",
       style: { padding: "var(--drp-space-6)", overflow: "auto" },
       children: [
-        /* @__PURE__ */ jsxs40(
+        /* @__PURE__ */ jsxs47(
           "div",
           {
             className: "drp-card",
             style: { flex: 1, display: "flex", flexDirection: "column" },
             children: [
-              /* @__PURE__ */ jsxs40("div", { className: "drp-card__header", children: [
-                /* @__PURE__ */ jsx46(
+              /* @__PURE__ */ jsxs47("div", { className: "drp-card__header", children: [
+                /* @__PURE__ */ jsx56(
                   "h2",
                   {
                     className: "drp-card__title drp-h5",
@@ -4792,13 +5196,13 @@ var V2Content3 = ({ theme }) => {
                     children: "Your cards"
                   }
                 ),
-                /* @__PURE__ */ jsxs40("div", { className: "drp-tabs", children: [
-                  /* @__PURE__ */ jsx46("button", { className: "drp-tab drp-tab--active", children: "Overview" }),
-                  /* @__PURE__ */ jsx46("button", { className: "drp-tab", children: "Currency" }),
-                  /* @__PURE__ */ jsx46("button", { className: "drp-tab", children: "Statement" })
+                /* @__PURE__ */ jsxs47("div", { className: "drp-tabs", children: [
+                  /* @__PURE__ */ jsx56("button", { className: "drp-tab drp-tab--active", children: "Overview" }),
+                  /* @__PURE__ */ jsx56("button", { className: "drp-tab", children: "Currency" }),
+                  /* @__PURE__ */ jsx56("button", { className: "drp-tab", children: "Statement" })
                 ] })
               ] }),
-              /* @__PURE__ */ jsxs40(
+              /* @__PURE__ */ jsxs47(
                 "div",
                 {
                   className: "drp-flex drp-gap-6",
@@ -4807,7 +5211,7 @@ var V2Content3 = ({ theme }) => {
                     borderBottom: "var(--drp-border)"
                   },
                   children: [
-                    /* @__PURE__ */ jsxs40(
+                    /* @__PURE__ */ jsxs47(
                       "div",
                       {
                         style: {
@@ -4820,7 +5224,7 @@ var V2Content3 = ({ theme }) => {
                           boxShadow: "var(--drp-shadow-md)"
                         },
                         children: [
-                          /* @__PURE__ */ jsx46("div", { style: { position: "absolute", top: 16, right: 16 }, children: /* @__PURE__ */ jsxs40(
+                          /* @__PURE__ */ jsx56("div", { style: { position: "absolute", top: 16, right: 16 }, children: /* @__PURE__ */ jsxs47(
                             "div",
                             {
                               style: {
@@ -4832,7 +5236,7 @@ var V2Content3 = ({ theme }) => {
                                 justifyContent: "center"
                               },
                               children: [
-                                /* @__PURE__ */ jsx46(
+                                /* @__PURE__ */ jsx56(
                                   "div",
                                   {
                                     style: {
@@ -4844,7 +5248,7 @@ var V2Content3 = ({ theme }) => {
                                     }
                                   }
                                 ),
-                                /* @__PURE__ */ jsx46(
+                                /* @__PURE__ */ jsx56(
                                   "div",
                                   {
                                     style: {
@@ -4859,8 +5263,8 @@ var V2Content3 = ({ theme }) => {
                               ]
                             }
                           ) }),
-                          /* @__PURE__ */ jsxs40("div", { style: { marginTop: 20 }, children: [
-                            /* @__PURE__ */ jsx46(
+                          /* @__PURE__ */ jsxs47("div", { style: { marginTop: 20 }, children: [
+                            /* @__PURE__ */ jsx56(
                               "div",
                               {
                                 className: "drp-text drp-text--bold",
@@ -4868,7 +5272,7 @@ var V2Content3 = ({ theme }) => {
                                 children: "3400 5678 9804 3002"
                               }
                             ),
-                            /* @__PURE__ */ jsx46(
+                            /* @__PURE__ */ jsx56(
                               "div",
                               {
                                 className: "drp-caption",
@@ -4877,9 +5281,9 @@ var V2Content3 = ({ theme }) => {
                               }
                             )
                           ] }),
-                          /* @__PURE__ */ jsxs40("div", { className: "drp-flex drp-gap-8", style: { marginTop: 16 }, children: [
-                            /* @__PURE__ */ jsxs40("div", { children: [
-                              /* @__PURE__ */ jsx46(
+                          /* @__PURE__ */ jsxs47("div", { className: "drp-flex drp-gap-8", style: { marginTop: 16 }, children: [
+                            /* @__PURE__ */ jsxs47("div", { children: [
+                              /* @__PURE__ */ jsx56(
                                 "div",
                                 {
                                   className: "drp-text drp-text--sm drp-text--bold",
@@ -4887,7 +5291,7 @@ var V2Content3 = ({ theme }) => {
                                   children: "Barry Armstrong"
                                 }
                               ),
-                              /* @__PURE__ */ jsx46(
+                              /* @__PURE__ */ jsx56(
                                 "div",
                                 {
                                   className: "drp-caption",
@@ -4896,8 +5300,8 @@ var V2Content3 = ({ theme }) => {
                                 }
                               )
                             ] }),
-                            /* @__PURE__ */ jsxs40("div", { children: [
-                              /* @__PURE__ */ jsx46(
+                            /* @__PURE__ */ jsxs47("div", { children: [
+                              /* @__PURE__ */ jsx56(
                                 "div",
                                 {
                                   className: "drp-text drp-text--sm drp-text--bold",
@@ -4905,7 +5309,7 @@ var V2Content3 = ({ theme }) => {
                                   children: "06 / 26"
                                 }
                               ),
-                              /* @__PURE__ */ jsx46(
+                              /* @__PURE__ */ jsx56(
                                 "div",
                                 {
                                   className: "drp-caption",
@@ -4918,9 +5322,9 @@ var V2Content3 = ({ theme }) => {
                         ]
                       }
                     ),
-                    /* @__PURE__ */ jsxs40("div", { children: [
-                      /* @__PURE__ */ jsx46("div", { className: "drp-h2", style: { marginBottom: 4 }, children: "42.800 USD" }),
-                      /* @__PURE__ */ jsx46(
+                    /* @__PURE__ */ jsxs47("div", { children: [
+                      /* @__PURE__ */ jsx56("div", { className: "drp-h2", style: { marginBottom: 4 }, children: "42.800 USD" }),
+                      /* @__PURE__ */ jsx56(
                         "div",
                         {
                           className: "drp-text drp-text--muted",
@@ -4928,7 +5332,7 @@ var V2Content3 = ({ theme }) => {
                           children: "Available amount"
                         }
                       ),
-                      /* @__PURE__ */ jsx46(
+                      /* @__PURE__ */ jsx56(
                         "div",
                         {
                           className: "drp-text drp-text--bold",
@@ -4936,7 +5340,7 @@ var V2Content3 = ({ theme }) => {
                           children: "UK64CT00000010034567"
                         }
                       ),
-                      /* @__PURE__ */ jsx46(
+                      /* @__PURE__ */ jsx56(
                         "div",
                         {
                           className: "drp-text drp-text--muted",
@@ -4944,12 +5348,12 @@ var V2Content3 = ({ theme }) => {
                           children: "Account number"
                         }
                       ),
-                      /* @__PURE__ */ jsx46("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Get card details" })
+                      /* @__PURE__ */ jsx56("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Get card details" })
                     ] })
                   ]
                 }
               ),
-              /* @__PURE__ */ jsxs40(
+              /* @__PURE__ */ jsxs47(
                 "div",
                 {
                   className: "drp-flex drp-items-center drp-justify-center drp-gap-2",
@@ -4958,14 +5362,14 @@ var V2Content3 = ({ theme }) => {
                     borderBottom: "var(--drp-border)"
                   },
                   children: [
-                    /* @__PURE__ */ jsx46(
+                    /* @__PURE__ */ jsx56(
                       "span",
                       {
                         className: "drp-dot",
                         style: { background: "var(--drp-purple)", width: 8, height: 8 }
                       }
                     ),
-                    /* @__PURE__ */ jsx46(
+                    /* @__PURE__ */ jsx56(
                       "span",
                       {
                         className: "drp-dot",
@@ -4976,7 +5380,7 @@ var V2Content3 = ({ theme }) => {
                         }
                       }
                     ),
-                    /* @__PURE__ */ jsx46(
+                    /* @__PURE__ */ jsx56(
                       "span",
                       {
                         className: "drp-dot",
@@ -4990,10 +5394,10 @@ var V2Content3 = ({ theme }) => {
                   ]
                 }
               ),
-              /* @__PURE__ */ jsxs40("div", { style: { padding: "var(--drp-space-5)" }, children: [
-                /* @__PURE__ */ jsx46("h3", { className: "drp-h6", style: { marginBottom: "var(--drp-space-3)" }, children: "Latest transfers" }),
-                /* @__PURE__ */ jsx46("table", { className: "drp-table", children: /* @__PURE__ */ jsx46("tbody", { children: transfers.map((t2, i2) => /* @__PURE__ */ jsxs40("tr", { children: [
-                  /* @__PURE__ */ jsx46("td", { style: { width: 40 }, children: /* @__PURE__ */ jsx46(
+              /* @__PURE__ */ jsxs47("div", { style: { padding: "var(--drp-space-5)" }, children: [
+                /* @__PURE__ */ jsx56("h3", { className: "drp-h6", style: { marginBottom: "var(--drp-space-3)" }, children: "Latest transfers" }),
+                /* @__PURE__ */ jsx56("table", { className: "drp-table", children: /* @__PURE__ */ jsx56("tbody", { children: transfers.map((t2, i2) => /* @__PURE__ */ jsxs47("tr", { children: [
+                  /* @__PURE__ */ jsx56("td", { style: { width: 40 }, children: /* @__PURE__ */ jsx56(
                     "div",
                     {
                       className: "sidebar-avatar",
@@ -5006,8 +5410,8 @@ var V2Content3 = ({ theme }) => {
                       children: t2.icon
                     }
                   ) }),
-                  /* @__PURE__ */ jsxs40("td", { children: [
-                    /* @__PURE__ */ jsx46(
+                  /* @__PURE__ */ jsxs47("td", { children: [
+                    /* @__PURE__ */ jsx56(
                       "span",
                       {
                         className: "drp-text drp-text--sm drp-text--bold",
@@ -5020,10 +5424,10 @@ var V2Content3 = ({ theme }) => {
                         children: t2.label
                       }
                     ),
-                    /* @__PURE__ */ jsx46("span", { className: "drp-caption", children: t2.sub })
+                    /* @__PURE__ */ jsx56("span", { className: "drp-caption", children: t2.sub })
                   ] }),
-                  /* @__PURE__ */ jsxs40("td", { style: { textAlign: "right" }, children: [
-                    /* @__PURE__ */ jsx46(
+                  /* @__PURE__ */ jsxs47("td", { style: { textAlign: "right" }, children: [
+                    /* @__PURE__ */ jsx56(
                       "span",
                       {
                         className: "drp-text drp-text--sm drp-text--bold",
@@ -5033,16 +5437,16 @@ var V2Content3 = ({ theme }) => {
                         children: t2.amount
                       }
                     ),
-                    /* @__PURE__ */ jsx46("br", {}),
-                    /* @__PURE__ */ jsx46("span", { className: "drp-caption", children: t2.time })
+                    /* @__PURE__ */ jsx56("br", {}),
+                    /* @__PURE__ */ jsx56("span", { className: "drp-caption", children: t2.time })
                   ] }),
-                  /* @__PURE__ */ jsx46("td", { style: { width: 40 }, children: /* @__PURE__ */ jsx46("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+                  /* @__PURE__ */ jsx56("td", { style: { width: 40 }, children: /* @__PURE__ */ jsx56("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
                 ] }, i2)) }) })
               ] })
             ]
           }
         ),
-        /* @__PURE__ */ jsxs40(
+        /* @__PURE__ */ jsxs47(
           "div",
           {
             className: "drp-card",
@@ -5053,9 +5457,9 @@ var V2Content3 = ({ theme }) => {
               flexDirection: "column"
             },
             children: [
-              /* @__PURE__ */ jsx46("div", { className: "drp-card__header", children: /* @__PURE__ */ jsx46("h2", { className: "drp-card__title drp-h5", children: "Your limits" }) }),
-              /* @__PURE__ */ jsxs40("div", { style: { padding: "0 var(--drp-space-5)", flex: 1 }, children: [
-                /* @__PURE__ */ jsx46(
+              /* @__PURE__ */ jsx56("div", { className: "drp-card__header", children: /* @__PURE__ */ jsx56("h2", { className: "drp-card__title drp-h5", children: "Your limits" }) }),
+              /* @__PURE__ */ jsxs47("div", { style: { padding: "0 var(--drp-space-5)", flex: 1 }, children: [
+                /* @__PURE__ */ jsx56(
                   LimitBar,
                   {
                     label: "ATM Withdrawals",
@@ -5065,7 +5469,7 @@ var V2Content3 = ({ theme }) => {
                     pct: 75
                   }
                 ),
-                /* @__PURE__ */ jsx46(
+                /* @__PURE__ */ jsx56(
                   LimitBar,
                   {
                     label: "Daily ATM Withdrawals",
@@ -5075,7 +5479,7 @@ var V2Content3 = ({ theme }) => {
                     pct: 60
                   }
                 ),
-                /* @__PURE__ */ jsx46(
+                /* @__PURE__ */ jsx56(
                   LimitBar,
                   {
                     label: "Cash In in ATMs",
@@ -5085,7 +5489,7 @@ var V2Content3 = ({ theme }) => {
                     pct: 15
                   }
                 ),
-                /* @__PURE__ */ jsx46(
+                /* @__PURE__ */ jsx56(
                   LimitBar,
                   {
                     label: "Online Purchase",
@@ -5096,8 +5500,8 @@ var V2Content3 = ({ theme }) => {
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsx46("div", { style: { padding: "var(--drp-space-4)" }, children: /* @__PURE__ */ jsxs40("button", { className: "drp-btn drp-btn--primary drp-btn--block", children: [
-                /* @__PURE__ */ jsx46(
+              /* @__PURE__ */ jsx56("div", { style: { padding: "var(--drp-space-4)" }, children: /* @__PURE__ */ jsxs47("button", { className: "drp-btn drp-btn--primary drp-btn--block", children: [
+                /* @__PURE__ */ jsx56(
                   "svg",
                   {
                     width: "16",
@@ -5105,7 +5509,7 @@ var V2Content3 = ({ theme }) => {
                     fill: "none",
                     viewBox: "0 0 24 24",
                     stroke: "currentColor",
-                    children: /* @__PURE__ */ jsx46(
+                    children: /* @__PURE__ */ jsx56(
                       "path",
                       {
                         strokeLinecap: "round",
@@ -5128,18 +5532,18 @@ var V2Content3 = ({ theme }) => {
 var AccountsList = ({
   theme = "light",
   variant = "v1"
-}) => /* @__PURE__ */ jsxs40("div", { className: "app-layout", children: [
-  /* @__PURE__ */ jsx46(DoctorProjectSidebar3, {}),
-  /* @__PURE__ */ jsxs40("div", { className: "main-content", style: { marginLeft: 280 }, children: [
-    /* @__PURE__ */ jsx46(TopBar4, { theme }),
-    variant === "v1" ? /* @__PURE__ */ jsx46(V1Content3, { theme }) : /* @__PURE__ */ jsx46(V2Content3, { theme }),
-    /* @__PURE__ */ jsx46(Footer4, { theme })
+}) => /* @__PURE__ */ jsxs47("div", { className: "app-layout", children: [
+  /* @__PURE__ */ jsx56(DoctorProjectSidebar3, {}),
+  /* @__PURE__ */ jsxs47("div", { className: "main-content", style: { marginLeft: 280 }, children: [
+    /* @__PURE__ */ jsx56(TopBar4, { theme }),
+    variant === "v1" ? /* @__PURE__ */ jsx56(V1Content3, { theme }) : /* @__PURE__ */ jsx56(V2Content3, { theme }),
+    /* @__PURE__ */ jsx56(Footer4, { theme })
   ] })
 ] });
 
 // src/screens/Transactions/TransactionsList.tsx
-import { useState as useState7 } from "react";
-import { Fragment as Fragment3, jsx as jsx47, jsxs as jsxs41 } from "react/jsx-runtime";
+import { useState as useState9 } from "react";
+import { Fragment as Fragment6, jsx as jsx57, jsxs as jsxs48 } from "react/jsx-runtime";
 var DoctorProjectSidebar4 = ({
   variant
 }) => {
@@ -5167,20 +5571,20 @@ var DoctorProjectSidebar4 = ({
     { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-mint)" },
     { name: "Justine Robinson", initials: "JR", bg: "var(--drp-grey)" }
   ];
-  return /* @__PURE__ */ jsxs41("aside", { className: "sidebar", style: { width: 280 }, children: [
-    /* @__PURE__ */ jsxs41("div", { className: "sidebar-brand", children: [
-      /* @__PURE__ */ jsx47("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
-      /* @__PURE__ */ jsx47("span", { className: "sidebar-brand-dot" })
+  return /* @__PURE__ */ jsxs48("aside", { className: "sidebar", style: { width: 280 }, children: [
+    /* @__PURE__ */ jsxs48("div", { className: "sidebar-brand", children: [
+      /* @__PURE__ */ jsx57("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
+      /* @__PURE__ */ jsx57("span", { className: "sidebar-brand-dot" })
     ] }),
-    /* @__PURE__ */ jsxs41("nav", { className: "sidebar-nav", children: [
-      /* @__PURE__ */ jsxs41("div", { className: "sidebar-nav-section", children: [
-        /* @__PURE__ */ jsx47("div", { className: "sidebar-nav-label", children: "Navigation" }),
-        navItems.map((item) => /* @__PURE__ */ jsxs41(
+    /* @__PURE__ */ jsxs48("nav", { className: "sidebar-nav", children: [
+      /* @__PURE__ */ jsxs48("div", { className: "sidebar-nav-section", children: [
+        /* @__PURE__ */ jsx57("div", { className: "sidebar-nav-label", children: "Navigation" }),
+        navItems.map((item) => /* @__PURE__ */ jsxs48(
           "button",
           {
             className: `sidebar-nav-item ${item.active ? "active" : ""}`,
             children: [
-              /* @__PURE__ */ jsx47("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ jsx47(
+              /* @__PURE__ */ jsx57("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ jsx57(
                 "svg",
                 {
                   width: "14",
@@ -5188,7 +5592,7 @@ var DoctorProjectSidebar4 = ({
                   fill: "none",
                   viewBox: "0 0 24 24",
                   stroke: "currentColor",
-                  children: /* @__PURE__ */ jsx47(
+                  children: /* @__PURE__ */ jsx57(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -5199,17 +5603,17 @@ var DoctorProjectSidebar4 = ({
                   )
                 }
               ) }),
-              /* @__PURE__ */ jsx47("span", { className: "sidebar-nav-text", children: item.label }),
-              item.badge && /* @__PURE__ */ jsx47("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
+              /* @__PURE__ */ jsx57("span", { className: "sidebar-nav-text", children: item.label }),
+              item.badge && /* @__PURE__ */ jsx57("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
             ]
           },
           item.id
         ))
       ] }),
-      showTeamMembers ? /* @__PURE__ */ jsxs41("div", { className: "sidebar-team", children: [
-        /* @__PURE__ */ jsx47("div", { className: "sidebar-team-label", children: "Team Members" }),
-        teamMembers.map((m3) => /* @__PURE__ */ jsxs41("div", { className: "sidebar-team-member", children: [
-          /* @__PURE__ */ jsx47(
+      showTeamMembers ? /* @__PURE__ */ jsxs48("div", { className: "sidebar-team", children: [
+        /* @__PURE__ */ jsx57("div", { className: "sidebar-team-label", children: "Team Members" }),
+        teamMembers.map((m3) => /* @__PURE__ */ jsxs48("div", { className: "sidebar-team-member", children: [
+          /* @__PURE__ */ jsx57(
             "div",
             {
               className: "sidebar-avatar",
@@ -5222,10 +5626,10 @@ var DoctorProjectSidebar4 = ({
               children: m3.initials[0]
             }
           ),
-          /* @__PURE__ */ jsx47("span", { className: "sidebar-team-name", children: m3.name })
+          /* @__PURE__ */ jsx57("span", { className: "sidebar-team-name", children: m3.name })
         ] }, m3.name)),
-        /* @__PURE__ */ jsxs41("div", { className: "sidebar-see-more", children: [
-          /* @__PURE__ */ jsx47(
+        /* @__PURE__ */ jsxs48("div", { className: "sidebar-see-more", children: [
+          /* @__PURE__ */ jsx57(
             "svg",
             {
               width: "12",
@@ -5233,7 +5637,7 @@ var DoctorProjectSidebar4 = ({
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx47(
+              children: /* @__PURE__ */ jsx57(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -5244,13 +5648,13 @@ var DoctorProjectSidebar4 = ({
               )
             }
           ),
-          /* @__PURE__ */ jsx47("span", { children: "See More" })
+          /* @__PURE__ */ jsx57("span", { children: "See More" })
         ] })
-      ] }) : /* @__PURE__ */ jsxs41(Fragment3, { children: [
-        /* @__PURE__ */ jsxs41("div", { className: "sidebar-nav-section", children: [
-          /* @__PURE__ */ jsx47("div", { className: "sidebar-nav-label", children: "Cards" }),
-          /* @__PURE__ */ jsxs41("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ jsx47(
+      ] }) : /* @__PURE__ */ jsxs48(Fragment6, { children: [
+        /* @__PURE__ */ jsxs48("div", { className: "sidebar-nav-section", children: [
+          /* @__PURE__ */ jsx57("div", { className: "sidebar-nav-label", children: "Cards" }),
+          /* @__PURE__ */ jsxs48("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ jsx57(
               "div",
               {
                 className: "sidebar-avatar",
@@ -5263,10 +5667,10 @@ var DoctorProjectSidebar4 = ({
                 children: "V"
               }
             ),
-            /* @__PURE__ */ jsx47("span", { className: "sidebar-nav-text", children: "Debit Card **** 7890" })
+            /* @__PURE__ */ jsx57("span", { className: "sidebar-nav-text", children: "Debit Card **** 7890" })
           ] }),
-          /* @__PURE__ */ jsxs41("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ jsx47(
+          /* @__PURE__ */ jsxs48("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ jsx57(
               "div",
               {
                 className: "sidebar-avatar",
@@ -5279,10 +5683,10 @@ var DoctorProjectSidebar4 = ({
                 children: "\u25CF"
               }
             ),
-            /* @__PURE__ */ jsx47("span", { className: "sidebar-nav-text", children: "Credit Card **** 4340" })
+            /* @__PURE__ */ jsx57("span", { className: "sidebar-nav-text", children: "Credit Card **** 4340" })
           ] }),
-          /* @__PURE__ */ jsxs41("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ jsx47(
+          /* @__PURE__ */ jsxs48("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ jsx57(
               "div",
               {
                 style: {
@@ -5299,21 +5703,21 @@ var DoctorProjectSidebar4 = ({
                 children: "+"
               }
             ),
-            /* @__PURE__ */ jsx47("span", { className: "sidebar-nav-text", children: "Open a card" })
+            /* @__PURE__ */ jsx57("span", { className: "sidebar-nav-text", children: "Open a card" })
           ] })
         ] }),
-        /* @__PURE__ */ jsxs41("div", { className: "sidebar-nav-section", children: [
-          /* @__PURE__ */ jsx47("div", { className: "sidebar-nav-label", children: "Balances" }),
+        /* @__PURE__ */ jsxs48("div", { className: "sidebar-nav-section", children: [
+          /* @__PURE__ */ jsx57("div", { className: "sidebar-nav-label", children: "Balances" }),
           [
             { flag: "\u{1F1FA}\u{1F1F8}", amount: "100,050.75 USD" },
             { flag: "\u{1F1EA}\u{1F1FA}", amount: "10.40 EUR" },
             { flag: "\u{1F1EC}\u{1F1E7}", amount: "95.50 GBP" }
-          ].map((bal) => /* @__PURE__ */ jsxs41("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ jsx47("span", { style: { fontSize: 16 }, children: bal.flag }),
-            /* @__PURE__ */ jsx47("span", { className: "sidebar-nav-text", children: bal.amount })
+          ].map((bal) => /* @__PURE__ */ jsxs48("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ jsx57("span", { style: { fontSize: 16 }, children: bal.flag }),
+            /* @__PURE__ */ jsx57("span", { className: "sidebar-nav-text", children: bal.amount })
           ] }, bal.amount)),
-          /* @__PURE__ */ jsxs41("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ jsx47(
+          /* @__PURE__ */ jsxs48("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ jsx57(
               "div",
               {
                 style: {
@@ -5330,13 +5734,13 @@ var DoctorProjectSidebar4 = ({
                 children: "+"
               }
             ),
-            /* @__PURE__ */ jsx47("span", { className: "sidebar-nav-text", children: "Open a balance" })
+            /* @__PURE__ */ jsx57("span", { className: "sidebar-nav-text", children: "Open a balance" })
           ] })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs41("div", { className: "sidebar-user", children: [
-      /* @__PURE__ */ jsx47(
+    /* @__PURE__ */ jsxs48("div", { className: "sidebar-user", children: [
+      /* @__PURE__ */ jsx57(
         "div",
         {
           className: "sidebar-avatar",
@@ -5347,15 +5751,15 @@ var DoctorProjectSidebar4 = ({
           }
         }
       ),
-      /* @__PURE__ */ jsx47("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx47("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-      /* @__PURE__ */ jsx47("button", { className: "sidebar-user-menu-btn", children: "..." })
+      /* @__PURE__ */ jsx57("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx57("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+      /* @__PURE__ */ jsx57("button", { className: "sidebar-user-menu-btn", children: "..." })
     ] })
   ] });
 };
-var TopBar5 = () => /* @__PURE__ */ jsxs41("div", { className: "topbar", children: [
-  /* @__PURE__ */ jsx47("div", { className: "topbar-left", children: /* @__PURE__ */ jsx47("h1", { className: "topbar-title", children: "Transactions" }) }),
-  /* @__PURE__ */ jsxs41("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx47("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx47(
+var TopBar5 = () => /* @__PURE__ */ jsxs48("div", { className: "topbar", children: [
+  /* @__PURE__ */ jsx57("div", { className: "topbar-left", children: /* @__PURE__ */ jsx57("h1", { className: "topbar-title", children: "Transactions" }) }),
+  /* @__PURE__ */ jsxs48("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx57("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx57(
       "svg",
       {
         width: "16",
@@ -5363,7 +5767,7 @@ var TopBar5 = () => /* @__PURE__ */ jsxs41("div", { className: "topbar", childre
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx47(
+        children: /* @__PURE__ */ jsx57(
           "path",
           {
             strokeLinecap: "round",
@@ -5374,7 +5778,7 @@ var TopBar5 = () => /* @__PURE__ */ jsxs41("div", { className: "topbar", childre
         )
       }
     ) }),
-    /* @__PURE__ */ jsx47("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx47(
+    /* @__PURE__ */ jsx57("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx57(
       "svg",
       {
         width: "16",
@@ -5382,7 +5786,7 @@ var TopBar5 = () => /* @__PURE__ */ jsxs41("div", { className: "topbar", childre
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx47(
+        children: /* @__PURE__ */ jsx57(
           "path",
           {
             strokeLinecap: "round",
@@ -5393,8 +5797,8 @@ var TopBar5 = () => /* @__PURE__ */ jsxs41("div", { className: "topbar", childre
         )
       }
     ) }),
-    /* @__PURE__ */ jsxs41("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ jsx47(
+    /* @__PURE__ */ jsxs48("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ jsx57(
         "svg",
         {
           width: "16",
@@ -5402,7 +5806,7 @@ var TopBar5 = () => /* @__PURE__ */ jsxs41("div", { className: "topbar", childre
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ jsx47(
+          children: /* @__PURE__ */ jsx57(
             "path",
             {
               strokeLinecap: "round",
@@ -5413,23 +5817,23 @@ var TopBar5 = () => /* @__PURE__ */ jsxs41("div", { className: "topbar", childre
           )
         }
       ),
-      /* @__PURE__ */ jsx47("span", { children: "Apps" })
+      /* @__PURE__ */ jsx57("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ jsxs41("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsx47("span", { children: "+" }),
-      /* @__PURE__ */ jsx47("span", { children: "Create new" })
+    /* @__PURE__ */ jsxs48("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsx57("span", { children: "+" }),
+      /* @__PURE__ */ jsx57("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer5 = () => /* @__PURE__ */ jsxs41("div", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs41("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsx47("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ jsx47("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx47("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx47("span", { className: "footer-link", children: "API" })
+var Footer5 = () => /* @__PURE__ */ jsxs48("div", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs48("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsx57("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ jsx57("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx57("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx57("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs41("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx47("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs41(
+  /* @__PURE__ */ jsxs48("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx57("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs48(
       "svg",
       {
         width: "16",
@@ -5438,7 +5842,7 @@ var Footer5 = () => /* @__PURE__ */ jsxs41("div", { className: "footer-bar", chi
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ jsx47(
+          /* @__PURE__ */ jsx57(
             "path",
             {
               strokeLinecap: "round",
@@ -5447,7 +5851,7 @@ var Footer5 = () => /* @__PURE__ */ jsxs41("div", { className: "footer-bar", chi
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ jsx47(
+          /* @__PURE__ */ jsx57(
             "path",
             {
               strokeLinecap: "round",
@@ -5459,7 +5863,7 @@ var Footer5 = () => /* @__PURE__ */ jsxs41("div", { className: "footer-bar", chi
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx47("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx47(
+    /* @__PURE__ */ jsx57("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx57(
       "svg",
       {
         width: "16",
@@ -5467,7 +5871,7 @@ var Footer5 = () => /* @__PURE__ */ jsxs41("div", { className: "footer-bar", chi
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx47(
+        children: /* @__PURE__ */ jsx57(
           "path",
           {
             strokeLinecap: "round",
@@ -5582,7 +5986,7 @@ var TRANSACTIONS = [
     isPositive: false
   }
 ];
-var TxIcon = ({ tx }) => /* @__PURE__ */ jsx47(
+var TxIcon = ({ tx }) => /* @__PURE__ */ jsx57(
   "div",
   {
     className: "sidebar-avatar",
@@ -5596,7 +6000,7 @@ var TxIcon = ({ tx }) => /* @__PURE__ */ jsx47(
     children: tx.icon
   }
 );
-var SortIcon3 = () => /* @__PURE__ */ jsx47(
+var SortIcon3 = () => /* @__PURE__ */ jsx57(
   "svg",
   {
     style: {
@@ -5609,7 +6013,7 @@ var SortIcon3 = () => /* @__PURE__ */ jsx47(
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor",
-    children: /* @__PURE__ */ jsx47(
+    children: /* @__PURE__ */ jsx57(
       "path",
       {
         strokeLinecap: "round",
@@ -5620,7 +6024,7 @@ var SortIcon3 = () => /* @__PURE__ */ jsx47(
     )
   }
 );
-var TablePagination3 = () => /* @__PURE__ */ jsxs41(
+var TablePagination3 = () => /* @__PURE__ */ jsxs48(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
@@ -5629,8 +6033,8 @@ var TablePagination3 = () => /* @__PURE__ */ jsxs41(
       borderTop: "var(--drp-border-thin)"
     },
     children: [
-      /* @__PURE__ */ jsxs41("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-        /* @__PURE__ */ jsx47(
+      /* @__PURE__ */ jsxs48("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ jsx57(
           "svg",
           {
             width: "16",
@@ -5638,7 +6042,7 @@ var TablePagination3 = () => /* @__PURE__ */ jsxs41(
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ jsx47(
+            children: /* @__PURE__ */ jsx57(
               "path",
               {
                 strokeLinecap: "round",
@@ -5651,10 +6055,10 @@ var TablePagination3 = () => /* @__PURE__ */ jsxs41(
         ),
         "Prev"
       ] }),
-      /* @__PURE__ */ jsx47("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
-      /* @__PURE__ */ jsxs41("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+      /* @__PURE__ */ jsx57("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
+      /* @__PURE__ */ jsxs48("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
         "Next",
-        /* @__PURE__ */ jsx47(
+        /* @__PURE__ */ jsx57(
           "svg",
           {
             width: "16",
@@ -5662,7 +6066,7 @@ var TablePagination3 = () => /* @__PURE__ */ jsxs41(
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ jsx47(
+            children: /* @__PURE__ */ jsx57(
               "path",
               {
                 strokeLinecap: "round",
@@ -5680,10 +6084,10 @@ var TablePagination3 = () => /* @__PURE__ */ jsxs41(
 var AccountTabBar = ({
   filterLabel = "Apply Filter"
 }) => {
-  const [activeTab, setActiveTab] = useState7("All Accounts");
+  const [activeTab, setActiveTab] = useState9("All Accounts");
   const tabs = ["All Accounts", "USD Account", "EUR Account", "GBP Account"];
-  return /* @__PURE__ */ jsxs41("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
-    /* @__PURE__ */ jsx47("div", { className: "drp-tabs", children: tabs.map((tab) => /* @__PURE__ */ jsx47(
+  return /* @__PURE__ */ jsxs48("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
+    /* @__PURE__ */ jsx57("div", { className: "drp-tabs", children: tabs.map((tab) => /* @__PURE__ */ jsx57(
       "button",
       {
         onClick: () => setActiveTab(tab),
@@ -5692,9 +6096,9 @@ var AccountTabBar = ({
       },
       tab
     )) }),
-    /* @__PURE__ */ jsxs41("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-      /* @__PURE__ */ jsxs41("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-        /* @__PURE__ */ jsx47(
+    /* @__PURE__ */ jsxs48("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+      /* @__PURE__ */ jsxs48("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ jsx57(
           "svg",
           {
             width: "16",
@@ -5702,7 +6106,7 @@ var AccountTabBar = ({
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ jsx47(
+            children: /* @__PURE__ */ jsx57(
               "path",
               {
                 strokeLinecap: "round",
@@ -5715,8 +6119,8 @@ var AccountTabBar = ({
         ),
         filterLabel
       ] }),
-      /* @__PURE__ */ jsxs41("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-        /* @__PURE__ */ jsx47(
+      /* @__PURE__ */ jsxs48("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ jsx57(
           "svg",
           {
             width: "16",
@@ -5724,7 +6128,7 @@ var AccountTabBar = ({
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ jsx47(
+            children: /* @__PURE__ */ jsx57(
               "path",
               {
                 strokeLinecap: "round",
@@ -5740,9 +6144,9 @@ var AccountTabBar = ({
     ] })
   ] });
 };
-var ListV1Content = () => /* @__PURE__ */ jsxs41("div", { className: "content", children: [
-  /* @__PURE__ */ jsx47(AccountTabBar, {}),
-  /* @__PURE__ */ jsx47("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: TRANSACTIONS.map((tx, i2) => /* @__PURE__ */ jsxs41(
+var ListV1Content = () => /* @__PURE__ */ jsxs48("div", { className: "content", children: [
+  /* @__PURE__ */ jsx57(AccountTabBar, {}),
+  /* @__PURE__ */ jsx57("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: TRANSACTIONS.map((tx, i2) => /* @__PURE__ */ jsxs48(
     "div",
     {
       className: "drp-flex drp-items-center drp-gap-4",
@@ -5751,13 +6155,13 @@ var ListV1Content = () => /* @__PURE__ */ jsxs41("div", { className: "content", 
         borderBottom: i2 < TRANSACTIONS.length - 1 ? "var(--drp-border-thin)" : "none"
       },
       children: [
-        /* @__PURE__ */ jsx47(TxIcon, { tx }),
-        /* @__PURE__ */ jsxs41("div", { style: { flex: 1, minWidth: 0 }, children: [
-          /* @__PURE__ */ jsx47("div", { className: "drp-text drp-text--bold", children: tx.name }),
-          /* @__PURE__ */ jsx47("div", { className: "drp-caption", children: tx.sub })
+        /* @__PURE__ */ jsx57(TxIcon, { tx }),
+        /* @__PURE__ */ jsxs48("div", { style: { flex: 1, minWidth: 0 }, children: [
+          /* @__PURE__ */ jsx57("div", { className: "drp-text drp-text--bold", children: tx.name }),
+          /* @__PURE__ */ jsx57("div", { className: "drp-caption", children: tx.sub })
         ] }),
-        /* @__PURE__ */ jsxs41("div", { style: { textAlign: "right", flexShrink: 0 }, children: [
-          /* @__PURE__ */ jsx47(
+        /* @__PURE__ */ jsxs48("div", { style: { textAlign: "right", flexShrink: 0 }, children: [
+          /* @__PURE__ */ jsx57(
             "div",
             {
               className: "drp-text drp-text--bold",
@@ -5767,9 +6171,9 @@ var ListV1Content = () => /* @__PURE__ */ jsxs41("div", { className: "content", 
               children: tx.amount
             }
           ),
-          /* @__PURE__ */ jsx47("div", { className: "drp-caption", children: tx.date })
+          /* @__PURE__ */ jsx57("div", { className: "drp-caption", children: tx.date })
         ] }),
-        /* @__PURE__ */ jsx47("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." })
+        /* @__PURE__ */ jsx57("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." })
       ]
     },
     i2
@@ -5777,42 +6181,42 @@ var ListV1Content = () => /* @__PURE__ */ jsxs41("div", { className: "content", 
 ] });
 var ListV2Content = () => {
   const rows = TRANSACTIONS.slice(0, 9);
-  return /* @__PURE__ */ jsxs41("div", { className: "content", children: [
-    /* @__PURE__ */ jsx47(AccountTabBar, {}),
-    /* @__PURE__ */ jsxs41("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-      /* @__PURE__ */ jsxs41("table", { className: "drp-table", children: [
-        /* @__PURE__ */ jsx47("thead", { children: /* @__PURE__ */ jsxs41("tr", { children: [
-          /* @__PURE__ */ jsxs41("th", { children: [
+  return /* @__PURE__ */ jsxs48("div", { className: "content", children: [
+    /* @__PURE__ */ jsx57(AccountTabBar, {}),
+    /* @__PURE__ */ jsxs48("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+      /* @__PURE__ */ jsxs48("table", { className: "drp-table", children: [
+        /* @__PURE__ */ jsx57("thead", { children: /* @__PURE__ */ jsxs48("tr", { children: [
+          /* @__PURE__ */ jsxs48("th", { children: [
             "Date & Time ",
-            /* @__PURE__ */ jsx47(SortIcon3, {})
+            /* @__PURE__ */ jsx57(SortIcon3, {})
           ] }),
-          /* @__PURE__ */ jsxs41("th", { children: [
+          /* @__PURE__ */ jsxs48("th", { children: [
             "Payment ",
-            /* @__PURE__ */ jsx47(SortIcon3, {})
+            /* @__PURE__ */ jsx57(SortIcon3, {})
           ] }),
-          /* @__PURE__ */ jsxs41("th", { children: [
+          /* @__PURE__ */ jsxs48("th", { children: [
             "Service ",
-            /* @__PURE__ */ jsx47(SortIcon3, {})
+            /* @__PURE__ */ jsx57(SortIcon3, {})
           ] }),
-          /* @__PURE__ */ jsxs41("th", { children: [
+          /* @__PURE__ */ jsxs48("th", { children: [
             "Fee ",
-            /* @__PURE__ */ jsx47(SortIcon3, {})
+            /* @__PURE__ */ jsx57(SortIcon3, {})
           ] }),
-          /* @__PURE__ */ jsxs41("th", { style: { textAlign: "right" }, children: [
+          /* @__PURE__ */ jsxs48("th", { style: { textAlign: "right" }, children: [
             "Price ",
-            /* @__PURE__ */ jsx47(SortIcon3, {})
+            /* @__PURE__ */ jsx57(SortIcon3, {})
           ] }),
-          /* @__PURE__ */ jsx47("th", { style: { width: 40 } })
+          /* @__PURE__ */ jsx57("th", { style: { width: 40 } })
         ] }) }),
-        /* @__PURE__ */ jsx47("tbody", { children: rows.map((tx, i2) => /* @__PURE__ */ jsxs41("tr", { children: [
-          /* @__PURE__ */ jsx47("td", { children: /* @__PURE__ */ jsx47("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.date }) }),
-          /* @__PURE__ */ jsx47("td", { children: /* @__PURE__ */ jsxs41("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-            /* @__PURE__ */ jsx47(TxIcon, { tx }),
-            /* @__PURE__ */ jsx47("span", { className: "drp-text drp-text--bold", children: tx.name })
+        /* @__PURE__ */ jsx57("tbody", { children: rows.map((tx, i2) => /* @__PURE__ */ jsxs48("tr", { children: [
+          /* @__PURE__ */ jsx57("td", { children: /* @__PURE__ */ jsx57("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.date }) }),
+          /* @__PURE__ */ jsx57("td", { children: /* @__PURE__ */ jsxs48("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+            /* @__PURE__ */ jsx57(TxIcon, { tx }),
+            /* @__PURE__ */ jsx57("span", { className: "drp-text drp-text--bold", children: tx.name })
           ] }) }),
-          /* @__PURE__ */ jsx47("td", { children: /* @__PURE__ */ jsx47("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.sub }) }),
-          /* @__PURE__ */ jsx47("td", { children: /* @__PURE__ */ jsx47("span", { className: "drp-text drp-text--sm", children: tx.fee }) }),
-          /* @__PURE__ */ jsx47("td", { style: { textAlign: "right" }, children: /* @__PURE__ */ jsx47(
+          /* @__PURE__ */ jsx57("td", { children: /* @__PURE__ */ jsx57("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.sub }) }),
+          /* @__PURE__ */ jsx57("td", { children: /* @__PURE__ */ jsx57("span", { className: "drp-text drp-text--sm", children: tx.fee }) }),
+          /* @__PURE__ */ jsx57("td", { style: { textAlign: "right" }, children: /* @__PURE__ */ jsx57(
             "span",
             {
               className: "drp-text drp-text--bold",
@@ -5822,20 +6226,20 @@ var ListV2Content = () => {
               children: tx.amount
             }
           ) }),
-          /* @__PURE__ */ jsx47("td", { children: /* @__PURE__ */ jsx47("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+          /* @__PURE__ */ jsx57("td", { children: /* @__PURE__ */ jsx57("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
         ] }, i2)) })
       ] }),
-      /* @__PURE__ */ jsx47(TablePagination3, {})
+      /* @__PURE__ */ jsx57(TablePagination3, {})
     ] })
   ] });
 };
-var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay", children: /* @__PURE__ */ jsxs41(
+var InvoiceModal = () => /* @__PURE__ */ jsx57("div", { className: "drp-overlay", children: /* @__PURE__ */ jsxs48(
   "div",
   {
     className: "drp-modal",
     style: { width: 480, overflow: "hidden", padding: 0 },
     children: [
-      /* @__PURE__ */ jsxs41(
+      /* @__PURE__ */ jsxs48(
         "div",
         {
           style: {
@@ -5846,7 +6250,7 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
             justifyContent: "between"
           },
           children: [
-            /* @__PURE__ */ jsx47(
+            /* @__PURE__ */ jsx57(
               "span",
               {
                 className: "drp-text drp-text--bold",
@@ -5854,12 +6258,12 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
                 children: "Transaction details"
               }
             ),
-            /* @__PURE__ */ jsx47(
+            /* @__PURE__ */ jsx57(
               "button",
               {
                 className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
                 style: { color: "var(--drp-white)" },
-                children: /* @__PURE__ */ jsx47(
+                children: /* @__PURE__ */ jsx57(
                   "svg",
                   {
                     width: "16",
@@ -5867,7 +6271,7 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
                     fill: "none",
                     viewBox: "0 0 24 24",
                     stroke: "currentColor",
-                    children: /* @__PURE__ */ jsx47(
+                    children: /* @__PURE__ */ jsx57(
                       "path",
                       {
                         strokeLinecap: "round",
@@ -5883,7 +6287,7 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
           ]
         }
       ),
-      /* @__PURE__ */ jsxs41(
+      /* @__PURE__ */ jsxs48(
         "div",
         {
           style: {
@@ -5894,7 +6298,7 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
             padding: "var(--drp-space-2) var(--drp-space-8) var(--drp-space-6)"
           },
           children: [
-            /* @__PURE__ */ jsx47(
+            /* @__PURE__ */ jsx57(
               "div",
               {
                 className: "sidebar-avatar",
@@ -5910,8 +6314,8 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
                 children: "S"
               }
             ),
-            /* @__PURE__ */ jsx47("h2", { className: "drp-h5", style: { marginBottom: 4 }, children: "2,702.12 USD to James Dean" }),
-            /* @__PURE__ */ jsx47(
+            /* @__PURE__ */ jsx57("h2", { className: "drp-h5", style: { marginBottom: 4 }, children: "2,702.12 USD to James Dean" }),
+            /* @__PURE__ */ jsx57(
               "p",
               {
                 className: "drp-text drp-text--sm drp-text--muted",
@@ -5919,11 +6323,11 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
                 children: "Completed Thursday 29 April"
               }
             ),
-            /* @__PURE__ */ jsx47("span", { className: "drp-tag drp-tag--mint drp-tag--filled", children: "Paid" })
+            /* @__PURE__ */ jsx57("span", { className: "drp-tag drp-tag--mint drp-tag--filled", children: "Paid" })
           ]
         }
       ),
-      /* @__PURE__ */ jsxs41(
+      /* @__PURE__ */ jsxs48(
         "div",
         {
           style: {
@@ -5931,7 +6335,7 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
             borderTop: "var(--drp-border-thin)"
           },
           children: [
-            /* @__PURE__ */ jsxs41(
+            /* @__PURE__ */ jsxs48(
               "div",
               {
                 style: {
@@ -5942,19 +6346,19 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
                   paddingBottom: "var(--drp-space-4)"
                 },
                 children: [
-                  /* @__PURE__ */ jsxs41("div", { children: [
-                    /* @__PURE__ */ jsx47("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Send To" }),
-                    /* @__PURE__ */ jsx47("p", { className: "drp-text drp-text--bold", children: "James Dean" }),
-                    /* @__PURE__ */ jsx47("p", { className: "drp-text drp-text--sm drp-text--muted", children: "james.dea89@gmail.com" })
+                  /* @__PURE__ */ jsxs48("div", { children: [
+                    /* @__PURE__ */ jsx57("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Send To" }),
+                    /* @__PURE__ */ jsx57("p", { className: "drp-text drp-text--bold", children: "James Dean" }),
+                    /* @__PURE__ */ jsx57("p", { className: "drp-text drp-text--sm drp-text--muted", children: "james.dea89@gmail.com" })
                   ] }),
-                  /* @__PURE__ */ jsxs41("div", { style: { textAlign: "right" }, children: [
-                    /* @__PURE__ */ jsx47("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Amount" }),
-                    /* @__PURE__ */ jsx47("p", { className: "drp-text drp-text--bold", children: "2,702.12 USD" })
+                  /* @__PURE__ */ jsxs48("div", { style: { textAlign: "right" }, children: [
+                    /* @__PURE__ */ jsx57("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Amount" }),
+                    /* @__PURE__ */ jsx57("p", { className: "drp-text drp-text--bold", children: "2,702.12 USD" })
                   ] })
                 ]
               }
             ),
-            /* @__PURE__ */ jsx47(
+            /* @__PURE__ */ jsx57(
               "div",
               {
                 style: {
@@ -5963,7 +6367,7 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
                 }
               }
             ),
-            /* @__PURE__ */ jsxs41(
+            /* @__PURE__ */ jsxs48(
               "div",
               {
                 style: {
@@ -5974,23 +6378,23 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
                   paddingBottom: "var(--drp-space-6)"
                 },
                 children: [
-                  /* @__PURE__ */ jsxs41("div", { children: [
-                    /* @__PURE__ */ jsx47("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Bank Details" }),
-                    /* @__PURE__ */ jsx47("p", { className: "drp-text drp-text--sm", children: "GE91TB7752145031788598" }),
-                    /* @__PURE__ */ jsx47("p", { className: "drp-text drp-text--sm", children: "TBCBGE22" }),
-                    /* @__PURE__ */ jsx47("p", { className: "drp-text drp-text--sm", children: "Transfer #241894617" })
+                  /* @__PURE__ */ jsxs48("div", { children: [
+                    /* @__PURE__ */ jsx57("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Bank Details" }),
+                    /* @__PURE__ */ jsx57("p", { className: "drp-text drp-text--sm", children: "GE91TB7752145031788598" }),
+                    /* @__PURE__ */ jsx57("p", { className: "drp-text drp-text--sm", children: "TBCBGE22" }),
+                    /* @__PURE__ */ jsx57("p", { className: "drp-text drp-text--sm", children: "Transfer #241894617" })
                   ] }),
-                  /* @__PURE__ */ jsxs41("div", { style: { textAlign: "right" }, children: [
-                    /* @__PURE__ */ jsx47("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Exchange Rate" }),
-                    /* @__PURE__ */ jsx47("p", { className: "drp-text drp-text--sm", children: "1.00000" })
+                  /* @__PURE__ */ jsxs48("div", { style: { textAlign: "right" }, children: [
+                    /* @__PURE__ */ jsx57("p", { className: "drp-caption", style: { marginBottom: 4 }, children: "Exchange Rate" }),
+                    /* @__PURE__ */ jsx57("p", { className: "drp-text drp-text--sm", children: "1.00000" })
                   ] })
                 ]
               }
             ),
-            /* @__PURE__ */ jsxs41("div", { className: "drp-flex drp-gap-4", children: [
-              /* @__PURE__ */ jsxs41("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: [
+            /* @__PURE__ */ jsxs48("div", { className: "drp-flex drp-gap-4", children: [
+              /* @__PURE__ */ jsxs48("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: [
                 "Print",
-                /* @__PURE__ */ jsx47(
+                /* @__PURE__ */ jsx57(
                   "svg",
                   {
                     width: "16",
@@ -5998,7 +6402,7 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
                     fill: "none",
                     viewBox: "0 0 24 24",
                     stroke: "currentColor",
-                    children: /* @__PURE__ */ jsx47(
+                    children: /* @__PURE__ */ jsx57(
                       "path",
                       {
                         strokeLinecap: "round",
@@ -6010,9 +6414,9 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs41("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: [
+              /* @__PURE__ */ jsxs48("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: [
                 "Issue Refund",
-                /* @__PURE__ */ jsx47(
+                /* @__PURE__ */ jsx57(
                   "svg",
                   {
                     width: "16",
@@ -6020,7 +6424,7 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
                     fill: "none",
                     viewBox: "0 0 24 24",
                     stroke: "currentColor",
-                    children: /* @__PURE__ */ jsx47(
+                    children: /* @__PURE__ */ jsx57(
                       "path",
                       {
                         strokeLinecap: "round",
@@ -6041,11 +6445,11 @@ var InvoiceModal = () => /* @__PURE__ */ jsx47("div", { className: "drp-overlay"
 ) });
 var InvoiceContent = () => {
   const rows = TRANSACTIONS.slice(0, 9);
-  return /* @__PURE__ */ jsxs41(Fragment3, { children: [
-    /* @__PURE__ */ jsxs41("div", { className: "content", children: [
-      /* @__PURE__ */ jsxs41("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
-        /* @__PURE__ */ jsx47("div", { className: "drp-tabs", children: ["All Accounts", "USD Account", "EUR Account", "GBP Account"].map(
-          (tab) => /* @__PURE__ */ jsx47(
+  return /* @__PURE__ */ jsxs48(Fragment6, { children: [
+    /* @__PURE__ */ jsxs48("div", { className: "content", children: [
+      /* @__PURE__ */ jsxs48("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
+        /* @__PURE__ */ jsx57("div", { className: "drp-tabs", children: ["All Accounts", "USD Account", "EUR Account", "GBP Account"].map(
+          (tab) => /* @__PURE__ */ jsx57(
             "button",
             {
               className: `drp-tab ${tab === "All Accounts" ? "drp-tab--active" : ""}`,
@@ -6054,9 +6458,9 @@ var InvoiceContent = () => {
             tab
           )
         ) }),
-        /* @__PURE__ */ jsxs41("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-          /* @__PURE__ */ jsxs41("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-            /* @__PURE__ */ jsx47(
+        /* @__PURE__ */ jsxs48("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+          /* @__PURE__ */ jsxs48("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+            /* @__PURE__ */ jsx57(
               "svg",
               {
                 width: "16",
@@ -6064,7 +6468,7 @@ var InvoiceContent = () => {
                 fill: "none",
                 viewBox: "0 0 24 24",
                 stroke: "currentColor",
-                children: /* @__PURE__ */ jsx47(
+                children: /* @__PURE__ */ jsx57(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -6077,8 +6481,8 @@ var InvoiceContent = () => {
             ),
             "August 2023"
           ] }),
-          /* @__PURE__ */ jsxs41("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-            /* @__PURE__ */ jsx47(
+          /* @__PURE__ */ jsxs48("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+            /* @__PURE__ */ jsx57(
               "svg",
               {
                 width: "16",
@@ -6086,7 +6490,7 @@ var InvoiceContent = () => {
                 fill: "none",
                 viewBox: "0 0 24 24",
                 stroke: "currentColor",
-                children: /* @__PURE__ */ jsx47(
+                children: /* @__PURE__ */ jsx57(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -6101,40 +6505,40 @@ var InvoiceContent = () => {
           ] })
         ] })
       ] }),
-      /* @__PURE__ */ jsxs41("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-        /* @__PURE__ */ jsxs41("table", { className: "drp-table", children: [
-          /* @__PURE__ */ jsx47("thead", { children: /* @__PURE__ */ jsxs41("tr", { children: [
-            /* @__PURE__ */ jsxs41("th", { children: [
+      /* @__PURE__ */ jsxs48("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+        /* @__PURE__ */ jsxs48("table", { className: "drp-table", children: [
+          /* @__PURE__ */ jsx57("thead", { children: /* @__PURE__ */ jsxs48("tr", { children: [
+            /* @__PURE__ */ jsxs48("th", { children: [
               "Date & Time ",
-              /* @__PURE__ */ jsx47(SortIcon3, {})
+              /* @__PURE__ */ jsx57(SortIcon3, {})
             ] }),
-            /* @__PURE__ */ jsxs41("th", { children: [
+            /* @__PURE__ */ jsxs48("th", { children: [
               "Payment ",
-              /* @__PURE__ */ jsx47(SortIcon3, {})
+              /* @__PURE__ */ jsx57(SortIcon3, {})
             ] }),
-            /* @__PURE__ */ jsxs41("th", { children: [
+            /* @__PURE__ */ jsxs48("th", { children: [
               "Service ",
-              /* @__PURE__ */ jsx47(SortIcon3, {})
+              /* @__PURE__ */ jsx57(SortIcon3, {})
             ] }),
-            /* @__PURE__ */ jsxs41("th", { children: [
+            /* @__PURE__ */ jsxs48("th", { children: [
               "Fee ",
-              /* @__PURE__ */ jsx47(SortIcon3, {})
+              /* @__PURE__ */ jsx57(SortIcon3, {})
             ] }),
-            /* @__PURE__ */ jsxs41("th", { style: { textAlign: "right" }, children: [
+            /* @__PURE__ */ jsxs48("th", { style: { textAlign: "right" }, children: [
               "Price ",
-              /* @__PURE__ */ jsx47(SortIcon3, {})
+              /* @__PURE__ */ jsx57(SortIcon3, {})
             ] }),
-            /* @__PURE__ */ jsx47("th", { style: { width: 40 } })
+            /* @__PURE__ */ jsx57("th", { style: { width: 40 } })
           ] }) }),
-          /* @__PURE__ */ jsx47("tbody", { children: rows.map((tx, i2) => /* @__PURE__ */ jsxs41("tr", { children: [
-            /* @__PURE__ */ jsx47("td", { children: /* @__PURE__ */ jsx47("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.date }) }),
-            /* @__PURE__ */ jsx47("td", { children: /* @__PURE__ */ jsxs41("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-              /* @__PURE__ */ jsx47(TxIcon, { tx }),
-              /* @__PURE__ */ jsx47("span", { className: "drp-text drp-text--bold", children: tx.name })
+          /* @__PURE__ */ jsx57("tbody", { children: rows.map((tx, i2) => /* @__PURE__ */ jsxs48("tr", { children: [
+            /* @__PURE__ */ jsx57("td", { children: /* @__PURE__ */ jsx57("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.date }) }),
+            /* @__PURE__ */ jsx57("td", { children: /* @__PURE__ */ jsxs48("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+              /* @__PURE__ */ jsx57(TxIcon, { tx }),
+              /* @__PURE__ */ jsx57("span", { className: "drp-text drp-text--bold", children: tx.name })
             ] }) }),
-            /* @__PURE__ */ jsx47("td", { children: /* @__PURE__ */ jsx47("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.sub }) }),
-            /* @__PURE__ */ jsx47("td", { children: /* @__PURE__ */ jsx47("span", { className: "drp-text drp-text--sm", children: tx.fee }) }),
-            /* @__PURE__ */ jsx47("td", { style: { textAlign: "right" }, children: /* @__PURE__ */ jsx47(
+            /* @__PURE__ */ jsx57("td", { children: /* @__PURE__ */ jsx57("span", { className: "drp-text drp-text--sm drp-text--muted", children: tx.sub }) }),
+            /* @__PURE__ */ jsx57("td", { children: /* @__PURE__ */ jsx57("span", { className: "drp-text drp-text--sm", children: tx.fee }) }),
+            /* @__PURE__ */ jsx57("td", { style: { textAlign: "right" }, children: /* @__PURE__ */ jsx57(
               "span",
               {
                 className: "drp-text drp-text--bold",
@@ -6144,16 +6548,16 @@ var InvoiceContent = () => {
                 children: tx.amount
               }
             ) }),
-            /* @__PURE__ */ jsx47("td", { children: /* @__PURE__ */ jsx47("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+            /* @__PURE__ */ jsx57("td", { children: /* @__PURE__ */ jsx57("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
           ] }, i2)) })
         ] }),
-        /* @__PURE__ */ jsx47(TablePagination3, {})
+        /* @__PURE__ */ jsx57(TablePagination3, {})
       ] })
     ] }),
-    /* @__PURE__ */ jsx47(InvoiceModal, {})
+    /* @__PURE__ */ jsx57(InvoiceModal, {})
   ] });
 };
-var EmptyContent = () => /* @__PURE__ */ jsxs41(
+var EmptyContent = () => /* @__PURE__ */ jsxs48(
   "div",
   {
     className: "content",
@@ -6166,7 +6570,7 @@ var EmptyContent = () => /* @__PURE__ */ jsxs41(
       overflow: "hidden"
     },
     children: [
-      /* @__PURE__ */ jsx47(
+      /* @__PURE__ */ jsx57(
         "div",
         {
           style: {
@@ -6182,7 +6586,7 @@ var EmptyContent = () => /* @__PURE__ */ jsxs41(
           }
         }
       ),
-      /* @__PURE__ */ jsx47(
+      /* @__PURE__ */ jsx57(
         "div",
         {
           style: {
@@ -6198,7 +6602,7 @@ var EmptyContent = () => /* @__PURE__ */ jsxs41(
           }
         }
       ),
-      /* @__PURE__ */ jsx47(
+      /* @__PURE__ */ jsx57(
         "div",
         {
           style: {
@@ -6214,8 +6618,8 @@ var EmptyContent = () => /* @__PURE__ */ jsxs41(
           }
         }
       ),
-      /* @__PURE__ */ jsxs41("div", { className: "drp-empty", style: { position: "relative", zIndex: 1 }, children: [
-        /* @__PURE__ */ jsx47("div", { style: { marginBottom: "var(--drp-space-6)" }, children: /* @__PURE__ */ jsxs41(
+      /* @__PURE__ */ jsxs48("div", { className: "drp-empty", style: { position: "relative", zIndex: 1 }, children: [
+        /* @__PURE__ */ jsx57("div", { style: { marginBottom: "var(--drp-space-6)" }, children: /* @__PURE__ */ jsxs48(
           "svg",
           {
             width: "64",
@@ -6225,14 +6629,14 @@ var EmptyContent = () => /* @__PURE__ */ jsxs41(
             viewBox: "0 0 64 64",
             stroke: "currentColor",
             children: [
-              /* @__PURE__ */ jsx47("rect", { x: "8", y: "32", width: "12", height: "24", rx: "2", strokeWidth: 3 }),
-              /* @__PURE__ */ jsx47("rect", { x: "26", y: "20", width: "12", height: "36", rx: "2", strokeWidth: 3 }),
-              /* @__PURE__ */ jsx47("rect", { x: "44", y: "8", width: "12", height: "48", rx: "2", strokeWidth: 3 })
+              /* @__PURE__ */ jsx57("rect", { x: "8", y: "32", width: "12", height: "24", rx: "2", strokeWidth: 3 }),
+              /* @__PURE__ */ jsx57("rect", { x: "26", y: "20", width: "12", height: "36", rx: "2", strokeWidth: 3 }),
+              /* @__PURE__ */ jsx57("rect", { x: "44", y: "8", width: "12", height: "48", rx: "2", strokeWidth: 3 })
             ]
           }
         ) }),
-        /* @__PURE__ */ jsx47("h2", { className: "drp-h2", style: { marginBottom: "var(--drp-space-3)" }, children: "No transactions found?" }),
-        /* @__PURE__ */ jsx47(
+        /* @__PURE__ */ jsx57("h2", { className: "drp-h2", style: { marginBottom: "var(--drp-space-3)" }, children: "No transactions found?" }),
+        /* @__PURE__ */ jsx57(
           "p",
           {
             className: "drp-text drp-text--sm drp-text--muted",
@@ -6244,8 +6648,8 @@ var EmptyContent = () => /* @__PURE__ */ jsxs41(
             children: "Try to make payments for your bills and products or create a new currency account from scratch."
           }
         ),
-        /* @__PURE__ */ jsxs41("button", { className: "drp-btn drp-btn--primary", children: [
-          /* @__PURE__ */ jsx47(
+        /* @__PURE__ */ jsxs48("button", { className: "drp-btn drp-btn--primary", children: [
+          /* @__PURE__ */ jsx57(
             "svg",
             {
               width: "16",
@@ -6253,7 +6657,7 @@ var EmptyContent = () => /* @__PURE__ */ jsxs41(
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx47(
+              children: /* @__PURE__ */ jsx57(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -6277,32 +6681,32 @@ var TransactionsList = ({
   const renderContent = () => {
     switch (variant) {
       case "listV1":
-        return /* @__PURE__ */ jsx47(ListV1Content, {});
+        return /* @__PURE__ */ jsx57(ListV1Content, {});
       case "listV2":
-        return /* @__PURE__ */ jsx47(ListV2Content, {});
+        return /* @__PURE__ */ jsx57(ListV2Content, {});
       case "invoice":
-        return /* @__PURE__ */ jsx47(InvoiceContent, {});
+        return /* @__PURE__ */ jsx57(InvoiceContent, {});
       case "empty":
-        return /* @__PURE__ */ jsx47(EmptyContent, {});
+        return /* @__PURE__ */ jsx57(EmptyContent, {});
       default:
-        return /* @__PURE__ */ jsx47(ListV1Content, {});
+        return /* @__PURE__ */ jsx57(ListV1Content, {});
     }
   };
-  return /* @__PURE__ */ jsxs41("div", { className: "app-layout", children: [
-    /* @__PURE__ */ jsx47(DoctorProjectSidebar4, { variant }),
-    /* @__PURE__ */ jsxs41("div", { className: "main-content", style: { marginLeft: 280 }, children: [
-      /* @__PURE__ */ jsx47(TopBar5, {}),
+  return /* @__PURE__ */ jsxs48("div", { className: "app-layout", children: [
+    /* @__PURE__ */ jsx57(DoctorProjectSidebar4, { variant }),
+    /* @__PURE__ */ jsxs48("div", { className: "main-content", style: { marginLeft: 280 }, children: [
+      /* @__PURE__ */ jsx57(TopBar5, {}),
       renderContent(),
-      /* @__PURE__ */ jsx47(Footer5, {})
+      /* @__PURE__ */ jsx57(Footer5, {})
     ] })
   ] });
 };
 
 // src/screens/Contacts/ContactsList.tsx
-import { jsx as jsx48, jsxs as jsxs42 } from "react/jsx-runtime";
+import { jsx as jsx58, jsxs as jsxs49 } from "react/jsx-runtime";
 var Avatar2 = ({ name, bg }) => {
   const initials = name.split(" ").map((n2) => n2[0]).slice(0, 2).join("");
-  return /* @__PURE__ */ jsx48(
+  return /* @__PURE__ */ jsx58(
     "div",
     {
       className: "sidebar-avatar",
@@ -6317,14 +6721,14 @@ var Avatar2 = ({ name, bg }) => {
     }
   );
 };
-var ContactsSidebar = () => /* @__PURE__ */ jsxs42("aside", { className: "sidebar", style: { width: 155 }, children: [
-  /* @__PURE__ */ jsxs42("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ jsx48("span", { className: "sidebar-brand-name", style: { fontSize: 18 }, children: "Doctor Project" }),
-    /* @__PURE__ */ jsx48("span", { className: "sidebar-brand-dot" })
+var ContactsSidebar = () => /* @__PURE__ */ jsxs49("aside", { className: "sidebar", style: { width: 155 }, children: [
+  /* @__PURE__ */ jsxs49("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ jsx58("span", { className: "sidebar-brand-name", style: { fontSize: 18 }, children: "Doctor Project" }),
+    /* @__PURE__ */ jsx58("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ jsxs42("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ jsxs42("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ jsx48("div", { className: "sidebar-nav-label", style: { fontSize: 10 }, children: "Navigation" }),
+  /* @__PURE__ */ jsxs49("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ jsxs49("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ jsx58("div", { className: "sidebar-nav-label", style: { fontSize: 10 }, children: "Navigation" }),
       [
         {
           label: "Dashboard",
@@ -6355,12 +6759,12 @@ var ContactsSidebar = () => /* @__PURE__ */ jsxs42("aside", { className: "sideba
           label: "Analytics",
           icon: "M16 8v8m-4-5v5m-4-2v2m-2 4h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
         }
-      ].map((item) => /* @__PURE__ */ jsxs42(
+      ].map((item) => /* @__PURE__ */ jsxs49(
         "button",
         {
           className: `sidebar-nav-item ${item.active ? "active" : ""}`,
           children: [
-            /* @__PURE__ */ jsx48("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ jsx48(
+            /* @__PURE__ */ jsx58("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ jsx58(
               "svg",
               {
                 width: "16",
@@ -6368,7 +6772,7 @@ var ContactsSidebar = () => /* @__PURE__ */ jsxs42("aside", { className: "sideba
                 fill: "none",
                 viewBox: "0 0 24 24",
                 stroke: "currentColor",
-                children: /* @__PURE__ */ jsx48(
+                children: /* @__PURE__ */ jsx58(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -6379,8 +6783,8 @@ var ContactsSidebar = () => /* @__PURE__ */ jsxs42("aside", { className: "sideba
                 )
               }
             ) }),
-            /* @__PURE__ */ jsx48("span", { className: "sidebar-nav-text", style: { fontSize: 12 }, children: item.label }),
-            item.badge && /* @__PURE__ */ jsx48(
+            /* @__PURE__ */ jsx58("span", { className: "sidebar-nav-text", style: { fontSize: 12 }, children: item.label }),
+            item.badge && /* @__PURE__ */ jsx58(
               "span",
               {
                 className: `sidebar-badge ${item.badgeVariant}`,
@@ -6393,14 +6797,14 @@ var ContactsSidebar = () => /* @__PURE__ */ jsxs42("aside", { className: "sideba
         item.label
       ))
     ] }),
-    /* @__PURE__ */ jsxs42("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ jsx48("div", { className: "sidebar-team-label", style: { fontSize: 10 }, children: "Team Members" }),
+    /* @__PURE__ */ jsxs49("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ jsx58("div", { className: "sidebar-team-label", style: { fontSize: 10 }, children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-grey)" },
         { name: "Thanawan Chadee", bg: "var(--drp-orange)" },
         { name: "Justine Robinson", bg: "var(--drp-pink)" }
-      ].map((member) => /* @__PURE__ */ jsxs42("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ jsx48(
+      ].map((member) => /* @__PURE__ */ jsxs49("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ jsx58(
           "div",
           {
             className: "sidebar-avatar",
@@ -6413,10 +6817,10 @@ var ContactsSidebar = () => /* @__PURE__ */ jsxs42("aside", { className: "sideba
             children: member.name[0]
           }
         ),
-        /* @__PURE__ */ jsx48("span", { className: "sidebar-team-name", style: { fontSize: 12 }, children: member.name })
+        /* @__PURE__ */ jsx58("span", { className: "sidebar-team-name", style: { fontSize: 12 }, children: member.name })
       ] }, member.name)),
-      /* @__PURE__ */ jsxs42("div", { className: "sidebar-see-more", style: { fontSize: 12 }, children: [
-        /* @__PURE__ */ jsx48(
+      /* @__PURE__ */ jsxs49("div", { className: "sidebar-see-more", style: { fontSize: 12 }, children: [
+        /* @__PURE__ */ jsx58(
           "svg",
           {
             width: "14",
@@ -6424,7 +6828,7 @@ var ContactsSidebar = () => /* @__PURE__ */ jsxs42("aside", { className: "sideba
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ jsx48(
+            children: /* @__PURE__ */ jsx58(
               "path",
               {
                 strokeLinecap: "round",
@@ -6439,8 +6843,8 @@ var ContactsSidebar = () => /* @__PURE__ */ jsxs42("aside", { className: "sideba
       ] })
     ] })
   ] }),
-  /* @__PURE__ */ jsxs42("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ jsx48(
+  /* @__PURE__ */ jsxs49("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ jsx58(
       "div",
       {
         className: "sidebar-avatar",
@@ -6451,7 +6855,7 @@ var ContactsSidebar = () => /* @__PURE__ */ jsxs42("aside", { className: "sideba
         }
       }
     ),
-    /* @__PURE__ */ jsx48(
+    /* @__PURE__ */ jsx58(
       "span",
       {
         className: "drp-text",
@@ -6459,7 +6863,7 @@ var ContactsSidebar = () => /* @__PURE__ */ jsxs42("aside", { className: "sideba
         children: "Henry Richardson"
       }
     ),
-    /* @__PURE__ */ jsx48(
+    /* @__PURE__ */ jsx58(
       "button",
       {
         className: "drp-btn drp-btn--ghost drp-btn--sm",
@@ -6469,10 +6873,10 @@ var ContactsSidebar = () => /* @__PURE__ */ jsxs42("aside", { className: "sideba
     )
   ] })
 ] });
-var TopBar6 = () => /* @__PURE__ */ jsxs42("div", { className: "topbar", children: [
-  /* @__PURE__ */ jsx48("h1", { className: "topbar-title drp-h2", children: "Contacts" }),
-  /* @__PURE__ */ jsxs42("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx48("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx48(
+var TopBar6 = () => /* @__PURE__ */ jsxs49("div", { className: "topbar", children: [
+  /* @__PURE__ */ jsx58("h1", { className: "topbar-title drp-h2", children: "Contacts" }),
+  /* @__PURE__ */ jsxs49("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx58("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx58(
       "svg",
       {
         width: "20",
@@ -6480,7 +6884,7 @@ var TopBar6 = () => /* @__PURE__ */ jsxs42("div", { className: "topbar", childre
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx48(
+        children: /* @__PURE__ */ jsx58(
           "path",
           {
             strokeLinecap: "round",
@@ -6491,7 +6895,7 @@ var TopBar6 = () => /* @__PURE__ */ jsxs42("div", { className: "topbar", childre
         )
       }
     ) }),
-    /* @__PURE__ */ jsx48("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx48(
+    /* @__PURE__ */ jsx58("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx58(
       "svg",
       {
         width: "20",
@@ -6499,7 +6903,7 @@ var TopBar6 = () => /* @__PURE__ */ jsxs42("div", { className: "topbar", childre
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx48(
+        children: /* @__PURE__ */ jsx58(
           "path",
           {
             strokeLinecap: "round",
@@ -6510,17 +6914,17 @@ var TopBar6 = () => /* @__PURE__ */ jsxs42("div", { className: "topbar", childre
         )
       }
     ) }),
-    /* @__PURE__ */ jsx48("button", { className: "topbar-apps-btn", children: "\xB7\xB7\xB7 Apps" }),
-    /* @__PURE__ */ jsxs42("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsx48("span", { style: { fontSize: 16, lineHeight: 1 }, children: "+" }),
+    /* @__PURE__ */ jsx58("button", { className: "topbar-apps-btn", children: "\xB7\xB7\xB7 Apps" }),
+    /* @__PURE__ */ jsxs49("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsx58("span", { style: { fontSize: 16, lineHeight: 1 }, children: "+" }),
       "Create new"
     ] })
   ] })
 ] });
-var Footer6 = () => /* @__PURE__ */ jsxs42("div", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs42("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsxs42("button", { className: "footer-link", children: [
-      /* @__PURE__ */ jsxs42(
+var Footer6 = () => /* @__PURE__ */ jsxs49("div", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs49("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsxs49("button", { className: "footer-link", children: [
+      /* @__PURE__ */ jsxs49(
         "svg",
         {
           width: "16",
@@ -6529,8 +6933,8 @@ var Footer6 = () => /* @__PURE__ */ jsxs42("div", { className: "footer-bar", chi
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           children: [
-            /* @__PURE__ */ jsx48("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
-            /* @__PURE__ */ jsx48(
+            /* @__PURE__ */ jsx58("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ jsx58(
               "path",
               {
                 strokeLinecap: "round",
@@ -6543,12 +6947,12 @@ var Footer6 = () => /* @__PURE__ */ jsxs42("div", { className: "footer-bar", chi
       ),
       "English"
     ] }),
-    /* @__PURE__ */ jsx48("button", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx48("button", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx48("button", { className: "footer-link", children: "API" })
+    /* @__PURE__ */ jsx58("button", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx58("button", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx58("button", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs42("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx48("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs42(
+  /* @__PURE__ */ jsxs49("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx58("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs49(
       "svg",
       {
         width: "16",
@@ -6557,7 +6961,7 @@ var Footer6 = () => /* @__PURE__ */ jsxs42("div", { className: "footer-bar", chi
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ jsx48(
+          /* @__PURE__ */ jsx58(
             "path",
             {
               strokeLinecap: "round",
@@ -6566,7 +6970,7 @@ var Footer6 = () => /* @__PURE__ */ jsxs42("div", { className: "footer-bar", chi
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ jsx48(
+          /* @__PURE__ */ jsx58(
             "path",
             {
               strokeLinecap: "round",
@@ -6578,7 +6982,7 @@ var Footer6 = () => /* @__PURE__ */ jsxs42("div", { className: "footer-bar", chi
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx48("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx48(
+    /* @__PURE__ */ jsx58("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx58(
       "svg",
       {
         width: "16",
@@ -6586,7 +6990,7 @@ var Footer6 = () => /* @__PURE__ */ jsxs42("div", { className: "footer-bar", chi
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx48(
+        children: /* @__PURE__ */ jsx58(
           "path",
           {
             strokeLinecap: "round",
@@ -6599,7 +7003,7 @@ var Footer6 = () => /* @__PURE__ */ jsxs42("div", { className: "footer-bar", chi
     ) })
   ] })
 ] });
-var SortIcon4 = () => /* @__PURE__ */ jsx48(
+var SortIcon4 = () => /* @__PURE__ */ jsx58(
   "svg",
   {
     width: "14",
@@ -6608,7 +7012,7 @@ var SortIcon4 = () => /* @__PURE__ */ jsx48(
     viewBox: "0 0 24 24",
     stroke: "currentColor",
     style: { display: "inline", marginLeft: 4, verticalAlign: "middle" },
-    children: /* @__PURE__ */ jsx48(
+    children: /* @__PURE__ */ jsx58(
       "path",
       {
         strokeLinecap: "round",
@@ -6744,8 +7148,8 @@ var StatusDot2 = ({
   status
 }) => {
   if (status === "Online") {
-    return /* @__PURE__ */ jsxs42("span", { className: "drp-tag drp-tag--dot", children: [
-      /* @__PURE__ */ jsx48(
+    return /* @__PURE__ */ jsxs49("span", { className: "drp-tag drp-tag--dot", children: [
+      /* @__PURE__ */ jsx58(
         "span",
         {
           className: "drp-dot",
@@ -6756,18 +7160,18 @@ var StatusDot2 = ({
     ] });
   }
   if (status === "Offline") {
-    return /* @__PURE__ */ jsxs42("span", { className: "drp-tag drp-tag--dot", children: [
-      /* @__PURE__ */ jsx48("span", { className: "drp-dot", style: { background: "var(--drp-error)" } }),
+    return /* @__PURE__ */ jsxs49("span", { className: "drp-tag drp-tag--dot", children: [
+      /* @__PURE__ */ jsx58("span", { className: "drp-dot", style: { background: "var(--drp-error)" } }),
       "Offline"
     ] });
   }
-  return /* @__PURE__ */ jsx48("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Away" });
+  return /* @__PURE__ */ jsx58("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Away" });
 };
-var Toggle = ({ on }) => /* @__PURE__ */ jsxs42("label", { className: "drp-switch", children: [
-  /* @__PURE__ */ jsx48("input", { type: "checkbox", checked: on, readOnly: true }),
-  /* @__PURE__ */ jsx48("span", { className: "drp-switch__track", children: /* @__PURE__ */ jsx48("span", { className: "drp-switch__knob" }) })
+var Toggle = ({ on }) => /* @__PURE__ */ jsxs49("label", { className: "drp-switch", children: [
+  /* @__PURE__ */ jsx58("input", { type: "checkbox", checked: on, readOnly: true }),
+  /* @__PURE__ */ jsx58("span", { className: "drp-switch__track", children: /* @__PURE__ */ jsx58("span", { className: "drp-switch__knob" }) })
 ] });
-var TabBar2 = ({ active }) => /* @__PURE__ */ jsxs42(
+var TabBar2 = ({ active }) => /* @__PURE__ */ jsxs49(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
@@ -6776,7 +7180,7 @@ var TabBar2 = ({ active }) => /* @__PURE__ */ jsxs42(
       borderBottom: "var(--drp-border)"
     },
     children: [
-      /* @__PURE__ */ jsx48("div", { className: "drp-tabs", children: ["All Contacts", "Teammates", "Customers"].map((tab) => /* @__PURE__ */ jsx48(
+      /* @__PURE__ */ jsx58("div", { className: "drp-tabs", children: ["All Contacts", "Teammates", "Customers"].map((tab) => /* @__PURE__ */ jsx58(
         "button",
         {
           className: `drp-tab ${tab === active ? "drp-tab--active" : ""}`,
@@ -6784,9 +7188,9 @@ var TabBar2 = ({ active }) => /* @__PURE__ */ jsxs42(
         },
         tab
       )) }),
-      /* @__PURE__ */ jsxs42("div", { className: "drp-flex drp-gap-2", children: [
-        /* @__PURE__ */ jsxs42("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-          /* @__PURE__ */ jsx48(
+      /* @__PURE__ */ jsxs49("div", { className: "drp-flex drp-gap-2", children: [
+        /* @__PURE__ */ jsxs49("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+          /* @__PURE__ */ jsx58(
             "svg",
             {
               width: "16",
@@ -6794,7 +7198,7 @@ var TabBar2 = ({ active }) => /* @__PURE__ */ jsxs42(
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx48(
+              children: /* @__PURE__ */ jsx58(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -6807,14 +7211,14 @@ var TabBar2 = ({ active }) => /* @__PURE__ */ jsxs42(
           ),
           "Sort: A-Z"
         ] }),
-        /* @__PURE__ */ jsx48("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "\xB7\xB7\xB7 Bulk Actions" })
+        /* @__PURE__ */ jsx58("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "\xB7\xB7\xB7 Bulk Actions" })
       ] })
     ]
   }
 );
-var Pagination2 = () => /* @__PURE__ */ jsxs42("div", { className: "drp-pagination", children: [
-  /* @__PURE__ */ jsxs42("button", { className: "drp-pagination__btn", children: [
-    /* @__PURE__ */ jsx48(
+var Pagination2 = () => /* @__PURE__ */ jsxs49("div", { className: "drp-pagination", children: [
+  /* @__PURE__ */ jsxs49("button", { className: "drp-pagination__btn", children: [
+    /* @__PURE__ */ jsx58(
       "svg",
       {
         width: "16",
@@ -6822,7 +7226,7 @@ var Pagination2 = () => /* @__PURE__ */ jsxs42("div", { className: "drp-paginati
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx48(
+        children: /* @__PURE__ */ jsx58(
           "path",
           {
             strokeLinecap: "round",
@@ -6835,10 +7239,10 @@ var Pagination2 = () => /* @__PURE__ */ jsxs42("div", { className: "drp-paginati
     ),
     "Prev"
   ] }),
-  /* @__PURE__ */ jsx48("span", { className: "drp-pagination__info", children: "Page 1 of 10" }),
-  /* @__PURE__ */ jsxs42("button", { className: "drp-pagination__btn", children: [
+  /* @__PURE__ */ jsx58("span", { className: "drp-pagination__info", children: "Page 1 of 10" }),
+  /* @__PURE__ */ jsxs49("button", { className: "drp-pagination__btn", children: [
     "Next",
-    /* @__PURE__ */ jsx48(
+    /* @__PURE__ */ jsx58(
       "svg",
       {
         width: "16",
@@ -6846,7 +7250,7 @@ var Pagination2 = () => /* @__PURE__ */ jsxs42("div", { className: "drp-paginati
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx48(
+        children: /* @__PURE__ */ jsx58(
           "path",
           {
             strokeLinecap: "round",
@@ -6859,7 +7263,7 @@ var Pagination2 = () => /* @__PURE__ */ jsxs42("div", { className: "drp-paginati
     )
   ] })
 ] });
-var V1Content4 = () => /* @__PURE__ */ jsx48(
+var V1Content4 = () => /* @__PURE__ */ jsx58(
   "div",
   {
     className: "content",
@@ -6867,46 +7271,46 @@ var V1Content4 = () => /* @__PURE__ */ jsx48(
       overflow: "auto",
       padding: "var(--drp-space-4) var(--drp-space-6)"
     },
-    children: /* @__PURE__ */ jsxs42("div", { className: "drp-card", children: [
-      /* @__PURE__ */ jsx48(TabBar2, { active: "All Contacts" }),
-      /* @__PURE__ */ jsxs42("table", { className: "drp-table", children: [
-        /* @__PURE__ */ jsx48("thead", { children: /* @__PURE__ */ jsxs42("tr", { children: [
-          /* @__PURE__ */ jsx48("th", { style: { width: 32 } }),
-          /* @__PURE__ */ jsxs42("th", { children: [
+    children: /* @__PURE__ */ jsxs49("div", { className: "drp-card", children: [
+      /* @__PURE__ */ jsx58(TabBar2, { active: "All Contacts" }),
+      /* @__PURE__ */ jsxs49("table", { className: "drp-table", children: [
+        /* @__PURE__ */ jsx58("thead", { children: /* @__PURE__ */ jsxs49("tr", { children: [
+          /* @__PURE__ */ jsx58("th", { style: { width: 32 } }),
+          /* @__PURE__ */ jsxs49("th", { children: [
             "Name ",
-            /* @__PURE__ */ jsx48(SortIcon4, {})
+            /* @__PURE__ */ jsx58(SortIcon4, {})
           ] }),
-          /* @__PURE__ */ jsxs42("th", { children: [
+          /* @__PURE__ */ jsxs49("th", { children: [
             "Email ",
-            /* @__PURE__ */ jsx48(SortIcon4, {})
+            /* @__PURE__ */ jsx58(SortIcon4, {})
           ] }),
-          /* @__PURE__ */ jsxs42("th", { children: [
+          /* @__PURE__ */ jsxs49("th", { children: [
             "Service ",
-            /* @__PURE__ */ jsx48(SortIcon4, {})
+            /* @__PURE__ */ jsx58(SortIcon4, {})
           ] }),
-          /* @__PURE__ */ jsxs42("th", { children: [
+          /* @__PURE__ */ jsxs49("th", { children: [
             "Status ",
-            /* @__PURE__ */ jsx48(SortIcon4, {})
+            /* @__PURE__ */ jsx58(SortIcon4, {})
           ] }),
-          /* @__PURE__ */ jsx48("th", { style: { width: 40 } })
+          /* @__PURE__ */ jsx58("th", { style: { width: 40 } })
         ] }) }),
-        /* @__PURE__ */ jsx48("tbody", { children: v1Contacts.map((contact) => /* @__PURE__ */ jsxs42("tr", { children: [
-          /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsx48("input", { type: "checkbox", className: "drp-checkbox" }) }),
-          /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsxs42("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-            /* @__PURE__ */ jsx48(Avatar2, { name: contact.name, bg: contact.bg }),
-            /* @__PURE__ */ jsx48("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
+        /* @__PURE__ */ jsx58("tbody", { children: v1Contacts.map((contact) => /* @__PURE__ */ jsxs49("tr", { children: [
+          /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsx58("input", { type: "checkbox", className: "drp-checkbox" }) }),
+          /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsxs49("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+            /* @__PURE__ */ jsx58(Avatar2, { name: contact.name, bg: contact.bg }),
+            /* @__PURE__ */ jsx58("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
           ] }) }),
-          /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsx48("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
-          /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsx48("span", { className: "drp-text drp-text--sm", children: contact.service }) }),
-          /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsx48(StatusDot2, { status: contact.status }) }),
-          /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsx48("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+          /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsx58("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
+          /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsx58("span", { className: "drp-text drp-text--sm", children: contact.service }) }),
+          /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsx58(StatusDot2, { status: contact.status }) }),
+          /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsx58("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
         ] }, contact.name)) })
       ] }),
-      /* @__PURE__ */ jsx48(Pagination2, {})
+      /* @__PURE__ */ jsx58(Pagination2, {})
     ] })
   }
 );
-var V2Content4 = () => /* @__PURE__ */ jsx48(
+var V2Content4 = () => /* @__PURE__ */ jsx58(
   "div",
   {
     className: "content",
@@ -6914,35 +7318,35 @@ var V2Content4 = () => /* @__PURE__ */ jsx48(
       overflow: "auto",
       padding: "var(--drp-space-4) var(--drp-space-6)"
     },
-    children: /* @__PURE__ */ jsxs42("div", { className: "drp-card", children: [
-      /* @__PURE__ */ jsx48(TabBar2, { active: "All Contacts" }),
-      /* @__PURE__ */ jsxs42("table", { className: "drp-table", children: [
-        /* @__PURE__ */ jsx48("thead", { children: /* @__PURE__ */ jsxs42("tr", { children: [
-          /* @__PURE__ */ jsx48("th", { style: { width: 32 } }),
-          /* @__PURE__ */ jsxs42("th", { children: [
+    children: /* @__PURE__ */ jsxs49("div", { className: "drp-card", children: [
+      /* @__PURE__ */ jsx58(TabBar2, { active: "All Contacts" }),
+      /* @__PURE__ */ jsxs49("table", { className: "drp-table", children: [
+        /* @__PURE__ */ jsx58("thead", { children: /* @__PURE__ */ jsxs49("tr", { children: [
+          /* @__PURE__ */ jsx58("th", { style: { width: 32 } }),
+          /* @__PURE__ */ jsxs49("th", { children: [
             "Name ",
-            /* @__PURE__ */ jsx48(SortIcon4, {})
+            /* @__PURE__ */ jsx58(SortIcon4, {})
           ] }),
-          /* @__PURE__ */ jsxs42("th", { children: [
+          /* @__PURE__ */ jsxs49("th", { children: [
             "Email ",
-            /* @__PURE__ */ jsx48(SortIcon4, {})
+            /* @__PURE__ */ jsx58(SortIcon4, {})
           ] }),
-          /* @__PURE__ */ jsxs42("th", { children: [
+          /* @__PURE__ */ jsxs49("th", { children: [
             "Access ",
-            /* @__PURE__ */ jsx48(SortIcon4, {})
+            /* @__PURE__ */ jsx58(SortIcon4, {})
           ] }),
-          /* @__PURE__ */ jsx48("th", { style: { width: 40 } })
+          /* @__PURE__ */ jsx58("th", { style: { width: 40 } })
         ] }) }),
-        /* @__PURE__ */ jsx48("tbody", { children: v2Contacts.map((contact) => /* @__PURE__ */ jsxs42("tr", { children: [
-          /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsx48("input", { type: "checkbox", className: "drp-checkbox" }) }),
-          /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsxs42("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-            /* @__PURE__ */ jsx48(Avatar2, { name: contact.name, bg: contact.bg }),
-            /* @__PURE__ */ jsx48("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
+        /* @__PURE__ */ jsx58("tbody", { children: v2Contacts.map((contact) => /* @__PURE__ */ jsxs49("tr", { children: [
+          /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsx58("input", { type: "checkbox", className: "drp-checkbox" }) }),
+          /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsxs49("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+            /* @__PURE__ */ jsx58(Avatar2, { name: contact.name, bg: contact.bg }),
+            /* @__PURE__ */ jsx58("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
           ] }) }),
-          /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsx48("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
-          /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsxs42("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-            /* @__PURE__ */ jsxs42("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-              /* @__PURE__ */ jsx48(
+          /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsx58("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
+          /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsxs49("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+            /* @__PURE__ */ jsxs49("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+              /* @__PURE__ */ jsx58(
                 "svg",
                 {
                   width: "14",
@@ -6950,7 +7354,7 @@ var V2Content4 = () => /* @__PURE__ */ jsx48(
                   fill: "none",
                   viewBox: "0 0 24 24",
                   stroke: "currentColor",
-                  children: /* @__PURE__ */ jsx48(
+                  children: /* @__PURE__ */ jsx58(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -6963,16 +7367,16 @@ var V2Content4 = () => /* @__PURE__ */ jsx48(
               ),
               "View and edit"
             ] }),
-            /* @__PURE__ */ jsx48(Toggle, { on: contact.accessOn })
+            /* @__PURE__ */ jsx58(Toggle, { on: contact.accessOn })
           ] }) }),
-          /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsx48("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+          /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsx58("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
         ] }, contact.name)) })
       ] }),
-      /* @__PURE__ */ jsx48(Pagination2, {})
+      /* @__PURE__ */ jsx58(Pagination2, {})
     ] })
   }
 );
-var NewContactModal = () => /* @__PURE__ */ jsxs42(
+var NewContactModal = () => /* @__PURE__ */ jsxs49(
   "div",
   {
     className: "content",
@@ -6982,44 +7386,44 @@ var NewContactModal = () => /* @__PURE__ */ jsxs42(
       position: "relative"
     },
     children: [
-      /* @__PURE__ */ jsxs42("div", { className: "drp-card", style: { opacity: 0.4, pointerEvents: "none" }, children: [
-        /* @__PURE__ */ jsx48(TabBar2, { active: "All Contacts" }),
-        /* @__PURE__ */ jsxs42("table", { className: "drp-table", children: [
-          /* @__PURE__ */ jsx48("thead", { children: /* @__PURE__ */ jsxs42("tr", { children: [
-            /* @__PURE__ */ jsx48("th", { style: { width: 32 } }),
-            /* @__PURE__ */ jsxs42("th", { children: [
+      /* @__PURE__ */ jsxs49("div", { className: "drp-card", style: { opacity: 0.4, pointerEvents: "none" }, children: [
+        /* @__PURE__ */ jsx58(TabBar2, { active: "All Contacts" }),
+        /* @__PURE__ */ jsxs49("table", { className: "drp-table", children: [
+          /* @__PURE__ */ jsx58("thead", { children: /* @__PURE__ */ jsxs49("tr", { children: [
+            /* @__PURE__ */ jsx58("th", { style: { width: 32 } }),
+            /* @__PURE__ */ jsxs49("th", { children: [
               "Name ",
-              /* @__PURE__ */ jsx48(SortIcon4, {})
+              /* @__PURE__ */ jsx58(SortIcon4, {})
             ] }),
-            /* @__PURE__ */ jsxs42("th", { children: [
+            /* @__PURE__ */ jsxs49("th", { children: [
               "Email ",
-              /* @__PURE__ */ jsx48(SortIcon4, {})
+              /* @__PURE__ */ jsx58(SortIcon4, {})
             ] }),
-            /* @__PURE__ */ jsxs42("th", { children: [
+            /* @__PURE__ */ jsxs49("th", { children: [
               "Service ",
-              /* @__PURE__ */ jsx48(SortIcon4, {})
+              /* @__PURE__ */ jsx58(SortIcon4, {})
             ] }),
-            /* @__PURE__ */ jsxs42("th", { children: [
+            /* @__PURE__ */ jsxs49("th", { children: [
               "Status ",
-              /* @__PURE__ */ jsx48(SortIcon4, {})
+              /* @__PURE__ */ jsx58(SortIcon4, {})
             ] }),
-            /* @__PURE__ */ jsx48("th", { style: { width: 40 } })
+            /* @__PURE__ */ jsx58("th", { style: { width: 40 } })
           ] }) }),
-          /* @__PURE__ */ jsx48("tbody", { children: v1Contacts.slice(0, 6).map((contact) => /* @__PURE__ */ jsxs42("tr", { children: [
-            /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsx48("input", { type: "checkbox", className: "drp-checkbox", readOnly: true }) }),
-            /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsxs42("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-              /* @__PURE__ */ jsx48(Avatar2, { name: contact.name, bg: contact.bg }),
-              /* @__PURE__ */ jsx48("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
+          /* @__PURE__ */ jsx58("tbody", { children: v1Contacts.slice(0, 6).map((contact) => /* @__PURE__ */ jsxs49("tr", { children: [
+            /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsx58("input", { type: "checkbox", className: "drp-checkbox", readOnly: true }) }),
+            /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsxs49("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+              /* @__PURE__ */ jsx58(Avatar2, { name: contact.name, bg: contact.bg }),
+              /* @__PURE__ */ jsx58("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
             ] }) }),
-            /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsx48("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
-            /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsx48("span", { className: "drp-text drp-text--sm", children: contact.service }) }),
-            /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsx48(StatusDot2, { status: contact.status }) }),
-            /* @__PURE__ */ jsx48("td", { children: /* @__PURE__ */ jsx48("span", { className: "drp-text drp-text--muted", children: "\xB7\xB7\xB7" }) })
+            /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsx58("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
+            /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsx58("span", { className: "drp-text drp-text--sm", children: contact.service }) }),
+            /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsx58(StatusDot2, { status: contact.status }) }),
+            /* @__PURE__ */ jsx58("td", { children: /* @__PURE__ */ jsx58("span", { className: "drp-text drp-text--muted", children: "\xB7\xB7\xB7" }) })
           ] }, contact.name)) })
         ] })
       ] }),
-      /* @__PURE__ */ jsx48("div", { className: "drp-overlay", style: { position: "absolute", inset: 0 }, children: /* @__PURE__ */ jsxs42("div", { className: "drp-modal", style: { width: 480 }, children: [
-        /* @__PURE__ */ jsxs42(
+      /* @__PURE__ */ jsx58("div", { className: "drp-overlay", style: { position: "absolute", inset: 0 }, children: /* @__PURE__ */ jsxs49("div", { className: "drp-modal", style: { width: 480 }, children: [
+        /* @__PURE__ */ jsxs49(
           "div",
           {
             className: "drp-flex drp-items-center drp-justify-between",
@@ -7027,8 +7431,8 @@ var NewContactModal = () => /* @__PURE__ */ jsxs42(
               padding: "var(--drp-space-6) var(--drp-space-6) var(--drp-space-4)"
             },
             children: [
-              /* @__PURE__ */ jsx48("h2", { className: "drp-h4", children: "Latest transactions" }),
-              /* @__PURE__ */ jsx48("button", { className: "drp-btn drp-btn--ghost drp-btn--icon", children: /* @__PURE__ */ jsx48(
+              /* @__PURE__ */ jsx58("h2", { className: "drp-h4", children: "Latest transactions" }),
+              /* @__PURE__ */ jsx58("button", { className: "drp-btn drp-btn--ghost drp-btn--icon", children: /* @__PURE__ */ jsx58(
                 "svg",
                 {
                   width: "20",
@@ -7036,7 +7440,7 @@ var NewContactModal = () => /* @__PURE__ */ jsxs42(
                   fill: "none",
                   viewBox: "0 0 24 24",
                   stroke: "currentColor",
-                  children: /* @__PURE__ */ jsx48(
+                  children: /* @__PURE__ */ jsx58(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -7050,13 +7454,13 @@ var NewContactModal = () => /* @__PURE__ */ jsxs42(
             ]
           }
         ),
-        /* @__PURE__ */ jsxs42("div", { style: { padding: "0 var(--drp-space-6) var(--drp-space-6)" }, children: [
-          /* @__PURE__ */ jsx48(
+        /* @__PURE__ */ jsxs49("div", { style: { padding: "0 var(--drp-space-6) var(--drp-space-6)" }, children: [
+          /* @__PURE__ */ jsx58(
             "div",
             {
               className: "drp-flex drp-justify-center",
               style: { marginBottom: "var(--drp-space-4)" },
-              children: /* @__PURE__ */ jsx48("div", { className: "drp-dropzone", style: { width: 112, height: 112 }, children: /* @__PURE__ */ jsx48(
+              children: /* @__PURE__ */ jsx58("div", { className: "drp-dropzone", style: { width: 112, height: 112 }, children: /* @__PURE__ */ jsx58(
                 "svg",
                 {
                   width: "32",
@@ -7064,7 +7468,7 @@ var NewContactModal = () => /* @__PURE__ */ jsxs42(
                   fill: "none",
                   viewBox: "0 0 24 24",
                   stroke: "currentColor",
-                  children: /* @__PURE__ */ jsx48(
+                  children: /* @__PURE__ */ jsx58(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -7077,9 +7481,9 @@ var NewContactModal = () => /* @__PURE__ */ jsxs42(
               ) })
             }
           ),
-          /* @__PURE__ */ jsxs42("div", { className: "drp-field", children: [
-            /* @__PURE__ */ jsx48("label", { className: "drp-label", children: "Full Name" }),
-            /* @__PURE__ */ jsx48(
+          /* @__PURE__ */ jsxs49("div", { className: "drp-field", children: [
+            /* @__PURE__ */ jsx58("label", { className: "drp-label", children: "Full Name" }),
+            /* @__PURE__ */ jsx58(
               "input",
               {
                 type: "text",
@@ -7088,9 +7492,9 @@ var NewContactModal = () => /* @__PURE__ */ jsxs42(
               }
             )
           ] }),
-          /* @__PURE__ */ jsxs42("div", { className: "drp-field", children: [
-            /* @__PURE__ */ jsx48("label", { className: "drp-label", children: "Position" }),
-            /* @__PURE__ */ jsx48(
+          /* @__PURE__ */ jsxs49("div", { className: "drp-field", children: [
+            /* @__PURE__ */ jsx58("label", { className: "drp-label", children: "Position" }),
+            /* @__PURE__ */ jsx58(
               "input",
               {
                 type: "text",
@@ -7099,9 +7503,9 @@ var NewContactModal = () => /* @__PURE__ */ jsxs42(
               }
             )
           ] }),
-          /* @__PURE__ */ jsxs42("div", { className: "drp-field", children: [
-            /* @__PURE__ */ jsx48("label", { className: "drp-label", children: "Phone number" }),
-            /* @__PURE__ */ jsx48(
+          /* @__PURE__ */ jsxs49("div", { className: "drp-field", children: [
+            /* @__PURE__ */ jsx58("label", { className: "drp-label", children: "Phone number" }),
+            /* @__PURE__ */ jsx58(
               "input",
               {
                 type: "tel",
@@ -7110,9 +7514,9 @@ var NewContactModal = () => /* @__PURE__ */ jsxs42(
               }
             )
           ] }),
-          /* @__PURE__ */ jsxs42("div", { className: "drp-field", children: [
-            /* @__PURE__ */ jsx48("label", { className: "drp-label", children: "Email" }),
-            /* @__PURE__ */ jsx48(
+          /* @__PURE__ */ jsxs49("div", { className: "drp-field", children: [
+            /* @__PURE__ */ jsx58("label", { className: "drp-label", children: "Email" }),
+            /* @__PURE__ */ jsx58(
               "input",
               {
                 type: "email",
@@ -7121,7 +7525,7 @@ var NewContactModal = () => /* @__PURE__ */ jsxs42(
               }
             )
           ] }),
-          /* @__PURE__ */ jsx48(
+          /* @__PURE__ */ jsx58(
             "button",
             {
               className: "drp-btn drp-btn--primary drp-btn--block",
@@ -7134,13 +7538,13 @@ var NewContactModal = () => /* @__PURE__ */ jsxs42(
     ]
   }
 );
-var EmptyContent2 = () => /* @__PURE__ */ jsxs42(
+var EmptyContent2 = () => /* @__PURE__ */ jsxs49(
   "div",
   {
     className: "content drp-flex drp-items-center drp-justify-center",
     style: { position: "relative", overflow: "hidden" },
     children: [
-      /* @__PURE__ */ jsxs42(
+      /* @__PURE__ */ jsxs49(
         "div",
         {
           style: {
@@ -7150,7 +7554,7 @@ var EmptyContent2 = () => /* @__PURE__ */ jsxs42(
             pointerEvents: "none"
           },
           children: [
-            /* @__PURE__ */ jsx48(
+            /* @__PURE__ */ jsx58(
               "div",
               {
                 style: {
@@ -7165,7 +7569,7 @@ var EmptyContent2 = () => /* @__PURE__ */ jsxs42(
                 }
               }
             ),
-            /* @__PURE__ */ jsx48(
+            /* @__PURE__ */ jsx58(
               "div",
               {
                 style: {
@@ -7180,7 +7584,7 @@ var EmptyContent2 = () => /* @__PURE__ */ jsxs42(
                 }
               }
             ),
-            /* @__PURE__ */ jsx48(
+            /* @__PURE__ */ jsx58(
               "div",
               {
                 style: {
@@ -7198,8 +7602,8 @@ var EmptyContent2 = () => /* @__PURE__ */ jsxs42(
           ]
         }
       ),
-      /* @__PURE__ */ jsxs42("div", { className: "drp-empty", style: { position: "relative", zIndex: 1 }, children: [
-        /* @__PURE__ */ jsx48("div", { style: { marginBottom: "var(--drp-space-6)" }, children: /* @__PURE__ */ jsxs42(
+      /* @__PURE__ */ jsxs49("div", { className: "drp-empty", style: { position: "relative", zIndex: 1 }, children: [
+        /* @__PURE__ */ jsx58("div", { style: { marginBottom: "var(--drp-space-6)" }, children: /* @__PURE__ */ jsxs49(
           "svg",
           {
             width: "80",
@@ -7209,8 +7613,8 @@ var EmptyContent2 = () => /* @__PURE__ */ jsxs42(
             stroke: "currentColor",
             strokeWidth: 2,
             children: [
-              /* @__PURE__ */ jsx48("circle", { cx: "40", cy: "28", r: "14", strokeLinecap: "round" }),
-              /* @__PURE__ */ jsx48(
+              /* @__PURE__ */ jsx58("circle", { cx: "40", cy: "28", r: "14", strokeLinecap: "round" }),
+              /* @__PURE__ */ jsx58(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -7218,7 +7622,7 @@ var EmptyContent2 = () => /* @__PURE__ */ jsxs42(
                   d: "M14 68c0-14.36 11.64-26 26-26s26 11.64 26 26"
                 }
               ),
-              /* @__PURE__ */ jsx48(
+              /* @__PURE__ */ jsx58(
                 "line",
                 {
                   x1: "58",
@@ -7232,21 +7636,21 @@ var EmptyContent2 = () => /* @__PURE__ */ jsxs42(
             ]
           }
         ) }),
-        /* @__PURE__ */ jsx48("h2", { className: "drp-h3", style: { marginBottom: "var(--drp-space-2)" }, children: "No contacts found?" }),
-        /* @__PURE__ */ jsxs42(
+        /* @__PURE__ */ jsx58("h2", { className: "drp-h3", style: { marginBottom: "var(--drp-space-2)" }, children: "No contacts found?" }),
+        /* @__PURE__ */ jsxs49(
           "p",
           {
             className: "drp-text drp-text--muted",
             style: { marginBottom: "var(--drp-space-8)" },
             children: [
               "Try to add more contacts from your personal",
-              /* @__PURE__ */ jsx48("br", {}),
+              /* @__PURE__ */ jsx58("br", {}),
               "account or invite your friends."
             ]
           }
         ),
-        /* @__PURE__ */ jsxs42("button", { className: "drp-btn drp-btn--outline", children: [
-          /* @__PURE__ */ jsx48(
+        /* @__PURE__ */ jsxs49("button", { className: "drp-btn drp-btn--outline", children: [
+          /* @__PURE__ */ jsx58(
             "svg",
             {
               width: "16",
@@ -7254,7 +7658,7 @@ var EmptyContent2 = () => /* @__PURE__ */ jsxs42(
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx48(
+              children: /* @__PURE__ */ jsx58(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -7278,27 +7682,27 @@ var ContactsList = ({
   const renderContent = () => {
     switch (variant) {
       case "v2":
-        return /* @__PURE__ */ jsx48(V2Content4, {});
+        return /* @__PURE__ */ jsx58(V2Content4, {});
       case "new-contact":
-        return /* @__PURE__ */ jsx48(NewContactModal, {});
+        return /* @__PURE__ */ jsx58(NewContactModal, {});
       case "empty":
-        return /* @__PURE__ */ jsx48(EmptyContent2, {});
+        return /* @__PURE__ */ jsx58(EmptyContent2, {});
       default:
-        return /* @__PURE__ */ jsx48(V1Content4, {});
+        return /* @__PURE__ */ jsx58(V1Content4, {});
     }
   };
-  return /* @__PURE__ */ jsxs42("div", { className: "app-layout", children: [
-    /* @__PURE__ */ jsx48(ContactsSidebar, {}),
-    /* @__PURE__ */ jsxs42("div", { className: "main-content", style: { marginLeft: 155 }, children: [
-      /* @__PURE__ */ jsx48(TopBar6, {}),
+  return /* @__PURE__ */ jsxs49("div", { className: "app-layout", children: [
+    /* @__PURE__ */ jsx58(ContactsSidebar, {}),
+    /* @__PURE__ */ jsxs49("div", { className: "main-content", style: { marginLeft: 155 }, children: [
+      /* @__PURE__ */ jsx58(TopBar6, {}),
       renderContent(),
-      /* @__PURE__ */ jsx48(Footer6, {})
+      /* @__PURE__ */ jsx58(Footer6, {})
     ] })
   ] });
 };
 
 // src/screens/Sales/SalesList.tsx
-import { jsx as jsx49, jsxs as jsxs43 } from "react/jsx-runtime";
+import { jsx as jsx59, jsxs as jsxs50 } from "react/jsx-runtime";
 var DoctorProjectSidebar5 = () => {
   const navItems = [
     { id: "dashboard", label: "Dashboard" },
@@ -7324,20 +7728,20 @@ var DoctorProjectSidebar5 = () => {
     { name: "Thanawan Chadee", bg: "var(--drp-mint)" },
     { name: "Justine Robinson", bg: "var(--drp-purple)" }
   ];
-  return /* @__PURE__ */ jsxs43("aside", { className: "sidebar", style: { width: 200 }, children: [
-    /* @__PURE__ */ jsxs43("div", { className: "sidebar-brand", children: [
-      /* @__PURE__ */ jsx49("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
-      /* @__PURE__ */ jsx49("span", { className: "sidebar-brand-dot" })
+  return /* @__PURE__ */ jsxs50("aside", { className: "sidebar", style: { width: 200 }, children: [
+    /* @__PURE__ */ jsxs50("div", { className: "sidebar-brand", children: [
+      /* @__PURE__ */ jsx59("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
+      /* @__PURE__ */ jsx59("span", { className: "sidebar-brand-dot" })
     ] }),
-    /* @__PURE__ */ jsxs43("nav", { className: "sidebar-nav", children: [
-      /* @__PURE__ */ jsxs43("div", { className: "sidebar-nav-section", children: [
-        /* @__PURE__ */ jsx49("div", { className: "sidebar-nav-label", style: { fontSize: 10 }, children: "Navigation" }),
-        navItems.map((item) => /* @__PURE__ */ jsxs43(
+    /* @__PURE__ */ jsxs50("nav", { className: "sidebar-nav", children: [
+      /* @__PURE__ */ jsxs50("div", { className: "sidebar-nav-section", children: [
+        /* @__PURE__ */ jsx59("div", { className: "sidebar-nav-label", style: { fontSize: 10 }, children: "Navigation" }),
+        navItems.map((item) => /* @__PURE__ */ jsxs50(
           "button",
           {
             className: `sidebar-nav-item ${item.active ? "active" : ""}`,
             children: [
-              /* @__PURE__ */ jsx49("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ jsx49(
+              /* @__PURE__ */ jsx59("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ jsx59(
                 "svg",
                 {
                   width: "14",
@@ -7345,7 +7749,7 @@ var DoctorProjectSidebar5 = () => {
                   fill: "none",
                   viewBox: "0 0 24 24",
                   stroke: "currentColor",
-                  children: /* @__PURE__ */ jsx49(
+                  children: /* @__PURE__ */ jsx59(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -7356,17 +7760,17 @@ var DoctorProjectSidebar5 = () => {
                   )
                 }
               ) }),
-              /* @__PURE__ */ jsx49("span", { className: "sidebar-nav-text", children: item.label }),
-              item.badge && /* @__PURE__ */ jsx49("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
+              /* @__PURE__ */ jsx59("span", { className: "sidebar-nav-text", children: item.label }),
+              item.badge && /* @__PURE__ */ jsx59("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
             ]
           },
           item.id
         ))
       ] }),
-      /* @__PURE__ */ jsxs43("div", { className: "sidebar-team", children: [
-        /* @__PURE__ */ jsx49("div", { className: "sidebar-team-label", style: { fontSize: 10 }, children: "Team Members" }),
-        teamMembers.map((m3) => /* @__PURE__ */ jsxs43("div", { className: "sidebar-team-member", children: [
-          /* @__PURE__ */ jsx49(
+      /* @__PURE__ */ jsxs50("div", { className: "sidebar-team", children: [
+        /* @__PURE__ */ jsx59("div", { className: "sidebar-team-label", style: { fontSize: 10 }, children: "Team Members" }),
+        teamMembers.map((m3) => /* @__PURE__ */ jsxs50("div", { className: "sidebar-team-member", children: [
+          /* @__PURE__ */ jsx59(
             "div",
             {
               className: "sidebar-avatar",
@@ -7379,10 +7783,10 @@ var DoctorProjectSidebar5 = () => {
               children: m3.name[0]
             }
           ),
-          /* @__PURE__ */ jsx49("span", { className: "sidebar-team-name", style: { fontSize: 13 }, children: m3.name })
+          /* @__PURE__ */ jsx59("span", { className: "sidebar-team-name", style: { fontSize: 13 }, children: m3.name })
         ] }, m3.name)),
-        /* @__PURE__ */ jsxs43("div", { className: "sidebar-see-more", children: [
-          /* @__PURE__ */ jsx49(
+        /* @__PURE__ */ jsxs50("div", { className: "sidebar-see-more", children: [
+          /* @__PURE__ */ jsx59(
             "svg",
             {
               width: "12",
@@ -7390,7 +7794,7 @@ var DoctorProjectSidebar5 = () => {
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx49(
+              children: /* @__PURE__ */ jsx59(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -7405,8 +7809,8 @@ var DoctorProjectSidebar5 = () => {
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs43("div", { className: "sidebar-user", children: [
-      /* @__PURE__ */ jsx49(
+    /* @__PURE__ */ jsxs50("div", { className: "sidebar-user", children: [
+      /* @__PURE__ */ jsx59(
         "div",
         {
           className: "sidebar-avatar",
@@ -7417,7 +7821,7 @@ var DoctorProjectSidebar5 = () => {
           }
         }
       ),
-      /* @__PURE__ */ jsx49(
+      /* @__PURE__ */ jsx59(
         "span",
         {
           className: "drp-text drp-text--sm",
@@ -7425,7 +7829,7 @@ var DoctorProjectSidebar5 = () => {
           children: "Henry Richardson"
         }
       ),
-      /* @__PURE__ */ jsx49(
+      /* @__PURE__ */ jsx59(
         "button",
         {
           className: "drp-btn drp-btn--ghost drp-btn--sm",
@@ -7436,13 +7840,13 @@ var DoctorProjectSidebar5 = () => {
     ] })
   ] });
 };
-var TopBar7 = () => /* @__PURE__ */ jsxs43("div", { className: "topbar", children: [
-  /* @__PURE__ */ jsx49("h1", { className: "topbar-title drp-h3", children: "Sales" }),
-  /* @__PURE__ */ jsxs43("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx49("button", { className: "topbar-icon-btn", children: "\xB7\xB7\xB7" }),
-    /* @__PURE__ */ jsx49("button", { className: "topbar-icon-btn", children: "\xB7\xB7\xB7" }),
-    /* @__PURE__ */ jsxs43("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ jsx49(
+var TopBar7 = () => /* @__PURE__ */ jsxs50("div", { className: "topbar", children: [
+  /* @__PURE__ */ jsx59("h1", { className: "topbar-title drp-h3", children: "Sales" }),
+  /* @__PURE__ */ jsxs50("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx59("button", { className: "topbar-icon-btn", children: "\xB7\xB7\xB7" }),
+    /* @__PURE__ */ jsx59("button", { className: "topbar-icon-btn", children: "\xB7\xB7\xB7" }),
+    /* @__PURE__ */ jsxs50("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ jsx59(
         "svg",
         {
           width: "16",
@@ -7450,7 +7854,7 @@ var TopBar7 = () => /* @__PURE__ */ jsxs43("div", { className: "topbar", childre
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ jsx49(
+          children: /* @__PURE__ */ jsx59(
             "path",
             {
               strokeLinecap: "round",
@@ -7463,16 +7867,16 @@ var TopBar7 = () => /* @__PURE__ */ jsxs43("div", { className: "topbar", childre
       ),
       "Apps"
     ] }),
-    /* @__PURE__ */ jsxs43("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsx49("span", { style: { fontSize: 16, lineHeight: 1 }, children: "+" }),
+    /* @__PURE__ */ jsxs50("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsx59("span", { style: { fontSize: 16, lineHeight: 1 }, children: "+" }),
       "Create new"
     ] })
   ] })
 ] });
-var Footer7 = () => /* @__PURE__ */ jsxs43("div", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs43("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsxs43("button", { className: "footer-link", children: [
-      /* @__PURE__ */ jsxs43(
+var Footer7 = () => /* @__PURE__ */ jsxs50("div", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs50("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsxs50("button", { className: "footer-link", children: [
+      /* @__PURE__ */ jsxs50(
         "svg",
         {
           width: "16",
@@ -7481,8 +7885,8 @@ var Footer7 = () => /* @__PURE__ */ jsxs43("div", { className: "footer-bar", chi
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           children: [
-            /* @__PURE__ */ jsx49("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
-            /* @__PURE__ */ jsx49(
+            /* @__PURE__ */ jsx59("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+            /* @__PURE__ */ jsx59(
               "path",
               {
                 strokeLinecap: "round",
@@ -7495,12 +7899,12 @@ var Footer7 = () => /* @__PURE__ */ jsxs43("div", { className: "footer-bar", chi
       ),
       "English"
     ] }),
-    /* @__PURE__ */ jsx49("button", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx49("button", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx49("button", { className: "footer-link", children: "API" })
+    /* @__PURE__ */ jsx59("button", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx59("button", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx59("button", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs43("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx49("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs43(
+  /* @__PURE__ */ jsxs50("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx59("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs50(
       "svg",
       {
         width: "16",
@@ -7509,7 +7913,7 @@ var Footer7 = () => /* @__PURE__ */ jsxs43("div", { className: "footer-bar", chi
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ jsx49(
+          /* @__PURE__ */ jsx59(
             "path",
             {
               strokeLinecap: "round",
@@ -7518,7 +7922,7 @@ var Footer7 = () => /* @__PURE__ */ jsxs43("div", { className: "footer-bar", chi
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ jsx49(
+          /* @__PURE__ */ jsx59(
             "path",
             {
               strokeLinecap: "round",
@@ -7530,7 +7934,7 @@ var Footer7 = () => /* @__PURE__ */ jsxs43("div", { className: "footer-bar", chi
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx49("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx49(
+    /* @__PURE__ */ jsx59("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx59(
       "svg",
       {
         width: "16",
@@ -7538,7 +7942,7 @@ var Footer7 = () => /* @__PURE__ */ jsxs43("div", { className: "footer-bar", chi
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx49(
+        children: /* @__PURE__ */ jsx59(
           "path",
           {
             strokeLinecap: "round",
@@ -7551,7 +7955,7 @@ var Footer7 = () => /* @__PURE__ */ jsxs43("div", { className: "footer-bar", chi
     ) })
   ] })
 ] });
-var SortIcon5 = () => /* @__PURE__ */ jsx49(
+var SortIcon5 = () => /* @__PURE__ */ jsx59(
   "svg",
   {
     width: "12",
@@ -7565,7 +7969,7 @@ var SortIcon5 = () => /* @__PURE__ */ jsx49(
       verticalAlign: "middle",
       color: "var(--drp-grey)"
     },
-    children: /* @__PURE__ */ jsx49(
+    children: /* @__PURE__ */ jsx59(
       "path",
       {
         strokeLinecap: "round",
@@ -7576,9 +7980,9 @@ var SortIcon5 = () => /* @__PURE__ */ jsx49(
     )
   }
 );
-var TablePagination4 = () => /* @__PURE__ */ jsxs43("div", { className: "drp-pagination", children: [
-  /* @__PURE__ */ jsxs43("button", { className: "drp-pagination__btn", children: [
-    /* @__PURE__ */ jsx49(
+var TablePagination4 = () => /* @__PURE__ */ jsxs50("div", { className: "drp-pagination", children: [
+  /* @__PURE__ */ jsxs50("button", { className: "drp-pagination__btn", children: [
+    /* @__PURE__ */ jsx59(
       "svg",
       {
         width: "16",
@@ -7586,7 +7990,7 @@ var TablePagination4 = () => /* @__PURE__ */ jsxs43("div", { className: "drp-pag
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx49(
+        children: /* @__PURE__ */ jsx59(
           "path",
           {
             strokeLinecap: "round",
@@ -7599,10 +8003,10 @@ var TablePagination4 = () => /* @__PURE__ */ jsxs43("div", { className: "drp-pag
     ),
     "Prev"
   ] }),
-  /* @__PURE__ */ jsx49("span", { className: "drp-pagination__info", children: "Page 1 of 10" }),
-  /* @__PURE__ */ jsxs43("button", { className: "drp-pagination__btn", children: [
+  /* @__PURE__ */ jsx59("span", { className: "drp-pagination__info", children: "Page 1 of 10" }),
+  /* @__PURE__ */ jsxs50("button", { className: "drp-pagination__btn", children: [
     "Next",
-    /* @__PURE__ */ jsx49(
+    /* @__PURE__ */ jsx59(
       "svg",
       {
         width: "16",
@@ -7610,7 +8014,7 @@ var TablePagination4 = () => /* @__PURE__ */ jsxs43("div", { className: "drp-pag
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx49(
+        children: /* @__PURE__ */ jsx59(
           "path",
           {
             strokeLinecap: "round",
@@ -7623,15 +8027,15 @@ var TablePagination4 = () => /* @__PURE__ */ jsxs43("div", { className: "drp-pag
     )
   ] })
 ] });
-var FilterBar2 = () => /* @__PURE__ */ jsxs43(
+var FilterBar2 = () => /* @__PURE__ */ jsxs50(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
     style: { marginBottom: "var(--drp-space-4)" },
     children: [
-      /* @__PURE__ */ jsxs43("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-        /* @__PURE__ */ jsxs43("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: [
-          /* @__PURE__ */ jsx49(
+      /* @__PURE__ */ jsxs50("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+        /* @__PURE__ */ jsxs50("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: [
+          /* @__PURE__ */ jsx59(
             "svg",
             {
               width: "14",
@@ -7639,7 +8043,7 @@ var FilterBar2 = () => /* @__PURE__ */ jsxs43(
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx49(
+              children: /* @__PURE__ */ jsx59(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -7652,9 +8056,9 @@ var FilterBar2 = () => /* @__PURE__ */ jsxs43(
           ),
           "All Filters"
         ] }),
-        /* @__PURE__ */ jsxs43("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ jsxs50("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
           "All Customers",
-          /* @__PURE__ */ jsx49(
+          /* @__PURE__ */ jsx59(
             "svg",
             {
               width: "12",
@@ -7662,7 +8066,7 @@ var FilterBar2 = () => /* @__PURE__ */ jsxs43(
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx49(
+              children: /* @__PURE__ */ jsx59(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -7674,9 +8078,9 @@ var FilterBar2 = () => /* @__PURE__ */ jsxs43(
             }
           )
         ] }),
-        /* @__PURE__ */ jsxs43("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ jsxs50("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
           "A-Z",
-          /* @__PURE__ */ jsx49(
+          /* @__PURE__ */ jsx59(
             "svg",
             {
               width: "12",
@@ -7684,7 +8088,7 @@ var FilterBar2 = () => /* @__PURE__ */ jsxs43(
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx49(
+              children: /* @__PURE__ */ jsx59(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -7697,8 +8101,8 @@ var FilterBar2 = () => /* @__PURE__ */ jsxs43(
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsxs43("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-        /* @__PURE__ */ jsx49(
+      /* @__PURE__ */ jsxs50("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ jsx59(
           "svg",
           {
             width: "16",
@@ -7706,7 +8110,7 @@ var FilterBar2 = () => /* @__PURE__ */ jsxs43(
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ jsx49(
+            children: /* @__PURE__ */ jsx59(
               "path",
               {
                 strokeLinecap: "round",
@@ -7724,7 +8128,7 @@ var FilterBar2 = () => /* @__PURE__ */ jsxs43(
 );
 var ProductThumb2 = ({
   color = "var(--drp-cream)"
-}) => /* @__PURE__ */ jsx49(
+}) => /* @__PURE__ */ jsx59(
   "div",
   {
     style: {
@@ -7736,7 +8140,7 @@ var ProductThumb2 = ({
       justifyContent: "center",
       flexShrink: 0
     },
-    children: /* @__PURE__ */ jsx49(
+    children: /* @__PURE__ */ jsx59(
       "svg",
       {
         width: "20",
@@ -7744,7 +8148,7 @@ var ProductThumb2 = ({
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "var(--drp-grey)",
-        children: /* @__PURE__ */ jsx49(
+        children: /* @__PURE__ */ jsx59(
           "path",
           {
             strokeLinecap: "round",
@@ -7849,58 +8253,58 @@ var v1Sales = [
     thumb: "#ffe4e6"
   }
 ];
-var V1Content5 = () => /* @__PURE__ */ jsxs43(
+var V1Content5 = () => /* @__PURE__ */ jsxs50(
   "div",
   {
     className: "content",
     style: { overflow: "auto", padding: "var(--drp-space-5)" },
     children: [
-      /* @__PURE__ */ jsx49(FilterBar2, {}),
-      /* @__PURE__ */ jsxs43("div", { className: "drp-card", children: [
-        /* @__PURE__ */ jsxs43("table", { className: "drp-table", children: [
-          /* @__PURE__ */ jsx49("thead", { children: /* @__PURE__ */ jsxs43("tr", { children: [
-            /* @__PURE__ */ jsx49("th", { style: { width: 40 }, children: /* @__PURE__ */ jsx49("input", { type: "checkbox", className: "drp-checkbox" }) }),
-            /* @__PURE__ */ jsxs43("th", { children: [
+      /* @__PURE__ */ jsx59(FilterBar2, {}),
+      /* @__PURE__ */ jsxs50("div", { className: "drp-card", children: [
+        /* @__PURE__ */ jsxs50("table", { className: "drp-table", children: [
+          /* @__PURE__ */ jsx59("thead", { children: /* @__PURE__ */ jsxs50("tr", { children: [
+            /* @__PURE__ */ jsx59("th", { style: { width: 40 }, children: /* @__PURE__ */ jsx59("input", { type: "checkbox", className: "drp-checkbox" }) }),
+            /* @__PURE__ */ jsxs50("th", { children: [
               "Date ",
-              /* @__PURE__ */ jsx49(SortIcon5, {})
+              /* @__PURE__ */ jsx59(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ jsxs43("th", { children: [
+            /* @__PURE__ */ jsxs50("th", { children: [
               "Product ",
-              /* @__PURE__ */ jsx49(SortIcon5, {})
+              /* @__PURE__ */ jsx59(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ jsxs43("th", { children: [
+            /* @__PURE__ */ jsxs50("th", { children: [
               "Type ",
-              /* @__PURE__ */ jsx49(SortIcon5, {})
+              /* @__PURE__ */ jsx59(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ jsxs43("th", { children: [
+            /* @__PURE__ */ jsxs50("th", { children: [
               "Qty. ",
-              /* @__PURE__ */ jsx49(SortIcon5, {})
+              /* @__PURE__ */ jsx59(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ jsxs43("th", { children: [
+            /* @__PURE__ */ jsxs50("th", { children: [
               "Amount ",
-              /* @__PURE__ */ jsx49(SortIcon5, {})
+              /* @__PURE__ */ jsx59(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ jsxs43("th", { children: [
+            /* @__PURE__ */ jsxs50("th", { children: [
               "Status ",
-              /* @__PURE__ */ jsx49(SortIcon5, {})
+              /* @__PURE__ */ jsx59(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ jsx49("th", { style: { width: 40 } })
+            /* @__PURE__ */ jsx59("th", { style: { width: 40 } })
           ] }) }),
-          /* @__PURE__ */ jsx49("tbody", { children: v1Sales.map((s2) => /* @__PURE__ */ jsxs43("tr", { children: [
-            /* @__PURE__ */ jsx49("td", { children: /* @__PURE__ */ jsx49("input", { type: "checkbox", className: "drp-checkbox" }) }),
-            /* @__PURE__ */ jsx49("td", { children: /* @__PURE__ */ jsx49("span", { className: "drp-text drp-text--sm drp-text--muted", children: s2.date }) }),
-            /* @__PURE__ */ jsx49("td", { children: /* @__PURE__ */ jsxs43("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-              /* @__PURE__ */ jsx49(ProductThumb2, { color: s2.thumb }),
-              /* @__PURE__ */ jsx49("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.product })
+          /* @__PURE__ */ jsx59("tbody", { children: v1Sales.map((s2) => /* @__PURE__ */ jsxs50("tr", { children: [
+            /* @__PURE__ */ jsx59("td", { children: /* @__PURE__ */ jsx59("input", { type: "checkbox", className: "drp-checkbox" }) }),
+            /* @__PURE__ */ jsx59("td", { children: /* @__PURE__ */ jsx59("span", { className: "drp-text drp-text--sm drp-text--muted", children: s2.date }) }),
+            /* @__PURE__ */ jsx59("td", { children: /* @__PURE__ */ jsxs50("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+              /* @__PURE__ */ jsx59(ProductThumb2, { color: s2.thumb }),
+              /* @__PURE__ */ jsx59("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.product })
             ] }) }),
-            /* @__PURE__ */ jsx49("td", { children: /* @__PURE__ */ jsx49("span", { className: "drp-text drp-text--sm drp-text--muted", children: s2.type }) }),
-            /* @__PURE__ */ jsx49("td", { children: /* @__PURE__ */ jsx49("span", { className: "drp-text drp-text--sm", children: s2.qty }) }),
-            /* @__PURE__ */ jsx49("td", { children: /* @__PURE__ */ jsx49("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.amount }) }),
-            /* @__PURE__ */ jsx49("td", { children: /* @__PURE__ */ jsx49("span", { className: "drp-tag drp-tag--mint drp-tag--filled", children: s2.status }) }),
-            /* @__PURE__ */ jsx49("td", { children: /* @__PURE__ */ jsx49("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+            /* @__PURE__ */ jsx59("td", { children: /* @__PURE__ */ jsx59("span", { className: "drp-text drp-text--sm drp-text--muted", children: s2.type }) }),
+            /* @__PURE__ */ jsx59("td", { children: /* @__PURE__ */ jsx59("span", { className: "drp-text drp-text--sm", children: s2.qty }) }),
+            /* @__PURE__ */ jsx59("td", { children: /* @__PURE__ */ jsx59("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.amount }) }),
+            /* @__PURE__ */ jsx59("td", { children: /* @__PURE__ */ jsx59("span", { className: "drp-tag drp-tag--mint drp-tag--filled", children: s2.status }) }),
+            /* @__PURE__ */ jsx59("td", { children: /* @__PURE__ */ jsx59("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
           ] }, s2.id)) })
         ] }),
-        /* @__PURE__ */ jsx49(TablePagination4, {})
+        /* @__PURE__ */ jsx59(TablePagination4, {})
       ] })
     ]
   }
@@ -7998,71 +8402,71 @@ var v2Sales = [
     thumb: "#e0e7ff"
   }
 ];
-var V2Content5 = () => /* @__PURE__ */ jsxs43(
+var V2Content5 = () => /* @__PURE__ */ jsxs50(
   "div",
   {
     className: "content",
     style: { overflow: "auto", padding: "var(--drp-space-5)" },
     children: [
-      /* @__PURE__ */ jsx49(FilterBar2, {}),
-      /* @__PURE__ */ jsxs43("div", { className: "drp-card", children: [
-        /* @__PURE__ */ jsxs43("table", { className: "drp-table", children: [
-          /* @__PURE__ */ jsx49("thead", { children: /* @__PURE__ */ jsxs43("tr", { children: [
-            /* @__PURE__ */ jsx49("th", { style: { width: 40 }, children: /* @__PURE__ */ jsx49("input", { type: "checkbox", className: "drp-checkbox" }) }),
-            /* @__PURE__ */ jsxs43("th", { children: [
+      /* @__PURE__ */ jsx59(FilterBar2, {}),
+      /* @__PURE__ */ jsxs50("div", { className: "drp-card", children: [
+        /* @__PURE__ */ jsxs50("table", { className: "drp-table", children: [
+          /* @__PURE__ */ jsx59("thead", { children: /* @__PURE__ */ jsxs50("tr", { children: [
+            /* @__PURE__ */ jsx59("th", { style: { width: 40 }, children: /* @__PURE__ */ jsx59("input", { type: "checkbox", className: "drp-checkbox" }) }),
+            /* @__PURE__ */ jsxs50("th", { children: [
               "Date ",
-              /* @__PURE__ */ jsx49(SortIcon5, {})
+              /* @__PURE__ */ jsx59(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ jsxs43("th", { children: [
+            /* @__PURE__ */ jsxs50("th", { children: [
               "Product ",
-              /* @__PURE__ */ jsx49(SortIcon5, {})
+              /* @__PURE__ */ jsx59(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ jsxs43("th", { children: [
+            /* @__PURE__ */ jsxs50("th", { children: [
               "Customer ",
-              /* @__PURE__ */ jsx49(SortIcon5, {})
+              /* @__PURE__ */ jsx59(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ jsxs43("th", { children: [
+            /* @__PURE__ */ jsxs50("th", { children: [
               "Amount ",
-              /* @__PURE__ */ jsx49(SortIcon5, {})
+              /* @__PURE__ */ jsx59(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ jsxs43("th", { children: [
+            /* @__PURE__ */ jsxs50("th", { children: [
               "Status ",
-              /* @__PURE__ */ jsx49(SortIcon5, {})
+              /* @__PURE__ */ jsx59(SortIcon5, {})
             ] }),
-            /* @__PURE__ */ jsx49("th", { style: { width: 40 } })
+            /* @__PURE__ */ jsx59("th", { style: { width: 40 } })
           ] }) }),
-          /* @__PURE__ */ jsx49("tbody", { children: v2Sales.map((s2) => /* @__PURE__ */ jsxs43("tr", { children: [
-            /* @__PURE__ */ jsx49("td", { children: /* @__PURE__ */ jsx49("input", { type: "checkbox", className: "drp-checkbox" }) }),
-            /* @__PURE__ */ jsx49("td", { children: /* @__PURE__ */ jsx49("span", { className: "drp-text drp-text--sm drp-text--muted", children: s2.date }) }),
-            /* @__PURE__ */ jsx49("td", { children: /* @__PURE__ */ jsxs43("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-              /* @__PURE__ */ jsx49(ProductThumb2, { color: s2.thumb }),
-              /* @__PURE__ */ jsxs43("div", { children: [
-                /* @__PURE__ */ jsx49("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.product }),
-                /* @__PURE__ */ jsx49("br", {}),
-                /* @__PURE__ */ jsx49("span", { className: "drp-caption", children: s2.order })
+          /* @__PURE__ */ jsx59("tbody", { children: v2Sales.map((s2) => /* @__PURE__ */ jsxs50("tr", { children: [
+            /* @__PURE__ */ jsx59("td", { children: /* @__PURE__ */ jsx59("input", { type: "checkbox", className: "drp-checkbox" }) }),
+            /* @__PURE__ */ jsx59("td", { children: /* @__PURE__ */ jsx59("span", { className: "drp-text drp-text--sm drp-text--muted", children: s2.date }) }),
+            /* @__PURE__ */ jsx59("td", { children: /* @__PURE__ */ jsxs50("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+              /* @__PURE__ */ jsx59(ProductThumb2, { color: s2.thumb }),
+              /* @__PURE__ */ jsxs50("div", { children: [
+                /* @__PURE__ */ jsx59("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.product }),
+                /* @__PURE__ */ jsx59("br", {}),
+                /* @__PURE__ */ jsx59("span", { className: "drp-caption", children: s2.order })
               ] })
             ] }) }),
-            /* @__PURE__ */ jsxs43("td", { children: [
-              /* @__PURE__ */ jsx49("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.customer }),
-              /* @__PURE__ */ jsx49("br", {}),
-              /* @__PURE__ */ jsx49("span", { className: "drp-caption", children: s2.email })
+            /* @__PURE__ */ jsxs50("td", { children: [
+              /* @__PURE__ */ jsx59("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.customer }),
+              /* @__PURE__ */ jsx59("br", {}),
+              /* @__PURE__ */ jsx59("span", { className: "drp-caption", children: s2.email })
             ] }),
-            /* @__PURE__ */ jsxs43("td", { children: [
-              /* @__PURE__ */ jsx49("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.amount }),
-              /* @__PURE__ */ jsx49("br", {}),
-              /* @__PURE__ */ jsx49("span", { className: "drp-caption", children: s2.tax })
+            /* @__PURE__ */ jsxs50("td", { children: [
+              /* @__PURE__ */ jsx59("span", { className: "drp-text drp-text--sm drp-text--bold", children: s2.amount }),
+              /* @__PURE__ */ jsx59("br", {}),
+              /* @__PURE__ */ jsx59("span", { className: "drp-caption", children: s2.tax })
             ] }),
-            /* @__PURE__ */ jsx49("td", { children: /* @__PURE__ */ jsx49(
+            /* @__PURE__ */ jsx59("td", { children: /* @__PURE__ */ jsx59(
               "span",
               {
                 className: `drp-tag ${s2.shipped ? "drp-tag--mint drp-tag--filled" : "drp-tag--mint"}`,
                 children: s2.status
               }
             ) }),
-            /* @__PURE__ */ jsx49("td", { children: /* @__PURE__ */ jsx49("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+            /* @__PURE__ */ jsx59("td", { children: /* @__PURE__ */ jsx59("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
           ] }, s2.id)) })
         ] }),
-        /* @__PURE__ */ jsx49(TablePagination4, {})
+        /* @__PURE__ */ jsx59(TablePagination4, {})
       ] })
     ]
   }
@@ -8070,18 +8474,18 @@ var V2Content5 = () => /* @__PURE__ */ jsxs43(
 var SalesList = ({
   theme = "light",
   variant = "v1"
-}) => /* @__PURE__ */ jsxs43("div", { className: "app-layout", children: [
-  /* @__PURE__ */ jsx49(DoctorProjectSidebar5, {}),
-  /* @__PURE__ */ jsxs43("div", { className: "main-content", style: { marginLeft: 200 }, children: [
-    /* @__PURE__ */ jsx49(TopBar7, {}),
-    variant === "v1" ? /* @__PURE__ */ jsx49(V1Content5, {}) : /* @__PURE__ */ jsx49(V2Content5, {}),
-    /* @__PURE__ */ jsx49(Footer7, {})
+}) => /* @__PURE__ */ jsxs50("div", { className: "app-layout", children: [
+  /* @__PURE__ */ jsx59(DoctorProjectSidebar5, {}),
+  /* @__PURE__ */ jsxs50("div", { className: "main-content", style: { marginLeft: 200 }, children: [
+    /* @__PURE__ */ jsx59(TopBar7, {}),
+    variant === "v1" ? /* @__PURE__ */ jsx59(V1Content5, {}) : /* @__PURE__ */ jsx59(V2Content5, {}),
+    /* @__PURE__ */ jsx59(Footer7, {})
   ] })
 ] });
 
 // src/screens/Inbox/InboxList.tsx
-import { useState as useState8 } from "react";
-import { Fragment as Fragment4, jsx as jsx50, jsxs as jsxs44 } from "react/jsx-runtime";
+import { useState as useState10 } from "react";
+import { Fragment as Fragment7, jsx as jsx60, jsxs as jsxs51 } from "react/jsx-runtime";
 var InboxSidebar = () => {
   const navItems = [
     {
@@ -8112,30 +8516,30 @@ var InboxSidebar = () => {
     { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-purple)" },
     { name: "Justine Robinson", initials: "JR", bg: "var(--drp-blue)" }
   ];
-  return /* @__PURE__ */ jsxs44("aside", { className: "sidebar", style: { width: 200 }, children: [
-    /* @__PURE__ */ jsxs44("div", { className: "sidebar-brand", children: [
-      /* @__PURE__ */ jsx50("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
-      /* @__PURE__ */ jsx50("span", { className: "sidebar-brand-dot" })
+  return /* @__PURE__ */ jsxs51("aside", { className: "sidebar", style: { width: 200 }, children: [
+    /* @__PURE__ */ jsxs51("div", { className: "sidebar-brand", children: [
+      /* @__PURE__ */ jsx60("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
+      /* @__PURE__ */ jsx60("span", { className: "sidebar-brand-dot" })
     ] }),
-    /* @__PURE__ */ jsxs44("nav", { className: "sidebar-nav", children: [
-      /* @__PURE__ */ jsxs44("div", { className: "sidebar-nav-section", children: [
-        /* @__PURE__ */ jsx50("div", { className: "sidebar-nav-label", children: "Navigation" }),
-        navItems.map((item) => /* @__PURE__ */ jsxs44(
+    /* @__PURE__ */ jsxs51("nav", { className: "sidebar-nav", children: [
+      /* @__PURE__ */ jsxs51("div", { className: "sidebar-nav-section", children: [
+        /* @__PURE__ */ jsx60("div", { className: "sidebar-nav-label", children: "Navigation" }),
+        navItems.map((item) => /* @__PURE__ */ jsxs51(
           "button",
           {
             className: `sidebar-nav-item ${item.active ? "active" : ""}`,
             children: [
-              /* @__PURE__ */ jsx50("span", { className: "sidebar-nav-text", children: item.label }),
-              item.badge && /* @__PURE__ */ jsx50("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
+              /* @__PURE__ */ jsx60("span", { className: "sidebar-nav-text", children: item.label }),
+              item.badge && /* @__PURE__ */ jsx60("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
             ]
           },
           item.id
         ))
       ] }),
-      /* @__PURE__ */ jsxs44("div", { className: "sidebar-team", children: [
-        /* @__PURE__ */ jsx50("div", { className: "sidebar-team-label", children: "Team Members" }),
-        teamMembers.map((m3) => /* @__PURE__ */ jsxs44("div", { className: "sidebar-team-member", children: [
-          /* @__PURE__ */ jsx50(
+      /* @__PURE__ */ jsxs51("div", { className: "sidebar-team", children: [
+        /* @__PURE__ */ jsx60("div", { className: "sidebar-team-label", children: "Team Members" }),
+        teamMembers.map((m3) => /* @__PURE__ */ jsxs51("div", { className: "sidebar-team-member", children: [
+          /* @__PURE__ */ jsx60(
             "div",
             {
               className: "sidebar-avatar",
@@ -8148,10 +8552,10 @@ var InboxSidebar = () => {
               children: m3.initials[0]
             }
           ),
-          /* @__PURE__ */ jsx50("span", { className: "sidebar-team-name", style: { fontSize: 12 }, children: m3.name })
+          /* @__PURE__ */ jsx60("span", { className: "sidebar-team-name", style: { fontSize: 12 }, children: m3.name })
         ] }, m3.name)),
-        /* @__PURE__ */ jsxs44("div", { className: "sidebar-see-more", children: [
-          /* @__PURE__ */ jsx50(
+        /* @__PURE__ */ jsxs51("div", { className: "sidebar-see-more", children: [
+          /* @__PURE__ */ jsx60(
             "svg",
             {
               width: "12",
@@ -8159,7 +8563,7 @@ var InboxSidebar = () => {
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx50(
+              children: /* @__PURE__ */ jsx60(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -8170,12 +8574,12 @@ var InboxSidebar = () => {
               )
             }
           ),
-          /* @__PURE__ */ jsx50("span", { children: "See More" })
+          /* @__PURE__ */ jsx60("span", { children: "See More" })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs44("div", { className: "sidebar-user", children: [
-      /* @__PURE__ */ jsx50(
+    /* @__PURE__ */ jsxs51("div", { className: "sidebar-user", children: [
+      /* @__PURE__ */ jsx60(
         "div",
         {
           className: "sidebar-avatar",
@@ -8186,16 +8590,16 @@ var InboxSidebar = () => {
           }
         }
       ),
-      /* @__PURE__ */ jsx50("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx50("div", { className: "sidebar-user-name", style: { fontSize: 12 }, children: "Henry Richardson" }) }),
-      /* @__PURE__ */ jsx50("button", { className: "sidebar-user-menu-btn", children: "..." })
+      /* @__PURE__ */ jsx60("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx60("div", { className: "sidebar-user-name", style: { fontSize: 12 }, children: "Henry Richardson" }) }),
+      /* @__PURE__ */ jsx60("button", { className: "sidebar-user-menu-btn", children: "..." })
     ] })
   ] });
 };
 var InboxTopBar = ({
   showBack = false
-}) => /* @__PURE__ */ jsxs44("div", { className: "topbar", children: [
-  /* @__PURE__ */ jsxs44("div", { className: "topbar-left", children: [
-    showBack && /* @__PURE__ */ jsx50("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx50(
+}) => /* @__PURE__ */ jsxs51("div", { className: "topbar", children: [
+  /* @__PURE__ */ jsxs51("div", { className: "topbar-left", children: [
+    showBack && /* @__PURE__ */ jsx60("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx60(
       "svg",
       {
         width: "16",
@@ -8203,7 +8607,7 @@ var InboxTopBar = ({
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx50(
+        children: /* @__PURE__ */ jsx60(
           "path",
           {
             strokeLinecap: "round",
@@ -8214,13 +8618,13 @@ var InboxTopBar = ({
         )
       }
     ) }),
-    /* @__PURE__ */ jsx50("h1", { className: "topbar-title", children: "Inbox" })
+    /* @__PURE__ */ jsx60("h1", { className: "topbar-title", children: "Inbox" })
   ] }),
-  /* @__PURE__ */ jsxs44("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx50("button", { className: "topbar-icon-btn", children: "..." }),
-    /* @__PURE__ */ jsx50("button", { className: "topbar-icon-btn", children: "..." }),
-    /* @__PURE__ */ jsxs44("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ jsx50(
+  /* @__PURE__ */ jsxs51("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx60("button", { className: "topbar-icon-btn", children: "..." }),
+    /* @__PURE__ */ jsx60("button", { className: "topbar-icon-btn", children: "..." }),
+    /* @__PURE__ */ jsxs51("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ jsx60(
         "svg",
         {
           width: "16",
@@ -8228,7 +8632,7 @@ var InboxTopBar = ({
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ jsx50(
+          children: /* @__PURE__ */ jsx60(
             "path",
             {
               strokeLinecap: "round",
@@ -8239,23 +8643,23 @@ var InboxTopBar = ({
           )
         }
       ),
-      /* @__PURE__ */ jsx50("span", { children: "Apps" })
+      /* @__PURE__ */ jsx60("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ jsxs44("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsx50("span", { children: "+" }),
-      /* @__PURE__ */ jsx50("span", { children: "Create new" })
+    /* @__PURE__ */ jsxs51("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsx60("span", { children: "+" }),
+      /* @__PURE__ */ jsx60("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var InboxFooter = () => /* @__PURE__ */ jsxs44("div", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs44("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsx50("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ jsx50("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx50("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx50("span", { className: "footer-link", children: "API" })
+var InboxFooter = () => /* @__PURE__ */ jsxs51("div", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs51("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsx60("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ jsx60("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx60("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx60("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs44("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx50("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs44(
+  /* @__PURE__ */ jsxs51("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx60("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs51(
       "svg",
       {
         width: "16",
@@ -8264,7 +8668,7 @@ var InboxFooter = () => /* @__PURE__ */ jsxs44("div", { className: "footer-bar",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ jsx50(
+          /* @__PURE__ */ jsx60(
             "path",
             {
               strokeLinecap: "round",
@@ -8273,7 +8677,7 @@ var InboxFooter = () => /* @__PURE__ */ jsxs44("div", { className: "footer-bar",
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ jsx50(
+          /* @__PURE__ */ jsx60(
             "path",
             {
               strokeLinecap: "round",
@@ -8285,7 +8689,7 @@ var InboxFooter = () => /* @__PURE__ */ jsxs44("div", { className: "footer-bar",
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx50("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx50(
+    /* @__PURE__ */ jsx60("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx60(
       "svg",
       {
         width: "16",
@@ -8293,7 +8697,7 @@ var InboxFooter = () => /* @__PURE__ */ jsxs44("div", { className: "footer-bar",
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx50(
+        children: /* @__PURE__ */ jsx60(
           "path",
           {
             strokeLinecap: "round",
@@ -8332,7 +8736,7 @@ var Avatar3 = ({
   const color = avatarColors[name] ?? "var(--drp-grey)";
   const dims = size === "sm" ? 24 : size === "lg" ? 36 : 32;
   const fs = size === "sm" ? 10 : size === "lg" ? 14 : 12;
-  return /* @__PURE__ */ jsx50(
+  return /* @__PURE__ */ jsx60(
     "div",
     {
       className: "sidebar-avatar",
@@ -8429,15 +8833,15 @@ var mailItems = [
   }
 ];
 var MailListVariant = () => {
-  const [activeTab, setActiveTab] = useState8("Incoming");
+  const [activeTab, setActiveTab] = useState10("Incoming");
   const tabs = ["Incoming", "Sent", "Drafts", "Deleted"];
-  return /* @__PURE__ */ jsxs44(Fragment4, { children: [
-    /* @__PURE__ */ jsx50(InboxTopBar, {}),
-    /* @__PURE__ */ jsxs44("div", { className: "content", children: [
-      /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
-        /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-          /* @__PURE__ */ jsxs44("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-            /* @__PURE__ */ jsx50(
+  return /* @__PURE__ */ jsxs51(Fragment7, { children: [
+    /* @__PURE__ */ jsx60(InboxTopBar, {}),
+    /* @__PURE__ */ jsxs51("div", { className: "content", children: [
+      /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
+        /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+          /* @__PURE__ */ jsxs51("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+            /* @__PURE__ */ jsx60(
               "svg",
               {
                 width: "14",
@@ -8445,7 +8849,7 @@ var MailListVariant = () => {
                 fill: "none",
                 stroke: "currentColor",
                 viewBox: "0 0 24 24",
-                children: /* @__PURE__ */ jsx50(
+                children: /* @__PURE__ */ jsx60(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -8458,7 +8862,7 @@ var MailListVariant = () => {
             ),
             "Compose Email"
           ] }),
-          /* @__PURE__ */ jsx50("div", { className: "drp-tabs", children: tabs.map((tab) => /* @__PURE__ */ jsx50(
+          /* @__PURE__ */ jsx60("div", { className: "drp-tabs", children: tabs.map((tab) => /* @__PURE__ */ jsx60(
             "button",
             {
               onClick: () => setActiveTab(tab),
@@ -8468,7 +8872,7 @@ var MailListVariant = () => {
             tab
           )) })
         ] }),
-        /* @__PURE__ */ jsxs44(
+        /* @__PURE__ */ jsxs51(
           "div",
           {
             className: "drp-flex drp-items-center drp-gap-2",
@@ -8478,7 +8882,7 @@ var MailListVariant = () => {
               background: "var(--drp-white)"
             },
             children: [
-              /* @__PURE__ */ jsx50(
+              /* @__PURE__ */ jsx60(
                 "svg",
                 {
                   width: "14",
@@ -8487,7 +8891,7 @@ var MailListVariant = () => {
                   fill: "none",
                   stroke: "currentColor",
                   viewBox: "0 0 24 24",
-                  children: /* @__PURE__ */ jsx50(
+                  children: /* @__PURE__ */ jsx60(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -8498,7 +8902,7 @@ var MailListVariant = () => {
                   )
                 }
               ),
-              /* @__PURE__ */ jsx50(
+              /* @__PURE__ */ jsx60(
                 "input",
                 {
                   type: "text",
@@ -8518,7 +8922,7 @@ var MailListVariant = () => {
           }
         )
       ] }),
-      /* @__PURE__ */ jsx50("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: mailItems.map((item, idx) => /* @__PURE__ */ jsxs44(
+      /* @__PURE__ */ jsx60("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: mailItems.map((item, idx) => /* @__PURE__ */ jsxs51(
         "div",
         {
           className: "drp-flex drp-items-center drp-gap-3",
@@ -8528,14 +8932,14 @@ var MailListVariant = () => {
             cursor: "pointer"
           },
           children: [
-            /* @__PURE__ */ jsxs44(
+            /* @__PURE__ */ jsxs51(
               "div",
               {
                 className: "drp-flex drp-items-center drp-gap-2",
                 style: { flexShrink: 0 },
                 children: [
-                  /* @__PURE__ */ jsx50("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx50("input", { type: "checkbox" }) }),
-                  /* @__PURE__ */ jsx50(
+                  /* @__PURE__ */ jsx60("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx60("input", { type: "checkbox" }) }),
+                  /* @__PURE__ */ jsx60(
                     "button",
                     {
                       className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
@@ -8546,7 +8950,7 @@ var MailListVariant = () => {
                 ]
               }
             ),
-            item.starred ? /* @__PURE__ */ jsx50(
+            item.starred ? /* @__PURE__ */ jsx60(
               "svg",
               {
                 width: "14",
@@ -8554,11 +8958,11 @@ var MailListVariant = () => {
                 style: { color: "var(--drp-yellow)", flexShrink: 0 },
                 fill: "currentColor",
                 viewBox: "0 0 24 24",
-                children: /* @__PURE__ */ jsx50("path", { d: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" })
+                children: /* @__PURE__ */ jsx60("path", { d: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" })
               }
-            ) : /* @__PURE__ */ jsx50("div", { style: { width: 14, height: 14, flexShrink: 0 } }),
-            /* @__PURE__ */ jsx50(Avatar3, { name: item.sender, size: "md" }),
-            /* @__PURE__ */ jsx50(
+            ) : /* @__PURE__ */ jsx60("div", { style: { width: 14, height: 14, flexShrink: 0 } }),
+            /* @__PURE__ */ jsx60(Avatar3, { name: item.sender, size: "md" }),
+            /* @__PURE__ */ jsx60(
               "span",
               {
                 className: "drp-text drp-text--bold",
@@ -8573,13 +8977,13 @@ var MailListVariant = () => {
                 children: item.sender
               }
             ),
-            /* @__PURE__ */ jsxs44(
+            /* @__PURE__ */ jsxs51(
               "div",
               {
                 className: "drp-flex drp-items-center drp-gap-2",
                 style: { flex: 1, minWidth: 0 },
                 children: [
-                  /* @__PURE__ */ jsx50(
+                  /* @__PURE__ */ jsx60(
                     "span",
                     {
                       className: "drp-text drp-text--bold",
@@ -8592,7 +8996,7 @@ var MailListVariant = () => {
                       children: item.title
                     }
                   ),
-                  item.subtitle && /* @__PURE__ */ jsx50(
+                  item.subtitle && /* @__PURE__ */ jsx60(
                     "span",
                     {
                       className: "drp-text drp-text--sm drp-text--muted",
@@ -8607,18 +9011,18 @@ var MailListVariant = () => {
                 ]
               }
             ),
-            item.attachments.length > 0 && /* @__PURE__ */ jsx50(
+            item.attachments.length > 0 && /* @__PURE__ */ jsx60(
               "div",
               {
                 className: "drp-flex drp-items-center drp-gap-1",
                 style: { flexShrink: 0 },
-                children: item.attachments.map((att) => /* @__PURE__ */ jsxs44(
+                children: item.attachments.map((att) => /* @__PURE__ */ jsxs51(
                   "span",
                   {
                     className: "drp-tag drp-tag--sm",
                     style: { fontSize: 10 },
                     children: [
-                      /* @__PURE__ */ jsx50(
+                      /* @__PURE__ */ jsx60(
                         "span",
                         {
                           className: "drp-tag--dot",
@@ -8632,7 +9036,7 @@ var MailListVariant = () => {
                 ))
               }
             ),
-            /* @__PURE__ */ jsx50(
+            /* @__PURE__ */ jsx60(
               "span",
               {
                 className: "drp-text drp-text--sm drp-text--muted",
@@ -8645,7 +9049,7 @@ var MailListVariant = () => {
                 children: item.time
               }
             ),
-            /* @__PURE__ */ jsx50(
+            /* @__PURE__ */ jsx60(
               "button",
               {
                 className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
@@ -8657,20 +9061,20 @@ var MailListVariant = () => {
         },
         item.id
       )) }),
-      /* @__PURE__ */ jsxs44(
+      /* @__PURE__ */ jsxs51(
         "div",
         {
           className: "drp-flex drp-items-center drp-justify-between",
           style: { marginTop: "var(--drp-space-4)" },
           children: [
-            /* @__PURE__ */ jsx50("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Prev" }),
-            /* @__PURE__ */ jsx50("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
-            /* @__PURE__ */ jsx50("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Next" })
+            /* @__PURE__ */ jsx60("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Prev" }),
+            /* @__PURE__ */ jsx60("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
+            /* @__PURE__ */ jsx60("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Next" })
           ]
         }
       )
     ] }),
-    /* @__PURE__ */ jsx50(InboxFooter, {})
+    /* @__PURE__ */ jsx60(InboxFooter, {})
   ] });
 };
 var chatMessages = [
@@ -8724,10 +9128,10 @@ var chatMessages = [
     time: "08:01PM"
   }
 ];
-var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
-  /* @__PURE__ */ jsx50(InboxTopBar, {}),
-  /* @__PURE__ */ jsx50("div", { className: "content", children: /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-gap-4", style: { flex: 1, minHeight: 0 }, children: [
-    /* @__PURE__ */ jsxs44(
+var ChatVariant = () => /* @__PURE__ */ jsxs51(Fragment7, { children: [
+  /* @__PURE__ */ jsx60(InboxTopBar, {}),
+  /* @__PURE__ */ jsx60("div", { className: "content", children: /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-gap-4", style: { flex: 1, minHeight: 0 }, children: [
+    /* @__PURE__ */ jsxs51(
       "div",
       {
         className: "drp-card",
@@ -8740,7 +9144,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
           flexDirection: "column"
         },
         children: [
-          /* @__PURE__ */ jsxs44(
+          /* @__PURE__ */ jsxs51(
             "div",
             {
               className: "drp-flex drp-items-center drp-justify-between",
@@ -8749,8 +9153,8 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                 borderBottom: "var(--drp-border-thin)"
               },
               children: [
-                /* @__PURE__ */ jsxs44("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: [
-                  /* @__PURE__ */ jsx50(
+                /* @__PURE__ */ jsxs51("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: [
+                  /* @__PURE__ */ jsx60(
                     "svg",
                     {
                       width: "14",
@@ -8758,7 +9162,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                       fill: "none",
                       stroke: "currentColor",
                       viewBox: "0 0 24 24",
-                      children: /* @__PURE__ */ jsx50(
+                      children: /* @__PURE__ */ jsx60(
                         "path",
                         {
                           strokeLinecap: "round",
@@ -8771,8 +9175,8 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                   ),
                   "Compose"
                 ] }),
-                /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-gap-1", children: [
-                  /* @__PURE__ */ jsx50("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx50(
+                /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-gap-1", children: [
+                  /* @__PURE__ */ jsx60("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx60(
                     "svg",
                     {
                       width: "14",
@@ -8780,7 +9184,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                       fill: "none",
                       stroke: "currentColor",
                       viewBox: "0 0 24 24",
-                      children: /* @__PURE__ */ jsx50(
+                      children: /* @__PURE__ */ jsx60(
                         "path",
                         {
                           strokeLinecap: "round",
@@ -8791,7 +9195,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                       )
                     }
                   ) }),
-                  /* @__PURE__ */ jsx50("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx50(
+                  /* @__PURE__ */ jsx60("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx60(
                     "svg",
                     {
                       width: "14",
@@ -8799,7 +9203,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                       fill: "none",
                       stroke: "currentColor",
                       viewBox: "0 0 24 24",
-                      children: /* @__PURE__ */ jsx50(
+                      children: /* @__PURE__ */ jsx60(
                         "path",
                         {
                           strokeLinecap: "round",
@@ -8814,7 +9218,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
               ]
             }
           ),
-          /* @__PURE__ */ jsx50("div", { style: { flex: 1, overflow: "auto" }, children: chatMessages.map((msg, idx) => /* @__PURE__ */ jsxs44(
+          /* @__PURE__ */ jsx60("div", { style: { flex: 1, overflow: "auto" }, children: chatMessages.map((msg, idx) => /* @__PURE__ */ jsxs51(
             "div",
             {
               className: "drp-flex drp-items-start drp-gap-2",
@@ -8824,15 +9228,15 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                 cursor: "pointer"
               },
               children: [
-                /* @__PURE__ */ jsx50(Avatar3, { name: msg.sender, size: "md" }),
-                /* @__PURE__ */ jsxs44("div", { style: { flex: 1, minWidth: 0 }, children: [
-                  /* @__PURE__ */ jsxs44(
+                /* @__PURE__ */ jsx60(Avatar3, { name: msg.sender, size: "md" }),
+                /* @__PURE__ */ jsxs51("div", { style: { flex: 1, minWidth: 0 }, children: [
+                  /* @__PURE__ */ jsxs51(
                     "div",
                     {
                       className: "drp-flex drp-items-center drp-justify-between",
                       style: { marginBottom: 2 },
                       children: [
-                        /* @__PURE__ */ jsx50(
+                        /* @__PURE__ */ jsx60(
                           "span",
                           {
                             className: "drp-text drp-text--bold",
@@ -8845,7 +9249,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                             children: msg.sender
                           }
                         ),
-                        /* @__PURE__ */ jsx50(
+                        /* @__PURE__ */ jsx60(
                           "span",
                           {
                             className: "drp-caption",
@@ -8856,7 +9260,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                       ]
                     }
                   ),
-                  /* @__PURE__ */ jsx50(
+                  /* @__PURE__ */ jsx60(
                     "p",
                     {
                       className: "drp-text drp-text--bold",
@@ -8869,7 +9273,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                       children: msg.subject
                     }
                   ),
-                  /* @__PURE__ */ jsx50(
+                  /* @__PURE__ */ jsx60(
                     "p",
                     {
                       className: "drp-caption",
@@ -8890,7 +9294,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
         ]
       }
     ),
-    /* @__PURE__ */ jsxs44(
+    /* @__PURE__ */ jsxs51(
       "div",
       {
         className: "drp-card",
@@ -8902,7 +9306,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
           flexDirection: "column"
         },
         children: [
-          /* @__PURE__ */ jsxs44(
+          /* @__PURE__ */ jsxs51(
             "div",
             {
               className: "drp-flex drp-items-center drp-justify-between",
@@ -8911,10 +9315,10 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                 borderBottom: "var(--drp-border-thin)"
               },
               children: [
-                /* @__PURE__ */ jsx50("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: "\u2039" }),
-                /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-                  /* @__PURE__ */ jsx50(Avatar3, { name: "Sallie Wade", size: "sm" }),
-                  /* @__PURE__ */ jsx50(
+                /* @__PURE__ */ jsx60("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: "\u2039" }),
+                /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+                  /* @__PURE__ */ jsx60(Avatar3, { name: "Sallie Wade", size: "sm" }),
+                  /* @__PURE__ */ jsx60(
                     "span",
                     {
                       className: "drp-text drp-text--bold",
@@ -8923,8 +9327,8 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                     }
                   )
                 ] }),
-                /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-gap-1", children: [
-                  /* @__PURE__ */ jsx50("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx50(
+                /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-gap-1", children: [
+                  /* @__PURE__ */ jsx60("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx60(
                     "svg",
                     {
                       width: "14",
@@ -8932,7 +9336,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                       fill: "none",
                       stroke: "currentColor",
                       viewBox: "0 0 24 24",
-                      children: /* @__PURE__ */ jsx50(
+                      children: /* @__PURE__ */ jsx60(
                         "path",
                         {
                           strokeLinecap: "round",
@@ -8943,12 +9347,12 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                       )
                     }
                   ) }),
-                  /* @__PURE__ */ jsx50("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." })
+                  /* @__PURE__ */ jsx60("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." })
                 ] })
               ]
             }
           ),
-          /* @__PURE__ */ jsxs44(
+          /* @__PURE__ */ jsxs51(
             "div",
             {
               style: {
@@ -8960,7 +9364,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                 gap: "var(--drp-space-4)"
               },
               children: [
-                /* @__PURE__ */ jsx50("div", { style: { display: "flex", justifyContent: "center" }, children: /* @__PURE__ */ jsx50(
+                /* @__PURE__ */ jsx60("div", { style: { display: "flex", justifyContent: "center" }, children: /* @__PURE__ */ jsx60(
                   "span",
                   {
                     className: "drp-tag drp-tag--dark drp-tag--filled",
@@ -8968,7 +9372,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                     children: "48 Messages"
                   }
                 ) }),
-                /* @__PURE__ */ jsx50(
+                /* @__PURE__ */ jsx60(
                   "div",
                   {
                     style: {
@@ -8976,7 +9380,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                       justifyContent: "flex-end",
                       gap: "var(--drp-space-2)"
                     },
-                    children: /* @__PURE__ */ jsxs44(
+                    children: /* @__PURE__ */ jsxs51(
                       "div",
                       {
                         style: {
@@ -8986,11 +9390,11 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                           gap: 4
                         },
                         children: [
-                          /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-                            /* @__PURE__ */ jsx50("span", { className: "drp-caption", style: { fontSize: 10 }, children: "8:20 PM Gabriela Pires" }),
-                            /* @__PURE__ */ jsx50(Avatar3, { name: "Gabriela Pires", size: "sm" })
+                          /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+                            /* @__PURE__ */ jsx60("span", { className: "drp-caption", style: { fontSize: 10 }, children: "8:20 PM Gabriela Pires" }),
+                            /* @__PURE__ */ jsx60(Avatar3, { name: "Gabriela Pires", size: "sm" })
                           ] }),
-                          /* @__PURE__ */ jsx50(
+                          /* @__PURE__ */ jsx60(
                             "div",
                             {
                               style: {
@@ -9008,12 +9412,12 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                     )
                   }
                 ),
-                /* @__PURE__ */ jsx50("div", { style: { display: "flex", gap: "var(--drp-space-2)" }, children: /* @__PURE__ */ jsxs44("div", { style: { display: "flex", flexDirection: "column", gap: 4 }, children: [
-                  /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-                    /* @__PURE__ */ jsx50(Avatar3, { name: "Sallie Wade", size: "sm" }),
-                    /* @__PURE__ */ jsx50("span", { className: "drp-caption", style: { fontSize: 10 }, children: "Sallie Wade 8:35 PM" })
+                /* @__PURE__ */ jsx60("div", { style: { display: "flex", gap: "var(--drp-space-2)" }, children: /* @__PURE__ */ jsxs51("div", { style: { display: "flex", flexDirection: "column", gap: 4 }, children: [
+                  /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+                    /* @__PURE__ */ jsx60(Avatar3, { name: "Sallie Wade", size: "sm" }),
+                    /* @__PURE__ */ jsx60("span", { className: "drp-caption", style: { fontSize: 10 }, children: "Sallie Wade 8:35 PM" })
                   ] }),
-                  /* @__PURE__ */ jsx50(
+                  /* @__PURE__ */ jsx60(
                     "div",
                     {
                       style: {
@@ -9025,8 +9429,8 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                       children: "Some graphic designers always manage to produce"
                     }
                   ),
-                  /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-gap-2", style: { marginTop: 4 }, children: [
-                    /* @__PURE__ */ jsx50(
+                  /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-gap-2", style: { marginTop: 4 }, children: [
+                    /* @__PURE__ */ jsx60(
                       "div",
                       {
                         style: {
@@ -9037,7 +9441,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                         }
                       }
                     ),
-                    /* @__PURE__ */ jsx50(
+                    /* @__PURE__ */ jsx60(
                       "div",
                       {
                         style: {
@@ -9050,7 +9454,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                     )
                   ] })
                 ] }) }),
-                /* @__PURE__ */ jsx50(
+                /* @__PURE__ */ jsx60(
                   "div",
                   {
                     style: {
@@ -9058,7 +9462,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                       justifyContent: "flex-end",
                       gap: "var(--drp-space-2)"
                     },
-                    children: /* @__PURE__ */ jsxs44(
+                    children: /* @__PURE__ */ jsxs51(
                       "div",
                       {
                         style: {
@@ -9068,11 +9472,11 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                           gap: 4
                         },
                         children: [
-                          /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-                            /* @__PURE__ */ jsx50("span", { className: "drp-caption", style: { fontSize: 10 }, children: "8:40 PM Gabriela Pires" }),
-                            /* @__PURE__ */ jsx50(Avatar3, { name: "Gabriela Pires", size: "sm" })
+                          /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+                            /* @__PURE__ */ jsx60("span", { className: "drp-caption", style: { fontSize: 10 }, children: "8:40 PM Gabriela Pires" }),
+                            /* @__PURE__ */ jsx60(Avatar3, { name: "Gabriela Pires", size: "sm" })
                           ] }),
-                          /* @__PURE__ */ jsx50(
+                          /* @__PURE__ */ jsx60(
                             "div",
                             {
                               style: {
@@ -9090,12 +9494,12 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                     )
                   }
                 ),
-                /* @__PURE__ */ jsx50("div", { style: { display: "flex", gap: "var(--drp-space-2)" }, children: /* @__PURE__ */ jsxs44("div", { style: { display: "flex", flexDirection: "column", gap: 4 }, children: [
-                  /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-                    /* @__PURE__ */ jsx50(Avatar3, { name: "Sallie Wade", size: "sm" }),
-                    /* @__PURE__ */ jsx50("span", { className: "drp-caption", style: { fontSize: 10 }, children: "Sallie Wade 8:50 PM" })
+                /* @__PURE__ */ jsx60("div", { style: { display: "flex", gap: "var(--drp-space-2)" }, children: /* @__PURE__ */ jsxs51("div", { style: { display: "flex", flexDirection: "column", gap: 4 }, children: [
+                  /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+                    /* @__PURE__ */ jsx60(Avatar3, { name: "Sallie Wade", size: "sm" }),
+                    /* @__PURE__ */ jsx60("span", { className: "drp-caption", style: { fontSize: 10 }, children: "Sallie Wade 8:50 PM" })
                   ] }),
-                  /* @__PURE__ */ jsx50(
+                  /* @__PURE__ */ jsx60(
                     "div",
                     {
                       style: {
@@ -9108,9 +9512,9 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                     }
                   )
                 ] }) }),
-                /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-start drp-gap-2", children: [
-                  /* @__PURE__ */ jsx50(Avatar3, { name: "Sallie Wade", size: "sm" }),
-                  /* @__PURE__ */ jsx50(
+                /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-start drp-gap-2", children: [
+                  /* @__PURE__ */ jsx60(Avatar3, { name: "Sallie Wade", size: "sm" }),
+                  /* @__PURE__ */ jsx60(
                     "div",
                     {
                       style: {
@@ -9118,8 +9522,8 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                         fontSize: 12,
                         padding: "var(--drp-space-2) var(--drp-space-3)"
                       },
-                      children: /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-gap-1", children: [
-                        /* @__PURE__ */ jsx50(
+                      children: /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-gap-1", children: [
+                        /* @__PURE__ */ jsx60(
                           "span",
                           {
                             style: {
@@ -9131,7 +9535,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                             }
                           }
                         ),
-                        /* @__PURE__ */ jsx50(
+                        /* @__PURE__ */ jsx60(
                           "span",
                           {
                             style: {
@@ -9143,7 +9547,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                             }
                           }
                         ),
-                        /* @__PURE__ */ jsx50(
+                        /* @__PURE__ */ jsx60(
                           "span",
                           {
                             style: {
@@ -9162,14 +9566,14 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
               ]
             }
           ),
-          /* @__PURE__ */ jsx50(
+          /* @__PURE__ */ jsx60(
             "div",
             {
               style: {
                 padding: "var(--drp-space-3) var(--drp-space-4)",
                 borderTop: "var(--drp-border-thin)"
               },
-              children: /* @__PURE__ */ jsxs44(
+              children: /* @__PURE__ */ jsxs51(
                 "div",
                 {
                   className: "drp-flex drp-items-center drp-gap-2",
@@ -9179,8 +9583,8 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                     padding: "var(--drp-space-2) var(--drp-space-3)"
                   },
                   children: [
-                    /* @__PURE__ */ jsx50(Avatar3, { name: "Gabriela Pires", size: "sm" }),
-                    /* @__PURE__ */ jsx50(
+                    /* @__PURE__ */ jsx60(Avatar3, { name: "Gabriela Pires", size: "sm" }),
+                    /* @__PURE__ */ jsx60(
                       "input",
                       {
                         type: "text",
@@ -9196,14 +9600,14 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                         readOnly: true
                       }
                     ),
-                    /* @__PURE__ */ jsx50("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
-                    /* @__PURE__ */ jsx50("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
-                    /* @__PURE__ */ jsx50(
+                    /* @__PURE__ */ jsx60("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
+                    /* @__PURE__ */ jsx60("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
+                    /* @__PURE__ */ jsx60(
                       "button",
                       {
                         className: "drp-btn drp-btn--primary drp-btn--icon drp-btn--sm",
                         style: { width: 24, height: 24 },
-                        children: /* @__PURE__ */ jsx50(
+                        children: /* @__PURE__ */ jsx60(
                           "svg",
                           {
                             width: "12",
@@ -9211,7 +9615,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                             fill: "none",
                             stroke: "currentColor",
                             viewBox: "0 0 24 24",
-                            children: /* @__PURE__ */ jsx50(
+                            children: /* @__PURE__ */ jsx60(
                               "path",
                               {
                                 strokeLinecap: "round",
@@ -9233,14 +9637,14 @@ var ChatVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
       }
     )
   ] }) }),
-  /* @__PURE__ */ jsx50(InboxFooter, {})
+  /* @__PURE__ */ jsx60(InboxFooter, {})
 ] });
-var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
-  /* @__PURE__ */ jsx50(InboxTopBar, { showBack: true }),
-  /* @__PURE__ */ jsxs44("div", { className: "content", children: [
-    /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
-      /* @__PURE__ */ jsxs44("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-        /* @__PURE__ */ jsx50(
+var MailComposeVariant = () => /* @__PURE__ */ jsxs51(Fragment7, { children: [
+  /* @__PURE__ */ jsx60(InboxTopBar, { showBack: true }),
+  /* @__PURE__ */ jsxs51("div", { className: "content", children: [
+    /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
+      /* @__PURE__ */ jsxs51("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+        /* @__PURE__ */ jsx60(
           "svg",
           {
             width: "14",
@@ -9248,7 +9652,7 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
             fill: "none",
             stroke: "currentColor",
             viewBox: "0 0 24 24",
-            children: /* @__PURE__ */ jsx50(
+            children: /* @__PURE__ */ jsx60(
               "path",
               {
                 strokeLinecap: "round",
@@ -9261,9 +9665,9 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
         ),
         "Save as draft"
       ] }),
-      /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-        /* @__PURE__ */ jsxs44("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
-          /* @__PURE__ */ jsx50(
+      /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+        /* @__PURE__ */ jsxs51("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: [
+          /* @__PURE__ */ jsx60(
             "svg",
             {
               width: "14",
@@ -9271,7 +9675,7 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
               fill: "none",
               stroke: "currentColor",
               viewBox: "0 0 24 24",
-              children: /* @__PURE__ */ jsx50(
+              children: /* @__PURE__ */ jsx60(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -9284,8 +9688,8 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
           ),
           "Forward"
         ] }),
-        /* @__PURE__ */ jsxs44("button", { className: "drp-btn drp-btn--danger drp-btn--sm", children: [
-          /* @__PURE__ */ jsx50(
+        /* @__PURE__ */ jsxs51("button", { className: "drp-btn drp-btn--danger drp-btn--sm", children: [
+          /* @__PURE__ */ jsx60(
             "svg",
             {
               width: "14",
@@ -9293,7 +9697,7 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
               fill: "none",
               stroke: "currentColor",
               viewBox: "0 0 24 24",
-              children: /* @__PURE__ */ jsx50(
+              children: /* @__PURE__ */ jsx60(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -9308,18 +9712,18 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs44("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-      /* @__PURE__ */ jsx50(
+    /* @__PURE__ */ jsxs51("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+      /* @__PURE__ */ jsx60(
         "div",
         {
           style: {
             padding: "var(--drp-space-4) var(--drp-space-5)",
             borderBottom: "var(--drp-border-thin)"
           },
-          children: /* @__PURE__ */ jsx50("h2", { className: "drp-h5", children: "Re: Solar experiment lets trade energy among themselves" })
+          children: /* @__PURE__ */ jsx60("h2", { className: "drp-h5", children: "Re: Solar experiment lets trade energy among themselves" })
         }
       ),
-      /* @__PURE__ */ jsxs44(
+      /* @__PURE__ */ jsxs51(
         "div",
         {
           style: {
@@ -9327,58 +9731,58 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
             borderBottom: "var(--drp-border-thin)"
           },
           children: [
-            /* @__PURE__ */ jsxs44(
+            /* @__PURE__ */ jsxs51(
               "div",
               {
                 className: "drp-flex drp-items-start drp-justify-between",
                 style: { marginBottom: "var(--drp-space-3)" },
                 children: [
-                  /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-                    /* @__PURE__ */ jsx50(Avatar3, { name: "Helena Chavez", size: "lg" }),
-                    /* @__PURE__ */ jsxs44("div", { children: [
-                      /* @__PURE__ */ jsx50("p", { className: "drp-text drp-text--bold", children: "Helena Chavez" }),
-                      /* @__PURE__ */ jsxs44("p", { className: "drp-caption", children: [
+                  /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+                    /* @__PURE__ */ jsx60(Avatar3, { name: "Helena Chavez", size: "lg" }),
+                    /* @__PURE__ */ jsxs51("div", { children: [
+                      /* @__PURE__ */ jsx60("p", { className: "drp-text drp-text--bold", children: "Helena Chavez" }),
+                      /* @__PURE__ */ jsxs51("p", { className: "drp-caption", children: [
                         "helena.chavez89@outlook.com",
                         " ",
-                        /* @__PURE__ */ jsx50("span", { style: { color: "var(--drp-grey)" }, children: "to" }),
+                        /* @__PURE__ */ jsx60("span", { style: { color: "var(--drp-grey)" }, children: "to" }),
                         " ",
-                        /* @__PURE__ */ jsx50("span", { className: "drp-text drp-text--sm drp-text--muted", children: "me" })
+                        /* @__PURE__ */ jsx60("span", { className: "drp-text drp-text--sm drp-text--muted", children: "me" })
                       ] })
                     ] })
                   ] }),
-                  /* @__PURE__ */ jsxs44(
+                  /* @__PURE__ */ jsxs51(
                     "div",
                     {
                       className: "drp-flex drp-items-center drp-gap-2",
                       style: { flexShrink: 0 },
                       children: [
-                        /* @__PURE__ */ jsx50("span", { className: "drp-caption", children: "18 January 2022" }),
-                        /* @__PURE__ */ jsx50("span", { className: "drp-caption", children: "\xB7" }),
-                        /* @__PURE__ */ jsx50("span", { className: "drp-caption", children: "11:52AM" })
+                        /* @__PURE__ */ jsx60("span", { className: "drp-caption", children: "18 January 2022" }),
+                        /* @__PURE__ */ jsx60("span", { className: "drp-caption", children: "\xB7" }),
+                        /* @__PURE__ */ jsx60("span", { className: "drp-caption", children: "11:52AM" })
                       ]
                     }
                   )
                 ]
               }
             ),
-            /* @__PURE__ */ jsxs44(
+            /* @__PURE__ */ jsxs51(
               "div",
               {
                 className: "drp-text drp-text--sm",
                 style: { lineHeight: 1.7, marginBottom: "var(--drp-space-4)" },
                 children: [
-                  /* @__PURE__ */ jsx50("p", { children: "Working outside the office should help de-escalate workplace toxicity. But in reality, dysfunctional workplace culture may actually get worse when you're at home. Instead, her supervisor found new ways to monitor the team virtually" }),
-                  /* @__PURE__ */ jsx50("br", {}),
-                  /* @__PURE__ */ jsx50("p", { children: "Best Regards," }),
-                  /* @__PURE__ */ jsx50("p", { children: "Helena Chavez" })
+                  /* @__PURE__ */ jsx60("p", { children: "Working outside the office should help de-escalate workplace toxicity. But in reality, dysfunctional workplace culture may actually get worse when you're at home. Instead, her supervisor found new ways to monitor the team virtually" }),
+                  /* @__PURE__ */ jsx60("br", {}),
+                  /* @__PURE__ */ jsx60("p", { children: "Best Regards," }),
+                  /* @__PURE__ */ jsx60("p", { children: "Helena Chavez" })
                 ]
               }
             ),
-            /* @__PURE__ */ jsx50("div", { className: "drp-flex drp-gap-3", children: [
+            /* @__PURE__ */ jsx60("div", { className: "drp-flex drp-gap-3", children: [
               "linear-gradient(135deg, var(--drp-purple), var(--drp-blue))",
               "linear-gradient(135deg, var(--drp-blue), var(--drp-mint))",
               "linear-gradient(135deg, var(--drp-pink), var(--drp-orange))"
-            ].map((gradient, i2) => /* @__PURE__ */ jsx50(
+            ].map((gradient, i2) => /* @__PURE__ */ jsx60(
               "div",
               {
                 style: {
@@ -9393,7 +9797,7 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
           ]
         }
       ),
-      /* @__PURE__ */ jsx50(
+      /* @__PURE__ */ jsx60(
         "div",
         {
           style: {
@@ -9403,28 +9807,28 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
             padding: "var(--drp-space-2) 0",
             borderBottom: "var(--drp-border-thin)"
           },
-          children: /* @__PURE__ */ jsx50("span", { className: "drp-badge drp-badge--purple", children: "5" })
+          children: /* @__PURE__ */ jsx60("span", { className: "drp-badge drp-badge--purple", children: "5" })
         }
       ),
-      /* @__PURE__ */ jsx50(
+      /* @__PURE__ */ jsx60(
         "div",
         {
           style: {
             padding: "var(--drp-space-4) var(--drp-space-5)",
             borderBottom: "var(--drp-border-thin)"
           },
-          children: /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-start drp-gap-3", children: [
-            /* @__PURE__ */ jsx50(Avatar3, { name: "Gladys Kanyinda", size: "lg" }),
-            /* @__PURE__ */ jsxs44("div", { style: { flex: 1 }, children: [
-              /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
-                /* @__PURE__ */ jsx50("p", { className: "drp-text drp-text--bold", children: "Gladys Kanyinda" }),
-                /* @__PURE__ */ jsxs44("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-                  /* @__PURE__ */ jsx50("span", { className: "drp-caption", children: "13 January 2022" }),
-                  /* @__PURE__ */ jsx50("span", { className: "drp-caption", children: "\xB7" }),
-                  /* @__PURE__ */ jsx50("span", { className: "drp-caption", children: "10:45AM" })
+          children: /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-start drp-gap-3", children: [
+            /* @__PURE__ */ jsx60(Avatar3, { name: "Gladys Kanyinda", size: "lg" }),
+            /* @__PURE__ */ jsxs51("div", { style: { flex: 1 }, children: [
+              /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
+                /* @__PURE__ */ jsx60("p", { className: "drp-text drp-text--bold", children: "Gladys Kanyinda" }),
+                /* @__PURE__ */ jsxs51("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+                  /* @__PURE__ */ jsx60("span", { className: "drp-caption", children: "13 January 2022" }),
+                  /* @__PURE__ */ jsx60("span", { className: "drp-caption", children: "\xB7" }),
+                  /* @__PURE__ */ jsx60("span", { className: "drp-caption", children: "10:45AM" })
                 ] })
               ] }),
-              /* @__PURE__ */ jsx50(
+              /* @__PURE__ */ jsx60(
                 "p",
                 {
                   className: "drp-text drp-text--sm drp-text--muted",
@@ -9436,7 +9840,7 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
           ] })
         }
       ),
-      /* @__PURE__ */ jsx50("div", { style: { padding: "var(--drp-space-4) var(--drp-space-5)" }, children: /* @__PURE__ */ jsxs44(
+      /* @__PURE__ */ jsx60("div", { style: { padding: "var(--drp-space-4) var(--drp-space-5)" }, children: /* @__PURE__ */ jsxs51(
         "div",
         {
           className: "drp-flex drp-items-center drp-gap-3",
@@ -9446,8 +9850,8 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
             padding: "var(--drp-space-2) var(--drp-space-4)"
           },
           children: [
-            /* @__PURE__ */ jsx50(Avatar3, { name: "Helena Chavez", size: "sm" }),
-            /* @__PURE__ */ jsx50(
+            /* @__PURE__ */ jsx60(Avatar3, { name: "Helena Chavez", size: "sm" }),
+            /* @__PURE__ */ jsx60(
               "input",
               {
                 type: "text",
@@ -9463,14 +9867,14 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                 readOnly: true
               }
             ),
-            /* @__PURE__ */ jsx50("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
-            /* @__PURE__ */ jsx50("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
-            /* @__PURE__ */ jsx50(
+            /* @__PURE__ */ jsx60("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
+            /* @__PURE__ */ jsx60("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }),
+            /* @__PURE__ */ jsx60(
               "button",
               {
                 className: "drp-btn drp-btn--primary drp-btn--icon drp-btn--sm",
                 style: { width: 24, height: 24 },
-                children: /* @__PURE__ */ jsx50(
+                children: /* @__PURE__ */ jsx60(
                   "svg",
                   {
                     width: "12",
@@ -9478,7 +9882,7 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                     fill: "none",
                     stroke: "currentColor",
                     viewBox: "0 0 24 24",
-                    children: /* @__PURE__ */ jsx50(
+                    children: /* @__PURE__ */ jsx60(
                       "path",
                       {
                         strokeLinecap: "round",
@@ -9496,11 +9900,11 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
       ) })
     ] })
   ] }),
-  /* @__PURE__ */ jsx50(InboxFooter, {})
+  /* @__PURE__ */ jsx60(InboxFooter, {})
 ] });
-var EmptyVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
-  /* @__PURE__ */ jsx50(InboxTopBar, {}),
-  /* @__PURE__ */ jsxs44(
+var EmptyVariant = () => /* @__PURE__ */ jsxs51(Fragment7, { children: [
+  /* @__PURE__ */ jsx60(InboxTopBar, {}),
+  /* @__PURE__ */ jsxs51(
     "div",
     {
       className: "content",
@@ -9513,7 +9917,7 @@ var EmptyVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
         overflow: "hidden"
       },
       children: [
-        /* @__PURE__ */ jsx50(
+        /* @__PURE__ */ jsx60(
           "div",
           {
             style: {
@@ -9531,7 +9935,7 @@ var EmptyVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
             }
           }
         ),
-        /* @__PURE__ */ jsx50(
+        /* @__PURE__ */ jsx60(
           "div",
           {
             style: {
@@ -9548,7 +9952,7 @@ var EmptyVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
             }
           }
         ),
-        /* @__PURE__ */ jsx50(
+        /* @__PURE__ */ jsx60(
           "div",
           {
             style: {
@@ -9565,12 +9969,12 @@ var EmptyVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
             }
           }
         ),
-        /* @__PURE__ */ jsxs44("div", { className: "drp-empty", style: { position: "relative", zIndex: 1 }, children: [
-          /* @__PURE__ */ jsx50(
+        /* @__PURE__ */ jsxs51("div", { className: "drp-empty", style: { position: "relative", zIndex: 1 }, children: [
+          /* @__PURE__ */ jsx60(
             "div",
             {
               style: { width: 64, height: 64, marginBottom: "var(--drp-space-4)" },
-              children: /* @__PURE__ */ jsxs44(
+              children: /* @__PURE__ */ jsxs51(
                 "svg",
                 {
                   viewBox: "0 0 64 64",
@@ -9578,7 +9982,7 @@ var EmptyVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                   xmlns: "http://www.w3.org/2000/svg",
                   style: { width: "100%", height: "100%" },
                   children: [
-                    /* @__PURE__ */ jsx50(
+                    /* @__PURE__ */ jsx60(
                       "path",
                       {
                         d: "M12 28 C10 20, 16 12, 24 10 C28 9, 36 10, 40 14 C44 8, 52 8, 56 14 C60 20, 58 28, 52 32 L32 52 L12 32 C8 28, 8 24, 12 28 Z",
@@ -9589,7 +9993,7 @@ var EmptyVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                         fill: "none"
                       }
                     ),
-                    /* @__PURE__ */ jsx50(
+                    /* @__PURE__ */ jsx60(
                       "path",
                       {
                         d: "M44 20 C46 16, 50 16, 52 20",
@@ -9604,8 +10008,8 @@ var EmptyVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
               )
             }
           ),
-          /* @__PURE__ */ jsx50("h2", { className: "drp-h2", style: { marginBottom: "var(--drp-space-2)" }, children: "No messages found?" }),
-          /* @__PURE__ */ jsx50(
+          /* @__PURE__ */ jsx60("h2", { className: "drp-h2", style: { marginBottom: "var(--drp-space-2)" }, children: "No messages found?" }),
+          /* @__PURE__ */ jsx60(
             "p",
             {
               className: "drp-text drp-text--sm drp-text--muted",
@@ -9617,8 +10021,8 @@ var EmptyVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
               children: "Try to add more contacts from your personal account or start new discussion"
             }
           ),
-          /* @__PURE__ */ jsxs44("button", { className: "drp-btn drp-btn--primary", children: [
-            /* @__PURE__ */ jsx50(
+          /* @__PURE__ */ jsxs51("button", { className: "drp-btn drp-btn--primary", children: [
+            /* @__PURE__ */ jsx60(
               "svg",
               {
                 width: "16",
@@ -9626,7 +10030,7 @@ var EmptyVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
                 fill: "none",
                 stroke: "currentColor",
                 viewBox: "0 0 24 24",
-                children: /* @__PURE__ */ jsx50(
+                children: /* @__PURE__ */ jsx60(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -9643,7 +10047,7 @@ var EmptyVariant = () => /* @__PURE__ */ jsxs44(Fragment4, { children: [
       ]
     }
   ),
-  /* @__PURE__ */ jsx50(InboxFooter, {})
+  /* @__PURE__ */ jsx60(InboxFooter, {})
 ] });
 var InboxList = ({
   theme = "light",
@@ -9652,24 +10056,24 @@ var InboxList = ({
   const renderContent = () => {
     switch (variant) {
       case "chat":
-        return /* @__PURE__ */ jsx50(ChatVariant, {});
+        return /* @__PURE__ */ jsx60(ChatVariant, {});
       case "mail-compose":
-        return /* @__PURE__ */ jsx50(MailComposeVariant, {});
+        return /* @__PURE__ */ jsx60(MailComposeVariant, {});
       case "empty":
-        return /* @__PURE__ */ jsx50(EmptyVariant, {});
+        return /* @__PURE__ */ jsx60(EmptyVariant, {});
       case "mail-list":
       default:
-        return /* @__PURE__ */ jsx50(MailListVariant, {});
+        return /* @__PURE__ */ jsx60(MailListVariant, {});
     }
   };
-  return /* @__PURE__ */ jsxs44("div", { className: "app-layout", children: [
-    /* @__PURE__ */ jsx50(InboxSidebar, {}),
-    /* @__PURE__ */ jsx50("div", { className: "main-content", style: { marginLeft: 200 }, children: renderContent() })
+  return /* @__PURE__ */ jsxs51("div", { className: "app-layout", children: [
+    /* @__PURE__ */ jsx60(InboxSidebar, {}),
+    /* @__PURE__ */ jsx60("div", { className: "main-content", style: { marginLeft: 200 }, children: renderContent() })
   ] });
 };
 
 // src/screens/Payments/PaymentsList.tsx
-import { Fragment as Fragment5, jsx as jsx51, jsxs as jsxs45 } from "react/jsx-runtime";
+import { Fragment as Fragment8, jsx as jsx61, jsxs as jsxs52 } from "react/jsx-runtime";
 var DoctorProjectSidebar6 = ({
   variant
 }) => {
@@ -9698,20 +10102,20 @@ var DoctorProjectSidebar6 = ({
     { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-purple)" },
     { name: "Justine Robinson", initials: "JR", bg: "var(--drp-grey)" }
   ];
-  return /* @__PURE__ */ jsxs45("aside", { className: "sidebar", style: { width: 280 }, children: [
-    /* @__PURE__ */ jsxs45("div", { className: "sidebar-brand", children: [
-      /* @__PURE__ */ jsx51("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
-      /* @__PURE__ */ jsx51("span", { className: "sidebar-brand-dot" })
+  return /* @__PURE__ */ jsxs52("aside", { className: "sidebar", style: { width: 280 }, children: [
+    /* @__PURE__ */ jsxs52("div", { className: "sidebar-brand", children: [
+      /* @__PURE__ */ jsx61("span", { className: "sidebar-brand-name", style: { fontSize: 20 }, children: "Doctor Project" }),
+      /* @__PURE__ */ jsx61("span", { className: "sidebar-brand-dot" })
     ] }),
-    /* @__PURE__ */ jsxs45("nav", { className: "sidebar-nav", children: [
-      /* @__PURE__ */ jsxs45("div", { className: "sidebar-nav-section", children: [
-        /* @__PURE__ */ jsx51("div", { className: "sidebar-nav-label", children: "Navigation" }),
-        navItems.map((item) => /* @__PURE__ */ jsxs45(
+    /* @__PURE__ */ jsxs52("nav", { className: "sidebar-nav", children: [
+      /* @__PURE__ */ jsxs52("div", { className: "sidebar-nav-section", children: [
+        /* @__PURE__ */ jsx61("div", { className: "sidebar-nav-label", children: "Navigation" }),
+        navItems.map((item) => /* @__PURE__ */ jsxs52(
           "button",
           {
             className: `sidebar-nav-item ${item.active ? "active" : ""}`,
             children: [
-              /* @__PURE__ */ jsx51("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ jsx51(
+              /* @__PURE__ */ jsx61("span", { className: "sidebar-nav-icon", children: /* @__PURE__ */ jsx61(
                 "svg",
                 {
                   width: "14",
@@ -9719,7 +10123,7 @@ var DoctorProjectSidebar6 = ({
                   fill: "none",
                   viewBox: "0 0 24 24",
                   stroke: "currentColor",
-                  children: /* @__PURE__ */ jsx51(
+                  children: /* @__PURE__ */ jsx61(
                     "path",
                     {
                       strokeLinecap: "round",
@@ -9730,17 +10134,17 @@ var DoctorProjectSidebar6 = ({
                   )
                 }
               ) }),
-              /* @__PURE__ */ jsx51("span", { className: "sidebar-nav-text", children: item.label }),
-              item.badge && /* @__PURE__ */ jsx51("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
+              /* @__PURE__ */ jsx61("span", { className: "sidebar-nav-text", children: item.label }),
+              item.badge && /* @__PURE__ */ jsx61("span", { className: `sidebar-badge ${item.badgeVariant}`, children: item.badge })
             ]
           },
           item.id
         ))
       ] }),
-      showTeamMembers ? /* @__PURE__ */ jsxs45("div", { className: "sidebar-team", children: [
-        /* @__PURE__ */ jsx51("div", { className: "sidebar-team-label", children: "Team Members" }),
-        teamMembers.map((m3) => /* @__PURE__ */ jsxs45("div", { className: "sidebar-team-member", children: [
-          /* @__PURE__ */ jsx51(
+      showTeamMembers ? /* @__PURE__ */ jsxs52("div", { className: "sidebar-team", children: [
+        /* @__PURE__ */ jsx61("div", { className: "sidebar-team-label", children: "Team Members" }),
+        teamMembers.map((m3) => /* @__PURE__ */ jsxs52("div", { className: "sidebar-team-member", children: [
+          /* @__PURE__ */ jsx61(
             "div",
             {
               className: "sidebar-avatar",
@@ -9753,10 +10157,10 @@ var DoctorProjectSidebar6 = ({
               children: m3.initials[0]
             }
           ),
-          /* @__PURE__ */ jsx51("span", { className: "sidebar-team-name", children: m3.name })
+          /* @__PURE__ */ jsx61("span", { className: "sidebar-team-name", children: m3.name })
         ] }, m3.name)),
-        /* @__PURE__ */ jsxs45("div", { className: "sidebar-see-more", children: [
-          /* @__PURE__ */ jsx51(
+        /* @__PURE__ */ jsxs52("div", { className: "sidebar-see-more", children: [
+          /* @__PURE__ */ jsx61(
             "svg",
             {
               width: "12",
@@ -9764,7 +10168,7 @@ var DoctorProjectSidebar6 = ({
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx51(
+              children: /* @__PURE__ */ jsx61(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -9775,13 +10179,13 @@ var DoctorProjectSidebar6 = ({
               )
             }
           ),
-          /* @__PURE__ */ jsx51("span", { children: "See More" })
+          /* @__PURE__ */ jsx61("span", { children: "See More" })
         ] })
-      ] }) : /* @__PURE__ */ jsxs45(Fragment5, { children: [
-        /* @__PURE__ */ jsxs45("div", { className: "sidebar-nav-section", children: [
-          /* @__PURE__ */ jsx51("div", { className: "sidebar-nav-label", children: "Cards" }),
-          /* @__PURE__ */ jsxs45("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ jsx51(
+      ] }) : /* @__PURE__ */ jsxs52(Fragment8, { children: [
+        /* @__PURE__ */ jsxs52("div", { className: "sidebar-nav-section", children: [
+          /* @__PURE__ */ jsx61("div", { className: "sidebar-nav-label", children: "Cards" }),
+          /* @__PURE__ */ jsxs52("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ jsx61(
               "div",
               {
                 className: "sidebar-avatar",
@@ -9794,10 +10198,10 @@ var DoctorProjectSidebar6 = ({
                 children: "V"
               }
             ),
-            /* @__PURE__ */ jsx51("span", { className: "sidebar-nav-text", children: "Debit Card **** 7890" })
+            /* @__PURE__ */ jsx61("span", { className: "sidebar-nav-text", children: "Debit Card **** 7890" })
           ] }),
-          /* @__PURE__ */ jsxs45("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ jsx51(
+          /* @__PURE__ */ jsxs52("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ jsx61(
               "div",
               {
                 className: "sidebar-avatar",
@@ -9810,10 +10214,10 @@ var DoctorProjectSidebar6 = ({
                 children: "\u25CF"
               }
             ),
-            /* @__PURE__ */ jsx51("span", { className: "sidebar-nav-text", children: "Credit Card **** 4340" })
+            /* @__PURE__ */ jsx61("span", { className: "sidebar-nav-text", children: "Credit Card **** 4340" })
           ] }),
-          /* @__PURE__ */ jsxs45("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ jsx51(
+          /* @__PURE__ */ jsxs52("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ jsx61(
               "div",
               {
                 style: {
@@ -9830,21 +10234,21 @@ var DoctorProjectSidebar6 = ({
                 children: "+"
               }
             ),
-            /* @__PURE__ */ jsx51("span", { className: "sidebar-nav-text", children: "Open a card" })
+            /* @__PURE__ */ jsx61("span", { className: "sidebar-nav-text", children: "Open a card" })
           ] })
         ] }),
-        /* @__PURE__ */ jsxs45("div", { className: "sidebar-nav-section", children: [
-          /* @__PURE__ */ jsx51("div", { className: "sidebar-nav-label", children: "Balances" }),
+        /* @__PURE__ */ jsxs52("div", { className: "sidebar-nav-section", children: [
+          /* @__PURE__ */ jsx61("div", { className: "sidebar-nav-label", children: "Balances" }),
           [
             { flag: "\u{1F1FA}\u{1F1F8}", amount: "100,050.75 USD" },
             { flag: "\u{1F1EA}\u{1F1FA}", amount: "10.40 EUR" },
             { flag: "\u{1F1EC}\u{1F1E7}", amount: "95.50 GBP" }
-          ].map((bal) => /* @__PURE__ */ jsxs45("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ jsx51("span", { style: { fontSize: 16 }, children: bal.flag }),
-            /* @__PURE__ */ jsx51("span", { className: "sidebar-nav-text", children: bal.amount })
+          ].map((bal) => /* @__PURE__ */ jsxs52("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ jsx61("span", { style: { fontSize: 16 }, children: bal.flag }),
+            /* @__PURE__ */ jsx61("span", { className: "sidebar-nav-text", children: bal.amount })
           ] }, bal.amount)),
-          /* @__PURE__ */ jsxs45("button", { className: "sidebar-nav-item", children: [
-            /* @__PURE__ */ jsx51(
+          /* @__PURE__ */ jsxs52("button", { className: "sidebar-nav-item", children: [
+            /* @__PURE__ */ jsx61(
               "div",
               {
                 style: {
@@ -9861,13 +10265,13 @@ var DoctorProjectSidebar6 = ({
                 children: "+"
               }
             ),
-            /* @__PURE__ */ jsx51("span", { className: "sidebar-nav-text", children: "Open a balance" })
+            /* @__PURE__ */ jsx61("span", { className: "sidebar-nav-text", children: "Open a balance" })
           ] })
         ] })
       ] })
     ] }),
-    /* @__PURE__ */ jsxs45("div", { className: "sidebar-user", children: [
-      /* @__PURE__ */ jsx51(
+    /* @__PURE__ */ jsxs52("div", { className: "sidebar-user", children: [
+      /* @__PURE__ */ jsx61(
         "div",
         {
           className: "sidebar-avatar",
@@ -9878,17 +10282,17 @@ var DoctorProjectSidebar6 = ({
           }
         }
       ),
-      /* @__PURE__ */ jsx51("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx51("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-      /* @__PURE__ */ jsx51("button", { className: "sidebar-user-menu-btn", children: "..." })
+      /* @__PURE__ */ jsx61("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx61("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+      /* @__PURE__ */ jsx61("button", { className: "sidebar-user-menu-btn", children: "..." })
     ] })
   ] });
 };
 var TopBar8 = ({
   title,
   showBack = false
-}) => /* @__PURE__ */ jsxs45("div", { className: "topbar", children: [
-  /* @__PURE__ */ jsxs45("div", { className: "topbar-left", children: [
-    showBack && /* @__PURE__ */ jsx51("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx51(
+}) => /* @__PURE__ */ jsxs52("div", { className: "topbar", children: [
+  /* @__PURE__ */ jsxs52("div", { className: "topbar-left", children: [
+    showBack && /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx61(
       "svg",
       {
         width: "16",
@@ -9896,7 +10300,7 @@ var TopBar8 = ({
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx51(
+        children: /* @__PURE__ */ jsx61(
           "path",
           {
             strokeLinecap: "round",
@@ -9907,10 +10311,10 @@ var TopBar8 = ({
         )
       }
     ) }),
-    /* @__PURE__ */ jsx51("h1", { className: "topbar-title", children: title })
+    /* @__PURE__ */ jsx61("h1", { className: "topbar-title", children: title })
   ] }),
-  /* @__PURE__ */ jsxs45("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx51("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx51(
+  /* @__PURE__ */ jsxs52("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx61("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx61(
       "svg",
       {
         width: "16",
@@ -9918,7 +10322,7 @@ var TopBar8 = ({
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx51(
+        children: /* @__PURE__ */ jsx61(
           "path",
           {
             strokeLinecap: "round",
@@ -9929,8 +10333,8 @@ var TopBar8 = ({
         )
       }
     ) }),
-    /* @__PURE__ */ jsxs45("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ jsx51(
+    /* @__PURE__ */ jsxs52("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ jsx61(
         "svg",
         {
           width: "16",
@@ -9938,7 +10342,7 @@ var TopBar8 = ({
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
-          children: /* @__PURE__ */ jsx51(
+          children: /* @__PURE__ */ jsx61(
             "path",
             {
               strokeLinecap: "round",
@@ -9949,23 +10353,23 @@ var TopBar8 = ({
           )
         }
       ),
-      /* @__PURE__ */ jsx51("span", { children: "Apps" })
+      /* @__PURE__ */ jsx61("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ jsxs45("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsx51("span", { children: "+" }),
-      /* @__PURE__ */ jsx51("span", { children: "Create new" })
+    /* @__PURE__ */ jsxs52("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsx61("span", { children: "+" }),
+      /* @__PURE__ */ jsx61("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer8 = () => /* @__PURE__ */ jsxs45("div", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs45("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsx51("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ jsx51("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx51("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx51("span", { className: "footer-link", children: "API" })
+var Footer8 = () => /* @__PURE__ */ jsxs52("div", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs52("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsx61("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ jsx61("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx61("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx61("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs45("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx51("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs45(
+  /* @__PURE__ */ jsxs52("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx61("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs52(
       "svg",
       {
         width: "16",
@@ -9974,7 +10378,7 @@ var Footer8 = () => /* @__PURE__ */ jsxs45("div", { className: "footer-bar", chi
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ jsx51(
+          /* @__PURE__ */ jsx61(
             "path",
             {
               strokeLinecap: "round",
@@ -9983,7 +10387,7 @@ var Footer8 = () => /* @__PURE__ */ jsxs45("div", { className: "footer-bar", chi
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ jsx51(
+          /* @__PURE__ */ jsx61(
             "path",
             {
               strokeLinecap: "round",
@@ -9995,7 +10399,7 @@ var Footer8 = () => /* @__PURE__ */ jsxs45("div", { className: "footer-bar", chi
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx51("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx51(
+    /* @__PURE__ */ jsx61("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx61(
       "svg",
       {
         width: "16",
@@ -10003,7 +10407,7 @@ var Footer8 = () => /* @__PURE__ */ jsxs45("div", { className: "footer-bar", chi
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx51(
+        children: /* @__PURE__ */ jsx61(
           "path",
           {
             strokeLinecap: "round",
@@ -10024,12 +10428,12 @@ var CurrencyFlag = ({
     EUR: "\u{1F1EA}\u{1F1FA}",
     GBP: "\u{1F1EC}\u{1F1E7}"
   };
-  return /* @__PURE__ */ jsxs45("span", { className: "drp-flex drp-items-center drp-gap-1", children: [
-    /* @__PURE__ */ jsx51("span", { style: { fontSize: 14 }, children: flags[currency] }),
-    /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--sm drp-text--muted", children: currency })
+  return /* @__PURE__ */ jsxs52("span", { className: "drp-flex drp-items-center drp-gap-1", children: [
+    /* @__PURE__ */ jsx61("span", { style: { fontSize: 14 }, children: flags[currency] }),
+    /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--sm drp-text--muted", children: currency })
   ] });
 };
-var CategoryCard = ({ icon, title, subtitle }) => /* @__PURE__ */ jsxs45(
+var CategoryCard = ({ icon, title, subtitle }) => /* @__PURE__ */ jsxs52(
   "button",
   {
     className: "drp-card",
@@ -10042,7 +10446,7 @@ var CategoryCard = ({ icon, title, subtitle }) => /* @__PURE__ */ jsxs45(
       cursor: "pointer"
     },
     children: [
-      /* @__PURE__ */ jsx51(
+      /* @__PURE__ */ jsx61(
         "div",
         {
           style: {
@@ -10058,9 +10462,9 @@ var CategoryCard = ({ icon, title, subtitle }) => /* @__PURE__ */ jsxs45(
           children: icon
         }
       ),
-      /* @__PURE__ */ jsxs45("div", { style: { textAlign: "left" }, children: [
-        /* @__PURE__ */ jsx51("div", { className: "drp-text drp-text--bold", children: title }),
-        /* @__PURE__ */ jsx51("div", { className: "drp-caption", children: subtitle })
+      /* @__PURE__ */ jsxs52("div", { style: { textAlign: "left" }, children: [
+        /* @__PURE__ */ jsx61("div", { className: "drp-text drp-text--bold", children: title }),
+        /* @__PURE__ */ jsx61("div", { className: "drp-caption", children: subtitle })
       ] })
     ]
   }
@@ -10130,8 +10534,8 @@ var recentTransfers = [
     initials: "XZ"
   }
 ];
-var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", children: /* @__PURE__ */ jsxs45("div", { className: "drp-flex drp-gap-4", style: { minHeight: 0, flex: 1 }, children: [
-  /* @__PURE__ */ jsxs45(
+var ListContent = () => /* @__PURE__ */ jsx61("div", { className: "content", children: /* @__PURE__ */ jsxs52("div", { className: "drp-flex drp-gap-4", style: { minHeight: 0, flex: 1 }, children: [
+  /* @__PURE__ */ jsxs52(
     "div",
     {
       className: "drp-card",
@@ -10143,7 +10547,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
         flexDirection: "column"
       },
       children: [
-        /* @__PURE__ */ jsxs45(
+        /* @__PURE__ */ jsxs52(
           "div",
           {
             className: "drp-flex drp-items-center drp-justify-between",
@@ -10152,8 +10556,8 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
               borderBottom: "var(--drp-border-thin)"
             },
             children: [
-              /* @__PURE__ */ jsx51("h2", { className: "drp-h5", children: "Make a payment" }),
-              /* @__PURE__ */ jsxs45(
+              /* @__PURE__ */ jsx61("h2", { className: "drp-h5", children: "Make a payment" }),
+              /* @__PURE__ */ jsxs52(
                 "div",
                 {
                   className: "drp-flex drp-items-center drp-gap-2",
@@ -10162,7 +10566,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                     border: "var(--drp-border-thin)"
                   },
                   children: [
-                    /* @__PURE__ */ jsx51(
+                    /* @__PURE__ */ jsx61(
                       "svg",
                       {
                         width: "16",
@@ -10171,7 +10575,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                         fill: "none",
                         viewBox: "0 0 24 24",
                         stroke: "currentColor",
-                        children: /* @__PURE__ */ jsx51(
+                        children: /* @__PURE__ */ jsx61(
                           "path",
                           {
                             strokeLinecap: "round",
@@ -10182,14 +10586,14 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                         )
                       }
                     ),
-                    /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Search" })
+                    /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Search" })
                   ]
                 }
               )
             ]
           }
         ),
-        /* @__PURE__ */ jsxs45(
+        /* @__PURE__ */ jsxs52(
           "div",
           {
             style: {
@@ -10198,8 +10602,8 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
               padding: "var(--drp-space-5) var(--drp-space-6)"
             },
             children: [
-              /* @__PURE__ */ jsxs45("div", { style: { marginBottom: "var(--drp-space-5)" }, children: [
-                /* @__PURE__ */ jsx51(
+              /* @__PURE__ */ jsxs52("div", { style: { marginBottom: "var(--drp-space-5)" }, children: [
+                /* @__PURE__ */ jsx61(
                   "p",
                   {
                     className: "drp-caption",
@@ -10207,7 +10611,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                     children: "Payment categories"
                   }
                 ),
-                /* @__PURE__ */ jsxs45(
+                /* @__PURE__ */ jsxs52(
                   "div",
                   {
                     style: {
@@ -10216,10 +10620,10 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                       gap: "var(--drp-space-3)"
                     },
                     children: [
-                      /* @__PURE__ */ jsx51(
+                      /* @__PURE__ */ jsx61(
                         CategoryCard,
                         {
-                          icon: /* @__PURE__ */ jsx51(
+                          icon: /* @__PURE__ */ jsx61(
                             "svg",
                             {
                               width: "24",
@@ -10227,7 +10631,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                               fill: "none",
                               viewBox: "0 0 24 24",
                               stroke: "currentColor",
-                              children: /* @__PURE__ */ jsx51(
+                              children: /* @__PURE__ */ jsx61(
                                 "path",
                                 {
                                   strokeLinecap: "round",
@@ -10242,10 +10646,10 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                           subtitle: "156 contacts"
                         }
                       ),
-                      /* @__PURE__ */ jsx51(
+                      /* @__PURE__ */ jsx61(
                         CategoryCard,
                         {
-                          icon: /* @__PURE__ */ jsxs45(
+                          icon: /* @__PURE__ */ jsxs52(
                             "svg",
                             {
                               width: "24",
@@ -10254,7 +10658,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                               viewBox: "0 0 24 24",
                               stroke: "currentColor",
                               children: [
-                                /* @__PURE__ */ jsx51(
+                                /* @__PURE__ */ jsx61(
                                   "rect",
                                   {
                                     x: "3",
@@ -10265,7 +10669,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                                     strokeWidth: 2
                                   }
                                 ),
-                                /* @__PURE__ */ jsx51(
+                                /* @__PURE__ */ jsx61(
                                   "rect",
                                   {
                                     x: "14",
@@ -10276,7 +10680,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                                     strokeWidth: 2
                                   }
                                 ),
-                                /* @__PURE__ */ jsx51(
+                                /* @__PURE__ */ jsx61(
                                   "rect",
                                   {
                                     x: "14",
@@ -10287,7 +10691,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                                     strokeWidth: 2
                                   }
                                 ),
-                                /* @__PURE__ */ jsx51(
+                                /* @__PURE__ */ jsx61(
                                   "rect",
                                   {
                                     x: "3",
@@ -10309,8 +10713,8 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs45("div", { style: { marginBottom: "var(--drp-space-5)" }, children: [
-                /* @__PURE__ */ jsx51(
+              /* @__PURE__ */ jsxs52("div", { style: { marginBottom: "var(--drp-space-5)" }, children: [
+                /* @__PURE__ */ jsx61(
                   "p",
                   {
                     className: "drp-caption",
@@ -10318,7 +10722,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                     children: "Service providers"
                   }
                 ),
-                /* @__PURE__ */ jsxs45(
+                /* @__PURE__ */ jsxs52(
                   "div",
                   {
                     style: {
@@ -10327,10 +10731,10 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                       gap: "var(--drp-space-3)"
                     },
                     children: [
-                      /* @__PURE__ */ jsx51(
+                      /* @__PURE__ */ jsx61(
                         CategoryCard,
                         {
-                          icon: /* @__PURE__ */ jsxs45(
+                          icon: /* @__PURE__ */ jsxs52(
                             "svg",
                             {
                               width: "24",
@@ -10339,7 +10743,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                               viewBox: "0 0 24 24",
                               stroke: "currentColor",
                               children: [
-                                /* @__PURE__ */ jsx51(
+                                /* @__PURE__ */ jsx61(
                                   "rect",
                                   {
                                     x: "5",
@@ -10350,7 +10754,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                                     strokeWidth: 2
                                   }
                                 ),
-                                /* @__PURE__ */ jsx51(
+                                /* @__PURE__ */ jsx61(
                                   "path",
                                   {
                                     strokeLinecap: "round",
@@ -10365,10 +10769,10 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                           subtitle: "Top up your balance instantly"
                         }
                       ),
-                      /* @__PURE__ */ jsx51(
+                      /* @__PURE__ */ jsx61(
                         CategoryCard,
                         {
-                          icon: /* @__PURE__ */ jsx51(
+                          icon: /* @__PURE__ */ jsx61(
                             "svg",
                             {
                               width: "24",
@@ -10376,7 +10780,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                               fill: "none",
                               viewBox: "0 0 24 24",
                               stroke: "currentColor",
-                              children: /* @__PURE__ */ jsx51(
+                              children: /* @__PURE__ */ jsx61(
                                 "path",
                                 {
                                   strokeLinecap: "round",
@@ -10391,10 +10795,10 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                           subtitle: "Check your home utility bills"
                         }
                       ),
-                      /* @__PURE__ */ jsx51(
+                      /* @__PURE__ */ jsx61(
                         CategoryCard,
                         {
-                          icon: /* @__PURE__ */ jsx51(
+                          icon: /* @__PURE__ */ jsx61(
                             "svg",
                             {
                               width: "24",
@@ -10402,7 +10806,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                               fill: "none",
                               viewBox: "0 0 24 24",
                               stroke: "currentColor",
-                              children: /* @__PURE__ */ jsx51(
+                              children: /* @__PURE__ */ jsx61(
                                 "path",
                                 {
                                   strokeLinecap: "round",
@@ -10417,10 +10821,10 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                           subtitle: "Pay car fines, taxes, and service"
                         }
                       ),
-                      /* @__PURE__ */ jsx51(
+                      /* @__PURE__ */ jsx61(
                         CategoryCard,
                         {
-                          icon: /* @__PURE__ */ jsx51(
+                          icon: /* @__PURE__ */ jsx61(
                             "svg",
                             {
                               width: "24",
@@ -10428,7 +10832,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                               fill: "none",
                               viewBox: "0 0 24 24",
                               stroke: "currentColor",
-                              children: /* @__PURE__ */ jsx51(
+                              children: /* @__PURE__ */ jsx61(
                                 "path",
                                 {
                                   strokeLinecap: "round",
@@ -10447,8 +10851,8 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs45("div", { children: [
-                /* @__PURE__ */ jsx51(
+              /* @__PURE__ */ jsxs52("div", { children: [
+                /* @__PURE__ */ jsx61(
                   "h3",
                   {
                     className: "drp-h5",
@@ -10484,7 +10888,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                     time: "14 Aug 4:20 AM",
                     positive: false
                   }
-                ].map((tx, i2) => /* @__PURE__ */ jsxs45(
+                ].map((tx, i2) => /* @__PURE__ */ jsxs52(
                   "div",
                   {
                     className: "drp-flex drp-items-center drp-gap-3",
@@ -10493,7 +10897,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                       borderBottom: i2 < 2 ? "var(--drp-border-thin)" : "none"
                     },
                     children: [
-                      /* @__PURE__ */ jsx51(
+                      /* @__PURE__ */ jsx61(
                         "div",
                         {
                           className: "sidebar-avatar",
@@ -10507,12 +10911,12 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                           children: tx.initials
                         }
                       ),
-                      /* @__PURE__ */ jsxs45("div", { style: { flex: 1, minWidth: 0 }, children: [
-                        /* @__PURE__ */ jsx51("div", { className: "drp-text drp-text--bold", children: tx.label }),
-                        /* @__PURE__ */ jsx51("div", { className: "drp-caption", children: tx.sub })
+                      /* @__PURE__ */ jsxs52("div", { style: { flex: 1, minWidth: 0 }, children: [
+                        /* @__PURE__ */ jsx61("div", { className: "drp-text drp-text--bold", children: tx.label }),
+                        /* @__PURE__ */ jsx61("div", { className: "drp-caption", children: tx.sub })
                       ] }),
-                      /* @__PURE__ */ jsxs45("div", { style: { textAlign: "right", flexShrink: 0 }, children: [
-                        /* @__PURE__ */ jsx51(
+                      /* @__PURE__ */ jsxs52("div", { style: { textAlign: "right", flexShrink: 0 }, children: [
+                        /* @__PURE__ */ jsx61(
                           "div",
                           {
                             className: "drp-text drp-text--bold",
@@ -10522,14 +10926,14 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                             children: tx.amount
                           }
                         ),
-                        /* @__PURE__ */ jsx51("div", { className: "drp-caption", children: tx.time })
+                        /* @__PURE__ */ jsx61("div", { className: "drp-caption", children: tx.time })
                       ] }),
-                      /* @__PURE__ */ jsx51("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." })
+                      /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." })
                     ]
                   },
                   i2
                 )),
-                /* @__PURE__ */ jsx51(
+                /* @__PURE__ */ jsx61(
                   "button",
                   {
                     className: "drp-btn drp-btn--outline drp-btn--block drp-btn--sm",
@@ -10544,7 +10948,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
       ]
     }
   ),
-  /* @__PURE__ */ jsxs45(
+  /* @__PURE__ */ jsxs52(
     "div",
     {
       className: "drp-card",
@@ -10557,17 +10961,17 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
         flexDirection: "column"
       },
       children: [
-        /* @__PURE__ */ jsx51(
+        /* @__PURE__ */ jsx61(
           "div",
           {
             style: {
               padding: "var(--drp-space-5)",
               borderBottom: "var(--drp-border-thin)"
             },
-            children: /* @__PURE__ */ jsx51("h2", { className: "drp-h6", children: "Recent transfers" })
+            children: /* @__PURE__ */ jsx61("h2", { className: "drp-h6", children: "Recent transfers" })
           }
         ),
-        /* @__PURE__ */ jsx51("div", { style: { flex: 1, overflow: "auto" }, children: recentTransfers.map((contact, i2) => /* @__PURE__ */ jsxs45(
+        /* @__PURE__ */ jsx61("div", { style: { flex: 1, overflow: "auto" }, children: recentTransfers.map((contact, i2) => /* @__PURE__ */ jsxs52(
           "div",
           {
             className: "drp-flex drp-items-center drp-gap-3",
@@ -10576,7 +10980,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
               borderBottom: i2 < recentTransfers.length - 1 ? "var(--drp-border-thin)" : "none"
             },
             children: [
-              /* @__PURE__ */ jsx51(
+              /* @__PURE__ */ jsx61(
                 "div",
                 {
                   className: "sidebar-avatar",
@@ -10590,8 +10994,8 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                   children: contact.initials
                 }
               ),
-              /* @__PURE__ */ jsxs45("div", { style: { flex: 1, minWidth: 0 }, children: [
-                /* @__PURE__ */ jsx51(
+              /* @__PURE__ */ jsxs52("div", { style: { flex: 1, minWidth: 0 }, children: [
+                /* @__PURE__ */ jsx61(
                   "div",
                   {
                     className: "drp-text drp-text--bold",
@@ -10603,7 +11007,7 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                     children: contact.name
                   }
                 ),
-                /* @__PURE__ */ jsx51(
+                /* @__PURE__ */ jsx61(
                   "div",
                   {
                     className: "drp-caption",
@@ -10616,19 +11020,19 @@ var ListContent = () => /* @__PURE__ */ jsx51("div", { className: "content", chi
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsx51(CurrencyFlag, { currency: contact.currency })
+              /* @__PURE__ */ jsx61(CurrencyFlag, { currency: contact.currency })
             ]
           },
           i2
         )) }),
-        /* @__PURE__ */ jsx51(
+        /* @__PURE__ */ jsx61(
           "div",
           {
             style: {
               padding: "var(--drp-space-4)",
               borderTop: "var(--drp-border-thin)"
             },
-            children: /* @__PURE__ */ jsx51("button", { className: "drp-btn drp-btn--outline drp-btn--block drp-btn--sm", children: "See all contacts" })
+            children: /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--outline drp-btn--block drp-btn--sm", children: "See all contacts" })
           }
         )
       ]
@@ -10644,7 +11048,7 @@ var DetailIcon = ({ icon }) => {
   };
   switch (icon) {
     case "person":
-      return /* @__PURE__ */ jsx51("svg", { style: s2, fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx51(
+      return /* @__PURE__ */ jsx61("svg", { style: s2, fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx61(
         "path",
         {
           strokeLinecap: "round",
@@ -10655,7 +11059,7 @@ var DetailIcon = ({ icon }) => {
       ) });
     case "routing":
     case "type":
-      return /* @__PURE__ */ jsx51("svg", { style: s2, fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx51(
+      return /* @__PURE__ */ jsx61("svg", { style: s2, fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx61(
         "path",
         {
           strokeLinecap: "round",
@@ -10666,7 +11070,7 @@ var DetailIcon = ({ icon }) => {
       ) });
     case "account":
     case "currency":
-      return /* @__PURE__ */ jsx51("svg", { style: s2, fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx51(
+      return /* @__PURE__ */ jsx61("svg", { style: s2, fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx61(
         "path",
         {
           strokeLinecap: "round",
@@ -10676,18 +11080,18 @@ var DetailIcon = ({ icon }) => {
         }
       ) });
     default:
-      return /* @__PURE__ */ jsx51("span", { style: { width: 16, height: 16 }, children: "\u2022" });
+      return /* @__PURE__ */ jsx61("span", { style: { width: 16, height: 16 }, children: "\u2022" });
   }
 };
-var DetailsContent3 = () => /* @__PURE__ */ jsx51(Fragment5, { children: /* @__PURE__ */ jsxs45("div", { style: { flex: 1, position: "relative", overflow: "hidden" }, children: [
-  /* @__PURE__ */ jsx51("div", { style: { opacity: 0.3, pointerEvents: "none" }, children: /* @__PURE__ */ jsx51(ListContent, {}) }),
-  /* @__PURE__ */ jsx51("div", { className: "drp-overlay", style: { position: "absolute" }, children: /* @__PURE__ */ jsxs45(
+var DetailsContent3 = () => /* @__PURE__ */ jsx61(Fragment8, { children: /* @__PURE__ */ jsxs52("div", { style: { flex: 1, position: "relative", overflow: "hidden" }, children: [
+  /* @__PURE__ */ jsx61("div", { style: { opacity: 0.3, pointerEvents: "none" }, children: /* @__PURE__ */ jsx61(ListContent, {}) }),
+  /* @__PURE__ */ jsx61("div", { className: "drp-overlay", style: { position: "absolute" }, children: /* @__PURE__ */ jsxs52(
     "div",
     {
       className: "drp-modal",
       style: { width: 460, overflow: "hidden", padding: 0 },
       children: [
-        /* @__PURE__ */ jsxs45(
+        /* @__PURE__ */ jsxs52(
           "div",
           {
             style: {
@@ -10698,7 +11102,7 @@ var DetailsContent3 = () => /* @__PURE__ */ jsx51(Fragment5, { children: /* @__P
               justifyContent: "space-between"
             },
             children: [
-              /* @__PURE__ */ jsx51(
+              /* @__PURE__ */ jsx61(
                 "h2",
                 {
                   className: "drp-text drp-text--bold",
@@ -10706,12 +11110,12 @@ var DetailsContent3 = () => /* @__PURE__ */ jsx51(Fragment5, { children: /* @__P
                   children: "Recipient details"
                 }
               ),
-              /* @__PURE__ */ jsx51(
+              /* @__PURE__ */ jsx61(
                 "button",
                 {
                   className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
                   style: { color: "var(--drp-white)" },
-                  children: /* @__PURE__ */ jsx51(
+                  children: /* @__PURE__ */ jsx61(
                     "svg",
                     {
                       width: "16",
@@ -10719,7 +11123,7 @@ var DetailsContent3 = () => /* @__PURE__ */ jsx51(Fragment5, { children: /* @__P
                       fill: "none",
                       viewBox: "0 0 24 24",
                       stroke: "currentColor",
-                      children: /* @__PURE__ */ jsx51(
+                      children: /* @__PURE__ */ jsx61(
                         "path",
                         {
                           strokeLinecap: "round",
@@ -10735,7 +11139,7 @@ var DetailsContent3 = () => /* @__PURE__ */ jsx51(Fragment5, { children: /* @__P
             ]
           }
         ),
-        /* @__PURE__ */ jsx51(
+        /* @__PURE__ */ jsx61(
           "div",
           {
             style: {
@@ -10745,7 +11149,7 @@ var DetailsContent3 = () => /* @__PURE__ */ jsx51(Fragment5, { children: /* @__P
               paddingBottom: "var(--drp-space-8)",
               paddingTop: "var(--drp-space-2)"
             },
-            children: /* @__PURE__ */ jsx51(
+            children: /* @__PURE__ */ jsx61(
               "div",
               {
                 className: "sidebar-avatar",
@@ -10760,8 +11164,8 @@ var DetailsContent3 = () => /* @__PURE__ */ jsx51(Fragment5, { children: /* @__P
             )
           }
         ),
-        /* @__PURE__ */ jsxs45("div", { style: { padding: "var(--drp-space-6) var(--drp-space-8)" }, children: [
-          /* @__PURE__ */ jsxs45(
+        /* @__PURE__ */ jsxs52("div", { style: { padding: "var(--drp-space-6) var(--drp-space-8)" }, children: [
+          /* @__PURE__ */ jsxs52(
             "div",
             {
               style: {
@@ -10769,8 +11173,8 @@ var DetailsContent3 = () => /* @__PURE__ */ jsx51(Fragment5, { children: /* @__P
                 marginBottom: "var(--drp-space-6)"
               },
               children: [
-                /* @__PURE__ */ jsx51("h3", { className: "drp-h5", children: "Rustem Tolstobrov" }),
-                /* @__PURE__ */ jsx51("p", { className: "drp-text drp-text--sm drp-text--muted", children: "Account ending in 3456" })
+                /* @__PURE__ */ jsx61("h3", { className: "drp-h5", children: "Rustem Tolstobrov" }),
+                /* @__PURE__ */ jsx61("p", { className: "drp-text drp-text--sm drp-text--muted", children: "Account ending in 3456" })
               ]
             }
           ),
@@ -10788,7 +11192,7 @@ var DetailsContent3 = () => /* @__PURE__ */ jsx51(Fragment5, { children: /* @__P
               value: "\u{1F1FA}\u{1F1F8} USD"
             },
             { icon: "type", label: "Account type", value: "Checking" }
-          ].map((row, i2) => /* @__PURE__ */ jsxs45(
+          ].map((row, i2) => /* @__PURE__ */ jsxs52(
             "div",
             {
               className: "drp-flex drp-items-center drp-justify-between",
@@ -10797,23 +11201,23 @@ var DetailsContent3 = () => /* @__PURE__ */ jsx51(Fragment5, { children: /* @__P
                 borderBottom: "var(--drp-border-dashed)"
               },
               children: [
-                /* @__PURE__ */ jsxs45("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-                  /* @__PURE__ */ jsx51(DetailIcon, { icon: row.icon }),
-                  /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--sm drp-text--muted", children: row.label })
+                /* @__PURE__ */ jsxs52("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+                  /* @__PURE__ */ jsx61(DetailIcon, { icon: row.icon }),
+                  /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--sm drp-text--muted", children: row.label })
                 ] }),
-                /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--bold", children: row.value })
+                /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--bold", children: row.value })
               ]
             },
             i2
           )),
-          /* @__PURE__ */ jsxs45(
+          /* @__PURE__ */ jsxs52(
             "div",
             {
               className: "drp-flex drp-gap-4",
               style: { marginTop: "var(--drp-space-6)" },
               children: [
-                /* @__PURE__ */ jsx51("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Send Funds" }),
-                /* @__PURE__ */ jsx51("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Edit Details" })
+                /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Send Funds" }),
+                /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Edit Details" })
               ]
             }
           )
@@ -10822,12 +11226,12 @@ var DetailsContent3 = () => /* @__PURE__ */ jsx51(Fragment5, { children: /* @__P
     }
   ) })
 ] }) });
-var SendMoneyContent = () => /* @__PURE__ */ jsx51(
+var SendMoneyContent = () => /* @__PURE__ */ jsx61(
   "div",
   {
     className: "content",
     style: { display: "flex", justifyContent: "center" },
-    children: /* @__PURE__ */ jsxs45(
+    children: /* @__PURE__ */ jsxs52(
       "div",
       {
         style: {
@@ -10836,9 +11240,9 @@ var SendMoneyContent = () => /* @__PURE__ */ jsx51(
           padding: "var(--drp-space-10) var(--drp-space-4)"
         },
         children: [
-          /* @__PURE__ */ jsxs45("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ jsx51("label", { className: "drp-label", children: "Select recipient" }),
-            /* @__PURE__ */ jsxs45(
+          /* @__PURE__ */ jsxs52("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ jsx61("label", { className: "drp-label", children: "Select recipient" }),
+            /* @__PURE__ */ jsxs52(
               "div",
               {
                 className: "drp-input",
@@ -10848,8 +11252,8 @@ var SendMoneyContent = () => /* @__PURE__ */ jsx51(
                   justifyContent: "space-between"
                 },
                 children: [
-                  /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--bold", children: "Rustem Tolstobrov" }),
-                  /* @__PURE__ */ jsx51(
+                  /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--bold", children: "Rustem Tolstobrov" }),
+                  /* @__PURE__ */ jsx61(
                     "svg",
                     {
                       width: "16",
@@ -10858,7 +11262,7 @@ var SendMoneyContent = () => /* @__PURE__ */ jsx51(
                       fill: "none",
                       viewBox: "0 0 24 24",
                       stroke: "currentColor",
-                      children: /* @__PURE__ */ jsx51(
+                      children: /* @__PURE__ */ jsx61(
                         "path",
                         {
                           strokeLinecap: "round",
@@ -10873,9 +11277,9 @@ var SendMoneyContent = () => /* @__PURE__ */ jsx51(
               }
             )
           ] }),
-          /* @__PURE__ */ jsxs45("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ jsx51("label", { className: "drp-label", children: "Select payment account" }),
-            /* @__PURE__ */ jsxs45(
+          /* @__PURE__ */ jsxs52("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ jsx61("label", { className: "drp-label", children: "Select payment account" }),
+            /* @__PURE__ */ jsxs52(
               "div",
               {
                 className: "drp-input",
@@ -10885,18 +11289,18 @@ var SendMoneyContent = () => /* @__PURE__ */ jsx51(
                   justifyContent: "space-between"
                 },
                 children: [
-                  /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--bold", children: "Debit Card **** 7890" }),
-                  /* @__PURE__ */ jsxs45("label", { className: "drp-switch", children: [
-                    /* @__PURE__ */ jsx51("input", { type: "checkbox", defaultChecked: true }),
-                    /* @__PURE__ */ jsx51("span", { className: "drp-switch__track" })
+                  /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--bold", children: "Debit Card **** 7890" }),
+                  /* @__PURE__ */ jsxs52("label", { className: "drp-switch", children: [
+                    /* @__PURE__ */ jsx61("input", { type: "checkbox", defaultChecked: true }),
+                    /* @__PURE__ */ jsx61("span", { className: "drp-switch__track" })
                   ] })
                 ]
               }
             )
           ] }),
-          /* @__PURE__ */ jsxs45("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ jsx51("label", { className: "drp-label", children: "You will send" }),
-            /* @__PURE__ */ jsxs45(
+          /* @__PURE__ */ jsxs52("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ jsx61("label", { className: "drp-label", children: "You will send" }),
+            /* @__PURE__ */ jsxs52(
               "div",
               {
                 className: "drp-input",
@@ -10906,13 +11310,13 @@ var SendMoneyContent = () => /* @__PURE__ */ jsx51(
                   justifyContent: "space-between"
                 },
                 children: [
-                  /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--muted", children: "1,290.00" }),
-                  /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--sm drp-text--muted", children: "USD" })
+                  /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--muted", children: "1,290.00" }),
+                  /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--sm drp-text--muted", children: "USD" })
                 ]
               }
             )
           ] }),
-          /* @__PURE__ */ jsxs45(
+          /* @__PURE__ */ jsxs52(
             "div",
             {
               style: {
@@ -10920,43 +11324,43 @@ var SendMoneyContent = () => /* @__PURE__ */ jsx51(
                 paddingLeft: "var(--drp-space-4)"
               },
               children: [
-                /* @__PURE__ */ jsxs45(
+                /* @__PURE__ */ jsxs52(
                   "div",
                   {
                     className: "drp-flex drp-items-center drp-gap-3",
                     style: { marginBottom: "var(--drp-space-2)" },
                     children: [
-                      /* @__PURE__ */ jsx51(
+                      /* @__PURE__ */ jsx61(
                         "span",
                         {
                           className: "drp-tag--dot",
                           style: { background: "var(--drp-black)" }
                         }
                       ),
-                      /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Conversion fee" }),
-                      /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "9.50 USD" })
+                      /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Conversion fee" }),
+                      /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "9.50 USD" })
                     ]
                   }
                 ),
-                /* @__PURE__ */ jsxs45("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-                  /* @__PURE__ */ jsx51(
+                /* @__PURE__ */ jsxs52("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+                  /* @__PURE__ */ jsx61(
                     "span",
                     {
                       className: "drp-tag--dot",
                       style: { background: "var(--drp-black)" }
                     }
                   ),
-                  /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Transfer fee" }),
-                  /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "5.50 USD" })
+                  /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Transfer fee" }),
+                  /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "5.50 USD" })
                 ] })
               ]
             }
           ),
-          /* @__PURE__ */ jsxs45("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ jsx51("label", { className: "drp-label", children: "Delivery time" }),
-            /* @__PURE__ */ jsx51("div", { className: "drp-input", children: /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--muted", children: "Standard Transfer 1-3 days" }) })
+          /* @__PURE__ */ jsxs52("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ jsx61("label", { className: "drp-label", children: "Delivery time" }),
+            /* @__PURE__ */ jsx61("div", { className: "drp-input", children: /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--muted", children: "Standard Transfer 1-3 days" }) })
           ] }),
-          /* @__PURE__ */ jsx51(
+          /* @__PURE__ */ jsx61(
             "p",
             {
               className: "drp-caption",
@@ -10964,21 +11368,21 @@ var SendMoneyContent = () => /* @__PURE__ */ jsx51(
               children: "Transfers made on weekends or holidays take longer. All transfers are subject to review and could be delayed or stopped if we identify an issue."
             }
           ),
-          /* @__PURE__ */ jsxs45("div", { className: "drp-flex drp-gap-4", children: [
-            /* @__PURE__ */ jsx51("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Cancel" }),
-            /* @__PURE__ */ jsx51("button", { className: "drp-btn drp-btn--primary", style: { flex: 1 }, children: "Continue" })
+          /* @__PURE__ */ jsxs52("div", { className: "drp-flex drp-gap-4", children: [
+            /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Cancel" }),
+            /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--primary", style: { flex: 1 }, children: "Continue" })
           ] })
         ]
       }
     )
   }
 );
-var PayUtilitiesContent = () => /* @__PURE__ */ jsx51(
+var PayUtilitiesContent = () => /* @__PURE__ */ jsx61(
   "div",
   {
     className: "content",
     style: { display: "flex", justifyContent: "center" },
-    children: /* @__PURE__ */ jsxs45(
+    children: /* @__PURE__ */ jsxs52(
       "div",
       {
         style: {
@@ -10987,9 +11391,9 @@ var PayUtilitiesContent = () => /* @__PURE__ */ jsx51(
           padding: "var(--drp-space-10) var(--drp-space-4)"
         },
         children: [
-          /* @__PURE__ */ jsxs45("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ jsx51("label", { className: "drp-label", children: "Utilities" }),
-            /* @__PURE__ */ jsxs45(
+          /* @__PURE__ */ jsxs52("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ jsx61("label", { className: "drp-label", children: "Utilities" }),
+            /* @__PURE__ */ jsxs52(
               "div",
               {
                 className: "drp-input",
@@ -10999,8 +11403,8 @@ var PayUtilitiesContent = () => /* @__PURE__ */ jsx51(
                   justifyContent: "space-between"
                 },
                 children: [
-                  /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--bold", children: "Mobile Networks" }),
-                  /* @__PURE__ */ jsx51(
+                  /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--bold", children: "Mobile Networks" }),
+                  /* @__PURE__ */ jsx61(
                     "svg",
                     {
                       width: "16",
@@ -11009,7 +11413,7 @@ var PayUtilitiesContent = () => /* @__PURE__ */ jsx51(
                       fill: "none",
                       viewBox: "0 0 24 24",
                       stroke: "currentColor",
-                      children: /* @__PURE__ */ jsx51(
+                      children: /* @__PURE__ */ jsx61(
                         "path",
                         {
                           strokeLinecap: "round",
@@ -11024,9 +11428,9 @@ var PayUtilitiesContent = () => /* @__PURE__ */ jsx51(
               }
             )
           ] }),
-          /* @__PURE__ */ jsxs45("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ jsx51("label", { className: "drp-label", children: "Service provider" }),
-            /* @__PURE__ */ jsxs45(
+          /* @__PURE__ */ jsxs52("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ jsx61("label", { className: "drp-label", children: "Service provider" }),
+            /* @__PURE__ */ jsxs52(
               "div",
               {
                 className: "drp-input",
@@ -11036,8 +11440,8 @@ var PayUtilitiesContent = () => /* @__PURE__ */ jsx51(
                   justifyContent: "space-between"
                 },
                 children: [
-                  /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--bold", children: "Vodafone" }),
-                  /* @__PURE__ */ jsx51(
+                  /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--bold", children: "Vodafone" }),
+                  /* @__PURE__ */ jsx61(
                     "div",
                     {
                       style: {
@@ -11049,7 +11453,7 @@ var PayUtilitiesContent = () => /* @__PURE__ */ jsx51(
                         justifyContent: "center",
                         border: "2px solid var(--drp-pink)"
                       },
-                      children: /* @__PURE__ */ jsx51(
+                      children: /* @__PURE__ */ jsx61(
                         "div",
                         {
                           style: {
@@ -11066,9 +11470,9 @@ var PayUtilitiesContent = () => /* @__PURE__ */ jsx51(
               }
             )
           ] }),
-          /* @__PURE__ */ jsxs45("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ jsx51("label", { className: "drp-label", children: "You will send" }),
-            /* @__PURE__ */ jsxs45(
+          /* @__PURE__ */ jsxs52("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ jsx61("label", { className: "drp-label", children: "You will send" }),
+            /* @__PURE__ */ jsxs52(
               "div",
               {
                 className: "drp-input",
@@ -11078,13 +11482,13 @@ var PayUtilitiesContent = () => /* @__PURE__ */ jsx51(
                   justifyContent: "space-between"
                 },
                 children: [
-                  /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--muted", children: "15.50" }),
-                  /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--sm drp-text--muted", children: "USD" })
+                  /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--muted", children: "15.50" }),
+                  /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--sm drp-text--muted", children: "USD" })
                 ]
               }
             )
           ] }),
-          /* @__PURE__ */ jsxs45(
+          /* @__PURE__ */ jsxs52(
             "div",
             {
               style: {
@@ -11092,43 +11496,43 @@ var PayUtilitiesContent = () => /* @__PURE__ */ jsx51(
                 paddingLeft: "var(--drp-space-4)"
               },
               children: [
-                /* @__PURE__ */ jsxs45(
+                /* @__PURE__ */ jsxs52(
                   "div",
                   {
                     className: "drp-flex drp-items-center drp-gap-3",
                     style: { marginBottom: "var(--drp-space-2)" },
                     children: [
-                      /* @__PURE__ */ jsx51(
+                      /* @__PURE__ */ jsx61(
                         "span",
                         {
                           className: "drp-tag--dot",
                           style: { background: "var(--drp-black)" }
                         }
                       ),
-                      /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Conversion fee" }),
-                      /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "9.50 USD" })
+                      /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Conversion fee" }),
+                      /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "9.50 USD" })
                     ]
                   }
                 ),
-                /* @__PURE__ */ jsxs45("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-                  /* @__PURE__ */ jsx51(
+                /* @__PURE__ */ jsxs52("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+                  /* @__PURE__ */ jsx61(
                     "span",
                     {
                       className: "drp-tag--dot",
                       style: { background: "var(--drp-black)" }
                     }
                   ),
-                  /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Transfer fee" }),
-                  /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "5.50 USD" })
+                  /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Transfer fee" }),
+                  /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--bold", style: { marginLeft: 4 }, children: "5.50 USD" })
                 ] })
               ]
             }
           ),
-          /* @__PURE__ */ jsxs45("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
-            /* @__PURE__ */ jsx51("label", { className: "drp-label", children: "Delivery time" }),
-            /* @__PURE__ */ jsx51("div", { className: "drp-input", children: /* @__PURE__ */ jsx51("span", { className: "drp-text drp-text--muted", children: "Instant" }) })
+          /* @__PURE__ */ jsxs52("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
+            /* @__PURE__ */ jsx61("label", { className: "drp-label", children: "Delivery time" }),
+            /* @__PURE__ */ jsx61("div", { className: "drp-input", children: /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--muted", children: "Instant" }) })
           ] }),
-          /* @__PURE__ */ jsx51(
+          /* @__PURE__ */ jsx61(
             "p",
             {
               className: "drp-caption",
@@ -11136,9 +11540,9 @@ var PayUtilitiesContent = () => /* @__PURE__ */ jsx51(
               children: "Transfers made on weekends or holidays take longer. All transfers are subject to review and could be delayed or stopped if we identify an issue."
             }
           ),
-          /* @__PURE__ */ jsxs45("div", { className: "drp-flex drp-gap-4", children: [
-            /* @__PURE__ */ jsx51("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Cancel" }),
-            /* @__PURE__ */ jsx51("button", { className: "drp-btn drp-btn--primary", style: { flex: 1 }, children: "Continue" })
+          /* @__PURE__ */ jsxs52("div", { className: "drp-flex drp-gap-4", children: [
+            /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--outline", style: { flex: 1 }, children: "Cancel" }),
+            /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--primary", style: { flex: 1 }, children: "Continue" })
           ] })
         ]
       }
@@ -11156,29 +11560,29 @@ var PaymentsList = ({
     "pay-utilities": "Pay for utilities"
   };
   const showBack = variant === "send-money" || variant === "pay-utilities";
-  return /* @__PURE__ */ jsxs45("div", { className: "app-layout", children: [
-    /* @__PURE__ */ jsx51(DoctorProjectSidebar6, { variant }),
-    /* @__PURE__ */ jsxs45("div", { className: "main-content", style: { marginLeft: 280 }, children: [
-      /* @__PURE__ */ jsx51(TopBar8, { title: titleMap[variant], showBack }),
-      variant === "list" && /* @__PURE__ */ jsx51(ListContent, {}),
-      variant === "details" && /* @__PURE__ */ jsx51(DetailsContent3, {}),
-      variant === "send-money" && /* @__PURE__ */ jsx51(SendMoneyContent, {}),
-      variant === "pay-utilities" && /* @__PURE__ */ jsx51(PayUtilitiesContent, {}),
-      /* @__PURE__ */ jsx51(Footer8, {})
+  return /* @__PURE__ */ jsxs52("div", { className: "app-layout", children: [
+    /* @__PURE__ */ jsx61(DoctorProjectSidebar6, { variant }),
+    /* @__PURE__ */ jsxs52("div", { className: "main-content", style: { marginLeft: 280 }, children: [
+      /* @__PURE__ */ jsx61(TopBar8, { title: titleMap[variant], showBack }),
+      variant === "list" && /* @__PURE__ */ jsx61(ListContent, {}),
+      variant === "details" && /* @__PURE__ */ jsx61(DetailsContent3, {}),
+      variant === "send-money" && /* @__PURE__ */ jsx61(SendMoneyContent, {}),
+      variant === "pay-utilities" && /* @__PURE__ */ jsx61(PayUtilitiesContent, {}),
+      /* @__PURE__ */ jsx61(Footer8, {})
     ] })
   ] });
 };
 
 // src/screens/Education/EducationCourses.tsx
-import { Fragment as Fragment6, jsx as jsx52, jsxs as jsxs46 } from "react/jsx-runtime";
-var EducationSidebar = () => /* @__PURE__ */ jsxs46("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ jsxs46("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ jsx52("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ jsx52("span", { className: "sidebar-brand-dot" })
+import { Fragment as Fragment9, jsx as jsx62, jsxs as jsxs53 } from "react/jsx-runtime";
+var EducationSidebar = () => /* @__PURE__ */ jsxs53("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ jsxs53("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ jsx62("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ jsx62("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ jsxs46("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ jsxs46("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ jsx52("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ jsxs53("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ jsxs53("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ jsx62("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Explore Courses", active: true },
         { label: "Degrees" },
@@ -11186,13 +11590,13 @@ var EducationSidebar = () => /* @__PURE__ */ jsxs46("aside", { className: "sideb
         { label: "Universities" },
         { label: "Schedule", badge: "PR", badgeType: "purple" },
         { label: "Knowledge Base" }
-      ].map((item) => /* @__PURE__ */ jsxs46(
+      ].map((item) => /* @__PURE__ */ jsxs53(
         "a",
         {
           className: `sidebar-nav-item${item.active ? " active" : ""}`,
           children: [
-            /* @__PURE__ */ jsx52("span", { className: "sidebar-nav-text", children: item.label }),
-            item.badge && /* @__PURE__ */ jsx52(
+            /* @__PURE__ */ jsx62("span", { className: "sidebar-nav-text", children: item.label }),
+            item.badge && /* @__PURE__ */ jsx62(
               "span",
               {
                 className: `sidebar-badge sidebar-badge--${item.badgeType}`,
@@ -11204,21 +11608,21 @@ var EducationSidebar = () => /* @__PURE__ */ jsxs46("aside", { className: "sideb
         item.label
       ))
     ] }),
-    /* @__PURE__ */ jsxs46("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ jsx52("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ jsxs53("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ jsx62("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-orange)" },
         { name: "Thanawan Chadee", bg: "var(--drp-purple)" },
         { name: "Justine Robinson", bg: "var(--drp-info)" }
-      ].map((member) => /* @__PURE__ */ jsxs46("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ jsx52("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
-        /* @__PURE__ */ jsx52("span", { className: "sidebar-team-name", children: member.name })
+      ].map((member) => /* @__PURE__ */ jsxs53("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ jsx62("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
+        /* @__PURE__ */ jsx62("span", { className: "sidebar-team-name", children: member.name })
       ] }, member.name)),
-      /* @__PURE__ */ jsx52("div", { className: "sidebar-see-more", children: "See More" })
+      /* @__PURE__ */ jsx62("div", { className: "sidebar-see-more", children: "See More" })
     ] })
   ] }),
-  /* @__PURE__ */ jsxs46("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ jsx52(
+  /* @__PURE__ */ jsxs53("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ jsx62(
       "div",
       {
         className: "sidebar-avatar",
@@ -11226,14 +11630,14 @@ var EducationSidebar = () => /* @__PURE__ */ jsxs46("aside", { className: "sideb
         children: "H"
       }
     ),
-    /* @__PURE__ */ jsx52("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx52("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ jsx52("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ jsx62("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx62("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ jsx62("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var EducationTopBar = () => /* @__PURE__ */ jsxs46("header", { className: "topbar", children: [
-  /* @__PURE__ */ jsx52("div", { className: "topbar-left", children: /* @__PURE__ */ jsx52("h1", { className: "topbar-title", children: "Courses" }) }),
-  /* @__PURE__ */ jsxs46("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx52("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsxs46(
+var EducationTopBar = () => /* @__PURE__ */ jsxs53("header", { className: "topbar", children: [
+  /* @__PURE__ */ jsx62("div", { className: "topbar-left", children: /* @__PURE__ */ jsx62("h1", { className: "topbar-title", children: "Courses" }) }),
+  /* @__PURE__ */ jsxs53("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx62("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsxs53(
       "svg",
       {
         width: "18",
@@ -11243,12 +11647,12 @@ var EducationTopBar = () => /* @__PURE__ */ jsxs46("header", { className: "topba
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ jsx52("circle", { cx: "11", cy: "11", r: "8" }),
-          /* @__PURE__ */ jsx52("path", { d: "m21 21-4.35-4.35" })
+          /* @__PURE__ */ jsx62("circle", { cx: "11", cy: "11", r: "8" }),
+          /* @__PURE__ */ jsx62("path", { d: "m21 21-4.35-4.35" })
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx52("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsxs46(
+    /* @__PURE__ */ jsx62("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsxs53(
       "svg",
       {
         width: "18",
@@ -11258,22 +11662,22 @@ var EducationTopBar = () => /* @__PURE__ */ jsxs46("header", { className: "topba
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ jsx52("path", { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" }),
-          /* @__PURE__ */ jsx52("path", { d: "M13.73 21a2 2 0 0 1-3.46 0" })
+          /* @__PURE__ */ jsx62("path", { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" }),
+          /* @__PURE__ */ jsx62("path", { d: "M13.73 21a2 2 0 0 1-3.46 0" })
         ]
       }
     ) }),
-    /* @__PURE__ */ jsxs46("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ jsxs46("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "currentColor", children: [
-        /* @__PURE__ */ jsx52("rect", { x: "2", y: "2", width: "9", height: "9" }),
-        /* @__PURE__ */ jsx52("rect", { x: "13", y: "2", width: "9", height: "9" }),
-        /* @__PURE__ */ jsx52("rect", { x: "2", y: "13", width: "9", height: "9" }),
-        /* @__PURE__ */ jsx52("rect", { x: "13", y: "13", width: "9", height: "9" })
+    /* @__PURE__ */ jsxs53("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ jsxs53("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "currentColor", children: [
+        /* @__PURE__ */ jsx62("rect", { x: "2", y: "2", width: "9", height: "9" }),
+        /* @__PURE__ */ jsx62("rect", { x: "13", y: "2", width: "9", height: "9" }),
+        /* @__PURE__ */ jsx62("rect", { x: "2", y: "13", width: "9", height: "9" }),
+        /* @__PURE__ */ jsx62("rect", { x: "13", y: "13", width: "9", height: "9" })
       ] }),
-      /* @__PURE__ */ jsx52("span", { children: "Apps" })
+      /* @__PURE__ */ jsx62("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ jsxs46("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsxs46(
+    /* @__PURE__ */ jsxs53("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsxs53(
         "svg",
         {
           width: "14",
@@ -11283,25 +11687,25 @@ var EducationTopBar = () => /* @__PURE__ */ jsxs46("header", { className: "topba
           stroke: "currentColor",
           strokeWidth: "2.5",
           children: [
-            /* @__PURE__ */ jsx52("circle", { cx: "12", cy: "12", r: "10" }),
-            /* @__PURE__ */ jsx52("path", { d: "M12 8v8M8 12h8" })
+            /* @__PURE__ */ jsx62("circle", { cx: "12", cy: "12", r: "10" }),
+            /* @__PURE__ */ jsx62("path", { d: "M12 8v8M8 12h8" })
           ]
         }
       ),
-      /* @__PURE__ */ jsx52("span", { children: "Create new" })
+      /* @__PURE__ */ jsx62("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var EducationFooter = () => /* @__PURE__ */ jsxs46("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs46("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsx52("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ jsx52("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx52("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx52("span", { className: "footer-link", children: "API" })
+var EducationFooter = () => /* @__PURE__ */ jsxs53("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs53("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsx62("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ jsx62("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx62("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx62("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs46("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx52("button", { className: "footer-icon-btn footer-icon-btn--accent", children: /* @__PURE__ */ jsx52("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx52("path", { d: "M12 3a9 9 0 1 0 9 9H12z" }) }) }),
-    /* @__PURE__ */ jsx52("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs46(
+  /* @__PURE__ */ jsxs53("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx62("button", { className: "footer-icon-btn footer-icon-btn--accent", children: /* @__PURE__ */ jsx62("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx62("path", { d: "M12 3a9 9 0 1 0 9 9H12z" }) }) }),
+    /* @__PURE__ */ jsx62("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs53(
       "svg",
       {
         width: "13",
@@ -11311,8 +11715,8 @@ var EducationFooter = () => /* @__PURE__ */ jsxs46("footer", { className: "foote
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ jsx52("circle", { cx: "12", cy: "12", r: "4" }),
-          /* @__PURE__ */ jsx52("path", { d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" })
+          /* @__PURE__ */ jsx62("circle", { cx: "12", cy: "12", r: "4" }),
+          /* @__PURE__ */ jsx62("path", { d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" })
         ]
       }
     ) })
@@ -11334,7 +11738,7 @@ var TrendingCard = ({
   courseCount,
   imageKey,
   large
-}) => /* @__PURE__ */ jsxs46(
+}) => /* @__PURE__ */ jsxs53(
   "div",
   {
     className: "drp-card--interactive",
@@ -11347,7 +11751,7 @@ var TrendingCard = ({
       border: "var(--drp-border)"
     },
     children: [
-      /* @__PURE__ */ jsx52(
+      /* @__PURE__ */ jsx62(
         "img",
         {
           src: courseImages[imageKey],
@@ -11361,7 +11765,7 @@ var TrendingCard = ({
           }
         }
       ),
-      /* @__PURE__ */ jsx52(
+      /* @__PURE__ */ jsx62(
         "div",
         {
           style: {
@@ -11371,7 +11775,7 @@ var TrendingCard = ({
           }
         }
       ),
-      /* @__PURE__ */ jsx52(
+      /* @__PURE__ */ jsx62(
         "div",
         {
           style: {
@@ -11379,7 +11783,7 @@ var TrendingCard = ({
             top: "var(--drp-space-2)",
             right: "var(--drp-space-2)"
           },
-          children: /* @__PURE__ */ jsxs46(
+          children: /* @__PURE__ */ jsxs53(
             "span",
             {
               className: "drp-tag drp-tag--filled",
@@ -11392,7 +11796,7 @@ var TrendingCard = ({
           )
         }
       ),
-      /* @__PURE__ */ jsxs46(
+      /* @__PURE__ */ jsxs53(
         "div",
         {
           style: {
@@ -11403,7 +11807,7 @@ var TrendingCard = ({
             padding: "var(--drp-space-3)"
           },
           children: [
-            /* @__PURE__ */ jsx52(
+            /* @__PURE__ */ jsx62(
               "p",
               {
                 className: "drp-text drp-text--bold",
@@ -11411,7 +11815,7 @@ var TrendingCard = ({
                 children: title
               }
             ),
-            /* @__PURE__ */ jsx52(
+            /* @__PURE__ */ jsx62(
               "p",
               {
                 className: "drp-text drp-text--sm",
@@ -11431,13 +11835,13 @@ var DegreeCard = ({
   mode,
   icon,
   imageKey
-}) => /* @__PURE__ */ jsxs46(
+}) => /* @__PURE__ */ jsxs53(
   "div",
   {
     className: "drp-card drp-card--interactive",
     style: { padding: 0, overflow: "hidden" },
     children: [
-      /* @__PURE__ */ jsx52("div", { style: { height: 144, overflow: "hidden" }, children: /* @__PURE__ */ jsx52(
+      /* @__PURE__ */ jsx62("div", { style: { height: 144, overflow: "hidden" }, children: /* @__PURE__ */ jsx62(
         "img",
         {
           src: courseImages[imageKey],
@@ -11445,8 +11849,8 @@ var DegreeCard = ({
           style: { width: "100%", height: "100%", objectFit: "cover" }
         }
       ) }),
-      /* @__PURE__ */ jsxs46("div", { style: { padding: "var(--drp-space-3)" }, children: [
-        /* @__PURE__ */ jsx52(
+      /* @__PURE__ */ jsxs53("div", { style: { padding: "var(--drp-space-3)" }, children: [
+        /* @__PURE__ */ jsx62(
           "p",
           {
             className: "drp-text drp-text--bold drp-text--sm",
@@ -11454,7 +11858,7 @@ var DegreeCard = ({
             children: title
           }
         ),
-        /* @__PURE__ */ jsx52(
+        /* @__PURE__ */ jsx62(
           "p",
           {
             className: "drp-text drp-text--sm drp-text--muted",
@@ -11462,22 +11866,22 @@ var DegreeCard = ({
             children: university
           }
         ),
-        /* @__PURE__ */ jsxs46("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
-          /* @__PURE__ */ jsx52("span", { className: "drp-tag", style: { fontSize: "var(--drp-text-xs)" }, children: mode }),
-          icon && /* @__PURE__ */ jsx52("span", { className: "drp-text drp-text--muted", children: icon })
+        /* @__PURE__ */ jsxs53("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
+          /* @__PURE__ */ jsx62("span", { className: "drp-tag", style: { fontSize: "var(--drp-text-xs)" }, children: mode }),
+          icon && /* @__PURE__ */ jsx62("span", { className: "drp-text drp-text--muted", children: icon })
         ] })
       ] })
     ]
   }
 );
-var CoursePagination = () => /* @__PURE__ */ jsxs46(
+var CoursePagination = () => /* @__PURE__ */ jsxs53(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
     style: { padding: "var(--drp-space-4) 0" },
     children: [
-      /* @__PURE__ */ jsxs46("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
-        /* @__PURE__ */ jsx52(
+      /* @__PURE__ */ jsxs53("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
+        /* @__PURE__ */ jsx62(
           "svg",
           {
             width: "14",
@@ -11486,15 +11890,15 @@ var CoursePagination = () => /* @__PURE__ */ jsxs46(
             fill: "none",
             stroke: "currentColor",
             strokeWidth: "2",
-            children: /* @__PURE__ */ jsx52("path", { d: "M15 18l-6-6 6-6" })
+            children: /* @__PURE__ */ jsx62("path", { d: "M15 18l-6-6 6-6" })
           }
         ),
         "Prev"
       ] }),
-      /* @__PURE__ */ jsx52("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
-      /* @__PURE__ */ jsxs46("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
+      /* @__PURE__ */ jsx62("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
+      /* @__PURE__ */ jsxs53("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
         "Next",
-        /* @__PURE__ */ jsx52(
+        /* @__PURE__ */ jsx62(
           "svg",
           {
             width: "14",
@@ -11503,7 +11907,7 @@ var CoursePagination = () => /* @__PURE__ */ jsxs46(
             fill: "none",
             stroke: "currentColor",
             strokeWidth: "2",
-            children: /* @__PURE__ */ jsx52("path", { d: "M9 18l6-6-6-6" })
+            children: /* @__PURE__ */ jsx62("path", { d: "M9 18l6-6-6-6" })
           }
         )
       ] })
@@ -11513,7 +11917,7 @@ var CoursePagination = () => /* @__PURE__ */ jsxs46(
 var CoursesHero = ({
   title = "Explore Topics and Skills",
   placeholder = "What do you want to learn?"
-}) => /* @__PURE__ */ jsxs46(
+}) => /* @__PURE__ */ jsxs53(
   "div",
   {
     style: {
@@ -11524,7 +11928,7 @@ var CoursesHero = ({
       position: "relative"
     },
     children: [
-      /* @__PURE__ */ jsx52(
+      /* @__PURE__ */ jsx62(
         "h2",
         {
           className: "drp-h2 drp-text-center",
@@ -11532,7 +11936,7 @@ var CoursesHero = ({
           children: title
         }
       ),
-      /* @__PURE__ */ jsxs46(
+      /* @__PURE__ */ jsxs53(
         "div",
         {
           style: {
@@ -11542,7 +11946,7 @@ var CoursesHero = ({
             marginBottom: "var(--drp-space-3)"
           },
           children: [
-            /* @__PURE__ */ jsx52(
+            /* @__PURE__ */ jsx62(
               "input",
               {
                 className: "drp-input",
@@ -11551,7 +11955,7 @@ var CoursesHero = ({
                 readOnly: true
               }
             ),
-            /* @__PURE__ */ jsx52(
+            /* @__PURE__ */ jsx62(
               "button",
               {
                 className: "drp-btn drp-btn--primary drp-btn--icon drp-btn--sm",
@@ -11561,7 +11965,7 @@ var CoursesHero = ({
                   top: "50%",
                   transform: "translateY(-50%)"
                 },
-                children: /* @__PURE__ */ jsxs46(
+                children: /* @__PURE__ */ jsxs53(
                   "svg",
                   {
                     width: "13",
@@ -11571,8 +11975,8 @@ var CoursesHero = ({
                     stroke: "white",
                     strokeWidth: "2.5",
                     children: [
-                      /* @__PURE__ */ jsx52("circle", { cx: "11", cy: "11", r: "8" }),
-                      /* @__PURE__ */ jsx52("path", { d: "m21 21-4.35-4.35" })
+                      /* @__PURE__ */ jsx62("circle", { cx: "11", cy: "11", r: "8" }),
+                      /* @__PURE__ */ jsx62("path", { d: "m21 21-4.35-4.35" })
                     ]
                   }
                 )
@@ -11581,7 +11985,7 @@ var CoursesHero = ({
           ]
         }
       ),
-      /* @__PURE__ */ jsx52("p", { className: "drp-text drp-text--sm drp-text--muted drp-text-center", children: "For example: UI and UX development" })
+      /* @__PURE__ */ jsx62("p", { className: "drp-text drp-text--sm drp-text--muted drp-text-center", children: "For example: UI and UX development" })
     ]
   }
 );
@@ -11591,13 +11995,13 @@ var CourseCategoryCard = ({
   duration,
   type,
   imageKey
-}) => /* @__PURE__ */ jsxs46(
+}) => /* @__PURE__ */ jsxs53(
   "div",
   {
     className: "drp-card drp-card--interactive",
     style: { padding: 0, overflow: "hidden" },
     children: [
-      /* @__PURE__ */ jsx52("div", { style: { height: 144, overflow: "hidden" }, children: /* @__PURE__ */ jsx52(
+      /* @__PURE__ */ jsx62("div", { style: { height: 144, overflow: "hidden" }, children: /* @__PURE__ */ jsx62(
         "img",
         {
           src: courseImages[imageKey],
@@ -11605,8 +12009,8 @@ var CourseCategoryCard = ({
           style: { width: "100%", height: "100%", objectFit: "cover" }
         }
       ) }),
-      /* @__PURE__ */ jsxs46("div", { style: { padding: "var(--drp-space-3)" }, children: [
-        /* @__PURE__ */ jsx52(
+      /* @__PURE__ */ jsxs53("div", { style: { padding: "var(--drp-space-3)" }, children: [
+        /* @__PURE__ */ jsx62(
           "p",
           {
             className: "drp-text drp-text--bold drp-text--sm",
@@ -11614,7 +12018,7 @@ var CourseCategoryCard = ({
             children: title
           }
         ),
-        /* @__PURE__ */ jsx52(
+        /* @__PURE__ */ jsx62(
           "p",
           {
             className: "drp-text drp-text--sm drp-text--muted",
@@ -11622,9 +12026,9 @@ var CourseCategoryCard = ({
             children: university
           }
         ),
-        /* @__PURE__ */ jsxs46("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-          /* @__PURE__ */ jsx52("span", { className: "drp-tag", style: { fontSize: "var(--drp-text-xs)" }, children: type }),
-          /* @__PURE__ */ jsx52("span", { className: "drp-text drp-text--sm drp-text--muted", children: duration })
+        /* @__PURE__ */ jsxs53("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+          /* @__PURE__ */ jsx62("span", { className: "drp-tag", style: { fontSize: "var(--drp-text-xs)" }, children: type }),
+          /* @__PURE__ */ jsx62("span", { className: "drp-text drp-text--sm drp-text--muted", children: duration })
         ] })
       ] })
     ]
@@ -11685,8 +12089,8 @@ var SuggestedSearches = () => {
     { label: "Developer", active: false },
     { label: "Managing director", active: false }
   ];
-  return /* @__PURE__ */ jsxs46("div", { style: { marginBottom: "var(--drp-space-5)" }, children: [
-    /* @__PURE__ */ jsx52(
+  return /* @__PURE__ */ jsxs53("div", { style: { marginBottom: "var(--drp-space-5)" }, children: [
+    /* @__PURE__ */ jsx62(
       "p",
       {
         className: "drp-text drp-text--sm drp-text--muted",
@@ -11694,7 +12098,7 @@ var SuggestedSearches = () => {
         children: "Suggested course searches"
       }
     ),
-    /* @__PURE__ */ jsx52("div", { className: "drp-flex drp-flex-wrap drp-gap-2", children: searches.map((s2) => /* @__PURE__ */ jsx52(
+    /* @__PURE__ */ jsx62("div", { className: "drp-flex drp-flex-wrap drp-gap-2", children: searches.map((s2) => /* @__PURE__ */ jsx62(
       "button",
       {
         className: `drp-tag${s2.active ? " drp-tag--filled drp-tag--purple" : ""}`,
@@ -11763,19 +12167,19 @@ var EducationCourses = ({
       imageKey: "global-public-health"
     }
   ];
-  return /* @__PURE__ */ jsxs46("div", { className: "app-layout", children: [
-    /* @__PURE__ */ jsx52(EducationSidebar, {}),
-    /* @__PURE__ */ jsxs46("div", { className: "main-content", children: [
-      /* @__PURE__ */ jsx52(EducationTopBar, {}),
-      /* @__PURE__ */ jsx52("div", { style: { flex: 1, overflow: "auto" }, children: view === "courses" ? /* @__PURE__ */ jsxs46(Fragment6, { children: [
-        /* @__PURE__ */ jsx52(CoursesHero, {}),
-        /* @__PURE__ */ jsxs46(
+  return /* @__PURE__ */ jsxs53("div", { className: "app-layout", children: [
+    /* @__PURE__ */ jsx62(EducationSidebar, {}),
+    /* @__PURE__ */ jsxs53("div", { className: "main-content", children: [
+      /* @__PURE__ */ jsx62(EducationTopBar, {}),
+      /* @__PURE__ */ jsx62("div", { style: { flex: 1, overflow: "auto" }, children: view === "courses" ? /* @__PURE__ */ jsxs53(Fragment9, { children: [
+        /* @__PURE__ */ jsx62(CoursesHero, {}),
+        /* @__PURE__ */ jsxs53(
           "div",
           {
             style: { padding: "0 var(--drp-space-6) var(--drp-space-2)" },
             children: [
-              /* @__PURE__ */ jsxs46("div", { style: { marginBottom: "var(--drp-space-6)" }, children: [
-                /* @__PURE__ */ jsx52(
+              /* @__PURE__ */ jsxs53("div", { style: { marginBottom: "var(--drp-space-6)" }, children: [
+                /* @__PURE__ */ jsx62(
                   "h3",
                   {
                     className: "drp-h6",
@@ -11783,7 +12187,7 @@ var EducationCourses = ({
                     children: "Trending today"
                   }
                 ),
-                /* @__PURE__ */ jsxs46(
+                /* @__PURE__ */ jsxs53(
                   "div",
                   {
                     style: {
@@ -11793,17 +12197,17 @@ var EducationCourses = ({
                       gap: "var(--drp-space-3)"
                     },
                     children: [
-                      /* @__PURE__ */ jsx52("div", { style: { gridRow: "1 / 3" }, children: /* @__PURE__ */ jsx52(TrendingCard, { ...trendingCards[0], large: true }) }),
-                      /* @__PURE__ */ jsx52(TrendingCard, { ...trendingCards[1] }),
-                      /* @__PURE__ */ jsx52(TrendingCard, { ...trendingCards[2] }),
-                      /* @__PURE__ */ jsx52(TrendingCard, { ...trendingCards[3] }),
-                      /* @__PURE__ */ jsx52(TrendingCard, { ...trendingCards[4] })
+                      /* @__PURE__ */ jsx62("div", { style: { gridRow: "1 / 3" }, children: /* @__PURE__ */ jsx62(TrendingCard, { ...trendingCards[0], large: true }) }),
+                      /* @__PURE__ */ jsx62(TrendingCard, { ...trendingCards[1] }),
+                      /* @__PURE__ */ jsx62(TrendingCard, { ...trendingCards[2] }),
+                      /* @__PURE__ */ jsx62(TrendingCard, { ...trendingCards[3] }),
+                      /* @__PURE__ */ jsx62(TrendingCard, { ...trendingCards[4] })
                     ]
                   }
                 )
               ] }),
-              /* @__PURE__ */ jsxs46("div", { style: { marginBottom: "var(--drp-space-4)" }, children: [
-                /* @__PURE__ */ jsx52(
+              /* @__PURE__ */ jsxs53("div", { style: { marginBottom: "var(--drp-space-4)" }, children: [
+                /* @__PURE__ */ jsx62(
                   "h3",
                   {
                     className: "drp-h6",
@@ -11811,28 +12215,28 @@ var EducationCourses = ({
                     children: "Earn Your Degree"
                   }
                 ),
-                /* @__PURE__ */ jsx52("div", { className: "drp-grid-3", children: degreeCards.map((card) => /* @__PURE__ */ jsx52(DegreeCard, { ...card }, card.title)) })
+                /* @__PURE__ */ jsx62("div", { className: "drp-grid-3", children: degreeCards.map((card) => /* @__PURE__ */ jsx62(DegreeCard, { ...card }, card.title)) })
               ] }),
-              /* @__PURE__ */ jsx52(CoursePagination, {})
+              /* @__PURE__ */ jsx62(CoursePagination, {})
             ]
           }
         )
-      ] }) : /* @__PURE__ */ jsxs46(Fragment6, { children: [
-        /* @__PURE__ */ jsx52(
+      ] }) : /* @__PURE__ */ jsxs53(Fragment9, { children: [
+        /* @__PURE__ */ jsx62(
           CoursesHero,
           {
             title: "Software Development",
             placeholder: "Mobile and Web Design"
           }
         ),
-        /* @__PURE__ */ jsxs46(
+        /* @__PURE__ */ jsxs53(
           "div",
           {
             style: { padding: "0 var(--drp-space-6) var(--drp-space-2)" },
             children: [
-              /* @__PURE__ */ jsx52(SuggestedSearches, {}),
-              /* @__PURE__ */ jsxs46("div", { style: { marginBottom: "var(--drp-space-3)" }, children: [
-                /* @__PURE__ */ jsx52(
+              /* @__PURE__ */ jsx62(SuggestedSearches, {}),
+              /* @__PURE__ */ jsxs53("div", { style: { marginBottom: "var(--drp-space-3)" }, children: [
+                /* @__PURE__ */ jsx62(
                   "h3",
                   {
                     className: "drp-h6",
@@ -11840,29 +12244,29 @@ var EducationCourses = ({
                     children: "Earn Your Degree"
                   }
                 ),
-                /* @__PURE__ */ jsx52("div", { className: "drp-grid-3", children: categorySpecializations.map((card) => /* @__PURE__ */ jsx52(CourseCategoryCard, { ...card }, card.title)) })
+                /* @__PURE__ */ jsx62("div", { className: "drp-grid-3", children: categorySpecializations.map((card) => /* @__PURE__ */ jsx62(CourseCategoryCard, { ...card }, card.title)) })
               ] }),
-              /* @__PURE__ */ jsx52(CoursePagination, {})
+              /* @__PURE__ */ jsx62(CoursePagination, {})
             ]
           }
         )
       ] }) }),
-      /* @__PURE__ */ jsx52(EducationFooter, {})
+      /* @__PURE__ */ jsx62(EducationFooter, {})
     ] })
   ] });
 };
 
 // src/screens/Calendar/CalendarEvent.tsx
-import { useState as useState9 } from "react";
-import { Fragment as Fragment7, jsx as jsx53, jsxs as jsxs47 } from "react/jsx-runtime";
-var CalendarSidebar = () => /* @__PURE__ */ jsxs47("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ jsxs47("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ jsx53("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ jsx53("span", { className: "sidebar-brand-dot" })
+import { useState as useState11 } from "react";
+import { Fragment as Fragment10, jsx as jsx63, jsxs as jsxs54 } from "react/jsx-runtime";
+var CalendarSidebar = () => /* @__PURE__ */ jsxs54("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ jsxs54("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ jsx63("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ jsx63("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ jsxs47("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ jsxs47("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ jsx53("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ jsxs54("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ jsxs54("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ jsx63("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard", badge: 15, badgeType: "purple" },
         { label: "Projects" },
@@ -11871,13 +12275,13 @@ var CalendarSidebar = () => /* @__PURE__ */ jsxs47("aside", { className: "sideba
         { label: "File Manager", badge: 14, badgeType: "green" },
         { label: "Calendar", active: true },
         { label: "Inbox" }
-      ].map((item) => /* @__PURE__ */ jsxs47(
+      ].map((item) => /* @__PURE__ */ jsxs54(
         "a",
         {
           className: `sidebar-nav-item${item.active ? " active" : ""}`,
           children: [
-            /* @__PURE__ */ jsx53("span", { className: "sidebar-nav-text", children: item.label }),
-            item.badge && /* @__PURE__ */ jsx53(
+            /* @__PURE__ */ jsx63("span", { className: "sidebar-nav-text", children: item.label }),
+            item.badge && /* @__PURE__ */ jsx63(
               "span",
               {
                 className: `sidebar-badge sidebar-badge--${item.badgeType}`,
@@ -11889,21 +12293,21 @@ var CalendarSidebar = () => /* @__PURE__ */ jsxs47("aside", { className: "sideba
         item.label
       ))
     ] }),
-    /* @__PURE__ */ jsxs47("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ jsx53("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ jsxs54("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ jsx63("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-orange)" },
         { name: "Thanawan Chadee", bg: "var(--drp-purple)" },
         { name: "Justine Robinson", bg: "var(--drp-info)" }
-      ].map((member) => /* @__PURE__ */ jsxs47("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ jsx53("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
-        /* @__PURE__ */ jsx53("span", { className: "sidebar-team-name", children: member.name })
+      ].map((member) => /* @__PURE__ */ jsxs54("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ jsx63("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
+        /* @__PURE__ */ jsx63("span", { className: "sidebar-team-name", children: member.name })
       ] }, member.name)),
-      /* @__PURE__ */ jsx53("div", { className: "sidebar-see-more", children: "See More" })
+      /* @__PURE__ */ jsx63("div", { className: "sidebar-see-more", children: "See More" })
     ] })
   ] }),
-  /* @__PURE__ */ jsxs47("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ jsx53(
+  /* @__PURE__ */ jsxs54("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ jsx63(
       "div",
       {
         className: "sidebar-avatar",
@@ -11911,14 +12315,14 @@ var CalendarSidebar = () => /* @__PURE__ */ jsxs47("aside", { className: "sideba
         children: "H"
       }
     ),
-    /* @__PURE__ */ jsx53("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx53("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ jsx53("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ jsx63("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx63("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ jsx63("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var TopBar9 = () => /* @__PURE__ */ jsxs47("header", { className: "topbar", children: [
-  /* @__PURE__ */ jsx53("div", { className: "topbar-left", children: /* @__PURE__ */ jsx53("h1", { className: "topbar-title", children: "Calendar" }) }),
-  /* @__PURE__ */ jsxs47("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx53("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsxs47(
+var TopBar9 = () => /* @__PURE__ */ jsxs54("header", { className: "topbar", children: [
+  /* @__PURE__ */ jsx63("div", { className: "topbar-left", children: /* @__PURE__ */ jsx63("h1", { className: "topbar-title", children: "Calendar" }) }),
+  /* @__PURE__ */ jsxs54("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx63("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsxs54(
       "svg",
       {
         width: "20",
@@ -11928,12 +12332,12 @@ var TopBar9 = () => /* @__PURE__ */ jsxs47("header", { className: "topbar", chil
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ jsx53("circle", { cx: "11", cy: "11", r: "8" }),
-          /* @__PURE__ */ jsx53("path", { d: "m21 21-4.35-4.35" })
+          /* @__PURE__ */ jsx63("circle", { cx: "11", cy: "11", r: "8" }),
+          /* @__PURE__ */ jsx63("path", { d: "m21 21-4.35-4.35" })
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx53("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsxs47(
+    /* @__PURE__ */ jsx63("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsxs54(
       "svg",
       {
         width: "20",
@@ -11943,22 +12347,22 @@ var TopBar9 = () => /* @__PURE__ */ jsxs47("header", { className: "topbar", chil
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ jsx53("path", { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" }),
-          /* @__PURE__ */ jsx53("path", { d: "M13.73 21a2 2 0 0 1-3.46 0" })
+          /* @__PURE__ */ jsx63("path", { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" }),
+          /* @__PURE__ */ jsx63("path", { d: "M13.73 21a2 2 0 0 1-3.46 0" })
         ]
       }
     ) }),
-    /* @__PURE__ */ jsxs47("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ jsxs47("svg", { width: "18", height: "18", viewBox: "0 0 24 24", fill: "currentColor", children: [
-        /* @__PURE__ */ jsx53("rect", { x: "2", y: "2", width: "9", height: "9" }),
-        /* @__PURE__ */ jsx53("rect", { x: "13", y: "2", width: "9", height: "9" }),
-        /* @__PURE__ */ jsx53("rect", { x: "2", y: "13", width: "9", height: "9" }),
-        /* @__PURE__ */ jsx53("rect", { x: "13", y: "13", width: "9", height: "9" })
+    /* @__PURE__ */ jsxs54("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ jsxs54("svg", { width: "18", height: "18", viewBox: "0 0 24 24", fill: "currentColor", children: [
+        /* @__PURE__ */ jsx63("rect", { x: "2", y: "2", width: "9", height: "9" }),
+        /* @__PURE__ */ jsx63("rect", { x: "13", y: "2", width: "9", height: "9" }),
+        /* @__PURE__ */ jsx63("rect", { x: "2", y: "13", width: "9", height: "9" }),
+        /* @__PURE__ */ jsx63("rect", { x: "13", y: "13", width: "9", height: "9" })
       ] }),
-      /* @__PURE__ */ jsx53("span", { children: "Apps" })
+      /* @__PURE__ */ jsx63("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ jsxs47("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsx53(
+    /* @__PURE__ */ jsxs54("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsx63(
         "svg",
         {
           width: "18",
@@ -11967,28 +12371,28 @@ var TopBar9 = () => /* @__PURE__ */ jsxs47("header", { className: "topbar", chil
           fill: "none",
           stroke: "currentColor",
           strokeWidth: "2.5",
-          children: /* @__PURE__ */ jsx53("path", { d: "M12 5v14M5 12h14" })
+          children: /* @__PURE__ */ jsx63("path", { d: "M12 5v14M5 12h14" })
         }
       ),
-      /* @__PURE__ */ jsx53("span", { children: "Create new" })
+      /* @__PURE__ */ jsx63("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var CalendarNav = ({ view, onViewChange, dateLabel }) => /* @__PURE__ */ jsxs47(
+var CalendarNav = ({ view, onViewChange, dateLabel }) => /* @__PURE__ */ jsxs54(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
     style: { padding: "var(--drp-space-4) var(--drp-space-6)" },
     children: [
-      /* @__PURE__ */ jsxs47("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ jsxs47("div", { className: "drp-btn-group", children: [
-          /* @__PURE__ */ jsx53("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "\u2039" }),
-          /* @__PURE__ */ jsx53("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "\u203A" })
+      /* @__PURE__ */ jsxs54("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ jsxs54("div", { className: "drp-btn-group", children: [
+          /* @__PURE__ */ jsx63("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "\u2039" }),
+          /* @__PURE__ */ jsx63("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "\u203A" })
         ] }),
-        /* @__PURE__ */ jsx53("span", { className: "drp-h5", children: dateLabel })
+        /* @__PURE__ */ jsx63("span", { className: "drp-h5", children: dateLabel })
       ] }),
-      /* @__PURE__ */ jsxs47("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-        /* @__PURE__ */ jsx53("div", { className: "drp-tabs", children: ["Month", "Week", "Day"].map((v3) => /* @__PURE__ */ jsx53(
+      /* @__PURE__ */ jsxs54("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+        /* @__PURE__ */ jsx63("div", { className: "drp-tabs", children: ["Month", "Week", "Day"].map((v3) => /* @__PURE__ */ jsx63(
           "button",
           {
             onClick: () => onViewChange(v3.toLowerCase()),
@@ -11997,7 +12401,7 @@ var CalendarNav = ({ view, onViewChange, dateLabel }) => /* @__PURE__ */ jsxs47(
           },
           v3
         )) }),
-        /* @__PURE__ */ jsx53("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Sort: A-Z" })
+        /* @__PURE__ */ jsx63("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Sort: A-Z" })
       ] })
     ]
   }
@@ -12007,15 +12411,15 @@ var eventColorMap = {
   purple: { tag: "drp-tag--purple", dot: "var(--drp-purple)" },
   yellow: { tag: "drp-tag--yellow", dot: "var(--drp-yellow)" }
 };
-var EventPill = ({ label, color, small }) => /* @__PURE__ */ jsx53(
+var EventPill = ({ label, color, small }) => /* @__PURE__ */ jsx63(
   "span",
   {
     className: `drp-tag drp-tag--dot ${eventColorMap[color].tag}`,
     style: small ? { maxWidth: 100, fontSize: "var(--drp-text-xs)", padding: "2px 8px" } : void 0,
-    children: /* @__PURE__ */ jsx53("span", { className: "drp-truncate", children: label })
+    children: /* @__PURE__ */ jsx63("span", { className: "drp-truncate", children: label })
   }
 );
-var EventModal = ({ onClose }) => /* @__PURE__ */ jsx53(
+var EventModal = ({ onClose }) => /* @__PURE__ */ jsx63(
   "div",
   {
     style: {
@@ -12028,7 +12432,7 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ jsx53(
       zIndex: "var(--drp-z-modal)"
     },
     onClick: onClose,
-    children: /* @__PURE__ */ jsxs47(
+    children: /* @__PURE__ */ jsxs54(
       "div",
       {
         className: "drp-card",
@@ -12039,18 +12443,18 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ jsx53(
         },
         onClick: (e2) => e2.stopPropagation(),
         children: [
-          /* @__PURE__ */ jsxs47(
+          /* @__PURE__ */ jsxs54(
             "div",
             {
               className: "drp-flex drp-items-center drp-justify-between",
               style: { marginBottom: "var(--drp-space-1)" },
               children: [
-                /* @__PURE__ */ jsx53("span", { className: "drp-tag drp-tag--filled", children: "7:30 am" }),
-                /* @__PURE__ */ jsx53("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "..." })
+                /* @__PURE__ */ jsx63("span", { className: "drp-tag drp-tag--filled", children: "7:30 am" }),
+                /* @__PURE__ */ jsx63("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "..." })
               ]
             }
           ),
-          /* @__PURE__ */ jsx53(
+          /* @__PURE__ */ jsx63(
             "h2",
             {
               className: "drp-h3",
@@ -12061,7 +12465,7 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ jsx53(
               children: "Design a new dashboard for client"
             }
           ),
-          /* @__PURE__ */ jsx53(
+          /* @__PURE__ */ jsx63(
             "p",
             {
               className: "drp-text drp-text--sm drp-text--muted",
@@ -12069,14 +12473,14 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ jsx53(
               children: "Task created on 7 Jun 2022"
             }
           ),
-          /* @__PURE__ */ jsxs47(
+          /* @__PURE__ */ jsxs54(
             "div",
             {
               className: "drp-flex drp-gap-6",
               style: { marginBottom: "var(--drp-space-5)" },
               children: [
-                /* @__PURE__ */ jsxs47("div", { children: [
-                  /* @__PURE__ */ jsx53(
+                /* @__PURE__ */ jsxs54("div", { children: [
+                  /* @__PURE__ */ jsx63(
                     "p",
                     {
                       className: "drp-label",
@@ -12084,13 +12488,13 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ jsx53(
                       children: "Assigned to"
                     }
                   ),
-                  /* @__PURE__ */ jsxs47("div", { className: "drp-flex drp-items-center", children: [
+                  /* @__PURE__ */ jsxs54("div", { className: "drp-flex drp-items-center", children: [
                     [
                       "var(--drp-orange)",
                       "var(--drp-purple)",
                       "var(--drp-info)",
                       "var(--drp-mint)"
-                    ].map((c2, i2) => /* @__PURE__ */ jsx53(
+                    ].map((c2, i2) => /* @__PURE__ */ jsx63(
                       "div",
                       {
                         className: "sidebar-avatar",
@@ -12104,7 +12508,7 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ jsx53(
                       },
                       i2
                     )),
-                    /* @__PURE__ */ jsx53(
+                    /* @__PURE__ */ jsx63(
                       "div",
                       {
                         style: {
@@ -12123,8 +12527,8 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ jsx53(
                     )
                   ] })
                 ] }),
-                /* @__PURE__ */ jsxs47("div", { children: [
-                  /* @__PURE__ */ jsx53(
+                /* @__PURE__ */ jsxs54("div", { children: [
+                  /* @__PURE__ */ jsx63(
                     "p",
                     {
                       className: "drp-label",
@@ -12132,15 +12536,15 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ jsx53(
                       children: "Due to"
                     }
                   ),
-                  /* @__PURE__ */ jsxs47("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-                    /* @__PURE__ */ jsx53("span", { className: "drp-tag", children: "15 Aug 2023" }),
-                    /* @__PURE__ */ jsx53("span", { className: "drp-tag drp-tag--filled drp-tag--purple", children: "Business" })
+                  /* @__PURE__ */ jsxs54("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+                    /* @__PURE__ */ jsx63("span", { className: "drp-tag", children: "15 Aug 2023" }),
+                    /* @__PURE__ */ jsx63("span", { className: "drp-tag drp-tag--filled drp-tag--purple", children: "Business" })
                   ] })
                 ] })
               ]
             }
           ),
-          /* @__PURE__ */ jsxs47(
+          /* @__PURE__ */ jsxs54(
             "div",
             {
               style: {
@@ -12149,8 +12553,8 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ jsx53(
                 marginBottom: "var(--drp-space-4)"
               },
               children: [
-                /* @__PURE__ */ jsx53("h3", { className: "drp-h6", style: { marginBottom: "var(--drp-space-2)" }, children: "Description" }),
-                /* @__PURE__ */ jsx53(
+                /* @__PURE__ */ jsx63("h3", { className: "drp-h6", style: { marginBottom: "var(--drp-space-2)" }, children: "Description" }),
+                /* @__PURE__ */ jsx63(
                   "p",
                   {
                     className: "drp-text drp-text--sm drp-text--muted",
@@ -12161,7 +12565,7 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ jsx53(
               ]
             }
           ),
-          /* @__PURE__ */ jsxs47(
+          /* @__PURE__ */ jsxs54(
             "div",
             {
               className: "drp-flex drp-items-center drp-gap-2",
@@ -12170,7 +12574,7 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ jsx53(
                 padding: "var(--drp-space-2) var(--drp-space-3)"
               },
               children: [
-                /* @__PURE__ */ jsx53(
+                /* @__PURE__ */ jsx63(
                   "input",
                   {
                     className: "drp-input",
@@ -12184,8 +12588,8 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ jsx53(
                     readOnly: true
                   }
                 ),
-                /* @__PURE__ */ jsx53("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "+" }),
-                /* @__PURE__ */ jsx53("button", { className: "drp-btn drp-btn--primary drp-btn--icon drp-btn--sm", children: "\u203A" })
+                /* @__PURE__ */ jsx63("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "+" }),
+                /* @__PURE__ */ jsx63("button", { className: "drp-btn drp-btn--primary drp-btn--icon drp-btn--sm", children: "\u203A" })
               ]
             }
           )
@@ -12276,7 +12680,7 @@ var weeks = [
 var MonthView = ({
   showModal,
   onToggle
-}) => /* @__PURE__ */ jsxs47(
+}) => /* @__PURE__ */ jsxs54(
   "div",
   {
     style: {
@@ -12286,8 +12690,8 @@ var MonthView = ({
       position: "relative"
     },
     children: [
-      /* @__PURE__ */ jsxs47("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-        /* @__PURE__ */ jsx53(
+      /* @__PURE__ */ jsxs54("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+        /* @__PURE__ */ jsx63(
           "div",
           {
             style: {
@@ -12295,7 +12699,7 @@ var MonthView = ({
               gridTemplateColumns: "repeat(7, 1fr)",
               borderBottom: "var(--drp-border-thin)"
             },
-            children: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d2) => /* @__PURE__ */ jsx53(
+            children: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map((d2) => /* @__PURE__ */ jsx63(
               "div",
               {
                 className: "drp-label drp-text-center",
@@ -12306,7 +12710,7 @@ var MonthView = ({
             ))
           }
         ),
-        weeks.map((week, wi) => /* @__PURE__ */ jsx53(
+        weeks.map((week, wi) => /* @__PURE__ */ jsx63(
           "div",
           {
             style: {
@@ -12314,7 +12718,7 @@ var MonthView = ({
               gridTemplateColumns: "repeat(7, 1fr)",
               borderBottom: wi < weeks.length - 1 ? "var(--drp-border-thin)" : "none"
             },
-            children: week.map((cell, ci) => /* @__PURE__ */ jsx53(
+            children: week.map((cell, ci) => /* @__PURE__ */ jsx63(
               "div",
               {
                 onClick: cell.day ? onToggle : void 0,
@@ -12325,8 +12729,8 @@ var MonthView = ({
                   cursor: cell.day ? "pointer" : "default",
                   background: cell.day ? "var(--drp-white)" : "var(--drp-cream)"
                 },
-                children: cell.day && /* @__PURE__ */ jsxs47(Fragment7, { children: [
-                  /* @__PURE__ */ jsx53(
+                children: cell.day && /* @__PURE__ */ jsxs54(Fragment10, { children: [
+                  /* @__PURE__ */ jsx63(
                     "div",
                     {
                       className: "drp-text drp-text--sm drp-text--bold",
@@ -12337,7 +12741,7 @@ var MonthView = ({
                       children: cell.day
                     }
                   ),
-                  /* @__PURE__ */ jsx53("div", { className: "drp-flex-col drp-gap-1", children: cell.events.map((e2, ei) => /* @__PURE__ */ jsx53(
+                  /* @__PURE__ */ jsx63("div", { className: "drp-flex-col drp-gap-1", children: cell.events.map((e2, ei) => /* @__PURE__ */ jsx63(
                     EventPill,
                     {
                       label: e2.label,
@@ -12354,7 +12758,7 @@ var MonthView = ({
           wi
         ))
       ] }),
-      showModal && /* @__PURE__ */ jsx53(EventModal, { onClose: onToggle })
+      showModal && /* @__PURE__ */ jsx63(EventModal, { onClose: onToggle })
     ]
   }
 );
@@ -12385,7 +12789,7 @@ var eventBgMap = {
   purple: "var(--drp-purple-20)",
   yellow: "rgba(250, 232, 164, 0.2)"
 };
-var DayView = () => /* @__PURE__ */ jsx53(
+var DayView = () => /* @__PURE__ */ jsx63(
   "div",
   {
     style: {
@@ -12393,8 +12797,8 @@ var DayView = () => /* @__PURE__ */ jsx53(
       overflow: "auto",
       padding: "0 var(--drp-space-6) var(--drp-space-6)"
     },
-    children: /* @__PURE__ */ jsxs47("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-      /* @__PURE__ */ jsx53(
+    children: /* @__PURE__ */ jsxs54("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+      /* @__PURE__ */ jsx63(
         "div",
         {
           className: "drp-text drp-text--bold drp-text-center",
@@ -12407,7 +12811,7 @@ var DayView = () => /* @__PURE__ */ jsx53(
       ),
       timeSlots.map((slot, i2) => {
         const ev = dayEvents[i2];
-        return /* @__PURE__ */ jsxs47(
+        return /* @__PURE__ */ jsxs54(
           "div",
           {
             style: {
@@ -12416,7 +12820,7 @@ var DayView = () => /* @__PURE__ */ jsx53(
               borderBottom: i2 < timeSlots.length - 1 ? "var(--drp-border-thin)" : "none"
             },
             children: [
-              /* @__PURE__ */ jsx53(
+              /* @__PURE__ */ jsx63(
                 "div",
                 {
                   className: "drp-text drp-text--sm drp-text--muted drp-text-right",
@@ -12428,7 +12832,7 @@ var DayView = () => /* @__PURE__ */ jsx53(
                   children: slot
                 }
               ),
-              /* @__PURE__ */ jsx53(
+              /* @__PURE__ */ jsx63(
                 "div",
                 {
                   style: {
@@ -12437,7 +12841,7 @@ var DayView = () => /* @__PURE__ */ jsx53(
                     display: "flex",
                     alignItems: "center"
                   },
-                  children: ev && /* @__PURE__ */ jsxs47(
+                  children: ev && /* @__PURE__ */ jsxs54(
                     "div",
                     {
                       className: "drp-flex drp-items-center drp-gap-2",
@@ -12447,7 +12851,7 @@ var DayView = () => /* @__PURE__ */ jsx53(
                         width: "100%"
                       },
                       children: [
-                        /* @__PURE__ */ jsx53(
+                        /* @__PURE__ */ jsx63(
                           "span",
                           {
                             className: "drp-dot",
@@ -12458,8 +12862,8 @@ var DayView = () => /* @__PURE__ */ jsx53(
                             }
                           }
                         ),
-                        /* @__PURE__ */ jsx53("span", { className: "drp-text drp-text--sm drp-text--muted", children: ev.time }),
-                        /* @__PURE__ */ jsx53("span", { className: "drp-text drp-text--sm drp-text--bold", children: ev.label })
+                        /* @__PURE__ */ jsx63("span", { className: "drp-text drp-text--sm drp-text--muted", children: ev.time }),
+                        /* @__PURE__ */ jsx63("span", { className: "drp-text drp-text--sm drp-text--bold", children: ev.label })
                       ]
                     }
                   )
@@ -12524,7 +12928,7 @@ var weekCols = [
   },
   { label: "Sun, 9", events: {} }
 ];
-var WeekView = () => /* @__PURE__ */ jsx53(
+var WeekView = () => /* @__PURE__ */ jsx63(
   "div",
   {
     style: {
@@ -12532,8 +12936,8 @@ var WeekView = () => /* @__PURE__ */ jsx53(
       overflow: "auto",
       padding: "0 var(--drp-space-6) var(--drp-space-6)"
     },
-    children: /* @__PURE__ */ jsxs47("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
-      /* @__PURE__ */ jsxs47(
+    children: /* @__PURE__ */ jsxs54("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
+      /* @__PURE__ */ jsxs54(
         "div",
         {
           style: {
@@ -12542,8 +12946,8 @@ var WeekView = () => /* @__PURE__ */ jsx53(
             borderBottom: "var(--drp-border-thin)"
           },
           children: [
-            /* @__PURE__ */ jsx53("div", { style: { borderRight: "var(--drp-border-thin)" } }),
-            weekCols.map((d2) => /* @__PURE__ */ jsx53(
+            /* @__PURE__ */ jsx63("div", { style: { borderRight: "var(--drp-border-thin)" } }),
+            weekCols.map((d2) => /* @__PURE__ */ jsx63(
               "div",
               {
                 className: "drp-label drp-text-center",
@@ -12558,7 +12962,7 @@ var WeekView = () => /* @__PURE__ */ jsx53(
           ]
         }
       ),
-      timeSlots.map((slot, si) => /* @__PURE__ */ jsxs47(
+      timeSlots.map((slot, si) => /* @__PURE__ */ jsxs54(
         "div",
         {
           style: {
@@ -12567,7 +12971,7 @@ var WeekView = () => /* @__PURE__ */ jsx53(
             borderBottom: si < timeSlots.length - 1 ? "var(--drp-border-thin)" : "none"
           },
           children: [
-            /* @__PURE__ */ jsx53(
+            /* @__PURE__ */ jsx63(
               "div",
               {
                 className: "drp-text drp-text--sm drp-text--muted drp-text-right",
@@ -12580,7 +12984,7 @@ var WeekView = () => /* @__PURE__ */ jsx53(
             ),
             weekCols.map((day, di) => {
               const ev = day.events[si];
-              return /* @__PURE__ */ jsx53(
+              return /* @__PURE__ */ jsx63(
                 "div",
                 {
                   style: {
@@ -12591,7 +12995,7 @@ var WeekView = () => /* @__PURE__ */ jsx53(
                     alignItems: "flex-start",
                     paddingTop: "var(--drp-space-2)"
                   },
-                  children: ev && /* @__PURE__ */ jsx53(EventPill, { label: ev.label, color: ev.color, small: true })
+                  children: ev && /* @__PURE__ */ jsx63(EventPill, { label: ev.label, color: ev.color, small: true })
                 },
                 di
               );
@@ -12603,16 +13007,16 @@ var WeekView = () => /* @__PURE__ */ jsx53(
     ] })
   }
 );
-var FooterBar = () => /* @__PURE__ */ jsxs47("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs47("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsx53("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ jsx53("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx53("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx53("span", { className: "footer-link", children: "API" })
+var FooterBar = () => /* @__PURE__ */ jsxs54("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs54("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsx63("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ jsx63("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx63("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx63("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs47("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx53("button", { className: "footer-icon-btn footer-icon-btn--accent", children: /* @__PURE__ */ jsx53("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx53("path", { d: "M12 3a9 9 0 1 0 9 9H12z" }) }) }),
-    /* @__PURE__ */ jsx53("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs47(
+  /* @__PURE__ */ jsxs54("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx63("button", { className: "footer-icon-btn footer-icon-btn--accent", children: /* @__PURE__ */ jsx63("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx63("path", { d: "M12 3a9 9 0 1 0 9 9H12z" }) }) }),
+    /* @__PURE__ */ jsx63("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs54(
       "svg",
       {
         width: "13",
@@ -12622,8 +13026,8 @@ var FooterBar = () => /* @__PURE__ */ jsxs47("footer", { className: "footer-bar"
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ jsx53("circle", { cx: "12", cy: "12", r: "4" }),
-          /* @__PURE__ */ jsx53("path", { d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" })
+          /* @__PURE__ */ jsx63("circle", { cx: "12", cy: "12", r: "4" }),
+          /* @__PURE__ */ jsx63("path", { d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" })
         ]
       }
     ) })
@@ -12632,18 +13036,18 @@ var FooterBar = () => /* @__PURE__ */ jsxs47("footer", { className: "footer-bar"
 var CalendarEvent = ({
   defaultView = "month"
 }) => {
-  const [view, setView] = useState9(defaultView);
-  const [showModal, setShowModal] = useState9(defaultView === "month");
+  const [view, setView] = useState11(defaultView);
+  const [showModal, setShowModal] = useState11(defaultView === "month");
   const dateLabels = {
     month: "September 2022",
     week: "September 3 - 9, 2022",
     day: "September 3 - 9, 2022"
   };
-  return /* @__PURE__ */ jsxs47("div", { className: "app-layout", children: [
-    /* @__PURE__ */ jsx53(CalendarSidebar, {}),
-    /* @__PURE__ */ jsxs47("div", { className: "main-content", children: [
-      /* @__PURE__ */ jsx53(TopBar9, {}),
-      /* @__PURE__ */ jsx53(
+  return /* @__PURE__ */ jsxs54("div", { className: "app-layout", children: [
+    /* @__PURE__ */ jsx63(CalendarSidebar, {}),
+    /* @__PURE__ */ jsxs54("div", { className: "main-content", children: [
+      /* @__PURE__ */ jsx63(TopBar9, {}),
+      /* @__PURE__ */ jsx63(
         CalendarNav,
         {
           view,
@@ -12654,31 +13058,31 @@ var CalendarEvent = ({
           dateLabel: dateLabels[view]
         }
       ),
-      view === "month" && /* @__PURE__ */ jsx53(
+      view === "month" && /* @__PURE__ */ jsx63(
         MonthView,
         {
           showModal,
           onToggle: () => setShowModal((s2) => !s2)
         }
       ),
-      view === "day" && /* @__PURE__ */ jsx53(DayView, {}),
-      view === "week" && /* @__PURE__ */ jsx53(WeekView, {}),
-      /* @__PURE__ */ jsx53(FooterBar, {})
+      view === "day" && /* @__PURE__ */ jsx63(DayView, {}),
+      view === "week" && /* @__PURE__ */ jsx63(WeekView, {}),
+      /* @__PURE__ */ jsx63(FooterBar, {})
     ] })
   ] });
 };
 
 // src/screens/Support/SupportHome.tsx
 import React8 from "react";
-import { Fragment as Fragment8, jsx as jsx54, jsxs as jsxs48 } from "react/jsx-runtime";
-var SupportSidebar = () => /* @__PURE__ */ jsxs48("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ jsxs48("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ jsx54("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ jsx54("span", { className: "sidebar-brand-dot" })
+import { Fragment as Fragment11, jsx as jsx64, jsxs as jsxs55 } from "react/jsx-runtime";
+var SupportSidebar = () => /* @__PURE__ */ jsxs55("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ jsxs55("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ jsx64("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ jsx64("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ jsxs48("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ jsxs48("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ jsx54("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ jsxs55("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ jsxs55("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ jsx64("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard", badge: 15, badgeType: "purple" },
         { label: "Projects" },
@@ -12687,9 +13091,9 @@ var SupportSidebar = () => /* @__PURE__ */ jsxs48("aside", { className: "sidebar
         { label: "File Manager", badge: 14, badgeType: "green" },
         { label: "Calendar" },
         { label: "Inbox" }
-      ].map((item) => /* @__PURE__ */ jsxs48("a", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ jsx54("span", { className: "sidebar-nav-text", children: item.label }),
-        item.badge && /* @__PURE__ */ jsx54(
+      ].map((item) => /* @__PURE__ */ jsxs55("a", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ jsx64("span", { className: "sidebar-nav-text", children: item.label }),
+        item.badge && /* @__PURE__ */ jsx64(
           "span",
           {
             className: `sidebar-badge sidebar-badge--${item.badgeType}`,
@@ -12698,21 +13102,21 @@ var SupportSidebar = () => /* @__PURE__ */ jsxs48("aside", { className: "sidebar
         )
       ] }, item.label))
     ] }),
-    /* @__PURE__ */ jsxs48("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ jsx54("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ jsxs55("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ jsx64("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-orange)" },
         { name: "Thanawan Chadee", bg: "var(--drp-purple)" },
         { name: "Justine Robinson", bg: "var(--drp-info)" }
-      ].map((member) => /* @__PURE__ */ jsxs48("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ jsx54("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
-        /* @__PURE__ */ jsx54("span", { className: "sidebar-team-name", children: member.name })
+      ].map((member) => /* @__PURE__ */ jsxs55("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ jsx64("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
+        /* @__PURE__ */ jsx64("span", { className: "sidebar-team-name", children: member.name })
       ] }, member.name)),
-      /* @__PURE__ */ jsx54("div", { className: "sidebar-see-more", children: "See More" })
+      /* @__PURE__ */ jsx64("div", { className: "sidebar-see-more", children: "See More" })
     ] })
   ] }),
-  /* @__PURE__ */ jsxs48("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ jsx54(
+  /* @__PURE__ */ jsxs55("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ jsx64(
       "div",
       {
         className: "sidebar-avatar",
@@ -12720,14 +13124,14 @@ var SupportSidebar = () => /* @__PURE__ */ jsxs48("aside", { className: "sidebar
         children: "H"
       }
     ),
-    /* @__PURE__ */ jsx54("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx54("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ jsx54("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ jsx64("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx64("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ jsx64("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var SupportTopBar = () => /* @__PURE__ */ jsxs48("header", { className: "topbar", children: [
-  /* @__PURE__ */ jsx54("div", { className: "topbar-left", children: /* @__PURE__ */ jsx54("h1", { className: "topbar-title", children: "Help Center" }) }),
-  /* @__PURE__ */ jsxs48("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx54("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsxs48(
+var SupportTopBar = () => /* @__PURE__ */ jsxs55("header", { className: "topbar", children: [
+  /* @__PURE__ */ jsx64("div", { className: "topbar-left", children: /* @__PURE__ */ jsx64("h1", { className: "topbar-title", children: "Help Center" }) }),
+  /* @__PURE__ */ jsxs55("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx64("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsxs55(
       "svg",
       {
         width: "18",
@@ -12737,12 +13141,12 @@ var SupportTopBar = () => /* @__PURE__ */ jsxs48("header", { className: "topbar"
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ jsx54("circle", { cx: "11", cy: "11", r: "8" }),
-          /* @__PURE__ */ jsx54("path", { d: "m21 21-4.35-4.35" })
+          /* @__PURE__ */ jsx64("circle", { cx: "11", cy: "11", r: "8" }),
+          /* @__PURE__ */ jsx64("path", { d: "m21 21-4.35-4.35" })
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx54("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsxs48(
+    /* @__PURE__ */ jsx64("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsxs55(
       "svg",
       {
         width: "18",
@@ -12752,22 +13156,22 @@ var SupportTopBar = () => /* @__PURE__ */ jsxs48("header", { className: "topbar"
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ jsx54("path", { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" }),
-          /* @__PURE__ */ jsx54("path", { d: "M13.73 21a2 2 0 0 1-3.46 0" })
+          /* @__PURE__ */ jsx64("path", { d: "M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" }),
+          /* @__PURE__ */ jsx64("path", { d: "M13.73 21a2 2 0 0 1-3.46 0" })
         ]
       }
     ) }),
-    /* @__PURE__ */ jsxs48("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ jsxs48("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "currentColor", children: [
-        /* @__PURE__ */ jsx54("rect", { x: "2", y: "2", width: "9", height: "9" }),
-        /* @__PURE__ */ jsx54("rect", { x: "13", y: "2", width: "9", height: "9" }),
-        /* @__PURE__ */ jsx54("rect", { x: "2", y: "13", width: "9", height: "9" }),
-        /* @__PURE__ */ jsx54("rect", { x: "13", y: "13", width: "9", height: "9" })
+    /* @__PURE__ */ jsxs55("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ jsxs55("svg", { width: "15", height: "15", viewBox: "0 0 24 24", fill: "currentColor", children: [
+        /* @__PURE__ */ jsx64("rect", { x: "2", y: "2", width: "9", height: "9" }),
+        /* @__PURE__ */ jsx64("rect", { x: "13", y: "2", width: "9", height: "9" }),
+        /* @__PURE__ */ jsx64("rect", { x: "2", y: "13", width: "9", height: "9" }),
+        /* @__PURE__ */ jsx64("rect", { x: "13", y: "13", width: "9", height: "9" })
       ] }),
-      /* @__PURE__ */ jsx54("span", { children: "Apps" })
+      /* @__PURE__ */ jsx64("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ jsxs48("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsxs48(
+    /* @__PURE__ */ jsxs55("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsxs55(
         "svg",
         {
           width: "14",
@@ -12777,25 +13181,25 @@ var SupportTopBar = () => /* @__PURE__ */ jsxs48("header", { className: "topbar"
           stroke: "currentColor",
           strokeWidth: "2.5",
           children: [
-            /* @__PURE__ */ jsx54("circle", { cx: "12", cy: "12", r: "10" }),
-            /* @__PURE__ */ jsx54("path", { d: "M12 8v8M8 12h8" })
+            /* @__PURE__ */ jsx64("circle", { cx: "12", cy: "12", r: "10" }),
+            /* @__PURE__ */ jsx64("path", { d: "M12 8v8M8 12h8" })
           ]
         }
       ),
-      /* @__PURE__ */ jsx54("span", { children: "Create new" })
+      /* @__PURE__ */ jsx64("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var SupportFooter = () => /* @__PURE__ */ jsxs48("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs48("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsx54("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ jsx54("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx54("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx54("span", { className: "footer-link", children: "API" })
+var SupportFooter = () => /* @__PURE__ */ jsxs55("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs55("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsx64("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ jsx64("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx64("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx64("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs48("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx54("button", { className: "footer-icon-btn footer-icon-btn--accent", children: /* @__PURE__ */ jsx54("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx54("path", { d: "M12 3a9 9 0 1 0 9 9H12z" }) }) }),
-    /* @__PURE__ */ jsx54("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs48(
+  /* @__PURE__ */ jsxs55("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx64("button", { className: "footer-icon-btn footer-icon-btn--accent", children: /* @__PURE__ */ jsx64("svg", { width: "13", height: "13", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx64("path", { d: "M12 3a9 9 0 1 0 9 9H12z" }) }) }),
+    /* @__PURE__ */ jsx64("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs55(
       "svg",
       {
         width: "13",
@@ -12805,8 +13209,8 @@ var SupportFooter = () => /* @__PURE__ */ jsxs48("footer", { className: "footer-
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ jsx54("circle", { cx: "12", cy: "12", r: "4" }),
-          /* @__PURE__ */ jsx54("path", { d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" })
+          /* @__PURE__ */ jsx64("circle", { cx: "12", cy: "12", r: "4" }),
+          /* @__PURE__ */ jsx64("path", { d: "M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" })
         ]
       }
     ) })
@@ -12815,7 +13219,7 @@ var SupportFooter = () => /* @__PURE__ */ jsxs48("footer", { className: "footer-
 var SupportHero = ({
   searchPlaceholder = "Search help articles",
   searchValue
-}) => /* @__PURE__ */ jsxs48(
+}) => /* @__PURE__ */ jsxs55(
   "div",
   {
     style: {
@@ -12825,7 +13229,7 @@ var SupportHero = ({
       background: "radial-gradient(ellipse at 70% 50%, var(--drp-purple-20) 0%, transparent 65%), var(--drp-cream)"
     },
     children: [
-      /* @__PURE__ */ jsx54(
+      /* @__PURE__ */ jsx64(
         "h2",
         {
           className: "drp-h2 drp-text-center",
@@ -12833,7 +13237,7 @@ var SupportHero = ({
           children: "How can we help you?"
         }
       ),
-      /* @__PURE__ */ jsxs48(
+      /* @__PURE__ */ jsxs55(
         "div",
         {
           style: {
@@ -12843,7 +13247,7 @@ var SupportHero = ({
             marginBottom: "var(--drp-space-3)"
           },
           children: [
-            /* @__PURE__ */ jsx54(
+            /* @__PURE__ */ jsx64(
               "input",
               {
                 className: "drp-input",
@@ -12853,7 +13257,7 @@ var SupportHero = ({
                 readOnly: true
               }
             ),
-            /* @__PURE__ */ jsx54(
+            /* @__PURE__ */ jsx64(
               "button",
               {
                 className: "drp-btn drp-btn--primary drp-btn--icon drp-btn--sm",
@@ -12863,7 +13267,7 @@ var SupportHero = ({
                   top: "50%",
                   transform: "translateY(-50%)"
                 },
-                children: /* @__PURE__ */ jsxs48(
+                children: /* @__PURE__ */ jsxs55(
                   "svg",
                   {
                     width: "13",
@@ -12873,8 +13277,8 @@ var SupportHero = ({
                     stroke: "white",
                     strokeWidth: "2.5",
                     children: [
-                      /* @__PURE__ */ jsx54("circle", { cx: "11", cy: "11", r: "8" }),
-                      /* @__PURE__ */ jsx54("path", { d: "m21 21-4.35-4.35" })
+                      /* @__PURE__ */ jsx64("circle", { cx: "11", cy: "11", r: "8" }),
+                      /* @__PURE__ */ jsx64("path", { d: "m21 21-4.35-4.35" })
                     ]
                   }
                 )
@@ -12883,7 +13287,7 @@ var SupportHero = ({
           ]
         }
       ),
-      /* @__PURE__ */ jsx54("p", { className: "drp-text drp-text--sm drp-text--muted drp-text-center", children: "For example: How to create an account" })
+      /* @__PURE__ */ jsx64("p", { className: "drp-text drp-text--sm drp-text--muted drp-text-center", children: "For example: How to create an account" })
     ]
   }
 );
@@ -12892,13 +13296,13 @@ var ProductCategoryCard = ({
   color,
   title,
   description
-}) => /* @__PURE__ */ jsx54(
+}) => /* @__PURE__ */ jsx64(
   "div",
   {
     className: "drp-card drp-card--interactive",
     style: { padding: "var(--drp-space-3)" },
-    children: /* @__PURE__ */ jsxs48("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
-      /* @__PURE__ */ jsx54(
+    children: /* @__PURE__ */ jsxs55("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
+      /* @__PURE__ */ jsx64(
         "div",
         {
           style: {
@@ -12916,9 +13320,9 @@ var ProductCategoryCard = ({
           children: letter
         }
       ),
-      /* @__PURE__ */ jsxs48("div", { children: [
-        /* @__PURE__ */ jsx54("p", { className: "drp-text drp-text--bold drp-text--sm", children: title }),
-        /* @__PURE__ */ jsx54(
+      /* @__PURE__ */ jsxs55("div", { children: [
+        /* @__PURE__ */ jsx64("p", { className: "drp-text drp-text--bold drp-text--sm", children: title }),
+        /* @__PURE__ */ jsx64(
           "p",
           {
             className: "drp-text drp-text--sm drp-text--muted",
@@ -12934,13 +13338,13 @@ var HelpArticleCard = ({
   title,
   category,
   description
-}) => /* @__PURE__ */ jsxs48(
+}) => /* @__PURE__ */ jsxs55(
   "div",
   {
     className: "drp-card drp-card--interactive",
     style: { padding: "var(--drp-space-4)" },
     children: [
-      /* @__PURE__ */ jsx54(
+      /* @__PURE__ */ jsx64(
         "span",
         {
           className: "drp-tag drp-tag--filled drp-tag--purple",
@@ -12948,7 +13352,7 @@ var HelpArticleCard = ({
           children: category
         }
       ),
-      /* @__PURE__ */ jsx54(
+      /* @__PURE__ */ jsx64(
         "p",
         {
           className: "drp-text drp-text--bold drp-text--sm",
@@ -12959,7 +13363,7 @@ var HelpArticleCard = ({
           children: title
         }
       ),
-      /* @__PURE__ */ jsx54(
+      /* @__PURE__ */ jsx64(
         "p",
         {
           className: "drp-text drp-text--sm drp-text--muted",
@@ -12967,7 +13371,7 @@ var HelpArticleCard = ({
           children: description
         }
       ),
-      /* @__PURE__ */ jsx54(
+      /* @__PURE__ */ jsx64(
         "button",
         {
           className: "drp-btn drp-btn--ghost drp-btn--sm drp-btn--purple",
@@ -12985,15 +13389,15 @@ var HelpArticleCard = ({
     ]
   }
 );
-var Breadcrumb = ({ items }) => /* @__PURE__ */ jsx54(
+var Breadcrumb = ({ items }) => /* @__PURE__ */ jsx64(
   "div",
   {
     className: "drp-flex drp-items-center drp-gap-1",
     style: {
       padding: "var(--drp-space-4) var(--drp-space-6) var(--drp-space-2)"
     },
-    children: items.map((item, i2) => /* @__PURE__ */ jsxs48(React8.Fragment, { children: [
-      i2 > 0 && /* @__PURE__ */ jsx54(
+    children: items.map((item, i2) => /* @__PURE__ */ jsxs55(React8.Fragment, { children: [
+      i2 > 0 && /* @__PURE__ */ jsx64(
         "svg",
         {
           width: "12",
@@ -13002,10 +13406,10 @@ var Breadcrumb = ({ items }) => /* @__PURE__ */ jsx54(
           fill: "none",
           stroke: "var(--drp-grey)",
           strokeWidth: "2",
-          children: /* @__PURE__ */ jsx54("path", { d: "M9 18l6-6-6-6" })
+          children: /* @__PURE__ */ jsx64("path", { d: "M9 18l6-6-6-6" })
         }
       ),
-      /* @__PURE__ */ jsx54(
+      /* @__PURE__ */ jsx64(
         "span",
         {
           className: `drp-text drp-text--sm ${i2 === items.length - 1 ? "drp-text--bold" : "drp-text--muted"}`,
@@ -13027,11 +13431,11 @@ var ArticleSidebarNav = () => {
     { label: "Asset Directory" },
     { label: "Top of mind" }
   ];
-  return /* @__PURE__ */ jsx54(
+  return /* @__PURE__ */ jsx64(
     "div",
     {
       style: { width: 192, flexShrink: 0, paddingTop: "var(--drp-space-2)" },
-      children: /* @__PURE__ */ jsx54("nav", { children: items.map((item) => /* @__PURE__ */ jsx54(
+      children: /* @__PURE__ */ jsx64("nav", { children: items.map((item) => /* @__PURE__ */ jsx64(
         "div",
         {
           className: `drp-text drp-text--sm ${item.active ? "drp-text--purple drp-text--bold" : ""}`,
@@ -13051,13 +13455,13 @@ var RelatedArticleRow = ({
   title,
   date,
   tag
-}) => /* @__PURE__ */ jsx54(
+}) => /* @__PURE__ */ jsx64(
   "div",
   {
     className: "drp-card drp-card--interactive",
     style: { padding: "var(--drp-space-4)" },
-    children: /* @__PURE__ */ jsxs48("div", { className: "drp-flex drp-items-center drp-gap-4", children: [
-      /* @__PURE__ */ jsx54(
+    children: /* @__PURE__ */ jsxs55("div", { className: "drp-flex drp-items-center drp-gap-4", children: [
+      /* @__PURE__ */ jsx64(
         "div",
         {
           style: {
@@ -13074,9 +13478,9 @@ var RelatedArticleRow = ({
           children: icon
         }
       ),
-      /* @__PURE__ */ jsxs48("div", { children: [
-        /* @__PURE__ */ jsx54("p", { className: "drp-text drp-text--bold drp-text--sm", children: title }),
-        /* @__PURE__ */ jsxs48(
+      /* @__PURE__ */ jsxs55("div", { children: [
+        /* @__PURE__ */ jsx64("p", { className: "drp-text drp-text--bold drp-text--sm", children: title }),
+        /* @__PURE__ */ jsxs55(
           "p",
           {
             className: "drp-text drp-text--sm drp-text--muted",
@@ -13092,13 +13496,13 @@ var RelatedArticleRow = ({
     ] })
   }
 );
-var SearchResultRow = ({ title, excerpt }) => /* @__PURE__ */ jsxs48(
+var SearchResultRow = ({ title, excerpt }) => /* @__PURE__ */ jsxs55(
   "div",
   {
     className: "drp-card drp-card--interactive",
     style: { padding: "var(--drp-space-4)" },
     children: [
-      /* @__PURE__ */ jsx54(
+      /* @__PURE__ */ jsx64(
         "p",
         {
           className: "drp-text drp-text--bold drp-text--sm",
@@ -13106,7 +13510,7 @@ var SearchResultRow = ({ title, excerpt }) => /* @__PURE__ */ jsxs48(
           children: title
         }
       ),
-      /* @__PURE__ */ jsx54(
+      /* @__PURE__ */ jsx64(
         "p",
         {
           className: "drp-text drp-text--sm drp-text--muted",
@@ -13114,7 +13518,7 @@ var SearchResultRow = ({ title, excerpt }) => /* @__PURE__ */ jsxs48(
           children: excerpt
         }
       ),
-      /* @__PURE__ */ jsx54(
+      /* @__PURE__ */ jsx64(
         "button",
         {
           className: "drp-btn drp-btn--ghost drp-btn--sm",
@@ -13266,20 +13670,20 @@ var searchResults = [
   }
 ];
 var SupportHome = ({ view = "home" }) => {
-  return /* @__PURE__ */ jsxs48("div", { className: "app-layout", children: [
-    /* @__PURE__ */ jsx54(SupportSidebar, {}),
-    /* @__PURE__ */ jsxs48("div", { className: "main-content", children: [
-      /* @__PURE__ */ jsx54(SupportTopBar, {}),
-      /* @__PURE__ */ jsxs48("div", { style: { flex: 1, overflow: "auto" }, children: [
-        view === "home" && /* @__PURE__ */ jsxs48(Fragment8, { children: [
-          /* @__PURE__ */ jsx54(SupportHero, {}),
-          /* @__PURE__ */ jsxs48(
+  return /* @__PURE__ */ jsxs55("div", { className: "app-layout", children: [
+    /* @__PURE__ */ jsx64(SupportSidebar, {}),
+    /* @__PURE__ */ jsxs55("div", { className: "main-content", children: [
+      /* @__PURE__ */ jsx64(SupportTopBar, {}),
+      /* @__PURE__ */ jsxs55("div", { style: { flex: 1, overflow: "auto" }, children: [
+        view === "home" && /* @__PURE__ */ jsxs55(Fragment11, { children: [
+          /* @__PURE__ */ jsx64(SupportHero, {}),
+          /* @__PURE__ */ jsxs55(
             "div",
             {
               style: { padding: "0 var(--drp-space-6) var(--drp-space-4)" },
               children: [
-                /* @__PURE__ */ jsxs48("div", { style: { marginBottom: "var(--drp-space-6)" }, children: [
-                  /* @__PURE__ */ jsx54(
+                /* @__PURE__ */ jsxs55("div", { style: { marginBottom: "var(--drp-space-6)" }, children: [
+                  /* @__PURE__ */ jsx64(
                     "h3",
                     {
                       className: "drp-h6",
@@ -13287,7 +13691,7 @@ var SupportHome = ({ view = "home" }) => {
                       children: "Products"
                     }
                   ),
-                  /* @__PURE__ */ jsx54("div", { className: "drp-grid-3", children: products.map((p3) => /* @__PURE__ */ jsx54(
+                  /* @__PURE__ */ jsx64("div", { className: "drp-grid-3", children: products.map((p3) => /* @__PURE__ */ jsx64(
                     ProductCategoryCard,
                     {
                       ...p3
@@ -13295,8 +13699,8 @@ var SupportHome = ({ view = "home" }) => {
                     `${p3.title}-${p3.description}`
                   )) })
                 ] }),
-                /* @__PURE__ */ jsxs48("div", { children: [
-                  /* @__PURE__ */ jsx54(
+                /* @__PURE__ */ jsxs55("div", { children: [
+                  /* @__PURE__ */ jsx64(
                     "h3",
                     {
                       className: "drp-h6",
@@ -13304,22 +13708,22 @@ var SupportHome = ({ view = "home" }) => {
                       children: "Popular help topics"
                     }
                   ),
-                  /* @__PURE__ */ jsx54("div", { className: "drp-grid-3", children: popularArticles.map((a2) => /* @__PURE__ */ jsx54(HelpArticleCard, { ...a2 }, a2.title)) })
+                  /* @__PURE__ */ jsx64("div", { className: "drp-grid-3", children: popularArticles.map((a2) => /* @__PURE__ */ jsx64(HelpArticleCard, { ...a2 }, a2.title)) })
                 ] })
               ]
             }
           )
         ] }),
-        view === "categories" && /* @__PURE__ */ jsxs48(Fragment8, { children: [
-          /* @__PURE__ */ jsx54(Breadcrumb, { items: ["Help Center", "Categories", "..."] }),
-          /* @__PURE__ */ jsx54(SupportHero, {}),
-          /* @__PURE__ */ jsxs48(
+        view === "categories" && /* @__PURE__ */ jsxs55(Fragment11, { children: [
+          /* @__PURE__ */ jsx64(Breadcrumb, { items: ["Help Center", "Categories", "..."] }),
+          /* @__PURE__ */ jsx64(SupportHero, {}),
+          /* @__PURE__ */ jsxs55(
             "div",
             {
               style: { padding: "0 var(--drp-space-6) var(--drp-space-4)" },
               children: [
-                /* @__PURE__ */ jsxs48("div", { style: { marginBottom: "var(--drp-space-6)" }, children: [
-                  /* @__PURE__ */ jsx54(
+                /* @__PURE__ */ jsxs55("div", { style: { marginBottom: "var(--drp-space-6)" }, children: [
+                  /* @__PURE__ */ jsx64(
                     "h3",
                     {
                       className: "drp-h6",
@@ -13327,7 +13731,7 @@ var SupportHome = ({ view = "home" }) => {
                       children: "Product categories"
                     }
                   ),
-                  /* @__PURE__ */ jsx54("div", { className: "drp-grid-3", children: [
+                  /* @__PURE__ */ jsx64("div", { className: "drp-grid-3", children: [
                     {
                       letter: "G",
                       color: "var(--drp-info)",
@@ -13349,19 +13753,19 @@ var SupportHome = ({ view = "home" }) => {
                       description: "Buying, selling or transferring crypto\nUnderstanding crypto compliance",
                       articles: 3
                     }
-                  ].map((cat) => /* @__PURE__ */ jsxs48(
+                  ].map((cat) => /* @__PURE__ */ jsxs55(
                     "div",
                     {
                       className: "drp-card drp-card--interactive",
                       style: { padding: "var(--drp-space-4)" },
                       children: [
-                        /* @__PURE__ */ jsxs48(
+                        /* @__PURE__ */ jsxs55(
                           "div",
                           {
                             className: "drp-flex drp-items-center drp-gap-3",
                             style: { marginBottom: "var(--drp-space-3)" },
                             children: [
-                              /* @__PURE__ */ jsx54(
+                              /* @__PURE__ */ jsx64(
                                 "div",
                                 {
                                   style: {
@@ -13379,11 +13783,11 @@ var SupportHome = ({ view = "home" }) => {
                                   children: cat.letter
                                 }
                               ),
-                              /* @__PURE__ */ jsx54("p", { className: "drp-text drp-text--bold drp-text--sm", children: cat.title })
+                              /* @__PURE__ */ jsx64("p", { className: "drp-text drp-text--bold drp-text--sm", children: cat.title })
                             ]
                           }
                         ),
-                        /* @__PURE__ */ jsx54("div", { style: { marginBottom: "var(--drp-space-3)" }, children: cat.description.split("\n").map((line) => /* @__PURE__ */ jsx54(
+                        /* @__PURE__ */ jsx64("div", { style: { marginBottom: "var(--drp-space-3)" }, children: cat.description.split("\n").map((line) => /* @__PURE__ */ jsx64(
                           "p",
                           {
                             className: "drp-text drp-text--sm drp-text--muted",
@@ -13392,7 +13796,7 @@ var SupportHome = ({ view = "home" }) => {
                           },
                           line
                         )) }),
-                        /* @__PURE__ */ jsx54(
+                        /* @__PURE__ */ jsx64(
                           "button",
                           {
                             className: "drp-btn drp-btn--ghost drp-btn--sm",
@@ -13411,8 +13815,8 @@ var SupportHome = ({ view = "home" }) => {
                     cat.title
                   )) })
                 ] }),
-                /* @__PURE__ */ jsxs48("div", { children: [
-                  /* @__PURE__ */ jsx54(
+                /* @__PURE__ */ jsxs55("div", { children: [
+                  /* @__PURE__ */ jsx64(
                     "h3",
                     {
                       className: "drp-h6",
@@ -13420,22 +13824,22 @@ var SupportHome = ({ view = "home" }) => {
                       children: "Top community posts"
                     }
                   ),
-                  /* @__PURE__ */ jsx54("div", { className: "drp-flex-col drp-gap-2", children: topCommunityPosts.map((post) => /* @__PURE__ */ jsx54(RelatedArticleRow, { ...post }, post.title)) })
+                  /* @__PURE__ */ jsx64("div", { className: "drp-flex-col drp-gap-2", children: topCommunityPosts.map((post) => /* @__PURE__ */ jsx64(RelatedArticleRow, { ...post }, post.title)) })
                 ] })
               ]
             }
           )
         ] }),
-        view === "article" && /* @__PURE__ */ jsxs48(Fragment8, { children: [
-          /* @__PURE__ */ jsx54(Breadcrumb, { items: ["Help Center", "Account", "Funds reports"] }),
-          /* @__PURE__ */ jsxs48(
+        view === "article" && /* @__PURE__ */ jsxs55(Fragment11, { children: [
+          /* @__PURE__ */ jsx64(Breadcrumb, { items: ["Help Center", "Account", "Funds reports"] }),
+          /* @__PURE__ */ jsxs55(
             "div",
             {
               className: "drp-flex drp-gap-6",
               style: { padding: "0 var(--drp-space-6) var(--drp-space-4)" },
               children: [
-                /* @__PURE__ */ jsxs48("div", { style: { flex: 1, minWidth: 0 }, children: [
-                  /* @__PURE__ */ jsx54(
+                /* @__PURE__ */ jsxs55("div", { style: { flex: 1, minWidth: 0 }, children: [
+                  /* @__PURE__ */ jsx64(
                     "h1",
                     {
                       className: "drp-h2",
@@ -13443,13 +13847,13 @@ var SupportHome = ({ view = "home" }) => {
                       children: "Getting started: funds reports"
                     }
                   ),
-                  /* @__PURE__ */ jsxs48(
+                  /* @__PURE__ */ jsxs55(
                     "div",
                     {
                       className: "drp-card",
                       style: { marginBottom: "var(--drp-space-4)" },
                       children: [
-                        /* @__PURE__ */ jsx54(
+                        /* @__PURE__ */ jsx64(
                           "p",
                           {
                             className: "drp-text drp-text--sm",
@@ -13461,7 +13865,7 @@ var SupportHome = ({ view = "home" }) => {
                             children: "There is no better advertisement campaign that is low cost and also successful at the same time. Great business ideas when utilized effectively can save lots of money. This is not only easy for those who work full-time as an advertiser."
                           }
                         ),
-                        /* @__PURE__ */ jsx54(
+                        /* @__PURE__ */ jsx64(
                           "div",
                           {
                             style: {
@@ -13469,12 +13873,12 @@ var SupportHome = ({ view = "home" }) => {
                               padding: "var(--drp-space-4)",
                               marginBottom: "var(--drp-space-4)"
                             },
-                            children: /* @__PURE__ */ jsx54("ol", { style: { listStyle: "none", padding: 0, margin: 0 }, children: [
+                            children: /* @__PURE__ */ jsx64("ol", { style: { listStyle: "none", padding: 0, margin: 0 }, children: [
                               "Fliers and business cards can be tacked on such bulletin boards.",
                               "But before doing so, check out with the human resource department",
                               "Parents are required to be in regular touch with the teachers to know",
                               "Do not miss this opportunity and spread the word. Hand them the business card"
-                            ].map((item, i2) => /* @__PURE__ */ jsxs48(
+                            ].map((item, i2) => /* @__PURE__ */ jsxs55(
                               "li",
                               {
                                 className: "drp-text drp-text--sm drp-text--bold",
@@ -13489,7 +13893,7 @@ var SupportHome = ({ view = "home" }) => {
                             )) })
                           }
                         ),
-                        /* @__PURE__ */ jsx54(
+                        /* @__PURE__ */ jsx64(
                           "p",
                           {
                             className: "drp-text drp-text--sm",
@@ -13501,7 +13905,7 @@ var SupportHome = ({ view = "home" }) => {
                             children: "Get involved with fundraiser at schools, as it's a nice approach to market business. Prior to handing out the order received, collect all necessary information like business card pack, fliers, with proper information."
                           }
                         ),
-                        /* @__PURE__ */ jsx54(
+                        /* @__PURE__ */ jsx64(
                           "p",
                           {
                             className: "drp-text drp-text--sm drp-text--muted",
@@ -13512,8 +13916,8 @@ var SupportHome = ({ view = "home" }) => {
                       ]
                     }
                   ),
-                  /* @__PURE__ */ jsxs48("div", { children: [
-                    /* @__PURE__ */ jsx54(
+                  /* @__PURE__ */ jsxs55("div", { children: [
+                    /* @__PURE__ */ jsx64(
                       "h3",
                       {
                         className: "drp-h6",
@@ -13521,28 +13925,28 @@ var SupportHome = ({ view = "home" }) => {
                         children: "This also may help you"
                       }
                     ),
-                    /* @__PURE__ */ jsx54("div", { className: "drp-flex-col drp-gap-2", children: relatedArticles.map((a2) => /* @__PURE__ */ jsx54(RelatedArticleRow, { ...a2 }, a2.title)) })
+                    /* @__PURE__ */ jsx64("div", { className: "drp-flex-col drp-gap-2", children: relatedArticles.map((a2) => /* @__PURE__ */ jsx64(RelatedArticleRow, { ...a2 }, a2.title)) })
                   ] })
                 ] }),
-                /* @__PURE__ */ jsx54(ArticleSidebarNav, {})
+                /* @__PURE__ */ jsx64(ArticleSidebarNav, {})
               ]
             }
           )
         ] }),
-        view === "search" && /* @__PURE__ */ jsxs48(Fragment8, { children: [
-          /* @__PURE__ */ jsx54(
+        view === "search" && /* @__PURE__ */ jsxs55(Fragment11, { children: [
+          /* @__PURE__ */ jsx64(
             SupportHero,
             {
               searchPlaceholder: "Search help articles",
               searchValue: "Account"
             }
           ),
-          /* @__PURE__ */ jsxs48(
+          /* @__PURE__ */ jsxs55(
             "div",
             {
               style: { padding: "0 var(--drp-space-6) var(--drp-space-4)" },
               children: [
-                /* @__PURE__ */ jsx54(
+                /* @__PURE__ */ jsx64(
                   "p",
                   {
                     className: "drp-text drp-text--bold drp-text--sm",
@@ -13550,22 +13954,22 @@ var SupportHome = ({ view = "home" }) => {
                     children: "Search results"
                   }
                 ),
-                /* @__PURE__ */ jsx54(
+                /* @__PURE__ */ jsx64(
                   "div",
                   {
                     className: "drp-flex-col drp-gap-3",
                     style: { marginBottom: "var(--drp-space-6)" },
-                    children: searchResults.map((r2) => /* @__PURE__ */ jsx54(SearchResultRow, { ...r2 }, r2.title))
+                    children: searchResults.map((r2) => /* @__PURE__ */ jsx64(SearchResultRow, { ...r2 }, r2.title))
                   }
                 ),
-                /* @__PURE__ */ jsxs48(
+                /* @__PURE__ */ jsxs55(
                   "div",
                   {
                     className: "drp-flex drp-items-center drp-justify-between",
                     style: { padding: "var(--drp-space-4) 0" },
                     children: [
-                      /* @__PURE__ */ jsxs48("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
-                        /* @__PURE__ */ jsx54(
+                      /* @__PURE__ */ jsxs55("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
+                        /* @__PURE__ */ jsx64(
                           "svg",
                           {
                             width: "14",
@@ -13574,15 +13978,15 @@ var SupportHome = ({ view = "home" }) => {
                             fill: "none",
                             stroke: "currentColor",
                             strokeWidth: "2",
-                            children: /* @__PURE__ */ jsx54("path", { d: "M15 18l-6-6 6-6" })
+                            children: /* @__PURE__ */ jsx64("path", { d: "M15 18l-6-6 6-6" })
                           }
                         ),
                         "Prev"
                       ] }),
-                      /* @__PURE__ */ jsx54("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
-                      /* @__PURE__ */ jsxs48("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
+                      /* @__PURE__ */ jsx64("span", { className: "drp-text drp-text--sm drp-text--muted", children: "Page 1 of 10" }),
+                      /* @__PURE__ */ jsxs55("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: [
                         "Next",
-                        /* @__PURE__ */ jsx54(
+                        /* @__PURE__ */ jsx64(
                           "svg",
                           {
                             width: "14",
@@ -13591,7 +13995,7 @@ var SupportHome = ({ view = "home" }) => {
                             fill: "none",
                             stroke: "currentColor",
                             strokeWidth: "2",
-                            children: /* @__PURE__ */ jsx54("path", { d: "M9 18l6-6-6-6" })
+                            children: /* @__PURE__ */ jsx64("path", { d: "M9 18l6-6-6-6" })
                           }
                         )
                       ] })
@@ -13603,22 +14007,22 @@ var SupportHome = ({ view = "home" }) => {
           )
         ] })
       ] }),
-      /* @__PURE__ */ jsx54(SupportFooter, {})
+      /* @__PURE__ */ jsx64(SupportFooter, {})
     ] })
   ] });
 };
 
 // src/screens/ProfileSettings/ProfileAccount.tsx
-import { useState as useState10 } from "react";
-import { jsx as jsx55, jsxs as jsxs49 } from "react/jsx-runtime";
-var DoctorProjectSidebar7 = () => /* @__PURE__ */ jsxs49("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ jsxs49("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ jsx55("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ jsx55("span", { className: "sidebar-brand-dot" })
+import { useState as useState12 } from "react";
+import { jsx as jsx65, jsxs as jsxs56 } from "react/jsx-runtime";
+var DoctorProjectSidebar7 = () => /* @__PURE__ */ jsxs56("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ jsxs56("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ jsx65("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ jsx65("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ jsxs49("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ jsxs49("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ jsx55("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ jsxs56("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ jsxs56("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ jsx65("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard", badge: 15, badgeType: "purple" },
         { label: "Projects" },
@@ -13627,9 +14031,9 @@ var DoctorProjectSidebar7 = () => /* @__PURE__ */ jsxs49("aside", { className: "
         { label: "File Manager", badge: 14, badgeType: "green" },
         { label: "Calendar" },
         { label: "Inbox" }
-      ].map((item) => /* @__PURE__ */ jsxs49("a", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ jsx55("span", { className: "sidebar-nav-text", children: item.label }),
-        item.badge && /* @__PURE__ */ jsx55(
+      ].map((item) => /* @__PURE__ */ jsxs56("a", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ jsx65("span", { className: "sidebar-nav-text", children: item.label }),
+        item.badge && /* @__PURE__ */ jsx65(
           "span",
           {
             className: `sidebar-badge sidebar-badge--${item.badgeType}`,
@@ -13638,18 +14042,18 @@ var DoctorProjectSidebar7 = () => /* @__PURE__ */ jsxs49("aside", { className: "
         )
       ] }, item.label))
     ] }),
-    /* @__PURE__ */ jsxs49("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ jsx55("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ jsxs56("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ jsx65("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-info)" },
         { name: "Thanawan Chadee", bg: "var(--drp-orange)" },
         { name: "Justine Robinson", bg: "var(--drp-success)" }
-      ].map((member) => /* @__PURE__ */ jsxs49("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ jsx55("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
-        /* @__PURE__ */ jsx55("span", { className: "sidebar-team-name", children: member.name })
+      ].map((member) => /* @__PURE__ */ jsxs56("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ jsx65("div", { className: "sidebar-avatar", style: { background: member.bg }, children: member.name[0] }),
+        /* @__PURE__ */ jsx65("span", { className: "sidebar-team-name", children: member.name })
       ] }, member.name)),
-      /* @__PURE__ */ jsxs49("div", { className: "sidebar-see-more", children: [
-        /* @__PURE__ */ jsx55(
+      /* @__PURE__ */ jsxs56("div", { className: "sidebar-see-more", children: [
+        /* @__PURE__ */ jsx65(
           "svg",
           {
             width: "16",
@@ -13658,15 +14062,15 @@ var DoctorProjectSidebar7 = () => /* @__PURE__ */ jsxs49("aside", { className: "
             fill: "none",
             stroke: "currentColor",
             strokeWidth: "2",
-            children: /* @__PURE__ */ jsx55("polyline", { points: "6 9 12 15 18 9" })
+            children: /* @__PURE__ */ jsx65("polyline", { points: "6 9 12 15 18 9" })
           }
         ),
         "See More"
       ] })
     ] })
   ] }),
-  /* @__PURE__ */ jsxs49("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ jsx55(
+  /* @__PURE__ */ jsxs56("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ jsx65(
       "div",
       {
         className: "sidebar-avatar",
@@ -13674,14 +14078,14 @@ var DoctorProjectSidebar7 = () => /* @__PURE__ */ jsxs49("aside", { className: "
         children: "H"
       }
     ),
-    /* @__PURE__ */ jsx55("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx55("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ jsx55("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ jsx65("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx65("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ jsx65("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var TopBar10 = () => /* @__PURE__ */ jsxs49("header", { className: "topbar", children: [
-  /* @__PURE__ */ jsx55("div", { className: "topbar-left", children: /* @__PURE__ */ jsx55("h1", { className: "topbar-title", children: "Profile Settings" }) }),
-  /* @__PURE__ */ jsxs49("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx55("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx55(
+var TopBar10 = () => /* @__PURE__ */ jsxs56("header", { className: "topbar", children: [
+  /* @__PURE__ */ jsx65("div", { className: "topbar-left", children: /* @__PURE__ */ jsx65("h1", { className: "topbar-title", children: "Profile Settings" }) }),
+  /* @__PURE__ */ jsxs56("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx65("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx65(
       "svg",
       {
         width: "20",
@@ -13690,7 +14094,7 @@ var TopBar10 = () => /* @__PURE__ */ jsxs49("header", { className: "topbar", chi
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ jsx55(
+        children: /* @__PURE__ */ jsx65(
           "path",
           {
             strokeLinecap: "round",
@@ -13700,7 +14104,7 @@ var TopBar10 = () => /* @__PURE__ */ jsxs49("header", { className: "topbar", chi
         )
       }
     ) }),
-    /* @__PURE__ */ jsx55("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx55(
+    /* @__PURE__ */ jsx65("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx65(
       "svg",
       {
         width: "20",
@@ -13709,7 +14113,7 @@ var TopBar10 = () => /* @__PURE__ */ jsxs49("header", { className: "topbar", chi
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ jsx55(
+        children: /* @__PURE__ */ jsx65(
           "path",
           {
             strokeLinecap: "round",
@@ -13719,8 +14123,8 @@ var TopBar10 = () => /* @__PURE__ */ jsxs49("header", { className: "topbar", chi
         )
       }
     ) }),
-    /* @__PURE__ */ jsxs49("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ jsx55(
+    /* @__PURE__ */ jsxs56("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ jsx65(
         "svg",
         {
           width: "18",
@@ -13729,7 +14133,7 @@ var TopBar10 = () => /* @__PURE__ */ jsxs49("header", { className: "topbar", chi
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           strokeWidth: "2",
-          children: /* @__PURE__ */ jsx55(
+          children: /* @__PURE__ */ jsx65(
             "path",
             {
               strokeLinecap: "round",
@@ -13739,10 +14143,10 @@ var TopBar10 = () => /* @__PURE__ */ jsxs49("header", { className: "topbar", chi
           )
         }
       ),
-      /* @__PURE__ */ jsx55("span", { children: "Apps" })
+      /* @__PURE__ */ jsx65("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ jsxs49("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsx55(
+    /* @__PURE__ */ jsxs56("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsx65(
         "svg",
         {
           width: "18",
@@ -13751,7 +14155,7 @@ var TopBar10 = () => /* @__PURE__ */ jsxs49("header", { className: "topbar", chi
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           strokeWidth: "2.5",
-          children: /* @__PURE__ */ jsx55(
+          children: /* @__PURE__ */ jsx65(
             "path",
             {
               strokeLinecap: "round",
@@ -13761,19 +14165,19 @@ var TopBar10 = () => /* @__PURE__ */ jsxs49("header", { className: "topbar", chi
           )
         }
       ),
-      /* @__PURE__ */ jsx55("span", { children: "Create new" })
+      /* @__PURE__ */ jsx65("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer9 = () => /* @__PURE__ */ jsxs49("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs49("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsx55("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ jsx55("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx55("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx55("span", { className: "footer-link", children: "API" })
+var Footer9 = () => /* @__PURE__ */ jsxs56("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs56("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsx65("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ jsx65("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx65("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx65("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs49("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx55("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs49(
+  /* @__PURE__ */ jsxs56("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx65("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs56(
       "svg",
       {
         width: "16",
@@ -13783,7 +14187,7 @@ var Footer9 = () => /* @__PURE__ */ jsxs49("footer", { className: "footer-bar", 
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ jsx55(
+          /* @__PURE__ */ jsx65(
             "path",
             {
               strokeLinecap: "round",
@@ -13791,7 +14195,7 @@ var Footer9 = () => /* @__PURE__ */ jsxs49("footer", { className: "footer-bar", 
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ jsx55(
+          /* @__PURE__ */ jsx65(
             "path",
             {
               strokeLinecap: "round",
@@ -13802,7 +14206,7 @@ var Footer9 = () => /* @__PURE__ */ jsxs49("footer", { className: "footer-bar", 
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx55("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx55(
+    /* @__PURE__ */ jsx65("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx65(
       "svg",
       {
         width: "16",
@@ -13811,7 +14215,7 @@ var Footer9 = () => /* @__PURE__ */ jsxs49("footer", { className: "footer-bar", 
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ jsx55(
+        children: /* @__PURE__ */ jsx65(
           "path",
           {
             strokeLinecap: "round",
@@ -13823,8 +14227,8 @@ var Footer9 = () => /* @__PURE__ */ jsxs49("footer", { className: "footer-bar", 
     ) })
   ] })
 ] });
-var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280, flexShrink: 0, padding: "var(--drp-space-6)" }, children: [
-  /* @__PURE__ */ jsxs49(
+var ProfileSidePanel = () => /* @__PURE__ */ jsxs56("div", { style: { width: 280, flexShrink: 0, padding: "var(--drp-space-6)" }, children: [
+  /* @__PURE__ */ jsxs56(
     "div",
     {
       style: {
@@ -13835,7 +14239,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280
         marginBottom: "var(--drp-space-4)"
       },
       children: [
-        /* @__PURE__ */ jsx55(
+        /* @__PURE__ */ jsx65(
           "img",
           {
             src: "https://i.pravatar.cc/80?img=47",
@@ -13846,7 +14250,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280
             }
           }
         ),
-        /* @__PURE__ */ jsx55(
+        /* @__PURE__ */ jsx65(
           "div",
           {
             style: {
@@ -13866,8 +14270,8 @@ var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280
       ]
     }
   ),
-  /* @__PURE__ */ jsx55("h2", { className: "drp-h5", style: { marginBottom: 2 }, children: "Laquita Elliott" }),
-  /* @__PURE__ */ jsx55(
+  /* @__PURE__ */ jsx65("h2", { className: "drp-h5", style: { marginBottom: 2 }, children: "Laquita Elliott" }),
+  /* @__PURE__ */ jsx65(
     "p",
     {
       className: "drp-text drp-text--sm drp-text--muted",
@@ -13875,7 +14279,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280
       children: "elliott.laquita@gmail.com"
     }
   ),
-  /* @__PURE__ */ jsxs49(
+  /* @__PURE__ */ jsxs56(
     "p",
     {
       className: "drp-text drp-text--sm",
@@ -13885,12 +14289,12 @@ var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280
       },
       children: [
         "Happiness is not something readymade.",
-        /* @__PURE__ */ jsx55("br", {}),
+        /* @__PURE__ */ jsx65("br", {}),
         "It comes from your own actions."
       ]
     }
   ),
-  /* @__PURE__ */ jsx55(
+  /* @__PURE__ */ jsx65(
     "span",
     {
       className: "drp-tag",
@@ -13898,8 +14302,8 @@ var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280
       children: "Designer"
     }
   ),
-  /* @__PURE__ */ jsxs49("div", { children: [
-    /* @__PURE__ */ jsxs49(
+  /* @__PURE__ */ jsxs56("div", { children: [
+    /* @__PURE__ */ jsxs56(
       "div",
       {
         style: {
@@ -13907,12 +14311,12 @@ var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280
           borderBottom: "var(--drp-border-dashed)"
         },
         children: [
-          /* @__PURE__ */ jsxs49("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
-            /* @__PURE__ */ jsxs49("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-              /* @__PURE__ */ jsx55("span", { className: "drp-h5", children: "296" }),
-              /* @__PURE__ */ jsx55("span", { className: "drp-badge drp-badge--pink", children: "-8" })
+          /* @__PURE__ */ jsxs56("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
+            /* @__PURE__ */ jsxs56("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+              /* @__PURE__ */ jsx65("span", { className: "drp-h5", children: "296" }),
+              /* @__PURE__ */ jsx65("span", { className: "drp-badge drp-badge--pink", children: "-8" })
             ] }),
-            /* @__PURE__ */ jsx55(
+            /* @__PURE__ */ jsx65(
               "svg",
               {
                 width: "16",
@@ -13921,7 +14325,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280
                 viewBox: "0 0 24 24",
                 stroke: "var(--drp-grey)",
                 strokeWidth: "2",
-                children: /* @__PURE__ */ jsx55(
+                children: /* @__PURE__ */ jsx65(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -13932,7 +14336,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280
               }
             )
           ] }),
-          /* @__PURE__ */ jsx55(
+          /* @__PURE__ */ jsx65(
             "p",
             {
               className: "drp-text drp-text--sm drp-text--muted",
@@ -13943,7 +14347,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280
         ]
       }
     ),
-    /* @__PURE__ */ jsxs49(
+    /* @__PURE__ */ jsxs56(
       "div",
       {
         style: {
@@ -13951,12 +14355,12 @@ var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280
           borderBottom: "var(--drp-border-dashed)"
         },
         children: [
-          /* @__PURE__ */ jsxs49("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
-            /* @__PURE__ */ jsxs49("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
-              /* @__PURE__ */ jsx55("span", { className: "drp-h5", children: "18" }),
-              /* @__PURE__ */ jsx55("span", { className: "drp-badge drp-badge--mint", children: "5" })
+          /* @__PURE__ */ jsxs56("div", { className: "drp-flex drp-items-center drp-justify-between", children: [
+            /* @__PURE__ */ jsxs56("div", { className: "drp-flex drp-items-center drp-gap-2", children: [
+              /* @__PURE__ */ jsx65("span", { className: "drp-h5", children: "18" }),
+              /* @__PURE__ */ jsx65("span", { className: "drp-badge drp-badge--mint", children: "5" })
             ] }),
-            /* @__PURE__ */ jsx55(
+            /* @__PURE__ */ jsx65(
               "svg",
               {
                 width: "16",
@@ -13965,7 +14369,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280
                 viewBox: "0 0 24 24",
                 stroke: "var(--drp-grey)",
                 strokeWidth: "2",
-                children: /* @__PURE__ */ jsx55(
+                children: /* @__PURE__ */ jsx65(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -13976,7 +14380,7 @@ var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280
               }
             )
           ] }),
-          /* @__PURE__ */ jsx55(
+          /* @__PURE__ */ jsx65(
             "p",
             {
               className: "drp-text drp-text--sm drp-text--muted",
@@ -13987,9 +14391,9 @@ var ProfileSidePanel = () => /* @__PURE__ */ jsxs49("div", { style: { width: 280
         ]
       }
     ),
-    /* @__PURE__ */ jsxs49("div", { style: { paddingTop: "var(--drp-space-3)" }, children: [
-      /* @__PURE__ */ jsx55("span", { className: "drp-h5", children: "$36" }),
-      /* @__PURE__ */ jsx55(
+    /* @__PURE__ */ jsxs56("div", { style: { paddingTop: "var(--drp-space-3)" }, children: [
+      /* @__PURE__ */ jsx65("span", { className: "drp-h5", children: "$36" }),
+      /* @__PURE__ */ jsx65(
         "p",
         {
           className: "drp-text drp-text--sm drp-text--muted",
@@ -14007,13 +14411,13 @@ var TABS = [
   { key: "apis", label: "APIs" },
   { key: "notifications", label: "Notifications" }
 ];
-var ProfileTabBar = ({ activeTab, onTabChange }) => /* @__PURE__ */ jsxs49(
+var ProfileTabBar = ({ activeTab, onTabChange }) => /* @__PURE__ */ jsxs56(
   "div",
   {
     className: "drp-flex drp-items-center drp-gap-1",
     style: { marginBottom: "var(--drp-space-4)", flexShrink: 0 },
     children: [
-      /* @__PURE__ */ jsx55("div", { className: "drp-tabs", children: TABS.map((tab) => /* @__PURE__ */ jsx55(
+      /* @__PURE__ */ jsx65("div", { className: "drp-tabs", children: TABS.map((tab) => /* @__PURE__ */ jsx65(
         "button",
         {
           onClick: () => onTabChange(tab.key),
@@ -14022,14 +14426,14 @@ var ProfileTabBar = ({ activeTab, onTabChange }) => /* @__PURE__ */ jsxs49(
         },
         tab.key
       )) }),
-      /* @__PURE__ */ jsx55("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ jsx55("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
+      /* @__PURE__ */ jsx65("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ jsx65("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
     ]
   }
 );
 var ContentCard = ({
   title,
   children
-}) => /* @__PURE__ */ jsxs49(
+}) => /* @__PURE__ */ jsxs56(
   "div",
   {
     className: "drp-card",
@@ -14041,17 +14445,17 @@ var ContentCard = ({
       padding: 0
     },
     children: [
-      /* @__PURE__ */ jsx55(
+      /* @__PURE__ */ jsx65(
         "div",
         {
           style: {
             padding: "var(--drp-space-4) var(--drp-space-6)",
             borderBottom: "var(--drp-border-thin)"
           },
-          children: /* @__PURE__ */ jsx55("h2", { className: "drp-h5", children: title })
+          children: /* @__PURE__ */ jsx65("h2", { className: "drp-h5", children: title })
         }
       ),
-      /* @__PURE__ */ jsx55(
+      /* @__PURE__ */ jsx65(
         "div",
         {
           style: {
@@ -14062,7 +14466,7 @@ var ContentCard = ({
           children
         }
       ),
-      /* @__PURE__ */ jsxs49(
+      /* @__PURE__ */ jsxs56(
         "div",
         {
           className: "drp-flex drp-items-center drp-justify-between",
@@ -14071,8 +14475,8 @@ var ContentCard = ({
             borderTop: "var(--drp-border-thin)"
           },
           children: [
-            /* @__PURE__ */ jsx55("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
-            /* @__PURE__ */ jsx55("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
+            /* @__PURE__ */ jsx65("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
+            /* @__PURE__ */ jsx65("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
           ]
         }
       )
@@ -14082,9 +14486,9 @@ var ContentCard = ({
 var FieldRow = ({
   label,
   value
-}) => /* @__PURE__ */ jsxs49("div", { children: [
-  /* @__PURE__ */ jsx55("p", { className: "drp-label", style: { marginBottom: "var(--drp-space-1)" }, children: label }),
-  /* @__PURE__ */ jsx55(
+}) => /* @__PURE__ */ jsxs56("div", { children: [
+  /* @__PURE__ */ jsx65("p", { className: "drp-label", style: { marginBottom: "var(--drp-space-1)" }, children: label }),
+  /* @__PURE__ */ jsx65(
     "p",
     {
       className: "drp-text drp-text--bold drp-text--sm",
@@ -14100,11 +14504,11 @@ var ProfileLayout = ({
   activeTab,
   onTabChange,
   children
-}) => /* @__PURE__ */ jsxs49("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
-  /* @__PURE__ */ jsx55(DoctorProjectSidebar7, {}),
-  /* @__PURE__ */ jsxs49("div", { className: "main-content", style: { overflow: "hidden" }, children: [
-    /* @__PURE__ */ jsx55(TopBar10, {}),
-    /* @__PURE__ */ jsxs49(
+}) => /* @__PURE__ */ jsxs56("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
+  /* @__PURE__ */ jsx65(DoctorProjectSidebar7, {}),
+  /* @__PURE__ */ jsxs56("div", { className: "main-content", style: { overflow: "hidden" }, children: [
+    /* @__PURE__ */ jsx65(TopBar10, {}),
+    /* @__PURE__ */ jsxs56(
       "div",
       {
         className: "drp-flex",
@@ -14115,32 +14519,32 @@ var ProfileLayout = ({
           gap: "var(--drp-space-6)"
         },
         children: [
-          /* @__PURE__ */ jsx55(ProfileSidePanel, {}),
-          /* @__PURE__ */ jsxs49("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
-            /* @__PURE__ */ jsx55(ProfileTabBar, { activeTab, onTabChange }),
+          /* @__PURE__ */ jsx65(ProfileSidePanel, {}),
+          /* @__PURE__ */ jsxs56("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
+            /* @__PURE__ */ jsx65(ProfileTabBar, { activeTab, onTabChange }),
             children
           ] })
         ]
       }
     ),
-    /* @__PURE__ */ jsx55(Footer9, {})
+    /* @__PURE__ */ jsx65(Footer9, {})
   ] })
 ] });
 var ProfileAccount = () => {
-  const [activeTab, setActiveTab] = useState10("account");
-  return /* @__PURE__ */ jsx55(ProfileLayout, { activeTab, onTabChange: setActiveTab, children: /* @__PURE__ */ jsx55(ContentCard, { title: "Public account details", children: /* @__PURE__ */ jsxs49("div", { className: "drp-flex-col drp-gap-4", children: [
-    /* @__PURE__ */ jsx55(FieldRow, { label: "Full name", value: "Henry Richardson" }),
-    /* @__PURE__ */ jsx55(FieldRow, { label: "Country", value: "United States" }),
-    /* @__PURE__ */ jsx55(FieldRow, { label: "City", value: "New Castle" }),
-    /* @__PURE__ */ jsxs49("div", { className: "drp-form-row", children: [
-      /* @__PURE__ */ jsx55(FieldRow, { label: "Date of birth", value: "January 24, 1983" }),
-      /* @__PURE__ */ jsx55(FieldRow, { label: "Gender", value: "Male" })
+  const [activeTab, setActiveTab] = useState12("account");
+  return /* @__PURE__ */ jsx65(ProfileLayout, { activeTab, onTabChange: setActiveTab, children: /* @__PURE__ */ jsx65(ContentCard, { title: "Public account details", children: /* @__PURE__ */ jsxs56("div", { className: "drp-flex-col drp-gap-4", children: [
+    /* @__PURE__ */ jsx65(FieldRow, { label: "Full name", value: "Henry Richardson" }),
+    /* @__PURE__ */ jsx65(FieldRow, { label: "Country", value: "United States" }),
+    /* @__PURE__ */ jsx65(FieldRow, { label: "City", value: "New Castle" }),
+    /* @__PURE__ */ jsxs56("div", { className: "drp-form-row", children: [
+      /* @__PURE__ */ jsx65(FieldRow, { label: "Date of birth", value: "January 24, 1983" }),
+      /* @__PURE__ */ jsx65(FieldRow, { label: "Gender", value: "Male" })
     ] }),
-    /* @__PURE__ */ jsxs49("div", { className: "drp-form-row", children: [
-      /* @__PURE__ */ jsx55(FieldRow, { label: "Email address", value: "seb.bennett@gmail.com" }),
-      /* @__PURE__ */ jsx55(FieldRow, { label: "Phone number", value: "+995 590 558 124" })
+    /* @__PURE__ */ jsxs56("div", { className: "drp-form-row", children: [
+      /* @__PURE__ */ jsx65(FieldRow, { label: "Email address", value: "seb.bennett@gmail.com" }),
+      /* @__PURE__ */ jsx65(FieldRow, { label: "Phone number", value: "+995 590 558 124" })
     ] }),
-    /* @__PURE__ */ jsx55(
+    /* @__PURE__ */ jsx65(
       FieldRow,
       {
         label: "Address",
@@ -14151,14 +14555,14 @@ var ProfileAccount = () => {
 };
 
 // src/screens/ProfileSettings/ProfileNotifications.tsx
-import { useState as useState11 } from "react";
-import { jsx as jsx56, jsxs as jsxs50 } from "react/jsx-runtime";
-var Toggle2 = ({ enabled, onChange }) => /* @__PURE__ */ jsxs50("label", { className: "drp-switch", onClick: () => onChange(!enabled), children: [
-  /* @__PURE__ */ jsx56("input", { type: "checkbox", checked: enabled, onChange: () => {
+import { useState as useState13 } from "react";
+import { jsx as jsx66, jsxs as jsxs57 } from "react/jsx-runtime";
+var Toggle2 = ({ enabled, onChange }) => /* @__PURE__ */ jsxs57("label", { className: "drp-switch", onClick: () => onChange(!enabled), children: [
+  /* @__PURE__ */ jsx66("input", { type: "checkbox", checked: enabled, onChange: () => {
   } }),
-  /* @__PURE__ */ jsx56("span", { className: "drp-switch__track", children: /* @__PURE__ */ jsx56("span", { className: "drp-switch__knob" }) })
+  /* @__PURE__ */ jsx66("span", { className: "drp-switch__track", children: /* @__PURE__ */ jsx66("span", { className: "drp-switch__knob" }) })
 ] });
-var NotifRow = ({ label, description, enabled, onChange }) => /* @__PURE__ */ jsxs50(
+var NotifRow = ({ label, description, enabled, onChange }) => /* @__PURE__ */ jsxs57(
   "div",
   {
     className: "drp-flex drp-items-center drp-justify-between",
@@ -14167,22 +14571,22 @@ var NotifRow = ({ label, description, enabled, onChange }) => /* @__PURE__ */ js
       borderBottom: "var(--drp-border-thin)"
     },
     children: [
-      /* @__PURE__ */ jsxs50("div", { children: [
-        /* @__PURE__ */ jsx56("p", { className: "drp-label", style: { marginBottom: 2 }, children: label }),
-        /* @__PURE__ */ jsx56("p", { className: "drp-text drp-text--bold drp-text--sm", children: description })
+      /* @__PURE__ */ jsxs57("div", { children: [
+        /* @__PURE__ */ jsx66("p", { className: "drp-label", style: { marginBottom: 2 }, children: label }),
+        /* @__PURE__ */ jsx66("p", { className: "drp-text drp-text--bold drp-text--sm", children: description })
       ] }),
-      /* @__PURE__ */ jsx56(Toggle2, { enabled, onChange })
+      /* @__PURE__ */ jsx66(Toggle2, { enabled, onChange })
     ]
   }
 );
-var DoctorProjectSidebar8 = () => /* @__PURE__ */ jsxs50("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ jsxs50("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ jsx56("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ jsx56("span", { className: "sidebar-brand-dot" })
+var DoctorProjectSidebar8 = () => /* @__PURE__ */ jsxs57("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ jsxs57("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ jsx66("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ jsx66("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ jsxs50("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ jsxs50("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ jsx56("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ jsxs57("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ jsxs57("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ jsx66("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard", badge: 15, badgeType: "purple" },
         { label: "Projects" },
@@ -14191,9 +14595,9 @@ var DoctorProjectSidebar8 = () => /* @__PURE__ */ jsxs50("aside", { className: "
         { label: "File Manager", badge: 14, badgeType: "green" },
         { label: "Calendar" },
         { label: "Inbox" }
-      ].map((item) => /* @__PURE__ */ jsxs50("a", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ jsx56("span", { className: "sidebar-nav-text", children: item.label }),
-        item.badge && /* @__PURE__ */ jsx56(
+      ].map((item) => /* @__PURE__ */ jsxs57("a", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ jsx66("span", { className: "sidebar-nav-text", children: item.label }),
+        item.badge && /* @__PURE__ */ jsx66(
           "span",
           {
             className: `sidebar-badge sidebar-badge--${item.badgeType}`,
@@ -14202,21 +14606,21 @@ var DoctorProjectSidebar8 = () => /* @__PURE__ */ jsxs50("aside", { className: "
         )
       ] }, item.label))
     ] }),
-    /* @__PURE__ */ jsxs50("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ jsx56("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ jsxs57("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ jsx66("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-info)" },
         { name: "Thanawan Chadee", bg: "var(--drp-orange)" },
         { name: "Justine Robinson", bg: "var(--drp-success)" }
-      ].map((m3) => /* @__PURE__ */ jsxs50("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ jsx56("div", { className: "sidebar-avatar", style: { background: m3.bg }, children: m3.name[0] }),
-        /* @__PURE__ */ jsx56("span", { className: "sidebar-team-name", children: m3.name })
+      ].map((m3) => /* @__PURE__ */ jsxs57("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ jsx66("div", { className: "sidebar-avatar", style: { background: m3.bg }, children: m3.name[0] }),
+        /* @__PURE__ */ jsx66("span", { className: "sidebar-team-name", children: m3.name })
       ] }, m3.name)),
-      /* @__PURE__ */ jsx56("div", { className: "sidebar-see-more", children: "See More" })
+      /* @__PURE__ */ jsx66("div", { className: "sidebar-see-more", children: "See More" })
     ] })
   ] }),
-  /* @__PURE__ */ jsxs50("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ jsx56(
+  /* @__PURE__ */ jsxs57("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ jsx66(
       "div",
       {
         className: "sidebar-avatar",
@@ -14224,14 +14628,14 @@ var DoctorProjectSidebar8 = () => /* @__PURE__ */ jsxs50("aside", { className: "
         children: "H"
       }
     ),
-    /* @__PURE__ */ jsx56("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx56("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ jsx56("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ jsx66("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx66("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ jsx66("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var TopBar11 = () => /* @__PURE__ */ jsxs50("header", { className: "topbar", children: [
-  /* @__PURE__ */ jsx56("div", { className: "topbar-left", children: /* @__PURE__ */ jsx56("h1", { className: "topbar-title", children: "Profile Settings" }) }),
-  /* @__PURE__ */ jsxs50("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx56("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx56(
+var TopBar11 = () => /* @__PURE__ */ jsxs57("header", { className: "topbar", children: [
+  /* @__PURE__ */ jsx66("div", { className: "topbar-left", children: /* @__PURE__ */ jsx66("h1", { className: "topbar-title", children: "Profile Settings" }) }),
+  /* @__PURE__ */ jsxs57("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx66("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx66(
       "svg",
       {
         width: "20",
@@ -14240,7 +14644,7 @@ var TopBar11 = () => /* @__PURE__ */ jsxs50("header", { className: "topbar", chi
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ jsx56(
+        children: /* @__PURE__ */ jsx66(
           "path",
           {
             strokeLinecap: "round",
@@ -14250,7 +14654,7 @@ var TopBar11 = () => /* @__PURE__ */ jsxs50("header", { className: "topbar", chi
         )
       }
     ) }),
-    /* @__PURE__ */ jsx56("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx56(
+    /* @__PURE__ */ jsx66("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx66(
       "svg",
       {
         width: "20",
@@ -14259,7 +14663,7 @@ var TopBar11 = () => /* @__PURE__ */ jsxs50("header", { className: "topbar", chi
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ jsx56(
+        children: /* @__PURE__ */ jsx66(
           "path",
           {
             strokeLinecap: "round",
@@ -14269,9 +14673,9 @@ var TopBar11 = () => /* @__PURE__ */ jsxs50("header", { className: "topbar", chi
         )
       }
     ) }),
-    /* @__PURE__ */ jsx56("button", { className: "topbar-apps-btn", children: /* @__PURE__ */ jsx56("span", { children: "Apps" }) }),
-    /* @__PURE__ */ jsxs50("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsx56(
+    /* @__PURE__ */ jsx66("button", { className: "topbar-apps-btn", children: /* @__PURE__ */ jsx66("span", { children: "Apps" }) }),
+    /* @__PURE__ */ jsxs57("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsx66(
         "svg",
         {
           width: "18",
@@ -14280,7 +14684,7 @@ var TopBar11 = () => /* @__PURE__ */ jsxs50("header", { className: "topbar", chi
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           strokeWidth: "2.5",
-          children: /* @__PURE__ */ jsx56(
+          children: /* @__PURE__ */ jsx66(
             "path",
             {
               strokeLinecap: "round",
@@ -14290,19 +14694,19 @@ var TopBar11 = () => /* @__PURE__ */ jsxs50("header", { className: "topbar", chi
           )
         }
       ),
-      /* @__PURE__ */ jsx56("span", { children: "Create new" })
+      /* @__PURE__ */ jsx66("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer10 = () => /* @__PURE__ */ jsxs50("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs50("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsx56("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ jsx56("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx56("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx56("span", { className: "footer-link", children: "API" })
+var Footer10 = () => /* @__PURE__ */ jsxs57("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs57("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsx66("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ jsx66("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx66("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx66("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs50("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx56("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs50(
+  /* @__PURE__ */ jsxs57("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx66("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs57(
       "svg",
       {
         width: "16",
@@ -14312,12 +14716,12 @@ var Footer10 = () => /* @__PURE__ */ jsxs50("footer", { className: "footer-bar",
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ jsx56("circle", { cx: "12", cy: "12", r: "3" }),
-          /* @__PURE__ */ jsx56("path", { d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" })
+          /* @__PURE__ */ jsx66("circle", { cx: "12", cy: "12", r: "3" }),
+          /* @__PURE__ */ jsx66("path", { d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" })
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx56("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx56(
+    /* @__PURE__ */ jsx66("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx66(
       "svg",
       {
         width: "16",
@@ -14326,7 +14730,7 @@ var Footer10 = () => /* @__PURE__ */ jsxs50("footer", { className: "footer-bar",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ jsx56(
+        children: /* @__PURE__ */ jsx66(
           "path",
           {
             strokeLinecap: "round",
@@ -14339,8 +14743,8 @@ var Footer10 = () => /* @__PURE__ */ jsxs50("footer", { className: "footer-bar",
   ] })
 ] });
 var ProfileNotifications = () => {
-  const [activeTab, setActiveTab] = useState11("notifications");
-  const [settings, setSettings] = useState11({
+  const [activeTab, setActiveTab] = useState13("notifications");
+  const [settings, setSettings] = useState13({
     productUpdates: true,
     reminders: false,
     promotions: true,
@@ -14354,11 +14758,11 @@ var ProfileNotifications = () => {
     { key: "apis", label: "APIs" },
     { key: "notifications", label: "Notifications" }
   ];
-  return /* @__PURE__ */ jsxs50("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
-    /* @__PURE__ */ jsx56(DoctorProjectSidebar8, {}),
-    /* @__PURE__ */ jsxs50("div", { className: "main-content", style: { overflow: "hidden" }, children: [
-      /* @__PURE__ */ jsx56(TopBar11, {}),
-      /* @__PURE__ */ jsxs50(
+  return /* @__PURE__ */ jsxs57("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
+    /* @__PURE__ */ jsx66(DoctorProjectSidebar8, {}),
+    /* @__PURE__ */ jsxs57("div", { className: "main-content", style: { overflow: "hidden" }, children: [
+      /* @__PURE__ */ jsx66(TopBar11, {}),
+      /* @__PURE__ */ jsxs57(
         "div",
         {
           className: "drp-flex",
@@ -14369,15 +14773,15 @@ var ProfileNotifications = () => {
             gap: "var(--drp-space-6)"
           },
           children: [
-            /* @__PURE__ */ jsx56(ProfileSidePanel, {}),
-            /* @__PURE__ */ jsxs50("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
-              /* @__PURE__ */ jsxs50(
+            /* @__PURE__ */ jsx66(ProfileSidePanel, {}),
+            /* @__PURE__ */ jsxs57("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
+              /* @__PURE__ */ jsxs57(
                 "div",
                 {
                   className: "drp-flex drp-items-center drp-gap-1",
                   style: { marginBottom: "var(--drp-space-4)", flexShrink: 0 },
                   children: [
-                    /* @__PURE__ */ jsx56("div", { className: "drp-tabs", children: TABS4.map((tab) => /* @__PURE__ */ jsx56(
+                    /* @__PURE__ */ jsx66("div", { className: "drp-tabs", children: TABS4.map((tab) => /* @__PURE__ */ jsx66(
                       "button",
                       {
                         onClick: () => setActiveTab(tab.key),
@@ -14386,11 +14790,11 @@ var ProfileNotifications = () => {
                       },
                       tab.key
                     )) }),
-                    /* @__PURE__ */ jsx56("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ jsx56("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
+                    /* @__PURE__ */ jsx66("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ jsx66("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
                   ]
                 }
               ),
-              /* @__PURE__ */ jsxs50(
+              /* @__PURE__ */ jsxs57(
                 "div",
                 {
                   className: "drp-card",
@@ -14402,17 +14806,17 @@ var ProfileNotifications = () => {
                     padding: 0
                   },
                   children: [
-                    /* @__PURE__ */ jsx56(
+                    /* @__PURE__ */ jsx66(
                       "div",
                       {
                         style: {
                           padding: "var(--drp-space-4) var(--drp-space-6)",
                           borderBottom: "var(--drp-border-thin)"
                         },
-                        children: /* @__PURE__ */ jsx56("h2", { className: "drp-h5", children: "Notifications" })
+                        children: /* @__PURE__ */ jsx66("h2", { className: "drp-h5", children: "Notifications" })
                       }
                     ),
-                    /* @__PURE__ */ jsxs50(
+                    /* @__PURE__ */ jsxs57(
                       "div",
                       {
                         style: {
@@ -14421,7 +14825,7 @@ var ProfileNotifications = () => {
                           overflowY: "auto"
                         },
                         children: [
-                          /* @__PURE__ */ jsx56(
+                          /* @__PURE__ */ jsx66(
                             NotifRow,
                             {
                               label: "Product updates",
@@ -14430,7 +14834,7 @@ var ProfileNotifications = () => {
                               onChange: (v3) => setSettings({ ...settings, productUpdates: v3 })
                             }
                           ),
-                          /* @__PURE__ */ jsx56(
+                          /* @__PURE__ */ jsx66(
                             NotifRow,
                             {
                               label: "Reminders",
@@ -14439,7 +14843,7 @@ var ProfileNotifications = () => {
                               onChange: (v3) => setSettings({ ...settings, reminders: v3 })
                             }
                           ),
-                          /* @__PURE__ */ jsx56(
+                          /* @__PURE__ */ jsx66(
                             NotifRow,
                             {
                               label: "Promotions and tips",
@@ -14448,7 +14852,7 @@ var ProfileNotifications = () => {
                               onChange: (v3) => setSettings({ ...settings, promotions: v3 })
                             }
                           ),
-                          /* @__PURE__ */ jsx56(
+                          /* @__PURE__ */ jsx66(
                             NotifRow,
                             {
                               label: "Policy and community",
@@ -14457,7 +14861,7 @@ var ProfileNotifications = () => {
                               onChange: (v3) => setSettings({ ...settings, policy: v3 })
                             }
                           ),
-                          /* @__PURE__ */ jsx56(
+                          /* @__PURE__ */ jsx66(
                             NotifRow,
                             {
                               label: "Account support",
@@ -14469,7 +14873,7 @@ var ProfileNotifications = () => {
                         ]
                       }
                     ),
-                    /* @__PURE__ */ jsxs50(
+                    /* @__PURE__ */ jsxs57(
                       "div",
                       {
                         className: "drp-flex drp-items-center drp-justify-between",
@@ -14478,8 +14882,8 @@ var ProfileNotifications = () => {
                           borderTop: "var(--drp-border-thin)"
                         },
                         children: [
-                          /* @__PURE__ */ jsx56("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
-                          /* @__PURE__ */ jsx56("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
+                          /* @__PURE__ */ jsx66("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
+                          /* @__PURE__ */ jsx66("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
                         ]
                       }
                     )
@@ -14490,22 +14894,22 @@ var ProfileNotifications = () => {
           ]
         }
       ),
-      /* @__PURE__ */ jsx56(Footer10, {})
+      /* @__PURE__ */ jsx66(Footer10, {})
     ] })
   ] });
 };
 
 // src/screens/ProfileSettings/ProfileSecurity.tsx
-import { useState as useState12 } from "react";
-import { jsx as jsx57, jsxs as jsxs51 } from "react/jsx-runtime";
-var DoctorProjectSidebar9 = () => /* @__PURE__ */ jsxs51("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ jsxs51("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ jsx57("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ jsx57("span", { className: "sidebar-brand-dot" })
+import { useState as useState14 } from "react";
+import { jsx as jsx67, jsxs as jsxs58 } from "react/jsx-runtime";
+var DoctorProjectSidebar9 = () => /* @__PURE__ */ jsxs58("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ jsxs58("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ jsx67("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ jsx67("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ jsxs51("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ jsxs51("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ jsx57("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ jsxs58("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ jsxs58("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ jsx67("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard", badge: 15, badgeType: "purple" },
         { label: "Projects" },
@@ -14514,9 +14918,9 @@ var DoctorProjectSidebar9 = () => /* @__PURE__ */ jsxs51("aside", { className: "
         { label: "File Manager", badge: 14, badgeType: "green" },
         { label: "Calendar" },
         { label: "Inbox" }
-      ].map((item) => /* @__PURE__ */ jsxs51("a", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ jsx57("span", { className: "sidebar-nav-text", children: item.label }),
-        item.badge && /* @__PURE__ */ jsx57(
+      ].map((item) => /* @__PURE__ */ jsxs58("a", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ jsx67("span", { className: "sidebar-nav-text", children: item.label }),
+        item.badge && /* @__PURE__ */ jsx67(
           "span",
           {
             className: `sidebar-badge sidebar-badge--${item.badgeType}`,
@@ -14525,21 +14929,21 @@ var DoctorProjectSidebar9 = () => /* @__PURE__ */ jsxs51("aside", { className: "
         )
       ] }, item.label))
     ] }),
-    /* @__PURE__ */ jsxs51("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ jsx57("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ jsxs58("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ jsx67("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-info)" },
         { name: "Thanawan Chadee", bg: "var(--drp-orange)" },
         { name: "Justine Robinson", bg: "var(--drp-success)" }
-      ].map((m3) => /* @__PURE__ */ jsxs51("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ jsx57("div", { className: "sidebar-avatar", style: { background: m3.bg }, children: m3.name[0] }),
-        /* @__PURE__ */ jsx57("span", { className: "sidebar-team-name", children: m3.name })
+      ].map((m3) => /* @__PURE__ */ jsxs58("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ jsx67("div", { className: "sidebar-avatar", style: { background: m3.bg }, children: m3.name[0] }),
+        /* @__PURE__ */ jsx67("span", { className: "sidebar-team-name", children: m3.name })
       ] }, m3.name)),
-      /* @__PURE__ */ jsx57("div", { className: "sidebar-see-more", children: "See More" })
+      /* @__PURE__ */ jsx67("div", { className: "sidebar-see-more", children: "See More" })
     ] })
   ] }),
-  /* @__PURE__ */ jsxs51("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ jsx57(
+  /* @__PURE__ */ jsxs58("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ jsx67(
       "div",
       {
         className: "sidebar-avatar",
@@ -14547,14 +14951,14 @@ var DoctorProjectSidebar9 = () => /* @__PURE__ */ jsxs51("aside", { className: "
         children: "H"
       }
     ),
-    /* @__PURE__ */ jsx57("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx57("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ jsx57("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ jsx67("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx67("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ jsx67("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var TopBar12 = () => /* @__PURE__ */ jsxs51("header", { className: "topbar", children: [
-  /* @__PURE__ */ jsx57("div", { className: "topbar-left", children: /* @__PURE__ */ jsx57("h1", { className: "topbar-title", children: "Profile Settings" }) }),
-  /* @__PURE__ */ jsxs51("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx57("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx57(
+var TopBar12 = () => /* @__PURE__ */ jsxs58("header", { className: "topbar", children: [
+  /* @__PURE__ */ jsx67("div", { className: "topbar-left", children: /* @__PURE__ */ jsx67("h1", { className: "topbar-title", children: "Profile Settings" }) }),
+  /* @__PURE__ */ jsxs58("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx67("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx67(
       "svg",
       {
         width: "20",
@@ -14563,7 +14967,7 @@ var TopBar12 = () => /* @__PURE__ */ jsxs51("header", { className: "topbar", chi
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ jsx57(
+        children: /* @__PURE__ */ jsx67(
           "path",
           {
             strokeLinecap: "round",
@@ -14573,7 +14977,7 @@ var TopBar12 = () => /* @__PURE__ */ jsxs51("header", { className: "topbar", chi
         )
       }
     ) }),
-    /* @__PURE__ */ jsx57("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx57(
+    /* @__PURE__ */ jsx67("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx67(
       "svg",
       {
         width: "20",
@@ -14582,7 +14986,7 @@ var TopBar12 = () => /* @__PURE__ */ jsxs51("header", { className: "topbar", chi
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ jsx57(
+        children: /* @__PURE__ */ jsx67(
           "path",
           {
             strokeLinecap: "round",
@@ -14592,8 +14996,8 @@ var TopBar12 = () => /* @__PURE__ */ jsxs51("header", { className: "topbar", chi
         )
       }
     ) }),
-    /* @__PURE__ */ jsxs51("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ jsx57(
+    /* @__PURE__ */ jsxs58("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ jsx67(
         "svg",
         {
           width: "18",
@@ -14602,7 +15006,7 @@ var TopBar12 = () => /* @__PURE__ */ jsxs51("header", { className: "topbar", chi
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           strokeWidth: "2",
-          children: /* @__PURE__ */ jsx57(
+          children: /* @__PURE__ */ jsx67(
             "path",
             {
               strokeLinecap: "round",
@@ -14612,10 +15016,10 @@ var TopBar12 = () => /* @__PURE__ */ jsxs51("header", { className: "topbar", chi
           )
         }
       ),
-      /* @__PURE__ */ jsx57("span", { children: "Apps" })
+      /* @__PURE__ */ jsx67("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ jsxs51("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsx57(
+    /* @__PURE__ */ jsxs58("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsx67(
         "svg",
         {
           width: "18",
@@ -14624,7 +15028,7 @@ var TopBar12 = () => /* @__PURE__ */ jsxs51("header", { className: "topbar", chi
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           strokeWidth: "2.5",
-          children: /* @__PURE__ */ jsx57(
+          children: /* @__PURE__ */ jsx67(
             "path",
             {
               strokeLinecap: "round",
@@ -14634,19 +15038,19 @@ var TopBar12 = () => /* @__PURE__ */ jsxs51("header", { className: "topbar", chi
           )
         }
       ),
-      /* @__PURE__ */ jsx57("span", { children: "Create new" })
+      /* @__PURE__ */ jsx67("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer11 = () => /* @__PURE__ */ jsxs51("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs51("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsx57("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ jsx57("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx57("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx57("span", { className: "footer-link", children: "API" })
+var Footer11 = () => /* @__PURE__ */ jsxs58("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs58("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsx67("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ jsx67("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx67("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx67("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs51("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx57("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs51(
+  /* @__PURE__ */ jsxs58("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx67("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs58(
       "svg",
       {
         width: "16",
@@ -14656,7 +15060,7 @@ var Footer11 = () => /* @__PURE__ */ jsxs51("footer", { className: "footer-bar",
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ jsx57(
+          /* @__PURE__ */ jsx67(
             "path",
             {
               strokeLinecap: "round",
@@ -14664,7 +15068,7 @@ var Footer11 = () => /* @__PURE__ */ jsxs51("footer", { className: "footer-bar",
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ jsx57(
+          /* @__PURE__ */ jsx67(
             "path",
             {
               strokeLinecap: "round",
@@ -14675,7 +15079,7 @@ var Footer11 = () => /* @__PURE__ */ jsxs51("footer", { className: "footer-bar",
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx57("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx57(
+    /* @__PURE__ */ jsx67("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx67(
       "svg",
       {
         width: "16",
@@ -14684,7 +15088,7 @@ var Footer11 = () => /* @__PURE__ */ jsxs51("footer", { className: "footer-bar",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ jsx57(
+        children: /* @__PURE__ */ jsx67(
           "path",
           {
             strokeLinecap: "round",
@@ -14706,9 +15110,9 @@ var TABS2 = [
 var FieldRow2 = ({
   label,
   value
-}) => /* @__PURE__ */ jsxs51("div", { children: [
-  /* @__PURE__ */ jsx57("p", { className: "drp-label", style: { marginBottom: "var(--drp-space-1)" }, children: label }),
-  /* @__PURE__ */ jsx57(
+}) => /* @__PURE__ */ jsxs58("div", { children: [
+  /* @__PURE__ */ jsx67("p", { className: "drp-label", style: { marginBottom: "var(--drp-space-1)" }, children: label }),
+  /* @__PURE__ */ jsx67(
     "p",
     {
       className: "drp-text drp-text--bold drp-text--sm",
@@ -14720,7 +15124,7 @@ var FieldRow2 = ({
     }
   )
 ] });
-var SessionRow = ({ date, device, isCurrent, icon }) => /* @__PURE__ */ jsxs51(
+var SessionRow = ({ date, device, isCurrent, icon }) => /* @__PURE__ */ jsxs58(
   "div",
   {
     className: "drp-flex drp-items-center drp-gap-4",
@@ -14729,7 +15133,7 @@ var SessionRow = ({ date, device, isCurrent, icon }) => /* @__PURE__ */ jsxs51(
       borderBottom: "var(--drp-border-thin)"
     },
     children: [
-      /* @__PURE__ */ jsx57(
+      /* @__PURE__ */ jsx67(
         "div",
         {
           style: {
@@ -14741,7 +15145,7 @@ var SessionRow = ({ date, device, isCurrent, icon }) => /* @__PURE__ */ jsxs51(
             color: "var(--drp-grey)",
             flexShrink: 0
           },
-          children: icon === "laptop" ? /* @__PURE__ */ jsxs51(
+          children: icon === "laptop" ? /* @__PURE__ */ jsxs58(
             "svg",
             {
               width: "24",
@@ -14751,11 +15155,11 @@ var SessionRow = ({ date, device, isCurrent, icon }) => /* @__PURE__ */ jsxs51(
               stroke: "currentColor",
               strokeWidth: "1.5",
               children: [
-                /* @__PURE__ */ jsx57("rect", { x: "2", y: "4", width: "20", height: "14", rx: "0" }),
-                /* @__PURE__ */ jsx57("path", { d: "M0 20h24", strokeLinecap: "round" })
+                /* @__PURE__ */ jsx67("rect", { x: "2", y: "4", width: "20", height: "14", rx: "0" }),
+                /* @__PURE__ */ jsx67("path", { d: "M0 20h24", strokeLinecap: "round" })
               ]
             }
-          ) : /* @__PURE__ */ jsx57(
+          ) : /* @__PURE__ */ jsx67(
             "svg",
             {
               width: "20",
@@ -14764,26 +15168,26 @@ var SessionRow = ({ date, device, isCurrent, icon }) => /* @__PURE__ */ jsxs51(
               viewBox: "0 0 24 24",
               stroke: "currentColor",
               strokeWidth: "1.5",
-              children: /* @__PURE__ */ jsx57("rect", { x: "5", y: "2", width: "14", height: "20", rx: "0" })
+              children: /* @__PURE__ */ jsx67("rect", { x: "5", y: "2", width: "14", height: "20", rx: "0" })
             }
           )
         }
       ),
-      /* @__PURE__ */ jsxs51("div", { style: { flex: 1 }, children: [
-        /* @__PURE__ */ jsx57("p", { className: "drp-text drp-text--sm drp-text--muted", children: date }),
-        /* @__PURE__ */ jsx57("p", { className: "drp-text drp-text--bold drp-text--sm", children: device })
+      /* @__PURE__ */ jsxs58("div", { style: { flex: 1 }, children: [
+        /* @__PURE__ */ jsx67("p", { className: "drp-text drp-text--sm drp-text--muted", children: date }),
+        /* @__PURE__ */ jsx67("p", { className: "drp-text drp-text--bold drp-text--sm", children: device })
       ] }),
-      isCurrent && /* @__PURE__ */ jsx57("button", { className: "drp-btn drp-btn--sm drp-btn--primary", children: "Current session" })
+      isCurrent && /* @__PURE__ */ jsx67("button", { className: "drp-btn drp-btn--sm drp-btn--primary", children: "Current session" })
     ]
   }
 );
 var ProfileSecurity = () => {
-  const [activeTab, setActiveTab] = useState12("security");
-  return /* @__PURE__ */ jsxs51("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
-    /* @__PURE__ */ jsx57(DoctorProjectSidebar9, {}),
-    /* @__PURE__ */ jsxs51("div", { className: "main-content", style: { overflow: "hidden" }, children: [
-      /* @__PURE__ */ jsx57(TopBar12, {}),
-      /* @__PURE__ */ jsxs51(
+  const [activeTab, setActiveTab] = useState14("security");
+  return /* @__PURE__ */ jsxs58("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
+    /* @__PURE__ */ jsx67(DoctorProjectSidebar9, {}),
+    /* @__PURE__ */ jsxs58("div", { className: "main-content", style: { overflow: "hidden" }, children: [
+      /* @__PURE__ */ jsx67(TopBar12, {}),
+      /* @__PURE__ */ jsxs58(
         "div",
         {
           className: "drp-flex",
@@ -14794,15 +15198,15 @@ var ProfileSecurity = () => {
             gap: "var(--drp-space-6)"
           },
           children: [
-            /* @__PURE__ */ jsx57(ProfileSidePanel, {}),
-            /* @__PURE__ */ jsxs51("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
-              /* @__PURE__ */ jsxs51(
+            /* @__PURE__ */ jsx67(ProfileSidePanel, {}),
+            /* @__PURE__ */ jsxs58("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
+              /* @__PURE__ */ jsxs58(
                 "div",
                 {
                   className: "drp-flex drp-items-center drp-gap-1",
                   style: { marginBottom: "var(--drp-space-4)", flexShrink: 0 },
                   children: [
-                    /* @__PURE__ */ jsx57("div", { className: "drp-tabs", children: TABS2.map((tab) => /* @__PURE__ */ jsx57(
+                    /* @__PURE__ */ jsx67("div", { className: "drp-tabs", children: TABS2.map((tab) => /* @__PURE__ */ jsx67(
                       "button",
                       {
                         onClick: () => setActiveTab(tab.key),
@@ -14811,11 +15215,11 @@ var ProfileSecurity = () => {
                       },
                       tab.key
                     )) }),
-                    /* @__PURE__ */ jsx57("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ jsx57("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
+                    /* @__PURE__ */ jsx67("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ jsx67("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
                   ]
                 }
               ),
-              /* @__PURE__ */ jsxs51(
+              /* @__PURE__ */ jsxs58(
                 "div",
                 {
                   className: "drp-card",
@@ -14827,17 +15231,17 @@ var ProfileSecurity = () => {
                     padding: 0
                   },
                   children: [
-                    /* @__PURE__ */ jsx57(
+                    /* @__PURE__ */ jsx67(
                       "div",
                       {
                         style: {
                           padding: "var(--drp-space-4) var(--drp-space-6)",
                           borderBottom: "var(--drp-border-thin)"
                         },
-                        children: /* @__PURE__ */ jsx57("h2", { className: "drp-h5", children: "Login details" })
+                        children: /* @__PURE__ */ jsx67("h2", { className: "drp-h5", children: "Login details" })
                       }
                     ),
-                    /* @__PURE__ */ jsxs51(
+                    /* @__PURE__ */ jsxs58(
                       "div",
                       {
                         style: {
@@ -14846,21 +15250,21 @@ var ProfileSecurity = () => {
                           overflowY: "auto"
                         },
                         children: [
-                          /* @__PURE__ */ jsxs51("div", { className: "drp-flex-col drp-gap-4", children: [
-                            /* @__PURE__ */ jsx57(FieldRow2, { label: "Current password", value: "\u2022\u2022\u2022\u2022\u2022\u2022" }),
-                            /* @__PURE__ */ jsxs51("div", { className: "drp-form-row", children: [
-                              /* @__PURE__ */ jsx57(
+                          /* @__PURE__ */ jsxs58("div", { className: "drp-flex-col drp-gap-4", children: [
+                            /* @__PURE__ */ jsx67(FieldRow2, { label: "Current password", value: "\u2022\u2022\u2022\u2022\u2022\u2022" }),
+                            /* @__PURE__ */ jsxs58("div", { className: "drp-form-row", children: [
+                              /* @__PURE__ */ jsx67(
                                 FieldRow2,
                                 {
                                   label: "Security questions",
                                   value: "Your fathers name"
                                 }
                               ),
-                              /* @__PURE__ */ jsx57(FieldRow2, { label: "2-Step verification", value: "Enabled" })
+                              /* @__PURE__ */ jsx67(FieldRow2, { label: "2-Step verification", value: "Enabled" })
                             ] })
                           ] }),
-                          /* @__PURE__ */ jsxs51("div", { style: { paddingTop: "var(--drp-space-4)" }, children: [
-                            /* @__PURE__ */ jsx57(
+                          /* @__PURE__ */ jsxs58("div", { style: { paddingTop: "var(--drp-space-4)" }, children: [
+                            /* @__PURE__ */ jsx67(
                               "h3",
                               {
                                 className: "drp-h6",
@@ -14868,7 +15272,7 @@ var ProfileSecurity = () => {
                                 children: "Security credentials"
                               }
                             ),
-                            /* @__PURE__ */ jsx57(
+                            /* @__PURE__ */ jsx67(
                               SessionRow,
                               {
                                 icon: "laptop",
@@ -14877,7 +15281,7 @@ var ProfileSecurity = () => {
                                 isCurrent: true
                               }
                             ),
-                            /* @__PURE__ */ jsx57(
+                            /* @__PURE__ */ jsx67(
                               SessionRow,
                               {
                                 icon: "phone",
@@ -14889,7 +15293,7 @@ var ProfileSecurity = () => {
                         ]
                       }
                     ),
-                    /* @__PURE__ */ jsxs51(
+                    /* @__PURE__ */ jsxs58(
                       "div",
                       {
                         className: "drp-flex drp-items-center drp-justify-between",
@@ -14898,8 +15302,8 @@ var ProfileSecurity = () => {
                           borderTop: "var(--drp-border-thin)"
                         },
                         children: [
-                          /* @__PURE__ */ jsx57("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
-                          /* @__PURE__ */ jsx57("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
+                          /* @__PURE__ */ jsx67("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
+                          /* @__PURE__ */ jsx67("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
                         ]
                       }
                     )
@@ -14910,22 +15314,22 @@ var ProfileSecurity = () => {
           ]
         }
       ),
-      /* @__PURE__ */ jsx57(Footer11, {})
+      /* @__PURE__ */ jsx67(Footer11, {})
     ] })
   ] });
 };
 
 // src/screens/ProfileSettings/ProfileSocial.tsx
-import { useState as useState13 } from "react";
-import { jsx as jsx58, jsxs as jsxs52 } from "react/jsx-runtime";
-var DoctorProjectSidebar10 = () => /* @__PURE__ */ jsxs52("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ jsxs52("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ jsx58("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ jsx58("span", { className: "sidebar-brand-dot" })
+import { useState as useState15 } from "react";
+import { jsx as jsx68, jsxs as jsxs59 } from "react/jsx-runtime";
+var DoctorProjectSidebar10 = () => /* @__PURE__ */ jsxs59("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ jsxs59("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ jsx68("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ jsx68("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ jsxs52("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ jsxs52("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ jsx58("div", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ jsxs59("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ jsxs59("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ jsx68("div", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         { label: "Dashboard", badge: 15, badgeType: "purple" },
         { label: "Projects" },
@@ -14934,9 +15338,9 @@ var DoctorProjectSidebar10 = () => /* @__PURE__ */ jsxs52("aside", { className: 
         { label: "File Manager", badge: 14, badgeType: "green" },
         { label: "Calendar" },
         { label: "Inbox" }
-      ].map((item) => /* @__PURE__ */ jsxs52("a", { className: "sidebar-nav-item", children: [
-        /* @__PURE__ */ jsx58("span", { className: "sidebar-nav-text", children: item.label }),
-        item.badge && /* @__PURE__ */ jsx58(
+      ].map((item) => /* @__PURE__ */ jsxs59("a", { className: "sidebar-nav-item", children: [
+        /* @__PURE__ */ jsx68("span", { className: "sidebar-nav-text", children: item.label }),
+        item.badge && /* @__PURE__ */ jsx68(
           "span",
           {
             className: `sidebar-badge sidebar-badge--${item.badgeType}`,
@@ -14945,21 +15349,21 @@ var DoctorProjectSidebar10 = () => /* @__PURE__ */ jsxs52("aside", { className: 
         )
       ] }, item.label))
     ] }),
-    /* @__PURE__ */ jsxs52("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ jsx58("div", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ jsxs59("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ jsx68("div", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", bg: "var(--drp-info)" },
         { name: "Thanawan Chadee", bg: "var(--drp-orange)" },
         { name: "Justine Robinson", bg: "var(--drp-success)" }
-      ].map((m3) => /* @__PURE__ */ jsxs52("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ jsx58("div", { className: "sidebar-avatar", style: { background: m3.bg }, children: m3.name[0] }),
-        /* @__PURE__ */ jsx58("span", { className: "sidebar-team-name", children: m3.name })
+      ].map((m3) => /* @__PURE__ */ jsxs59("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ jsx68("div", { className: "sidebar-avatar", style: { background: m3.bg }, children: m3.name[0] }),
+        /* @__PURE__ */ jsx68("span", { className: "sidebar-team-name", children: m3.name })
       ] }, m3.name)),
-      /* @__PURE__ */ jsx58("div", { className: "sidebar-see-more", children: "See More" })
+      /* @__PURE__ */ jsx68("div", { className: "sidebar-see-more", children: "See More" })
     ] })
   ] }),
-  /* @__PURE__ */ jsxs52("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ jsx58(
+  /* @__PURE__ */ jsxs59("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ jsx68(
       "div",
       {
         className: "sidebar-avatar",
@@ -14967,14 +15371,14 @@ var DoctorProjectSidebar10 = () => /* @__PURE__ */ jsxs52("aside", { className: 
         children: "H"
       }
     ),
-    /* @__PURE__ */ jsx58("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx58("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ jsx58("button", { className: "sidebar-user-menu-btn", children: "..." })
+    /* @__PURE__ */ jsx68("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx68("div", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ jsx68("button", { className: "sidebar-user-menu-btn", children: "..." })
   ] })
 ] });
-var TopBar13 = () => /* @__PURE__ */ jsxs52("header", { className: "topbar", children: [
-  /* @__PURE__ */ jsx58("div", { className: "topbar-left", children: /* @__PURE__ */ jsx58("h1", { className: "topbar-title", children: "Profile Settings" }) }),
-  /* @__PURE__ */ jsxs52("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx58("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx58(
+var TopBar13 = () => /* @__PURE__ */ jsxs59("header", { className: "topbar", children: [
+  /* @__PURE__ */ jsx68("div", { className: "topbar-left", children: /* @__PURE__ */ jsx68("h1", { className: "topbar-title", children: "Profile Settings" }) }),
+  /* @__PURE__ */ jsxs59("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx68("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx68(
       "svg",
       {
         width: "20",
@@ -14983,7 +15387,7 @@ var TopBar13 = () => /* @__PURE__ */ jsxs52("header", { className: "topbar", chi
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ jsx58(
+        children: /* @__PURE__ */ jsx68(
           "path",
           {
             strokeLinecap: "round",
@@ -14993,7 +15397,7 @@ var TopBar13 = () => /* @__PURE__ */ jsxs52("header", { className: "topbar", chi
         )
       }
     ) }),
-    /* @__PURE__ */ jsx58("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx58(
+    /* @__PURE__ */ jsx68("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx68(
       "svg",
       {
         width: "20",
@@ -15002,7 +15406,7 @@ var TopBar13 = () => /* @__PURE__ */ jsxs52("header", { className: "topbar", chi
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ jsx58(
+        children: /* @__PURE__ */ jsx68(
           "path",
           {
             strokeLinecap: "round",
@@ -15012,8 +15416,8 @@ var TopBar13 = () => /* @__PURE__ */ jsxs52("header", { className: "topbar", chi
         )
       }
     ) }),
-    /* @__PURE__ */ jsxs52("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ jsx58(
+    /* @__PURE__ */ jsxs59("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ jsx68(
         "svg",
         {
           width: "18",
@@ -15022,7 +15426,7 @@ var TopBar13 = () => /* @__PURE__ */ jsxs52("header", { className: "topbar", chi
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           strokeWidth: "2",
-          children: /* @__PURE__ */ jsx58(
+          children: /* @__PURE__ */ jsx68(
             "path",
             {
               strokeLinecap: "round",
@@ -15032,10 +15436,10 @@ var TopBar13 = () => /* @__PURE__ */ jsxs52("header", { className: "topbar", chi
           )
         }
       ),
-      /* @__PURE__ */ jsx58("span", { children: "Apps" })
+      /* @__PURE__ */ jsx68("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ jsxs52("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsx58(
+    /* @__PURE__ */ jsxs59("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsx68(
         "svg",
         {
           width: "18",
@@ -15044,7 +15448,7 @@ var TopBar13 = () => /* @__PURE__ */ jsxs52("header", { className: "topbar", chi
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           strokeWidth: "2.5",
-          children: /* @__PURE__ */ jsx58(
+          children: /* @__PURE__ */ jsx68(
             "path",
             {
               strokeLinecap: "round",
@@ -15054,19 +15458,19 @@ var TopBar13 = () => /* @__PURE__ */ jsxs52("header", { className: "topbar", chi
           )
         }
       ),
-      /* @__PURE__ */ jsx58("span", { children: "Create new" })
+      /* @__PURE__ */ jsx68("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer12 = () => /* @__PURE__ */ jsxs52("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs52("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsx58("span", { className: "footer-link", children: "English" }),
-    /* @__PURE__ */ jsx58("span", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx58("span", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx58("span", { className: "footer-link", children: "API" })
+var Footer12 = () => /* @__PURE__ */ jsxs59("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs59("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsx68("span", { className: "footer-link", children: "English" }),
+    /* @__PURE__ */ jsx68("span", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx68("span", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx68("span", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs52("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx58("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs52(
+  /* @__PURE__ */ jsxs59("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx68("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs59(
       "svg",
       {
         width: "16",
@@ -15076,7 +15480,7 @@ var Footer12 = () => /* @__PURE__ */ jsxs52("footer", { className: "footer-bar",
         stroke: "currentColor",
         strokeWidth: "2",
         children: [
-          /* @__PURE__ */ jsx58(
+          /* @__PURE__ */ jsx68(
             "path",
             {
               strokeLinecap: "round",
@@ -15084,7 +15488,7 @@ var Footer12 = () => /* @__PURE__ */ jsxs52("footer", { className: "footer-bar",
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ jsx58(
+          /* @__PURE__ */ jsx68(
             "path",
             {
               strokeLinecap: "round",
@@ -15095,7 +15499,7 @@ var Footer12 = () => /* @__PURE__ */ jsxs52("footer", { className: "footer-bar",
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx58("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx58(
+    /* @__PURE__ */ jsx68("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx68(
       "svg",
       {
         width: "16",
@@ -15104,7 +15508,7 @@ var Footer12 = () => /* @__PURE__ */ jsxs52("footer", { className: "footer-bar",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         strokeWidth: "2",
-        children: /* @__PURE__ */ jsx58(
+        children: /* @__PURE__ */ jsx68(
           "path",
           {
             strokeLinecap: "round",
@@ -15123,7 +15527,7 @@ var TABS3 = [
   { key: "apis", label: "APIs" },
   { key: "notifications", label: "Notifications" }
 ];
-var SocialRow = ({ account }) => /* @__PURE__ */ jsxs52(
+var SocialRow = ({ account }) => /* @__PURE__ */ jsxs59(
   "div",
   {
     className: "drp-flex drp-items-center drp-gap-4",
@@ -15132,7 +15536,7 @@ var SocialRow = ({ account }) => /* @__PURE__ */ jsxs52(
       borderBottom: "var(--drp-border-thin)"
     },
     children: [
-      /* @__PURE__ */ jsx58(
+      /* @__PURE__ */ jsx68(
         "div",
         {
           style: {
@@ -15149,11 +15553,11 @@ var SocialRow = ({ account }) => /* @__PURE__ */ jsxs52(
           children: account.icon
         }
       ),
-      /* @__PURE__ */ jsxs52("div", { style: { flex: 1 }, children: [
-        /* @__PURE__ */ jsx58("p", { className: "drp-label", style: { marginBottom: "var(--drp-space-1)" }, children: account.name }),
-        /* @__PURE__ */ jsx58("p", { className: "drp-text drp-text--bold drp-text--sm", children: account.value ?? "Not connected" })
+      /* @__PURE__ */ jsxs59("div", { style: { flex: 1 }, children: [
+        /* @__PURE__ */ jsx68("p", { className: "drp-label", style: { marginBottom: "var(--drp-space-1)" }, children: account.name }),
+        /* @__PURE__ */ jsx68("p", { className: "drp-text drp-text--bold drp-text--sm", children: account.value ?? "Not connected" })
       ] }),
-      !account.value && /* @__PURE__ */ jsxs52(
+      !account.value && /* @__PURE__ */ jsxs59(
         "button",
         {
           className: "drp-btn drp-btn--ghost drp-btn--sm",
@@ -15165,7 +15569,7 @@ var SocialRow = ({ account }) => /* @__PURE__ */ jsxs52(
             boxShadow: "none"
           },
           children: [
-            /* @__PURE__ */ jsx58(
+            /* @__PURE__ */ jsx68(
               "svg",
               {
                 width: "16",
@@ -15174,7 +15578,7 @@ var SocialRow = ({ account }) => /* @__PURE__ */ jsxs52(
                 viewBox: "0 0 24 24",
                 stroke: "currentColor",
                 strokeWidth: "2",
-                children: /* @__PURE__ */ jsx58(
+                children: /* @__PURE__ */ jsx68(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -15192,39 +15596,39 @@ var SocialRow = ({ account }) => /* @__PURE__ */ jsxs52(
   }
 );
 var ProfileSocial = () => {
-  const [activeTab, setActiveTab] = useState13("social");
+  const [activeTab, setActiveTab] = useState15("social");
   const socialAccounts = [
     {
       name: "Facebook",
       value: "https://www.facebook.com/whiteui.store",
-      icon: /* @__PURE__ */ jsx58("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx58("path", { d: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" }) })
+      icon: /* @__PURE__ */ jsx68("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx68("path", { d: "M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" }) })
     },
     {
       name: "Twitter",
       value: null,
-      icon: /* @__PURE__ */ jsx58("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx58("path", { d: "M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" }) })
+      icon: /* @__PURE__ */ jsx68("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx68("path", { d: "M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z" }) })
     },
     {
       name: "Dropbox",
       value: "@whiteui.store",
-      icon: /* @__PURE__ */ jsx58("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx58("path", { d: "M12 2L6 7l6 5-6 5 6 5 6-5-6-5 6-5-6-5zm-6 17l6-5 6 5-6 5-6-5z" }) })
+      icon: /* @__PURE__ */ jsx68("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: /* @__PURE__ */ jsx68("path", { d: "M12 2L6 7l6 5-6 5 6 5 6-5-6-5 6-5-6-5zm-6 17l6-5 6 5-6 5-6-5z" }) })
     },
     {
       name: "Google",
       value: null,
-      icon: /* @__PURE__ */ jsxs52("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: [
-        /* @__PURE__ */ jsx58("path", { d: "M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" }),
-        /* @__PURE__ */ jsx58("path", { d: "M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" }),
-        /* @__PURE__ */ jsx58("path", { d: "M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" }),
-        /* @__PURE__ */ jsx58("path", { d: "M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" })
+      icon: /* @__PURE__ */ jsxs59("svg", { width: "24", height: "24", viewBox: "0 0 24 24", fill: "currentColor", children: [
+        /* @__PURE__ */ jsx68("path", { d: "M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" }),
+        /* @__PURE__ */ jsx68("path", { d: "M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" }),
+        /* @__PURE__ */ jsx68("path", { d: "M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" }),
+        /* @__PURE__ */ jsx68("path", { d: "M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" })
       ] })
     }
   ];
-  return /* @__PURE__ */ jsxs52("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
-    /* @__PURE__ */ jsx58(DoctorProjectSidebar10, {}),
-    /* @__PURE__ */ jsxs52("div", { className: "main-content", style: { overflow: "hidden" }, children: [
-      /* @__PURE__ */ jsx58(TopBar13, {}),
-      /* @__PURE__ */ jsxs52(
+  return /* @__PURE__ */ jsxs59("div", { className: "app-layout", style: { height: "100vh", overflow: "hidden" }, children: [
+    /* @__PURE__ */ jsx68(DoctorProjectSidebar10, {}),
+    /* @__PURE__ */ jsxs59("div", { className: "main-content", style: { overflow: "hidden" }, children: [
+      /* @__PURE__ */ jsx68(TopBar13, {}),
+      /* @__PURE__ */ jsxs59(
         "div",
         {
           className: "drp-flex",
@@ -15235,15 +15639,15 @@ var ProfileSocial = () => {
             gap: "var(--drp-space-6)"
           },
           children: [
-            /* @__PURE__ */ jsx58(ProfileSidePanel, {}),
-            /* @__PURE__ */ jsxs52("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
-              /* @__PURE__ */ jsxs52(
+            /* @__PURE__ */ jsx68(ProfileSidePanel, {}),
+            /* @__PURE__ */ jsxs59("div", { className: "drp-flex-col", style: { flex: 1, overflow: "hidden" }, children: [
+              /* @__PURE__ */ jsxs59(
                 "div",
                 {
                   className: "drp-flex drp-items-center drp-gap-1",
                   style: { marginBottom: "var(--drp-space-4)", flexShrink: 0 },
                   children: [
-                    /* @__PURE__ */ jsx58("div", { className: "drp-tabs", children: TABS3.map((tab) => /* @__PURE__ */ jsx58(
+                    /* @__PURE__ */ jsx68("div", { className: "drp-tabs", children: TABS3.map((tab) => /* @__PURE__ */ jsx68(
                       "button",
                       {
                         onClick: () => setActiveTab(tab.key),
@@ -15252,11 +15656,11 @@ var ProfileSocial = () => {
                       },
                       tab.key
                     )) }),
-                    /* @__PURE__ */ jsx58("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ jsx58("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
+                    /* @__PURE__ */ jsx68("div", { style: { marginLeft: "auto" }, children: /* @__PURE__ */ jsx68("button", { className: "drp-btn drp-btn--outline drp-btn--sm", children: "Actions" }) })
                   ]
                 }
               ),
-              /* @__PURE__ */ jsxs52(
+              /* @__PURE__ */ jsxs59(
                 "div",
                 {
                   className: "drp-card",
@@ -15268,17 +15672,17 @@ var ProfileSocial = () => {
                     padding: 0
                   },
                   children: [
-                    /* @__PURE__ */ jsx58(
+                    /* @__PURE__ */ jsx68(
                       "div",
                       {
                         style: {
                           padding: "var(--drp-space-4) var(--drp-space-6)",
                           borderBottom: "var(--drp-border-thin)"
                         },
-                        children: /* @__PURE__ */ jsx58("h2", { className: "drp-h5", children: "Social profiles" })
+                        children: /* @__PURE__ */ jsx68("h2", { className: "drp-h5", children: "Social profiles" })
                       }
                     ),
-                    /* @__PURE__ */ jsxs52(
+                    /* @__PURE__ */ jsxs59(
                       "div",
                       {
                         style: {
@@ -15287,8 +15691,8 @@ var ProfileSocial = () => {
                           overflowY: "auto"
                         },
                         children: [
-                          socialAccounts.map((account) => /* @__PURE__ */ jsx58(SocialRow, { account }, account.name)),
-                          /* @__PURE__ */ jsxs52(
+                          socialAccounts.map((account) => /* @__PURE__ */ jsx68(SocialRow, { account }, account.name)),
+                          /* @__PURE__ */ jsxs59(
                             "button",
                             {
                               className: "drp-btn drp-btn--ghost drp-btn--sm",
@@ -15302,14 +15706,14 @@ var ProfileSocial = () => {
                                 padding: 0
                               },
                               children: [
-                                /* @__PURE__ */ jsx58(
+                                /* @__PURE__ */ jsx68(
                                   "svg",
                                   {
                                     width: "20",
                                     height: "20",
                                     fill: "currentColor",
                                     viewBox: "0 0 24 24",
-                                    children: /* @__PURE__ */ jsx58("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" })
+                                    children: /* @__PURE__ */ jsx68("path", { d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" })
                                   }
                                 ),
                                 "Add More"
@@ -15319,7 +15723,7 @@ var ProfileSocial = () => {
                         ]
                       }
                     ),
-                    /* @__PURE__ */ jsxs52(
+                    /* @__PURE__ */ jsxs59(
                       "div",
                       {
                         className: "drp-flex drp-items-center drp-justify-between",
@@ -15328,8 +15732,8 @@ var ProfileSocial = () => {
                           borderTop: "var(--drp-border-thin)"
                         },
                         children: [
-                          /* @__PURE__ */ jsx58("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
-                          /* @__PURE__ */ jsx58("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
+                          /* @__PURE__ */ jsx68("button", { className: "drp-btn drp-btn--outline", children: "Reset Changes" }),
+                          /* @__PURE__ */ jsx68("button", { className: "drp-btn drp-btn--primary", children: "Update Settings" })
                         ]
                       }
                     )
@@ -15340,27 +15744,46 @@ var ProfileSocial = () => {
           ]
         }
       ),
-      /* @__PURE__ */ jsx58(Footer12, {})
+      /* @__PURE__ */ jsx68(Footer12, {})
     ] })
   ] });
 };
 
 // src/screens/Reports/ChartContainer.tsx
-import { Fragment as Fragment9, jsx as jsx59, jsxs as jsxs53 } from "react/jsx-runtime";
+import { useEffect as useEffect2, useRef as useRef3, useState as useState16 } from "react";
+import {
+  Chart as ChartJS,
+  RadialLinearScale,
+  ArcElement,
+  PointElement,
+  LineElement,
+  Tooltip as Tooltip2,
+  Legend
+} from "chart.js";
+import { PolarArea, Radar } from "react-chartjs-2";
+import { Fragment as Fragment12, jsx as jsx69, jsxs as jsxs60 } from "react/jsx-runtime";
+ChartJS.register(
+  RadialLinearScale,
+  ArcElement,
+  PointElement,
+  LineElement,
+  Tooltip2,
+  Legend
+);
 var DoctorProjectSidebar11 = ({
   active = "Analytics"
-}) => /* @__PURE__ */ jsxs53("aside", { className: "sidebar", children: [
-  /* @__PURE__ */ jsxs53("div", { className: "sidebar-brand", children: [
-    /* @__PURE__ */ jsx59("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
-    /* @__PURE__ */ jsx59("span", { className: "sidebar-brand-dot" })
+}) => /* @__PURE__ */ jsxs60("aside", { className: "sidebar", children: [
+  /* @__PURE__ */ jsxs60("div", { className: "sidebar-brand", children: [
+    /* @__PURE__ */ jsx69("span", { className: "sidebar-brand-name", children: "Doctor Project" }),
+    /* @__PURE__ */ jsx69("span", { className: "sidebar-brand-dot" })
   ] }),
-  /* @__PURE__ */ jsxs53("nav", { className: "sidebar-nav", children: [
-    /* @__PURE__ */ jsxs53("div", { className: "sidebar-nav-section", children: [
-      /* @__PURE__ */ jsx59("p", { className: "sidebar-nav-label", children: "Navigation" }),
+  /* @__PURE__ */ jsxs60("nav", { className: "sidebar-nav", children: [
+    /* @__PURE__ */ jsxs60("div", { className: "sidebar-nav-section", children: [
+      /* @__PURE__ */ jsx69("p", { className: "sidebar-nav-label", children: "Navigation" }),
       [
         {
           label: "Dashboard",
-          icon: /* @__PURE__ */ jsxs53(
+          icon: /* @__PURE__ */ jsxs60(
             "svg",
             {
               className: "sidebar-nav-icon",
@@ -15368,8 +15791,8 @@ var DoctorProjectSidebar11 = ({
               viewBox: "0 0 24 24",
               stroke: "currentColor",
               children: [
-                /* @__PURE__ */ jsx59("rect", { x: "3", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
-                /* @__PURE__ */ jsx59(
+                /* @__PURE__ */ jsx69("rect", { x: "3", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
+                /* @__PURE__ */ jsx69(
                   "rect",
                   {
                     x: "14",
@@ -15380,7 +15803,7 @@ var DoctorProjectSidebar11 = ({
                     strokeWidth: 2
                   }
                 ),
-                /* @__PURE__ */ jsx59(
+                /* @__PURE__ */ jsx69(
                   "rect",
                   {
                     x: "3",
@@ -15391,7 +15814,7 @@ var DoctorProjectSidebar11 = ({
                     strokeWidth: 2
                   }
                 ),
-                /* @__PURE__ */ jsx59(
+                /* @__PURE__ */ jsx69(
                   "rect",
                   {
                     x: "14",
@@ -15408,14 +15831,14 @@ var DoctorProjectSidebar11 = ({
         },
         {
           label: "Products",
-          icon: /* @__PURE__ */ jsx59(
+          icon: /* @__PURE__ */ jsx69(
             "svg",
             {
               className: "sidebar-nav-icon",
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx59(
+              children: /* @__PURE__ */ jsx69(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -15429,14 +15852,14 @@ var DoctorProjectSidebar11 = ({
         },
         {
           label: "Contacts",
-          icon: /* @__PURE__ */ jsx59(
+          icon: /* @__PURE__ */ jsx69(
             "svg",
             {
               className: "sidebar-nav-icon",
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx59(
+              children: /* @__PURE__ */ jsx69(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -15452,14 +15875,14 @@ var DoctorProjectSidebar11 = ({
           label: "Customers",
           badge: 15,
           badgeVariant: "purple",
-          icon: /* @__PURE__ */ jsx59(
+          icon: /* @__PURE__ */ jsx69(
             "svg",
             {
               className: "sidebar-nav-icon",
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx59(
+              children: /* @__PURE__ */ jsx69(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -15475,14 +15898,14 @@ var DoctorProjectSidebar11 = ({
           label: "Sales",
           badge: 14,
           badgeVariant: "green",
-          icon: /* @__PURE__ */ jsx59(
+          icon: /* @__PURE__ */ jsx69(
             "svg",
             {
               className: "sidebar-nav-icon",
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx59(
+              children: /* @__PURE__ */ jsx69(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -15496,14 +15919,14 @@ var DoctorProjectSidebar11 = ({
         },
         {
           label: "Analytics",
-          icon: /* @__PURE__ */ jsx59(
+          icon: /* @__PURE__ */ jsx69(
             "svg",
             {
               className: "sidebar-nav-icon",
               fill: "none",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
-              children: /* @__PURE__ */ jsx59(
+              children: /* @__PURE__ */ jsx69(
                 "path",
                 {
                   strokeLinecap: "round",
@@ -15517,14 +15940,14 @@ var DoctorProjectSidebar11 = ({
         }
       ].map((item) => {
         const isActive = item.label === active;
-        return /* @__PURE__ */ jsxs53(
+        return /* @__PURE__ */ jsxs60(
           "button",
           {
             className: `sidebar-nav-item${isActive ? " active" : ""}`,
             children: [
-              /* @__PURE__ */ jsx59("span", { className: "sidebar-nav-icon", children: item.icon }),
-              /* @__PURE__ */ jsx59("span", { className: "sidebar-nav-text", children: item.label }),
-              item.badge && /* @__PURE__ */ jsx59(
+              /* @__PURE__ */ jsx69("span", { className: "sidebar-nav-icon", children: item.icon }),
+              /* @__PURE__ */ jsx69("span", { className: "sidebar-nav-text", children: item.label }),
+              item.badge && /* @__PURE__ */ jsx69(
                 "span",
                 {
                   className: `sidebar-badge sidebar-badge--${item.badgeVariant}`,
@@ -15537,24 +15960,24 @@ var DoctorProjectSidebar11 = ({
         );
       })
     ] }),
-    /* @__PURE__ */ jsxs53("div", { className: "sidebar-team", children: [
-      /* @__PURE__ */ jsx59("p", { className: "sidebar-team-label", children: "Team Members" }),
+    /* @__PURE__ */ jsxs60("div", { className: "sidebar-team", children: [
+      /* @__PURE__ */ jsx69("p", { className: "sidebar-team-label", children: "Team Members" }),
       [
         { name: "Alexandre Paiva", color: "#FF6C01" },
         { name: "Thanawan Chadee", color: "#E99898" },
         { name: "Justine Robinson", color: "#FAE8A4" }
-      ].map((member) => /* @__PURE__ */ jsxs53("div", { className: "sidebar-team-member", children: [
-        /* @__PURE__ */ jsx59(
+      ].map((member) => /* @__PURE__ */ jsxs60("div", { className: "sidebar-team-member", children: [
+        /* @__PURE__ */ jsx69(
           "div",
           {
             className: "sidebar-avatar",
             style: { background: member.color }
           }
         ),
-        /* @__PURE__ */ jsx59("span", { className: "sidebar-team-name", children: member.name })
+        /* @__PURE__ */ jsx69("span", { className: "sidebar-team-name", children: member.name })
       ] }, member.name)),
-      /* @__PURE__ */ jsxs53("button", { className: "sidebar-see-more", children: [
-        /* @__PURE__ */ jsx59("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx59(
+      /* @__PURE__ */ jsxs60("button", { className: "sidebar-see-more", children: [
+        /* @__PURE__ */ jsx69("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx69(
           "path",
           {
             strokeLinecap: "round",
@@ -15563,12 +15986,12 @@ var DoctorProjectSidebar11 = ({
             d: "M19 9l-7 7-7-7"
           }
         ) }),
-        /* @__PURE__ */ jsx59("span", { children: "See More" })
+        /* @__PURE__ */ jsx69("span", { children: "See More" })
       ] })
     ] })
   ] }),
-  /* @__PURE__ */ jsxs53("div", { className: "sidebar-user", children: [
-    /* @__PURE__ */ jsx59(
+  /* @__PURE__ */ jsxs60("div", { className: "sidebar-user", children: [
+    /* @__PURE__ */ jsx69(
       "div",
       {
         className: "sidebar-avatar",
@@ -15577,14 +16000,14 @@ var DoctorProjectSidebar11 = ({
         }
       }
     ),
-    /* @__PURE__ */ jsx59("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx59("span", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
-    /* @__PURE__ */ jsx59("button", { className: "sidebar-user-menu-btn", children: "\xB7\xB7\xB7" })
+    /* @__PURE__ */ jsx69("div", { className: "sidebar-user-info", children: /* @__PURE__ */ jsx69("span", { className: "sidebar-user-name", children: "Henry Richardson" }) }),
+    /* @__PURE__ */ jsx69("button", { className: "sidebar-user-menu-btn", children: "\xB7\xB7\xB7" })
   ] })
 ] });
-var TopBar14 = ({ title }) => /* @__PURE__ */ jsxs53("header", { className: "topbar", children: [
-  /* @__PURE__ */ jsx59("div", { className: "topbar-left", children: /* @__PURE__ */ jsx59("h1", { className: "topbar-title", children: title }) }),
-  /* @__PURE__ */ jsxs53("div", { className: "topbar-right", children: [
-    /* @__PURE__ */ jsx59("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx59("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx59(
+var TopBar14 = ({ title }) => /* @__PURE__ */ jsxs60("header", { className: "topbar", children: [
+  /* @__PURE__ */ jsx69("div", { className: "topbar-left", children: /* @__PURE__ */ jsx69("h1", { className: "topbar-title", children: title }) }),
+  /* @__PURE__ */ jsxs60("div", { className: "topbar-right", children: [
+    /* @__PURE__ */ jsx69("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx69("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx69(
       "path",
       {
         strokeLinecap: "round",
@@ -15593,7 +16016,7 @@ var TopBar14 = ({ title }) => /* @__PURE__ */ jsxs53("header", { className: "top
         d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
       }
     ) }) }),
-    /* @__PURE__ */ jsx59("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx59("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsx69("button", { className: "topbar-icon-btn", children: /* @__PURE__ */ jsx69("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx69(
       "path",
       {
         strokeLinecap: "round",
@@ -15602,8 +16025,8 @@ var TopBar14 = ({ title }) => /* @__PURE__ */ jsxs53("header", { className: "top
         d: "M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
       }
     ) }) }),
-    /* @__PURE__ */ jsxs53("button", { className: "topbar-apps-btn", children: [
-      /* @__PURE__ */ jsx59("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsxs60("button", { className: "topbar-apps-btn", children: [
+      /* @__PURE__ */ jsx69("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx69(
         "path",
         {
           strokeLinecap: "round",
@@ -15612,12 +16035,12 @@ var TopBar14 = ({ title }) => /* @__PURE__ */ jsxs53("header", { className: "top
           d: "M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
         }
       ) }),
-      /* @__PURE__ */ jsx59("span", { children: "Apps" })
+      /* @__PURE__ */ jsx69("span", { children: "Apps" })
     ] }),
-    /* @__PURE__ */ jsxs53("button", { className: "topbar-create-btn", children: [
-      /* @__PURE__ */ jsxs53("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: [
-        /* @__PURE__ */ jsx59("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
-        /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsxs60("button", { className: "topbar-create-btn", children: [
+      /* @__PURE__ */ jsxs60("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: [
+        /* @__PURE__ */ jsx69("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+        /* @__PURE__ */ jsx69(
           "path",
           {
             strokeLinecap: "round",
@@ -15627,19 +16050,19 @@ var TopBar14 = ({ title }) => /* @__PURE__ */ jsxs53("header", { className: "top
           }
         )
       ] }),
-      /* @__PURE__ */ jsx59("span", { children: "Create new" })
+      /* @__PURE__ */ jsx69("span", { children: "Create new" })
     ] })
   ] })
 ] });
-var Footer13 = () => /* @__PURE__ */ jsxs53("footer", { className: "footer-bar", children: [
-  /* @__PURE__ */ jsxs53("div", { className: "footer-links", children: [
-    /* @__PURE__ */ jsxs53(
+var Footer13 = () => /* @__PURE__ */ jsxs60("footer", { className: "footer-bar", children: [
+  /* @__PURE__ */ jsxs60("div", { className: "footer-links", children: [
+    /* @__PURE__ */ jsxs60(
       "a",
       {
         className: "footer-link",
         style: { display: "flex", alignItems: "center", gap: "6px" },
         children: [
-          /* @__PURE__ */ jsxs53(
+          /* @__PURE__ */ jsxs60(
             "svg",
             {
               style: { width: 16, height: 16 },
@@ -15647,8 +16070,8 @@ var Footer13 = () => /* @__PURE__ */ jsxs53("footer", { className: "footer-bar",
               viewBox: "0 0 24 24",
               stroke: "currentColor",
               children: [
-                /* @__PURE__ */ jsx59("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
-                /* @__PURE__ */ jsx59(
+                /* @__PURE__ */ jsx69("circle", { cx: "12", cy: "12", r: "10", strokeWidth: 2 }),
+                /* @__PURE__ */ jsx69(
                   "path",
                   {
                     strokeLinecap: "round",
@@ -15663,12 +16086,12 @@ var Footer13 = () => /* @__PURE__ */ jsxs53("footer", { className: "footer-bar",
         ]
       }
     ),
-    /* @__PURE__ */ jsx59("a", { className: "footer-link", children: "Privacy Policy" }),
-    /* @__PURE__ */ jsx59("a", { className: "footer-link", children: "License" }),
-    /* @__PURE__ */ jsx59("a", { className: "footer-link", children: "API" })
+    /* @__PURE__ */ jsx69("a", { className: "footer-link", children: "Privacy Policy" }),
+    /* @__PURE__ */ jsx69("a", { className: "footer-link", children: "License" }),
+    /* @__PURE__ */ jsx69("a", { className: "footer-link", children: "API" })
   ] }),
-  /* @__PURE__ */ jsxs53("div", { className: "footer-right", children: [
-    /* @__PURE__ */ jsx59("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs53(
+  /* @__PURE__ */ jsxs60("div", { className: "footer-right", children: [
+    /* @__PURE__ */ jsx69("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsxs60(
       "svg",
       {
         style: { width: 16, height: 16 },
@@ -15676,7 +16099,7 @@ var Footer13 = () => /* @__PURE__ */ jsxs53("footer", { className: "footer-bar",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
         children: [
-          /* @__PURE__ */ jsx59(
+          /* @__PURE__ */ jsx69(
             "path",
             {
               strokeLinecap: "round",
@@ -15685,7 +16108,7 @@ var Footer13 = () => /* @__PURE__ */ jsxs53("footer", { className: "footer-bar",
               d: "M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
             }
           ),
-          /* @__PURE__ */ jsx59(
+          /* @__PURE__ */ jsx69(
             "path",
             {
               strokeLinecap: "round",
@@ -15697,14 +16120,14 @@ var Footer13 = () => /* @__PURE__ */ jsxs53("footer", { className: "footer-bar",
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx59("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsx69("button", { className: "footer-icon-btn", children: /* @__PURE__ */ jsx69(
       "svg",
       {
         style: { width: 16, height: 16 },
         fill: "none",
         viewBox: "0 0 24 24",
         stroke: "currentColor",
-        children: /* @__PURE__ */ jsx59(
+        children: /* @__PURE__ */ jsx69(
           "path",
           {
             strokeLinecap: "round",
@@ -15717,7 +16140,7 @@ var Footer13 = () => /* @__PURE__ */ jsxs53("footer", { className: "footer-bar",
     ) })
   ] })
 ] });
-var CalendarIcon = () => /* @__PURE__ */ jsxs53(
+var CalendarIcon = () => /* @__PURE__ */ jsxs60(
   "svg",
   {
     style: { width: 20, height: 20, color: "var(--drp-grey)" },
@@ -15725,8 +16148,8 @@ var CalendarIcon = () => /* @__PURE__ */ jsxs53(
     viewBox: "0 0 24 24",
     stroke: "currentColor",
     children: [
-      /* @__PURE__ */ jsx59("rect", { x: "3", y: "4", width: "18", height: "18", rx: "0", strokeWidth: 2 }),
-      /* @__PURE__ */ jsx59("path", { strokeLinecap: "round", strokeWidth: 2, d: "M16 2v4M8 2v4M3 10h18" })
+      /* @__PURE__ */ jsx69("rect", { x: "3", y: "4", width: "18", height: "18", rx: "0", strokeWidth: 2 }),
+      /* @__PURE__ */ jsx69("path", { strokeLinecap: "round", strokeWidth: 2, d: "M16 2v4M8 2v4M3 10h18" })
     ]
   }
 );
@@ -15735,10 +16158,10 @@ var ChartCardWrapper = ({
   children,
   legend,
   className = ""
-}) => /* @__PURE__ */ jsxs53("div", { className: `drp-chart-card ${className}`, children: [
-  /* @__PURE__ */ jsxs53("div", { className: "drp-chart-header", children: [
-    /* @__PURE__ */ jsx59("h2", { className: "drp-chart-title", children: title }),
-    /* @__PURE__ */ jsxs53(
+}) => /* @__PURE__ */ jsxs60("div", { className: `drp-chart-card ${className}`, children: [
+  /* @__PURE__ */ jsxs60("div", { className: "drp-chart-header", children: [
+    /* @__PURE__ */ jsx69("h2", { className: "drp-chart-title", children: title }),
+    /* @__PURE__ */ jsxs60(
       "div",
       {
         style: {
@@ -15747,22 +16170,22 @@ var ChartCardWrapper = ({
           gap: "var(--drp-space-4)"
         },
         children: [
-          legend && /* @__PURE__ */ jsx59("div", { className: "drp-chart-legend", children: legend.map((l2) => /* @__PURE__ */ jsxs53("div", { className: "drp-chart-legend__item", children: [
-            /* @__PURE__ */ jsx59(
+          legend && /* @__PURE__ */ jsx69("div", { className: "drp-chart-legend", children: legend.map((l2) => /* @__PURE__ */ jsxs60("div", { className: "drp-chart-legend__item", children: [
+            /* @__PURE__ */ jsx69(
               "span",
               {
                 className: "drp-chart-legend__dot",
                 style: { backgroundColor: l2.color }
               }
             ),
-            /* @__PURE__ */ jsx59("span", { children: l2.label })
+            /* @__PURE__ */ jsx69("span", { children: l2.label })
           ] }, l2.label)) }),
-          /* @__PURE__ */ jsx59(CalendarIcon, {})
+          /* @__PURE__ */ jsx69(CalendarIcon, {})
         ]
       }
     )
   ] }),
-  /* @__PURE__ */ jsx59("div", { className: "drp-chart-container", style: { height: "auto" }, children })
+  /* @__PURE__ */ jsx69("div", { className: "drp-chart-container", style: { height: "auto" }, children })
 ] });
 var BarChartSVG = ({
   data,
@@ -15781,7 +16204,7 @@ var BarChartSVG = ({
   const barW = Math.floor(chartW / data.length) * 0.45;
   const gap = chartW / data.length;
   const yLines = [0, 100, 200, 300, 400, 500];
-  return /* @__PURE__ */ jsxs53(
+  return /* @__PURE__ */ jsxs60(
     "svg",
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
@@ -15789,8 +16212,8 @@ var BarChartSVG = ({
       children: [
         yLines.map((v3) => {
           const y2 = padTop + chartH - v3 / maxValue * chartH;
-          return /* @__PURE__ */ jsxs53("g", { children: [
-            /* @__PURE__ */ jsx59(
+          return /* @__PURE__ */ jsxs60("g", { children: [
+            /* @__PURE__ */ jsx69(
               "line",
               {
                 x1: padLeft,
@@ -15803,7 +16226,7 @@ var BarChartSVG = ({
                 opacity: 0.3
               }
             ),
-            /* @__PURE__ */ jsx59(
+            /* @__PURE__ */ jsx69(
               "text",
               {
                 x: padLeft - 5,
@@ -15822,8 +16245,8 @@ var BarChartSVG = ({
           const y2 = padTop + chartH - barH;
           const bgH = chartH;
           const bgY = padTop;
-          return /* @__PURE__ */ jsxs53("g", { children: [
-            /* @__PURE__ */ jsx59(
+          return /* @__PURE__ */ jsxs60("g", { children: [
+            /* @__PURE__ */ jsx69(
               "rect",
               {
                 x: x3,
@@ -15835,7 +16258,7 @@ var BarChartSVG = ({
                 opacity: 0.12
               }
             ),
-            /* @__PURE__ */ jsx59(
+            /* @__PURE__ */ jsx69(
               "rect",
               {
                 x: x3,
@@ -15846,7 +16269,7 @@ var BarChartSVG = ({
                 fill: "var(--drp-purple)"
               }
             ),
-            /* @__PURE__ */ jsx59(
+            /* @__PURE__ */ jsx69(
               "text",
               {
                 x: padLeft + i2 * gap + gap / 2,
@@ -15876,7 +16299,7 @@ var HBarChartSVG = ({ data, height = 260 }) => {
   const barH = rowH * 0.35;
   const absMax = Math.max(...data.map((d2) => d2.maxValue));
   const xTicks = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1e3];
-  return /* @__PURE__ */ jsxs53(
+  return /* @__PURE__ */ jsxs60(
     "svg",
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
@@ -15884,8 +16307,8 @@ var HBarChartSVG = ({ data, height = 260 }) => {
       children: [
         xTicks.map((v3) => {
           const x3 = padLeft + v3 / absMax * chartW;
-          return /* @__PURE__ */ jsxs53("g", { children: [
-            /* @__PURE__ */ jsx59(
+          return /* @__PURE__ */ jsxs60("g", { children: [
+            /* @__PURE__ */ jsx69(
               "line",
               {
                 x1: x3,
@@ -15898,7 +16321,7 @@ var HBarChartSVG = ({ data, height = 260 }) => {
                 opacity: 0.3
               }
             ),
-            /* @__PURE__ */ jsx59(
+            /* @__PURE__ */ jsx69(
               "text",
               {
                 x: x3,
@@ -15915,8 +16338,8 @@ var HBarChartSVG = ({ data, height = 260 }) => {
           const y2 = padTop + i2 * rowH + rowH / 2 - barH / 2;
           const bgW = item.maxValue / absMax * chartW;
           const fgW = item.value / absMax * chartW;
-          return /* @__PURE__ */ jsxs53("g", { children: [
-            /* @__PURE__ */ jsx59(
+          return /* @__PURE__ */ jsxs60("g", { children: [
+            /* @__PURE__ */ jsx69(
               "text",
               {
                 x: padLeft - 5,
@@ -15927,7 +16350,7 @@ var HBarChartSVG = ({ data, height = 260 }) => {
                 children: item.label
               }
             ),
-            /* @__PURE__ */ jsx59(
+            /* @__PURE__ */ jsx69(
               "line",
               {
                 x1: padLeft,
@@ -15940,7 +16363,7 @@ var HBarChartSVG = ({ data, height = 260 }) => {
                 opacity: 0.2
               }
             ),
-            /* @__PURE__ */ jsx59(
+            /* @__PURE__ */ jsx69(
               "rect",
               {
                 x: padLeft,
@@ -15952,7 +16375,7 @@ var HBarChartSVG = ({ data, height = 260 }) => {
                 opacity: 0.12
               }
             ),
-            /* @__PURE__ */ jsx59(
+            /* @__PURE__ */ jsx69(
               "rect",
               {
                 x: padLeft,
@@ -16003,27 +16426,27 @@ var WaveChartSVG = ({
   const yLines = [0, 100, 200, 300, 400, 500];
   const n2 = dataBlue.length;
   const toPoint = (val, i2) => ({
-    x: padLeft + i2 / (n2 - 1) * chartW,
+    x: n2 > 1 ? padLeft + i2 / (n2 - 1) * chartW : padLeft,
     y: padTop + chartH - val / maxValue * chartH
   });
   const bluePoints = dataBlue.map(toPoint);
   const greenPoints = dataGreen.map(toPoint);
-  const bluePath = smooth ? smoothPath(bluePoints) : linePath(bluePoints);
-  const greenPath = smooth ? smoothPath(greenPoints) : linePath(greenPoints);
-  const blueAreaClose = `L ${bluePoints[n2 - 1].x} ${padTop + chartH} L ${bluePoints[0].x} ${padTop + chartH} Z`;
-  const greenAreaClose = `L ${greenPoints[n2 - 1].x} ${padTop + chartH} L ${greenPoints[0].x} ${padTop + chartH} Z`;
+  const bluePath = bluePoints.length > 1 ? smooth ? smoothPath(bluePoints) : linePath(bluePoints) : "";
+  const greenPath = greenPoints.length > 1 ? smooth ? smoothPath(greenPoints) : linePath(greenPoints) : "";
+  const blueAreaClose = bluePoints.length > 1 ? `L ${bluePoints[bluePoints.length - 1].x} ${padTop + chartH} L ${bluePoints[0].x} ${padTop + chartH} Z` : "";
+  const greenAreaClose = greenPoints.length > 1 ? `L ${greenPoints[greenPoints.length - 1].x} ${padTop + chartH} L ${greenPoints[0].x} ${padTop + chartH} Z` : "";
   const tooltipIdx = Math.floor(n2 / 2);
   const tooltipPt = bluePoints[tooltipIdx];
-  return /* @__PURE__ */ jsxs53(
+  return /* @__PURE__ */ jsxs60(
     "svg",
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
       style: { width: "100%", height },
       children: [
-        /* @__PURE__ */ jsxs53("defs", { children: [
-          /* @__PURE__ */ jsxs53("linearGradient", { id: "waveBlueGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
-            /* @__PURE__ */ jsx59("stop", { offset: "0%", stopColor: "var(--drp-purple)", stopOpacity: "0.15" }),
-            /* @__PURE__ */ jsx59(
+        /* @__PURE__ */ jsxs60("defs", { children: [
+          /* @__PURE__ */ jsxs60("linearGradient", { id: "waveBlueGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+            /* @__PURE__ */ jsx69("stop", { offset: "0%", stopColor: "var(--drp-purple)", stopOpacity: "0.15" }),
+            /* @__PURE__ */ jsx69(
               "stop",
               {
                 offset: "100%",
@@ -16032,15 +16455,15 @@ var WaveChartSVG = ({
               }
             )
           ] }),
-          /* @__PURE__ */ jsxs53("linearGradient", { id: "waveGreenGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
-            /* @__PURE__ */ jsx59("stop", { offset: "0%", stopColor: "var(--drp-mint)", stopOpacity: "0.15" }),
-            /* @__PURE__ */ jsx59("stop", { offset: "100%", stopColor: "var(--drp-mint)", stopOpacity: "0.02" })
+          /* @__PURE__ */ jsxs60("linearGradient", { id: "waveGreenGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
+            /* @__PURE__ */ jsx69("stop", { offset: "0%", stopColor: "var(--drp-mint)", stopOpacity: "0.15" }),
+            /* @__PURE__ */ jsx69("stop", { offset: "100%", stopColor: "var(--drp-mint)", stopOpacity: "0.02" })
           ] })
         ] }),
         yLines.map((v3) => {
           const y2 = padTop + chartH - v3 / maxValue * chartH;
-          return /* @__PURE__ */ jsxs53("g", { children: [
-            /* @__PURE__ */ jsx59(
+          return /* @__PURE__ */ jsxs60("g", { children: [
+            /* @__PURE__ */ jsx69(
               "line",
               {
                 x1: padLeft,
@@ -16053,7 +16476,7 @@ var WaveChartSVG = ({
                 opacity: 0.3
               }
             ),
-            /* @__PURE__ */ jsx59(
+            /* @__PURE__ */ jsx69(
               "text",
               {
                 x: padLeft - 5,
@@ -16066,9 +16489,9 @@ var WaveChartSVG = ({
             )
           ] }, v3);
         }),
-        /* @__PURE__ */ jsx59("path", { d: bluePath + blueAreaClose, fill: "url(#waveBlueGrad)" }),
-        /* @__PURE__ */ jsx59("path", { d: greenPath + greenAreaClose, fill: "url(#waveGreenGrad)" }),
-        /* @__PURE__ */ jsx59(
+        /* @__PURE__ */ jsx69("path", { d: bluePath + blueAreaClose, fill: "url(#waveBlueGrad)" }),
+        /* @__PURE__ */ jsx69("path", { d: greenPath + greenAreaClose, fill: "url(#waveGreenGrad)" }),
+        /* @__PURE__ */ jsx69(
           "path",
           {
             d: greenPath,
@@ -16077,7 +16500,7 @@ var WaveChartSVG = ({
             strokeWidth: 2
           }
         ),
-        /* @__PURE__ */ jsx59(
+        /* @__PURE__ */ jsx69(
           "path",
           {
             d: bluePath,
@@ -16086,7 +16509,7 @@ var WaveChartSVG = ({
             strokeWidth: 2
           }
         ),
-        labels.map((lbl, i2) => /* @__PURE__ */ jsx59(
+        labels.map((lbl, i2) => /* @__PURE__ */ jsx69(
           "text",
           {
             x: padLeft + i2 / (n2 - 1) * chartW,
@@ -16098,8 +16521,8 @@ var WaveChartSVG = ({
           },
           i2
         )),
-        showTooltip && /* @__PURE__ */ jsxs53("g", { children: [
-          /* @__PURE__ */ jsx59(
+        showTooltip && /* @__PURE__ */ jsxs60("g", { children: [
+          /* @__PURE__ */ jsx69(
             "circle",
             {
               cx: tooltipPt.x,
@@ -16110,7 +16533,7 @@ var WaveChartSVG = ({
               strokeWidth: 2
             }
           ),
-          /* @__PURE__ */ jsx59(
+          /* @__PURE__ */ jsx69(
             "rect",
             {
               x: tooltipPt.x + 10,
@@ -16123,7 +16546,7 @@ var WaveChartSVG = ({
               strokeWidth: 1
             }
           ),
-          /* @__PURE__ */ jsx59(
+          /* @__PURE__ */ jsx69(
             "text",
             {
               x: tooltipPt.x + 55,
@@ -16134,7 +16557,7 @@ var WaveChartSVG = ({
               children: "June 16"
             }
           ),
-          /* @__PURE__ */ jsx59(
+          /* @__PURE__ */ jsx69(
             "text",
             {
               x: tooltipPt.x + 55,
@@ -16170,7 +16593,7 @@ var DoubleBarChartSVG = ({
   const slotW = chartW / n2;
   const barW = slotW * 0.28;
   const yLines = [0, 100, 200, 300, 400, 500];
-  return /* @__PURE__ */ jsxs53(
+  return /* @__PURE__ */ jsxs60(
     "svg",
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
@@ -16178,8 +16601,8 @@ var DoubleBarChartSVG = ({
       children: [
         yLines.map((v3) => {
           const y2 = padTop + chartH - v3 / maxValue * chartH;
-          return /* @__PURE__ */ jsxs53("g", { children: [
-            /* @__PURE__ */ jsx59(
+          return /* @__PURE__ */ jsxs60("g", { children: [
+            /* @__PURE__ */ jsx69(
               "line",
               {
                 x1: padLeft,
@@ -16192,7 +16615,7 @@ var DoubleBarChartSVG = ({
                 opacity: 0.3
               }
             ),
-            /* @__PURE__ */ jsx59(
+            /* @__PURE__ */ jsx69(
               "text",
               {
                 x: padLeft - 5,
@@ -16212,8 +16635,8 @@ var DoubleBarChartSVG = ({
           const centerX = padLeft + i2 * slotW + slotW / 2;
           const gX = centerX - barW - 2;
           const pX = centerX + 2;
-          return /* @__PURE__ */ jsxs53("g", { children: [
-            /* @__PURE__ */ jsx59(
+          return /* @__PURE__ */ jsxs60("g", { children: [
+            /* @__PURE__ */ jsx69(
               "rect",
               {
                 x: gX,
@@ -16224,7 +16647,7 @@ var DoubleBarChartSVG = ({
                 fill: "var(--drp-mint)"
               }
             ),
-            /* @__PURE__ */ jsx59(
+            /* @__PURE__ */ jsx69(
               "rect",
               {
                 x: pX,
@@ -16236,7 +16659,7 @@ var DoubleBarChartSVG = ({
                 opacity: 0.5
               }
             ),
-            /* @__PURE__ */ jsx59(
+            /* @__PURE__ */ jsx69(
               "text",
               {
                 x: centerX,
@@ -16253,203 +16676,108 @@ var DoubleBarChartSVG = ({
     }
   );
 };
-var PolarChartSVG = ({
+var PolarChartComponent = ({
   variant = "radar",
-  height = 300
+  height = 320
 }) => {
-  const cx = 160;
-  const cy = 160;
-  const maxR = 110;
-  const rings = [0.2, 0.4, 0.6, 0.8, 1];
-  const directions = [
-    "North",
-    "North\nEast",
-    "East",
-    "South\nEast",
-    "South",
-    "South\nWest",
-    "West",
-    "North\nWest"
-  ];
-  const n2 = directions.length;
-  const series1 = [0.95, 0.7, 0.55, 0.8, 0.45, 0.6, 0.9, 0.75];
-  const series2 = [0.5, 0.85, 0.4, 0.6, 0.9, 0.35, 0.7, 0.5];
-  const angleOffset = -Math.PI / 2;
-  const getPoint = (r2, i2) => {
-    const angle = angleOffset + i2 / n2 * 2 * Math.PI;
-    return {
-      x: cx + r2 * maxR * Math.cos(angle),
-      y: cy + r2 * maxR * Math.sin(angle)
-    };
-  };
-  const polyPath = (values) => values.map((v3, i2) => {
-    const pt = getPoint(v3, i2);
-    return `${i2 === 0 ? "M" : "L"} ${pt.x} ${pt.y}`;
-  }).join(" ") + " Z";
   if (variant === "segments") {
-    const segmentColors = [
-      "var(--drp-yellow)",
-      "var(--drp-pink)",
-      "#93c5fd",
-      "var(--drp-mint)",
-      "#f9a8d4",
-      "var(--drp-purple)"
-    ];
-    const segValues = [0.6, 0.45, 0.7, 0.5, 0.55, 0.65];
-    const segN = segValues.length;
-    const wedgeAngle = 2 * Math.PI / segN;
-    const segPaths = segValues.map((v3, i2) => {
-      const startAngle = angleOffset + i2 * wedgeAngle;
-      const endAngle = startAngle + wedgeAngle;
-      const r2 = v3 * maxR;
-      const x1 = cx + r2 * Math.cos(startAngle);
-      const y1 = cy + r2 * Math.sin(startAngle);
-      const x22 = cx + r2 * Math.cos(endAngle);
-      const y2 = cy + r2 * Math.sin(endAngle);
-      return `M ${cx} ${cy} L ${x1} ${y1} A ${r2} ${r2} 0 0 1 ${x22} ${y2} Z`;
-    });
-    return /* @__PURE__ */ jsxs53("svg", { viewBox: "0 0 320 320", style: { width: "100%", height }, children: [
-      rings.map((r2) => /* @__PURE__ */ jsx59(
-        "circle",
+    const data = {
+      labels: [
+        "Category A",
+        "Category B",
+        "Category C",
+        "Category D",
+        "Category E",
+        "Category F"
+      ],
+      datasets: [
         {
-          cx,
-          cy,
-          r: r2 * maxR,
-          fill: "none",
-          stroke: "var(--drp-grey)",
-          strokeWidth: 0.8,
-          opacity: 0.3
-        },
-        r2
-      )),
-      Array.from({ length: segN }).map((_3, i2) => {
-        const angle = angleOffset + i2 / segN * 2 * Math.PI;
-        return /* @__PURE__ */ jsx59(
-          "line",
-          {
-            x1: cx,
-            y1: cy,
-            x2: cx + maxR * Math.cos(angle),
-            y2: cy + maxR * Math.sin(angle),
-            stroke: "var(--drp-grey)",
-            strokeWidth: 0.8,
-            strokeDasharray: "3,2",
-            opacity: 0.3
-          },
-          i2
-        );
-      }),
-      segPaths.map((d2, i2) => /* @__PURE__ */ jsx59("path", { d: d2, fill: segmentColors[i2], opacity: 0.75 }, i2)),
-      directions.slice(0, 8).map((dir, i2) => {
-        const angle = angleOffset + i2 / n2 * 2 * Math.PI;
-        const labelR = maxR + 22;
-        const lx = cx + labelR * Math.cos(angle);
-        const ly = cy + labelR * Math.sin(angle);
-        const lines = dir.split("\n");
-        return /* @__PURE__ */ jsx59(
-          "text",
-          {
-            x: lx,
-            y: ly,
-            textAnchor: "middle",
-            dominantBaseline: "middle",
-            fontSize: 9,
-            fill: "var(--drp-grey)",
-            children: lines.map((line, j3) => /* @__PURE__ */ jsx59(
-              "tspan",
-              {
-                x: lx,
-                dy: j3 === 0 ? lines.length > 1 ? -6 : 0 : 12,
-                children: line
-              },
-              j3
-            ))
-          },
-          i2
-        );
-      })
-    ] });
-  }
-  return /* @__PURE__ */ jsxs53("svg", { viewBox: "0 0 320 320", style: { width: "100%", height }, children: [
-    rings.map((r2) => /* @__PURE__ */ jsx59(
-      "circle",
-      {
-        cx,
-        cy,
-        r: r2 * maxR,
-        fill: "none",
-        stroke: "var(--drp-grey)",
-        strokeWidth: 0.8,
-        opacity: 0.3
+          data: [60, 45, 70, 50, 55, 65],
+          backgroundColor: [
+            "rgba(255, 193, 7, 0.75)",
+            // yellow
+            "rgba(255, 105, 135, 0.75)",
+            // pink
+            "rgba(147, 197, 253, 0.75)",
+            // light blue
+            "rgba(0, 200, 150, 0.75)",
+            // mint
+            "rgba(249, 168, 212, 0.75)",
+            // rose
+            "rgba(99, 29, 237, 0.75)"
+            // purple
+          ],
+          borderColor: [
+            "#FFC107",
+            "#FF6987",
+            "#93c5fd",
+            "#00C896",
+            "#f9a8d4",
+            "#631DED"
+          ],
+          borderWidth: 2
+        }
+      ]
+    };
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false }
       },
-      r2
-    )),
-    Array.from({ length: n2 }).map((_3, i2) => {
-      const pt = getPoint(1, i2);
-      return /* @__PURE__ */ jsx59(
-        "line",
-        {
-          x1: cx,
-          y1: cy,
-          x2: pt.x,
-          y2: pt.y,
-          stroke: "var(--drp-grey)",
-          strokeWidth: 0.8,
-          strokeDasharray: "3,2",
-          opacity: 0.3
-        },
-        i2
-      );
-    }),
-    /* @__PURE__ */ jsx59(
-      "path",
-      {
-        d: polyPath(series2),
-        fill: "var(--drp-mint)",
-        fillOpacity: 0.3,
-        stroke: "var(--drp-mint)",
-        strokeWidth: 1.5
+      scales: {
+        r: {
+          grid: { color: "rgba(102, 102, 102, 0.2)" },
+          ticks: { display: false }
+        }
       }
-    ),
-    /* @__PURE__ */ jsx59(
-      "path",
+    };
+    return /* @__PURE__ */ jsx69("div", { style: { height, width: "100%" }, children: /* @__PURE__ */ jsx69(PolarArea, { data, options }) });
+  }
+  const radarData = {
+    labels: ["North", "NE", "East", "SE", "South", "SW", "West", "NW"],
+    datasets: [
       {
-        d: polyPath(series1),
-        fill: "var(--drp-purple)",
-        fillOpacity: 0.25,
-        stroke: "var(--drp-purple)",
-        strokeWidth: 1.5
+        label: "Series A",
+        data: [95, 70, 55, 80, 45, 60, 90, 75],
+        backgroundColor: "rgba(99, 29, 237, 0.2)",
+        borderColor: "#631DED",
+        borderWidth: 2,
+        pointBackgroundColor: "#631DED",
+        pointRadius: 3
+      },
+      {
+        label: "Series B",
+        data: [50, 85, 40, 60, 90, 35, 70, 50],
+        backgroundColor: "rgba(0, 200, 150, 0.2)",
+        borderColor: "#00C896",
+        borderWidth: 2,
+        pointBackgroundColor: "#00C896",
+        pointRadius: 3
       }
-    ),
-    directions.map((dir, i2) => {
-      const angle = angleOffset + i2 / n2 * 2 * Math.PI;
-      const labelR = maxR + 22;
-      const lx = cx + labelR * Math.cos(angle);
-      const ly = cy + labelR * Math.sin(angle);
-      const lines = dir.split("\n");
-      return /* @__PURE__ */ jsx59(
-        "text",
-        {
-          x: lx,
-          y: ly,
-          textAnchor: "middle",
-          dominantBaseline: "middle",
-          fontSize: 9,
-          fill: "var(--drp-grey)",
-          children: lines.map((line, j3) => /* @__PURE__ */ jsx59(
-            "tspan",
-            {
-              x: lx,
-              dy: j3 === 0 ? lines.length > 1 ? -6 : 0 : 12,
-              children: line
-            },
-            j3
-          ))
-        },
-        i2
-      );
-    })
-  ] });
+    ]
+  };
+  const radarOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false }
+    },
+    scales: {
+      r: {
+        beginAtZero: true,
+        max: 100,
+        grid: { color: "rgba(102, 102, 102, 0.2)" },
+        angleLines: { color: "rgba(102, 102, 102, 0.2)" },
+        ticks: { display: false },
+        pointLabels: {
+          font: { size: 11 },
+          color: "#666666"
+        }
+      }
+    }
+  };
+  return /* @__PURE__ */ jsx69("div", { style: { height, width: "100%" }, children: /* @__PURE__ */ jsx69(Radar, { data: radarData, options: radarOptions }) });
 };
 var Sparkline = ({
   color,
@@ -16466,14 +16794,14 @@ var Sparkline = ({
   }));
   const d2 = points.map((p3, i2) => `${i2 === 0 ? "M" : "L"} ${p3.x} ${p3.y}`).join(" ");
   const areaClose = `L ${points[points.length - 1].x} ${h2} L 0 ${h2} Z`;
-  return /* @__PURE__ */ jsxs53(
+  return /* @__PURE__ */ jsxs60(
     "svg",
     {
       viewBox: `0 0 ${w3} ${h2}`,
       style: { width: 80, height: 40 },
       preserveAspectRatio: "none",
       children: [
-        /* @__PURE__ */ jsx59("defs", { children: /* @__PURE__ */ jsxs53(
+        /* @__PURE__ */ jsx69("defs", { children: /* @__PURE__ */ jsxs60(
           "linearGradient",
           {
             id: `sparkGrad${color.replace("#", "")}`,
@@ -16482,19 +16810,19 @@ var Sparkline = ({
             x2: "0",
             y2: "1",
             children: [
-              /* @__PURE__ */ jsx59("stop", { offset: "0%", stopColor: color, stopOpacity: "0.3" }),
-              /* @__PURE__ */ jsx59("stop", { offset: "100%", stopColor: color, stopOpacity: "0.05" })
+              /* @__PURE__ */ jsx69("stop", { offset: "0%", stopColor: color, stopOpacity: "0.3" }),
+              /* @__PURE__ */ jsx69("stop", { offset: "100%", stopColor: color, stopOpacity: "0.05" })
             ]
           }
         ) }),
-        /* @__PURE__ */ jsx59(
+        /* @__PURE__ */ jsx69(
           "path",
           {
             d: d2 + areaClose,
             fill: `url(#sparkGrad${color.replace("#", "")})`
           }
         ),
-        /* @__PURE__ */ jsx59("path", { d: d2, fill: "none", stroke: color, strokeWidth: "2" })
+        /* @__PURE__ */ jsx69("path", { d: d2, fill: "none", stroke: color, strokeWidth: "2" })
       ]
     }
   );
@@ -16509,7 +16837,7 @@ var BarSparkline = ({
   const n2 = values.length;
   const bw = w3 / n2 * 0.55;
   const gap = w3 / n2;
-  return /* @__PURE__ */ jsx59(
+  return /* @__PURE__ */ jsx69(
     "svg",
     {
       viewBox: `0 0 ${w3} ${h2}`,
@@ -16518,7 +16846,7 @@ var BarSparkline = ({
       children: values.map((v3, i2) => {
         const barH = v3 / max * h2 * 0.9;
         const x3 = i2 * gap + gap / 2 - bw / 2;
-        return /* @__PURE__ */ jsx59(
+        return /* @__PURE__ */ jsx69(
           "rect",
           {
             x: x3,
@@ -16554,8 +16882,8 @@ var DonutChart = ({
       "var(--drp-mint)"
     ];
     const radii = [R3, R3 - 20, R3 - 40];
-    return /* @__PURE__ */ jsxs53("svg", { viewBox: "0 0 240 240", style: { width: "100%", height }, children: [
-      radii.map((rad, i2) => /* @__PURE__ */ jsx59(
+    return /* @__PURE__ */ jsxs60("svg", { viewBox: "0 0 240 240", style: { width: "100%", height }, children: [
+      radii.map((rad, i2) => /* @__PURE__ */ jsx69(
         "circle",
         {
           cx,
@@ -16567,8 +16895,8 @@ var DonutChart = ({
         },
         i2
       )),
-      label && /* @__PURE__ */ jsxs53(Fragment9, { children: [
-        /* @__PURE__ */ jsx59(
+      label && /* @__PURE__ */ jsxs60(Fragment12, { children: [
+        /* @__PURE__ */ jsx69(
           "text",
           {
             x: cx,
@@ -16580,7 +16908,7 @@ var DonutChart = ({
             children: label
           }
         ),
-        sublabel && /* @__PURE__ */ jsx59(
+        sublabel && /* @__PURE__ */ jsx69(
           "text",
           {
             x: cx,
@@ -16624,10 +16952,10 @@ var DonutChart = ({
       showLabel: showSegmentLabels && pct > 5
     };
   });
-  return /* @__PURE__ */ jsxs53("svg", { viewBox: "0 0 240 240", style: { width: "100%", height }, children: [
-    paths.map((p3, i2) => /* @__PURE__ */ jsx59("path", { d: p3.d, fill: p3.color }, i2)),
+  return /* @__PURE__ */ jsxs60("svg", { viewBox: "0 0 240 240", style: { width: "100%", height }, children: [
+    paths.map((p3, i2) => /* @__PURE__ */ jsx69("path", { d: p3.d, fill: p3.color }, i2)),
     paths.map(
-      (p3, i2) => p3.showLabel && /* @__PURE__ */ jsxs53(
+      (p3, i2) => p3.showLabel && /* @__PURE__ */ jsxs60(
         "text",
         {
           x: p3.lx,
@@ -16645,8 +16973,8 @@ var DonutChart = ({
         i2
       )
     ),
-    label && /* @__PURE__ */ jsxs53(Fragment9, { children: [
-      /* @__PURE__ */ jsx59(
+    label && /* @__PURE__ */ jsxs60(Fragment12, { children: [
+      /* @__PURE__ */ jsx69(
         "text",
         {
           x: cx,
@@ -16658,7 +16986,7 @@ var DonutChart = ({
           children: label
         }
       ),
-      sublabel && /* @__PURE__ */ jsx59(
+      sublabel && /* @__PURE__ */ jsx69(
         "text",
         {
           x: cx,
@@ -16672,174 +17000,188 @@ var DonutChart = ({
     ] })
   ] });
 };
-var WorldMapSVG = () => {
-  return /* @__PURE__ */ jsxs53(
-    "svg",
-    {
-      viewBox: "0 0 800 420",
-      style: { width: "100%", height: 350 },
-      preserveAspectRatio: "xMidYMid meet",
-      children: [
-        /* @__PURE__ */ jsx59("rect", { width: "800", height: "420", fill: "var(--drp-cream)" }),
-        /* @__PURE__ */ jsx59(
-          "path",
-          {
-            d: "M 110 60 L 210 50 L 240 70 L 250 120 L 230 160 L 200 180 L 180 200 L 160 220 L 140 200 L 120 170 L 100 140 L 90 100 Z",
-            fill: "var(--drp-grey)",
-            opacity: 0.2
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "path",
-          {
-            d: "M 180 230 L 220 220 L 240 250 L 250 300 L 240 350 L 210 380 L 185 370 L 170 340 L 165 290 L 170 260 Z",
-            fill: "var(--drp-grey)",
-            opacity: 0.2
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "path",
-          {
-            d: "M 360 60 L 420 55 L 440 80 L 430 110 L 400 120 L 375 115 L 355 90 Z",
-            fill: "var(--drp-grey)",
-            opacity: 0.2
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "path",
-          {
-            d: "M 360 130 L 420 125 L 445 160 L 440 230 L 410 290 L 380 310 L 355 280 L 340 230 L 345 170 Z",
-            fill: "var(--drp-grey)",
-            opacity: 0.2
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "path",
-          {
-            d: "M 450 50 L 650 45 L 680 80 L 700 130 L 670 170 L 620 200 L 560 210 L 510 190 L 470 160 L 440 120 L 445 80 Z",
-            fill: "var(--drp-grey)",
-            opacity: 0.2
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "path",
-          {
-            d: "M 600 280 L 680 265 L 720 290 L 720 340 L 690 365 L 640 360 L 600 340 L 590 310 Z",
-            fill: "var(--drp-grey)",
-            opacity: 0.2
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "path",
-          {
-            d: "M 110 60 L 210 50 L 240 70 L 250 120 L 230 160 L 200 180 L 180 200 L 160 220 L 140 200 L 120 170 L 100 140 L 90 100 Z",
-            fill: "var(--drp-purple)",
-            opacity: 0.75
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "path",
-          {
-            d: "M 160 200 L 195 192 L 200 220 L 185 235 L 165 230 Z",
-            fill: "var(--drp-pink)",
-            opacity: 0.85
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "path",
-          {
-            d: "M 180 230 L 220 220 L 240 250 L 250 300 L 240 350 L 210 380 L 185 370 L 170 340 L 165 290 L 170 260 Z",
-            fill: "#17a2b8",
-            opacity: 0.8
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "path",
-          {
-            d: "M 370 68 L 395 65 L 408 82 L 400 100 L 378 98 L 365 82 Z",
-            fill: "var(--drp-mint)",
-            opacity: 0.8
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "path",
-          {
-            d: "M 480 58 L 640 52 L 670 90 L 655 150 L 600 185 L 540 190 L 500 165 L 468 130 L 462 90 Z",
-            fill: "#FF6C01",
-            opacity: 0.75
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "path",
-          {
-            d: "M 620 195 L 650 185 L 660 210 L 640 225 L 618 215 Z",
-            fill: "var(--drp-purple)",
-            opacity: 0.7
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "path",
-          {
-            d: "M 600 280 L 680 265 L 720 290 L 720 340 L 690 365 L 640 360 L 600 340 L 590 310 Z",
-            fill: "var(--drp-pink)",
-            opacity: 0.8
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "rect",
-          {
-            x: "545",
-            y: "135",
-            width: "85",
-            height: "38",
-            rx: "0",
-            fill: "var(--drp-surface)",
-            stroke: "var(--drp-black)",
-            strokeWidth: 1
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "text",
-          {
-            x: "587",
-            y: "153",
-            textAnchor: "middle",
-            fontSize: 9,
-            fill: "var(--drp-grey)",
-            children: "$14.800"
-          }
-        ),
-        /* @__PURE__ */ jsx59(
-          "polygon",
-          {
-            points: "555,173 575,173 565,183",
-            fill: "var(--drp-surface)",
-            stroke: "var(--drp-black)",
-            strokeWidth: 0.5
-          }
-        ),
-        [
-          { color: "var(--drp-yellow)", label: "Yellow", x: 230 },
-          { color: "var(--drp-purple)", label: "Blue", x: 305 },
-          { color: "var(--drp-mint)", label: "Green", x: 370 },
-          { color: "var(--drp-pink)", label: "Red", x: 440 },
-          { color: "#6f42c1", label: "Dark Blue", x: 508 }
-        ].map((item) => /* @__PURE__ */ jsxs53("g", { children: [
-          /* @__PURE__ */ jsx59(
-            "rect",
-            {
-              x: item.x - 5,
-              y: 397,
-              width: 10,
-              height: 10,
-              fill: item.color
+var WORLD_ATLAS_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+var WorldMapChart = () => {
+  const canvasRef = useRef3(null);
+  const chartRef = useRef3(null);
+  const [loading, setLoading] = useState16(true);
+  const [error, setError] = useState16(null);
+  useEffect2(() => {
+    let cancelled = false;
+    const init = async () => {
+      try {
+        const geoModule = await import("chartjs-chart-geo");
+        const topoModule = await import("topojson-client");
+        ChartJS.register(
+          geoModule.ChoroplethController,
+          geoModule.GeoFeature,
+          geoModule.ColorScale,
+          geoModule.ProjectionScale
+        );
+        const res = await fetch(WORLD_ATLAS_URL);
+        const topology = await res.json();
+        if (cancelled) return;
+        const countries = topoModule.feature(
+          topology,
+          topology.objects.countries
+        ).features;
+        const sampleValues = {
+          "840": 10,
+          "826": 6,
+          "250": 3,
+          "246": 2,
+          "040": 1,
+          "528": 1,
+          "400": 1,
+          "380": 1
+        };
+        if (!canvasRef.current) return;
+        if (chartRef.current) {
+          chartRef.current.destroy();
+        }
+        chartRef.current = new ChartJS(canvasRef.current, {
+          type: "choropleth",
+          data: {
+            labels: countries.map((c2) => c2.properties?.name || c2.id),
+            datasets: [
+              {
+                label: "Products",
+                data: countries.map((c2) => ({
+                  feature: c2,
+                  value: sampleValues[c2.id] || 0
+                }))
+              }
+            ]
+          },
+          options: {
+            showOutline: true,
+            showGraticule: false,
+            plugins: {
+              legend: { display: false }
+            },
+            scales: {
+              projection: {
+                axis: "x",
+                projection: "equalEarth"
+              },
+              color: {
+                axis: "x",
+                quantize: 5,
+                legend: { position: "bottom-right" },
+                interpolate: (v3) => {
+                  const r2 = Math.round(99 + (1 - v3) * 156);
+                  const g2 = Math.round(29 + (1 - v3) * 226);
+                  const b2 = Math.round(237 + (1 - v3) * 18);
+                  return `rgba(${r2}, ${g2}, ${b2}, ${v3 < 0.05 ? 0.1 : 0.8})`;
+                }
+              }
             }
-          ),
-          /* @__PURE__ */ jsx59("text", { x: item.x + 10, y: 406, fontSize: 10, fill: "var(--drp-grey)", children: item.label })
-        ] }, item.label))
-      ]
-    }
-  );
+          }
+        });
+        setLoading(false);
+      } catch (err) {
+        if (!cancelled) {
+          setError("Failed to load map data");
+          setLoading(false);
+        }
+      }
+    };
+    init();
+    return () => {
+      cancelled = true;
+      if (chartRef.current) {
+        chartRef.current.destroy();
+        chartRef.current = null;
+      }
+    };
+  }, []);
+  if (error) {
+    return /* @__PURE__ */ jsx69(
+      "div",
+      {
+        style: {
+          height: 350,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#666"
+        },
+        children: error
+      }
+    );
+  }
+  return /* @__PURE__ */ jsxs60("div", { style: { position: "relative", height: 350, width: "100%" }, children: [
+    loading && /* @__PURE__ */ jsx69(
+      "div",
+      {
+        style: {
+          position: "absolute",
+          inset: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#666"
+        },
+        children: "Loading map..."
+      }
+    ),
+    /* @__PURE__ */ jsx69("canvas", { ref: canvasRef, style: { width: "100%", height: "100%" } }),
+    /* @__PURE__ */ jsx69(
+      "div",
+      {
+        style: {
+          display: "flex",
+          justifyContent: "center",
+          gap: 16,
+          marginTop: 8,
+          flexWrap: "wrap"
+        },
+        children: [
+          { color: "#631DED", label: "United States (10)" },
+          { color: "#7B3DEF", label: "United Kingdom (6)" },
+          { color: "#9460F2", label: "France (3)" },
+          { color: "#AD83F5", label: "Finland (2)" },
+          { color: "#C6A6F8", label: "Austria (1)" },
+          { color: "#C6A6F8", label: "Netherlands (1)" },
+          { color: "#C6A6F8", label: "Jordan (1)" },
+          { color: "#C6A6F8", label: "Italy (1)" }
+        ].map((item) => /* @__PURE__ */ jsxs60(
+          "div",
+          {
+            style: { display: "flex", alignItems: "center", gap: 4 },
+            children: [
+              /* @__PURE__ */ jsx69(
+                "span",
+                {
+                  style: {
+                    width: 10,
+                    height: 10,
+                    borderRadius: "50%",
+                    backgroundColor: item.color,
+                    display: "inline-block"
+                  }
+                }
+              ),
+              /* @__PURE__ */ jsx69("span", { style: { fontSize: 11, color: "#666" }, children: item.label })
+            ]
+          },
+          item.label
+        ))
+      }
+    ),
+    /* @__PURE__ */ jsx69(
+      "p",
+      {
+        style: {
+          textAlign: "center",
+          fontSize: 11,
+          color: "#999",
+          marginTop: 4
+        },
+        children: "Location data: 29 of 266 products (11%)"
+      }
+    )
+  ] });
 };
 var StatCard1 = ({
   label,
@@ -16848,8 +17190,8 @@ var StatCard1 = ({
   badgeColor,
   description,
   trend = "up"
-}) => /* @__PURE__ */ jsxs53("div", { className: "drp-stat-card", style: { flex: 1 }, children: [
-  /* @__PURE__ */ jsxs53(
+}) => /* @__PURE__ */ jsxs60("div", { className: "drp-stat-card", style: { flex: 1 }, children: [
+  /* @__PURE__ */ jsxs60(
     "div",
     {
       style: {
@@ -16859,15 +17201,15 @@ var StatCard1 = ({
         marginBottom: "var(--drp-space-1)"
       },
       children: [
-        /* @__PURE__ */ jsx59("span", { className: "drp-stat-card__label", children: label }),
-        /* @__PURE__ */ jsx59(
+        /* @__PURE__ */ jsx69("span", { className: "drp-stat-card__label", children: label }),
+        /* @__PURE__ */ jsx69(
           "svg",
           {
             style: { width: 16, height: 16, color: "var(--drp-grey)" },
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
-            children: /* @__PURE__ */ jsx59(
+            children: /* @__PURE__ */ jsx69(
               "path",
               {
                 strokeLinecap: "round",
@@ -16881,8 +17223,8 @@ var StatCard1 = ({
       ]
     }
   ),
-  /* @__PURE__ */ jsx59("div", { className: "drp-stat-card__value", children: value }),
-  /* @__PURE__ */ jsxs53(
+  /* @__PURE__ */ jsx69("div", { className: "drp-stat-card__value", children: value }),
+  /* @__PURE__ */ jsxs60(
     "div",
     {
       style: {
@@ -16892,8 +17234,8 @@ var StatCard1 = ({
         marginTop: "var(--drp-space-1)"
       },
       children: [
-        /* @__PURE__ */ jsx59("span", { className: "drp-caption", children: description }),
-        badge && /* @__PURE__ */ jsx59(
+        /* @__PURE__ */ jsx69("span", { className: "drp-caption", children: description }),
+        badge && /* @__PURE__ */ jsx69(
           "span",
           {
             className: `drp-stat-card__badge ${trend === "up" ? "drp-stat-card__badge--up" : "drp-stat-card__badge--down"}`,
@@ -16911,10 +17253,10 @@ var StatCard2 = ({
   left,
   barColor,
   pct
-}) => /* @__PURE__ */ jsxs53("div", { className: "drp-stat-card", style: { flex: 1 }, children: [
-  /* @__PURE__ */ jsx59("div", { className: "drp-stat-card__label", children: label }),
-  /* @__PURE__ */ jsx59("div", { className: "drp-stat-card__value", children: value }),
-  /* @__PURE__ */ jsx59(
+}) => /* @__PURE__ */ jsxs60("div", { className: "drp-stat-card", style: { flex: 1 }, children: [
+  /* @__PURE__ */ jsx69("div", { className: "drp-stat-card__label", children: label }),
+  /* @__PURE__ */ jsx69("div", { className: "drp-stat-card__value", children: value }),
+  /* @__PURE__ */ jsx69(
     "div",
     {
       style: {
@@ -16924,7 +17266,7 @@ var StatCard2 = ({
         marginTop: "var(--drp-space-2)",
         marginBottom: "var(--drp-space-2)"
       },
-      children: /* @__PURE__ */ jsx59(
+      children: /* @__PURE__ */ jsx69(
         "div",
         {
           style: { height: "100%", width: `${pct}%`, backgroundColor: barColor }
@@ -16932,13 +17274,13 @@ var StatCard2 = ({
       )
     }
   ),
-  /* @__PURE__ */ jsxs53("div", { style: { display: "flex", justifyContent: "space-between" }, children: [
-    /* @__PURE__ */ jsxs53("span", { className: "drp-caption", children: [
-      /* @__PURE__ */ jsx59("strong", { children: spent }),
+  /* @__PURE__ */ jsxs60("div", { style: { display: "flex", justifyContent: "space-between" }, children: [
+    /* @__PURE__ */ jsxs60("span", { className: "drp-caption", children: [
+      /* @__PURE__ */ jsx69("strong", { children: spent }),
       " Spent"
     ] }),
-    /* @__PURE__ */ jsxs53("span", { className: "drp-caption", children: [
-      /* @__PURE__ */ jsx59("strong", { children: left }),
+    /* @__PURE__ */ jsxs60("span", { className: "drp-caption", children: [
+      /* @__PURE__ */ jsx69("strong", { children: left }),
       " Left"
     ] })
   ] })
@@ -16951,7 +17293,7 @@ var StatCard3 = ({
   changeColor,
   chartColor,
   chartValues
-}) => /* @__PURE__ */ jsxs53(
+}) => /* @__PURE__ */ jsxs60(
   "div",
   {
     className: "drp-stat-card",
@@ -16962,11 +17304,11 @@ var StatCard3 = ({
       gap: "var(--drp-space-4)"
     },
     children: [
-      /* @__PURE__ */ jsxs53("div", { style: { flex: 1 }, children: [
-        /* @__PURE__ */ jsx59("div", { className: "drp-stat-card__label", children: label }),
-        /* @__PURE__ */ jsx59("div", { className: "drp-stat-card__value", children: value }),
-        sub && /* @__PURE__ */ jsx59("span", { className: "drp-caption", children: sub }),
-        /* @__PURE__ */ jsx59(
+      /* @__PURE__ */ jsxs60("div", { style: { flex: 1 }, children: [
+        /* @__PURE__ */ jsx69("div", { className: "drp-stat-card__label", children: label }),
+        /* @__PURE__ */ jsx69("div", { className: "drp-stat-card__value", children: value }),
+        sub && /* @__PURE__ */ jsx69("span", { className: "drp-caption", children: sub }),
+        /* @__PURE__ */ jsx69(
           "span",
           {
             style: {
@@ -16978,7 +17320,7 @@ var StatCard3 = ({
           }
         )
       ] }),
-      /* @__PURE__ */ jsx59(BarSparkline, { color: chartColor, values: chartValues })
+      /* @__PURE__ */ jsx69(BarSparkline, { color: chartColor, values: chartValues })
     ]
   }
 );
@@ -16988,7 +17330,7 @@ var StatCard4 = ({
   label,
   chartColor,
   chartValues
-}) => /* @__PURE__ */ jsxs53(
+}) => /* @__PURE__ */ jsxs60(
   "div",
   {
     className: "drp-stat-card",
@@ -16999,7 +17341,7 @@ var StatCard4 = ({
       gap: "var(--drp-space-3)"
     },
     children: [
-      /* @__PURE__ */ jsx59(
+      /* @__PURE__ */ jsx69(
         "div",
         {
           style: {
@@ -17015,8 +17357,8 @@ var StatCard4 = ({
           children: icon
         }
       ),
-      /* @__PURE__ */ jsxs53("div", { style: { flex: 1 }, children: [
-        /* @__PURE__ */ jsx59(
+      /* @__PURE__ */ jsxs60("div", { style: { flex: 1 }, children: [
+        /* @__PURE__ */ jsx69(
           "div",
           {
             className: "drp-stat-card__value",
@@ -17024,9 +17366,9 @@ var StatCard4 = ({
             children: value
           }
         ),
-        /* @__PURE__ */ jsx59("div", { className: "drp-caption", children: label })
+        /* @__PURE__ */ jsx69("div", { className: "drp-caption", children: label })
       ] }),
-      /* @__PURE__ */ jsx59(Sparkline, { color: chartColor, values: chartValues })
+      /* @__PURE__ */ jsx69(Sparkline, { color: chartColor, values: chartValues })
     ]
   }
 );
@@ -17173,11 +17515,11 @@ var DOUBLE_PURPLE_4 = [210, 60, 400, 60];
 var ReportScreen = ({
   children,
   active = "Analytics"
-}) => /* @__PURE__ */ jsxs53("div", { className: "app-layout", children: [
-  /* @__PURE__ */ jsx59(DoctorProjectSidebar11, { active }),
-  /* @__PURE__ */ jsxs53("div", { className: "main-content", children: [
-    /* @__PURE__ */ jsx59(TopBar14, { title: "Reports" }),
-    /* @__PURE__ */ jsx59("div", { className: "content", children: /* @__PURE__ */ jsx59(
+}) => /* @__PURE__ */ jsxs60("div", { className: "app-layout", children: [
+  /* @__PURE__ */ jsx69(DoctorProjectSidebar11, { active }),
+  /* @__PURE__ */ jsxs60("div", { className: "main-content", children: [
+    /* @__PURE__ */ jsx69(TopBar14, { title: "Reports" }),
+    /* @__PURE__ */ jsx69("div", { className: "content", children: /* @__PURE__ */ jsx69(
       "div",
       {
         style: {
@@ -17188,12 +17530,12 @@ var ReportScreen = ({
         children
       }
     ) }),
-    /* @__PURE__ */ jsx59(Footer13, {})
+    /* @__PURE__ */ jsx69(Footer13, {})
   ] })
 ] });
-var BarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
-  /* @__PURE__ */ jsxs53("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
-    /* @__PURE__ */ jsx59(
+var BarsScreen = () => /* @__PURE__ */ jsxs60(ReportScreen, { children: [
+  /* @__PURE__ */ jsxs60("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
+    /* @__PURE__ */ jsx69(
       StatCard1,
       {
         label: "Balance",
@@ -17203,7 +17545,7 @@ var BarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
         trend: "up"
       }
     ),
-    /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsx69(
       StatCard1,
       {
         label: "Money in",
@@ -17213,7 +17555,7 @@ var BarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
         trend: "down"
       }
     ),
-    /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsx69(
       StatCard1,
       {
         label: "Money out",
@@ -17224,7 +17566,7 @@ var BarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
       }
     )
   ] }),
-  /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ jsx59(
+  /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ jsx69(
     BarChartSVG,
     {
       data: BAR_DATA_12,
@@ -17233,7 +17575,7 @@ var BarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
       height: 220
     }
   ) }),
-  /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ jsx59(
+  /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ jsx69(
     BarChartSVG,
     {
       data: BAR_DATA_12,
@@ -17242,8 +17584,8 @@ var BarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
       height: 220
     }
   ) }),
-  /* @__PURE__ */ jsxs53("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Bars 8 columns", children: /* @__PURE__ */ jsx59(
+  /* @__PURE__ */ jsxs60("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Bars 8 columns", children: /* @__PURE__ */ jsx69(
       BarChartSVG,
       {
         data: BAR_DATA_8,
@@ -17252,7 +17594,7 @@ var BarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
         height: 200
       }
     ) }),
-    /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Bars 4 columns", children: /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Bars 4 columns", children: /* @__PURE__ */ jsx69(
       BarChartSVG,
       {
         data: BAR_DATA_4,
@@ -17263,9 +17605,9 @@ var BarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
     ) })
   ] })
 ] });
-var BarsHorizontalScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
-  /* @__PURE__ */ jsxs53("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
-    /* @__PURE__ */ jsx59(
+var BarsHorizontalScreen = () => /* @__PURE__ */ jsxs60(ReportScreen, { children: [
+  /* @__PURE__ */ jsxs60("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
+    /* @__PURE__ */ jsx69(
       StatCard2,
       {
         label: "Balance",
@@ -17276,7 +17618,7 @@ var BarsHorizontalScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children
         pct: 50
       }
     ),
-    /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsx69(
       StatCard2,
       {
         label: "Money in",
@@ -17287,7 +17629,7 @@ var BarsHorizontalScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children
         pct: 50
       }
     ),
-    /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsx69(
       StatCard2,
       {
         label: "Money out",
@@ -17299,19 +17641,19 @@ var BarsHorizontalScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children
       }
     )
   ] }),
-  /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ jsx59(HBarChartSVG, { data: HBAR_DATA_12, height: 260 }) }),
-  /* @__PURE__ */ jsxs53("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Bars 8 columns", children: /* @__PURE__ */ jsx59(HBarChartSVG, { data: HBAR_DATA_8, height: 240 }) }),
-    /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Bars 4 columns", children: /* @__PURE__ */ jsx59(HBarChartSVG, { data: HBAR_DATA_4, height: 240 }) })
+  /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ jsx69(HBarChartSVG, { data: HBAR_DATA_12, height: 260 }) }),
+  /* @__PURE__ */ jsxs60("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Bars 8 columns", children: /* @__PURE__ */ jsx69(HBarChartSVG, { data: HBAR_DATA_8, height: 240 }) }),
+    /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Bars 4 columns", children: /* @__PURE__ */ jsx69(HBarChartSVG, { data: HBAR_DATA_4, height: 240 }) })
   ] })
 ] });
-var ChartGeometricScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
-  /* @__PURE__ */ jsx59("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
+var ChartGeometricScreen = () => /* @__PURE__ */ jsxs60(ReportScreen, { children: [
+  /* @__PURE__ */ jsx69("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
     { label: "Balance", value: "$80,470.50", color: "var(--drp-mint)" },
     { label: "Money in", value: "$60,930.50", color: "var(--drp-yellow)" },
     { label: "Money out", value: "$42,890.30", color: "var(--drp-pink)" }
-  ].map((s2) => /* @__PURE__ */ jsxs53("div", { className: "drp-stat-card", children: [
-    /* @__PURE__ */ jsxs53(
+  ].map((s2) => /* @__PURE__ */ jsxs60("div", { className: "drp-stat-card", children: [
+    /* @__PURE__ */ jsxs60(
       "div",
       {
         style: {
@@ -17320,11 +17662,11 @@ var ChartGeometricScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children
           justifyContent: "space-between"
         },
         children: [
-          /* @__PURE__ */ jsxs53("div", { children: [
-            /* @__PURE__ */ jsx59("div", { className: "drp-stat-card__label", children: s2.label }),
-            /* @__PURE__ */ jsx59("div", { className: "drp-stat-card__value", children: s2.value })
+          /* @__PURE__ */ jsxs60("div", { children: [
+            /* @__PURE__ */ jsx69("div", { className: "drp-stat-card__label", children: s2.label }),
+            /* @__PURE__ */ jsx69("div", { className: "drp-stat-card__value", children: s2.value })
           ] }),
-          /* @__PURE__ */ jsx59("div", { style: { width: 24, height: 24, color: "var(--drp-grey)" }, children: /* @__PURE__ */ jsx59("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx59(
+          /* @__PURE__ */ jsx69("div", { style: { width: 24, height: 24, color: "var(--drp-grey)" }, children: /* @__PURE__ */ jsx69("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx69(
             "path",
             {
               strokeLinecap: "round",
@@ -17336,7 +17678,7 @@ var ChartGeometricScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children
         ]
       }
     ),
-    /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsx69(
       "div",
       {
         style: {
@@ -17347,7 +17689,7 @@ var ChartGeometricScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children
       }
     )
   ] }, s2.label)) }),
-  /* @__PURE__ */ jsx59(
+  /* @__PURE__ */ jsx69(
     ChartCardWrapper,
     {
       title: "Wave 12 columns",
@@ -17355,7 +17697,7 @@ var ChartGeometricScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children
         { color: "var(--drp-purple)", label: "Blue Tag" },
         { color: "var(--drp-mint)", label: "Green Tag" }
       ],
-      children: /* @__PURE__ */ jsx59(
+      children: /* @__PURE__ */ jsx69(
         WaveChartSVG,
         {
           dataBlue: GEO_BLUE_12,
@@ -17369,8 +17711,8 @@ var ChartGeometricScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children
       )
     }
   ),
-  /* @__PURE__ */ jsxs53("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ jsx59(
+  /* @__PURE__ */ jsxs60("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ jsx69(
       ChartCardWrapper,
       {
         title: "Wave 8 columns",
@@ -17378,7 +17720,7 @@ var ChartGeometricScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children
           { color: "var(--drp-purple)", label: "Blue Tag" },
           { color: "var(--drp-mint)", label: "Green Tag" }
         ],
-        children: /* @__PURE__ */ jsx59(
+        children: /* @__PURE__ */ jsx69(
           WaveChartSVG,
           {
             dataBlue: GEO_BLUE_8,
@@ -17392,7 +17734,7 @@ var ChartGeometricScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children
         )
       }
     ),
-    /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Wave 4 columns", children: /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Wave 4 columns", children: /* @__PURE__ */ jsx69(
       WaveChartSVG,
       {
         dataBlue: GEO_BLUE_4,
@@ -17406,9 +17748,9 @@ var ChartGeometricScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children
     ) })
   ] })
 ] });
-var ChartWaveScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
-  /* @__PURE__ */ jsxs53("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
-    /* @__PURE__ */ jsx59(
+var ChartWaveScreen = () => /* @__PURE__ */ jsxs60(ReportScreen, { children: [
+  /* @__PURE__ */ jsxs60("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
+    /* @__PURE__ */ jsx69(
       StatCard3,
       {
         label: "Dropbox",
@@ -17420,7 +17762,7 @@ var ChartWaveScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
         chartValues: [30, 45, 40, 55, 50, 65, 60]
       }
     ),
-    /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsx69(
       StatCard3,
       {
         label: "Amazon AWS",
@@ -17432,7 +17774,7 @@ var ChartWaveScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
         chartValues: [60, 55, 50, 45, 40, 35, 38]
       }
     ),
-    /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsx69(
       StatCard3,
       {
         label: "Google Cloud",
@@ -17445,7 +17787,7 @@ var ChartWaveScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
       }
     )
   ] }),
-  /* @__PURE__ */ jsx59(
+  /* @__PURE__ */ jsx69(
     ChartCardWrapper,
     {
       title: "Wave 12 columns",
@@ -17453,7 +17795,7 @@ var ChartWaveScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
         { color: "var(--drp-purple)", label: "Blue Tag" },
         { color: "var(--drp-mint)", label: "Green Tag" }
       ],
-      children: /* @__PURE__ */ jsx59(
+      children: /* @__PURE__ */ jsx69(
         WaveChartSVG,
         {
           dataBlue: WAVE_BLUE_12,
@@ -17467,8 +17809,8 @@ var ChartWaveScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
       )
     }
   ),
-  /* @__PURE__ */ jsxs53("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ jsx59(
+  /* @__PURE__ */ jsxs60("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ jsx69(
       ChartCardWrapper,
       {
         title: "Wave 8 columns",
@@ -17476,7 +17818,7 @@ var ChartWaveScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
           { color: "var(--drp-purple)", label: "Blue Tag" },
           { color: "var(--drp-mint)", label: "Green Tag" }
         ],
-        children: /* @__PURE__ */ jsx59(
+        children: /* @__PURE__ */ jsx69(
           WaveChartSVG,
           {
             dataBlue: WAVE_BLUE_8,
@@ -17490,7 +17832,7 @@ var ChartWaveScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
         )
       }
     ),
-    /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Wave 4 columns", children: /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Wave 4 columns", children: /* @__PURE__ */ jsx69(
       WaveChartSVG,
       {
         dataBlue: WAVE_BLUE_4,
@@ -17504,8 +17846,8 @@ var ChartWaveScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
     ) })
   ] })
 ] });
-var DoubleBarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
-  /* @__PURE__ */ jsxs53(
+var DoubleBarsScreen = () => /* @__PURE__ */ jsxs60(ReportScreen, { children: [
+  /* @__PURE__ */ jsxs60(
     ChartCardWrapper,
     {
       title: "Bars 12 columns",
@@ -17514,7 +17856,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
         { color: "var(--drp-purple)", label: "Green Tag" }
       ],
       children: [
-        /* @__PURE__ */ jsx59(
+        /* @__PURE__ */ jsx69(
           "div",
           {
             className: "drp-stat-grid drp-stat-grid--3",
@@ -17541,9 +17883,9 @@ var DoubleBarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
                 change: "+10%",
                 pos: true
               }
-            ].map((s2) => /* @__PURE__ */ jsxs53("div", { children: [
-              /* @__PURE__ */ jsx59("div", { className: "drp-caption", children: s2.label }),
-              /* @__PURE__ */ jsxs53(
+            ].map((s2) => /* @__PURE__ */ jsxs60("div", { children: [
+              /* @__PURE__ */ jsx69("div", { className: "drp-caption", children: s2.label }),
+              /* @__PURE__ */ jsxs60(
                 "div",
                 {
                   style: {
@@ -17552,7 +17894,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
                     gap: "var(--drp-space-2)"
                   },
                   children: [
-                    /* @__PURE__ */ jsx59(
+                    /* @__PURE__ */ jsx69(
                       "span",
                       {
                         style: {
@@ -17563,7 +17905,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
                         children: s2.value
                       }
                     ),
-                    /* @__PURE__ */ jsx59(
+                    /* @__PURE__ */ jsx69(
                       "span",
                       {
                         style: {
@@ -17573,7 +17915,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
                         children: s2.change
                       }
                     ),
-                    /* @__PURE__ */ jsx59(
+                    /* @__PURE__ */ jsx69(
                       "svg",
                       {
                         style: {
@@ -17584,7 +17926,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
                         fill: "none",
                         viewBox: "0 0 24 24",
                         stroke: "currentColor",
-                        children: /* @__PURE__ */ jsx59(
+                        children: /* @__PURE__ */ jsx69(
                           "path",
                           {
                             strokeLinecap: "round",
@@ -17601,7 +17943,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
             ] }, s2.label))
           }
         ),
-        /* @__PURE__ */ jsx59(
+        /* @__PURE__ */ jsx69(
           DoubleBarChartSVG,
           {
             dataGreen: DOUBLE_GREEN_12,
@@ -17614,7 +17956,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
       ]
     }
   ),
-  /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ jsx59(
+  /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Bars 12 columns", children: /* @__PURE__ */ jsx69(
     DoubleBarChartSVG,
     {
       dataGreen: DOUBLE_GREEN_12,
@@ -17624,8 +17966,8 @@ var DoubleBarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
       height: 220
     }
   ) }),
-  /* @__PURE__ */ jsxs53("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Bars 8 columns", children: /* @__PURE__ */ jsx59(
+  /* @__PURE__ */ jsxs60("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Bars 8 columns", children: /* @__PURE__ */ jsx69(
       DoubleBarChartSVG,
       {
         dataGreen: DOUBLE_GREEN_8,
@@ -17635,7 +17977,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
         height: 200
       }
     ) }),
-    /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Bars 4 columns", children: /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Bars 4 columns", children: /* @__PURE__ */ jsx69(
       DoubleBarChartSVG,
       {
         dataGreen: DOUBLE_GREEN_4,
@@ -17647,10 +17989,10 @@ var DoubleBarsScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
     ) })
   ] })
 ] });
-var MiscScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
-  /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Map 12 columns", children: /* @__PURE__ */ jsx59(WorldMapSVG, {}) }),
-  /* @__PURE__ */ jsxs53("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Pie chart 6 columns", children: /* @__PURE__ */ jsxs53(
+var MiscScreen = () => /* @__PURE__ */ jsxs60(ReportScreen, { children: [
+  /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Map 12 columns", children: /* @__PURE__ */ jsx69(WorldMapChart, {}) }),
+  /* @__PURE__ */ jsxs60("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Pie chart 6 columns", children: /* @__PURE__ */ jsxs60(
       "div",
       {
         style: {
@@ -17659,7 +18001,7 @@ var MiscScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
           alignItems: "center"
         },
         children: [
-          /* @__PURE__ */ jsx59(
+          /* @__PURE__ */ jsx69(
             DonutChart,
             {
               emptyRings: true,
@@ -17669,7 +18011,7 @@ var MiscScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
               segments: []
             }
           ),
-          /* @__PURE__ */ jsx59(
+          /* @__PURE__ */ jsx69(
             "div",
             {
               className: "drp-chart-legend drp-chart-legend--center",
@@ -17678,22 +18020,22 @@ var MiscScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
                 { color: "var(--drp-yellow)", label: "Yellow Tag" },
                 { color: "var(--drp-purple)", label: "Blue Tag" },
                 { color: "var(--drp-mint)", label: "Green Tag" }
-              ].map((l2) => /* @__PURE__ */ jsxs53("div", { className: "drp-chart-legend__item", children: [
-                /* @__PURE__ */ jsx59(
+              ].map((l2) => /* @__PURE__ */ jsxs60("div", { className: "drp-chart-legend__item", children: [
+                /* @__PURE__ */ jsx69(
                   "span",
                   {
                     className: "drp-chart-legend__dot",
                     style: { backgroundColor: l2.color }
                   }
                 ),
-                /* @__PURE__ */ jsx59("span", { children: l2.label })
+                /* @__PURE__ */ jsx69("span", { children: l2.label })
               ] }, l2.label))
             }
           )
         ]
       }
     ) }),
-    /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Pie chart 6 columns", children: /* @__PURE__ */ jsxs53(
+    /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Pie chart 6 columns", children: /* @__PURE__ */ jsxs60(
       "div",
       {
         style: {
@@ -17702,7 +18044,7 @@ var MiscScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
           alignItems: "center"
         },
         children: [
-          /* @__PURE__ */ jsx59(
+          /* @__PURE__ */ jsx69(
             DonutChart,
             {
               label: "$80,720.50",
@@ -17718,7 +18060,7 @@ var MiscScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
               ]
             }
           ),
-          /* @__PURE__ */ jsx59(
+          /* @__PURE__ */ jsx69(
             "div",
             {
               className: "drp-chart-legend drp-chart-legend--center",
@@ -17729,15 +18071,15 @@ var MiscScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
                 { color: "var(--drp-mint)", label: "Green" },
                 { color: "var(--drp-pink)", label: "Red" },
                 { color: "#6f42c1", label: "Dark Blue" }
-              ].map((l2) => /* @__PURE__ */ jsxs53("div", { className: "drp-chart-legend__item", children: [
-                /* @__PURE__ */ jsx59(
+              ].map((l2) => /* @__PURE__ */ jsxs60("div", { className: "drp-chart-legend__item", children: [
+                /* @__PURE__ */ jsx69(
                   "span",
                   {
                     className: "drp-chart-legend__dot",
                     style: { backgroundColor: l2.color }
                   }
                 ),
-                /* @__PURE__ */ jsx59("span", { children: l2.label })
+                /* @__PURE__ */ jsx69("span", { children: l2.label })
               ] }, l2.label))
             }
           )
@@ -17746,10 +18088,10 @@ var MiscScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
     ) })
   ] })
 ] });
-var PolarChartScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
-  /* @__PURE__ */ jsx59("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
+var PolarChartScreen = () => /* @__PURE__ */ jsxs60(ReportScreen, { children: [
+  /* @__PURE__ */ jsx69("div", { className: "drp-stat-grid drp-stat-grid--3", children: [
     {
-      icon: /* @__PURE__ */ jsxs53(
+      icon: /* @__PURE__ */ jsxs60(
         "svg",
         {
           fill: "none",
@@ -17757,10 +18099,10 @@ var PolarChartScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
           stroke: "currentColor",
           style: { width: 20, height: 20 },
           children: [
-            /* @__PURE__ */ jsx59("rect", { x: "3", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
-            /* @__PURE__ */ jsx59("rect", { x: "14", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
-            /* @__PURE__ */ jsx59("rect", { x: "3", y: "14", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
-            /* @__PURE__ */ jsx59("rect", { x: "14", y: "14", width: "7", height: "7", rx: "0", strokeWidth: 2 })
+            /* @__PURE__ */ jsx69("rect", { x: "3", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
+            /* @__PURE__ */ jsx69("rect", { x: "14", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
+            /* @__PURE__ */ jsx69("rect", { x: "3", y: "14", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
+            /* @__PURE__ */ jsx69("rect", { x: "14", y: "14", width: "7", height: "7", rx: "0", strokeWidth: 2 })
           ]
         }
       ),
@@ -17770,7 +18112,7 @@ var PolarChartScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
       values: [30, 50, 35, 55, 45, 60, 55, 70]
     },
     {
-      icon: /* @__PURE__ */ jsxs53(
+      icon: /* @__PURE__ */ jsxs60(
         "svg",
         {
           fill: "none",
@@ -17778,8 +18120,8 @@ var PolarChartScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
           stroke: "currentColor",
           style: { width: 20, height: 20 },
           children: [
-            /* @__PURE__ */ jsx59("rect", { x: "3", y: "4", width: "18", height: "18", rx: "0", strokeWidth: 2 }),
-            /* @__PURE__ */ jsx59(
+            /* @__PURE__ */ jsx69("rect", { x: "3", y: "4", width: "18", height: "18", rx: "0", strokeWidth: 2 }),
+            /* @__PURE__ */ jsx69(
               "path",
               {
                 strokeLinecap: "round",
@@ -17796,14 +18138,14 @@ var PolarChartScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
       values: [55, 45, 60, 50, 65, 55, 70, 60]
     },
     {
-      icon: /* @__PURE__ */ jsx59(
+      icon: /* @__PURE__ */ jsx69(
         "svg",
         {
           fill: "none",
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           style: { width: 20, height: 20 },
-          children: /* @__PURE__ */ jsx59(
+          children: /* @__PURE__ */ jsx69(
             "path",
             {
               strokeLinecap: "round",
@@ -17819,7 +18161,7 @@ var PolarChartScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
       color: "var(--drp-purple)",
       values: [40, 55, 45, 60, 50, 65, 55, 70]
     }
-  ].map((s2) => /* @__PURE__ */ jsx59(
+  ].map((s2) => /* @__PURE__ */ jsx69(
     StatCard4,
     {
       icon: s2.icon,
@@ -17830,12 +18172,12 @@ var PolarChartScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
     },
     s2.label
   )) }),
-  /* @__PURE__ */ jsxs53("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Polar chart 6 columns", children: /* @__PURE__ */ jsx59("div", { style: { display: "flex", justifyContent: "center" }, children: /* @__PURE__ */ jsx59(PolarChartSVG, { variant: "radar", height: 320 }) }) }),
-    /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Polar chart 6 columns", children: /* @__PURE__ */ jsx59("div", { style: { display: "flex", justifyContent: "center" }, children: /* @__PURE__ */ jsx59(PolarChartSVG, { variant: "segments", height: 320 }) }) })
+  /* @__PURE__ */ jsxs60("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Polar chart 6 columns", children: /* @__PURE__ */ jsx69("div", { style: { display: "flex", justifyContent: "center" }, children: /* @__PURE__ */ jsx69(PolarChartComponent, { variant: "radar", height: 320 }) }) }),
+    /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Polar chart 6 columns", children: /* @__PURE__ */ jsx69("div", { style: { display: "flex", justifyContent: "center" }, children: /* @__PURE__ */ jsx69(PolarChartComponent, { variant: "segments", height: 320 }) }) })
   ] }),
-  /* @__PURE__ */ jsxs53("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
-    /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Wave 6 columns", children: /* @__PURE__ */ jsx59(
+  /* @__PURE__ */ jsxs60("div", { className: "drp-chart-grid drp-chart-grid--2", children: [
+    /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Wave 6 columns", children: /* @__PURE__ */ jsx69(
       WaveChartSVG,
       {
         dataBlue: [280, 160, 130, 250, 290, 240],
@@ -17847,7 +18189,7 @@ var PolarChartScreen = () => /* @__PURE__ */ jsxs53(ReportScreen, { children: [
         showTooltip: true
       }
     ) }),
-    /* @__PURE__ */ jsx59(ChartCardWrapper, { title: "Wave 6 columns", children: /* @__PURE__ */ jsx59(
+    /* @__PURE__ */ jsx69(ChartCardWrapper, { title: "Wave 6 columns", children: /* @__PURE__ */ jsx69(
       WaveChartSVG,
       {
         dataBlue: [
@@ -17878,26 +18220,26 @@ var ChartContainer = ({
   title,
   subtitle,
   children
-}) => /* @__PURE__ */ jsxs53(
+}) => /* @__PURE__ */ jsxs60(
   "div",
   {
     style: { maxWidth: 1200, margin: "0 auto", padding: "var(--drp-space-6)" },
     children: [
-      /* @__PURE__ */ jsxs53("div", { style: { marginBottom: "var(--drp-space-8)" }, children: [
-        /* @__PURE__ */ jsx59("h1", { className: "drp-h2", children: title }),
-        subtitle && /* @__PURE__ */ jsx59("p", { className: "drp-caption", style: { marginTop: "var(--drp-space-2)" }, children: subtitle })
+      /* @__PURE__ */ jsxs60("div", { style: { marginBottom: "var(--drp-space-8)" }, children: [
+        /* @__PURE__ */ jsx69("h1", { className: "drp-h2", children: title }),
+        subtitle && /* @__PURE__ */ jsx69("p", { className: "drp-caption", style: { marginTop: "var(--drp-space-2)" }, children: subtitle })
       ] }),
-      /* @__PURE__ */ jsx59("div", { className: "drp-chart-grid drp-chart-grid--2", children })
+      /* @__PURE__ */ jsx69("div", { className: "drp-chart-grid drp-chart-grid--2", children })
     ]
   }
 );
-var ChartBarVariant = () => /* @__PURE__ */ jsx59(BarsScreen, {});
-var ChartPolarVariant = () => /* @__PURE__ */ jsx59(PolarChartScreen, {});
-var ChartWaveVariant = () => /* @__PURE__ */ jsx59(ChartWaveScreen, {});
-var ChartGeometricVariant = () => /* @__PURE__ */ jsx59(ChartGeometricScreen, {});
-var ChartHorizontalBarsVariant = () => /* @__PURE__ */ jsx59(BarsHorizontalScreen, {});
-var ChartDoubleBarsVariant = () => /* @__PURE__ */ jsx59(DoubleBarsScreen, {});
-var ChartMiscVariant = () => /* @__PURE__ */ jsx59(MiscScreen, {});
+var ChartBarVariant = () => /* @__PURE__ */ jsx69(BarsScreen, {});
+var ChartPolarVariant = () => /* @__PURE__ */ jsx69(PolarChartScreen, {});
+var ChartWaveVariant = () => /* @__PURE__ */ jsx69(ChartWaveScreen, {});
+var ChartGeometricVariant = () => /* @__PURE__ */ jsx69(ChartGeometricScreen, {});
+var ChartHorizontalBarsVariant = () => /* @__PURE__ */ jsx69(BarsHorizontalScreen, {});
+var ChartDoubleBarsVariant = () => /* @__PURE__ */ jsx69(DoubleBarsScreen, {});
+var ChartMiscVariant = () => /* @__PURE__ */ jsx69(MiscScreen, {});
 
 // node_modules/@faker-js/faker/dist/chunk-KERBADJJ.js
 var e = [{ name: "Aegean Airlines", iataCode: "A3" }, { name: "Aeroflot", iataCode: "SU" }, { name: "Aerolineas Argentinas", iataCode: "AR" }, { name: "Aeromexico", iataCode: "AM" }, { name: "Air Algerie", iataCode: "AH" }, { name: "Air Arabia", iataCode: "G9" }, { name: "Air Canada", iataCode: "AC" }, { name: "Air China", iataCode: "CA" }, { name: "Air Europa", iataCode: "UX" }, { name: "Air France", iataCode: "AF" }, { name: "Air India", iataCode: "AI" }, { name: "Air Mauritius", iataCode: "MK" }, { name: "Air New Zealand", iataCode: "NZ" }, { name: "Air Niugini", iataCode: "PX" }, { name: "Air Tahiti", iataCode: "VT" }, { name: "Air Tahiti Nui", iataCode: "TN" }, { name: "Air Transat", iataCode: "TS" }, { name: "AirAsia X", iataCode: "D7" }, { name: "AirAsia", iataCode: "AK" }, { name: "Aircalin", iataCode: "SB" }, { name: "Alaska Airlines", iataCode: "AS" }, { name: "Alitalia", iataCode: "AZ" }, { name: "All Nippon Airways", iataCode: "NH" }, { name: "Allegiant Air", iataCode: "G4" }, { name: "American Airlines", iataCode: "AA" }, { name: "Asiana Airlines", iataCode: "OZ" }, { name: "Avianca", iataCode: "AV" }, { name: "Azul Linhas Aereas Brasileiras", iataCode: "AD" }, { name: "Azur Air", iataCode: "ZF" }, { name: "Beijing Capital Airlines", iataCode: "JD" }, { name: "Boliviana de Aviacion", iataCode: "OB" }, { name: "British Airways", iataCode: "BA" }, { name: "Cathay Pacific", iataCode: "CX" }, { name: "Cebu Pacific Air", iataCode: "5J" }, { name: "China Airlines", iataCode: "CI" }, { name: "China Eastern Airlines", iataCode: "MU" }, { name: "China Southern Airlines", iataCode: "CZ" }, { name: "Condor", iataCode: "DE" }, { name: "Copa Airlines", iataCode: "CM" }, { name: "Delta Air Lines", iataCode: "DL" }, { name: "Easyfly", iataCode: "VE" }, { name: "EasyJet", iataCode: "U2" }, { name: "EcoJet", iataCode: "8J" }, { name: "Egyptair", iataCode: "MS" }, { name: "El Al", iataCode: "LY" }, { name: "Emirates Airlines", iataCode: "EK" }, { name: "Ethiopian Airlines", iataCode: "ET" }, { name: "Etihad Airways", iataCode: "EY" }, { name: "EVA Air", iataCode: "BR" }, { name: "Fiji Airways", iataCode: "FJ" }, { name: "Finnair", iataCode: "AY" }, { name: "Flybondi", iataCode: "FO" }, { name: "Flydubai", iataCode: "FZ" }, { name: "FlySafair", iataCode: "FA" }, { name: "Frontier Airlines", iataCode: "F9" }, { name: "Garuda Indonesia", iataCode: "GA" }, { name: "Go First", iataCode: "G8" }, { name: "Gol Linhas Aereas Inteligentes", iataCode: "G3" }, { name: "Hainan Airlines", iataCode: "HU" }, { name: "Hawaiian Airlines", iataCode: "HA" }, { name: "IndiGo Airlines", iataCode: "6E" }, { name: "Japan Airlines", iataCode: "JL" }, { name: "Jeju Air", iataCode: "7C" }, { name: "Jet2", iataCode: "LS" }, { name: "JetBlue Airways", iataCode: "B6" }, { name: "JetSMART", iataCode: "JA" }, { name: "Juneyao Airlines", iataCode: "HO" }, { name: "Kenya Airways", iataCode: "KQ" }, { name: "KLM Royal Dutch Airlines", iataCode: "KL" }, { name: "Korean Air", iataCode: "KE" }, { name: "Kulula.com", iataCode: "MN" }, { name: "LATAM Airlines", iataCode: "LA" }, { name: "Lion Air", iataCode: "JT" }, { name: "LOT Polish Airlines", iataCode: "LO" }, { name: "Lufthansa", iataCode: "LH" }, { name: "Libyan Airlines", iataCode: "LN" }, { name: "Linea Aerea Amaszonas", iataCode: "Z8" }, { name: "Malaysia Airlines", iataCode: "MH" }, { name: "Nordwind Airlines", iataCode: "N4" }, { name: "Norwegian Air Shuttle", iataCode: "DY" }, { name: "Oman Air", iataCode: "WY" }, { name: "Pakistan International Airlines", iataCode: "PK" }, { name: "Pegasus Airlines", iataCode: "PC" }, { name: "Philippine Airlines", iataCode: "PR" }, { name: "Qantas Group", iataCode: "QF" }, { name: "Qatar Airways", iataCode: "QR" }, { name: "Republic Airways", iataCode: "YX" }, { name: "Royal Air Maroc", iataCode: "AT" }, { name: "Ryanair", iataCode: "FR" }, { name: "S7 Airlines", iataCode: "S7" }, { name: "SAS", iataCode: "SK" }, { name: "Satena", iataCode: "9R" }, { name: "Saudia", iataCode: "SV" }, { name: "Shandong Airlines", iataCode: "SC" }, { name: "Sichuan Airlines", iataCode: "3U" }, { name: "Singapore Airlines", iataCode: "SQ" }, { name: "Sky Airline", iataCode: "H2" }, { name: "SkyWest Airlines", iataCode: "OO" }, { name: "South African Airways", iataCode: "SA" }, { name: "Southwest Airlines", iataCode: "WN" }, { name: "SpiceJet", iataCode: "SG" }, { name: "Spirit Airlines", iataCode: "NK" }, { name: "Spring Airlines", iataCode: "9S" }, { name: "SriLankan Airlines", iataCode: "UL" }, { name: "Star Peru", iataCode: "2I" }, { name: "Sun Country Airlines", iataCode: "SY" }, { name: "SunExpress", iataCode: "XQ" }, { name: "TAP Air Portugal", iataCode: "TP" }, { name: "Thai AirAsia", iataCode: "FD" }, { name: "Thai Airways", iataCode: "TG" }, { name: "TUI Airways", iataCode: "BY" }, { name: "Tunisair", iataCode: "TU" }, { name: "Turkish Airlines", iataCode: "TK" }, { name: "Ukraine International", iataCode: "PS" }, { name: "United Airlines", iataCode: "UA" }, { name: "Ural Airlines", iataCode: "U6" }, { name: "VietJet Air", iataCode: "VJ" }, { name: "Vietnam Airlines", iataCode: "VN" }, { name: "Virgin Atlantic Airways", iataCode: "VS" }, { name: "Virgin Australia", iataCode: "VA" }, { name: "VivaAerobus", iataCode: "VB" }, { name: "VOEPASS Linhas Aereas", iataCode: "2Z" }, { name: "Volaris", iataCode: "Y4" }, { name: "WestJet", iataCode: "WS" }, { name: "Wingo", iataCode: "P5" }, { name: "Wizz Air", iataCode: "W6" }];
@@ -20069,13 +20411,18 @@ export {
   Checkbox,
   ContactsList,
   Counter,
+  CtaBanner,
   CustomersList,
   DashboardLayout,
   Divider,
+  Dropzone,
   EducationCourses,
   EmptyState,
+  FeatureList,
   Footer,
+  Heading,
   Hero,
+  Icon,
   InboxList,
   Input,
   ListScreen,
@@ -20100,6 +20447,7 @@ export {
   SignIn,
   SignUp,
   Skeleton,
+  Spinner,
   StatCard,
   StatusDot,
   SupportHome,
@@ -20107,7 +20455,10 @@ export {
   Table,
   Tabs,
   Tag,
+  Testimonial,
+  Text,
   Textarea,
+  Toast,
   Tooltip,
   TopBar,
   Topbar,

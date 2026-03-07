@@ -9,17 +9,27 @@ export interface BreadcrumbsProps {
 }
 
 export function Breadcrumbs({ items, className = "" }: BreadcrumbsProps) {
+  const lastIndex = items.length - 1;
   return (
-    <nav className={`drp-breadcrumbs ${className}`}>
+    <nav className={`drp-breadcrumbs ${className}`} aria-label="Breadcrumb">
       {items.map((item, i) => (
         <span key={i}>
-          {i > 0 && <span className="drp-breadcrumbs__sep">/</span>}
-          {item.href ? (
+          {i > 0 && (
+            <span className="drp-breadcrumbs__sep" aria-hidden="true">
+              /
+            </span>
+          )}
+          {item.href && i < lastIndex ? (
             <a className="drp-breadcrumbs__link" href={item.href}>
               {item.label}
             </a>
           ) : (
-            <span className="drp-breadcrumbs__current">{item.label}</span>
+            <span
+              className="drp-breadcrumbs__current"
+              aria-current={i === lastIndex ? "page" : undefined}
+            >
+              {item.label}
+            </span>
           )}
         </span>
       ))}

@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 import { AuthLayout } from "./AuthLayout";
 
 export const SignIn: React.FC = () => {
-  const [email, setEmail] = useState("catherine.shaw@gmail.com");
+  const emailId = useId();
+  const passwordId = useId();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
@@ -28,14 +30,20 @@ export const SignIn: React.FC = () => {
         <form onSubmit={handleSubmit} className="drp-form-stack">
           {/* Email field */}
           <div className="drp-field">
-            <label className="drp-field__label">Email</label>
+            <label className="drp-field__label" htmlFor={emailId}>
+              Email
+            </label>
             <div className="drp-field--has-icon">
               <input
+                id={emailId}
                 className="drp-input"
                 type="email"
+                name="email"
+                autoComplete="email"
+                spellCheck={false}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="catherine.shaw@gmail.com"
+                placeholder="you@example.com"
                 style={{ width: "100%" }}
               />
               {/* Mail icon */}
@@ -59,11 +67,17 @@ export const SignIn: React.FC = () => {
 
           {/* Password field */}
           <div className="drp-field">
-            <label className="drp-field__label">Password</label>
+            <label className="drp-field__label" htmlFor={passwordId}>
+              Password
+            </label>
             <div className="drp-field--has-icon">
               <input
+                id={passwordId}
                 className="drp-input"
                 type={showPassword ? "text" : "password"}
+                name="password"
+                autoComplete="current-password"
+                spellCheck={false}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Enter your password"
@@ -71,6 +85,7 @@ export const SignIn: React.FC = () => {
               />
               <button
                 type="button"
+                aria-label={showPassword ? "Hide password" : "Show password"}
                 onClick={() => setShowPassword(!showPassword)}
                 style={{
                   position: "absolute",
