@@ -3,6 +3,7 @@ import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
 import { AppTopBar } from "../shared/AppTopBar";
 import { AppFooter } from "../shared/AppFooter";
+import { Pagination } from "../../components/Pagination";
 
 export interface Contact {
   id: string;
@@ -262,44 +263,8 @@ const TabBar: React.FC<{ active: string }> = ({ active }) => (
   </div>
 );
 
-const Pagination: React.FC = () => (
-  <div className="drp-pagination">
-    <button className="drp-pagination__btn">
-      <svg
-        width="16"
-        height="16"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M15 19l-7-7 7-7"
-        />
-      </svg>
-      Prev
-    </button>
-    <span className="drp-pagination__info">Page 1 of 10</span>
-    <button className="drp-pagination__btn">
-      Next
-      <svg
-        width="16"
-        height="16"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M9 5l7 7-7 7"
-        />
-      </svg>
-    </button>
-  </div>
+const ContactPagination: React.FC = () => (
+  <Pagination currentPage={1} totalPages={10} onPageChange={() => {}} />
 );
 
 // V1: Name, Email, Service, Status table
@@ -366,7 +331,7 @@ const V1Content: React.FC = () => (
           ))}
         </tbody>
       </table>
-      <Pagination />
+      <ContactPagination />
     </div>
   </div>
 );
@@ -448,7 +413,7 @@ const V2Content: React.FC = () => (
           ))}
         </tbody>
       </table>
-      <Pagination />
+      <ContactPagination />
     </div>
   </div>
 );

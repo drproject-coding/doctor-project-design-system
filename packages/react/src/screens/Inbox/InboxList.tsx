@@ -3,6 +3,7 @@ import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
 import { AppTopBar } from "../shared/AppTopBar";
 import { AppFooter } from "../shared/AppFooter";
+import { Pagination } from "../../components/Pagination";
 // ─── Top Bar ─────────────────────────────────────────────────────────────────
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
@@ -357,16 +358,7 @@ const MailListVariant: React.FC = () => {
         </div>
 
         {/* Pagination */}
-        <div
-          className="drp-flex drp-items-center drp-justify-between"
-          style={{ marginTop: "var(--drp-space-4)" }}
-        >
-          <button className="drp-btn drp-btn--outline drp-btn--sm">Prev</button>
-          <span className="drp-text drp-text--sm drp-text--muted">
-            Page 1 of 10
-          </span>
-          <button className="drp-btn drp-btn--outline drp-btn--sm">Next</button>
-        </div>
+        <Pagination currentPage={1} totalPages={10} onPageChange={() => {}} />
       </div>
       <AppFooter />
     </>

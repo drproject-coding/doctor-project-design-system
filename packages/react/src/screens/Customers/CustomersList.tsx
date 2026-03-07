@@ -3,6 +3,7 @@ import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
 import { AppTopBar } from "../shared/AppTopBar";
 import { AppFooter } from "../shared/AppFooter";
+import { Pagination } from "../../components/Pagination";
 
 export interface Customer {
   id: string;
@@ -39,17 +40,7 @@ const SortIcon: React.FC = () => (
 );
 
 const TablePagination: React.FC = () => (
-  <div
-    className="drp-flex drp-items-center drp-justify-between"
-    style={{
-      padding: "var(--drp-space-3) var(--drp-space-4)",
-      borderTop: "var(--drp-border-thin)",
-    }}
-  >
-    <button className="drp-btn drp-btn--outline drp-btn--sm">Prev</button>
-    <span className="drp-text drp-text--sm drp-text--muted">Page 1 of 10</span>
-    <button className="drp-btn drp-btn--outline drp-btn--sm">Next</button>
-  </div>
+  <Pagination currentPage={1} totalPages={10} onPageChange={() => {}} />
 );
 
 const customers = [

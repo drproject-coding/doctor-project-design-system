@@ -3,6 +3,7 @@ import { Pictogram } from "../../components/Pictogram/Pictogram";
 import { AppSidebar } from "../shared/AppSidebar";
 import { AppTopBar } from "../shared/AppTopBar";
 import { AppFooter } from "../shared/AppFooter";
+import { Pagination } from "../../components/Pagination";
 
 // ─── Top Bar ──────────────────────────────────────────────────────────────────
 
@@ -778,40 +779,7 @@ export const SupportHome: React.FC<SupportHomeProps> = ({ view = "home" }) => {
                     <SearchResultRow key={r.title} {...r} />
                   ))}
                 </div>
-                <div
-                  className="drp-flex drp-items-center drp-justify-between"
-                  style={{ padding: "var(--drp-space-4) 0" }}
-                >
-                  <button className="drp-btn drp-btn--sm drp-btn--outline">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M15 18l-6-6 6-6" />
-                    </svg>
-                    Prev
-                  </button>
-                  <span className="drp-text drp-text--sm drp-text--muted">
-                    Page 1 of 10
-                  </span>
-                  <button className="drp-btn drp-btn--sm drp-btn--outline">
-                    Next
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M9 18l6-6-6-6" />
-                    </svg>
-                  </button>
-                </div>
+                                <Pagination currentPage={1} totalPages={10} onPageChange={() => {}} />
               </div>
             </>
           )}

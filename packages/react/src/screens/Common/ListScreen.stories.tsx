@@ -1,5 +1,7 @@
+import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { ListScreen } from "./ListScreen";
+import { Tag } from "../../components/Tag/Tag";
 
 const meta: Meta<typeof ListScreen> = {
   component: ListScreen,
@@ -27,7 +29,13 @@ export const Default: Story = {
     columns: [
       { key: "id", label: "ID" },
       { key: "name", label: "Product Name" },
-      { key: "status", label: "Status" },
+      {
+        key: "status",
+        label: "Status",
+        render: (value: string) => (
+          <Tag color={value === "Active" ? "mint" : "grey"}>{value}</Tag>
+        ),
+      },
       { key: "price", label: "Price" },
     ],
   },
