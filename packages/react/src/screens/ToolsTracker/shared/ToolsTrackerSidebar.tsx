@@ -145,16 +145,13 @@ export const ToolsTrackerSidebar: React.FC<ToolsTrackerSidebarProps> = ({
 
       <div className="drp-flex drp-gap-2">
         <button
-          className="drp-btn drp-btn--primary drp-btn--sm"
-          onClick={onRunSync}
-          style={{ flex: 1 }}
-        >
-          Run Sync
-        </button>
-        <button
           className="drp-btn drp-btn--outline drp-btn--sm"
           onClick={onClearCache}
-          style={{ flex: 1, borderColor: "var(--drp-grey)" }}
+          style={{
+            flex: 1,
+            color: "white",
+            borderColor: "rgba(255,255,255,0.25)",
+          }}
         >
           Clear Cache
         </button>

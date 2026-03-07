@@ -5,7 +5,7 @@ import { Pagination } from "../../../components/Pagination/Pagination";
 import { Input } from "../../../components/Input/Input";
 import { ToolsTrackerSidebar, TTNavId } from "../shared/ToolsTrackerSidebar";
 import { ToolsTrackerTopBar } from "../shared/ToolsTrackerTopBar";
-import { ToolsTrackerFooter } from "../shared/ToolsTrackerFooter";
+import { AppFooter } from "../../shared/AppFooter";
 
 /* -------------------------------------------------------------------------- */
 /* Types                                                                       */
@@ -180,8 +180,7 @@ const SAMPLE_PRODUCTS: TTProduct[] = [
 
 const SyncStatusBar: React.FC<{
   status: TTSyncStatus;
-  onSync?: () => void;
-}> = ({ status, onSync }) => (
+}> = ({ status }) => (
   <div
     style={{
       display: "flex",
@@ -206,13 +205,6 @@ const SyncStatusBar: React.FC<{
     <span>
       Products: <strong>{status.products}</strong>
     </span>
-    <button
-      className="drp-btn drp-btn--primary drp-btn--sm"
-      onClick={onSync}
-      style={{ marginLeft: "auto" }}
-    >
-      Sync Now
-    </button>
   </div>
 );
 
@@ -260,7 +252,7 @@ const PurchaseOverviewChart: React.FC = () => {
                 type: "bar" as const,
                 label: "Purchases",
                 data: CHART_BARS,
-                backgroundColor: "var(--drp-purple, #7c3aed)",
+                backgroundColor: "#7c3aed",
                 borderRadius: 4,
                 yAxisID: "y",
               },
@@ -268,9 +260,9 @@ const PurchaseOverviewChart: React.FC = () => {
                 type: "line" as const,
                 label: "Savings",
                 data: CHART_LINE,
-                borderColor: "var(--drp-warning, #f59e0b)",
+                borderColor: "#f59e0b",
                 backgroundColor: "transparent",
-                pointBackgroundColor: "var(--drp-warning, #f59e0b)",
+                pointBackgroundColor: "#f59e0b",
                 pointRadius: 4,
                 tension: 0.3,
                 yAxisID: "y1",
@@ -534,7 +526,6 @@ export const ToolsTrackerDashboard: React.FC<ToolsTrackerDashboardProps> = ({
   activeNav = "dashboard",
   onNavClick,
   onSync,
-  onRunSync,
   onClearCache,
   onPageChange,
 }) => {
@@ -542,6 +533,7 @@ export const ToolsTrackerDashboard: React.FC<ToolsTrackerDashboardProps> = ({
     "all",
   );
   const [search, setSearch] = useState("");
+  const [theme, setTheme] = useState<"light" | "dark">("light");
 
   const filtered = products.filter((p) => {
     const matchesFilter = activeFilter === "all" || p.status === activeFilter;
@@ -553,11 +545,10 @@ export const ToolsTrackerDashboard: React.FC<ToolsTrackerDashboardProps> = ({
   });
 
   return (
-    <div className="app-layout">
+    <div className="app-layout" data-theme={theme}>
       <ToolsTrackerSidebar
         activeId={activeNav}
         onNavClick={onNavClick}
-        onRunSync={onRunSync}
         onClearCache={onClearCache}
       />
 
@@ -565,9 +556,15 @@ export const ToolsTrackerDashboard: React.FC<ToolsTrackerDashboardProps> = ({
         className="main-content"
         style={{ display: "flex", flexDirection: "column" }}
       >
-        <ToolsTrackerTopBar onSyncClick={onSync} />
+        <ToolsTrackerTopBar
+          onSyncClick={onSync}
+          theme={theme}
+          onThemeToggle={() =>
+            setTheme((t) => (t === "light" ? "dark" : "light"))
+          }
+        />
 
-        <SyncStatusBar status={syncStatus} onSync={onSync} />
+        <SyncStatusBar status={syncStatus} />
 
         <div
           style={{
@@ -661,7 +658,7 @@ export const ToolsTrackerDashboard: React.FC<ToolsTrackerDashboardProps> = ({
           </div>
         </div>
 
-        <ToolsTrackerFooter />
+        <AppFooter />
       </div>
     </div>
   );
