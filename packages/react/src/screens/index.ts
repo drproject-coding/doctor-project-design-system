@@ -63,6 +63,11 @@ export { ProfileNotifications } from "./ProfileSettings";
 export { ProfileSecurity } from "./ProfileSettings";
 export { ProfileSocial } from "./ProfileSettings";
 
+// TOOLS TRACKER
+export { ToolsTrackerDashboard } from "./ToolsTracker/Dashboard/ToolsTrackerDashboard";
+export { ToolsTrackerAnalytics } from "./ToolsTracker/Analytics/ToolsTrackerAnalytics";
+export type { ToolsTrackerAnalyticsProps } from "./ToolsTracker/Analytics/ToolsTrackerAnalytics";
+
 // PHASE 15: REPORTS & CHARTS DOMAIN
 export { ChartContainer } from "./Reports";
 export {
