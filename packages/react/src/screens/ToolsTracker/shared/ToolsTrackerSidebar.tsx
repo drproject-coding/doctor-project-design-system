@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon } from "../../../components/Icon/Icon";
+import { Pictogram } from "../../../components/Pictogram/Pictogram";
 
 export type TTNavId =
   | "dashboard"
@@ -36,50 +36,18 @@ export interface ToolsTrackerSidebarProps {
   onClearCache?: () => void;
 }
 
-const NAV_ITEMS: { id: TTNavId; label: string; icon: React.ReactNode }[] = [
-  {
-    id: "dashboard",
-    label: "Dashboard",
-    icon: <Icon name="dashboard" size="md" />,
-  },
-  {
-    id: "analytics",
-    label: "Analytics",
-    icon: <Icon name="analytics" size="md" />,
-  },
-  { id: "reports", label: "Reports", icon: <Icon name="filter" size="md" /> },
-  {
-    id: "transactions",
-    label: "Transactions",
-    icon: <Icon name="orders" size="md" />,
-  },
-  {
-    id: "products",
-    label: "Products",
-    icon: <Icon name="products" size="md" />,
-  },
-  {
-    id: "appsumo-catalog",
-    label: "AppSumo Catalog",
-    icon: <Icon name="download" size="md" />,
-  },
-  {
-    id: "admin-panel",
-    label: "Admin Panel",
-    icon: <Icon name="users" size="md" />,
-  },
-  { id: "import", label: "Import", icon: <Icon name="plus" size="md" /> },
-  { id: "logs", label: "Logs", icon: <Icon name="eye" size="md" /> },
-  {
-    id: "sync-jobs",
-    label: "Sync Jobs",
-    icon: <Icon name="calendar" size="md" />,
-  },
-  {
-    id: "settings",
-    label: "Settings",
-    icon: <Icon name="settings" size="md" />,
-  },
+const NAV_ITEMS: { id: TTNavId; label: string; pictogram: string }[] = [
+  { id: "dashboard", label: "Dashboard", pictogram: "Layout" },
+  { id: "analytics", label: "Analytics", pictogram: "Analytics" },
+  { id: "reports", label: "Reports", pictogram: "Pie Chart" },
+  { id: "transactions", label: "Transactions", pictogram: "Credit card" },
+  { id: "products", label: "Products", pictogram: "Basket" },
+  { id: "appsumo-catalog", label: "AppSumo Catalog", pictogram: "Folder" },
+  { id: "admin-panel", label: "Admin Panel", pictogram: "Info" },
+  { id: "import", label: "Import", pictogram: "Add" },
+  { id: "logs", label: "Logs", pictogram: "Bookmark" },
+  { id: "sync-jobs", label: "Sync Jobs", pictogram: "Time" },
+  { id: "settings", label: "Settings", pictogram: "Filters" },
 ];
 
 export const ToolsTrackerSidebar: React.FC<ToolsTrackerSidebarProps> = ({
@@ -119,7 +87,9 @@ export const ToolsTrackerSidebar: React.FC<ToolsTrackerSidebarProps> = ({
               onNavClick?.(item.id);
             }}
           >
-            <span className="sidebar-nav-icon">{item.icon}</span>
+            <span className="sidebar-nav-icon">
+              <Pictogram name={item.pictogram as any} size={20} aria-hidden />
+            </span>
             <span className="sidebar-nav-text">{item.label}</span>
           </a>
         ))}
@@ -166,15 +136,7 @@ export const ToolsTrackerSidebar: React.FC<ToolsTrackerSidebarProps> = ({
             marginBottom: "var(--drp-space-3)",
           }}
         >
-          <svg
-            width="12"
-            height="12"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-            style={{ color: "white", flexShrink: 0 }}
-          >
-            <circle cx="12" cy="12" r="10" />
-          </svg>
+          <Pictogram name="Attention" size={12} aria-hidden />
           <span className="drp-text drp-text--xs" style={{ color: "white" }}>
             Data may be outdated
           </span>
