@@ -11,6 +11,7 @@ import { ResponsiveGrid } from "../../components/ResponsiveGrid/ResponsiveGrid";
 import { EmptyState } from "../../components/EmptyState";
 import { AppSidebar } from "../shared/AppSidebar";
 import { AppTopBar } from "../shared/AppTopBar";
+import { AppFooter } from "../shared/AppFooter";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -578,6 +579,7 @@ export function Dashboard() {
           </div>
         </div>
       </div>
+      <AppFooter />
     </div>
   );
 }

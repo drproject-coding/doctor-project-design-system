@@ -4,6 +4,7 @@ import { Input } from "../../components/Input";
 import { Table } from "../../components/Table";
 import { Pagination } from "../../components/Pagination";
 import { AppSidebar } from "../shared/AppSidebar";
+import { AppFooter } from "../shared/AppFooter";
 
 export interface ListScreenProps {
   title: string;
@@ -96,6 +97,7 @@ export const ListScreen: React.FC<ListScreenProps> = ({
             />
           )}
         </div>
+        <AppFooter />
       </div>
     </div>
   );
