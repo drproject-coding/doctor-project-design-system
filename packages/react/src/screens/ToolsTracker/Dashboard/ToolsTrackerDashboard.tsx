@@ -195,15 +195,16 @@ const SyncStatusBar: React.FC<{
     }}
   >
     <span>
-      Last synced: <strong>{status.lastSynced}</strong>
+      Last synced:{" "}
+      <strong style={{ color: "#f59e0b" }}>{status.lastSynced}</strong>
     </span>
     <span style={{ color: "var(--drp-border)" }}>|</span>
     <span>
-      Invoices: <strong>{status.invoices}</strong>
+      Invoices: <strong style={{ color: "#7c3aed" }}>{status.invoices}</strong>
     </span>
     <span style={{ color: "var(--drp-border)" }}>|</span>
     <span>
-      Products: <strong>{status.products}</strong>
+      Products: <strong style={{ color: "#16a34a" }}>{status.products}</strong>
     </span>
   </div>
 );
