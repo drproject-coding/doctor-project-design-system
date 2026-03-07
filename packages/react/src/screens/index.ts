@@ -67,6 +67,8 @@ export { ProfileSocial } from "./ProfileSettings";
 export { ToolsTrackerDashboard } from "./ToolsTracker/Dashboard/ToolsTrackerDashboard";
 export { ToolsTrackerAnalytics } from "./ToolsTracker/Analytics/ToolsTrackerAnalytics";
 export type { ToolsTrackerAnalyticsProps } from "./ToolsTracker/Analytics/ToolsTrackerAnalytics";
+export { ToolsTrackerReports } from "./ToolsTracker/Reports/ToolsTrackerReports";
+export type { ToolsTrackerReportsProps } from "./ToolsTracker/Reports/ToolsTrackerReports";
 
 // PHASE 15: REPORTS & CHARTS DOMAIN
 export { ChartContainer } from "./Reports";
