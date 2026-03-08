@@ -2,7 +2,6 @@
    DOCTORPROJECT DESIGN SYSTEM — PAGINATION
    ============================================================ */
 
-
 /* ──────────────────────────────────────────────
    PAGINATION — CENTERED NUMBERS
    ────────────────────────────────────────────── */
@@ -21,8 +20,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   background: transparent;
   border: none;
   border-right: var(--drp-border);
@@ -50,8 +49,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 36px;
-  height: 36px;
+  min-width: 44px;
+  height: 44px;
   padding: 0 4px;
   font-family: var(--drp-font-primary);
   font-size: var(--drp-text-sm);
@@ -70,7 +69,7 @@
 .drp-pagination__page--active,
 .drp-pagination__page.active {
   background: var(--drp-purple);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .drp-pagination__info {
@@ -85,16 +84,16 @@
 /* Dark variant */
 .drp-pagination--dark {
   background: #000000;
-  border-color: #FFFFFF;
+  border-color: #ffffff;
 }
 
 .drp-pagination--dark .drp-pagination__btn {
-  color: #FFFFFF;
+  color: #ffffff;
   border-color: rgba(255, 255, 255, 0.3);
 }
 
 .drp-pagination--dark .drp-pagination__page {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .drp-pagination--dark .drp-pagination__page--active {
@@ -102,7 +101,7 @@
 }
 
 .drp-pagination--dark .drp-pagination__info {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 /* Transparent variant (no outer border) */
@@ -120,7 +119,6 @@
 .drp-pagination--transparent .drp-pagination__page {
   border-radius: 0;
 }
-
 
 /* ──────────────────────────────────────────────
    RESPONSIVE — PAGINATION

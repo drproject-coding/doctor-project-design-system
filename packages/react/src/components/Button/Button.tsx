@@ -10,17 +10,23 @@ type ButtonVariant =
   | "dark";
 type ButtonSize = "sm" | "lg";
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonBaseProps = Omit<
+  ButtonHTMLAttributes<HTMLButtonElement>,
+  "aria-label"
+> & {
   variant?: ButtonVariant;
   size?: ButtonSize;
   block?: boolean;
-  icon?: boolean;
   /** Icon element placed before the label */
   iconLeft?: ReactNode;
   /** Icon element placed after the label */
   iconRight?: ReactNode;
   children: ReactNode;
-}
+};
+
+export type ButtonProps =
+  | (ButtonBaseProps & { icon?: false; "aria-label"?: string })
+  | (ButtonBaseProps & { icon: true; "aria-label": string });
 
 export function Button({
   variant,

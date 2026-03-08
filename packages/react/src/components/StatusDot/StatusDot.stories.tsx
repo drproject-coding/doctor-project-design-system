@@ -16,26 +16,28 @@ const meta: Meta<typeof StatusDot> = {
 export default meta;
 type Story = StoryObj<typeof StatusDot>;
 
-export const Default: Story = {};
-export const Purple: Story = { args: { color: "purple" } };
-export const Mint: Story = { args: { color: "mint" } };
-export const Pink: Story = { args: { color: "pink" } };
-export const Pulsing: Story = { args: { color: "mint", pulse: true } };
+export const Default: Story = { args: { "aria-hidden": true } };
+export const Purple: Story = { args: { color: "purple", "aria-hidden": true } };
+export const Mint: Story = { args: { color: "mint", "aria-hidden": true } };
+export const Pink: Story = { args: { color: "pink", "aria-hidden": true } };
+export const Pulsing: Story = {
+  args: { color: "mint", pulse: true, "aria-hidden": true },
+};
 
 export const StatusList: Story = {
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
       <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <StatusDot color="mint" pulse /> Online
+        <StatusDot color="mint" pulse aria-hidden={true} /> Online
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <StatusDot color="yellow" /> Away
+        <StatusDot color="yellow" aria-hidden={true} /> Away
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <StatusDot color="pink" /> Busy
+        <StatusDot color="pink" aria-hidden={true} /> Busy
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-        <StatusDot /> Offline
+        <StatusDot aria-hidden={true} /> Offline
       </div>
     </div>
   ),

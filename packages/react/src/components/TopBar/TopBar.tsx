@@ -1,4 +1,5 @@
 import React from "react";
+import { Pictogram } from "../Pictogram/Pictogram";
 
 export interface TopBarProps {
   title?: string;
@@ -19,15 +20,12 @@ export const TopBar: React.FC<TopBarProps> = ({
     <header className={`topbar ${className}`}>
       <div className="topbar-left">
         {menuButton && (
-          <button className="topbar-menu-btn" onClick={onMenuClick}>
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path d="M3 12h18M3 6h18M3 18h18" />
-            </svg>
+          <button
+            className="topbar-menu-btn"
+            onClick={onMenuClick}
+            aria-label="Open menu"
+          >
+            <Pictogram name="Menu" size={24} aria-hidden={true} />
           </button>
         )}
         {title && <h1 className="topbar-title">{title}</h1>}

@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 import { AuthLayout } from "./AuthLayout";
 
 export const SignUp: React.FC = () => {
+  const countryId = useId();
+  const emailId = useId();
+  const passwordId = useId();
   const [country, setCountry] = useState("United States");
   const [countryBusiness, setCountryBusiness] = useState("");
-  const [email, setEmail] = useState("catherine.shaw4");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [receiveUpdates, setReceiveUpdates] = useState(false);
@@ -31,11 +34,14 @@ export const SignUp: React.FC = () => {
         <form onSubmit={handleSubmit} className="drp-form-stack">
           {/* Country/Region of Residence */}
           <div className="drp-field">
-            <label className="drp-field__label">
+            <label className="drp-field__label" htmlFor={countryId}>
               Country/Region of Residence
             </label>
             <select
+              id={countryId}
               className="drp-select"
+              name="country"
+              autoComplete="country-name"
               value={country}
               onChange={(e) => setCountry(e.target.value)}
               style={{ width: "100%" }}
@@ -51,14 +57,20 @@ export const SignUp: React.FC = () => {
 
           {/* Email */}
           <div className="drp-field">
-            <label className="drp-field__label">Email</label>
+            <label className="drp-field__label" htmlFor={emailId}>
+              Email
+            </label>
             <div className="drp-field--has-icon">
               <input
+                id={emailId}
                 className="drp-input"
                 type="email"
+                name="email"
+                autoComplete="email"
+                spellCheck={false}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="catherine.shaw@gmail.com"
+                placeholder="you@example.com"
                 style={{ width: "100%" }}
               />
               {/* Mail icon */}
@@ -82,18 +94,25 @@ export const SignUp: React.FC = () => {
 
           {/* Password */}
           <div className="drp-field">
-            <label className="drp-field__label">Password</label>
+            <label className="drp-field__label" htmlFor={passwordId}>
+              Password
+            </label>
             <div className="drp-field--has-icon">
               <input
+                id={passwordId}
                 className="drp-input"
                 type={showPassword ? "text" : "password"}
+                name="new-password"
+                autoComplete="new-password"
+                spellCheck={false}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="Enter your password"
+                placeholder="Create a password"
                 style={{ width: "100%" }}
               />
               <button
                 type="button"
+                aria-label={showPassword ? "Hide password" : "Show password"}
                 onClick={() => setShowPassword(!showPassword)}
                 style={{
                   position: "absolute",

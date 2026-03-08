@@ -1,132 +1,10 @@
 import React, { useState } from "react";
+import { Pictogram } from "../../components/Pictogram/Pictogram";
+import { AppSidebar } from "../shared/AppSidebar";
+import { AppTopBar } from "../shared/AppTopBar";
+import { AppFooter } from "../shared/AppFooter";
 
-type CalendarView = "month" | "week" | "day";
-
-const CalendarSidebar: React.FC = () => (
-  <aside className="sidebar">
-    <div className="sidebar-brand">
-      <span className="sidebar-brand-name">Doctor Project</span>
-      <span className="sidebar-brand-dot"></span>
-    </div>
-
-    <nav className="sidebar-nav">
-      <div className="sidebar-nav-section">
-        <div className="sidebar-nav-label">Navigation</div>
-        {[
-          { label: "Dashboard", badge: 15, badgeType: "purple" as const },
-          { label: "Projects" },
-          { label: "Tasks" },
-          { label: "Kanban Desk", badge: 28, badgeType: "purple" as const },
-          { label: "File Manager", badge: 14, badgeType: "green" as const },
-          { label: "Calendar", active: true },
-          { label: "Inbox" },
-        ].map((item) => (
-          <a
-            key={item.label}
-            className={`sidebar-nav-item${item.active ? " active" : ""}`}
-          >
-            <span className="sidebar-nav-text">{item.label}</span>
-            {item.badge && (
-              <span
-                className={`sidebar-badge sidebar-badge--${item.badgeType}`}
-              >
-                {item.badge}
-              </span>
-            )}
-          </a>
-        ))}
-      </div>
-
-      <div className="sidebar-team">
-        <div className="sidebar-team-label">Team Members</div>
-        {[
-          { name: "Alexandre Paiva", bg: "var(--drp-orange)" },
-          { name: "Thanawan Chadee", bg: "var(--drp-purple)" },
-          { name: "Justine Robinson", bg: "var(--drp-info)" },
-        ].map((member) => (
-          <div key={member.name} className="sidebar-team-member">
-            <div className="sidebar-avatar" style={{ background: member.bg }}>
-              {member.name[0]}
-            </div>
-            <span className="sidebar-team-name">{member.name}</span>
-          </div>
-        ))}
-        <div className="sidebar-see-more">See More</div>
-      </div>
-    </nav>
-
-    <div className="sidebar-user">
-      <div
-        className="sidebar-avatar"
-        style={{ background: "var(--drp-orange)" }}
-      >
-        H
-      </div>
-      <div className="sidebar-user-info">
-        <div className="sidebar-user-name">Henry Richardson</div>
-      </div>
-      <button className="sidebar-user-menu-btn">...</button>
-    </div>
-  </aside>
-);
-
-const TopBar: React.FC = () => (
-  <header className="topbar">
-    <div className="topbar-left">
-      <h1 className="topbar-title">Calendar</h1>
-    </div>
-    <div className="topbar-right">
-      <button className="topbar-icon-btn">
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <circle cx="11" cy="11" r="8" />
-          <path d="m21 21-4.35-4.35" />
-        </svg>
-      </button>
-      <button className="topbar-icon-btn">
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-          <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-        </svg>
-      </button>
-      <button className="topbar-apps-btn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-          <rect x="2" y="2" width="9" height="9" />
-          <rect x="13" y="2" width="9" height="9" />
-          <rect x="2" y="13" width="9" height="9" />
-          <rect x="13" y="13" width="9" height="9" />
-        </svg>
-        <span>Apps</span>
-      </button>
-      <button className="topbar-create-btn">
-        <svg
-          width="18"
-          height="18"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.5"
-        >
-          <path d="M12 5v14M5 12h14" />
-        </svg>
-        <span>Create new</span>
-      </button>
-    </div>
-  </header>
-);
+type CalendarView = 'month' | 'week' | 'day';
 
 const CalendarNav: React.FC<{
   view: CalendarView;
@@ -749,37 +627,6 @@ const WeekView: React.FC = () => (
   </div>
 );
 
-const FooterBar: React.FC = () => (
-  <footer className="footer-bar">
-    <div className="footer-links">
-      <span className="footer-link">English</span>
-      <span className="footer-link">Privacy Policy</span>
-      <span className="footer-link">License</span>
-      <span className="footer-link">API</span>
-    </div>
-    <div className="footer-right">
-      <button className="footer-icon-btn footer-icon-btn--accent">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 3a9 9 0 1 0 9 9H12z" />
-        </svg>
-      </button>
-      <button className="footer-icon-btn">
-        <svg
-          width="13"
-          height="13"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-        >
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
-        </svg>
-      </button>
-    </div>
-  </footer>
-);
-
 export interface CalendarEventProps {
   defaultView?: CalendarView;
 }
@@ -798,9 +645,9 @@ export const CalendarEvent: React.FC<CalendarEventProps> = ({
 
   return (
     <div className="app-layout">
-      <CalendarSidebar />
+      <AppSidebar activeId="calendar" />
       <div className="main-content">
-        <TopBar />
+        <AppTopBar title="Calendar" />
         <CalendarNav
           view={view}
           onViewChange={(v) => {
@@ -817,7 +664,7 @@ export const CalendarEvent: React.FC<CalendarEventProps> = ({
         )}
         {view === "day" && <DayView />}
         {view === "week" && <WeekView />}
-        <FooterBar />
+        <AppFooter />
       </div>
     </div>
   );

@@ -1,0 +1,17 @@
+{
+  "session_id": "plan-2026-03-05-0124",
+  "started_at": "2026-03-05T01:24:00Z",
+  "project_hash": "doctorproject-design-system",
+  "phase": "execution",
+  "research_complete": true,
+  "human_decisions": [
+    "approved-plan",
+    "approved-css-approach",
+    "approved-execute"
+  ],
+  "abandoned": false,
+  "status": "interrupted",
+  "interrupted_at": "2026-03-05T20:50:16+01:00",
+  "interrupted_by": "auto",
+  "resume_instructions": "Session interrupted during execution phase. To resume: claudikins-kernel:outline --session-id plan-2026-03-05-0124"
+}

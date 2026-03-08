@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { Pictogram } from "../../components/Pictogram/Pictogram";
+import { AppSidebar } from "../shared/AppSidebar";
+import { AppTopBar } from "../shared/AppTopBar";
+import { AppFooter } from "../shared/AppFooter";
 
 export type PaymentsTheme = "light" | "dark";
 
@@ -21,357 +25,13 @@ export interface PaymentsListProps {
   theme?: PaymentsTheme;
   variant?: PaymentsVariant;
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
-// Sidebar
-// ─────────────────────────────────────────────────────────────────────────────
-
-const DoctorProjectSidebar: React.FC<{ variant: PaymentsVariant }> = ({
-  variant,
-}) => {
-  const showTeamMembers = variant === "details";
-
-  const navItems = [
-    { id: "dashboard", label: "Dashboard" },
-    { id: "accounts", label: "Accounts" },
-    { id: "transactions", label: "Transactions" },
-    {
-      id: "crypto",
-      label: "Crypto Assets",
-      badge: 28,
-      badgeVariant: "sidebar-badge--purple",
-    },
-    {
-      id: "payments",
-      label: "Payments",
-      badge: 14,
-      badgeVariant: "sidebar-badge--green",
-      active: true,
-    },
-    { id: "reports", label: "Reports" },
-  ];
-
-  const teamMembers = [
-    { name: "Alexandre Paiva", initials: "AP", bg: "var(--drp-orange)" },
-    { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-purple)" },
-    { name: "Justine Robinson", initials: "JR", bg: "var(--drp-grey)" },
-  ];
-
-  return (
-    <aside className="sidebar" style={{ width: 280 }}>
-      <div className="sidebar-brand">
-        <span className="sidebar-brand-name" style={{ fontSize: 20 }}>
-          Doctor Project
-        </span>
-        <span className="sidebar-brand-dot" />
-      </div>
-
-      <nav className="sidebar-nav">
-        <div className="sidebar-nav-section">
-          <div className="sidebar-nav-label">Navigation</div>
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              className={`sidebar-nav-item ${item.active ? "active" : ""}`}
-            >
-              <span className="sidebar-nav-icon">
-                <svg
-                  width="14"
-                  height="14"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </svg>
-              </span>
-              <span className="sidebar-nav-text">{item.label}</span>
-              {item.badge && (
-                <span className={`sidebar-badge ${item.badgeVariant}`}>
-                  {item.badge}
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
-
-        {showTeamMembers ? (
-          <div className="sidebar-team">
-            <div className="sidebar-team-label">Team Members</div>
-            {teamMembers.map((m) => (
-              <div key={m.name} className="sidebar-team-member">
-                <div
-                  className="sidebar-avatar"
-                  style={{
-                    background: m.bg,
-                    width: 28,
-                    height: 28,
-                    fontSize: 11,
-                  }}
-                >
-                  {m.initials[0]}
-                </div>
-                <span className="sidebar-team-name">{m.name}</span>
-              </div>
-            ))}
-            <div className="sidebar-see-more">
-              <svg
-                width="12"
-                height="12"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-              <span>See More</span>
-            </div>
-          </div>
-        ) : (
-          <>
-            {/* Cards */}
-            <div className="sidebar-nav-section">
-              <div className="sidebar-nav-label">Cards</div>
-              <button className="sidebar-nav-item">
-                <div
-                  className="sidebar-avatar"
-                  style={{
-                    background: "var(--drp-blue)",
-                    width: 28,
-                    height: 28,
-                    fontSize: 11,
-                  }}
-                >
-                  V
-                </div>
-                <span className="sidebar-nav-text">Debit Card **** 7890</span>
-              </button>
-              <button className="sidebar-nav-item">
-                <div
-                  className="sidebar-avatar"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, var(--drp-pink), var(--drp-orange))",
-                    width: 28,
-                    height: 28,
-                    fontSize: 11,
-                  }}
-                >
-                  ●
-                </div>
-                <span className="sidebar-nav-text">Credit Card **** 4340</span>
-              </button>
-              <button className="sidebar-nav-item">
-                <div
-                  style={{
-                    width: 28,
-                    height: 28,
-                    border: "1px dashed var(--drp-grey)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: 16,
-                    color: "var(--drp-grey)",
-                    flexShrink: 0,
-                  }}
-                >
-                  +
-                </div>
-                <span className="sidebar-nav-text">Open a card</span>
-              </button>
-            </div>
-
-            {/* Balances */}
-            <div className="sidebar-nav-section">
-              <div className="sidebar-nav-label">Balances</div>
-              {[
-                { flag: "\u{1F1FA}\u{1F1F8}", amount: "100,050.75 USD" },
-                { flag: "\u{1F1EA}\u{1F1FA}", amount: "10.40 EUR" },
-                { flag: "\u{1F1EC}\u{1F1E7}", amount: "95.50 GBP" },
-              ].map((bal) => (
-                <button key={bal.amount} className="sidebar-nav-item">
-                  <span style={{ fontSize: 16 }}>{bal.flag}</span>
-                  <span className="sidebar-nav-text">{bal.amount}</span>
-                </button>
-              ))}
-              <button className="sidebar-nav-item">
-                <div
-                  style={{
-                    width: 28,
-                    height: 28,
-                    border: "1px dashed var(--drp-grey)",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: 16,
-                    color: "var(--drp-grey)",
-                    flexShrink: 0,
-                  }}
-                >
-                  +
-                </div>
-                <span className="sidebar-nav-text">Open a balance</span>
-              </button>
-            </div>
-          </>
-        )}
-      </nav>
-
-      <div className="sidebar-user">
-        <div
-          className="sidebar-avatar"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--drp-orange), var(--drp-pink))",
-            width: 32,
-            height: 32,
-          }}
-        />
-        <div className="sidebar-user-info">
-          <div className="sidebar-user-name">Henry Richardson</div>
-        </div>
-        <button className="sidebar-user-menu-btn">...</button>
-      </div>
-    </aside>
-  );
-};
-
 // ─────────────────────────────────────────────────────────────────────────────
 // Top Bar
 // ─────────────────────────────────────────────────────────────────────────────
 
-const TopBar: React.FC<{ title: string; showBack?: boolean }> = ({
-  title,
-  showBack = false,
-}) => (
-  <div className="topbar">
-    <div className="topbar-left">
-      {showBack && (
-        <button className="drp-btn drp-btn--outline drp-btn--icon drp-btn--sm">
-          <svg
-            width="16"
-            height="16"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
-      )}
-      <h1 className="topbar-title">{title}</h1>
-    </div>
-    <div className="topbar-right">
-      <button className="topbar-icon-btn">
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
-          />
-        </svg>
-      </button>
-      <button className="topbar-apps-btn">
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
-          />
-        </svg>
-        <span>Apps</span>
-      </button>
-      <button className="topbar-create-btn">
-        <span>+</span>
-        <span>Create new</span>
-      </button>
-    </div>
-  </div>
-);
-
 // ─────────────────────────────────────────────────────────────────────────────
 // Footer
 // ─────────────────────────────────────────────────────────────────────────────
-
-const Footer: React.FC = () => (
-  <div className="footer-bar">
-    <div className="footer-links">
-      <span className="footer-link">English</span>
-      <span className="footer-link">Privacy Policy</span>
-      <span className="footer-link">License</span>
-      <span className="footer-link">API</span>
-    </div>
-    <div className="footer-right">
-      <button className="footer-icon-btn">
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-        </svg>
-      </button>
-      <button className="footer-icon-btn">
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-          />
-        </svg>
-      </button>
-    </div>
-  </div>
-);
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Currency flag helper
@@ -1460,16 +1120,16 @@ export const PaymentsList: React.FC<PaymentsListProps> = ({
 
   return (
     <div className="app-layout">
-      <DoctorProjectSidebar variant={variant} />
-      <div className="main-content" style={{ marginLeft: 280 }}>
-        <TopBar title={titleMap[variant]} showBack={showBack} />
+      <AppSidebar activeId="payments" />
+      <div className="main-content">
+        <AppTopBar title={titleMap[variant]} />
 
         {variant === "list" && <ListContent />}
         {variant === "details" && <DetailsContent />}
         {variant === "send-money" && <SendMoneyContent />}
         {variant === "pay-utilities" && <PayUtilitiesContent />}
 
-        <Footer />
+        <AppFooter />
       </div>
     </div>
   );

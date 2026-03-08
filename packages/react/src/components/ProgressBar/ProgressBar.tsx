@@ -25,11 +25,19 @@ export function ProgressBar({
     .filter(Boolean)
     .join(" ");
 
+  const clampedValue = Math.min(100, Math.max(0, value));
   const bar = (
-    <div className={progressClasses}>
+    <div
+      className={progressClasses}
+      role="progressbar"
+      aria-valuenow={clampedValue}
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-label={label}
+    >
       <div
         className="drp-progress__bar"
-        style={{ width: `${Math.min(100, Math.max(0, value))}%` }}
+        style={{ width: `${clampedValue}%` }}
       />
     </div>
   );
@@ -39,7 +47,7 @@ export function ProgressBar({
       <div className="drp-progress-group">
         <div className="drp-progress-group__label">
           <span>{label}</span>
-          <span>{value}%</span>
+          <span style={{ fontVariantNumeric: "tabular-nums" }}>{value}%</span>
         </div>
         {bar}
       </div>

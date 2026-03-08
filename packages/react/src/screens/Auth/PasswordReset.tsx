@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useId, useState } from "react";
 import { AuthLayout } from "./AuthLayout";
 
 export interface PasswordResetProps {
@@ -8,7 +8,10 @@ export interface PasswordResetProps {
 export const PasswordReset: React.FC<PasswordResetProps> = ({
   mode = "request",
 }) => {
-  const [email, setEmail] = useState("catherine.shaw@gmail.com");
+  const emailId = useId();
+  const newPasswordId = useId();
+  const confirmPasswordId = useId();
+  const [email, setEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -64,14 +67,20 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
               <form onSubmit={handleRequestReset} className="drp-form-stack">
                 {/* Email field */}
                 <div className="drp-field">
-                  <label className="drp-field__label">Email</label>
+                  <label className="drp-field__label" htmlFor={emailId}>
+                    Email
+                  </label>
                   <div className="drp-field--has-icon">
                     <input
+                      id={emailId}
                       className="drp-input"
                       type="email"
+                      name="email"
+                      autoComplete="email"
+                      spellCheck={false}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="catherine.shaw@gmail.com"
+                      placeholder="you@example.com"
                       style={{ width: "100%" }}
                     />
                     {/* Mail icon */}
@@ -134,11 +143,17 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
             <form onSubmit={handleResetPassword} className="drp-form-stack">
               {/* New Password */}
               <div className="drp-field">
-                <label className="drp-field__label">New Password</label>
+                <label className="drp-field__label" htmlFor={newPasswordId}>
+                  New Password
+                </label>
                 <div className="drp-field--has-icon">
                   <input
+                    id={newPasswordId}
                     className="drp-input"
                     type={showPassword ? "text" : "password"}
+                    name="new-password"
+                    autoComplete="new-password"
+                    spellCheck={false}
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     placeholder="Enter new password"
@@ -146,6 +161,9 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
                   />
                   <button
                     type="button"
+                    aria-label={
+                      showPassword ? "Hide password" : "Show password"
+                    }
                     onClick={() => setShowPassword(!showPassword)}
                     style={{
                       position: "absolute",
@@ -177,11 +195,17 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
 
               {/* Confirm Password */}
               <div className="drp-field">
-                <label className="drp-field__label">Confirm Password</label>
+                <label className="drp-field__label" htmlFor={confirmPasswordId}>
+                  Confirm Password
+                </label>
                 <div className="drp-field--has-icon">
                   <input
+                    id={confirmPasswordId}
                     className="drp-input"
                     type={showPassword ? "text" : "password"}
+                    name="confirm-password"
+                    autoComplete="new-password"
+                    spellCheck={false}
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="Confirm new password"
@@ -189,6 +213,9 @@ export const PasswordReset: React.FC<PasswordResetProps> = ({
                   />
                   <button
                     type="button"
+                    aria-label={
+                      showPassword ? "Hide password" : "Show password"
+                    }
                     onClick={() => setShowPassword(!showPassword)}
                     style={{
                       position: "absolute",

@@ -1,234 +1,12 @@
 import React, { useState } from "react";
-
-// ─── Sidebar ────────────────────────────────────────────────────────────────
-
-const InboxSidebar: React.FC = () => {
-  const navItems = [
-    {
-      id: "dashboard",
-      label: "Dashboard",
-      badge: 15,
-      badgeVariant: "sidebar-badge--purple",
-    },
-    { id: "projects", label: "Projects" },
-    { id: "tasks", label: "Tasks" },
-    {
-      id: "kanban",
-      label: "Kanban Desk",
-      badge: 28,
-      badgeVariant: "sidebar-badge--purple",
-    },
-    {
-      id: "filemanager",
-      label: "File Manager",
-      badge: 14,
-      badgeVariant: "sidebar-badge--green",
-    },
-    { id: "calendar", label: "Calendar" },
-    { id: "inbox", label: "Inbox", active: true },
-  ];
-
-  const teamMembers = [
-    { name: "Alexandre Paiva", initials: "AP", bg: "var(--drp-orange)" },
-    { name: "Thanawan Chadee", initials: "TC", bg: "var(--drp-purple)" },
-    { name: "Justine Robinson", initials: "JR", bg: "var(--drp-blue)" },
-  ];
-
-  return (
-    <aside className="sidebar" style={{ width: 200 }}>
-      <div className="sidebar-brand">
-        <span className="sidebar-brand-name" style={{ fontSize: 20 }}>
-          Doctor Project
-        </span>
-        <span className="sidebar-brand-dot" />
-      </div>
-
-      <nav className="sidebar-nav">
-        <div className="sidebar-nav-section">
-          <div className="sidebar-nav-label">Navigation</div>
-          {navItems.map((item) => (
-            <button
-              key={item.id}
-              className={`sidebar-nav-item ${item.active ? "active" : ""}`}
-            >
-              <span className="sidebar-nav-text">{item.label}</span>
-              {item.badge && (
-                <span className={`sidebar-badge ${item.badgeVariant}`}>
-                  {item.badge}
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
-
-        <div className="sidebar-team">
-          <div className="sidebar-team-label">Team Members</div>
-          {teamMembers.map((m) => (
-            <div key={m.name} className="sidebar-team-member">
-              <div
-                className="sidebar-avatar"
-                style={{
-                  background: m.bg,
-                  width: 24,
-                  height: 24,
-                  fontSize: 10,
-                }}
-              >
-                {m.initials[0]}
-              </div>
-              <span className="sidebar-team-name" style={{ fontSize: 12 }}>
-                {m.name}
-              </span>
-            </div>
-          ))}
-          <div className="sidebar-see-more">
-            <svg
-              width="12"
-              height="12"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-            <span>See More</span>
-          </div>
-        </div>
-      </nav>
-
-      <div className="sidebar-user">
-        <div
-          className="sidebar-avatar"
-          style={{
-            background:
-              "linear-gradient(135deg, var(--drp-orange), var(--drp-pink))",
-            width: 28,
-            height: 28,
-          }}
-        />
-        <div className="sidebar-user-info">
-          <div className="sidebar-user-name" style={{ fontSize: 12 }}>
-            Henry Richardson
-          </div>
-        </div>
-        <button className="sidebar-user-menu-btn">...</button>
-      </div>
-    </aside>
-  );
-};
-
+import { Pictogram } from "../../components/Pictogram/Pictogram";
+import { AppSidebar } from "../shared/AppSidebar";
+import { AppTopBar } from "../shared/AppTopBar";
+import { AppFooter } from "../shared/AppFooter";
+import { Pagination } from "../../components/Pagination";
 // ─── Top Bar ─────────────────────────────────────────────────────────────────
 
-const InboxTopBar: React.FC<{ showBack?: boolean }> = ({
-  showBack = false,
-}) => (
-  <div className="topbar">
-    <div className="topbar-left">
-      {showBack && (
-        <button className="drp-btn drp-btn--outline drp-btn--icon drp-btn--sm">
-          <svg
-            width="16"
-            height="16"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-        </button>
-      )}
-      <h1 className="topbar-title">Inbox</h1>
-    </div>
-    <div className="topbar-right">
-      <button className="topbar-icon-btn">...</button>
-      <button className="topbar-icon-btn">...</button>
-      <button className="topbar-apps-btn">
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z"
-          />
-        </svg>
-        <span>Apps</span>
-      </button>
-      <button className="topbar-create-btn">
-        <span>+</span>
-        <span>Create new</span>
-      </button>
-    </div>
-  </div>
-);
-
 // ─── Footer ───────────────────────────────────────────────────────────────────
-
-const InboxFooter: React.FC = () => (
-  <div className="footer-bar">
-    <div className="footer-links">
-      <span className="footer-link">English</span>
-      <span className="footer-link">Privacy Policy</span>
-      <span className="footer-link">License</span>
-      <span className="footer-link">API</span>
-    </div>
-    <div className="footer-right">
-      <button className="footer-icon-btn">
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-          />
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-          />
-        </svg>
-      </button>
-      <button className="footer-icon-btn">
-        <svg
-          width="16"
-          height="16"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-          />
-        </svg>
-      </button>
-    </div>
-  </div>
-);
 
 // ─── Avatar ───────────────────────────────────────────────────────────────────
 
@@ -374,7 +152,7 @@ const MailListVariant: React.FC = () => {
 
   return (
     <>
-      <InboxTopBar />
+      <AppTopBar title="Inbox" />
       <div className="content">
         {/* Toolbar */}
         <div className="drp-flex drp-items-center drp-justify-between drp-mb-4">
@@ -580,18 +358,9 @@ const MailListVariant: React.FC = () => {
         </div>
 
         {/* Pagination */}
-        <div
-          className="drp-flex drp-items-center drp-justify-between"
-          style={{ marginTop: "var(--drp-space-4)" }}
-        >
-          <button className="drp-btn drp-btn--outline drp-btn--sm">Prev</button>
-          <span className="drp-text drp-text--sm drp-text--muted">
-            Page 1 of 10
-          </span>
-          <button className="drp-btn drp-btn--outline drp-btn--sm">Next</button>
-        </div>
+        <Pagination currentPage={1} totalPages={10} onPageChange={() => {}} />
       </div>
-      <InboxFooter />
+      <AppFooter />
     </>
   );
 };
@@ -654,7 +423,7 @@ const chatMessages = [
 
 const ChatVariant: React.FC = () => (
   <>
-    <InboxTopBar />
+    <AppTopBar title="Inbox" />
     <div className="content">
       <div className="drp-flex drp-gap-4" style={{ flex: 1, minHeight: 0 }}>
         {/* Left Panel: Message List */}
@@ -1111,7 +880,7 @@ const ChatVariant: React.FC = () => (
         </div>
       </div>
     </div>
-    <InboxFooter />
+    <AppFooter />
   </>
 );
 
@@ -1121,7 +890,7 @@ const ChatVariant: React.FC = () => (
 
 const MailComposeVariant: React.FC = () => (
   <>
-    <InboxTopBar showBack />
+    <AppTopBar title="Inbox" />
     <div className="content">
       {/* Action bar */}
       <div className="drp-flex drp-items-center drp-justify-between drp-mb-4">
@@ -1355,7 +1124,7 @@ const MailComposeVariant: React.FC = () => (
         </div>
       </div>
     </div>
-    <InboxFooter />
+    <AppFooter />
   </>
 );
 
@@ -1365,7 +1134,7 @@ const MailComposeVariant: React.FC = () => (
 
 const EmptyVariant: React.FC = () => (
   <>
-    <InboxTopBar />
+    <AppTopBar title="Inbox" />
     <div
       className="content"
       style={{
@@ -1486,7 +1255,7 @@ const EmptyVariant: React.FC = () => (
         </button>
       </div>
     </div>
-    <InboxFooter />
+    <AppFooter />
   </>
 );
 
@@ -1521,8 +1290,8 @@ export const InboxList: React.FC<InboxListProps> = ({
 
   return (
     <div className="app-layout">
-      <InboxSidebar />
-      <div className="main-content" style={{ marginLeft: 200 }}>
+      <AppSidebar activeId="inbox" />
+      <div className="main-content">
         {renderContent()}
       </div>
     </div>

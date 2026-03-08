@@ -28,7 +28,11 @@ export function Skeleton({
     });
   } else if (variant === "circular") {
     const size = width || height || 48;
-    Object.assign(baseStyle, { width: size, height: size, borderRadius: "0" });
+    Object.assign(baseStyle, {
+      width: size,
+      height: size,
+      borderRadius: "50%",
+    });
   } else {
     Object.assign(baseStyle, {
       width: width || "100%",
@@ -38,8 +42,11 @@ export function Skeleton({
 
   return (
     <>
-      <div className={className} style={baseStyle} />
-      <style>{`@keyframes drp-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }`}</style>
+      <div className={className} style={baseStyle} aria-hidden="true" />
+      <style>{`
+        @keyframes drp-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+        @media (prefers-reduced-motion: reduce) { .drp-skeleton-shimmer { animation: none !important; } }
+      `}</style>
     </>
   );
 }

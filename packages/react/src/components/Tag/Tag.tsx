@@ -56,8 +56,12 @@ export function Tag({
       {icon && <span className="drp-tag__icon">{icon}</span>}
       {children}
       {closeable && (
-        <button className="drp-tag__close" onClick={onClose}>
-          ×
+        <button
+          className="drp-tag__close"
+          onClick={onClose}
+          aria-label="Remove tag"
+        >
+          <span aria-hidden="true">×</span>
         </button>
       )}
     </span>

@@ -173,7 +173,7 @@ export const FigmaVariants: Story = {
         <Button variant="primary" iconRight={<ArrowRight />}>
           Label
         </Button>
-        <Button variant="primary" icon>
+        <Button variant="primary" icon aria-label="Favorite">
           <StarIcon />
         </Button>
       </div>
@@ -186,7 +186,7 @@ export const FigmaVariants: Story = {
         <Button variant="outline" iconRight={<ArrowRight />}>
           Label
         </Button>
-        <Button variant="outline" icon>
+        <Button variant="outline" icon aria-label="Favorite">
           <StarIcon />
         </Button>
       </div>
@@ -199,7 +199,7 @@ export const FigmaVariants: Story = {
         <Button variant="ghost" iconRight={<ArrowRight />}>
           Label
         </Button>
-        <Button variant="ghost" icon>
+        <Button variant="ghost" icon aria-label="Favorite">
           <StarIcon />
         </Button>
       </div>
