@@ -5,7 +5,7 @@ import { Pagination } from "../../../components/Pagination/Pagination";
 import { Input } from "../../../components/Input/Input";
 import { ToolsTrackerSidebar, TTNavId } from "../shared/ToolsTrackerSidebar";
 import { ToolsTrackerTopBar } from "../shared/ToolsTrackerTopBar";
-import { AppFooter } from "../../shared/AppFooter";
+import { ToolsTrackerFooter } from "../shared/ToolsTrackerFooter";
 
 /* -------------------------------------------------------------------------- */
 /* Types                                                                       */
@@ -659,7 +659,7 @@ export const ToolsTrackerDashboard: React.FC<ToolsTrackerDashboardProps> = ({
           </div>
         </div>
 
-        <AppFooter />
+        <ToolsTrackerFooter />
       </div>
     </div>
   );

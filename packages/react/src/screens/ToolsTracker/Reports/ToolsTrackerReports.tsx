@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Tabs } from "../../../components/Tabs/Tabs";
 import { ToolsTrackerSidebar } from "../shared/ToolsTrackerSidebar";
 import { ToolsTrackerTopBar } from "../shared/ToolsTrackerTopBar";
-import { AppFooter } from "../../shared/AppFooter";
+import { ToolsTrackerFooter } from "../shared/ToolsTrackerFooter";
 import { MonthlySpending } from "./tabs/MonthlySpending";
 import { PurchasesVsRefunds } from "./tabs/PurchasesVsRefunds";
 import { TopProducts } from "./tabs/TopProducts";
@@ -103,7 +103,7 @@ export const ToolsTrackerReports: React.FC<ToolsTrackerReportsProps> = ({
           </div>
         </div>
 
-        <AppFooter />
+        <ToolsTrackerFooter />
       </div>
     </div>
   );
