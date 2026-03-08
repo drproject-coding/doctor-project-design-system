@@ -8,8 +8,8 @@
 
 :root {
   /* Sidebar (layout-specific, references design tokens) */
-  --sidebar-bg: #1A1A1A;
-  --sidebar-text: #FFFFFF;
+  --sidebar-bg: #1a1a1a;
+  --sidebar-text: #ffffff;
   --sidebar-text-muted: #888888;
   --sidebar-hover: rgba(255, 255, 255, 0.06);
   --sidebar-active-bg: rgba(174, 122, 255, 0.12);
@@ -18,9 +18,10 @@
   --sidebar-collapsed-width: var(--drp-sidebar-collapsed-width);
 }
 
-
 /* --- Reset & Base --- */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -37,7 +38,6 @@ body {
   overflow-x: hidden;
 }
 
-
 /* ============================================
    APP LAYOUT SHELL
    ============================================ */
@@ -45,7 +45,6 @@ body {
   display: flex;
   min-height: 100vh;
 }
-
 
 /* ============================================
    SIDEBAR
@@ -145,7 +144,9 @@ body {
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background 150ms ease, color 150ms ease;
+  transition:
+    background 150ms ease,
+    color 150ms ease;
   position: relative;
   white-space: nowrap;
   overflow: hidden;
@@ -161,13 +162,12 @@ body {
 }
 
 .sidebar-nav-icon {
-  width: 20px;
-  height: 20px;
+  width: 28px;
+  height: 28px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.7;
 }
 
 .sidebar-nav-item.active .sidebar-nav-icon {
@@ -175,8 +175,8 @@ body {
 }
 
 .sidebar-nav-icon svg {
-  width: 20px;
-  height: 20px;
+  width: 100%;
+  height: 100%;
 }
 
 .sidebar-nav-text {
@@ -204,7 +204,7 @@ body {
 
 .sidebar-badge--green {
   background: rgba(152, 233, 171, 0.18);
-  color: #22C55E;
+  color: #22c55e;
 }
 
 /* Team / Users Section */
@@ -340,11 +340,21 @@ body {
   background: #6c757d;
 }
 
-.sidebar-freshness-dot[data-status="fresh"] { background: #28a745; }
-.sidebar-freshness-dot[data-status="ok"] { background: #28a745; }
-.sidebar-freshness-dot[data-status="stale"] { background: #FF6C01; }
-.sidebar-freshness-dot[data-status="very-stale"] { background: #dc3545; }
-.sidebar-freshness-dot[data-status="unknown"] { background: #6c757d; }
+.sidebar-freshness-dot[data-status="fresh"] {
+  background: #28a745;
+}
+.sidebar-freshness-dot[data-status="ok"] {
+  background: #28a745;
+}
+.sidebar-freshness-dot[data-status="stale"] {
+  background: #ff6c01;
+}
+.sidebar-freshness-dot[data-status="very-stale"] {
+  background: #dc3545;
+}
+.sidebar-freshness-dot[data-status="unknown"] {
+  background: #6c757d;
+}
 
 /* Freshness summary banner */
 .sidebar-freshness-summary {
@@ -367,12 +377,12 @@ body {
 
 .sidebar-freshness-summary[data-status="pending"] {
   background: rgba(255, 108, 1, 0.15);
-  color: #FF6C01;
+  color: #ff6c01;
 }
 
 .sidebar-freshness-summary[data-status="stale"] {
   background: rgba(255, 108, 1, 0.12);
-  color: #FF6C01;
+  color: #ff6c01;
 }
 
 .sidebar-freshness-summary[data-status="empty"] {
@@ -402,12 +412,12 @@ body {
 }
 
 .sidebar-freshness-summary[data-status="pending"] .sidebar-freshness-icon {
-  background: #FF6C01;
+  background: #ff6c01;
   color: white;
 }
 
 .sidebar-freshness-summary[data-status="stale"] .sidebar-freshness-icon {
-  background: #FF6C01;
+  background: #ff6c01;
   color: white;
 }
 
@@ -498,7 +508,9 @@ body {
   color: var(--sidebar-text-muted);
   cursor: pointer;
   border-radius: 0;
-  transition: background 150ms ease, color 150ms ease;
+  transition:
+    background 150ms ease,
+    color 150ms ease;
   flex-shrink: 0;
 }
 
@@ -550,7 +562,6 @@ body {
   opacity: 0.6;
 }
 
-
 /* ============================================
    MAIN CONTENT AREA
    ============================================ */
@@ -563,7 +574,6 @@ body {
   background: var(--drp-cream);
   transition: margin-left 250ms ease;
 }
-
 
 /* ============================================
    TOP BAR
@@ -590,8 +600,8 @@ body {
 
 .topbar-menu-btn {
   display: none;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   align-items: center;
   justify-content: center;
   background: var(--drp-surface);
@@ -630,7 +640,9 @@ body {
   color: var(--drp-grey);
   cursor: pointer;
   border-radius: 0;
-  transition: background 150ms ease, color 150ms ease;
+  transition:
+    background 150ms ease,
+    color 150ms ease;
   position: relative;
 }
 
@@ -651,7 +663,7 @@ body {
   right: 6px;
   width: 8px;
   height: 8px;
-  background: #22C55E;
+  background: #22c55e;
   border-radius: 0;
   border: 2px solid var(--drp-cream);
 }
@@ -697,7 +709,10 @@ body {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: background 150ms ease, transform 100ms ease, box-shadow 100ms ease;
+  transition:
+    background 150ms ease,
+    transform 100ms ease,
+    box-shadow 100ms ease;
   white-space: nowrap;
   box-shadow: var(--drp-shadow-md);
 }
@@ -824,7 +839,6 @@ body {
   color: var(--drp-black);
 }
 
-
 /* ============================================
    CONTENT
    ============================================ */
@@ -838,7 +852,6 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
-
 
 /* ============================================
    FOOTER BAR
@@ -890,7 +903,9 @@ body {
   border-radius: 0;
   cursor: pointer;
   color: var(--drp-grey);
-  transition: background 150ms ease, color 150ms ease;
+  transition:
+    background 150ms ease,
+    color 150ms ease;
 }
 
 .footer-icon-btn:hover {
@@ -908,7 +923,6 @@ body {
   background: var(--drp-purple-hover);
   color: white;
 }
-
 
 /* ============================================
    MOBILE BOTTOM TAB BAR
@@ -978,7 +992,6 @@ body {
   z-index: 99;
 }
 
-
 /* ============================================
    MOBILE NAV SHEET (Bottom Sheet)
    ============================================ */
@@ -989,7 +1002,9 @@ body {
   z-index: 300;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 250ms ease, visibility 250ms ease;
+  transition:
+    opacity 250ms ease,
+    visibility 250ms ease;
 }
 
 .mobile-nav-overlay.open {
@@ -1087,7 +1102,6 @@ body {
   color: var(--sidebar-text);
 }
 
-
 /* ============================================
    SIDEBAR COLLAPSED STATE
    ============================================ */
@@ -1141,7 +1155,6 @@ body {
   margin-left: var(--sidebar-collapsed-width);
 }
 
-
 /* ============================================
    SIDEBAR TOGGLE BUTTON
    ============================================ */
@@ -1179,7 +1192,6 @@ body {
   transform: rotate(180deg);
 }
 
-
 /* ============================================
    RESPONSIVE — DESKTOP (1200px)
    ============================================ */
@@ -1196,7 +1208,6 @@ body {
     padding: 0 28px;
   }
 }
-
 
 /* ============================================
    RESPONSIVE — TABLET (1024px)
@@ -1218,7 +1229,6 @@ body {
     padding: 0 24px;
   }
 }
-
 
 /* ============================================
    RESPONSIVE — SMALL TABLET (768px)
@@ -1306,7 +1316,6 @@ body {
   }
 }
 
-
 /* ============================================
    RESPONSIVE — MOBILE (390px)
    ============================================ */
@@ -1354,7 +1363,6 @@ body {
     padding: 10px 12px;
   }
 }
-
 
 /* ============================================
    DARK MODE (Content area only — sidebar is always dark)
@@ -1427,7 +1435,6 @@ body.dark-mode .mobile-tab.active {
   color: var(--drp-purple);
 }
 
-
 /* ============================================
    UTILITY CLASSES
    ============================================ */
@@ -1468,10 +1475,64 @@ body.dark-mode .mobile-tab.active {
 
 /* Fade in animation for bottom sheet */
 @keyframes slideUp {
-  from { transform: translateY(100%); }
-  to { transform: translateY(0); }
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
 
 .mobile-nav-sheet.open {
   animation: slideUp 350ms ease forwards;
+}
+
+/* ============================================
+   MOBILE SIDEBAR OPEN STATE
+   Controlled via sidebar--mobile-open class (DashboardLayout)
+   ============================================ */
+@media (max-width: 390px) {
+  .sidebar--mobile-open {
+    transform: translateX(0) !important;
+    z-index: 200;
+  }
+
+  /* Scrim overlay when sidebar open on mobile */
+  .sidebar--mobile-open ~ .main-content::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 150;
+  }
+}
+
+/* ============================================
+   PREFERS-REDUCED-MOTION
+   ============================================ */
+@media (prefers-reduced-motion: reduce) {
+  .sidebar,
+  .main-content {
+    transition: none;
+  }
+
+  .mobile-nav-overlay,
+  .mobile-nav-sheet {
+    transition: none;
+  }
+
+  .sidebar-toggle svg {
+    transition: none;
+  }
+
+  .topbar-dropdown.open,
+  .topbar-apps-dropdown.open,
+  .sidebar-user-dropdown.open {
+    animation: none;
+  }
+
+  .mobile-nav-sheet.open {
+    animation: none;
+    transform: translateY(0);
+  }
 }

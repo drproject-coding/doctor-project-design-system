@@ -86,12 +86,18 @@ body.dark-mode .drp-tab.active {
   border-bottom: 3px solid transparent;
   margin-bottom: -2px;
   padding: 8px 4px;
+  color: var(--drp-grey);
+}
+
+.drp-tabs--underline .drp-tab:hover {
+  background: transparent;
+  color: var(--drp-black);
 }
 
 .drp-tabs--underline .drp-tab--active,
 .drp-tabs--underline .drp-tab.active {
   background: transparent;
-  color: var(--drp-black);
+  color: var(--drp-purple);
   border-bottom-color: var(--drp-purple);
 }
 

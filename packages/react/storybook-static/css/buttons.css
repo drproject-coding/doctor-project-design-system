@@ -22,7 +22,6 @@
      disabled              Dimmed, no pointer
    ============================================================ */
 
-
 /* ──────────────────────────────────────────────
    BASE
    ────────────────────────────────────────────── */
@@ -46,6 +45,7 @@
   box-shadow: var(--drp-shadow-sm);
   cursor: pointer;
   user-select: none;
+  touch-action: manipulation;
   text-decoration: none;
   white-space: nowrap;
   transition:
@@ -75,20 +75,18 @@
   outline-offset: 2px;
 }
 
-
 /* ──────────────────────────────────────────────
    VARIANT: PRIMARY (purple filled)
    ────────────────────────────────────────────── */
 
 .drp-btn--primary {
   background: var(--drp-purple);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .drp-btn--primary:hover {
   background: var(--drp-purple-hover);
 }
-
 
 /* ──────────────────────────────────────────────
    VARIANT: OUTLINE (transparent bg)
@@ -98,7 +96,6 @@
   background: transparent;
   color: var(--drp-black);
 }
-
 
 /* ──────────────────────────────────────────────
    VARIANT: GHOST (no border, no shadow)
@@ -139,11 +136,10 @@
 
 .drp-btn--ghost-bordered:hover {
   background: var(--drp-purple);
-  color: #FFFFFF;
+  color: #ffffff;
   transform: translate(-2px, -2px);
   box-shadow: var(--drp-shadow-md);
 }
-
 
 /* ──────────────────────────────────────────────
    VARIANT: DANGER (red)
@@ -158,20 +154,18 @@
   background: var(--drp-pink-80);
 }
 
-
 /* ──────────────────────────────────────────────
    VARIANT: SECONDARY (orange)
    ────────────────────────────────────────────── */
 
 .drp-btn--secondary {
   background: var(--drp-orange);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .drp-btn--secondary:hover {
   background: var(--drp-orange-dark);
 }
-
 
 /* ──────────────────────────────────────────────
    VARIANT: DARK (black filled)
@@ -179,16 +173,15 @@
 
 .drp-btn--dark {
   background: #000000;
-  color: #FFFFFF;
+  color: #ffffff;
   border-color: #000000;
 }
 
 body.dark-mode .drp-btn--dark {
-  background: #FFFFFF;
+  background: #ffffff;
   color: #000000;
-  border-color: #FFFFFF;
+  border-color: #ffffff;
 }
-
 
 /* ──────────────────────────────────────────────
    SIZES
@@ -201,7 +194,9 @@ body.dark-mode .drp-btn--dark {
   box-shadow: var(--drp-shadow-xs);
 }
 
-.drp-btn--sm:hover { box-shadow: 1px 1px 0 0 rgba(0,0,0,1); }
+.drp-btn--sm:hover {
+  box-shadow: 1px 1px 0 0 rgba(0, 0, 0, 1);
+}
 
 .drp-btn--lg {
   padding: 14px 32px;
@@ -210,8 +205,9 @@ body.dark-mode .drp-btn--dark {
   box-shadow: var(--drp-shadow-md);
 }
 
-.drp-btn--lg:hover { box-shadow: var(--drp-shadow-sm); }
-
+.drp-btn--lg:hover {
+  box-shadow: var(--drp-shadow-sm);
+}
 
 /* ──────────────────────────────────────────────
    ICON BUTTONS
@@ -219,15 +215,16 @@ body.dark-mode .drp-btn--dark {
    ────────────────────────────────────────────── */
 
 .drp-btn--icon {
-  padding: 8px;
-  min-width: 36px;
-  min-height: 36px;
+  padding: 12px;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .drp-btn--icon.drp-btn--sm {
-  padding: 6px;
-  min-width: 28px;
-  min-height: 28px;
+  /* Small icon button — min 44px touch target via padding, visual stays compact */
+  padding: 10px;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 .drp-btn--icon.drp-btn--lg {
@@ -235,7 +232,6 @@ body.dark-mode .drp-btn--dark {
   min-width: 48px;
   min-height: 48px;
 }
-
 
 /* ──────────────────────────────────────────────
    FULL WIDTH
@@ -245,7 +241,6 @@ body.dark-mode .drp-btn--dark {
   display: flex;
   width: 100%;
 }
-
 
 /* ──────────────────────────────────────────────
    BUTTON GROUP
@@ -272,7 +267,6 @@ body.dark-mode .drp-btn--dark {
   margin-left: -2px;
 }
 
-
 /* ──────────────────────────────────────────────
    DARK MODE
    ────────────────────────────────────────────── */
@@ -284,7 +278,7 @@ body.dark-mode .drp-btn {
 
 body.dark-mode .drp-btn--primary {
   background: var(--drp-purple);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 body.dark-mode .drp-btn--outline {
@@ -298,7 +292,6 @@ body.dark-mode .drp-btn--ghost {
 body.dark-mode .drp-btn--ghost:hover {
   background: rgba(255, 255, 255, 0.06);
 }
-
 
 /* ──────────────────────────────────────────────
    RESPONSIVE — BUTTONS

@@ -1,7 +1,0 @@
-import{j as e}from"./jsx-runtime-D_zvdyIk.js";function p({variant:a,size:n,block:l,icon:s,iconLeft:r,iconRight:t,className:o="",children:i,...d}){const c=["drp-btn",a&&`drp-btn--${a}`,n&&`drp-btn--${n}`,l&&"drp-btn--block",s&&"drp-btn--icon",o].filter(Boolean).join(" ");return e.jsxs("button",{className:c,...d,children:[r&&e.jsx("span",{className:"drp-btn__icon",children:r}),i,t&&e.jsx("span",{className:"drp-btn__icon",children:t})]})}p.__docgenInfo={description:"",methods:[],displayName:"Button",props:{variant:{required:!1,tsType:{name:"union",raw:`| "primary"
-| "outline"
-| "ghost"
-| "ghost-bordered"
-| "danger"
-| "secondary"
-| "dark"`,elements:[{name:"literal",value:'"primary"'},{name:"literal",value:'"outline"'},{name:"literal",value:'"ghost"'},{name:"literal",value:'"ghost-bordered"'},{name:"literal",value:'"danger"'},{name:"literal",value:'"secondary"'},{name:"literal",value:'"dark"'}]},description:""},size:{required:!1,tsType:{name:"union",raw:'"sm" | "lg"',elements:[{name:"literal",value:'"sm"'},{name:"literal",value:'"lg"'}]},description:""},block:{required:!1,tsType:{name:"boolean"},description:""},icon:{required:!1,tsType:{name:"boolean"},description:""},iconLeft:{required:!1,tsType:{name:"ReactNode"},description:"Icon element placed before the label"},iconRight:{required:!1,tsType:{name:"ReactNode"},description:"Icon element placed after the label"},children:{required:!0,tsType:{name:"ReactNode"},description:""},className:{defaultValue:{value:'""',computed:!1},required:!1}},composes:["ButtonHTMLAttributes"]};export{p as B};
