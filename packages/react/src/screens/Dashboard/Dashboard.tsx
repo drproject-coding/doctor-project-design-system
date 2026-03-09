@@ -578,8 +578,8 @@ export function Dashboard() {
             ))}
           </div>
         </div>
+        <AppFooter />
       </div>
-      <AppFooter />
     </div>
   );
 }
