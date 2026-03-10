@@ -4,7 +4,6 @@
    CTA, marquee, navbar, breadcrumbs.
    ============================================================ */
 
-
 /* ──────────────────────────────────────────────
    NAVBAR
    ────────────────────────────────────────────── */
@@ -50,16 +49,21 @@
 
 .drp-nav-link:hover {
   background: var(--drp-orange);
-  color: #FFFFFF;
+  color: #ffffff;
   border-color: var(--drp-black);
 }
 
 .drp-nav-link.active {
   background: var(--drp-purple);
-  color: #FFFFFF;
+  color: #ffffff;
   border-color: var(--drp-black);
 }
 
+.drp-nav-brand:focus-visible,
+.drp-nav-link:focus-visible {
+  outline: 2px solid var(--drp-purple);
+  outline-offset: 2px;
+}
 
 /* ──────────────────────────────────────────────
    BREADCRUMBS
@@ -83,6 +87,11 @@
   text-decoration: underline;
 }
 
+.drp-breadcrumb-item:focus-visible {
+  outline: 2px solid var(--drp-purple);
+  outline-offset: 2px;
+}
+
 .drp-breadcrumb-separator {
   color: var(--drp-text-muted);
 }
@@ -91,7 +100,6 @@
   color: var(--drp-black);
   font-weight: var(--drp-weight-bold);
 }
-
 
 /* ──────────────────────────────────────────────
    HERO SECTION
@@ -145,7 +153,6 @@
   object-fit: cover;
 }
 
-
 /* ──────────────────────────────────────────────
    FEATURE GRID
    ────────────────────────────────────────────── */
@@ -173,7 +180,7 @@
   align-items: center;
   justify-content: center;
   background: var(--drp-purple);
-  color: #FFFFFF;
+  color: #ffffff;
   font-family: var(--drp-font-primary);
   font-size: 1.25rem;
   font-weight: var(--drp-weight-heavy);
@@ -193,7 +200,6 @@
   color: var(--drp-text-secondary);
 }
 
-
 /* ──────────────────────────────────────────────
    PRICING CARD
    ────────────────────────────────────────────── */
@@ -207,13 +213,13 @@
 
 .drp-pricing-card.featured {
   background: var(--drp-purple);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .drp-pricing-card.featured .drp-pricing-card__title,
 .drp-pricing-card.featured .drp-pricing-card__price,
 .drp-pricing-card.featured .drp-pricing-card__feature {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .drp-pricing-card__title {
@@ -258,19 +264,18 @@
 }
 
 .drp-pricing-card__feature::before {
-  content: '\2713';
+  content: "\2713";
   font-weight: bold;
   color: var(--drp-success);
 }
 
 .drp-pricing-card.featured .drp-pricing-card__feature::before {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .drp-pricing-card.featured .drp-pricing-card__feature {
   border-bottom-color: rgba(255, 255, 255, 0.2);
 }
-
 
 /* ──────────────────────────────────────────────
    TESTIMONIAL
@@ -314,7 +319,6 @@
   color: var(--drp-text-muted);
 }
 
-
 /* ──────────────────────────────────────────────
    CTA BANNER
    ────────────────────────────────────────────── */
@@ -322,7 +326,7 @@
 .drp-cta {
   padding: var(--drp-space-12);
   background: var(--drp-purple);
-  color: #FFFFFF;
+  color: #ffffff;
   border: var(--drp-border-chunk);
   text-align: center;
 }
@@ -342,7 +346,6 @@
   margin-left: auto;
   margin-right: auto;
 }
-
 
 /* ──────────────────────────────────────────────
    MARQUEE
@@ -372,10 +375,13 @@
 }
 
 @keyframes drp-marquee {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
 }
-
 
 /* ──────────────────────────────────────────────
    GRID SYSTEM (12-column)
@@ -394,7 +400,6 @@
 .drp-container--lg {
   max-width: 1600px;
 }
-
 
 /* ──────────────────────────────────────────────
    RESPONSIVE — COMPOSITES

@@ -106,7 +106,9 @@
   margin-bottom: var(--drp-space-2);
   opacity: 0;
   visibility: hidden;
-  transition: all var(--drp-duration-fast) var(--drp-ease);
+  transition:
+    opacity var(--drp-duration-fast) var(--drp-ease),
+    visibility var(--drp-duration-fast) var(--drp-ease);
   z-index: var(--drp-z-tooltip);
 }
 
@@ -168,5 +170,13 @@
 
   .drp-modal__footer .drp-btn {
     width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drp-tooltip-text,
+  .drp-modal {
+    transition: none;
+    animation: none;
   }
 }
