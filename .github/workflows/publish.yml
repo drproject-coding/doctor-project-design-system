@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write
     steps:
       - uses: actions/checkout@v4
 
@@ -28,7 +27,7 @@ jobs:
         working-directory: packages/react
 
       - name: Publish
-        run: npm publish --provenance
+        run: npm publish
         working-directory: packages/react
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
