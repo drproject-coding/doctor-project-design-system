@@ -189,6 +189,82 @@ If your app uses Tailwind or another CSS framework:
 | **Media**      | `Icon`, `Pictogram`                                                         |
 | **Misc**       | `EmptyState`, `Footer`, `CaseCard`, `Counter`                               |
 
+### Pictograms — detailed usage
+
+Pictograms are the DS's branded neo-brutalist illustrations. They are **not** generic icons —
+they are larger, stylised, and carry brand identity. Use them for feature highlights,
+empty states, onboarding, and section headers. Do not use external icon libraries as a substitute.
+
+#### Basic usage
+
+```tsx
+import { Pictogram } from '@doctorproject/react';
+
+// Decorative (screen reader ignores it)
+<Pictogram name="Analytics" size={64} aria-hidden />
+
+// Meaningful (screen reader announces it)
+<Pictogram name="Analytics" size={64} aria-label="View analytics" />
+```
+
+#### Props
+
+| Prop          | Type            | Default  | Description                                                  |
+| ------------- | --------------- | -------- | ------------------------------------------------------------ |
+| `name`        | `PictogramName` | required | The pictogram to render — see full list below                |
+| `size`        | `number`        | `24`     | Width and height in px                                       |
+| `aria-hidden` | `boolean`       | —        | Set `true` when decorative (no semantic meaning)             |
+| `aria-label`  | `string`        | —        | Set when the pictogram conveys meaning without adjacent text |
+| `className`   | `string`        | —        | Optional CSS class                                           |
+| `style`       | `CSSProperties` | —        | Optional inline styles                                       |
+
+#### When to use `aria-hidden` vs `aria-label`
+
+```tsx
+// Decorative — there's a text label next to it, screen reader skips it
+<div>
+  <Pictogram name="Analytics" size={48} aria-hidden />
+  <h3>Analytics</h3>
+</div>
+
+// Meaningful — standalone, no text label nearby
+<button>
+  <Pictogram name="Delete" size={24} aria-label="Delete item" />
+</button>
+```
+
+#### Available pictograms (65 total)
+
+```
+Add          Analytics    Apps         Attention    Basket
+Bookmark     Check        Close        Credit card  Delete
+Down arrow   Download     Exit         Filters      Folder
+Hashtag      Info         Layout       Left arrow   Mail
+Menu         Message      Pause        Photo        Pie Chart
+Play         Remove       Right        Time         Up arrow
+Upload       Video
+
+Letter A  Letter B  Letter C  Letter Coin  Letter D  Letter E
+Letter F  Letter G  Letter H  Letter J     Letter K  Letter L
+Letter M  Letter N  Letter O  Letter P     Letter Q  Letter R
+Letter S  Letter T  Letter U  Letter V     Letter W  Letter X
+Letter Y  Letter Z
+
+Number 0  Number 1  Number 2  Number 3  Number 4
+Number 5  Number 6  Number 7  Number 8  Number 9
+```
+
+> See all pictograms rendered in Storybook → **Media / Pictogram**
+
+#### Rules
+
+- Never use an `<img>` tag or raw SVG file for a DS pictogram — always use `<Pictogram name="..." />`
+- Never import SVG files from `NeoBrutalist-Pictogram-SVG/` directly in app code — they are the source assets, not the API
+- If the pictogram you need does not exist, open a GitHub issue: "DS candidate: Pictogram – [name]"
+- Do not recolor pictograms via CSS — they have intentional brand colors baked in
+
+---
+
 ### App shell — use on every authenticated screen
 
 ```tsx
