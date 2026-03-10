@@ -444,3 +444,23 @@
     padding: var(--drp-space-8);
   }
 }
+
+
+/* ──────────────────────────────────────────────
+   FOOTER LINKS
+   Visible underline affordance for accessibility.
+   ────────────────────────────────────────────── */
+
+.drp-footer__link {
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition: color var(--drp-duration-fast) var(--drp-ease),
+    text-decoration-color var(--drp-duration-fast) var(--drp-ease);
+}
+
+.drp-footer__link:hover,
+.drp-footer__link:focus-visible {
+  color: var(--drp-text-inverse) !important;
+  text-decoration-color: currentColor;
+}
