@@ -1,5 +1,5 @@
 import * as react_jsx_runtime from 'react/jsx-runtime';
-import React, { ReactNode, ButtonHTMLAttributes, InputHTMLAttributes, SelectHTMLAttributes, HTMLAttributes, TextareaHTMLAttributes } from 'react';
+import React, { ReactNode, ButtonHTMLAttributes, InputHTMLAttributes, SelectHTMLAttributes, HTMLAttributes, TextareaHTMLAttributes, CSSProperties, ElementType } from 'react';
 
 interface HeadingProps {
     level?: 1 | 2 | 3 | 4 | 5 | 6;
@@ -82,9 +82,14 @@ interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type">
 }
 declare function Radio({ label, color, dark, error, className, ...props }: RadioProps): react_jsx_runtime.JSX.Element;
 
-interface SwitchProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
-    label?: string;
-}
+type SwitchBaseProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
+type SwitchProps = (SwitchBaseProps & {
+    label: string;
+    "aria-label"?: string;
+}) | (SwitchBaseProps & {
+    label?: never;
+    "aria-label": string;
+});
 declare function Switch({ label, ...props }: SwitchProps): react_jsx_runtime.JSX.Element;
 
 interface CounterProps {
@@ -121,12 +126,20 @@ interface BadgeProps {
 declare function Badge({ children, variant, className }: BadgeProps): react_jsx_runtime.JSX.Element;
 
 type DotColor = "purple" | "mint" | "pink" | "yellow";
-interface StatusDotProps {
+type StatusDotProps = {
     color?: DotColor;
     pulse?: boolean;
     className?: string;
-}
-declare function StatusDot({ color, pulse, className }: StatusDotProps): react_jsx_runtime.JSX.Element;
+    "aria-label": string;
+    "aria-hidden"?: never;
+} | {
+    color?: DotColor;
+    pulse?: boolean;
+    className?: string;
+    "aria-label"?: never;
+    "aria-hidden": true;
+};
+declare function StatusDot({ color, pulse, className, ...ariaProps }: StatusDotProps): react_jsx_runtime.JSX.Element;
 
 type ProgressColor = "mint" | "pink" | "yellow" | "grey";
 type ProgressSize = "sm" | "lg";
@@ -145,9 +158,11 @@ interface AvatarProps {
     alt?: string;
     size?: AvatarSize;
     initials?: string;
+    /** Required when no visible label is present (initials-only avatar) */
+    "aria-label"?: string;
     className?: string;
 }
-declare function Avatar({ src, alt, size, initials, className, }: AvatarProps): react_jsx_runtime.JSX.Element;
+declare function Avatar({ src, alt, size, initials, "aria-label": ariaLabel, className, }: AvatarProps): react_jsx_runtime.JSX.Element;
 
 interface TooltipProps {
     text: string;
@@ -263,6 +278,8 @@ interface SidebarProps {
     teamMembers?: SidebarTeamMember[];
     teamLabel?: string;
     collapsed?: boolean;
+    mobileOpen?: boolean;
+    onToggle?: () => void;
     onItemClick?: (id: string) => void;
     className?: string;
 }
@@ -474,6 +491,52 @@ interface CtaBannerProps {
 }
 declare function CtaBanner({ title, text, children, className, }: CtaBannerProps): react_jsx_runtime.JSX.Element;
 
+interface StackProps extends HTMLAttributes<HTMLElement> {
+    /** Stack direction. "column" (default) = vertical, "row" = horizontal */
+    direction?: "column" | "row";
+    /** Gap between children. Accepts CSS values (e.g. "8px", "var(--drp-space-4)") */
+    gap?: string;
+    /**
+     * Responsive breakpoint at which a "row" stack switches to "column".
+     * Only applies when direction="row". E.g. "768px".
+     */
+    wrap?: boolean;
+    align?: CSSProperties["alignItems"];
+    justify?: CSSProperties["justifyContent"];
+    /** HTML element to render. Defaults to "div". */
+    as?: ElementType;
+}
+declare function Stack({ direction, gap, wrap, align, justify, as: Tag, style, children, ...rest }: StackProps): react_jsx_runtime.JSX.Element;
+
+interface ResponsiveGridProps extends HTMLAttributes<HTMLElement> {
+    /**
+     * Number of columns at each breakpoint.
+     * Uses CSS custom properties for media query injection via inline class.
+     * Falls back gracefully: mobile (1) → tablet (cols/2) → desktop (cols).
+     */
+    cols?: number;
+    /** Desktop columns (≥1024px). Defaults to `cols`. */
+    colsLg?: number;
+    /** Tablet columns (≤768px). Defaults to Math.ceil(cols/2). */
+    colsMd?: number;
+    /** Mobile columns (≤390px). Defaults to 1. */
+    colsSm?: number;
+    gap?: string;
+    as?: ElementType;
+}
+declare function ResponsiveGrid({ cols, colsLg, colsMd, colsSm, gap, as: Tag, style, className, children, ...rest }: ResponsiveGridProps): react_jsx_runtime.JSX.Element;
+
+interface ContainerProps extends HTMLAttributes<HTMLElement> {
+    /** Maximum width. Defaults to "1200px". */
+    maxWidth?: string;
+    /** Horizontal padding. Defaults to responsive via clamp. */
+    padding?: string;
+    as?: ElementType;
+}
+declare function Container({ maxWidth, padding, as: Tag, style, children, ...rest }: ContainerProps): react_jsx_runtime.JSX.Element;
+
+declare function Dashboard(): react_jsx_runtime.JSX.Element;
+
 declare const SignIn: React.FC;
 
 declare const SignUp: React.FC;
@@ -483,9 +546,12 @@ interface PasswordResetProps {
 }
 declare const PasswordReset: React.FC<PasswordResetProps>;
 
-interface ListScreenProps extends Omit<DashboardLayoutProps, "children"> {
+declare const SignInWithQR: React.FC;
+
+interface ListScreenProps {
     title: string;
     subtitle?: string;
+    activeId?: string;
     data: any[];
     columns: Array<{
         key: string;
@@ -589,7 +655,7 @@ interface EducationCoursesProps {
 }
 declare const EducationCourses: React.FC<EducationCoursesProps>;
 
-type CalendarView = "month" | "week" | "day";
+type CalendarView = 'month' | 'week' | 'day';
 interface CalendarEventProps {
     defaultView?: CalendarView;
 }
@@ -609,6 +675,114 @@ declare const ProfileSecurity: React.FC;
 
 declare const ProfileSocial: React.FC;
 
+type TTNavId = "dashboard" | "analytics" | "reports" | "transactions" | "products" | "appsumo-catalog" | "admin-panel" | "import" | "logs" | "sync-jobs" | "settings";
+
+type ProductStatus = "activated" | "redeemed" | "not-redeemed" | "outdated" | "refunded";
+interface TTProduct {
+    id: string;
+    date: string;
+    status: ProductStatus;
+    thumbnail: string;
+    name: string;
+    subtitle: string;
+    price: number;
+    progressValue: number;
+    isExpired?: boolean;
+}
+interface TTSyncStatus {
+    lastSynced: string;
+    invoices: string;
+    products: string;
+}
+interface TTFinancialOverview {
+    totalPurchases: number;
+    totalSavings: number;
+    totalRefunds: number;
+    netSpent: number;
+}
+interface ToolsTrackerDashboardProps {
+    syncStatus?: TTSyncStatus;
+    financialOverview?: TTFinancialOverview;
+    products?: TTProduct[];
+    currentPage?: number;
+    totalPages?: number;
+    activeNav?: TTNavId;
+    onNavClick?: (id: TTNavId) => void;
+    onSync?: () => void;
+    onRunSync?: () => void;
+    onClearCache?: () => void;
+    onPageChange?: (page: number) => void;
+}
+declare const ToolsTrackerDashboard: React.FC<ToolsTrackerDashboardProps>;
+
+type AnalyticsTab = "spending-overview" | "visual-reports" | "category-analysis" | "payment-methods";
+interface ToolsTrackerAnalyticsProps {
+    defaultTab?: AnalyticsTab;
+}
+declare const ToolsTrackerAnalytics: React.FC<ToolsTrackerAnalyticsProps>;
+
+type ReportsTab = "monthly-spending" | "purchases-vs-refunds" | "top-products" | "spending-trend" | "financial-health" | "portfolio-analysis" | "portfolio-breakdown" | "spending-by-vendor";
+interface ToolsTrackerReportsProps {
+    defaultTab?: ReportsTab;
+}
+declare const ToolsTrackerReports: React.FC<ToolsTrackerReportsProps>;
+
+type TFilter = "all" | "paid" | "has-refund" | "refunded";
+type TView = "card" | "table";
+interface ToolsTrackerTransactionsProps {
+    defaultView?: TView;
+    defaultFilter?: TFilter;
+}
+declare const ToolsTrackerTransactions: React.FC<ToolsTrackerTransactionsProps>;
+
+type ProductFilter = "all" | "favorites" | "urgent" | "soon" | "safe" | "expired" | "refunded";
+interface ToolsTrackerProductsProps {
+    defaultFilter?: ProductFilter;
+}
+declare const ToolsTrackerProducts: React.FC<ToolsTrackerProductsProps>;
+
+type CatalogView = "home" | "browse";
+interface ToolsTrackerCatalogProps {
+    defaultView?: CatalogView;
+    defaultCategory?: string;
+    defaultOpenDealId?: string;
+}
+declare const ToolsTrackerCatalog: React.FC<ToolsTrackerCatalogProps>;
+
+type AdminTab = "users" | "products" | "invoices" | "activity" | "audit-trail";
+interface ToolsTrackerAdminPanelProps {
+    defaultTab?: AdminTab;
+}
+declare const ToolsTrackerAdminPanel: React.FC<ToolsTrackerAdminPanelProps>;
+
+type ImportMode = "ai" | "manual";
+type ImportStep = "idle" | "form";
+interface ToolsTrackerImportProps {
+    defaultMode?: ImportMode;
+    defaultStep?: ImportStep;
+}
+declare const ToolsTrackerImport: React.FC<ToolsTrackerImportProps>;
+
+type LogLevel = "all" | "info" | "success" | "warning" | "error" | "debug";
+interface ToolsTrackerLogsProps {
+    defaultFilter?: LogLevel;
+    defaultLogs?: "empty" | "recent" | "full";
+    isLoading?: boolean;
+}
+declare const ToolsTrackerLogs: React.FC<ToolsTrackerLogsProps>;
+
+type SyncScenario = "empty" | "job-list" | "partial-expanded" | "running-expanded" | "success-expanded" | "sync-early" | "sync-mid";
+interface ToolsTrackerSyncJobsProps {
+    defaultScenario?: SyncScenario;
+}
+declare const ToolsTrackerSyncJobs: React.FC<ToolsTrackerSyncJobsProps>;
+
+type SettingsTab = "profile" | "security" | "api-keys" | "preferences";
+interface ToolsTrackerSettingsProps {
+    defaultTab?: SettingsTab;
+}
+declare const ToolsTrackerSettings: React.FC<ToolsTrackerSettingsProps>;
+
 interface ChartContainerProps {
     title: string;
     subtitle?: string;
@@ -622,6 +796,33 @@ declare const ChartGeometricVariant: React.FC;
 declare const ChartHorizontalBarsVariant: React.FC;
 declare const ChartDoubleBarsVariant: React.FC;
 declare const ChartMiscVariant: React.FC;
+
+declare const PICTOGRAMS: Record<string, string>;
+type PictogramName = keyof typeof PICTOGRAMS;
+
+interface PictogramProps {
+    name: PictogramName;
+    size?: number;
+    className?: string;
+    style?: React.CSSProperties;
+    "aria-hidden"?: boolean;
+    "aria-label"?: string;
+}
+declare const Pictogram: React.FC<PictogramProps>;
+
+interface AppSidebarProps {
+    activeId?: string;
+    mobileOpen?: boolean;
+    onToggle?: () => void;
+}
+declare const AppSidebar: React.FC<AppSidebarProps>;
+
+interface AppTopBarProps {
+    title: string;
+}
+declare const AppTopBar: React.FC<AppTopBarProps>;
+
+declare const AppFooter: React.FC;
 
 interface User {
     id: string;
@@ -665,4 +866,4 @@ declare const chartData: {
 };
 declare const menuItems: MenuItem[];
 
-export { AccountsList, Alert, type AlertProps, AppShell, type AppShellProps, Avatar, type AvatarProps, Badge, type BadgeProps, type BreadcrumbItem, Breadcrumbs, type BreadcrumbsProps, Button, type ButtonProps, CalendarEvent, Card, CardHeader, type CardHeaderProps, type CardProps, CaseCard, type CaseCardProps, ChartBarVariant, ChartCard, type ChartCardProps, ChartContainer, type ChartContainerProps, ChartDoubleBarsVariant, ChartGeometricVariant, ChartHorizontalBarsVariant, ChartMiscVariant, ChartPolarVariant, ChartWaveVariant, Checkbox, type CheckboxProps, type Contact, ContactsList, Counter, type CounterProps, CtaBanner, type CtaBannerProps, type Customer, CustomersList, DashboardLayout, type DashboardLayoutProps, Divider, type DividerProps, Dropzone, type DropzoneProps, EducationCourses, type EducationCoursesProps, type EducationView, EmptyState, type EmptyStateProps, type FeatureItem, FeatureList, type FeatureListProps, Footer, type FooterColumn, type FooterProps, Heading, type HeadingProps, Hero, type HeroProps, Icon, type IconProps, InboxList, Input, type InputProps, ListScreen, type ListScreenProps, Loader, type LoaderProps, Marquee, type MarqueeProps, type MenuItem, Modal, type ModalProps, Navbar, type NavbarProps, Pagination, type PaginationProps, PasswordReset, type PasswordResetProps, type Payment, PaymentsList, PricingCard, type PricingCardProps, type ProductsListProps as Product, ProductsList, ProfileAccount, ProfileNotifications, ProfileSecurity, ProfileSocial, ProgressBar, type ProgressBarProps, Radio, type RadioProps, type SalesListProps as Sale, SalesList, Select, type SelectProps, Sidebar, type SidebarNavItem, type SidebarNavSection, type SidebarProps, type SidebarTeamMember, SignIn, SignUp, Skeleton, type SkeletonProps, Spinner, type SpinnerProps, type StatCard, type StatCardProps, StatusDot, type StatusDotProps, SupportHome, Switch, type SwitchProps, type TabItem, Table, type TableColumn, type TableProps, Tabs, type TabsProps, Tag, type TagProps, Testimonial, type TestimonialProps, Text, type TextProps, Textarea, type TextareaProps, Toast, type ToastProps, type ToastVariant, Tooltip, type TooltipProps, TopBar, type TopBarProps, Topbar, type TopbarProps, type Transaction, TransactionsList, type User, chartData, generateChartData, generateMenuItems, generateStats, generateUsers, menuItems, stats, users };
+export { AccountsList, Alert, type AlertProps, AppFooter, AppShell, type AppShellProps, AppSidebar, AppTopBar, Avatar, type AvatarProps, Badge, type BadgeProps, type BreadcrumbItem, Breadcrumbs, type BreadcrumbsProps, Button, type ButtonProps, CalendarEvent, Card, CardHeader, type CardHeaderProps, type CardProps, CaseCard, type CaseCardProps, ChartBarVariant, ChartCard, type ChartCardProps, ChartContainer, type ChartContainerProps, ChartDoubleBarsVariant, ChartGeometricVariant, ChartHorizontalBarsVariant, ChartMiscVariant, ChartPolarVariant, ChartWaveVariant, Checkbox, type CheckboxProps, type Contact, ContactsList, Container, type ContainerProps, Counter, type CounterProps, CtaBanner, type CtaBannerProps, type Customer, CustomersList, Dashboard, DashboardLayout, type DashboardLayoutProps, Divider, type DividerProps, Dropzone, type DropzoneProps, EducationCourses, type EducationCoursesProps, type EducationView, EmptyState, type EmptyStateProps, type FeatureItem, FeatureList, type FeatureListProps, Footer, type FooterColumn, type FooterProps, Heading, type HeadingProps, Hero, type HeroProps, Icon, type IconProps, InboxList, Input, type InputProps, ListScreen, type ListScreenProps, Loader, type LoaderProps, Marquee, type MarqueeProps, type MenuItem, Modal, type ModalProps, Navbar, type NavbarProps, Pagination, type PaginationProps, PasswordReset, type PasswordResetProps, type Payment, PaymentsList, Pictogram, type PictogramName, type PictogramProps, PricingCard, type PricingCardProps, type ProductsListProps as Product, ProductsList, ProfileAccount, ProfileNotifications, ProfileSecurity, ProfileSocial, ProgressBar, type ProgressBarProps, Radio, type RadioProps, ResponsiveGrid, type ResponsiveGridProps, type SalesListProps as Sale, SalesList, Select, type SelectProps, Sidebar, type SidebarNavItem, type SidebarNavSection, type SidebarProps, type SidebarTeamMember, SignIn, SignInWithQR, SignUp, Skeleton, type SkeletonProps, Spinner, type SpinnerProps, Stack, type StackProps, type StatCard, type StatCardProps, StatusDot, type StatusDotProps, SupportHome, Switch, type SwitchProps, type TabItem, Table, type TableColumn, type TableProps, Tabs, type TabsProps, Tag, type TagProps, Testimonial, type TestimonialProps, Text, type TextProps, Textarea, type TextareaProps, Toast, type ToastProps, type ToastVariant, ToolsTrackerAdminPanel, type ToolsTrackerAdminPanelProps, ToolsTrackerAnalytics, type ToolsTrackerAnalyticsProps, ToolsTrackerCatalog, type ToolsTrackerCatalogProps, ToolsTrackerDashboard, ToolsTrackerImport, type ToolsTrackerImportProps, ToolsTrackerLogs, type ToolsTrackerLogsProps, ToolsTrackerProducts, type ToolsTrackerProductsProps, ToolsTrackerReports, type ToolsTrackerReportsProps, ToolsTrackerSettings, type ToolsTrackerSettingsProps, ToolsTrackerSyncJobs, type ToolsTrackerSyncJobsProps, ToolsTrackerTransactions, type ToolsTrackerTransactionsProps, Tooltip, type TooltipProps, TopBar, type TopBarProps, Topbar, type TopbarProps, type Transaction, TransactionsList, type User, chartData, generateChartData, generateMenuItems, generateStats, generateUsers, menuItems, stats, users };
