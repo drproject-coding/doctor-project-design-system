@@ -614,43 +614,34 @@ function Modal({ open, onClose, title, children, footer }) {
       }
     }
   };
-  return /* @__PURE__ */ jsx19(
+  return /* @__PURE__ */ jsx19("div", { className: "drp-overlay", role: "presentation", onClick: onClose, children: /* @__PURE__ */ jsxs13(
     "div",
     {
-      className: "drp-overlay",
-      role: "presentation",
-      onClick: onClose,
-      onKeyDown: (e2) => e2.key === "Escape" && onClose(),
-      children: /* @__PURE__ */ jsxs13(
-        "div",
-        {
-          className: "drp-modal",
-          ref: modalRef,
-          role: "dialog",
-          "aria-modal": "true",
-          "aria-labelledby": titleId,
-          onClick: (e2) => e2.stopPropagation(),
-          onKeyDown: handleKeyDown,
-          children: [
-            /* @__PURE__ */ jsxs13("div", { className: "drp-modal__header", children: [
-              /* @__PURE__ */ jsx19("h2", { className: "drp-modal__title", id: titleId, children: title }),
-              /* @__PURE__ */ jsx19(
-                "button",
-                {
-                  className: "drp-modal__close",
-                  onClick: onClose,
-                  "aria-label": "Close",
-                  children: "\xD7"
-                }
-              )
-            ] }),
-            /* @__PURE__ */ jsx19("div", { className: "drp-modal__body", children }),
-            footer && /* @__PURE__ */ jsx19("div", { className: "drp-modal__footer", children: footer })
-          ]
-        }
-      )
+      className: "drp-modal",
+      ref: modalRef,
+      role: "dialog",
+      "aria-modal": "true",
+      "aria-labelledby": titleId,
+      onClick: (e2) => e2.stopPropagation(),
+      onKeyDown: handleKeyDown,
+      children: [
+        /* @__PURE__ */ jsxs13("div", { className: "drp-modal__header", children: [
+          /* @__PURE__ */ jsx19("h2", { className: "drp-modal__title", id: titleId, children: title }),
+          /* @__PURE__ */ jsx19(
+            "button",
+            {
+              className: "drp-modal__close",
+              onClick: onClose,
+              "aria-label": "Close",
+              children: "\xD7"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ jsx19("div", { className: "drp-modal__body", children }),
+        footer && /* @__PURE__ */ jsx19("div", { className: "drp-modal__footer", children: footer })
+      ]
     }
-  );
+  ) });
 }
 
 // src/components/Tabs/Tabs.tsx
@@ -1495,7 +1486,7 @@ var TopBar = ({
 };
 
 // src/components/Sidebar/Sidebar.tsx
-import { jsx as jsx25, jsxs as jsxs17 } from "react/jsx-runtime";
+import { Fragment as Fragment3, jsx as jsx25, jsxs as jsxs17 } from "react/jsx-runtime";
 var Sidebar = ({
   brandName = "Doctor Project",
   sections = [],
@@ -1520,32 +1511,48 @@ var Sidebar = ({
     ] }),
     /* @__PURE__ */ jsx25("nav", { className: "sidebar-nav", "aria-label": "Main navigation", children: sections.map((section, sIdx) => /* @__PURE__ */ jsxs17("div", { className: "sidebar-nav-section", children: [
       /* @__PURE__ */ jsx25("div", { className: "sidebar-nav-label", children: section.label }),
-      section.items.map((item) => /* @__PURE__ */ jsxs17(
-        "a",
-        {
+      section.items.map((item) => {
+        const sharedProps = {
+          key: item.id,
           className: `sidebar-nav-item${item.active ? " active" : ""}`,
-          href: item.href || "#",
           "aria-label": collapsed ? item.label : void 0,
-          "aria-current": item.active ? "page" : void 0,
-          onClick: (e2) => {
-            e2.preventDefault();
-            item.onClick?.();
-            onItemClick?.(item.id);
-          },
-          children: [
-            item.icon && /* @__PURE__ */ jsx25("span", { className: "sidebar-nav-icon", children: item.icon }),
-            /* @__PURE__ */ jsx25("span", { className: "sidebar-nav-text", children: item.label }),
-            item.badge !== void 0 && /* @__PURE__ */ jsx25(
-              "span",
-              {
-                className: `sidebar-badge sidebar-badge--${item.badgeVariant || "purple"}`,
-                children: item.badge
-              }
-            )
-          ]
-        },
-        item.id
-      ))
+          "aria-current": item.active ? "page" : void 0
+        };
+        const inner = /* @__PURE__ */ jsxs17(Fragment3, { children: [
+          item.icon && /* @__PURE__ */ jsx25("span", { className: "sidebar-nav-icon", children: item.icon }),
+          /* @__PURE__ */ jsx25("span", { className: "sidebar-nav-text", children: item.label }),
+          item.badge !== void 0 && /* @__PURE__ */ jsx25(
+            "span",
+            {
+              className: `sidebar-badge sidebar-badge--${item.badgeVariant || "purple"}`,
+              children: item.badge
+            }
+          )
+        ] });
+        return item.href ? /* @__PURE__ */ jsx25(
+          "a",
+          {
+            ...sharedProps,
+            href: item.href,
+            onClick: () => {
+              item.onClick?.();
+              onItemClick?.(item.id);
+            },
+            children: inner
+          }
+        ) : /* @__PURE__ */ jsx25(
+          "button",
+          {
+            ...sharedProps,
+            type: "button",
+            onClick: () => {
+              item.onClick?.();
+              onItemClick?.(item.id);
+            },
+            children: inner
+          }
+        );
+      })
     ] }, sIdx)) }),
     teamMembers.length > 0 && /* @__PURE__ */ jsxs17("div", { className: "sidebar-team", children: [
       /* @__PURE__ */ jsx25("div", { className: "sidebar-team-label", children: teamLabel }),
@@ -2086,7 +2093,7 @@ function Footer({
 
 // src/components/Textarea/Textarea.tsx
 import { useId as useId5 } from "react";
-import { Fragment as Fragment3, jsx as jsx36, jsxs as jsxs27 } from "react/jsx-runtime";
+import { Fragment as Fragment4, jsx as jsx36, jsxs as jsxs27 } from "react/jsx-runtime";
 function Textarea({
   label,
   error,
@@ -2111,7 +2118,7 @@ function Textarea({
       errorMessage
     ] });
   }
-  return /* @__PURE__ */ jsxs27(Fragment3, { children: [
+  return /* @__PURE__ */ jsxs27(Fragment4, { children: [
     /* @__PURE__ */ jsx36("textarea", { id: inputId, className: classes, ...props }),
     errorMessage
   ] });
@@ -2160,7 +2167,7 @@ function Loader({ size, label, className = "" }) {
 }
 
 // src/components/Skeleton/Skeleton.tsx
-import { Fragment as Fragment4, jsx as jsx38, jsxs as jsxs29 } from "react/jsx-runtime";
+import { Fragment as Fragment5, jsx as jsx38, jsxs as jsxs29 } from "react/jsx-runtime";
 function Skeleton({
   width,
   height,
@@ -2191,7 +2198,7 @@ function Skeleton({
       height: height || "120px"
     });
   }
-  return /* @__PURE__ */ jsxs29(Fragment4, { children: [
+  return /* @__PURE__ */ jsxs29(Fragment5, { children: [
     /* @__PURE__ */ jsx38("div", { className, style: baseStyle, "aria-hidden": "true" }),
     /* @__PURE__ */ jsx38("style", { children: `
         @keyframes drp-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
@@ -2496,10 +2503,10 @@ function Dropzone({
     className
   ].filter(Boolean).join(" ");
   return /* @__PURE__ */ jsxs35(
-    "div",
+    "button",
     {
+      type: "button",
       className: classes,
-      role: "button",
       tabIndex: 0,
       "aria-label": ariaLabel,
       onDragOver: handleDragOver,
@@ -2519,7 +2526,7 @@ function Dropzone({
             onChange: handleChange
           }
         ),
-        /* @__PURE__ */ jsx45("span", { className: "drp-dropzone__icon", children: icon }),
+        /* @__PURE__ */ jsx45("span", { className: "drp-dropzone__icon", "aria-hidden": true, children: icon }),
         /* @__PURE__ */ jsx45("span", { className: "drp-dropzone__text", children: "Drop files here or click to upload" }),
         hint && /* @__PURE__ */ jsx45("span", { className: "drp-dropzone__hint", children: hint })
       ]
@@ -2733,7 +2740,10 @@ var AppSidebar = ({
 
 // src/screens/shared/AppTopBar.tsx
 import { jsx as jsx52, jsxs as jsxs38 } from "react/jsx-runtime";
-var AppTopBar = ({ title }) => /* @__PURE__ */ jsxs38("header", { className: "topbar", children: [
+var AppTopBar = ({
+  title,
+  notificationCount
+}) => /* @__PURE__ */ jsxs38("header", { className: "topbar", children: [
   /* @__PURE__ */ jsx52("div", { className: "topbar-left", children: /* @__PURE__ */ jsx52("h1", { className: "topbar-title", children: title }) }),
   /* @__PURE__ */ jsxs38("div", { className: "topbar-right", children: [
     /* @__PURE__ */ jsx52("button", { className: "topbar-icon-btn", "aria-label": "Search", children: /* @__PURE__ */ jsx52(
@@ -2755,7 +2765,14 @@ var AppTopBar = ({ title }) => /* @__PURE__ */ jsxs38("header", { className: "to
         )
       }
     ) }),
-    /* @__PURE__ */ jsx52("button", { className: "topbar-icon-btn", "aria-label": "Notifications", children: /* @__PURE__ */ jsx52(Pictogram, { name: "Attention", size: 20, "aria-hidden": true }) }),
+    /* @__PURE__ */ jsx52(
+      "button",
+      {
+        className: "topbar-icon-btn",
+        "aria-label": notificationCount ? `Notifications (${notificationCount} unread)` : "Notifications",
+        children: /* @__PURE__ */ jsx52(Pictogram, { name: "Attention", size: 20, "aria-hidden": true })
+      }
+    ),
     /* @__PURE__ */ jsxs38("button", { className: "topbar-apps-btn", children: [
       /* @__PURE__ */ jsx52(Pictogram, { name: "Apps", size: 18, "aria-hidden": true }),
       /* @__PURE__ */ jsx52("span", { children: "Apps" })
@@ -3187,6 +3204,8 @@ function Dashboard() {
               /* @__PURE__ */ jsx54(
                 Input,
                 {
+                  name: "search",
+                  autoComplete: "off",
                   placeholder: "Search products by name...",
                   value: search,
                   onChange: (e2) => setSearch(e2.target.value),
@@ -4212,7 +4231,7 @@ var SignUp = () => {
 
 // src/screens/Auth/PasswordReset.tsx
 import { useId as useId8, useState as useState10 } from "react";
-import { Fragment as Fragment5, jsx as jsx58, jsxs as jsxs43 } from "react/jsx-runtime";
+import { Fragment as Fragment6, jsx as jsx58, jsxs as jsxs43 } from "react/jsx-runtime";
 var PasswordReset = ({
   mode = "request"
 }) => {
@@ -4236,7 +4255,7 @@ var PasswordReset = ({
       console.log("Password reset successful");
     }
   };
-  return /* @__PURE__ */ jsx58(AuthLayout, { children: /* @__PURE__ */ jsx58("div", { children: mode === "request" ? /* @__PURE__ */ jsxs43(Fragment5, { children: [
+  return /* @__PURE__ */ jsx58(AuthLayout, { children: /* @__PURE__ */ jsx58("div", { children: mode === "request" ? /* @__PURE__ */ jsxs43(Fragment6, { children: [
     /* @__PURE__ */ jsx58(
       "h1",
       {
@@ -4326,7 +4345,7 @@ var PasswordReset = ({
         ]
       }
     )
-  ] }) : /* @__PURE__ */ jsxs43(Fragment5, { children: [
+  ] }) : /* @__PURE__ */ jsxs43(Fragment6, { children: [
     /* @__PURE__ */ jsx58(
       "h1",
       {
@@ -4904,7 +4923,14 @@ var V1Content = () => /* @__PURE__ */ jsx61("div", { className: "content", child
         /* @__PURE__ */ jsx61("span", { className: "drp-caption", children: p3.stock.toLocaleString() })
       ] }) }),
       /* @__PURE__ */ jsx61("td", { children: /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--bold", children: p3.price }) }),
-      /* @__PURE__ */ jsx61("td", { children: /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+      /* @__PURE__ */ jsx61("td", { children: /* @__PURE__ */ jsx61(
+        "button",
+        {
+          "aria-label": "More options",
+          className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
+          children: "..."
+        }
+      ) })
     ] }, p3.id)) })
   ] }),
   /* @__PURE__ */ jsx61(TablePagination, {})
@@ -5087,7 +5113,14 @@ var V2Content = () => /* @__PURE__ */ jsxs46("div", { className: "content", chil
         /* @__PURE__ */ jsx61("td", { children: /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--sm", children: p3.color }) }),
         /* @__PURE__ */ jsx61("td", { children: /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--sm", children: p3.sales }) }),
         /* @__PURE__ */ jsx61("td", { children: /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--bold", children: p3.price }) }),
-        /* @__PURE__ */ jsx61("td", { children: /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+        /* @__PURE__ */ jsx61("td", { children: /* @__PURE__ */ jsx61(
+          "button",
+          {
+            "aria-label": "More options",
+            className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
+            children: "..."
+          }
+        ) })
       ] }, p3.id)) })
     ] }),
     /* @__PURE__ */ jsx61(TablePagination, {})
@@ -5191,27 +5224,41 @@ var V3Content = () => /* @__PURE__ */ jsxs46("div", { className: "content", chil
       /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--sm drp-btn--primary", children: "All Filters" }),
       /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Group" }),
       /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Sort" }),
-      /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: "..." })
+      /* @__PURE__ */ jsx61(
+        "button",
+        {
+          "aria-label": "More options",
+          className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm",
+          children: "..."
+        }
+      )
     ] }),
-    /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ jsx61(
-      "svg",
+    /* @__PURE__ */ jsx61(
+      "button",
       {
-        width: "16",
-        height: "16",
-        fill: "none",
-        viewBox: "0 0 24 24",
-        stroke: "currentColor",
+        "aria-label": "Search",
+        className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm",
         children: /* @__PURE__ */ jsx61(
-          "path",
+          "svg",
           {
-            strokeLinecap: "round",
-            strokeLinejoin: "round",
-            strokeWidth: 2,
-            d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            width: "16",
+            height: "16",
+            fill: "none",
+            viewBox: "0 0 24 24",
+            stroke: "currentColor",
+            children: /* @__PURE__ */ jsx61(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              }
+            )
           }
         )
       }
-    ) })
+    )
   ] }),
   /* @__PURE__ */ jsxs46("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
     /* @__PURE__ */ jsxs46("table", { className: "drp-table", children: [
@@ -5256,7 +5303,14 @@ var V3Content = () => /* @__PURE__ */ jsxs46("div", { className: "content", chil
         /* @__PURE__ */ jsx61("td", { children: /* @__PURE__ */ jsx61("span", { className: "drp-tag", children: p3.service }) }),
         /* @__PURE__ */ jsx61("td", { children: /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.date }) }),
         /* @__PURE__ */ jsx61("td", { children: /* @__PURE__ */ jsx61("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.source }) }),
-        /* @__PURE__ */ jsx61("td", { children: /* @__PURE__ */ jsx61("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+        /* @__PURE__ */ jsx61("td", { children: /* @__PURE__ */ jsx61(
+          "button",
+          {
+            "aria-label": "More options",
+            className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
+            children: "..."
+          }
+        ) })
       ] }, p3.id)) })
     ] }),
     /* @__PURE__ */ jsx61(TablePagination, {})
@@ -5416,7 +5470,12 @@ var ProductsList = ({
   return /* @__PURE__ */ jsxs46("div", { className: "app-layout", children: [
     /* @__PURE__ */ jsx61(AppSidebar, { activeId: "products" }),
     /* @__PURE__ */ jsxs46("div", { className: "main-content", children: [
-      /* @__PURE__ */ jsx61(AppTopBar, { title: variant === "details" ? "Product Details" : "Products" }),
+      /* @__PURE__ */ jsx61(
+        AppTopBar,
+        {
+          title: variant === "details" ? "Product Details" : "Products"
+        }
+      ),
       renderContent(),
       /* @__PURE__ */ jsx61(AppFooter, {})
     ] })
@@ -6518,7 +6577,7 @@ var AccountsList = ({
 
 // src/screens/Transactions/TransactionsList.tsx
 import { useState as useState12 } from "react";
-import { Fragment as Fragment6, jsx as jsx64, jsxs as jsxs49 } from "react/jsx-runtime";
+import { Fragment as Fragment7, jsx as jsx64, jsxs as jsxs49 } from "react/jsx-runtime";
 var TRANSACTIONS = [
   {
     icon: "V",
@@ -6753,7 +6812,14 @@ var ListV1Content = () => /* @__PURE__ */ jsxs49("div", { className: "content", 
           ),
           /* @__PURE__ */ jsx64("div", { className: "drp-caption", children: tx.date })
         ] }),
-        /* @__PURE__ */ jsx64("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." })
+        /* @__PURE__ */ jsx64(
+          "button",
+          {
+            "aria-label": "More options",
+            className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
+            children: "..."
+          }
+        )
       ]
     },
     i2
@@ -6806,7 +6872,14 @@ var ListV2Content = () => {
               children: tx.amount
             }
           ) }),
-          /* @__PURE__ */ jsx64("td", { children: /* @__PURE__ */ jsx64("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+          /* @__PURE__ */ jsx64("td", { children: /* @__PURE__ */ jsx64(
+            "button",
+            {
+              "aria-label": "More options",
+              className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
+              children: "..."
+            }
+          ) })
         ] }, i2)) })
       ] }),
       /* @__PURE__ */ jsx64(TablePagination3, {})
@@ -6841,6 +6914,7 @@ var InvoiceModal = () => /* @__PURE__ */ jsx64("div", { className: "drp-overlay"
             /* @__PURE__ */ jsx64(
               "button",
               {
+                "aria-label": "Close",
                 className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
                 style: { color: "var(--drp-white)" },
                 children: /* @__PURE__ */ jsx64(
@@ -7025,7 +7099,7 @@ var InvoiceModal = () => /* @__PURE__ */ jsx64("div", { className: "drp-overlay"
 ) });
 var InvoiceContent = () => {
   const rows = TRANSACTIONS.slice(0, 9);
-  return /* @__PURE__ */ jsxs49(Fragment6, { children: [
+  return /* @__PURE__ */ jsxs49(Fragment7, { children: [
     /* @__PURE__ */ jsxs49("div", { className: "content", children: [
       /* @__PURE__ */ jsxs49("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
         /* @__PURE__ */ jsx64("div", { className: "drp-tabs", children: ["All Accounts", "USD Account", "EUR Account", "GBP Account"].map(
@@ -7128,7 +7202,14 @@ var InvoiceContent = () => {
                 children: tx.amount
               }
             ) }),
-            /* @__PURE__ */ jsx64("td", { children: /* @__PURE__ */ jsx64("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+            /* @__PURE__ */ jsx64("td", { children: /* @__PURE__ */ jsx64(
+              "button",
+              {
+                "aria-label": "More options",
+                className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
+                children: "..."
+              }
+            ) })
           ] }, i2)) })
         ] }),
         /* @__PURE__ */ jsx64(TablePagination3, {})
@@ -7202,6 +7283,7 @@ var EmptyContent = () => /* @__PURE__ */ jsxs49(
         /* @__PURE__ */ jsx64("div", { style: { marginBottom: "var(--drp-space-6)" }, children: /* @__PURE__ */ jsxs49(
           "svg",
           {
+            "aria-hidden": "true",
             width: "64",
             height: "64",
             style: { color: "var(--drp-black)" },
@@ -7548,7 +7630,14 @@ var V1Content4 = () => /* @__PURE__ */ jsx65(
           /* @__PURE__ */ jsx65("th", { style: { width: 40 } })
         ] }) }),
         /* @__PURE__ */ jsx65("tbody", { children: v1Contacts.map((contact) => /* @__PURE__ */ jsxs50("tr", { children: [
-          /* @__PURE__ */ jsx65("td", { children: /* @__PURE__ */ jsx65("input", { type: "checkbox", className: "drp-checkbox" }) }),
+          /* @__PURE__ */ jsx65("td", { children: /* @__PURE__ */ jsx65(
+            "input",
+            {
+              type: "checkbox",
+              "aria-label": "Select contact",
+              className: "drp-checkbox"
+            }
+          ) }),
           /* @__PURE__ */ jsx65("td", { children: /* @__PURE__ */ jsxs50("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
             /* @__PURE__ */ jsx65(Avatar2, { name: contact.name, bg: contact.bg }),
             /* @__PURE__ */ jsx65("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
@@ -7556,7 +7645,14 @@ var V1Content4 = () => /* @__PURE__ */ jsx65(
           /* @__PURE__ */ jsx65("td", { children: /* @__PURE__ */ jsx65("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
           /* @__PURE__ */ jsx65("td", { children: /* @__PURE__ */ jsx65("span", { className: "drp-text drp-text--sm", children: contact.service }) }),
           /* @__PURE__ */ jsx65("td", { children: /* @__PURE__ */ jsx65(StatusDot2, { status: contact.status }) }),
-          /* @__PURE__ */ jsx65("td", { children: /* @__PURE__ */ jsx65("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+          /* @__PURE__ */ jsx65("td", { children: /* @__PURE__ */ jsx65(
+            "button",
+            {
+              "aria-label": "More options",
+              className: "drp-btn drp-btn--ghost drp-btn--sm",
+              children: "\xB7\xB7\xB7"
+            }
+          ) })
         ] }, contact.name)) })
       ] }),
       /* @__PURE__ */ jsx65(ContactPagination, {})
@@ -7591,7 +7687,14 @@ var V2Content4 = () => /* @__PURE__ */ jsx65(
           /* @__PURE__ */ jsx65("th", { style: { width: 40 } })
         ] }) }),
         /* @__PURE__ */ jsx65("tbody", { children: v2Contacts.map((contact) => /* @__PURE__ */ jsxs50("tr", { children: [
-          /* @__PURE__ */ jsx65("td", { children: /* @__PURE__ */ jsx65("input", { type: "checkbox", className: "drp-checkbox" }) }),
+          /* @__PURE__ */ jsx65("td", { children: /* @__PURE__ */ jsx65(
+            "input",
+            {
+              type: "checkbox",
+              "aria-label": "Select contact",
+              className: "drp-checkbox"
+            }
+          ) }),
           /* @__PURE__ */ jsx65("td", { children: /* @__PURE__ */ jsxs50("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
             /* @__PURE__ */ jsx65(Avatar2, { name: contact.name, bg: contact.bg }),
             /* @__PURE__ */ jsx65("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
@@ -7622,7 +7725,14 @@ var V2Content4 = () => /* @__PURE__ */ jsx65(
             ] }),
             /* @__PURE__ */ jsx65(Toggle, { on: contact.accessOn })
           ] }) }),
-          /* @__PURE__ */ jsx65("td", { children: /* @__PURE__ */ jsx65("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+          /* @__PURE__ */ jsx65("td", { children: /* @__PURE__ */ jsx65(
+            "button",
+            {
+              "aria-label": "More options",
+              className: "drp-btn drp-btn--ghost drp-btn--sm",
+              children: "\xB7\xB7\xB7"
+            }
+          ) })
         ] }, contact.name)) })
       ] }),
       /* @__PURE__ */ jsx65(ContactPagination, {})
@@ -7685,25 +7795,32 @@ var NewContactModal = () => /* @__PURE__ */ jsxs50(
             },
             children: [
               /* @__PURE__ */ jsx65("h2", { className: "drp-h4", children: "Latest transactions" }),
-              /* @__PURE__ */ jsx65("button", { className: "drp-btn drp-btn--ghost drp-btn--icon", children: /* @__PURE__ */ jsx65(
-                "svg",
+              /* @__PURE__ */ jsx65(
+                "button",
                 {
-                  width: "20",
-                  height: "20",
-                  fill: "none",
-                  viewBox: "0 0 24 24",
-                  stroke: "currentColor",
+                  "aria-label": "Close",
+                  className: "drp-btn drp-btn--ghost drp-btn--icon",
                   children: /* @__PURE__ */ jsx65(
-                    "path",
+                    "svg",
                     {
-                      strokeLinecap: "round",
-                      strokeLinejoin: "round",
-                      strokeWidth: 2,
-                      d: "M6 18L18 6M6 6l12 12"
+                      width: "20",
+                      height: "20",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      children: /* @__PURE__ */ jsx65(
+                        "path",
+                        {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M6 18L18 6M6 6l12 12"
+                        }
+                      )
                     }
                   )
                 }
-              ) })
+              )
             ]
           }
         ),
@@ -8441,7 +8558,7 @@ var SalesList = ({
 
 // src/screens/Inbox/InboxList.tsx
 import { useState as useState13 } from "react";
-import { Fragment as Fragment7, jsx as jsx67, jsxs as jsxs52 } from "react/jsx-runtime";
+import { Fragment as Fragment8, jsx as jsx67, jsxs as jsxs52 } from "react/jsx-runtime";
 var avatarColors = {
   "Helena Chavez": "var(--drp-pink)",
   "Sallie Wade": "var(--drp-purple)",
@@ -8567,7 +8684,7 @@ var mailItems = [
 var MailListVariant = () => {
   const [activeTab, setActiveTab] = useState13("Incoming");
   const tabs = ["Incoming", "Sent", "Drafts", "Deleted"];
-  return /* @__PURE__ */ jsxs52(Fragment7, { children: [
+  return /* @__PURE__ */ jsxs52(Fragment8, { children: [
     /* @__PURE__ */ jsx67(AppTopBar, { title: "Inbox" }),
     /* @__PURE__ */ jsxs52("div", { className: "content", children: [
       /* @__PURE__ */ jsxs52("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
@@ -8638,6 +8755,7 @@ var MailListVariant = () => {
                 "input",
                 {
                   type: "text",
+                  name: "search",
                   placeholder: "Type to search...",
                   className: "drp-input",
                   style: {
@@ -8670,7 +8788,14 @@ var MailListVariant = () => {
                 className: "drp-flex drp-items-center drp-gap-2",
                 style: { flexShrink: 0 },
                 children: [
-                  /* @__PURE__ */ jsx67("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx67("input", { type: "checkbox" }) }),
+                  /* @__PURE__ */ jsx67("label", { className: "drp-checkbox", children: /* @__PURE__ */ jsx67(
+                    "input",
+                    {
+                      type: "checkbox",
+                      name: "select-item",
+                      "aria-label": "Select item"
+                    }
+                  ) }),
                   /* @__PURE__ */ jsx67(
                     "button",
                     {
@@ -8850,7 +8975,7 @@ var chatMessages = [
     time: "08:01PM"
   }
 ];
-var ChatVariant = () => /* @__PURE__ */ jsxs52(Fragment7, { children: [
+var ChatVariant = () => /* @__PURE__ */ jsxs52(Fragment8, { children: [
   /* @__PURE__ */ jsx67(AppTopBar, { title: "Inbox" }),
   /* @__PURE__ */ jsx67("div", { className: "content", children: /* @__PURE__ */ jsxs52("div", { className: "drp-flex drp-gap-4", style: { flex: 1, minHeight: 0 }, children: [
     /* @__PURE__ */ jsxs52(
@@ -9310,6 +9435,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs52(Fragment7, { children: [
                       "input",
                       {
                         type: "text",
+                        name: "comment",
                         placeholder: "Type to add something",
                         className: "drp-input",
                         style: {
@@ -9361,7 +9487,7 @@ var ChatVariant = () => /* @__PURE__ */ jsxs52(Fragment7, { children: [
   ] }) }),
   /* @__PURE__ */ jsx67(AppFooter, {})
 ] });
-var MailComposeVariant = () => /* @__PURE__ */ jsxs52(Fragment7, { children: [
+var MailComposeVariant = () => /* @__PURE__ */ jsxs52(Fragment8, { children: [
   /* @__PURE__ */ jsx67(AppTopBar, { title: "Inbox" }),
   /* @__PURE__ */ jsxs52("div", { className: "content", children: [
     /* @__PURE__ */ jsxs52("div", { className: "drp-flex drp-items-center drp-justify-between drp-mb-4", children: [
@@ -9577,6 +9703,7 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs52(Fragment7, { children: [
               "input",
               {
                 type: "text",
+                name: "comment",
                 placeholder: "Type to add something",
                 className: "drp-input",
                 style: {
@@ -9624,7 +9751,7 @@ var MailComposeVariant = () => /* @__PURE__ */ jsxs52(Fragment7, { children: [
   ] }),
   /* @__PURE__ */ jsx67(AppFooter, {})
 ] });
-var EmptyVariant = () => /* @__PURE__ */ jsxs52(Fragment7, { children: [
+var EmptyVariant = () => /* @__PURE__ */ jsxs52(Fragment8, { children: [
   /* @__PURE__ */ jsx67(AppTopBar, { title: "Inbox" }),
   /* @__PURE__ */ jsxs52(
     "div",
@@ -9795,7 +9922,7 @@ var InboxList = ({
 };
 
 // src/screens/Payments/PaymentsList.tsx
-import { Fragment as Fragment8, jsx as jsx68, jsxs as jsxs53 } from "react/jsx-runtime";
+import { Fragment as Fragment9, jsx as jsx68, jsxs as jsxs53 } from "react/jsx-runtime";
 var CurrencyFlag = ({
   currency
 }) => {
@@ -10459,7 +10586,7 @@ var DetailIcon = ({ icon }) => {
       return /* @__PURE__ */ jsx68("span", { style: { width: 16, height: 16 }, children: "\u2022" });
   }
 };
-var DetailsContent3 = () => /* @__PURE__ */ jsx68(Fragment8, { children: /* @__PURE__ */ jsxs53("div", { style: { flex: 1, position: "relative", overflow: "hidden" }, children: [
+var DetailsContent3 = () => /* @__PURE__ */ jsx68(Fragment9, { children: /* @__PURE__ */ jsxs53("div", { style: { flex: 1, position: "relative", overflow: "hidden" }, children: [
   /* @__PURE__ */ jsx68("div", { style: { opacity: 0.3, pointerEvents: "none" }, children: /* @__PURE__ */ jsx68(ListContent, {}) }),
   /* @__PURE__ */ jsx68("div", { className: "drp-overlay", style: { position: "absolute" }, children: /* @__PURE__ */ jsxs53(
     "div",
@@ -10622,6 +10749,7 @@ var SendMoneyContent = () => /* @__PURE__ */ jsx68(
               "div",
               {
                 className: "drp-input",
+                "aria-label": "Selected recipient: Rustem Tolstobrov",
                 style: {
                   display: "flex",
                   alignItems: "center",
@@ -10770,13 +10898,17 @@ var PayUtilitiesContent = () => /* @__PURE__ */ jsx68(
           /* @__PURE__ */ jsxs53("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
             /* @__PURE__ */ jsx68("label", { className: "drp-label", children: "Utilities" }),
             /* @__PURE__ */ jsxs53(
-              "div",
+              "button",
               {
+                type: "button",
                 className: "drp-input",
                 style: {
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "space-between"
+                  justifyContent: "space-between",
+                  width: "100%",
+                  textAlign: "left",
+                  cursor: "pointer"
                 },
                 children: [
                   /* @__PURE__ */ jsx68("span", { className: "drp-text drp-text--bold", children: "Mobile Networks" }),
@@ -10807,19 +10939,27 @@ var PayUtilitiesContent = () => /* @__PURE__ */ jsx68(
           /* @__PURE__ */ jsxs53("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
             /* @__PURE__ */ jsx68("label", { className: "drp-label", children: "Service provider" }),
             /* @__PURE__ */ jsxs53(
-              "div",
+              "button",
               {
+                type: "button",
                 className: "drp-input",
                 style: {
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "space-between"
+                  justifyContent: "space-between",
+                  width: "100%",
+                  textAlign: "left",
+                  cursor: "pointer"
                 },
                 children: [
                   /* @__PURE__ */ jsx68("span", { className: "drp-text drp-text--bold", children: "Vodafone" }),
                   /* @__PURE__ */ jsx68(
                     "div",
                     {
+                      role: "radio",
+                      "aria-checked": true,
+                      tabIndex: 0,
+                      onKeyDown: (e2) => (e2.key === "Enter" || e2.key === " ") && e2.currentTarget.click(),
                       style: {
                         width: 24,
                         height: 24,
@@ -10950,7 +11090,7 @@ var PaymentsList = ({
 };
 
 // src/screens/Education/EducationCourses.tsx
-import { Fragment as Fragment9, jsx as jsx69, jsxs as jsxs54 } from "react/jsx-runtime";
+import { Fragment as Fragment10, jsx as jsx69, jsxs as jsxs54 } from "react/jsx-runtime";
 var courseImages = {
   "data-science": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=70",
   "business-management": "https://images.unsplash.com/photo-1573497491765-dccce02b29df?w=400&q=70",
@@ -11362,7 +11502,7 @@ var EducationCourses = ({
     /* @__PURE__ */ jsx69(AppSidebar, { activeId: "education" }),
     /* @__PURE__ */ jsxs54("div", { className: "main-content", children: [
       /* @__PURE__ */ jsx69(AppTopBar, { title: "Courses" }),
-      /* @__PURE__ */ jsx69("div", { style: { flex: 1, overflow: "auto" }, children: view === "courses" ? /* @__PURE__ */ jsxs54(Fragment9, { children: [
+      /* @__PURE__ */ jsx69("div", { style: { flex: 1, overflow: "auto" }, children: view === "courses" ? /* @__PURE__ */ jsxs54(Fragment10, { children: [
         /* @__PURE__ */ jsx69(CoursesHero, {}),
         /* @__PURE__ */ jsxs54(
           "div",
@@ -11412,7 +11552,7 @@ var EducationCourses = ({
             ]
           }
         )
-      ] }) : /* @__PURE__ */ jsxs54(Fragment9, { children: [
+      ] }) : /* @__PURE__ */ jsxs54(Fragment10, { children: [
         /* @__PURE__ */ jsx69(
           CoursesHero,
           {
@@ -11449,7 +11589,7 @@ var EducationCourses = ({
 
 // src/screens/Calendar/CalendarEvent.tsx
 import { useState as useState14 } from "react";
-import { Fragment as Fragment10, jsx as jsx70, jsxs as jsxs55 } from "react/jsx-runtime";
+import { Fragment as Fragment11, jsx as jsx70, jsxs as jsxs55 } from "react/jsx-runtime";
 var CalendarNav = ({ view, onViewChange, dateLabel }) => /* @__PURE__ */ jsxs55(
   "div",
   {
@@ -11649,6 +11789,7 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ jsx70(
                 /* @__PURE__ */ jsx70(
                   "input",
                   {
+                    name: "comment",
                     className: "drp-input",
                     style: {
                       flex: 1,
@@ -11793,7 +11934,10 @@ var MonthView = ({
             children: week.map((cell, ci) => /* @__PURE__ */ jsx70(
               "div",
               {
+                role: cell.day ? "button" : void 0,
+                tabIndex: cell.day ? 0 : void 0,
                 onClick: cell.day ? onToggle : void 0,
+                onKeyDown: cell.day ? (e2) => (e2.key === "Enter" || e2.key === " ") && onToggle() : void 0,
                 style: {
                   minHeight: 90,
                   borderRight: ci < 6 ? "var(--drp-border-thin)" : "none",
@@ -11801,7 +11945,7 @@ var MonthView = ({
                   cursor: cell.day ? "pointer" : "default",
                   background: cell.day ? "var(--drp-white)" : "var(--drp-cream)"
                 },
-                children: cell.day && /* @__PURE__ */ jsxs55(Fragment10, { children: [
+                children: cell.day && /* @__PURE__ */ jsxs55(Fragment11, { children: [
                   /* @__PURE__ */ jsx70(
                     "div",
                     {
@@ -12120,7 +12264,7 @@ var CalendarEvent = ({
 
 // src/screens/Support/SupportHome.tsx
 import React11 from "react";
-import { Fragment as Fragment11, jsx as jsx71, jsxs as jsxs56 } from "react/jsx-runtime";
+import { Fragment as Fragment12, jsx as jsx71, jsxs as jsxs56 } from "react/jsx-runtime";
 var SupportHero = ({
   searchPlaceholder = "Search help articles",
   searchValue
@@ -12165,6 +12309,7 @@ var SupportHero = ({
             /* @__PURE__ */ jsx71(
               "button",
               {
+                "aria-label": "Search",
                 className: "drp-btn drp-btn--primary drp-btn--icon drp-btn--sm",
                 style: {
                   position: "absolute",
@@ -12305,6 +12450,7 @@ var Breadcrumb = ({ items }) => /* @__PURE__ */ jsx71(
       i2 > 0 && /* @__PURE__ */ jsx71(
         "svg",
         {
+          "aria-hidden": "true",
           width: "12",
           height: "12",
           viewBox: "0 0 24 24",
@@ -12341,12 +12487,18 @@ var ArticleSidebarNav = () => {
     {
       style: { width: 192, flexShrink: 0, paddingTop: "var(--drp-space-2)" },
       children: /* @__PURE__ */ jsx71("nav", { children: items.map((item) => /* @__PURE__ */ jsx71(
-        "div",
+        "button",
         {
+          type: "button",
           className: `drp-text drp-text--sm ${item.active ? "drp-text--purple drp-text--bold" : ""}`,
           style: {
             padding: "6px var(--drp-space-3)",
-            cursor: "pointer"
+            cursor: "pointer",
+            background: "none",
+            border: "none",
+            display: "block",
+            width: "100%",
+            textAlign: "left"
           },
           children: item.label
         },
@@ -12580,7 +12732,7 @@ var SupportHome = ({ view = "home" }) => {
     /* @__PURE__ */ jsxs56("div", { className: "main-content", children: [
       /* @__PURE__ */ jsx71(AppTopBar, { title: "Help Center" }),
       /* @__PURE__ */ jsxs56("div", { style: { flex: 1, overflow: "auto" }, children: [
-        view === "home" && /* @__PURE__ */ jsxs56(Fragment11, { children: [
+        view === "home" && /* @__PURE__ */ jsxs56(Fragment12, { children: [
           /* @__PURE__ */ jsx71(SupportHero, {}),
           /* @__PURE__ */ jsxs56(
             "div",
@@ -12619,7 +12771,7 @@ var SupportHome = ({ view = "home" }) => {
             }
           )
         ] }),
-        view === "categories" && /* @__PURE__ */ jsxs56(Fragment11, { children: [
+        view === "categories" && /* @__PURE__ */ jsxs56(Fragment12, { children: [
           /* @__PURE__ */ jsx71(Breadcrumb, { items: ["Help Center", "Categories", "..."] }),
           /* @__PURE__ */ jsx71(SupportHero, {}),
           /* @__PURE__ */ jsxs56(
@@ -12735,7 +12887,7 @@ var SupportHome = ({ view = "home" }) => {
             }
           )
         ] }),
-        view === "article" && /* @__PURE__ */ jsxs56(Fragment11, { children: [
+        view === "article" && /* @__PURE__ */ jsxs56(Fragment12, { children: [
           /* @__PURE__ */ jsx71(Breadcrumb, { items: ["Help Center", "Account", "Funds reports"] }),
           /* @__PURE__ */ jsxs56(
             "div",
@@ -12838,7 +12990,7 @@ var SupportHome = ({ view = "home" }) => {
             }
           )
         ] }),
-        view === "search" && /* @__PURE__ */ jsxs56(Fragment11, { children: [
+        view === "search" && /* @__PURE__ */ jsxs56(Fragment12, { children: [
           /* @__PURE__ */ jsx71(
             SupportHero,
             {
@@ -12867,8 +13019,15 @@ var SupportHome = ({ view = "home" }) => {
                     children: searchResults.map((r2) => /* @__PURE__ */ jsx71(SearchResultRow, { ...r2 }, r2.title))
                   }
                 ),
-                /* @__PURE__ */ jsx71(Pagination, { currentPage: 1, totalPages: 10, onPageChange: () => {
-                } })
+                /* @__PURE__ */ jsx71(
+                  Pagination,
+                  {
+                    currentPage: 1,
+                    totalPages: 10,
+                    onPageChange: () => {
+                    }
+                  }
+                )
               ]
             }
           )
@@ -20133,7 +20292,7 @@ var ToolsTrackerProducts = ({
                             onClick: () => setTheme((t2) => t2 === "light" ? "dark" : "light"),
                             "aria-label": "Toggle theme",
                             style: { fontSize: 16, lineHeight: 1 },
-                            children: theme === "light" ? "\u{1F319}" : "\u2600\uFE0F"
+                            children: /* @__PURE__ */ jsx95("span", { "aria-hidden": "true", children: theme === "light" ? "\u{1F319}" : "\u2600\uFE0F" })
                           }
                         ),
                         /* @__PURE__ */ jsx95(
@@ -20142,7 +20301,7 @@ var ToolsTrackerProducts = ({
                             className: "drp-btn drp-btn--ghost drp-btn--sm",
                             "aria-label": "Refresh",
                             style: { fontSize: 18 },
-                            children: "\u21BB"
+                            children: /* @__PURE__ */ jsx95("span", { "aria-hidden": "true", children: "\u21BB" })
                           }
                         ),
                         /* @__PURE__ */ jsx95(
@@ -20151,7 +20310,7 @@ var ToolsTrackerProducts = ({
                             className: "drp-btn drp-btn--ghost drp-btn--sm",
                             "aria-label": "Add product",
                             style: { fontSize: 18 },
-                            children: "+"
+                            children: /* @__PURE__ */ jsx95("span", { "aria-hidden": "true", children: "+" })
                           }
                         ),
                         /* @__PURE__ */ jsx95("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: "\u21BB Refresh" })
@@ -20175,13 +20334,18 @@ var ToolsTrackerProducts = ({
                           marginBottom: "var(--drp-space-5)"
                         },
                         children: STATS.map((s2) => /* @__PURE__ */ jsxs80(
-                          "div",
+                          "button",
                           {
+                            type: "button",
                             className: "drp-card",
                             style: {
                               padding: "var(--drp-space-4)",
                               cursor: s2.key !== "total" ? "pointer" : "default",
-                              transition: "box-shadow 0.15s ease"
+                              transition: "box-shadow 0.15s ease",
+                              background: "none",
+                              border: "none",
+                              textAlign: "left",
+                              width: "100%"
                             },
                             onClick: () => s2.key !== "total" && handleFilter(s2.key),
                             children: [
@@ -20341,7 +20505,7 @@ var ToolsTrackerProducts = ({
 
 // src/screens/ToolsTracker/Catalog/ToolsTrackerCatalog.tsx
 import { useState as useState28, useMemo as useMemo3 } from "react";
-import { Fragment as Fragment12, jsx as jsx96, jsxs as jsxs81 } from "react/jsx-runtime";
+import { Fragment as Fragment13, jsx as jsx96, jsxs as jsxs81 } from "react/jsx-runtime";
 var CATEGORIES2 = [
   {
     name: "Marketing & sales",
@@ -21588,16 +21752,21 @@ var BrowseView = ({ initialCategory, initialSearch = "", onBack, onSelect }) => 
     )
   ] });
 };
-var DealDetailPanel = ({ deal, onClose }) => /* @__PURE__ */ jsxs81(Fragment12, { children: [
+var DealDetailPanel = ({ deal, onClose }) => /* @__PURE__ */ jsxs81(Fragment13, { children: [
   /* @__PURE__ */ jsx96(
     "div",
     {
+      role: "button",
+      tabIndex: 0,
+      "aria-label": "Close deal details",
       onClick: onClose,
+      onKeyDown: (e2) => (e2.key === "Enter" || e2.key === " ") && onClose(),
       style: {
         position: "fixed",
         inset: 0,
         background: "rgba(0,0,0,0.35)",
-        zIndex: 40
+        zIndex: 40,
+        cursor: "pointer"
       }
     }
   ),
@@ -21637,7 +21806,7 @@ var DealDetailPanel = ({ deal, onClose }) => /* @__PURE__ */ jsxs81(Fragment12, 
                   className: "drp-btn drp-btn--ghost drp-btn--sm",
                   onClick: onClose,
                   "aria-label": "Close",
-                  children: "\u2715"
+                  children: /* @__PURE__ */ jsx96("span", { "aria-hidden": "true", children: "\u2715" })
                 }
               )
             ]
@@ -22009,7 +22178,7 @@ var ToolsTrackerCatalog = ({
                             onClick: () => setTheme((t2) => t2 === "light" ? "dark" : "light"),
                             "aria-label": "Toggle theme",
                             style: { fontSize: 16, lineHeight: 1 },
-                            children: theme === "light" ? "\u{1F319}" : "\u2600\uFE0F"
+                            children: /* @__PURE__ */ jsx96("span", { "aria-hidden": "true", children: theme === "light" ? "\u{1F319}" : "\u2600\uFE0F" })
                           }
                         ),
                         /* @__PURE__ */ jsx96("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: "\u21BB Sync Catalog" })
@@ -22022,7 +22191,7 @@ var ToolsTrackerCatalog = ({
                 "div",
                 {
                   style: { flex: 1, overflowY: "auto", padding: "var(--drp-space-6)" },
-                  children: view === "home" ? /* @__PURE__ */ jsxs81(Fragment12, { children: [
+                  children: view === "home" ? /* @__PURE__ */ jsxs81(Fragment13, { children: [
                     /* @__PURE__ */ jsx96(
                       HeroBanner,
                       {
@@ -22068,7 +22237,7 @@ var ToolsTrackerCatalog = ({
 
 // src/screens/ToolsTracker/AdminPanel/ToolsTrackerAdminPanel.tsx
 import { useState as useState29 } from "react";
-import { Fragment as Fragment13, jsx as jsx97, jsxs as jsxs82 } from "react/jsx-runtime";
+import { Fragment as Fragment14, jsx as jsx97, jsxs as jsxs82 } from "react/jsx-runtime";
 var USERS = [
   {
     id: 1,
@@ -22541,39 +22710,49 @@ var LABEL = {
   fontSize: 12,
   fontWeight: 600
 };
-var LinkIcon = () => /* @__PURE__ */ jsxs82("svg", { width: "13", height: "13", viewBox: "0 0 13 13", fill: "none", children: [
-  /* @__PURE__ */ jsx97(
-    "path",
-    {
-      d: "M5.2 2H2.5C1.67 2 1 2.67 1 3.5v7C1 11.33 1.67 12 2.5 12h7c.83 0 1.5-.67 1.5-1.5V7.8",
-      stroke: "#f97316",
-      strokeWidth: "1.3",
-      strokeLinecap: "round"
-    }
-  ),
-  /* @__PURE__ */ jsx97(
-    "path",
-    {
-      d: "M7 1h5v5",
-      stroke: "#f97316",
-      strokeWidth: "1.3",
-      strokeLinecap: "round",
-      strokeLinejoin: "round"
-    }
-  ),
-  /* @__PURE__ */ jsx97(
-    "line",
-    {
-      x1: "6",
-      y1: "7",
-      x2: "12",
-      y2: "1",
-      stroke: "#f97316",
-      strokeWidth: "1.3",
-      strokeLinecap: "round"
-    }
-  )
-] });
+var LinkIcon = () => /* @__PURE__ */ jsxs82(
+  "svg",
+  {
+    width: "13",
+    height: "13",
+    viewBox: "0 0 13 13",
+    fill: "none",
+    "aria-hidden": "true",
+    children: [
+      /* @__PURE__ */ jsx97(
+        "path",
+        {
+          d: "M5.2 2H2.5C1.67 2 1 2.67 1 3.5v7C1 11.33 1.67 12 2.5 12h7c.83 0 1.5-.67 1.5-1.5V7.8",
+          stroke: "#f97316",
+          strokeWidth: "1.3",
+          strokeLinecap: "round"
+        }
+      ),
+      /* @__PURE__ */ jsx97(
+        "path",
+        {
+          d: "M7 1h5v5",
+          stroke: "#f97316",
+          strokeWidth: "1.3",
+          strokeLinecap: "round",
+          strokeLinejoin: "round"
+        }
+      ),
+      /* @__PURE__ */ jsx97(
+        "line",
+        {
+          x1: "6",
+          y1: "7",
+          x2: "12",
+          y2: "1",
+          stroke: "#f97316",
+          strokeWidth: "1.3",
+          strokeLinecap: "round"
+        }
+      )
+    ]
+  }
+);
 var RoleBadge = ({ role }) => /* @__PURE__ */ jsx97(Tag, { color: role === "superadmin" ? "orange" : "purple", children: role === "superadmin" ? "SUPERADMIN" : "USER" });
 var PRODUCT_STATUS_COLOR = {
   ACTIVATED: "black",
@@ -22815,7 +22994,7 @@ var UsersPanel = () => {
     setIsCreate(true);
     setEditingUser({});
   };
-  return /* @__PURE__ */ jsxs82(Fragment13, { children: [
+  return /* @__PURE__ */ jsxs82(Fragment14, { children: [
     /* @__PURE__ */ jsx97(
       EditUserModal,
       {
@@ -22829,7 +23008,7 @@ var UsersPanel = () => {
       ManagementCard,
       {
         title: "User Management",
-        actions: /* @__PURE__ */ jsxs82(Fragment13, { children: [
+        actions: /* @__PURE__ */ jsxs82(Fragment14, { children: [
           /* @__PURE__ */ jsx97(Button, { variant: "outline", size: "sm", children: "Sync Users" }),
           /* @__PURE__ */ jsx97(Button, { variant: "outline", size: "sm", children: "Delete All" }),
           /* @__PURE__ */ jsx97(Button, { variant: "primary", size: "sm", onClick: openCreate, children: "Create User" })
@@ -22838,6 +23017,7 @@ var UsersPanel = () => {
           Input,
           {
             value: search,
+            "aria-label": "Search users by email",
             onChange: (e2) => {
               setSearch(e2.target.value);
               setPage(1);
@@ -22855,7 +23035,7 @@ var UsersPanel = () => {
         ),
         children: /* @__PURE__ */ jsxs82("table", { style: { width: "100%", borderCollapse: "collapse" }, children: [
           /* @__PURE__ */ jsx97("thead", { children: /* @__PURE__ */ jsxs82("tr", { children: [
-            /* @__PURE__ */ jsx97("th", { style: { ...TH, width: 36 }, children: /* @__PURE__ */ jsx97("input", { type: "checkbox" }) }),
+            /* @__PURE__ */ jsx97("th", { style: { ...TH, width: 36 }, children: /* @__PURE__ */ jsx97("input", { type: "checkbox", "aria-label": "Select all users" }) }),
             /* @__PURE__ */ jsx97("th", { style: TH, children: "ID" }),
             /* @__PURE__ */ jsx97("th", { style: TH, children: "EMAIL" }),
             /* @__PURE__ */ jsx97("th", { style: TH, children: "ROLE" }),
@@ -22865,7 +23045,13 @@ var UsersPanel = () => {
             /* @__PURE__ */ jsx97("th", { style: TH, children: "ACTIONS" })
           ] }) }),
           /* @__PURE__ */ jsx97("tbody", { children: paged.map((user) => /* @__PURE__ */ jsxs82("tr", { children: [
-            /* @__PURE__ */ jsx97("td", { style: TD, children: /* @__PURE__ */ jsx97("input", { type: "checkbox" }) }),
+            /* @__PURE__ */ jsx97("td", { style: TD, children: /* @__PURE__ */ jsx97(
+              "input",
+              {
+                type: "checkbox",
+                "aria-label": `Select user ${user.email}`
+              }
+            ) }),
             /* @__PURE__ */ jsx97("td", { style: TD, children: user.id }),
             /* @__PURE__ */ jsx97("td", { style: TD, children: user.email }),
             /* @__PURE__ */ jsx97("td", { style: TD, children: /* @__PURE__ */ jsx97(RoleBadge, { role: user.role }) }),
@@ -22909,16 +23095,17 @@ var ProductsPanel = () => {
     ManagementCard,
     {
       title: "Product Management",
-      actions: /* @__PURE__ */ jsxs82(Fragment13, { children: [
+      actions: /* @__PURE__ */ jsxs82(Fragment14, { children: [
         /* @__PURE__ */ jsx97(Button, { variant: "outline", size: "sm", children: "Sync Products" }),
         /* @__PURE__ */ jsx97(Button, { variant: "outline", size: "sm", children: "Delete All" }),
         /* @__PURE__ */ jsx97(Button, { variant: "primary", size: "sm", children: "Create Product" })
       ] }),
-      filters: /* @__PURE__ */ jsxs82(Fragment13, { children: [
+      filters: /* @__PURE__ */ jsxs82(Fragment14, { children: [
         /* @__PURE__ */ jsx97(
           Input,
           {
             value: search,
+            "aria-label": "Search products",
             onChange: (e2) => {
               setSearch(e2.target.value);
               setPage(1);
@@ -22931,6 +23118,7 @@ var ProductsPanel = () => {
           {
             className: "drp-input",
             value: userFilter,
+            "aria-label": "Filter by user",
             onChange: (e2) => {
               setUserFilter(e2.target.value);
               setPage(1);
@@ -22947,6 +23135,7 @@ var ProductsPanel = () => {
           {
             className: "drp-input",
             value: statusFilter,
+            "aria-label": "Filter by status",
             onChange: (e2) => {
               setStatusFilter(e2.target.value);
               setPage(1);
@@ -22972,7 +23161,7 @@ var ProductsPanel = () => {
       ),
       children: /* @__PURE__ */ jsxs82("table", { style: { width: "100%", borderCollapse: "collapse" }, children: [
         /* @__PURE__ */ jsx97("thead", { children: /* @__PURE__ */ jsxs82("tr", { children: [
-          /* @__PURE__ */ jsx97("th", { style: { ...TH, width: 36 }, children: /* @__PURE__ */ jsx97("input", { type: "checkbox" }) }),
+          /* @__PURE__ */ jsx97("th", { style: { ...TH, width: 36 }, children: /* @__PURE__ */ jsx97("input", { type: "checkbox", "aria-label": "Select all products" }) }),
           /* @__PURE__ */ jsx97("th", { style: TH, children: "ID" }),
           /* @__PURE__ */ jsx97("th", { style: TH, children: "USER" }),
           /* @__PURE__ */ jsx97("th", { style: TH, children: "NAME" }),
@@ -22987,7 +23176,13 @@ var ProductsPanel = () => {
           /* @__PURE__ */ jsx97("th", { style: TH, children: "ACTIONS" })
         ] }) }),
         /* @__PURE__ */ jsx97("tbody", { children: paged.map((p3) => /* @__PURE__ */ jsxs82("tr", { children: [
-          /* @__PURE__ */ jsx97("td", { style: TD, children: /* @__PURE__ */ jsx97("input", { type: "checkbox" }) }),
+          /* @__PURE__ */ jsx97("td", { style: TD, children: /* @__PURE__ */ jsx97(
+            "input",
+            {
+              type: "checkbox",
+              "aria-label": `Select product ${p3.name}`
+            }
+          ) }),
           /* @__PURE__ */ jsx97("td", { style: TD, children: p3.id }),
           /* @__PURE__ */ jsx97(
             "td",
@@ -23054,7 +23249,7 @@ var InvoicesPanel = () => {
   });
   const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const paged = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
-  return /* @__PURE__ */ jsxs82(Fragment13, { children: [
+  return /* @__PURE__ */ jsxs82(Fragment14, { children: [
     /* @__PURE__ */ jsx97(
       EditInvoiceModal,
       {
@@ -23067,16 +23262,17 @@ var InvoicesPanel = () => {
       ManagementCard,
       {
         title: "Invoice Management",
-        actions: /* @__PURE__ */ jsxs82(Fragment13, { children: [
+        actions: /* @__PURE__ */ jsxs82(Fragment14, { children: [
           /* @__PURE__ */ jsx97(Button, { variant: "outline", size: "sm", children: "Sync Invoices" }),
           /* @__PURE__ */ jsx97(Button, { variant: "outline", size: "sm", children: "Delete All" }),
           /* @__PURE__ */ jsx97(Button, { variant: "primary", size: "sm", children: "Create Invoice" })
         ] }),
-        filters: /* @__PURE__ */ jsxs82(Fragment13, { children: [
+        filters: /* @__PURE__ */ jsxs82(Fragment14, { children: [
           /* @__PURE__ */ jsx97(
             Input,
             {
               value: search,
+              "aria-label": "Search invoices",
               onChange: (e2) => {
                 setSearch(e2.target.value);
                 setPage(1);
@@ -23089,6 +23285,7 @@ var InvoicesPanel = () => {
             {
               className: "drp-input",
               value: userFilter,
+              "aria-label": "Filter by user",
               onChange: (e2) => setUserFilter(e2.target.value),
               style: { width: 200 },
               children: [
@@ -23102,6 +23299,7 @@ var InvoicesPanel = () => {
             {
               className: "drp-input",
               value: statusFilter,
+              "aria-label": "Filter by invoice status",
               onChange: (e2) => {
                 setStatusFilter(e2.target.value);
                 setPage(1);
@@ -24118,7 +24316,7 @@ var ToolsTrackerImport = ({
 
 // src/screens/ToolsTracker/Logs/ToolsTrackerLogs.tsx
 import { useState as useState31 } from "react";
-import { Fragment as Fragment14, jsx as jsx99, jsxs as jsxs84 } from "react/jsx-runtime";
+import { Fragment as Fragment15, jsx as jsx99, jsxs as jsxs84 } from "react/jsx-runtime";
 var RECENT_LOGS = [
   {
     id: "1",
@@ -24481,7 +24679,7 @@ var LogContainer = ({
           },
           children: /* @__PURE__ */ jsx99("span", { className: "drp-text drp-text--sm drp-text--muted", children: "No activity yet" })
         }
-      ) : /* @__PURE__ */ jsxs84(Fragment14, { children: [
+      ) : /* @__PURE__ */ jsxs84(Fragment15, { children: [
         paged.map((entry) => /* @__PURE__ */ jsx99(LogRow, { entry }, entry.id)),
         totalPages > 1 && /* @__PURE__ */ jsx99(
           "div",
@@ -25560,7 +25758,7 @@ var ToolsTrackerSyncJobs = ({
 
 // src/screens/ToolsTracker/Settings/ToolsTrackerSettings.tsx
 import { useState as useState33 } from "react";
-import { Fragment as Fragment15, jsx as jsx101, jsxs as jsxs86 } from "react/jsx-runtime";
+import { Fragment as Fragment16, jsx as jsx101, jsxs as jsxs86 } from "react/jsx-runtime";
 var SettingsCard = ({
   title,
   description,
@@ -25791,7 +25989,7 @@ var ToggleRow = ({
     }
   );
 };
-var ProfileTab = () => /* @__PURE__ */ jsxs86(Fragment15, { children: [
+var ProfileTab = () => /* @__PURE__ */ jsxs86(Fragment16, { children: [
   /* @__PURE__ */ jsxs86(
     SettingsCard,
     {
@@ -25937,7 +26135,7 @@ var ProfileTab = () => /* @__PURE__ */ jsxs86(Fragment15, { children: [
     }
   )
 ] });
-var SecurityTab = () => /* @__PURE__ */ jsxs86(Fragment15, { children: [
+var SecurityTab = () => /* @__PURE__ */ jsxs86(Fragment16, { children: [
   /* @__PURE__ */ jsxs86(
     SettingsCard,
     {
@@ -26113,7 +26311,7 @@ var SecurityTab = () => /* @__PURE__ */ jsxs86(Fragment15, { children: [
     }
   )
 ] });
-var ApiKeysTab = () => /* @__PURE__ */ jsxs86(Fragment15, { children: [
+var ApiKeysTab = () => /* @__PURE__ */ jsxs86(Fragment16, { children: [
   /* @__PURE__ */ jsxs86(
     SettingsCard,
     {
@@ -26306,7 +26504,7 @@ var ApiKeysTab = () => /* @__PURE__ */ jsxs86(Fragment15, { children: [
     }
   )
 ] });
-var PreferencesTab = () => /* @__PURE__ */ jsxs86(Fragment15, { children: [
+var PreferencesTab = () => /* @__PURE__ */ jsxs86(Fragment16, { children: [
   /* @__PURE__ */ jsxs86(
     SettingsCard,
     {
@@ -26581,7 +26779,7 @@ import {
   Legend as Legend2
 } from "chart.js";
 import { PolarArea, Radar } from "react-chartjs-2";
-import { Fragment as Fragment16, jsx as jsx102, jsxs as jsxs87 } from "react/jsx-runtime";
+import { Fragment as Fragment17, jsx as jsx102, jsxs as jsxs87 } from "react/jsx-runtime";
 ChartJS.register(
   RadialLinearScale,
   ArcElement,
@@ -26597,6 +26795,7 @@ var CalendarIcon = () => /* @__PURE__ */ jsxs87(
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor",
+    "aria-hidden": "true",
     children: [
       /* @__PURE__ */ jsx102("rect", { x: "3", y: "4", width: "18", height: "18", rx: "0", strokeWidth: 2 }),
       /* @__PURE__ */ jsx102("path", { strokeLinecap: "round", strokeWidth: 2, d: "M16 2v4M8 2v4M3 10h18" })
@@ -26659,6 +26858,8 @@ var BarChartSVG = ({
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
       style: { width: "100%", height },
+      role: "img",
+      "aria-label": "Bar chart",
       children: [
         yLines.map((v3) => {
           const y2 = padTop + chartH - v3 / maxValue * chartH;
@@ -26754,6 +26955,8 @@ var HBarChartSVG = ({ data, height = 260 }) => {
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
       style: { width: "100%", height },
+      role: "img",
+      "aria-label": "Horizontal bar chart",
       children: [
         xTicks.map((v3) => {
           const x3 = padLeft + v3 / absMax * chartW;
@@ -26892,6 +27095,8 @@ var WaveChartSVG = ({
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
       style: { width: "100%", height },
+      role: "img",
+      "aria-label": "Wave line chart",
       children: [
         /* @__PURE__ */ jsxs87("defs", { children: [
           /* @__PURE__ */ jsxs87("linearGradient", { id: "waveBlueGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
@@ -27048,6 +27253,8 @@ var DoubleBarChartSVG = ({
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
       style: { width: "100%", height },
+      role: "img",
+      "aria-label": "Double bar chart",
       children: [
         yLines.map((v3) => {
           const y2 = padTop + chartH - v3 / maxValue * chartH;
@@ -27250,6 +27457,7 @@ var Sparkline = ({
       viewBox: `0 0 ${w3} ${h2}`,
       style: { width: 80, height: 40 },
       preserveAspectRatio: "none",
+      "aria-hidden": "true",
       children: [
         /* @__PURE__ */ jsx102("defs", { children: /* @__PURE__ */ jsxs87(
           "linearGradient",
@@ -27293,6 +27501,7 @@ var BarSparkline = ({
       viewBox: `0 0 ${w3} ${h2}`,
       style: { width: 80, height: 48 },
       preserveAspectRatio: "none",
+      "aria-hidden": "true",
       children: values.map((v3, i2) => {
         const barH = v3 / max * h2 * 0.9;
         const x3 = i2 * gap + gap / 2 - bw / 2;
@@ -27332,45 +27541,54 @@ var DonutChart = ({
       "var(--drp-mint)"
     ];
     const radii = [R3, R3 - 20, R3 - 40];
-    return /* @__PURE__ */ jsxs87("svg", { viewBox: "0 0 240 240", style: { width: "100%", height }, children: [
-      radii.map((rad, i2) => /* @__PURE__ */ jsx102(
-        "circle",
-        {
-          cx,
-          cy,
-          r: rad,
-          fill: "none",
-          stroke: colors[i2],
-          strokeWidth: 8
-        },
-        i2
-      )),
-      label && /* @__PURE__ */ jsxs87(Fragment16, { children: [
-        /* @__PURE__ */ jsx102(
-          "text",
-          {
-            x: cx,
-            y: cy - 8,
-            textAnchor: "middle",
-            fontSize: 18,
-            fontWeight: "bold",
-            fill: "var(--drp-black)",
-            children: label
-          }
-        ),
-        sublabel && /* @__PURE__ */ jsx102(
-          "text",
-          {
-            x: cx,
-            y: cy + 12,
-            textAnchor: "middle",
-            fontSize: 11,
-            fill: "var(--drp-grey)",
-            children: sublabel
-          }
-        )
-      ] })
-    ] });
+    return /* @__PURE__ */ jsxs87(
+      "svg",
+      {
+        viewBox: "0 0 240 240",
+        style: { width: "100%", height },
+        role: "img",
+        "aria-label": label ? `Donut chart: ${label}` : "Donut chart",
+        children: [
+          radii.map((rad, i2) => /* @__PURE__ */ jsx102(
+            "circle",
+            {
+              cx,
+              cy,
+              r: rad,
+              fill: "none",
+              stroke: colors[i2],
+              strokeWidth: 8
+            },
+            i2
+          )),
+          label && /* @__PURE__ */ jsxs87(Fragment17, { children: [
+            /* @__PURE__ */ jsx102(
+              "text",
+              {
+                x: cx,
+                y: cy - 8,
+                textAnchor: "middle",
+                fontSize: 18,
+                fontWeight: "bold",
+                fill: "var(--drp-black)",
+                children: label
+              }
+            ),
+            sublabel && /* @__PURE__ */ jsx102(
+              "text",
+              {
+                x: cx,
+                y: cy + 12,
+                textAnchor: "middle",
+                fontSize: 11,
+                fill: "var(--drp-grey)",
+                children: sublabel
+              }
+            )
+          ] })
+        ]
+      }
+    );
   }
   let total = segments.reduce((s2, seg) => s2 + seg.pct, 0);
   let currentAngle = -Math.PI / 2;
@@ -27402,53 +27620,62 @@ var DonutChart = ({
       showLabel: showSegmentLabels && pct > 5
     };
   });
-  return /* @__PURE__ */ jsxs87("svg", { viewBox: "0 0 240 240", style: { width: "100%", height }, children: [
-    paths.map((p3, i2) => /* @__PURE__ */ jsx102("path", { d: p3.d, fill: p3.color }, i2)),
-    paths.map(
-      (p3, i2) => p3.showLabel && /* @__PURE__ */ jsxs87(
-        "text",
-        {
-          x: p3.lx,
-          y: p3.ly,
-          textAnchor: "middle",
-          dominantBaseline: "middle",
-          fontSize: 9,
-          fill: "white",
-          fontWeight: "bold",
-          children: [
-            p3.pct,
-            "%"
-          ]
-        },
-        i2
-      )
-    ),
-    label && /* @__PURE__ */ jsxs87(Fragment16, { children: [
-      /* @__PURE__ */ jsx102(
-        "text",
-        {
-          x: cx,
-          y: cy - 8,
-          textAnchor: "middle",
-          fontSize: 18,
-          fontWeight: "bold",
-          fill: "var(--drp-black)",
-          children: label
-        }
-      ),
-      sublabel && /* @__PURE__ */ jsx102(
-        "text",
-        {
-          x: cx,
-          y: cy + 12,
-          textAnchor: "middle",
-          fontSize: 11,
-          fill: "var(--drp-grey)",
-          children: sublabel
-        }
-      )
-    ] })
-  ] });
+  return /* @__PURE__ */ jsxs87(
+    "svg",
+    {
+      viewBox: "0 0 240 240",
+      style: { width: "100%", height },
+      role: "img",
+      "aria-label": label ? `Donut chart: ${label}` : "Donut chart",
+      children: [
+        paths.map((p3, i2) => /* @__PURE__ */ jsx102("path", { d: p3.d, fill: p3.color }, i2)),
+        paths.map(
+          (p3, i2) => p3.showLabel && /* @__PURE__ */ jsxs87(
+            "text",
+            {
+              x: p3.lx,
+              y: p3.ly,
+              textAnchor: "middle",
+              dominantBaseline: "middle",
+              fontSize: 9,
+              fill: "white",
+              fontWeight: "bold",
+              children: [
+                p3.pct,
+                "%"
+              ]
+            },
+            i2
+          )
+        ),
+        label && /* @__PURE__ */ jsxs87(Fragment17, { children: [
+          /* @__PURE__ */ jsx102(
+            "text",
+            {
+              x: cx,
+              y: cy - 8,
+              textAnchor: "middle",
+              fontSize: 18,
+              fontWeight: "bold",
+              fill: "var(--drp-black)",
+              children: label
+            }
+          ),
+          sublabel && /* @__PURE__ */ jsx102(
+            "text",
+            {
+              x: cx,
+              y: cy + 12,
+              textAnchor: "middle",
+              fontSize: 11,
+              fill: "var(--drp-grey)",
+              children: sublabel
+            }
+          )
+        ] })
+      ]
+    }
+  );
 };
 var WORLD_ATLAS_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 var WorldMapChart = () => {
@@ -27659,6 +27886,7 @@ var StatCard1 = ({
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
+            "aria-hidden": "true",
             children: /* @__PURE__ */ jsx102(
               "path",
               {
@@ -28116,15 +28344,24 @@ var ChartGeometricScreen = () => /* @__PURE__ */ jsxs87(ReportScreen, { children
             /* @__PURE__ */ jsx102("div", { className: "drp-stat-card__label", children: s2.label }),
             /* @__PURE__ */ jsx102("div", { className: "drp-stat-card__value", children: s2.value })
           ] }),
-          /* @__PURE__ */ jsx102("div", { style: { width: 24, height: 24, color: "var(--drp-grey)" }, children: /* @__PURE__ */ jsx102("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ jsx102(
-            "path",
+          /* @__PURE__ */ jsx102("div", { style: { width: 24, height: 24, color: "var(--drp-grey)" }, children: /* @__PURE__ */ jsx102(
+            "svg",
             {
-              strokeLinecap: "round",
-              strokeLinejoin: "round",
-              strokeWidth: 2,
-              d: "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              "aria-hidden": "true",
+              children: /* @__PURE__ */ jsx102(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                }
+              )
             }
-          ) }) })
+          ) })
         ]
       }
     ),
@@ -28376,6 +28613,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ jsxs87(ReportScreen, { children: [
                         fill: "none",
                         viewBox: "0 0 24 24",
                         stroke: "currentColor",
+                        "aria-hidden": "true",
                         children: /* @__PURE__ */ jsx102(
                           "path",
                           {
@@ -28548,6 +28786,7 @@ var PolarChartScreen = () => /* @__PURE__ */ jsxs87(ReportScreen, { children: [
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           style: { width: 20, height: 20 },
+          "aria-hidden": "true",
           children: [
             /* @__PURE__ */ jsx102("rect", { x: "3", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
             /* @__PURE__ */ jsx102("rect", { x: "14", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
@@ -28569,6 +28808,7 @@ var PolarChartScreen = () => /* @__PURE__ */ jsxs87(ReportScreen, { children: [
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           style: { width: 20, height: 20 },
+          "aria-hidden": "true",
           children: [
             /* @__PURE__ */ jsx102("rect", { x: "3", y: "4", width: "18", height: "18", rx: "0", strokeWidth: 2 }),
             /* @__PURE__ */ jsx102(
@@ -28595,6 +28835,7 @@ var PolarChartScreen = () => /* @__PURE__ */ jsxs87(ReportScreen, { children: [
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           style: { width: 20, height: 20 },
+          "aria-hidden": "true",
           children: /* @__PURE__ */ jsx102(
             "path",
             {

@@ -655,7 +655,7 @@ interface EducationCoursesProps {
 }
 declare const EducationCourses: React.FC<EducationCoursesProps>;
 
-type CalendarView = 'month' | 'week' | 'day';
+type CalendarView = "month" | "week" | "day";
 interface CalendarEventProps {
     defaultView?: CalendarView;
 }
@@ -819,6 +819,7 @@ declare const AppSidebar: React.FC<AppSidebarProps>;
 
 interface AppTopBarProps {
     title: string;
+    notificationCount?: number;
 }
 declare const AppTopBar: React.FC<AppTopBarProps>;
 

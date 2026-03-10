@@ -45,6 +45,11 @@
   cursor: not-allowed;
 }
 
+.drp-pagination__btn:focus-visible {
+  outline: 2px solid var(--drp-purple);
+  outline-offset: 2px;
+}
+
 .drp-pagination__page {
   display: flex;
   align-items: center;
@@ -64,6 +69,11 @@
 
 .drp-pagination__page:hover {
   background: rgba(0, 0, 0, 0.04);
+}
+
+.drp-pagination__page:focus-visible {
+  outline: 2px solid var(--drp-purple);
+  outline-offset: 2px;
 }
 
 .drp-pagination__page--active,

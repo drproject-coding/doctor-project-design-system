@@ -69,12 +69,7 @@ export function Modal({ open, onClose, title, children, footer }: ModalProps) {
   };
 
   return (
-    <div
-      className="drp-overlay"
-      role="presentation"
-      onClick={onClose}
-      onKeyDown={(e) => e.key === "Escape" && onClose()}
-    >
+    <div className="drp-overlay" role="presentation" onClick={onClose}>
       <div
         className="drp-modal"
         ref={modalRef}

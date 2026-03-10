@@ -752,43 +752,34 @@ function Modal({ open, onClose, title, children, footer }) {
       }
     }
   };
-  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "drp-overlay", role: "presentation", onClick: onClose, children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
     "div",
     {
-      className: "drp-overlay",
-      role: "presentation",
-      onClick: onClose,
-      onKeyDown: (e2) => e2.key === "Escape" && onClose(),
-      children: /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)(
-        "div",
-        {
-          className: "drp-modal",
-          ref: modalRef,
-          role: "dialog",
-          "aria-modal": "true",
-          "aria-labelledby": titleId,
-          onClick: (e2) => e2.stopPropagation(),
-          onKeyDown: handleKeyDown,
-          children: [
-            /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "drp-modal__header", children: [
-              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h2", { className: "drp-modal__title", id: titleId, children: title }),
-              /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
-                "button",
-                {
-                  className: "drp-modal__close",
-                  onClick: onClose,
-                  "aria-label": "Close",
-                  children: "\xD7"
-                }
-              )
-            ] }),
-            /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "drp-modal__body", children }),
-            footer && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "drp-modal__footer", children: footer })
-          ]
-        }
-      )
+      className: "drp-modal",
+      ref: modalRef,
+      role: "dialog",
+      "aria-modal": "true",
+      "aria-labelledby": titleId,
+      onClick: (e2) => e2.stopPropagation(),
+      onKeyDown: handleKeyDown,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsxs)("div", { className: "drp-modal__header", children: [
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("h2", { className: "drp-modal__title", id: titleId, children: title }),
+          /* @__PURE__ */ (0, import_jsx_runtime19.jsx)(
+            "button",
+            {
+              className: "drp-modal__close",
+              onClick: onClose,
+              "aria-label": "Close",
+              children: "\xD7"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "drp-modal__body", children }),
+        footer && /* @__PURE__ */ (0, import_jsx_runtime19.jsx)("div", { className: "drp-modal__footer", children: footer })
+      ]
     }
-  );
+  ) });
 }
 
 // src/components/Tabs/Tabs.tsx
@@ -1658,32 +1649,48 @@ var Sidebar = ({
     ] }),
     /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("nav", { className: "sidebar-nav", "aria-label": "Main navigation", children: sections.map((section, sIdx) => /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "sidebar-nav-section", children: [
       /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "sidebar-nav-label", children: section.label }),
-      section.items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(
-        "a",
-        {
+      section.items.map((item) => {
+        const sharedProps = {
+          key: item.id,
           className: `sidebar-nav-item${item.active ? " active" : ""}`,
-          href: item.href || "#",
           "aria-label": collapsed ? item.label : void 0,
-          "aria-current": item.active ? "page" : void 0,
-          onClick: (e2) => {
-            e2.preventDefault();
-            item.onClick?.();
-            onItemClick?.(item.id);
-          },
-          children: [
-            item.icon && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "sidebar-nav-icon", children: item.icon }),
-            /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
-            item.badge !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
-              "span",
-              {
-                className: `sidebar-badge sidebar-badge--${item.badgeVariant || "purple"}`,
-                children: item.badge
-              }
-            )
-          ]
-        },
-        item.id
-      ))
+          "aria-current": item.active ? "page" : void 0
+        };
+        const inner = /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)(import_jsx_runtime25.Fragment, { children: [
+          item.icon && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "sidebar-nav-icon", children: item.icon }),
+          /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("span", { className: "sidebar-nav-text", children: item.label }),
+          item.badge !== void 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+            "span",
+            {
+              className: `sidebar-badge sidebar-badge--${item.badgeVariant || "purple"}`,
+              children: item.badge
+            }
+          )
+        ] });
+        return item.href ? /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+          "a",
+          {
+            ...sharedProps,
+            href: item.href,
+            onClick: () => {
+              item.onClick?.();
+              onItemClick?.(item.id);
+            },
+            children: inner
+          }
+        ) : /* @__PURE__ */ (0, import_jsx_runtime25.jsx)(
+          "button",
+          {
+            ...sharedProps,
+            type: "button",
+            onClick: () => {
+              item.onClick?.();
+              onItemClick?.(item.id);
+            },
+            children: inner
+          }
+        );
+      })
     ] }, sIdx)) }),
     teamMembers.length > 0 && /* @__PURE__ */ (0, import_jsx_runtime25.jsxs)("div", { className: "sidebar-team", children: [
       /* @__PURE__ */ (0, import_jsx_runtime25.jsx)("div", { className: "sidebar-team-label", children: teamLabel }),
@@ -2634,10 +2641,10 @@ function Dropzone({
     className
   ].filter(Boolean).join(" ");
   return /* @__PURE__ */ (0, import_jsx_runtime45.jsxs)(
-    "div",
+    "button",
     {
+      type: "button",
       className: classes,
-      role: "button",
       tabIndex: 0,
       "aria-label": ariaLabel,
       onDragOver: handleDragOver,
@@ -2657,7 +2664,7 @@ function Dropzone({
             onChange: handleChange
           }
         ),
-        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-dropzone__icon", children: icon }),
+        /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-dropzone__icon", "aria-hidden": true, children: icon }),
         /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-dropzone__text", children: "Drop files here or click to upload" }),
         hint && /* @__PURE__ */ (0, import_jsx_runtime45.jsx)("span", { className: "drp-dropzone__hint", children: hint })
       ]
@@ -2871,7 +2878,10 @@ var AppSidebar = ({
 
 // src/screens/shared/AppTopBar.tsx
 var import_jsx_runtime52 = require("react/jsx-runtime");
-var AppTopBar = ({ title }) => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("header", { className: "topbar", children: [
+var AppTopBar = ({
+  title,
+  notificationCount
+}) => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("header", { className: "topbar", children: [
   /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("div", { className: "topbar-left", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("h1", { className: "topbar-title", children: title }) }),
   /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("div", { className: "topbar-right", children: [
     /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "topbar-icon-btn", "aria-label": "Search", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
@@ -2893,7 +2903,14 @@ var AppTopBar = ({ title }) => /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("h
         )
       }
     ) }),
-    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("button", { className: "topbar-icon-btn", "aria-label": "Notifications", children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(Pictogram, { name: "Attention", size: 20, "aria-hidden": true }) }),
+    /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(
+      "button",
+      {
+        className: "topbar-icon-btn",
+        "aria-label": notificationCount ? `Notifications (${notificationCount} unread)` : "Notifications",
+        children: /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(Pictogram, { name: "Attention", size: 20, "aria-hidden": true })
+      }
+    ),
     /* @__PURE__ */ (0, import_jsx_runtime52.jsxs)("button", { className: "topbar-apps-btn", children: [
       /* @__PURE__ */ (0, import_jsx_runtime52.jsx)(Pictogram, { name: "Apps", size: 18, "aria-hidden": true }),
       /* @__PURE__ */ (0, import_jsx_runtime52.jsx)("span", { children: "Apps" })
@@ -3325,6 +3342,8 @@ function Dashboard() {
               /* @__PURE__ */ (0, import_jsx_runtime54.jsx)(
                 Input,
                 {
+                  name: "search",
+                  autoComplete: "off",
                   placeholder: "Search products by name...",
                   value: search,
                   onChange: (e2) => setSearch(e2.target.value),
@@ -5042,7 +5061,14 @@ var V1Content = () => /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("div", { cla
         /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-caption", children: p3.stock.toLocaleString() })
       ] }) }),
       /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--bold", children: p3.price }) }),
-      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
+        "button",
+        {
+          "aria-label": "More options",
+          className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
+          children: "..."
+        }
+      ) })
     ] }, p3.id)) })
   ] }),
   /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(TablePagination, {})
@@ -5225,7 +5251,14 @@ var V2Content = () => /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { cl
         /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--sm", children: p3.color }) }),
         /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--sm", children: p3.sales }) }),
         /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--bold", children: p3.price }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
+          "button",
+          {
+            "aria-label": "More options",
+            className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
+            children: "..."
+          }
+        ) })
       ] }, p3.id)) })
     ] }),
     /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(TablePagination, {})
@@ -5329,27 +5362,41 @@ var V3Content = () => /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { cl
       /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--primary", children: "All Filters" }),
       /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Group" }),
       /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--sm drp-btn--outline", children: "Sort" }),
-      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: "..." })
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
+        "button",
+        {
+          "aria-label": "More options",
+          className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm",
+          children: "..."
+        }
+      )
     ] }),
-    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm", children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
-      "svg",
+    /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
+      "button",
       {
-        width: "16",
-        height: "16",
-        fill: "none",
-        viewBox: "0 0 24 24",
-        stroke: "currentColor",
+        "aria-label": "Search",
+        className: "drp-btn drp-btn--outline drp-btn--icon drp-btn--sm",
         children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
-          "path",
+          "svg",
           {
-            strokeLinecap: "round",
-            strokeLinejoin: "round",
-            strokeWidth: 2,
-            d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            width: "16",
+            height: "16",
+            fill: "none",
+            viewBox: "0 0 24 24",
+            stroke: "currentColor",
+            children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
+              "path",
+              {
+                strokeLinecap: "round",
+                strokeLinejoin: "round",
+                strokeWidth: 2,
+                d: "M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              }
+            )
           }
         )
       }
-    ) })
+    )
   ] }),
   /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "drp-card", style: { padding: 0, overflow: "hidden" }, children: [
     /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("table", { className: "drp-table", children: [
@@ -5394,7 +5441,14 @@ var V3Content = () => /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { cl
         /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-tag", children: p3.service }) }),
         /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.date }) }),
         /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: p3.source }) }),
-        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+        /* @__PURE__ */ (0, import_jsx_runtime61.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
+          "button",
+          {
+            "aria-label": "More options",
+            className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
+            children: "..."
+          }
+        ) })
       ] }, p3.id)) })
     ] }),
     /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(TablePagination, {})
@@ -5554,7 +5608,12 @@ var ProductsList = ({
   return /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "app-layout", children: [
     /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(AppSidebar, { activeId: "products" }),
     /* @__PURE__ */ (0, import_jsx_runtime61.jsxs)("div", { className: "main-content", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(AppTopBar, { title: variant === "details" ? "Product Details" : "Products" }),
+      /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(
+        AppTopBar,
+        {
+          title: variant === "details" ? "Product Details" : "Products"
+        }
+      ),
       renderContent(),
       /* @__PURE__ */ (0, import_jsx_runtime61.jsx)(AppFooter, {})
     ] })
@@ -6891,7 +6950,14 @@ var ListV1Content = () => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)("div", 
           ),
           /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { className: "drp-caption", children: tx.date })
         ] }),
-        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." })
+        /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
+          "button",
+          {
+            "aria-label": "More options",
+            className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
+            children: "..."
+          }
+        )
       ]
     },
     i2
@@ -6944,7 +7010,14 @@ var ListV2Content = () => {
               children: tx.amount
             }
           ) }),
-          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+          /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
+            "button",
+            {
+              "aria-label": "More options",
+              className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
+              children: "..."
+            }
+          ) })
         ] }, i2)) })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(TablePagination3, {})
@@ -6979,6 +7052,7 @@ var InvoiceModal = () => /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { 
             /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
               "button",
               {
+                "aria-label": "Close",
                 className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
                 style: { color: "var(--drp-white)" },
                 children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
@@ -7266,7 +7340,14 @@ var InvoiceContent = () => {
                 children: tx.amount
               }
             ) }),
-            /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm", children: "..." }) })
+            /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(
+              "button",
+              {
+                "aria-label": "More options",
+                className: "drp-btn drp-btn--ghost drp-btn--icon drp-btn--sm",
+                children: "..."
+              }
+            ) })
           ] }, i2)) })
         ] }),
         /* @__PURE__ */ (0, import_jsx_runtime64.jsx)(TablePagination3, {})
@@ -7340,6 +7421,7 @@ var EmptyContent = () => /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
         /* @__PURE__ */ (0, import_jsx_runtime64.jsx)("div", { style: { marginBottom: "var(--drp-space-6)" }, children: /* @__PURE__ */ (0, import_jsx_runtime64.jsxs)(
           "svg",
           {
+            "aria-hidden": "true",
             width: "64",
             height: "64",
             style: { color: "var(--drp-black)" },
@@ -7686,7 +7768,14 @@ var V1Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
           /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("th", { style: { width: 40 } })
         ] }) }),
         /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("tbody", { children: v1Contacts.map((contact) => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("input", { type: "checkbox", className: "drp-checkbox" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+            "input",
+            {
+              type: "checkbox",
+              "aria-label": "Select contact",
+              className: "drp-checkbox"
+            }
+          ) }),
           /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
             /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Avatar2, { name: contact.name, bg: contact.bg }),
             /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
@@ -7694,7 +7783,14 @@ var V1Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
           /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "drp-text drp-text--sm drp-text--muted", children: contact.email }) }),
           /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "drp-text drp-text--sm", children: contact.service }) }),
           /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(StatusDot2, { status: contact.status }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+            "button",
+            {
+              "aria-label": "More options",
+              className: "drp-btn drp-btn--ghost drp-btn--sm",
+              children: "\xB7\xB7\xB7"
+            }
+          ) })
         ] }, contact.name)) })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(ContactPagination, {})
@@ -7729,7 +7825,14 @@ var V2Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
           /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("th", { style: { width: 40 } })
         ] }) }),
         /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("tbody", { children: v2Contacts.map((contact) => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("input", { type: "checkbox", className: "drp-checkbox" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+            "input",
+            {
+              type: "checkbox",
+              "aria-label": "Select contact",
+              className: "drp-checkbox"
+            }
+          ) }),
           /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)("div", { className: "drp-flex drp-items-center drp-gap-3", children: [
             /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Avatar2, { name: contact.name, bg: contact.bg }),
             /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("span", { className: "drp-text drp-text--sm drp-text--bold", children: contact.name })
@@ -7760,7 +7863,14 @@ var V2Content4 = () => /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
             ] }),
             /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(Toggle, { on: contact.accessOn })
           ] }) }),
-          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--sm", children: "\xB7\xB7\xB7" }) })
+          /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("td", { children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+            "button",
+            {
+              "aria-label": "More options",
+              className: "drp-btn drp-btn--ghost drp-btn--sm",
+              children: "\xB7\xB7\xB7"
+            }
+          ) })
         ] }, contact.name)) })
       ] }),
       /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(ContactPagination, {})
@@ -7823,25 +7933,32 @@ var NewContactModal = () => /* @__PURE__ */ (0, import_jsx_runtime65.jsxs)(
             },
             children: [
               /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("h2", { className: "drp-h4", children: "Latest transactions" }),
-              /* @__PURE__ */ (0, import_jsx_runtime65.jsx)("button", { className: "drp-btn drp-btn--ghost drp-btn--icon", children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
-                "svg",
+              /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+                "button",
                 {
-                  width: "20",
-                  height: "20",
-                  fill: "none",
-                  viewBox: "0 0 24 24",
-                  stroke: "currentColor",
+                  "aria-label": "Close",
+                  className: "drp-btn drp-btn--ghost drp-btn--icon",
                   children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
-                    "path",
+                    "svg",
                     {
-                      strokeLinecap: "round",
-                      strokeLinejoin: "round",
-                      strokeWidth: 2,
-                      d: "M6 18L18 6M6 6l12 12"
+                      width: "20",
+                      height: "20",
+                      fill: "none",
+                      viewBox: "0 0 24 24",
+                      stroke: "currentColor",
+                      children: /* @__PURE__ */ (0, import_jsx_runtime65.jsx)(
+                        "path",
+                        {
+                          strokeLinecap: "round",
+                          strokeLinejoin: "round",
+                          strokeWidth: 2,
+                          d: "M6 18L18 6M6 6l12 12"
+                        }
+                      )
                     }
                   )
                 }
-              ) })
+              )
             ]
           }
         ),
@@ -8776,6 +8893,7 @@ var MailListVariant = () => {
                 "input",
                 {
                   type: "text",
+                  name: "search",
                   placeholder: "Type to search...",
                   className: "drp-input",
                   style: {
@@ -8808,7 +8926,14 @@ var MailListVariant = () => {
                 className: "drp-flex drp-items-center drp-gap-2",
                 style: { flexShrink: 0 },
                 children: [
-                  /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("input", { type: "checkbox" }) }),
+                  /* @__PURE__ */ (0, import_jsx_runtime67.jsx)("label", { className: "drp-checkbox", children: /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
+                    "input",
+                    {
+                      type: "checkbox",
+                      name: "select-item",
+                      "aria-label": "Select item"
+                    }
+                  ) }),
                   /* @__PURE__ */ (0, import_jsx_runtime67.jsx)(
                     "button",
                     {
@@ -9448,6 +9573,7 @@ var ChatVariant = () => /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(import_js
                       "input",
                       {
                         type: "text",
+                        name: "comment",
                         placeholder: "Type to add something",
                         className: "drp-input",
                         style: {
@@ -9715,6 +9841,7 @@ var MailComposeVariant = () => /* @__PURE__ */ (0, import_jsx_runtime67.jsxs)(im
               "input",
               {
                 type: "text",
+                name: "comment",
                 placeholder: "Type to add something",
                 className: "drp-input",
                 style: {
@@ -10760,6 +10887,7 @@ var SendMoneyContent = () => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
               "div",
               {
                 className: "drp-input",
+                "aria-label": "Selected recipient: Rustem Tolstobrov",
                 style: {
                   display: "flex",
                   alignItems: "center",
@@ -10908,13 +11036,17 @@ var PayUtilitiesContent = () => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
           /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
             /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("label", { className: "drp-label", children: "Utilities" }),
             /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(
-              "div",
+              "button",
               {
+                type: "button",
                 className: "drp-input",
                 style: {
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "space-between"
+                  justifyContent: "space-between",
+                  width: "100%",
+                  textAlign: "left",
+                  cursor: "pointer"
                 },
                 children: [
                   /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("span", { className: "drp-text drp-text--bold", children: "Mobile Networks" }),
@@ -10945,19 +11077,27 @@ var PayUtilitiesContent = () => /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
           /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)("div", { className: "drp-field", style: { marginBottom: "var(--drp-space-6)" }, children: [
             /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("label", { className: "drp-label", children: "Service provider" }),
             /* @__PURE__ */ (0, import_jsx_runtime68.jsxs)(
-              "div",
+              "button",
               {
+                type: "button",
                 className: "drp-input",
                 style: {
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "space-between"
+                  justifyContent: "space-between",
+                  width: "100%",
+                  textAlign: "left",
+                  cursor: "pointer"
                 },
                 children: [
                   /* @__PURE__ */ (0, import_jsx_runtime68.jsx)("span", { className: "drp-text drp-text--bold", children: "Vodafone" }),
                   /* @__PURE__ */ (0, import_jsx_runtime68.jsx)(
                     "div",
                     {
+                      role: "radio",
+                      "aria-checked": true,
+                      tabIndex: 0,
+                      onKeyDown: (e2) => (e2.key === "Enter" || e2.key === " ") && e2.currentTarget.click(),
                       style: {
                         width: 24,
                         height: 24,
@@ -11787,6 +11927,7 @@ var EventModal = ({ onClose }) => /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
                 /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
                   "input",
                   {
+                    name: "comment",
                     className: "drp-input",
                     style: {
                       flex: 1,
@@ -11931,7 +12072,10 @@ var MonthView = ({
             children: week.map((cell, ci) => /* @__PURE__ */ (0, import_jsx_runtime70.jsx)(
               "div",
               {
+                role: cell.day ? "button" : void 0,
+                tabIndex: cell.day ? 0 : void 0,
                 onClick: cell.day ? onToggle : void 0,
+                onKeyDown: cell.day ? (e2) => (e2.key === "Enter" || e2.key === " ") && onToggle() : void 0,
                 style: {
                   minHeight: 90,
                   borderRight: ci < 6 ? "var(--drp-border-thin)" : "none",
@@ -12303,6 +12447,7 @@ var SupportHero = ({
             /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
               "button",
               {
+                "aria-label": "Search",
                 className: "drp-btn drp-btn--primary drp-btn--icon drp-btn--sm",
                 style: {
                   position: "absolute",
@@ -12443,6 +12588,7 @@ var Breadcrumb = ({ items }) => /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
       i2 > 0 && /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
         "svg",
         {
+          "aria-hidden": "true",
           width: "12",
           height: "12",
           viewBox: "0 0 24 24",
@@ -12479,12 +12625,18 @@ var ArticleSidebarNav = () => {
     {
       style: { width: 192, flexShrink: 0, paddingTop: "var(--drp-space-2)" },
       children: /* @__PURE__ */ (0, import_jsx_runtime71.jsx)("nav", { children: items.map((item) => /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
-        "div",
+        "button",
         {
+          type: "button",
           className: `drp-text drp-text--sm ${item.active ? "drp-text--purple drp-text--bold" : ""}`,
           style: {
             padding: "6px var(--drp-space-3)",
-            cursor: "pointer"
+            cursor: "pointer",
+            background: "none",
+            border: "none",
+            display: "block",
+            width: "100%",
+            textAlign: "left"
           },
           children: item.label
         },
@@ -13005,8 +13157,15 @@ var SupportHome = ({ view = "home" }) => {
                     children: searchResults.map((r2) => /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(SearchResultRow, { ...r2 }, r2.title))
                   }
                 ),
-                /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(Pagination, { currentPage: 1, totalPages: 10, onPageChange: () => {
-                } })
+                /* @__PURE__ */ (0, import_jsx_runtime71.jsx)(
+                  Pagination,
+                  {
+                    currentPage: 1,
+                    totalPages: 10,
+                    onPageChange: () => {
+                    }
+                  }
+                )
               ]
             }
           )
@@ -20271,7 +20430,7 @@ var ToolsTrackerProducts = ({
                             onClick: () => setTheme((t2) => t2 === "light" ? "dark" : "light"),
                             "aria-label": "Toggle theme",
                             style: { fontSize: 16, lineHeight: 1 },
-                            children: theme === "light" ? "\u{1F319}" : "\u2600\uFE0F"
+                            children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)("span", { "aria-hidden": "true", children: theme === "light" ? "\u{1F319}" : "\u2600\uFE0F" })
                           }
                         ),
                         /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(
@@ -20280,7 +20439,7 @@ var ToolsTrackerProducts = ({
                             className: "drp-btn drp-btn--ghost drp-btn--sm",
                             "aria-label": "Refresh",
                             style: { fontSize: 18 },
-                            children: "\u21BB"
+                            children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)("span", { "aria-hidden": "true", children: "\u21BB" })
                           }
                         ),
                         /* @__PURE__ */ (0, import_jsx_runtime95.jsx)(
@@ -20289,7 +20448,7 @@ var ToolsTrackerProducts = ({
                             className: "drp-btn drp-btn--ghost drp-btn--sm",
                             "aria-label": "Add product",
                             style: { fontSize: 18 },
-                            children: "+"
+                            children: /* @__PURE__ */ (0, import_jsx_runtime95.jsx)("span", { "aria-hidden": "true", children: "+" })
                           }
                         ),
                         /* @__PURE__ */ (0, import_jsx_runtime95.jsx)("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: "\u21BB Refresh" })
@@ -20313,13 +20472,18 @@ var ToolsTrackerProducts = ({
                           marginBottom: "var(--drp-space-5)"
                         },
                         children: STATS.map((s2) => /* @__PURE__ */ (0, import_jsx_runtime95.jsxs)(
-                          "div",
+                          "button",
                           {
+                            type: "button",
                             className: "drp-card",
                             style: {
                               padding: "var(--drp-space-4)",
                               cursor: s2.key !== "total" ? "pointer" : "default",
-                              transition: "box-shadow 0.15s ease"
+                              transition: "box-shadow 0.15s ease",
+                              background: "none",
+                              border: "none",
+                              textAlign: "left",
+                              width: "100%"
                             },
                             onClick: () => s2.key !== "total" && handleFilter(s2.key),
                             children: [
@@ -21730,12 +21894,17 @@ var DealDetailPanel = ({ deal, onClose }) => /* @__PURE__ */ (0, import_jsx_runt
   /* @__PURE__ */ (0, import_jsx_runtime96.jsx)(
     "div",
     {
+      role: "button",
+      tabIndex: 0,
+      "aria-label": "Close deal details",
       onClick: onClose,
+      onKeyDown: (e2) => (e2.key === "Enter" || e2.key === " ") && onClose(),
       style: {
         position: "fixed",
         inset: 0,
         background: "rgba(0,0,0,0.35)",
-        zIndex: 40
+        zIndex: 40,
+        cursor: "pointer"
       }
     }
   ),
@@ -21775,7 +21944,7 @@ var DealDetailPanel = ({ deal, onClose }) => /* @__PURE__ */ (0, import_jsx_runt
                   className: "drp-btn drp-btn--ghost drp-btn--sm",
                   onClick: onClose,
                   "aria-label": "Close",
-                  children: "\u2715"
+                  children: /* @__PURE__ */ (0, import_jsx_runtime96.jsx)("span", { "aria-hidden": "true", children: "\u2715" })
                 }
               )
             ]
@@ -22147,7 +22316,7 @@ var ToolsTrackerCatalog = ({
                             onClick: () => setTheme((t2) => t2 === "light" ? "dark" : "light"),
                             "aria-label": "Toggle theme",
                             style: { fontSize: 16, lineHeight: 1 },
-                            children: theme === "light" ? "\u{1F319}" : "\u2600\uFE0F"
+                            children: /* @__PURE__ */ (0, import_jsx_runtime96.jsx)("span", { "aria-hidden": "true", children: theme === "light" ? "\u{1F319}" : "\u2600\uFE0F" })
                           }
                         ),
                         /* @__PURE__ */ (0, import_jsx_runtime96.jsx)("button", { className: "drp-btn drp-btn--primary drp-btn--sm", children: "\u21BB Sync Catalog" })
@@ -22679,39 +22848,49 @@ var LABEL = {
   fontSize: 12,
   fontWeight: 600
 };
-var LinkIcon = () => /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)("svg", { width: "13", height: "13", viewBox: "0 0 13 13", fill: "none", children: [
-  /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
-    "path",
-    {
-      d: "M5.2 2H2.5C1.67 2 1 2.67 1 3.5v7C1 11.33 1.67 12 2.5 12h7c.83 0 1.5-.67 1.5-1.5V7.8",
-      stroke: "#f97316",
-      strokeWidth: "1.3",
-      strokeLinecap: "round"
-    }
-  ),
-  /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
-    "path",
-    {
-      d: "M7 1h5v5",
-      stroke: "#f97316",
-      strokeWidth: "1.3",
-      strokeLinecap: "round",
-      strokeLinejoin: "round"
-    }
-  ),
-  /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
-    "line",
-    {
-      x1: "6",
-      y1: "7",
-      x2: "12",
-      y2: "1",
-      stroke: "#f97316",
-      strokeWidth: "1.3",
-      strokeLinecap: "round"
-    }
-  )
-] });
+var LinkIcon = () => /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)(
+  "svg",
+  {
+    width: "13",
+    height: "13",
+    viewBox: "0 0 13 13",
+    fill: "none",
+    "aria-hidden": "true",
+    children: [
+      /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
+        "path",
+        {
+          d: "M5.2 2H2.5C1.67 2 1 2.67 1 3.5v7C1 11.33 1.67 12 2.5 12h7c.83 0 1.5-.67 1.5-1.5V7.8",
+          stroke: "#f97316",
+          strokeWidth: "1.3",
+          strokeLinecap: "round"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
+        "path",
+        {
+          d: "M7 1h5v5",
+          stroke: "#f97316",
+          strokeWidth: "1.3",
+          strokeLinecap: "round",
+          strokeLinejoin: "round"
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
+        "line",
+        {
+          x1: "6",
+          y1: "7",
+          x2: "12",
+          y2: "1",
+          stroke: "#f97316",
+          strokeWidth: "1.3",
+          strokeLinecap: "round"
+        }
+      )
+    ]
+  }
+);
 var RoleBadge = ({ role }) => /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(Tag, { color: role === "superadmin" ? "orange" : "purple", children: role === "superadmin" ? "SUPERADMIN" : "USER" });
 var PRODUCT_STATUS_COLOR = {
   ACTIVATED: "black",
@@ -22976,6 +23155,7 @@ var UsersPanel = () => {
           Input,
           {
             value: search,
+            "aria-label": "Search users by email",
             onChange: (e2) => {
               setSearch(e2.target.value);
               setPage(1);
@@ -22993,7 +23173,7 @@ var UsersPanel = () => {
         ),
         children: /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)("table", { style: { width: "100%", borderCollapse: "collapse" }, children: [
           /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)("tr", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("th", { style: { ...TH, width: 36 }, children: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("input", { type: "checkbox" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("th", { style: { ...TH, width: 36 }, children: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("input", { type: "checkbox", "aria-label": "Select all users" }) }),
             /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("th", { style: TH, children: "ID" }),
             /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("th", { style: TH, children: "EMAIL" }),
             /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("th", { style: TH, children: "ROLE" }),
@@ -23003,7 +23183,13 @@ var UsersPanel = () => {
             /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("th", { style: TH, children: "ACTIONS" })
           ] }) }),
           /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("tbody", { children: paged.map((user) => /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)("tr", { children: [
-            /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("td", { style: TD, children: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("input", { type: "checkbox" }) }),
+            /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("td", { style: TD, children: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
+              "input",
+              {
+                type: "checkbox",
+                "aria-label": `Select user ${user.email}`
+              }
+            ) }),
             /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("td", { style: TD, children: user.id }),
             /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("td", { style: TD, children: user.email }),
             /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("td", { style: TD, children: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(RoleBadge, { role: user.role }) }),
@@ -23057,6 +23243,7 @@ var ProductsPanel = () => {
           Input,
           {
             value: search,
+            "aria-label": "Search products",
             onChange: (e2) => {
               setSearch(e2.target.value);
               setPage(1);
@@ -23069,6 +23256,7 @@ var ProductsPanel = () => {
           {
             className: "drp-input",
             value: userFilter,
+            "aria-label": "Filter by user",
             onChange: (e2) => {
               setUserFilter(e2.target.value);
               setPage(1);
@@ -23085,6 +23273,7 @@ var ProductsPanel = () => {
           {
             className: "drp-input",
             value: statusFilter,
+            "aria-label": "Filter by status",
             onChange: (e2) => {
               setStatusFilter(e2.target.value);
               setPage(1);
@@ -23110,7 +23299,7 @@ var ProductsPanel = () => {
       ),
       children: /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)("table", { style: { width: "100%", borderCollapse: "collapse" }, children: [
         /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("thead", { children: /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("th", { style: { ...TH, width: 36 }, children: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("input", { type: "checkbox" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("th", { style: { ...TH, width: 36 }, children: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("input", { type: "checkbox", "aria-label": "Select all products" }) }),
           /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("th", { style: TH, children: "ID" }),
           /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("th", { style: TH, children: "USER" }),
           /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("th", { style: TH, children: "NAME" }),
@@ -23125,7 +23314,13 @@ var ProductsPanel = () => {
           /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("th", { style: TH, children: "ACTIONS" })
         ] }) }),
         /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("tbody", { children: paged.map((p3) => /* @__PURE__ */ (0, import_jsx_runtime97.jsxs)("tr", { children: [
-          /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("td", { style: TD, children: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("input", { type: "checkbox" }) }),
+          /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("td", { style: TD, children: /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
+            "input",
+            {
+              type: "checkbox",
+              "aria-label": `Select product ${p3.name}`
+            }
+          ) }),
           /* @__PURE__ */ (0, import_jsx_runtime97.jsx)("td", { style: TD, children: p3.id }),
           /* @__PURE__ */ (0, import_jsx_runtime97.jsx)(
             "td",
@@ -23215,6 +23410,7 @@ var InvoicesPanel = () => {
             Input,
             {
               value: search,
+              "aria-label": "Search invoices",
               onChange: (e2) => {
                 setSearch(e2.target.value);
                 setPage(1);
@@ -23227,6 +23423,7 @@ var InvoicesPanel = () => {
             {
               className: "drp-input",
               value: userFilter,
+              "aria-label": "Filter by user",
               onChange: (e2) => setUserFilter(e2.target.value),
               style: { width: 200 },
               children: [
@@ -23240,6 +23437,7 @@ var InvoicesPanel = () => {
             {
               className: "drp-input",
               value: statusFilter,
+              "aria-label": "Filter by invoice status",
               onChange: (e2) => {
                 setStatusFilter(e2.target.value);
                 setPage(1);
@@ -26727,6 +26925,7 @@ var CalendarIcon = () => /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(
     fill: "none",
     viewBox: "0 0 24 24",
     stroke: "currentColor",
+    "aria-hidden": "true",
     children: [
       /* @__PURE__ */ (0, import_jsx_runtime102.jsx)("rect", { x: "3", y: "4", width: "18", height: "18", rx: "0", strokeWidth: 2 }),
       /* @__PURE__ */ (0, import_jsx_runtime102.jsx)("path", { strokeLinecap: "round", strokeWidth: 2, d: "M16 2v4M8 2v4M3 10h18" })
@@ -26789,6 +26988,8 @@ var BarChartSVG = ({
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
       style: { width: "100%", height },
+      role: "img",
+      "aria-label": "Bar chart",
       children: [
         yLines.map((v3) => {
           const y2 = padTop + chartH - v3 / maxValue * chartH;
@@ -26884,6 +27085,8 @@ var HBarChartSVG = ({ data, height = 260 }) => {
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
       style: { width: "100%", height },
+      role: "img",
+      "aria-label": "Horizontal bar chart",
       children: [
         xTicks.map((v3) => {
           const x3 = padLeft + v3 / absMax * chartW;
@@ -27022,6 +27225,8 @@ var WaveChartSVG = ({
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
       style: { width: "100%", height },
+      role: "img",
+      "aria-label": "Wave line chart",
       children: [
         /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)("defs", { children: [
           /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)("linearGradient", { id: "waveBlueGrad", x1: "0", y1: "0", x2: "0", y2: "1", children: [
@@ -27178,6 +27383,8 @@ var DoubleBarChartSVG = ({
     {
       viewBox: `0 0 ${svgWidth} ${svgHeight}`,
       style: { width: "100%", height },
+      role: "img",
+      "aria-label": "Double bar chart",
       children: [
         yLines.map((v3) => {
           const y2 = padTop + chartH - v3 / maxValue * chartH;
@@ -27380,6 +27587,7 @@ var Sparkline = ({
       viewBox: `0 0 ${w3} ${h2}`,
       style: { width: 80, height: 40 },
       preserveAspectRatio: "none",
+      "aria-hidden": "true",
       children: [
         /* @__PURE__ */ (0, import_jsx_runtime102.jsx)("defs", { children: /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(
           "linearGradient",
@@ -27423,6 +27631,7 @@ var BarSparkline = ({
       viewBox: `0 0 ${w3} ${h2}`,
       style: { width: 80, height: 48 },
       preserveAspectRatio: "none",
+      "aria-hidden": "true",
       children: values.map((v3, i2) => {
         const barH = v3 / max * h2 * 0.9;
         const x3 = i2 * gap + gap / 2 - bw / 2;
@@ -27462,45 +27671,54 @@ var DonutChart = ({
       "var(--drp-mint)"
     ];
     const radii = [R3, R3 - 20, R3 - 40];
-    return /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)("svg", { viewBox: "0 0 240 240", style: { width: "100%", height }, children: [
-      radii.map((rad, i2) => /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
-        "circle",
-        {
-          cx,
-          cy,
-          r: rad,
-          fill: "none",
-          stroke: colors[i2],
-          strokeWidth: 8
-        },
-        i2
-      )),
-      label && /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(import_jsx_runtime102.Fragment, { children: [
-        /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
-          "text",
-          {
-            x: cx,
-            y: cy - 8,
-            textAnchor: "middle",
-            fontSize: 18,
-            fontWeight: "bold",
-            fill: "var(--drp-black)",
-            children: label
-          }
-        ),
-        sublabel && /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
-          "text",
-          {
-            x: cx,
-            y: cy + 12,
-            textAnchor: "middle",
-            fontSize: 11,
-            fill: "var(--drp-grey)",
-            children: sublabel
-          }
-        )
-      ] })
-    ] });
+    return /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(
+      "svg",
+      {
+        viewBox: "0 0 240 240",
+        style: { width: "100%", height },
+        role: "img",
+        "aria-label": label ? `Donut chart: ${label}` : "Donut chart",
+        children: [
+          radii.map((rad, i2) => /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
+            "circle",
+            {
+              cx,
+              cy,
+              r: rad,
+              fill: "none",
+              stroke: colors[i2],
+              strokeWidth: 8
+            },
+            i2
+          )),
+          label && /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(import_jsx_runtime102.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
+              "text",
+              {
+                x: cx,
+                y: cy - 8,
+                textAnchor: "middle",
+                fontSize: 18,
+                fontWeight: "bold",
+                fill: "var(--drp-black)",
+                children: label
+              }
+            ),
+            sublabel && /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
+              "text",
+              {
+                x: cx,
+                y: cy + 12,
+                textAnchor: "middle",
+                fontSize: 11,
+                fill: "var(--drp-grey)",
+                children: sublabel
+              }
+            )
+          ] })
+        ]
+      }
+    );
   }
   let total = segments.reduce((s2, seg) => s2 + seg.pct, 0);
   let currentAngle = -Math.PI / 2;
@@ -27532,53 +27750,62 @@ var DonutChart = ({
       showLabel: showSegmentLabels && pct > 5
     };
   });
-  return /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)("svg", { viewBox: "0 0 240 240", style: { width: "100%", height }, children: [
-    paths.map((p3, i2) => /* @__PURE__ */ (0, import_jsx_runtime102.jsx)("path", { d: p3.d, fill: p3.color }, i2)),
-    paths.map(
-      (p3, i2) => p3.showLabel && /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(
-        "text",
-        {
-          x: p3.lx,
-          y: p3.ly,
-          textAnchor: "middle",
-          dominantBaseline: "middle",
-          fontSize: 9,
-          fill: "white",
-          fontWeight: "bold",
-          children: [
-            p3.pct,
-            "%"
-          ]
-        },
-        i2
-      )
-    ),
-    label && /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(import_jsx_runtime102.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
-        "text",
-        {
-          x: cx,
-          y: cy - 8,
-          textAnchor: "middle",
-          fontSize: 18,
-          fontWeight: "bold",
-          fill: "var(--drp-black)",
-          children: label
-        }
-      ),
-      sublabel && /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
-        "text",
-        {
-          x: cx,
-          y: cy + 12,
-          textAnchor: "middle",
-          fontSize: 11,
-          fill: "var(--drp-grey)",
-          children: sublabel
-        }
-      )
-    ] })
-  ] });
+  return /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(
+    "svg",
+    {
+      viewBox: "0 0 240 240",
+      style: { width: "100%", height },
+      role: "img",
+      "aria-label": label ? `Donut chart: ${label}` : "Donut chart",
+      children: [
+        paths.map((p3, i2) => /* @__PURE__ */ (0, import_jsx_runtime102.jsx)("path", { d: p3.d, fill: p3.color }, i2)),
+        paths.map(
+          (p3, i2) => p3.showLabel && /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(
+            "text",
+            {
+              x: p3.lx,
+              y: p3.ly,
+              textAnchor: "middle",
+              dominantBaseline: "middle",
+              fontSize: 9,
+              fill: "white",
+              fontWeight: "bold",
+              children: [
+                p3.pct,
+                "%"
+              ]
+            },
+            i2
+          )
+        ),
+        label && /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(import_jsx_runtime102.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
+            "text",
+            {
+              x: cx,
+              y: cy - 8,
+              textAnchor: "middle",
+              fontSize: 18,
+              fontWeight: "bold",
+              fill: "var(--drp-black)",
+              children: label
+            }
+          ),
+          sublabel && /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
+            "text",
+            {
+              x: cx,
+              y: cy + 12,
+              textAnchor: "middle",
+              fontSize: 11,
+              fill: "var(--drp-grey)",
+              children: sublabel
+            }
+          )
+        ] })
+      ]
+    }
+  );
 };
 var WORLD_ATLAS_URL = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
 var WorldMapChart = () => {
@@ -27789,6 +28016,7 @@ var StatCard1 = ({
             fill: "none",
             viewBox: "0 0 24 24",
             stroke: "currentColor",
+            "aria-hidden": "true",
             children: /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
               "path",
               {
@@ -28246,15 +28474,24 @@ var ChartGeometricScreen = () => /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)
             /* @__PURE__ */ (0, import_jsx_runtime102.jsx)("div", { className: "drp-stat-card__label", children: s2.label }),
             /* @__PURE__ */ (0, import_jsx_runtime102.jsx)("div", { className: "drp-stat-card__value", children: s2.value })
           ] }),
-          /* @__PURE__ */ (0, import_jsx_runtime102.jsx)("div", { style: { width: 24, height: 24, color: "var(--drp-grey)" }, children: /* @__PURE__ */ (0, import_jsx_runtime102.jsx)("svg", { fill: "none", viewBox: "0 0 24 24", stroke: "currentColor", children: /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
-            "path",
+          /* @__PURE__ */ (0, import_jsx_runtime102.jsx)("div", { style: { width: 24, height: 24, color: "var(--drp-grey)" }, children: /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
+            "svg",
             {
-              strokeLinecap: "round",
-              strokeLinejoin: "round",
-              strokeWidth: 2,
-              d: "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+              fill: "none",
+              viewBox: "0 0 24 24",
+              stroke: "currentColor",
+              "aria-hidden": "true",
+              children: /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
+                "path",
+                {
+                  strokeLinecap: "round",
+                  strokeLinejoin: "round",
+                  strokeWidth: 2,
+                  d: "M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                }
+              )
             }
-          ) }) })
+          ) })
         ]
       }
     ),
@@ -28506,6 +28743,7 @@ var DoubleBarsScreen = () => /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(Rep
                         fill: "none",
                         viewBox: "0 0 24 24",
                         stroke: "currentColor",
+                        "aria-hidden": "true",
                         children: /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
                           "path",
                           {
@@ -28678,6 +28916,7 @@ var PolarChartScreen = () => /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(Rep
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           style: { width: 20, height: 20 },
+          "aria-hidden": "true",
           children: [
             /* @__PURE__ */ (0, import_jsx_runtime102.jsx)("rect", { x: "3", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
             /* @__PURE__ */ (0, import_jsx_runtime102.jsx)("rect", { x: "14", y: "3", width: "7", height: "7", rx: "0", strokeWidth: 2 }),
@@ -28699,6 +28938,7 @@ var PolarChartScreen = () => /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(Rep
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           style: { width: 20, height: 20 },
+          "aria-hidden": "true",
           children: [
             /* @__PURE__ */ (0, import_jsx_runtime102.jsx)("rect", { x: "3", y: "4", width: "18", height: "18", rx: "0", strokeWidth: 2 }),
             /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
@@ -28725,6 +28965,7 @@ var PolarChartScreen = () => /* @__PURE__ */ (0, import_jsx_runtime102.jsxs)(Rep
           viewBox: "0 0 24 24",
           stroke: "currentColor",
           style: { width: 20, height: 20 },
+          "aria-hidden": "true",
           children: /* @__PURE__ */ (0, import_jsx_runtime102.jsx)(
             "path",
             {
