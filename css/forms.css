@@ -45,7 +45,7 @@
    ────────────────────────────────────────────── */
 
 .drp-input {
-  padding: 10px 14px;
+  padding: 12px 16px;
   font-family: var(--drp-font-primary);
   font-size: var(--drp-text-md);
   font-weight: var(--drp-weight-regular);

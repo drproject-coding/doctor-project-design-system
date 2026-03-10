@@ -109,7 +109,7 @@
 }
 
 .drp-anim-bounce {
-  animation: drp-bounce 1s ease infinite;
+  animation: drp-bounce 1s ease 3;
 }
 
 .drp-anim-pulse {
@@ -117,7 +117,7 @@
 }
 
 .drp-anim-shake {
-  animation: drp-shake var(--drp-duration-fast) ease infinite;
+  animation: drp-shake var(--drp-duration-fast) ease 3;
 }
 
 /* ──────────────────────────────────────────────
