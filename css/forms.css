@@ -65,10 +65,14 @@
   font-weight: var(--drp-weight-regular);
 }
 
-.drp-input:focus {
+.drp-input:focus-visible {
   border-color: var(--drp-purple);
   box-shadow: 3px 3px 0 0 var(--drp-purple);
   background: #f5f0ff;
+}
+
+.drp-input:focus:not(:focus-visible) {
+  border-color: var(--drp-purple);
 }
 
 .drp-input:disabled {
@@ -83,7 +87,7 @@
   background: #fff0f0;
 }
 
-.drp-input--error:focus {
+.drp-input--error:focus-visible {
   box-shadow: 3px 3px 0 0 var(--drp-pink);
 }
 
@@ -93,7 +97,7 @@
   background: #f0fff0;
 }
 
-.drp-input--success:focus {
+.drp-input--success:focus-visible {
   box-shadow: 3px 3px 0 0 var(--drp-mint);
 }
 
