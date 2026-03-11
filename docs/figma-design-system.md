@@ -94,10 +94,22 @@ All components are exported from `@doctorproject/react`. Use the exact import pa
 | `EmptyState` | `@doctorproject/react` | Empty list/section with message + CTA                                     |
 | `Tooltip`    | `@doctorproject/react` | Hover explanations on interactive elements                                |
 
-### Badge vs Tag — when to use which
+### Badge vs Tag — when to use which, and prop differences
 
-- **Badge**: read-only status label attached to another element (`"Published"`, `"3 unread"`)
-- **Tag**: interactive, filterable, or removable category label
+- **Badge**: read-only status label attached to another element. Uses `variant` prop.
+- **Tag**: interactive, filterable, or removable category label. Uses `color` prop (not `variant`).
+
+```tsx
+// Badge — use variant
+<Badge variant="mint">Active</Badge>
+<Badge variant="pink">Error</Badge>
+
+// Tag — use color (NOT variant — Tag uses color, Badge uses variant)
+<Tag color="mint">Active</Tag>
+<Tag color="pink">Error</Tag>
+<Tag color="purple" filled>Category</Tag>
+<Tag closeable>Removable</Tag>
+```
 
 ### Layout & Navigation
 
