@@ -422,3 +422,15 @@
     font-size: var(--drp-text-md);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .drp-spinner {
+    animation: none;
+    border-top-color: var(--drp-purple);
+  }
+
+  .drp-skeleton {
+    animation: none;
+    background: var(--drp-grey-light);
+  }
+}

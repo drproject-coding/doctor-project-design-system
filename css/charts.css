@@ -232,13 +232,13 @@
 }
 
 .drp-stat-card__badge--up {
-  background: var(--drp-mint-20, rgba(152, 233, 171, 0.2));
-  color: var(--drp-mint, #28a745);
+  background: var(--drp-mint-20);
+  color: var(--drp-success-dark);
 }
 
 .drp-stat-card__badge--down {
-  background: var(--drp-pink-20, rgba(233, 152, 152, 0.2));
-  color: var(--drp-pink, #dc3545);
+  background: var(--drp-pink-20);
+  color: var(--drp-error-dark);
 }
 
 /* ──────────────────────────────────────────────

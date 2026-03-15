@@ -30,8 +30,10 @@
   --drp-yellow-80: rgba(250, 232, 164, 0.8);
   --drp-pink: #e99898;
   --drp-pink-80: rgba(233, 152, 152, 0.8);
+  --drp-pink-20: rgba(233, 152, 152, 0.2);
   --drp-mint: #98e9ab;
   --drp-mint-80: rgba(152, 233, 171, 0.8);
+  --drp-mint-20: rgba(152, 233, 171, 0.2);
   --drp-teal: #5fdcb3;
   --drp-teal-dark: #1a7a5a;
 
@@ -67,6 +69,9 @@
   --drp-info: #0066ff;
   --drp-info-dark: #1e40af;
   --drp-info-bg: #f0f8ff;
+  --drp-success-subtle: rgba(0, 170, 0, 0.12);
+  --drp-warning-subtle: rgba(255, 108, 1, 0.12);
+  --drp-error-subtle: rgba(255, 68, 68, 0.12);
 
   /* Text Colors */
   --drp-text-primary: #121212;

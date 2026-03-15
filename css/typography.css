@@ -208,13 +208,13 @@
   color: var(--drp-purple);
 }
 .drp-text--mint {
-  color: var(--drp-mint);
+  color: var(--drp-teal-dark);
 }
 .drp-text--pink {
-  color: var(--drp-pink);
+  color: var(--drp-error-dark);
 }
 .drp-text--yellow {
-  color: var(--drp-yellow);
+  color: var(--drp-warning-dark);
 }
 .drp-text--error {
   color: var(--drp-error-dark);

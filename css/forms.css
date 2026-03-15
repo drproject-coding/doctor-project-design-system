@@ -155,7 +155,7 @@ textarea.drp-input {
     box-shadow var(--drp-duration-fast) var(--drp-ease);
 }
 
-.drp-select:focus {
+.drp-select:focus-visible {
   border-color: var(--drp-purple);
   box-shadow: 3px 3px 0 0 var(--drp-purple);
 }
@@ -171,7 +171,7 @@ textarea.drp-input {
   background-color: var(--drp-error-bg);
 }
 
-.drp-select--error:focus {
+.drp-select--error:focus-visible {
   box-shadow: 3px 3px 0 0 var(--drp-pink);
 }
 
@@ -181,7 +181,7 @@ textarea.drp-input {
   background-color: var(--drp-success-bg);
 }
 
-.drp-select--success:focus {
+.drp-select--success:focus-visible {
   box-shadow: 3px 3px 0 0 var(--drp-mint);
 }
 
