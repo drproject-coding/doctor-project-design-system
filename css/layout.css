@@ -32,7 +32,7 @@ body {
   background: var(--drp-cream);
   color: var(--drp-black);
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -274,6 +274,7 @@ body {
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
+  min-height: 44px;
   color: var(--sidebar-text-muted);
   font-size: 13px;
   cursor: pointer;
@@ -309,7 +310,7 @@ body {
 .sidebar-freshness-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--drp-space-2);
   padding: 4px 0;
 }
 
@@ -362,7 +363,7 @@ body {
 .sidebar-freshness-summary {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--drp-space-2);
   margin-top: 8px;
   padding: 6px 8px;
   border-radius: 0;
@@ -431,7 +432,7 @@ body {
 .sidebar-status-actions {
   margin-top: 8px;
   display: flex;
-  gap: 6px;
+  gap: var(--drp-space-2);
 }
 
 .sidebar-status-btn {
@@ -574,6 +575,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  max-width: 1920px;
   background: var(--drp-cream);
   transition: margin-left 250ms ease;
 }
@@ -598,7 +600,7 @@ body {
 .topbar-left {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: var(--drp-space-4);
 }
 
 .topbar-menu-btn {
@@ -668,14 +670,14 @@ body {
   height: 8px;
   background: var(--drp-success);
   border-radius: 0;
-  border: 2px solid var(--drp-cream);
+  border: 1px solid var(--drp-cream);
 }
 
 /* Apps Button */
 .topbar-apps-btn {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--drp-space-2);
   padding: 8px 14px;
   background: none;
   border: none;

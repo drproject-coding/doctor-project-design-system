@@ -290,6 +290,12 @@ body.dark-mode .drp-stat-card__value {
    RESPONSIVE
    ────────────────────────────────────────────── */
 
+@media (max-width: 1024px) {
+  .drp-chart-grid--3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .drp-chart-grid--2,
   .drp-chart-grid--3,

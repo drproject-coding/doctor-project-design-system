@@ -260,16 +260,16 @@
 }
 
 .drp-toast--success {
-  border-left: 4px solid var(--drp-mint);
+  border-left: 2px solid var(--drp-mint);
 }
 .drp-toast--error {
-  border-left: 4px solid var(--drp-pink);
+  border-left: 2px solid var(--drp-pink);
 }
 .drp-toast--warning {
-  border-left: 4px solid var(--drp-yellow);
+  border-left: 2px solid var(--drp-yellow);
 }
 .drp-toast--info {
-  border-left: 4px solid var(--drp-purple);
+  border-left: 2px solid var(--drp-purple);
 }
 
 /* ──────────────────────────────────────────────
@@ -333,7 +333,7 @@
 .drp-spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid var(--drp-grey-light);
+  border: 2px solid var(--drp-grey-light);
   border-top-color: var(--drp-purple);
   border-radius: 50%;
   animation: drp-spin 0.8s linear infinite;

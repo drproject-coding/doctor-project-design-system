@@ -83,7 +83,7 @@ body.dark-mode .drp-tab.active {
 
 .drp-tabs--underline .drp-tab {
   border-right: none;
-  border-bottom: 3px solid transparent;
+  border-bottom: 2px solid transparent;
   margin-bottom: -2px;
   padding: 8px 4px;
   color: var(--drp-grey);
