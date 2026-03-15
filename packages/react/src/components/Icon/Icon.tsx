@@ -29,11 +29,19 @@ type IconSize = "sm" | "md" | "lg";
 export interface IconProps {
   name: IconName;
   size?: IconSize;
-  color?: string;
+  /** Box background color. Defaults to var(--drp-mint). */
+  bg?: string;
   className?: string;
 }
 
-const sizeMap: Record<IconSize, number> = { sm: 16, md: 20, lg: 24 };
+/** Outer box size (includes border, excludes shadow footprint) */
+const outerSizeMap: Record<IconSize, number> = { sm: 24, md: 32, lg: 48 };
+/** SVG icon size inside the box */
+const innerSizeMap: Record<IconSize, number> = { sm: 12, md: 16, lg: 24 };
+/** Offset black shadow */
+const shadowMap: Record<IconSize, number> = { sm: 2, md: 3, lg: 4 };
+/** Border width */
+const borderMap: Record<IconSize, number> = { sm: 1, md: 2, lg: 2 };
 
 /**
  * Brutalist filled icon paths — solid, geometric, no rounded caps or joins.
@@ -76,32 +84,55 @@ const iconPaths: Record<IconName, string> = {
 };
 
 /**
- * Functional UI icon — brutalist filled style, no rounded caps or joins.
- * Use `size="sm"` (16px) inline in buttons or tables, `size="md"` (20px) as the default,
- * and `size="lg"` (24px) in navigation or hero contexts.
+ * Brutalist functional icon — black filled icon inside a colored square with black border and offset shadow.
+ * Matches the Pictogram design language: flat colored box, 1px black border, hard offset shadow, black icon.
+ *
+ * Use `size="sm"` (24px box) in tight UI, `size="md"` (32px box) as default,
+ * and `size="lg"` (48px box) in navigation or feature contexts.
+ * Use `bg` to set the box background color (defaults to var(--drp-mint)).
+ *
  * @example
- * <Icon name="search" size="md" />
- * <Icon name="trash" color="var(--drp-pink)" />
+ * <Icon name="search" />
+ * <Icon name="trash" bg="var(--drp-pink)" />
+ * <Icon name="check" size="lg" bg="var(--drp-purple)" />
  */
 export function Icon({
   name,
   size = "md",
-  color = "currentColor",
+  bg = "var(--drp-mint)",
   className = "",
 }: IconProps) {
-  const px = sizeMap[size];
+  const outer = outerSizeMap[size];
+  const inner = innerSizeMap[size];
+  const shadow = shadowMap[size];
+  const border = borderMap[size];
 
   return (
-    <svg
-      width={px}
-      height={px}
-      viewBox="0 0 24 24"
-      fill={color}
-      xmlns="http://www.w3.org/2000/svg"
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: outer,
+        height: outer,
+        background: bg,
+        border: `${border}px solid #000000`,
+        boxShadow: `${shadow}px ${shadow}px 0 0 #000000`,
+        flexShrink: 0,
+        borderRadius: 0,
+      }}
       className={className || undefined}
       aria-hidden="true"
     >
-      <path d={iconPaths[name]} />
-    </svg>
+      <svg
+        width={inner}
+        height={inner}
+        viewBox="0 0 24 24"
+        fill="#000000"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d={iconPaths[name]} />
+      </svg>
+    </span>
   );
 }
