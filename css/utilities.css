@@ -2,7 +2,6 @@
    DOCTORPROJECT DESIGN SYSTEM — UTILITIES
    ============================================================ */
 
-
 /* ──────────────────────────────────────────────
    DIVIDERS
    ────────────────────────────────────────────── */
@@ -24,7 +23,6 @@
 .drp-divider--thick {
   border-top: var(--drp-border);
 }
-
 
 /* ──────────────────────────────────────────────
    UTILITY CLASSES
@@ -48,49 +46,115 @@
   white-space: nowrap;
 }
 
-.drp-text-center { text-align: center; }
-.drp-text-right  { text-align: right; }
+.drp-text-center {
+  text-align: center;
+}
+.drp-text-right {
+  text-align: right;
+}
 
 /* Flex helpers */
-.drp-flex       { display: flex; }
-.drp-flex-col   { display: flex; flex-direction: column; }
-.drp-flex-wrap  { flex-wrap: wrap; }
-.drp-items-center { align-items: center; }
-.drp-justify-between { justify-content: space-between; }
-.drp-gap-1  { gap: var(--drp-space-1); }
-.drp-gap-2  { gap: var(--drp-space-2); }
-.drp-gap-3  { gap: var(--drp-space-3); }
-.drp-gap-4  { gap: var(--drp-space-4); }
-.drp-gap-6  { gap: var(--drp-space-6); }
+.drp-flex {
+  display: flex;
+}
+.drp-flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.drp-flex-wrap {
+  flex-wrap: wrap;
+}
+.drp-items-center {
+  align-items: center;
+}
+.drp-justify-between {
+  justify-content: space-between;
+}
+.drp-gap-1 {
+  gap: var(--drp-space-1);
+}
+.drp-gap-2 {
+  gap: var(--drp-space-2);
+}
+.drp-gap-3 {
+  gap: var(--drp-space-3);
+}
+.drp-gap-4 {
+  gap: var(--drp-space-4);
+}
+.drp-gap-6 {
+  gap: var(--drp-space-6);
+}
 
 /* Grid */
-.drp-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--drp-space-4); }
-.drp-grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--drp-space-4); }
-.drp-grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--drp-space-4); }
+.drp-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--drp-space-4);
+}
+.drp-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: var(--drp-space-4);
+}
+.drp-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--drp-space-4);
+}
 
 @media (max-width: 600px) {
   .drp-grid-2,
   .drp-grid-3,
-  .drp-grid-4 { grid-template-columns: 1fr; }
+  .drp-grid-4 {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* Spacing */
-.drp-mt-2  { margin-top: var(--drp-space-2); }
-.drp-mt-4  { margin-top: var(--drp-space-4); }
-.drp-mt-6  { margin-top: var(--drp-space-6); }
-.drp-mb-2  { margin-bottom: var(--drp-space-2); }
-.drp-mb-4  { margin-bottom: var(--drp-space-4); }
-.drp-mb-6  { margin-bottom: var(--drp-space-6); }
+.drp-mt-2 {
+  margin-top: var(--drp-space-2);
+}
+.drp-mt-4 {
+  margin-top: var(--drp-space-4);
+}
+.drp-mt-6 {
+  margin-top: var(--drp-space-6);
+}
+.drp-mb-2 {
+  margin-bottom: var(--drp-space-2);
+}
+.drp-mb-4 {
+  margin-bottom: var(--drp-space-4);
+}
+.drp-mb-6 {
+  margin-bottom: var(--drp-space-6);
+}
 
 /* Background colors */
-.drp-bg-cream   { background: var(--drp-cream); }
-.drp-bg-surface { background: var(--drp-surface); }
-.drp-bg-purple  { background: var(--drp-purple); color: #FFFFFF; }
-.drp-bg-mint    { background: var(--drp-mint); }
-.drp-bg-pink    { background: var(--drp-pink); }
-.drp-bg-yellow  { background: var(--drp-yellow); }
-.drp-bg-black   { background: #000000; color: #FFFFFF; }
-
+.drp-bg-cream {
+  background: var(--drp-cream);
+}
+.drp-bg-surface {
+  background: var(--drp-surface);
+}
+.drp-bg-purple {
+  background: var(--drp-purple);
+  color: var(--drp-white);
+}
+.drp-bg-mint {
+  background: var(--drp-mint);
+}
+.drp-bg-pink {
+  background: var(--drp-pink);
+}
+.drp-bg-yellow {
+  background: var(--drp-yellow);
+}
+.drp-bg-black {
+  background: var(--drp-black);
+  color: var(--drp-white);
+}
 
 /* ──────────────────────────────────────────────
    EMPTY STATE
@@ -126,7 +190,6 @@
   max-width: 320px;
   line-height: var(--drp-leading-normal);
 }
-
 
 /* ──────────────────────────────────────────────
    DROP ZONE
@@ -177,7 +240,6 @@
   color: var(--drp-grey);
 }
 
-
 /* ──────────────────────────────────────────────
    TOAST / NOTIFICATION
    ────────────────────────────────────────────── */
@@ -197,11 +259,18 @@
   max-width: 400px;
 }
 
-.drp-toast--success { border-left: 4px solid var(--drp-mint); }
-.drp-toast--error   { border-left: 4px solid var(--drp-pink); }
-.drp-toast--warning { border-left: 4px solid var(--drp-yellow); }
-.drp-toast--info    { border-left: 4px solid var(--drp-purple); }
-
+.drp-toast--success {
+  border-left: 4px solid var(--drp-mint);
+}
+.drp-toast--error {
+  border-left: 4px solid var(--drp-pink);
+}
+.drp-toast--warning {
+  border-left: 4px solid var(--drp-yellow);
+}
+.drp-toast--info {
+  border-left: 4px solid var(--drp-purple);
+}
 
 /* ──────────────────────────────────────────────
    ALERTS
@@ -221,7 +290,9 @@
   font-weight: var(--drp-weight-bold);
 }
 
-.drp-alert__content { flex: 1; }
+.drp-alert__content {
+  flex: 1;
+}
 
 .drp-alert__title {
   font-family: var(--drp-font-primary);
@@ -236,25 +307,24 @@
 }
 
 .drp-alert--success {
-  background: #F0FFF0;
+  background: var(--drp-success-bg);
   border-color: var(--drp-success);
 }
 
 .drp-alert--warning {
-  background: #FFF8E0;
+  background: var(--drp-warning-bg);
   border-color: var(--drp-warning);
 }
 
 .drp-alert--error {
-  background: #FFF0F0;
+  background: var(--drp-error-bg);
   border-color: var(--drp-error);
 }
 
 .drp-alert--info {
-  background: #F0F8FF;
+  background: var(--drp-info-bg);
   border-color: var(--drp-info);
 }
-
 
 /* ──────────────────────────────────────────────
    SPINNER
@@ -270,9 +340,10 @@
 }
 
 @keyframes drp-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
-
 
 /* ──────────────────────────────────────────────
    SKELETON LOADING
@@ -291,10 +362,13 @@
 }
 
 @keyframes drp-shimmer {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
-
 
 /* ──────────────────────────────────────────────
    PROGRESS BAR (standalone)
@@ -312,7 +386,6 @@
   background: var(--drp-purple);
   transition: width var(--drp-duration-slow) var(--drp-ease);
 }
-
 
 /* ──────────────────────────────────────────────
    RESPONSIVE — UTILITIES

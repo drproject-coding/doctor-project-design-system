@@ -68,7 +68,7 @@
 .drp-input:focus-visible {
   border-color: var(--drp-purple);
   box-shadow: 3px 3px 0 0 var(--drp-purple);
-  background: #f5f0ff;
+  background: var(--drp-focus-bg);
 }
 
 .drp-input:focus:not(:focus-visible) {
@@ -84,7 +84,7 @@
 /* Error state */
 .drp-input--error {
   border-color: var(--drp-pink);
-  background: #fff0f0;
+  background: var(--drp-error-bg);
 }
 
 .drp-input--error:focus-visible {
@@ -94,7 +94,7 @@
 /* Success state */
 .drp-input--success {
   border-color: var(--drp-mint);
-  background: #f0fff0;
+  background: var(--drp-success-bg);
 }
 
 .drp-input--success:focus-visible {
@@ -168,7 +168,7 @@ textarea.drp-input {
 /* Select — Error state */
 .drp-select--error {
   border-color: var(--drp-pink);
-  background-color: #fff0f0;
+  background-color: var(--drp-error-bg);
 }
 
 .drp-select--error:focus {
@@ -178,7 +178,7 @@ textarea.drp-input {
 /* Select — Success state */
 .drp-select--success {
   border-color: var(--drp-mint);
-  background-color: #f0fff0;
+  background-color: var(--drp-success-bg);
 }
 
 .drp-select--success:focus {

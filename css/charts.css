@@ -6,7 +6,6 @@
    Requires: Chart.js (https://www.chartjs.org/)
    ============================================================ */
 
-
 /* ──────────────────────────────────────────────
    CHART CARD
    Wrapper card for any chart with header + container.
@@ -28,7 +27,6 @@
   grid-column: 1 / -1;
 }
 
-
 /* ──────────────────────────────────────────────
    CHART HEADER
    Title + optional legend/controls row.
@@ -48,7 +46,6 @@
   color: var(--drp-black);
   margin: 0;
 }
-
 
 /* ──────────────────────────────────────────────
    CHART CONTAINER
@@ -80,7 +77,6 @@
   height: 100% !important;
 }
 
-
 /* ──────────────────────────────────────────────
    CHART GRID
    Multi-chart layouts (2-col, 3-col).
@@ -103,7 +99,6 @@
 .drp-chart-grid--2-1 {
   grid-template-columns: 1.5fr 1fr;
 }
-
 
 /* ──────────────────────────────────────────────
    CHART LEGEND
@@ -146,7 +141,6 @@
   border-radius: 0;
 }
 
-
 /* ──────────────────────────────────────────────
    DONUT CENTER OVERLAY
    Absolute-centered text inside doughnut charts.
@@ -182,7 +176,6 @@
   margin-top: 4px;
 }
 
-
 /* ──────────────────────────────────────────────
    STAT CARDS (mini KPI cards above charts)
    ────────────────────────────────────────────── */
@@ -193,10 +186,18 @@
   margin-bottom: var(--drp-space-6);
 }
 
-.drp-stat-grid--2 { grid-template-columns: repeat(2, 1fr); }
-.drp-stat-grid--3 { grid-template-columns: repeat(3, 1fr); }
-.drp-stat-grid--4 { grid-template-columns: repeat(4, 1fr); }
-.drp-stat-grid--auto { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+.drp-stat-grid--2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+.drp-stat-grid--3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+.drp-stat-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+.drp-stat-grid--auto {
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
 
 .drp-stat-card {
   background: var(--drp-surface);
@@ -240,22 +241,38 @@
   color: var(--drp-pink, #dc3545);
 }
 
-
 /* ──────────────────────────────────────────────
    CHART COLOR PALETTE UTILITIES
    Quick-apply background colors for legend dots.
    ────────────────────────────────────────────── */
 
-.drp-chart-color-purple   { background: var(--drp-purple); }
-.drp-chart-color-mint     { background: var(--drp-mint); }
-.drp-chart-color-pink     { background: var(--drp-pink); }
-.drp-chart-color-yellow   { background: var(--drp-yellow); }
-.drp-chart-color-orange   { background: #FF6C01; }
-.drp-chart-color-cyan     { background: #17a2b8; }
-.drp-chart-color-indigo   { background: #6f42c1; }
-.drp-chart-color-teal     { background: #20c997; }
-.drp-chart-color-grey     { background: var(--drp-grey); }
-
+.drp-chart-color-purple {
+  background: var(--drp-purple);
+}
+.drp-chart-color-mint {
+  background: var(--drp-mint);
+}
+.drp-chart-color-pink {
+  background: var(--drp-pink);
+}
+.drp-chart-color-yellow {
+  background: var(--drp-yellow);
+}
+.drp-chart-color-orange {
+  background: var(--drp-chart-orange);
+}
+.drp-chart-color-cyan {
+  background: var(--drp-chart-cyan);
+}
+.drp-chart-color-indigo {
+  background: var(--drp-chart-indigo);
+}
+.drp-chart-color-teal {
+  background: var(--drp-chart-teal);
+}
+.drp-chart-color-grey {
+  background: var(--drp-grey);
+}
 
 /* ──────────────────────────────────────────────
    DARK MODE
@@ -268,7 +285,6 @@ body.dark-mode .drp-chart-donut-value {
 body.dark-mode .drp-stat-card__value {
   color: var(--drp-cream);
 }
-
 
 /* ──────────────────────────────────────────────
    RESPONSIVE
