@@ -32,7 +32,7 @@ body {
   background: var(--drp-cream);
   color: var(--drp-black);
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -60,7 +60,6 @@ body {
   left: 0;
   bottom: 0;
   z-index: 100;
-  transition: width 250ms ease;
   overflow: hidden;
 }
 
@@ -77,7 +76,7 @@ body {
   font-size: 26px;
   font-weight: 700;
   color: var(--sidebar-text);
-  letter-spacing: -0.5px;
+  letter-spacing: var(--drp-tracking-tight);
   white-space: nowrap;
 }
 
@@ -117,15 +116,15 @@ body {
 }
 
 .sidebar-nav-section {
-  margin-bottom: 28px;
+  margin-bottom: var(--drp-space-6);
 }
 
 .sidebar-nav-label {
-  font-size: 11px;
+  font-size: var(--drp-text-xs);
   font-weight: 500;
   color: var(--sidebar-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: var(--drp-tracking-wide);
   padding: 0 12px;
   margin-bottom: 8px;
   white-space: nowrap;
@@ -138,15 +137,13 @@ body {
   align-items: center;
   gap: 12px;
   padding: 10px 12px;
+  min-height: 44px;
   border-radius: 0;
   color: var(--sidebar-text);
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition:
-    background 150ms ease,
-    color 150ms ease;
   position: relative;
   white-space: nowrap;
   overflow: hidden;
@@ -187,7 +184,7 @@ body {
 
 /* Badges */
 .sidebar-badge {
-  font-size: 11px;
+  font-size: var(--drp-text-xs);
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 0;
@@ -204,21 +201,21 @@ body {
 
 .sidebar-badge--green {
   background: rgba(152, 233, 171, 0.18);
-  color: #22c55e;
+  color: var(--drp-success);
 }
 
 /* Team / Users Section */
 .sidebar-team {
   padding: 0 12px;
-  margin-bottom: 28px;
+  margin-bottom: var(--drp-space-6);
 }
 
 .sidebar-team-label {
-  font-size: 11px;
+  font-size: var(--drp-text-xs);
   font-weight: 500;
   color: var(--sidebar-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: var(--drp-tracking-wide);
   padding: 0 12px;
   margin-bottom: 12px;
   white-space: nowrap;
@@ -229,9 +226,9 @@ body {
   align-items: center;
   gap: 12px;
   padding: 8px 12px;
+  min-height: 44px;
   border-radius: 0;
   cursor: pointer;
-  transition: background 150ms ease;
   white-space: nowrap;
 }
 
@@ -243,7 +240,7 @@ body {
   width: 32px;
   height: 32px;
   border-radius: 0;
-  background: #333;
+  background: var(--drp-charcoal);
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -272,10 +269,10 @@ body {
   align-items: center;
   gap: 8px;
   padding: 8px 12px;
+  min-height: 44px;
   color: var(--sidebar-text-muted);
   font-size: 13px;
   cursor: pointer;
-  transition: color 150ms ease;
   white-space: nowrap;
 }
 
@@ -307,18 +304,18 @@ body {
 .sidebar-freshness-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--drp-space-2);
   padding: 4px 0;
 }
 
 .sidebar-freshness-label {
-  font-size: 11px;
+  font-size: var(--drp-text-xs);
   color: var(--sidebar-text-muted);
   flex: 1;
 }
 
 .sidebar-freshness-count {
-  font-size: 11px;
+  font-size: var(--drp-text-xs);
   color: var(--sidebar-text);
   font-weight: 600;
   min-width: 24px;
@@ -326,7 +323,7 @@ body {
 }
 
 .sidebar-freshness-age {
-  font-size: 10px;
+  font-size: var(--drp-text-xs);
   color: var(--sidebar-text-muted);
   min-width: 48px;
   text-align: right;
@@ -341,52 +338,52 @@ body {
 }
 
 .sidebar-freshness-dot[data-status="fresh"] {
-  background: #28a745;
+  background: var(--drp-success);
 }
 .sidebar-freshness-dot[data-status="ok"] {
-  background: #28a745;
+  background: var(--drp-success);
 }
 .sidebar-freshness-dot[data-status="stale"] {
-  background: #ff6c01;
+  background: var(--drp-orange);
 }
 .sidebar-freshness-dot[data-status="very-stale"] {
-  background: #dc3545;
+  background: var(--drp-error);
 }
 .sidebar-freshness-dot[data-status="unknown"] {
-  background: #6c757d;
+  background: var(--drp-grey);
 }
 
 /* Freshness summary banner */
 .sidebar-freshness-summary {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--drp-space-2);
   margin-top: 8px;
   padding: 6px 8px;
   border-radius: 0;
-  font-size: 11px;
+  font-size: var(--drp-text-xs);
   font-weight: 500;
   color: var(--sidebar-text);
-  background: rgba(40, 167, 69, 0.12);
+  background: var(--drp-success-subtle);
 }
 
 .sidebar-freshness-summary[data-status="ok"] {
-  background: rgba(40, 167, 69, 0.12);
-  color: #28a745;
+  background: var(--drp-success-subtle);
+  color: var(--drp-success);
 }
 
 .sidebar-freshness-summary[data-status="pending"] {
-  background: rgba(255, 108, 1, 0.15);
-  color: #ff6c01;
+  background: var(--drp-warning-subtle);
+  color: var(--drp-orange);
 }
 
 .sidebar-freshness-summary[data-status="stale"] {
-  background: rgba(255, 108, 1, 0.12);
-  color: #ff6c01;
+  background: var(--drp-warning-subtle);
+  color: var(--drp-orange);
 }
 
 .sidebar-freshness-summary[data-status="empty"] {
-  background: rgba(108, 117, 125, 0.12);
+  background: rgba(102, 102, 102, 0.12);
   color: var(--sidebar-text-muted);
 }
 
@@ -403,8 +400,8 @@ body {
 }
 
 .sidebar-freshness-summary[data-status="ok"] .sidebar-freshness-icon {
-  background: #28a745;
-  color: white;
+  background: var(--drp-success);
+  color: #ffffff;
 }
 
 .sidebar-freshness-summary[data-status="ok"] .sidebar-freshness-icon::after {
@@ -412,24 +409,24 @@ body {
 }
 
 .sidebar-freshness-summary[data-status="pending"] .sidebar-freshness-icon {
-  background: #ff6c01;
-  color: white;
+  background: var(--drp-orange);
+  color: #ffffff;
 }
 
 .sidebar-freshness-summary[data-status="stale"] .sidebar-freshness-icon {
-  background: #ff6c01;
-  color: white;
+  background: var(--drp-orange);
+  color: #ffffff;
 }
 
 .sidebar-freshness-summary[data-status="empty"] .sidebar-freshness-icon {
-  background: #6c757d;
-  color: white;
+  background: var(--drp-grey);
+  color: #ffffff;
 }
 
 .sidebar-status-actions {
   margin-top: 8px;
   display: flex;
-  gap: 6px;
+  gap: var(--drp-space-2);
 }
 
 .sidebar-status-btn {
@@ -440,10 +437,9 @@ body {
   border-radius: 0;
   color: var(--sidebar-text-muted);
   font-family: var(--drp-font-primary);
-  font-size: 11px;
+  font-size: var(--drp-text-xs);
   font-weight: 500;
   cursor: pointer;
-  transition: all 150ms ease;
 }
 
 .sidebar-status-btn:hover {
@@ -452,9 +448,9 @@ body {
 }
 
 .sidebar-status-btn--sync {
-  background: rgba(99, 29, 237, 0.15);
+  background: var(--drp-purple-20);
   border-color: rgba(99, 29, 237, 0.3);
-  color: #a78bfa;
+  color: var(--drp-purple-active);
 }
 
 .sidebar-status-btn--sync:hover {
@@ -490,7 +486,7 @@ body {
 }
 
 .sidebar-user-role {
-  font-size: 11px;
+  font-size: var(--drp-text-xs);
   color: var(--sidebar-text-muted);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -498,8 +494,8 @@ body {
 }
 
 .sidebar-user-menu-btn {
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -508,9 +504,6 @@ body {
   color: var(--sidebar-text-muted);
   cursor: pointer;
   border-radius: 0;
-  transition:
-    background 150ms ease,
-    color 150ms ease;
   flex-shrink: 0;
 }
 
@@ -543,12 +536,12 @@ body {
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
+  min-height: 44px;
   border-radius: 0;
   color: var(--drp-black);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background 150ms ease;
   text-decoration: none;
 }
 
@@ -571,8 +564,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  max-width: 1920px;
   background: var(--drp-cream);
-  transition: margin-left 250ms ease;
 }
 
 /* ============================================
@@ -595,7 +588,7 @@ body {
 .topbar-left {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: var(--drp-space-4);
 }
 
 .topbar-menu-btn {
@@ -609,7 +602,6 @@ body {
   border-radius: 0;
   cursor: pointer;
   color: var(--drp-black);
-  transition: background 150ms ease;
 }
 
 .topbar-menu-btn:hover {
@@ -630,8 +622,8 @@ body {
 }
 
 .topbar-icon-btn {
-  width: 36px;
-  height: 36px;
+  min-width: 44px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -640,9 +632,6 @@ body {
   color: var(--drp-grey);
   cursor: pointer;
   border-radius: 0;
-  transition:
-    background 150ms ease,
-    color 150ms ease;
   position: relative;
 }
 
@@ -663,16 +652,16 @@ body {
   right: 6px;
   width: 8px;
   height: 8px;
-  background: #22c55e;
+  background: var(--drp-success);
   border-radius: 0;
-  border: 2px solid var(--drp-cream);
+  border: 1px solid var(--drp-cream);
 }
 
 /* Apps Button */
 .topbar-apps-btn {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--drp-space-2);
   padding: 8px 14px;
   background: none;
   border: none;
@@ -682,7 +671,6 @@ body {
   font-weight: 500;
   cursor: pointer;
   border-radius: 0;
-  transition: background 150ms ease;
 }
 
 .topbar-apps-btn:hover {
@@ -709,10 +697,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition:
-    background 150ms ease,
-    transform 100ms ease,
-    box-shadow 100ms ease;
+  transition: transform 100ms ease;
   white-space: nowrap;
   box-shadow: var(--drp-shadow-md);
 }
@@ -755,12 +740,12 @@ body {
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
+  min-height: 44px;
   border-radius: 0;
   color: var(--drp-black);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background 150ms ease;
   text-decoration: none;
 }
 
@@ -807,7 +792,6 @@ body {
   padding: 14px 8px;
   border-radius: 0;
   cursor: pointer;
-  transition: background 150ms ease;
   text-decoration: none;
   color: var(--drp-black);
 }
@@ -834,7 +818,7 @@ body {
 }
 
 .topbar-app-name {
-  font-size: 12px;
+  font-size: var(--drp-text-sm);
   font-weight: 500;
   color: var(--drp-black);
 }
@@ -879,7 +863,6 @@ body {
   color: var(--drp-grey);
   text-decoration: none;
   cursor: pointer;
-  transition: color 150ms ease;
 }
 
 .footer-link:hover {
@@ -893,8 +876,8 @@ body {
 }
 
 .footer-icon-btn {
-  width: 32px;
-  height: 32px;
+  min-width: 44px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -903,9 +886,6 @@ body {
   border-radius: 0;
   cursor: pointer;
   color: var(--drp-grey);
-  transition:
-    background 150ms ease,
-    color 150ms ease;
 }
 
 .footer-icon-btn:hover {
@@ -961,7 +941,6 @@ body {
   color: var(--drp-black);
   cursor: pointer;
   text-decoration: none;
-  transition: color 150ms ease;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -975,7 +954,7 @@ body {
 }
 
 .mobile-tab-label {
-  font-size: 10px;
+  font-size: var(--drp-text-xs);
   font-weight: 500;
   font-family: var(--drp-font-primary);
 }
@@ -1002,9 +981,7 @@ body {
   z-index: 300;
   opacity: 0;
   visibility: hidden;
-  transition:
-    opacity 250ms ease,
-    visibility 250ms ease;
+  transition: opacity 250ms ease;
 }
 
 .mobile-nav-overlay.open {
@@ -1438,6 +1415,7 @@ body.dark-mode .mobile-tab.active {
 /* ============================================
    UTILITY CLASSES
    ============================================ */
+/* Alias for .drp-sr-only in utilities.css — prefer .drp-sr-only for new code */
 .visually-hidden {
   position: absolute;
   width: 1px;

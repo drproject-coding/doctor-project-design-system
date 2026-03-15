@@ -30,8 +30,12 @@
   --drp-yellow-80: rgba(250, 232, 164, 0.8);
   --drp-pink: #e99898;
   --drp-pink-80: rgba(233, 152, 152, 0.8);
+  --drp-pink-20: rgba(233, 152, 152, 0.2);
   --drp-mint: #98e9ab;
   --drp-mint-80: rgba(152, 233, 171, 0.8);
+  --drp-mint-20: rgba(152, 233, 171, 0.2);
+  --drp-teal: #5fdcb3;
+  --drp-teal-dark: #1a7a5a;
 
   /* Grey */
   --drp-grey: #666666;
@@ -43,6 +47,9 @@
   --drp-cream: #f2f2f2;
   --drp-white: #ffffff;
   --drp-surface: #f2f2f2;
+  --drp-surface-subtle: #f5f5fa;
+  --drp-surface-subtle-border: #e8e8f0;
+  --drp-focus-bg: #f5f0ff;
 
   /* Outline colors */
   --drp-outline-mint: #98e9ab;
@@ -52,12 +59,19 @@
   /* Semantic — Status */
   --drp-success: #00aa00;
   --drp-success-dark: #166534;
+  --drp-success-bg: #f0fff0;
   --drp-error: #ff4444;
   --drp-error-dark: #991b1b;
+  --drp-error-bg: #fff0f0;
   --drp-warning: #ffaa00;
   --drp-warning-dark: #92400e;
+  --drp-warning-bg: #fff8e0;
   --drp-info: #0066ff;
-  --drp-info-dark: #5b21b6;
+  --drp-info-dark: #1e40af;
+  --drp-info-bg: #f0f8ff;
+  --drp-success-subtle: rgba(0, 170, 0, 0.12);
+  --drp-warning-subtle: rgba(255, 108, 1, 0.12);
+  --drp-error-subtle: rgba(255, 68, 68, 0.12);
 
   /* Text Colors */
   --drp-text-primary: #121212;
@@ -86,7 +100,7 @@
   --drp-text-lg: 16px;
   --drp-text-md: 14px;
   --drp-text-sm: 12px;
-  --drp-text-xs: 12px;
+  --drp-text-xs: 11px;
 
   /* Weights */
   --drp-weight-regular: 400;
@@ -134,12 +148,12 @@
      BORDERS
      ────────────────────────────────────────────── */
 
-  --drp-border: 2px solid var(--drp-black);
+  --drp-border: 1px solid var(--drp-black);
   --drp-border-thin: 1px solid var(--drp-black);
-  --drp-border-chunk: 3px solid var(--drp-black);
-  --drp-border-thick: 4px solid var(--drp-black);
-  --drp-border-dashed: 2px dashed var(--drp-black);
-  --drp-border-dotted: 2px dotted rgba(0, 0, 0, 0.15);
+  --drp-border-chunk: 1px solid var(--drp-black);
+  --drp-border-thick: 1px solid var(--drp-black);
+  --drp-border-dashed: 1px dashed var(--drp-black);
+  --drp-border-dotted: 1px dotted rgba(0, 0, 0, 0.15);
 
   /* Radii — STRICTLY 0 FOR BRUTALIST */
   --drp-radius-none: 0;
@@ -206,6 +220,16 @@
   --drp-opacity-disabled: 0.4;
   --drp-opacity-hover: 0.8;
   --drp-opacity-overlay: 0.5;
+
+  /* ──────────────────────────────────────────────
+     CHART PALETTE
+     Extended colours for data visualisation only.
+     ────────────────────────────────────────────── */
+
+  --drp-chart-orange: var(--drp-orange);
+  --drp-chart-cyan: #17a2b8;
+  --drp-chart-indigo: #6f42c1;
+  --drp-chart-teal: #20c997;
 }
 
 /* ──────────────────────────────────────────────
@@ -230,12 +254,20 @@ body.dark-mode {
 
   --drp-purple-active: #8b4ff5;
 
-  --drp-border: 2px solid rgba(255, 255, 255, 0.2);
+  --drp-success-bg: rgba(152, 233, 171, 0.08);
+  --drp-error-bg: rgba(233, 152, 152, 0.08);
+  --drp-warning-bg: rgba(255, 170, 0, 0.08);
+  --drp-info-bg: rgba(0, 102, 255, 0.08);
+  --drp-focus-bg: rgba(99, 29, 237, 0.08);
+  --drp-surface-subtle: rgba(255, 255, 255, 0.06);
+  --drp-surface-subtle-border: rgba(255, 255, 255, 0.15);
+
+  --drp-border: 1px solid rgba(255, 255, 255, 0.2);
   --drp-border-thin: 1px solid rgba(255, 255, 255, 0.2);
-  --drp-border-chunk: 3px solid rgba(255, 255, 255, 0.2);
-  --drp-border-thick: 4px solid rgba(255, 255, 255, 0.2);
-  --drp-border-dashed: 2px dashed rgba(255, 255, 255, 0.2);
-  --drp-border-dotted: 2px dotted rgba(255, 255, 255, 0.1);
+  --drp-border-chunk: 1px solid rgba(255, 255, 255, 0.2);
+  --drp-border-thick: 1px solid rgba(255, 255, 255, 0.2);
+  --drp-border-dashed: 1px dashed rgba(255, 255, 255, 0.2);
+  --drp-border-dotted: 1px dotted rgba(255, 255, 255, 0.1);
 
   --drp-shadow-xs: 2px 2px 0 0 rgba(255, 255, 255, 0.15);
   --drp-shadow-sm: 3px 3px 0 0 rgba(255, 255, 255, 0.15);
@@ -270,12 +302,20 @@ body.dark-mode {
 
     --drp-purple-active: #8b4ff5;
 
-    --drp-border: 2px solid rgba(255, 255, 255, 0.2);
+    --drp-success-bg: rgba(152, 233, 171, 0.08);
+    --drp-error-bg: rgba(233, 152, 152, 0.08);
+    --drp-warning-bg: rgba(255, 170, 0, 0.08);
+    --drp-info-bg: rgba(0, 102, 255, 0.08);
+    --drp-focus-bg: rgba(99, 29, 237, 0.08);
+    --drp-surface-subtle: rgba(255, 255, 255, 0.06);
+    --drp-surface-subtle-border: rgba(255, 255, 255, 0.15);
+
+    --drp-border: 1px solid rgba(255, 255, 255, 0.2);
     --drp-border-thin: 1px solid rgba(255, 255, 255, 0.2);
-    --drp-border-chunk: 3px solid rgba(255, 255, 255, 0.2);
-    --drp-border-thick: 4px solid rgba(255, 255, 255, 0.2);
-    --drp-border-dashed: 2px dashed rgba(255, 255, 255, 0.2);
-    --drp-border-dotted: 2px dotted rgba(255, 255, 255, 0.1);
+    --drp-border-chunk: 2px solid rgba(255, 255, 255, 0.2);
+    --drp-border-thick: 3px solid rgba(255, 255, 255, 0.2);
+    --drp-border-dashed: 1px dashed rgba(255, 255, 255, 0.2);
+    --drp-border-dotted: 1px dotted rgba(255, 255, 255, 0.1);
 
     --drp-shadow-xs: 2px 2px 0 0 rgba(255, 255, 255, 0.15);
     --drp-shadow-sm: 3px 3px 0 0 rgba(255, 255, 255, 0.15);

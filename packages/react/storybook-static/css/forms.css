@@ -28,7 +28,7 @@
 .drp-field {
   display: flex;
   flex-direction: column;
-  gap: var(--drp-space-1);
+  gap: var(--drp-space-2);
 }
 
 .drp-field__label {
@@ -54,10 +54,6 @@
   border: var(--drp-border);
   border-radius: 0;
   box-shadow: var(--drp-shadow-sm);
-  outline: none;
-  transition:
-    border-color var(--drp-duration-fast) var(--drp-ease),
-    box-shadow var(--drp-duration-fast) var(--drp-ease);
 }
 
 .drp-input::placeholder {
@@ -65,10 +61,14 @@
   font-weight: var(--drp-weight-regular);
 }
 
-.drp-input:focus {
+.drp-input:focus-visible {
   border-color: var(--drp-purple);
   box-shadow: 3px 3px 0 0 var(--drp-purple);
-  background: #f5f0ff;
+  background: var(--drp-focus-bg);
+}
+
+.drp-input:focus:not(:focus-visible) {
+  border-color: var(--drp-purple);
 }
 
 .drp-input:disabled {
@@ -80,20 +80,20 @@
 /* Error state */
 .drp-input--error {
   border-color: var(--drp-pink);
-  background: #fff0f0;
+  background: var(--drp-error-bg);
 }
 
-.drp-input--error:focus {
+.drp-input--error:focus-visible {
   box-shadow: 3px 3px 0 0 var(--drp-pink);
 }
 
 /* Success state */
 .drp-input--success {
   border-color: var(--drp-mint);
-  background: #f0fff0;
+  background: var(--drp-success-bg);
 }
 
-.drp-input--success:focus {
+.drp-input--success:focus-visible {
   box-shadow: 3px 3px 0 0 var(--drp-mint);
 }
 
@@ -139,19 +139,15 @@ textarea.drp-input {
   border: var(--drp-border);
   border-radius: 0;
   box-shadow: var(--drp-shadow-sm);
-  outline: none;
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23631DED' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
-  transition:
-    border-color var(--drp-duration-fast) var(--drp-ease),
-    box-shadow var(--drp-duration-fast) var(--drp-ease);
 }
 
-.drp-select:focus {
+.drp-select:focus-visible {
   border-color: var(--drp-purple);
   box-shadow: 3px 3px 0 0 var(--drp-purple);
 }
@@ -164,20 +160,20 @@ textarea.drp-input {
 /* Select — Error state */
 .drp-select--error {
   border-color: var(--drp-pink);
-  background-color: #fff0f0;
+  background-color: var(--drp-error-bg);
 }
 
-.drp-select--error:focus {
+.drp-select--error:focus-visible {
   box-shadow: 3px 3px 0 0 var(--drp-pink);
 }
 
 /* Select — Success state */
 .drp-select--success {
   border-color: var(--drp-mint);
-  background-color: #f0fff0;
+  background-color: var(--drp-success-bg);
 }
 
-.drp-select--success:focus {
+.drp-select--success:focus-visible {
   box-shadow: 3px 3px 0 0 var(--drp-mint);
 }
 
@@ -210,7 +206,6 @@ textarea.drp-input {
   cursor: pointer;
   position: relative;
   flex-shrink: 0;
-  transition: background var(--drp-duration-fast) var(--drp-ease);
 }
 
 .drp-checkbox input[type="checkbox"]:checked {
@@ -273,7 +268,6 @@ textarea.drp-input {
   cursor: pointer;
   position: relative;
   flex-shrink: 0;
-  transition: background var(--drp-duration-fast) var(--drp-ease);
 }
 
 .drp-radio input[type="radio"]:checked::after {
@@ -343,7 +337,6 @@ textarea.drp-input {
   border: var(--drp-border);
   border-radius: 0;
   background: var(--drp-purple-20);
-  transition: background var(--drp-duration-normal) var(--drp-ease);
 }
 
 .drp-switch__knob {
@@ -401,15 +394,14 @@ textarea.drp-input {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   background: transparent;
   border: none;
   font-size: 18px;
   font-weight: var(--drp-weight-bold);
   cursor: pointer;
   color: var(--drp-black);
-  transition: background var(--drp-duration-fast) var(--drp-ease);
 }
 
 .drp-counter__btn:hover {
@@ -423,7 +415,6 @@ textarea.drp-input {
   font-size: var(--drp-text-md);
   font-weight: var(--drp-weight-bold);
   border: none;
-  outline: none;
   background: transparent;
   color: var(--drp-black);
   -moz-appearance: textfield;

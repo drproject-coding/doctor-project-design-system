@@ -1,0 +1,9 @@
+import{E as m}from"./EducationCourses-BLTwSBjE.js";import"./jsx-runtime-D_zvdyIk.js";import"./AppFooter-Cl72tdNI.js";import"./index-ZH-6pyQh.js";import"./_commonjsHelpers-CqkleIqs.js";import"./Sidebar-BbX_AIgl.js";import"./Pictogram-DOvxZ6cl.js";import"./Footer-DDnK5QKt.js";import"./AppTopBar-CFAz4vK5.js";import"./Pagination-De5o-W93.js";const w={component:m,title:"Pages/Education",parameters:{layout:"fullscreen"}},r={args:{view:"courses"}},e={args:{view:"category"}};var o,s,a;r.parameters={...r.parameters,docs:{...(o=r.parameters)==null?void 0:o.docs,source:{originalSource:`{
+  args: {
+    view: "courses"
+  }
+}`,...(a=(s=r.parameters)==null?void 0:s.docs)==null?void 0:a.source}}};var t,c,p;e.parameters={...e.parameters,docs:{...(t=e.parameters)==null?void 0:t.docs,source:{originalSource:`{
+  args: {
+    view: "category"
+  }
+}`,...(p=(c=e.parameters)==null?void 0:c.docs)==null?void 0:p.source}}};const x=["CoursesExplore","CoursesCategory"];export{e as CoursesCategory,r as CoursesExplore,x as __namedExportsOrder,w as default};

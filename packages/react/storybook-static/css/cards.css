@@ -2,7 +2,6 @@
    DOCTORPROJECT DESIGN SYSTEM — CARDS
    ============================================================ */
 
-
 /* ──────────────────────────────────────────────
    CARDS
    ────────────────────────────────────────────── */
@@ -68,11 +67,18 @@
 }
 
 /* Color accent cards */
-.drp-card--purple { border-left: 4px solid var(--drp-purple); }
-.drp-card--mint   { border-left: 4px solid var(--drp-mint); }
-.drp-card--pink   { border-left: 4px solid var(--drp-pink); }
-.drp-card--yellow { border-left: 4px solid var(--drp-yellow); }
-
+.drp-card--purple {
+  border-left: 1px solid var(--drp-purple);
+}
+.drp-card--mint {
+  border-left: 1px solid var(--drp-mint);
+}
+.drp-card--pink {
+  border-left: 1px solid var(--drp-pink);
+}
+.drp-card--yellow {
+  border-left: 1px solid var(--drp-yellow);
+}
 
 /* ──────────────────────────────────────────────
    RESPONSIVE — CARDS
