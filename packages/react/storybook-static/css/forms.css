@@ -31,6 +31,11 @@
   gap: var(--drp-space-2);
 }
 
+/* Automatic spacing between consecutive fields — works without any wrapper class */
+.drp-field + .drp-field {
+  margin-top: var(--drp-space-4);
+}
+
 .drp-field__label {
   font-family: var(--drp-font-primary);
   font-size: var(--drp-text-sm);
