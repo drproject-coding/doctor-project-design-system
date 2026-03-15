@@ -79,7 +79,7 @@ export function Alert({
             {title}
           </p>
         )}
-        <div style={{ fontSize: "13px", lineHeight: 1.5 }}>{children}</div>
+        <div style={{ fontSize: "14px", lineHeight: 1.5 }}>{children}</div>
       </div>
       {onClose && (
         <button

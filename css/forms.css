@@ -54,10 +54,6 @@
   border: var(--drp-border);
   border-radius: 0;
   box-shadow: var(--drp-shadow-sm);
-  outline: none;
-  transition:
-    border-color var(--drp-duration-fast) var(--drp-ease),
-    box-shadow var(--drp-duration-fast) var(--drp-ease);
 }
 
 .drp-input::placeholder {
@@ -143,16 +139,12 @@ textarea.drp-input {
   border: var(--drp-border);
   border-radius: 0;
   box-shadow: var(--drp-shadow-sm);
-  outline: none;
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23631DED' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 14px center;
-  transition:
-    border-color var(--drp-duration-fast) var(--drp-ease),
-    box-shadow var(--drp-duration-fast) var(--drp-ease);
 }
 
 .drp-select:focus-visible {
@@ -214,7 +206,6 @@ textarea.drp-input {
   cursor: pointer;
   position: relative;
   flex-shrink: 0;
-  transition: background var(--drp-duration-fast) var(--drp-ease);
 }
 
 .drp-checkbox input[type="checkbox"]:checked {
@@ -277,7 +268,6 @@ textarea.drp-input {
   cursor: pointer;
   position: relative;
   flex-shrink: 0;
-  transition: background var(--drp-duration-fast) var(--drp-ease);
 }
 
 .drp-radio input[type="radio"]:checked::after {
@@ -347,7 +337,6 @@ textarea.drp-input {
   border: var(--drp-border);
   border-radius: 0;
   background: var(--drp-purple-20);
-  transition: background var(--drp-duration-normal) var(--drp-ease);
 }
 
 .drp-switch__knob {
@@ -405,15 +394,14 @@ textarea.drp-input {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   background: transparent;
   border: none;
   font-size: 18px;
   font-weight: var(--drp-weight-bold);
   cursor: pointer;
   color: var(--drp-black);
-  transition: background var(--drp-duration-fast) var(--drp-ease);
 }
 
 .drp-counter__btn:hover {
@@ -427,7 +415,6 @@ textarea.drp-input {
   font-size: var(--drp-text-md);
   font-weight: var(--drp-weight-bold);
   border: none;
-  outline: none;
   background: transparent;
   color: var(--drp-black);
   -moz-appearance: textfield;

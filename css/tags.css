@@ -49,7 +49,6 @@
   border: none;
   border-right: var(--drp-border);
   cursor: pointer;
-  transition: background var(--drp-duration-fast) var(--drp-ease);
 }
 
 .drp-tab:last-child {
@@ -399,7 +398,6 @@ body.dark-mode .drp-tag--filled {
   height: 100%;
   background: var(--drp-purple);
   border-radius: 0;
-  transition: width var(--drp-duration-slow) var(--drp-ease);
 }
 
 /* Color variants */

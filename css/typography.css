@@ -69,6 +69,7 @@
   letter-spacing: var(--drp-tracking-tight);
   color: var(--drp-black);
   margin: 0;
+  text-wrap: balance;
 }
 
 .drp-h1 {

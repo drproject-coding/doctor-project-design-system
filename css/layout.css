@@ -60,7 +60,6 @@ body {
   left: 0;
   bottom: 0;
   z-index: 100;
-  transition: width 250ms ease;
   overflow: hidden;
 }
 
@@ -145,9 +144,6 @@ body {
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition:
-    background 150ms ease,
-    color 150ms ease;
   position: relative;
   white-space: nowrap;
   overflow: hidden;
@@ -233,7 +229,6 @@ body {
   min-height: 44px;
   border-radius: 0;
   cursor: pointer;
-  transition: background 150ms ease;
   white-space: nowrap;
 }
 
@@ -278,7 +273,6 @@ body {
   color: var(--sidebar-text-muted);
   font-size: 13px;
   cursor: pointer;
-  transition: color 150ms ease;
   white-space: nowrap;
 }
 
@@ -446,7 +440,6 @@ body {
   font-size: var(--drp-text-xs);
   font-weight: 500;
   cursor: pointer;
-  transition: all 150ms ease;
 }
 
 .sidebar-status-btn:hover {
@@ -511,9 +504,6 @@ body {
   color: var(--sidebar-text-muted);
   cursor: pointer;
   border-radius: 0;
-  transition:
-    background 150ms ease,
-    color 150ms ease;
   flex-shrink: 0;
 }
 
@@ -552,7 +542,6 @@ body {
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background 150ms ease;
   text-decoration: none;
 }
 
@@ -577,7 +566,6 @@ body {
   min-height: 100vh;
   max-width: 1920px;
   background: var(--drp-cream);
-  transition: margin-left 250ms ease;
 }
 
 /* ============================================
@@ -614,7 +602,6 @@ body {
   border-radius: 0;
   cursor: pointer;
   color: var(--drp-black);
-  transition: background 150ms ease;
 }
 
 .topbar-menu-btn:hover {
@@ -645,9 +632,6 @@ body {
   color: var(--drp-grey);
   cursor: pointer;
   border-radius: 0;
-  transition:
-    background 150ms ease,
-    color 150ms ease;
   position: relative;
 }
 
@@ -687,7 +671,6 @@ body {
   font-weight: 500;
   cursor: pointer;
   border-radius: 0;
-  transition: background 150ms ease;
 }
 
 .topbar-apps-btn:hover {
@@ -714,10 +697,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition:
-    background 150ms ease,
-    transform 100ms ease,
-    box-shadow 100ms ease;
+  transition: transform 100ms ease;
   white-space: nowrap;
   box-shadow: var(--drp-shadow-md);
 }
@@ -766,7 +746,6 @@ body {
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
-  transition: background 150ms ease;
   text-decoration: none;
 }
 
@@ -813,7 +792,6 @@ body {
   padding: 14px 8px;
   border-radius: 0;
   cursor: pointer;
-  transition: background 150ms ease;
   text-decoration: none;
   color: var(--drp-black);
 }
@@ -885,7 +863,6 @@ body {
   color: var(--drp-grey);
   text-decoration: none;
   cursor: pointer;
-  transition: color 150ms ease;
 }
 
 .footer-link:hover {
@@ -909,9 +886,6 @@ body {
   border-radius: 0;
   cursor: pointer;
   color: var(--drp-grey);
-  transition:
-    background 150ms ease,
-    color 150ms ease;
 }
 
 .footer-icon-btn:hover {
@@ -967,7 +941,6 @@ body {
   color: var(--drp-black);
   cursor: pointer;
   text-decoration: none;
-  transition: color 150ms ease;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -1008,9 +981,7 @@ body {
   z-index: 300;
   opacity: 0;
   visibility: hidden;
-  transition:
-    opacity 250ms ease,
-    visibility 250ms ease;
+  transition: opacity 250ms ease;
 }
 
 .mobile-nav-overlay.open {

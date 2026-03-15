@@ -58,7 +58,7 @@ export function CaseCard({
         >
           {stat}
         </p>
-        <p style={{ fontSize: "13px", marginBottom: "16px" }}>{statLabel}</p>
+        <p style={{ fontSize: "14px", marginBottom: "16px" }}>{statLabel}</p>
         <h3
           style={{
             fontFamily: "var(--drp-font-primary)",
@@ -69,7 +69,7 @@ export function CaseCard({
         >
           {title}
         </h3>
-        <p style={{ fontSize: "13px", color: "#666", lineHeight: 1.6 }}>
+        <p style={{ fontSize: "14px", color: "#666", lineHeight: 1.6 }}>
           {description}
         </p>
       </div>

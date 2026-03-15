@@ -44,7 +44,6 @@
   color: var(--drp-black);
   padding: var(--drp-space-2) var(--drp-space-3);
   border: 1px solid transparent;
-  transition: all var(--drp-duration-fast) var(--drp-ease);
 }
 
 .drp-nav-link:hover {
@@ -383,6 +382,13 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .drp-marquee__track {
+    animation-play-state: paused;
+    --drp-marquee-play-state: paused;
+  }
+}
+
 /* ──────────────────────────────────────────────
    GRID SYSTEM (12-column)
    ────────────────────────────────────────────── */
@@ -454,9 +460,6 @@
   text-decoration: underline;
   text-decoration-color: transparent;
   text-underline-offset: 3px;
-  transition:
-    color var(--drp-duration-fast) var(--drp-ease),
-    text-decoration-color var(--drp-duration-fast) var(--drp-ease);
 }
 
 .drp-footer__link:hover,
