@@ -103,6 +103,13 @@
   gap: var(--drp-space-4);
 }
 
+@media (max-width: 768px) {
+  .drp-grid-3,
+  .drp-grid-4 {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 600px) {
   .drp-grid-2,
   .drp-grid-3,

@@ -233,6 +233,26 @@
 }
 
 /* ──────────────────────────────────────────────
+   RESPONSIVE HEADING SCALE
+   ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  :root {
+    --drp-text-h1: 36px;
+    --drp-text-h2: 28px;
+    --drp-text-h3: 24px;
+  }
+}
+
+@media (max-width: 390px) {
+  :root {
+    --drp-text-h1: 28px;
+    --drp-text-h2: 24px;
+    --drp-text-h3: 20px;
+  }
+}
+
+/* ──────────────────────────────────────────────
    DARK MODE OVERRIDES
    ────────────────────────────────────────────── */
 

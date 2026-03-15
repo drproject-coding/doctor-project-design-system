@@ -22,8 +22,13 @@ const CalendarNav: React.FC<{
           style={{
             background: "none",
             border: "none",
-            padding: 0,
+            padding: "10px",
+            minWidth: 44,
+            minHeight: 44,
             cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
           aria-label="Previous"
         >
@@ -33,8 +38,13 @@ const CalendarNav: React.FC<{
           style={{
             background: "none",
             border: "none",
-            padding: 0,
+            padding: "10px",
+            minWidth: 44,
+            minHeight: 44,
             cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
           }}
           aria-label="Next"
         >

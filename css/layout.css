@@ -133,6 +133,7 @@ body {
 
 /* Nav Items */
 .sidebar-nav-item {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -1108,7 +1109,15 @@ body {
 }
 
 .sidebar.collapsed .sidebar-badge {
-  display: none;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  font-size: 0;
+  border-radius: 50%;
+  min-width: 0;
 }
 
 .sidebar.collapsed .sidebar-team {
