@@ -20,6 +20,7 @@
 9. [What to Check Before Every PR](#9-what-to-check-before-every-pr)
 10. [Hard Rules — Never Do This](#10-hard-rules--never-do-this)
 11. [Versioning & Upgrades](#11-versioning--upgrades)
+12. [Using This Design System with AI Code Agents](#12-using-this-design-system-with-ai-code-agents)
 
 ---
 
@@ -32,7 +33,7 @@ or hardcodes a color, the design system breaks down and we accumulate UI debt ac
 
 **Reference always:**
 
-- Components & props → https://storybook-static-two-delta.vercel.app
+- Components & props → https://storybook-static-git-fix-desi-59494d-drproject-codings-projects.vercel.app
 - Package → `npm install @doctorproject/react`
 
 ---
@@ -305,7 +306,7 @@ Every screen below is a complete, ready-to-use composition exported from `@docto
 
 ### Step 1 — Check Storybook
 
-Go to https://storybook-static-two-delta.vercel.app
+Go to https://storybook-static-git-fix-desi-59494d-drproject-codings-projects.vercel.app
 
 - **Exact match** → copy the screen structure, swap the data
 - **Partial match** → use closest screen as base, extend with DS components
@@ -781,10 +782,48 @@ Watch the repo → Releases to get notified.
 
 ---
 
+## 12. Using This Design System with AI Code Agents
+
+AI code agents (Claude Code, Cursor, Windsurf, etc.) can produce excellent UI with this design system — but only if they understand what it is and how it works.
+
+### For Claude Code
+
+A `CLAUDE.md` file exists at the repo root. Claude Code reads it automatically when entering the project. It contains the full component inventory, hard rules, decision tree, and both "new app" and "revamp" workflows. No manual setup needed.
+
+### For other agents (Cursor, Windsurf, etc.)
+
+Copy the contents of `CLAUDE.md` into your agent's project instructions file (e.g. `.cursorrules`, `.windsurfrules`, or equivalent).
+
+### Common AI agent failures and how to prevent them
+
+| Failure | Root cause | Prevention |
+|---|---|---|
+| Agent produces an API endpoint explorer instead of UI | Agent doesn't know this is a UI library | `CLAUDE.md` opens with "This is a **brutalist React design system**" |
+| Everything renders unstyled (plain HTML, ALL CAPS) | Missing `import "@doctorproject/react/styles"` | `CLAUDE.md` marks this as **mandatory step #1** |
+| Agent adds `border-radius` to components | Agent defaults to rounded-corner conventions | Hard rule in `CLAUDE.md`: "border-radius: 0 everywhere" |
+| Agent uses soft drop shadows | Agent defaults to Material Design-style shadows | Hard rule: only `--drp-shadow-*` tokens (hard offset, no blur) |
+| Agent rebuilds Button/Card/Table from scratch | Agent doesn't know components exist | Component inventory table in `CLAUDE.md` with exact import paths |
+| Agent uses MUI/Shadcn/Tailwind classes on DS components | Agent mixes design languages | Hard rule: one design language, no external UI libraries |
+| Agent uses colored `<div>` squares as icon placeholders | Agent can't find the icon set | `<Icon>` and `<Pictogram>` documented in component inventory |
+
+### Prompt template for AI agents
+
+When starting a new task with any AI code agent, include this context:
+
+```
+This project uses the @doctorproject/react design system.
+Read CLAUDE.md at the repo root before generating any code.
+Key rules: no border-radius, no soft shadows, no raw HTML elements,
+import "@doctorproject/react/styles" at app root, use DS components only.
+Storybook: https://storybook-static-git-fix-desi-59494d-drproject-codings-projects.vercel.app
+```
+
+---
+
 ## Quick Reference Card
 
 ```
-STORYBOOK   → https://storybook-static-two-delta.vercel.app
+STORYBOOK   → https://storybook-static-git-fix-desi-59494d-drproject-codings-projects.vercel.app
 INSTALL     → npm install @doctorproject/react
 STYLES      → import '@doctorproject/react/styles'   ← at app root, once
 COMPONENTS  → import { Button, Card, ... } from '@doctorproject/react'

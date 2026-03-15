@@ -292,7 +292,7 @@
   font-style: italic;
   margin-bottom: var(--drp-space-4);
   padding-left: var(--drp-space-4);
-  border-left: 2px solid var(--drp-orange);
+  border-left: 1px solid var(--drp-orange);
 }
 
 .drp-testimonial__author {

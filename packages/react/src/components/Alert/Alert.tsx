@@ -53,8 +53,8 @@ export function Alert({
       style={{
         padding: "16px 20px",
         background: styles.bg,
-        border: `2px solid var(--drp-black)`,
-        borderLeft: `4px solid ${styles.border}`,
+        border: `1px solid var(--drp-black)`,
+        borderLeft: `2px solid ${styles.border}`,
         display: "flex",
         gap: "12px",
         alignItems: "flex-start",

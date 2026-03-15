@@ -133,12 +133,12 @@
      BORDERS
      ────────────────────────────────────────────── */
 
-  --drp-border: 2px solid var(--drp-black);
+  --drp-border: 1px solid var(--drp-black);
   --drp-border-thin: 1px solid var(--drp-black);
-  --drp-border-chunk: 3px solid var(--drp-black);
-  --drp-border-thick: 4px solid var(--drp-black);
-  --drp-border-dashed: 2px dashed var(--drp-black);
-  --drp-border-dotted: 2px dotted rgba(0, 0, 0, 0.15);
+  --drp-border-chunk: 1px solid var(--drp-black);
+  --drp-border-thick: 1px solid var(--drp-black);
+  --drp-border-dashed: 1px dashed var(--drp-black);
+  --drp-border-dotted: 1px dotted rgba(0, 0, 0, 0.15);
 
   /* Radii — STRICTLY 0 FOR BRUTALIST */
   --drp-radius-none: 0;
@@ -229,12 +229,12 @@ body.dark-mode {
 
   --drp-purple-active: #8b4ff5;
 
-  --drp-border: 2px solid rgba(255, 255, 255, 0.2);
+  --drp-border: 1px solid rgba(255, 255, 255, 0.2);
   --drp-border-thin: 1px solid rgba(255, 255, 255, 0.2);
-  --drp-border-chunk: 3px solid rgba(255, 255, 255, 0.2);
-  --drp-border-thick: 4px solid rgba(255, 255, 255, 0.2);
-  --drp-border-dashed: 2px dashed rgba(255, 255, 255, 0.2);
-  --drp-border-dotted: 2px dotted rgba(255, 255, 255, 0.1);
+  --drp-border-chunk: 1px solid rgba(255, 255, 255, 0.2);
+  --drp-border-thick: 1px solid rgba(255, 255, 255, 0.2);
+  --drp-border-dashed: 1px dashed rgba(255, 255, 255, 0.2);
+  --drp-border-dotted: 1px dotted rgba(255, 255, 255, 0.1);
 
   --drp-shadow-xs: 2px 2px 0 0 rgba(255, 255, 255, 0.08);
   --drp-shadow-sm: 3px 3px 0 0 rgba(255, 255, 255, 0.08);
@@ -907,7 +907,7 @@ body.dark-mode .drp-btn--ghost:hover {
 .drp-field {
   display: flex;
   flex-direction: column;
-  gap: var(--drp-space-1);
+  gap: var(--drp-space-2);
 }
 
 .drp-field__label {
@@ -1477,8 +1477,8 @@ body.dark-mode .drp-tab.active {
 
 .drp-tabs--underline .drp-tab {
   border-right: none;
-  border-bottom: 3px solid transparent;
-  margin-bottom: -2px;
+  border-bottom: 1px solid transparent;
+  margin-bottom: -1px;
   padding: 8px 4px;
   color: var(--drp-grey);
 }
@@ -3096,7 +3096,7 @@ body {
   height: 8px;
   background: #22c55e;
   border-radius: 0;
-  border: 2px solid var(--drp-cream);
+  border: 1px solid var(--drp-cream);
 }
 
 /* Apps Button */
@@ -4302,7 +4302,7 @@ body.dark-mode .mobile-tab.active {
 .drp-spinner {
   width: 40px;
   height: 40px;
-  border: 3px solid var(--drp-grey-light);
+  border: 1px solid var(--drp-grey-light);
   border-top-color: var(--drp-purple);
   border-radius: 50%;
   animation: drp-spin 0.8s linear infinite;
@@ -4436,7 +4436,7 @@ body.dark-mode .mobile-tab.active {
   text-decoration: none;
   color: var(--drp-black);
   padding: var(--drp-space-2) var(--drp-space-3);
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   transition: all var(--drp-duration-fast) var(--drp-ease);
 }
 
@@ -4675,7 +4675,7 @@ body.dark-mode .mobile-tab.active {
   font-style: italic;
   margin-bottom: var(--drp-space-4);
   padding-left: var(--drp-space-4);
-  border-left: 3px solid var(--drp-orange);
+  border-left: 1px solid var(--drp-orange);
 }
 
 .drp-testimonial__author {
@@ -4738,7 +4738,7 @@ body.dark-mode .mobile-tab.active {
   background: var(--drp-black);
   color: var(--drp-white);
   padding: var(--drp-space-3) 0;
-  border: 2px solid var(--drp-white);
+  border: 1px solid var(--drp-white);
 }
 
 .drp-marquee__track {

@@ -68,16 +68,16 @@
 
 /* Color accent cards */
 .drp-card--purple {
-  border-left: 2px solid var(--drp-purple);
+  border-left: 1px solid var(--drp-purple);
 }
 .drp-card--mint {
-  border-left: 2px solid var(--drp-mint);
+  border-left: 1px solid var(--drp-mint);
 }
 .drp-card--pink {
-  border-left: 2px solid var(--drp-pink);
+  border-left: 1px solid var(--drp-pink);
 }
 .drp-card--yellow {
-  border-left: 2px solid var(--drp-yellow);
+  border-left: 1px solid var(--drp-yellow);
 }
 
 /* ──────────────────────────────────────────────

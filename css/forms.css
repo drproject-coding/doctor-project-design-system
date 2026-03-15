@@ -28,7 +28,7 @@
 .drp-field {
   display: flex;
   flex-direction: column;
-  gap: var(--drp-space-1);
+  gap: var(--drp-space-2);
 }
 
 .drp-field__label {

@@ -257,16 +257,16 @@
 }
 
 .drp-toast--success {
-  border-left: 2px solid var(--drp-mint);
+  border-left: 1px solid var(--drp-mint);
 }
 .drp-toast--error {
-  border-left: 2px solid var(--drp-pink);
+  border-left: 1px solid var(--drp-pink);
 }
 .drp-toast--warning {
-  border-left: 2px solid var(--drp-yellow);
+  border-left: 1px solid var(--drp-yellow);
 }
 .drp-toast--info {
-  border-left: 2px solid var(--drp-purple);
+  border-left: 1px solid var(--drp-purple);
 }
 
 /* ──────────────────────────────────────────────

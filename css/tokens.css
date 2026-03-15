@@ -150,8 +150,8 @@
 
   --drp-border: 1px solid var(--drp-black);
   --drp-border-thin: 1px solid var(--drp-black);
-  --drp-border-chunk: 2px solid var(--drp-black);
-  --drp-border-thick: 3px solid var(--drp-black);
+  --drp-border-chunk: 1px solid var(--drp-black);
+  --drp-border-thick: 1px solid var(--drp-black);
   --drp-border-dashed: 1px dashed var(--drp-black);
   --drp-border-dotted: 1px dotted rgba(0, 0, 0, 0.15);
 
@@ -264,8 +264,8 @@ body.dark-mode {
 
   --drp-border: 1px solid rgba(255, 255, 255, 0.2);
   --drp-border-thin: 1px solid rgba(255, 255, 255, 0.2);
-  --drp-border-chunk: 2px solid rgba(255, 255, 255, 0.2);
-  --drp-border-thick: 3px solid rgba(255, 255, 255, 0.2);
+  --drp-border-chunk: 1px solid rgba(255, 255, 255, 0.2);
+  --drp-border-thick: 1px solid rgba(255, 255, 255, 0.2);
   --drp-border-dashed: 1px dashed rgba(255, 255, 255, 0.2);
   --drp-border-dotted: 1px dotted rgba(255, 255, 255, 0.1);
 

@@ -31,6 +31,7 @@ export function Loader({ size, label, className = "" }: LoaderProps) {
           height: dimension,
           border: `${borderWidth}px solid var(--drp-light-grey, #E0E0E0)`,
           borderTop: `${borderWidth}px solid var(--drp-purple)`,
+          borderRadius: "50%",
           animation: "drp-spin 0.8s linear infinite",
         }}
       />
