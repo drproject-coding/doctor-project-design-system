@@ -113,7 +113,7 @@
 }
 
 .drp-anim-pulse {
-  animation: drp-pulse 2s ease infinite;
+  animation: drp-pulse 2s ease 3;
 }
 
 .drp-anim-shake {

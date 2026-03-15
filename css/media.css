@@ -3,7 +3,6 @@
    Avatars, carousels, and media display components.
    ============================================================ */
 
-
 /* ──────────────────────────────────────────────
    AVATAR
    ────────────────────────────────────────────── */
@@ -25,7 +24,6 @@
   width: 96px;
   height: 96px;
 }
-
 
 /* ──────────────────────────────────────────────
    CAROUSEL
@@ -60,6 +58,8 @@
 .drp-carousel__dot {
   width: 12px;
   height: 12px;
+  min-width: 44px;
+  min-height: 44px;
   border: var(--drp-border);
   background: var(--drp-white);
   cursor: pointer;

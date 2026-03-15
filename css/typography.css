@@ -166,6 +166,50 @@
 }
 
 /* ──────────────────────────────────────────────
+   RESPONSIVE — TYPOGRAPHY
+   ────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .drp-display-xl {
+    font-size: 2.5rem;
+  }
+
+  .drp-display-lg {
+    font-size: 2rem;
+  }
+
+  .drp-display-md {
+    font-size: 1.5rem;
+  }
+
+  .drp-h1 {
+    font-size: var(--drp-text-h2);
+  }
+
+  .drp-h2 {
+    font-size: var(--drp-text-h3);
+  }
+
+  .drp-h3 {
+    font-size: var(--drp-text-h4);
+  }
+}
+
+@media (max-width: 390px) {
+  .drp-display-xl {
+    font-size: 2rem;
+  }
+
+  .drp-display-lg {
+    font-size: 1.75rem;
+  }
+
+  .drp-display-md {
+    font-size: 1.25rem;
+  }
+}
+
+/* ──────────────────────────────────────────────
    TEXT LABELS
    For buttons, form fields, captions.
    Three sizes: sm (12px), md (14px), lg (16px)
@@ -208,13 +252,13 @@
   color: var(--drp-purple);
 }
 .drp-text--mint {
-  color: var(--drp-mint);
+  color: var(--drp-teal-dark);
 }
 .drp-text--pink {
-  color: var(--drp-pink);
+  color: var(--drp-error-dark);
 }
 .drp-text--yellow {
-  color: var(--drp-yellow);
+  color: var(--drp-warning-dark);
 }
 .drp-text--error {
   color: var(--drp-error-dark);
