@@ -6,6 +6,13 @@
    PAGINATION — CENTERED NUMBERS
    ────────────────────────────────────────────── */
 
+/* Wrapper — always centered, always separated from content above */
+.drp-pagination__nav {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--drp-space-6);
+}
+
 .drp-pagination {
   display: inline-flex;
   align-items: center;
