@@ -11,7 +11,7 @@ export interface ResponsiveGridProps extends HTMLAttributes<HTMLElement> {
   colsLg?: number;
   /** Tablet columns (≤768px). Defaults to Math.ceil(cols/2). */
   colsMd?: number;
-  /** Mobile columns (≤390px). Defaults to 1. */
+  /** Mobile columns (≤480px). Defaults to 1. */
   colsSm?: number;
   gap?: string;
   as?: ElementType;
@@ -26,7 +26,7 @@ function injectGridStyles() {
   style.textContent = `
     .drp-responsive-grid { display: grid; }
     @media (max-width: 768px)  { .drp-responsive-grid { grid-template-columns: repeat(var(--drp-cols-md, var(--drp-cols, 1)), 1fr) !important; } }
-    @media (max-width: 390px)  { .drp-responsive-grid { grid-template-columns: repeat(var(--drp-cols-sm, 1), 1fr) !important; } }
+    @media (max-width: 480px)  { .drp-responsive-grid { grid-template-columns: repeat(var(--drp-cols-sm, 1), 1fr) !important; } }
   `;
   document.head.appendChild(style);
 }

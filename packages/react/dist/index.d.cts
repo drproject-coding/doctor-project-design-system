@@ -842,7 +842,7 @@ interface ResponsiveGridProps extends HTMLAttributes<HTMLElement> {
     colsLg?: number;
     /** Tablet columns (≤768px). Defaults to Math.ceil(cols/2). */
     colsMd?: number;
-    /** Mobile columns (≤390px). Defaults to 1. */
+    /** Mobile columns (≤480px). Defaults to 1. */
     colsSm?: number;
     gap?: string;
     as?: ElementType;

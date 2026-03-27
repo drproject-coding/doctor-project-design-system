@@ -91,8 +91,8 @@
   /* Body sizes */
   --drp-text-lg: 16px;
   --drp-text-md: 14px;
-  --drp-text-sm: 12px;
-  --drp-text-xs: 11px;
+  --drp-text-sm: 13px;
+  --drp-text-xs: 12px;
 
   /* Weights */
   --drp-weight-regular: 400;
@@ -330,6 +330,25 @@ body.dark-mode {
   margin: 0;
 }
 
+.drp-h1,
+.drp-h2 {
+  font-weight: var(--drp-weight-heavy);
+  letter-spacing: -0.03em;
+}
+
+.drp-h3 {
+  line-height: var(--drp-leading-snug);
+}
+
+.drp-h5,
+.drp-h6 {
+  font-weight: var(--drp-weight-semibold);
+}
+
+.drp-h6 {
+  letter-spacing: var(--drp-tracking-normal);
+}
+
 .drp-h1 {
   font-size: var(--drp-text-h1);
 }
@@ -409,6 +428,7 @@ body.dark-mode {
   font-size: 3.5rem;
   font-weight: var(--drp-weight-heavy);
   line-height: 1.1;
+  letter-spacing: -0.025em;
   text-transform: uppercase;
   color: var(--drp-black);
   margin: 0;
@@ -419,6 +439,7 @@ body.dark-mode {
   font-size: 2.5rem;
   font-weight: var(--drp-weight-heavy);
   line-height: 1.1;
+  letter-spacing: -0.025em;
   text-transform: uppercase;
   color: var(--drp-black);
   margin: 0;
@@ -531,7 +552,7 @@ body.dark-mode {
 .drp-body-lg {
   font-family: var(--drp-font-primary);
   font-size: var(--drp-text-lg);
-  line-height: var(--drp-leading-loose);
+  line-height: var(--drp-leading-normal);
   color: var(--drp-black);
 }
 
@@ -605,7 +626,7 @@ body.dark-mode {
   background: var(--drp-white);
   border: var(--drp-border);
   border-radius: 0;
-  box-shadow: var(--drp-shadow-sm);
+  box-shadow: var(--drp-shadow-md);
   cursor: pointer;
   user-select: none;
   touch-action: manipulation;
@@ -1964,8 +1985,8 @@ body.dark-mode .drp-progress {
 }
 
 .drp-card--interactive:hover {
-  transform: translate(1px, 1px);
-  box-shadow: var(--drp-shadow-sm);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--drp-shadow-xl);
 }
 
 .drp-card--interactive:active {
@@ -2000,15 +2021,19 @@ body.dark-mode .drp-progress {
 /* Color accent cards */
 .drp-card--purple {
   border-left: 4px solid var(--drp-purple);
+  background: rgba(99, 29, 237, 0.03);
 }
 .drp-card--mint {
   border-left: 4px solid var(--drp-mint);
+  background: rgba(152, 233, 171, 0.12);
 }
 .drp-card--pink {
   border-left: 4px solid var(--drp-pink);
+  background: rgba(233, 152, 152, 0.12);
 }
 .drp-card--yellow {
   border-left: 4px solid var(--drp-yellow);
+  background: rgba(250, 232, 164, 0.2);
 }
 
 /* ──────────────────────────────────────────────
@@ -2077,7 +2102,7 @@ body.dark-mode .drp-progress {
   letter-spacing: var(--drp-tracking-wide);
   font-size: var(--drp-text-xs);
   color: var(--drp-grey);
-  background: rgba(0, 0, 0, 0.02);
+  background: rgba(0, 0, 0, 0.05);
   border-bottom: var(--drp-border);
 }
 
@@ -2091,8 +2116,8 @@ body.dark-mode .drp-progress {
   border-bottom: none;
 }
 
-.drp-table tr:hover td {
-  background: rgba(0, 0, 0, 0.02);
+.drp-table tbody tr:hover td {
+  background: rgba(0, 0, 0, 0.03);
 }
 
 body.dark-mode .drp-table th {
@@ -2531,10 +2556,10 @@ body {
 }
 
 .sidebar-brand-name {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 800;
   color: var(--sidebar-text);
-  letter-spacing: -0.5px;
+  letter-spacing: -0.04em;
   white-space: nowrap;
 }
 
@@ -2578,11 +2603,11 @@ body {
 }
 
 .sidebar-nav-label {
-  font-size: 11px;
+  font-size: var(--drp-text-xs);
   font-weight: 500;
   color: var(--sidebar-text-muted);
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: var(--drp-tracking-wide);
   padding: 0 12px;
   margin-bottom: 8px;
   white-space: nowrap;
@@ -2594,7 +2619,7 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 12px;
+  padding: 12px;
   border-radius: 0;
   color: var(--sidebar-text);
   text-decoration: none;
@@ -2616,6 +2641,9 @@ body {
 .sidebar-nav-item.active {
   background: var(--sidebar-active-bg);
   color: var(--sidebar-active-text);
+  border-left: 3px solid var(--drp-purple);
+  padding-left: 9px;
+  font-weight: 600;
 }
 
 .sidebar-nav-icon {
@@ -2764,7 +2792,7 @@ body {
 .sidebar-freshness-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   padding: 4px 0;
 }
 
@@ -2817,9 +2845,9 @@ body {
 .sidebar-freshness-summary {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   margin-top: 8px;
-  padding: 6px 8px;
+  padding: 8px;
   border-radius: 0;
   font-size: 11px;
   font-weight: 500;
@@ -2998,8 +3026,8 @@ body {
 .sidebar-user-dropdown-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
+  gap: 12px;
+  padding: 12px;
   border-radius: 0;
   color: var(--drp-black);
   font-size: 14px;
@@ -3052,7 +3080,7 @@ body {
 .topbar-left {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .topbar-menu-btn {
@@ -3129,8 +3157,8 @@ body {
 .topbar-apps-btn {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 14px;
+  gap: 8px;
+  padding: 8px 16px;
   background: none;
   border: none;
   color: var(--drp-black);
@@ -3157,7 +3185,7 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 20px;
+  padding: 12px 20px;
   background: var(--drp-purple);
   color: white;
   border: var(--drp-border-thin);
@@ -3198,7 +3226,7 @@ body {
   border: var(--drp-border-thin);
   border-radius: 0;
   box-shadow: var(--drp-shadow-md);
-  padding: 6px;
+  padding: 8px;
   display: none;
   z-index: 200;
 }
@@ -3210,8 +3238,8 @@ body {
 .topbar-dropdown-item {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
+  gap: 12px;
+  padding: 12px;
   border-radius: 0;
   color: var(--drp-black);
   font-size: 14px;
@@ -3261,7 +3289,7 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  padding: 14px 8px;
+  padding: 16px 8px;
   border-radius: 0;
   cursor: pointer;
   transition: background 150ms ease;
@@ -3402,7 +3430,7 @@ body {
   align-items: center;
   justify-content: space-around;
   height: 100%;
-  max-width: 390px;
+  max-width: 480px;
   margin: 0 auto;
 }
 
@@ -3411,7 +3439,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
+  gap: 4px;
   padding: 6px 12px;
   background: none;
   border: none;
@@ -3460,8 +3488,8 @@ body {
   opacity: 0;
   visibility: hidden;
   transition:
-    opacity 250ms ease,
-    visibility 250ms ease;
+    opacity 200ms var(--drp-ease-out-quart),
+    visibility 200ms var(--drp-ease-out-quart);
 }
 
 .mobile-nav-overlay.open {
@@ -3479,7 +3507,7 @@ body {
   border-radius: 0;
   z-index: 301;
   transform: translateY(100%);
-  transition: transform 350ms ease;
+  transition: transform 300ms var(--drp-ease-out-quart);
   max-height: 85vh;
   overflow-y: auto;
 }
@@ -3580,7 +3608,7 @@ body {
 
 .sidebar.collapsed .sidebar-nav-item {
   justify-content: center;
-  padding: 10px;
+  padding: 12px;
 }
 
 .sidebar.collapsed .sidebar-nav-text {
@@ -3709,7 +3737,7 @@ body {
 
   .sidebar .sidebar-nav-item {
     justify-content: center;
-    padding: 10px;
+    padding: 12px;
   }
 
   .sidebar .sidebar-nav-text {
@@ -3782,9 +3810,9 @@ body {
 }
 
 /* ============================================
-   RESPONSIVE — MOBILE (390px)
+   RESPONSIVE — MOBILE (480px)
    ============================================ */
-@media (max-width: 390px) {
+@media (max-width: 480px) {
   .sidebar {
     transform: translateX(-100%);
   }
@@ -3807,6 +3835,10 @@ body {
     display: none;
   }
 
+  .topbar-apps-dropdown {
+    max-width: calc(100vw - 32px);
+  }
+
   .content {
     padding: 16px;
   }
@@ -3825,7 +3857,7 @@ body {
   }
 
   .topbar-create-btn {
-    padding: 10px 12px;
+    padding: 12px;
   }
 }
 
@@ -5127,8 +5159,8 @@ body.dark-mode .mobile-tab.active {
   opacity: 0;
   visibility: hidden;
   transition:
-    opacity 250ms ease,
-    visibility 250ms ease;
+    opacity 200ms var(--drp-ease-out-quart),
+    visibility 200ms var(--drp-ease-out-quart);
 }
 
 .sidebar-backdrop.active {
@@ -5156,7 +5188,7 @@ body.dark-mode .mobile-tab.active {
     opacity: 1;
     height: auto;
     margin: 0;
-    padding: 12px 20px 6px;
+    padding: 12px 20px 8px;
     overflow: visible;
   }
 
@@ -5185,7 +5217,7 @@ body.dark-mode .mobile-tab.active {
 
   .sidebar.sidebar--overlay .sidebar-nav-item {
     justify-content: flex-start;
-    padding: 10px 20px;
+    padding: 12px 20px;
   }
 
   .sidebar.sidebar--overlay .sidebar-brand {
