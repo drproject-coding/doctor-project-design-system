@@ -31,15 +31,13 @@ export function EmptyState({
       style={{
         textAlign: "center",
         padding: "48px 24px",
-        border: "2px dashed rgba(0,0,0,0.2)",
+        border: "var(--drp-border-dashed)",
       }}
     >
       <div
         aria-hidden="true"
+        className="drp-empty__icon"
         style={{
-          fontSize: "48px",
-          marginBottom: "16px",
-          opacity: 0.3,
           fontFamily: "var(--drp-font-primary)",
           fontWeight: 800,
         }}
@@ -52,6 +50,7 @@ export function EmptyState({
           fontSize: "18px",
           fontWeight: 700,
           margin: "0 0 8px",
+          overflowWrap: "break-word",
         }}
       >
         {title}
@@ -60,7 +59,7 @@ export function EmptyState({
         <p
           style={{
             fontSize: "14px",
-            color: "var(--drp-text-secondary, #666)",
+            color: "var(--drp-text-secondary)",
             maxWidth: "400px",
             margin: "0 auto 20px",
           }}

@@ -59,6 +59,12 @@
   --drp-info: #0066ff;
   --drp-info-dark: #5b21b6;
 
+  /* Semantic — Alert backgrounds (8% tint of status color) */
+  --drp-info-bg: rgba(0, 102, 255, 0.08);
+  --drp-success-bg: rgba(0, 170, 0, 0.08);
+  --drp-warning-bg: rgba(255, 170, 0, 0.08);
+  --drp-error-bg: rgba(255, 68, 68, 0.08);
+
   /* Text Colors */
   --drp-text-primary: #121212;
   --drp-text-secondary: #444444;
@@ -133,11 +139,11 @@
      BORDERS
      ────────────────────────────────────────────── */
 
-  --drp-border: 1px solid var(--drp-black);
+  --drp-border: 2px solid var(--drp-black);
   --drp-border-thin: 1px solid var(--drp-black);
-  --drp-border-chunk: 1px solid var(--drp-black);
-  --drp-border-thick: 1px solid var(--drp-black);
-  --drp-border-dashed: 1px dashed var(--drp-black);
+  --drp-border-chunk: 3px solid var(--drp-black);
+  --drp-border-thick: 4px solid var(--drp-black);
+  --drp-border-dashed: 2px dashed var(--drp-black);
   --drp-border-dotted: 1px dotted rgba(0, 0, 0, 0.15);
 
   /* Radii — STRICTLY 0 FOR BRUTALIST */
@@ -173,6 +179,8 @@
   --drp-ease: cubic-bezier(0.4, 0, 0.2, 1);
   --drp-ease-in: cubic-bezier(0.4, 0, 1, 1);
   --drp-ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --drp-ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --drp-ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --drp-duration-fast: 100ms;
   --drp-duration-normal: 200ms;
   --drp-duration-slow: 350ms;
@@ -604,8 +612,8 @@ body.dark-mode {
   text-decoration: none;
   white-space: nowrap;
   transition:
-    transform var(--drp-duration-fast) var(--drp-ease),
-    box-shadow var(--drp-duration-fast) var(--drp-ease);
+    transform var(--drp-duration-fast) var(--drp-ease-out-expo),
+    box-shadow var(--drp-duration-fast) var(--drp-ease-out-expo);
 }
 
 .drp-btn:hover {
@@ -636,7 +644,7 @@ body.dark-mode {
 
 .drp-btn--primary {
   background: var(--drp-purple);
-  color: #ffffff;
+  color: var(--drp-white);
 }
 
 .drp-btn--primary:hover {
@@ -833,7 +841,7 @@ body.dark-mode .drp-btn {
 
 body.dark-mode .drp-btn--primary {
   background: var(--drp-purple);
-  color: #ffffff;
+  color: var(--drp-white);
 }
 
 body.dark-mode .drp-btn--outline {
@@ -992,6 +1000,14 @@ body.dark-mode .drp-btn--ghost:hover {
   width: 20px;
   height: 20px;
   pointer-events: none;
+}
+
+.drp-field__error {
+  font-family: var(--drp-font-primary);
+  font-size: var(--drp-text-sm);
+  font-weight: var(--drp-weight-medium);
+  color: var(--drp-error-dark, #cc0000);
+  animation: drp-field-error-enter 200ms var(--drp-ease-out-quart) both;
 }
 
 /* ──────────────────────────────────────────────
@@ -1481,6 +1497,9 @@ body.dark-mode .drp-tab.active {
   margin-bottom: -1px;
   padding: 8px 4px;
   color: var(--drp-grey);
+  transition:
+    color var(--drp-duration-normal) var(--drp-ease-out-quart),
+    border-bottom-color var(--drp-duration-normal) var(--drp-ease-out-quart);
 }
 
 .drp-tabs--underline .drp-tab:hover {
@@ -1739,7 +1758,7 @@ body.dark-mode .drp-tag--filled {
 
 .drp-badge--filled {
   background: var(--drp-purple);
-  color: #ffffff;
+  color: var(--drp-white);
 }
 
 .drp-badge--mint {
@@ -2130,6 +2149,8 @@ body.dark-mode .drp-table th {
   align-items: center;
   justify-content: center;
   padding: var(--drp-space-4);
+  animation: drp-overlay-enter var(--drp-duration-normal)
+    var(--drp-ease-out-quart) both;
 }
 
 .drp-overlay[hidden] {
@@ -2143,8 +2164,10 @@ body.dark-mode .drp-table th {
   width: 100%;
   max-width: 520px;
   max-height: 90vh;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
   z-index: var(--drp-z-modal);
+  animation: drp-modal-enter 300ms var(--drp-ease-out-expo) both;
 }
 
 .drp-modal__header {
@@ -2153,7 +2176,7 @@ body.dark-mode .drp-table th {
   justify-content: space-between;
   padding: var(--drp-space-4) var(--drp-space-6);
   background: var(--drp-purple);
-  color: #ffffff;
+  color: var(--drp-white);
 }
 
 .drp-modal__title {
@@ -2173,7 +2196,7 @@ body.dark-mode .drp-table th {
   margin: -8px -8px -8px 0;
   background: transparent;
   border: none;
-  color: #ffffff;
+  color: var(--drp-white);
   font-size: 20px;
   cursor: pointer;
   opacity: 0.8;
@@ -2186,6 +2209,9 @@ body.dark-mode .drp-table th {
 
 .drp-modal__body {
   padding: var(--drp-space-6);
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
 }
 
 .drp-modal__footer {
@@ -2356,7 +2382,7 @@ body.dark-mode .drp-table th {
 .drp-pagination__page--active,
 .drp-pagination__page.active {
   background: var(--drp-purple);
-  color: #ffffff;
+  color: var(--drp-white);
 }
 
 .drp-pagination__info {
@@ -2635,7 +2661,7 @@ body {
 
 .sidebar-badge--green {
   background: rgba(152, 233, 171, 0.18);
-  color: #22c55e;
+  color: var(--drp-success);
 }
 
 /* Team / Users Section */
@@ -2674,7 +2700,7 @@ body {
   width: 32px;
   height: 32px;
   border-radius: 0;
-  background: #333;
+  background: var(--drp-charcoal);
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -2768,23 +2794,23 @@ body {
   height: 8px;
   border-radius: 0;
   flex-shrink: 0;
-  background: #6c757d;
+  background: var(--drp-grey);
 }
 
 .sidebar-freshness-dot[data-status="fresh"] {
-  background: #28a745;
+  background: var(--drp-success);
 }
 .sidebar-freshness-dot[data-status="ok"] {
-  background: #28a745;
+  background: var(--drp-success);
 }
 .sidebar-freshness-dot[data-status="stale"] {
-  background: #ff6c01;
+  background: var(--drp-orange);
 }
 .sidebar-freshness-dot[data-status="very-stale"] {
-  background: #dc3545;
+  background: var(--drp-error);
 }
 .sidebar-freshness-dot[data-status="unknown"] {
-  background: #6c757d;
+  background: var(--drp-grey);
 }
 
 /* Freshness summary banner */
@@ -2798,26 +2824,26 @@ body {
   font-size: 11px;
   font-weight: 500;
   color: var(--sidebar-text);
-  background: rgba(40, 167, 69, 0.12);
+  background: var(--drp-success-bg);
 }
 
 .sidebar-freshness-summary[data-status="ok"] {
-  background: rgba(40, 167, 69, 0.12);
-  color: #28a745;
+  background: var(--drp-success-bg);
+  color: var(--drp-success);
 }
 
 .sidebar-freshness-summary[data-status="pending"] {
   background: rgba(255, 108, 1, 0.15);
-  color: #ff6c01;
+  color: var(--drp-orange);
 }
 
 .sidebar-freshness-summary[data-status="stale"] {
   background: rgba(255, 108, 1, 0.12);
-  color: #ff6c01;
+  color: var(--drp-orange);
 }
 
 .sidebar-freshness-summary[data-status="empty"] {
-  background: rgba(108, 117, 125, 0.12);
+  background: rgba(102, 102, 102, 0.12);
   color: var(--sidebar-text-muted);
 }
 
@@ -2834,8 +2860,8 @@ body {
 }
 
 .sidebar-freshness-summary[data-status="ok"] .sidebar-freshness-icon {
-  background: #28a745;
-  color: white;
+  background: var(--drp-success);
+  color: var(--drp-white);
 }
 
 .sidebar-freshness-summary[data-status="ok"] .sidebar-freshness-icon::after {
@@ -2843,18 +2869,18 @@ body {
 }
 
 .sidebar-freshness-summary[data-status="pending"] .sidebar-freshness-icon {
-  background: #ff6c01;
-  color: white;
+  background: var(--drp-orange);
+  color: var(--drp-white);
 }
 
 .sidebar-freshness-summary[data-status="stale"] .sidebar-freshness-icon {
-  background: #ff6c01;
-  color: white;
+  background: var(--drp-orange);
+  color: var(--drp-white);
 }
 
 .sidebar-freshness-summary[data-status="empty"] .sidebar-freshness-icon {
-  background: #6c757d;
-  color: white;
+  background: var(--drp-grey);
+  color: var(--drp-white);
 }
 
 .sidebar-status-actions {
@@ -3094,7 +3120,7 @@ body {
   right: 6px;
   width: 8px;
   height: 8px;
-  background: #22c55e;
+  background: var(--drp-mint);
   border-radius: 0;
   border: 1px solid var(--drp-cream);
 }
@@ -4117,7 +4143,7 @@ body.dark-mode .mobile-tab.active {
 }
 .drp-bg-purple {
   background: var(--drp-purple);
-  color: #ffffff;
+  color: var(--drp-white);
 }
 .drp-bg-mint {
   background: var(--drp-mint);
@@ -4148,8 +4174,11 @@ body.dark-mode .mobile-tab.active {
 
 .drp-empty__icon {
   font-size: 48px;
+  font-family: var(--drp-font-primary);
+  font-weight: var(--drp-weight-heavy);
   margin-bottom: var(--drp-space-4);
   opacity: 0.3;
+  animation: drp-float 3s var(--drp-ease-out-quart) infinite;
 }
 
 .drp-empty__title {
@@ -4234,6 +4263,7 @@ body.dark-mode .mobile-tab.active {
   font-weight: var(--drp-weight-medium);
   color: var(--drp-black);
   max-width: 400px;
+  animation: drp-toast-enter 280ms var(--drp-ease-out-expo) both;
 }
 
 .drp-toast--success {
@@ -4603,7 +4633,7 @@ body.dark-mode .mobile-tab.active {
 
 .drp-pricing-card.featured {
   background: var(--drp-purple);
-  color: #ffffff;
+  color: var(--drp-white);
 }
 
 .drp-pricing-card.featured .drp-pricing-card__title,
@@ -4924,6 +4954,58 @@ body.dark-mode .mobile-tab.active {
   }
 }
 
+@keyframes drp-overlay-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes drp-modal-enter {
+  from {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes drp-toast-enter {
+  from {
+    transform: translateX(24px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes drp-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes drp-field-error-enter {
+  from {
+    transform: translateY(-4px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
 /* ──────────────────────────────────────────────
    UTILITY CLASSES
    ────────────────────────────────────────────── */
@@ -4967,8 +5049,14 @@ body.dark-mode .mobile-tab.active {
   .drp-anim-glitch,
   .drp-anim-bounce,
   .drp-anim-pulse,
-  .drp-anim-shake {
+  .drp-anim-shake,
+  .drp-overlay,
+  .drp-modal,
+  .drp-toast,
+  .drp-empty__icon,
+  .drp-field__error {
     animation: none !important;
+    transition-duration: 0.01ms !important;
   }
 }
 /* ============================================================
@@ -5396,13 +5484,13 @@ body.dark-mode .mobile-tab.active {
 }
 
 .drp-stat-card__badge--up {
-  background: var(--drp-mint-20, rgba(152, 233, 171, 0.2));
-  color: var(--drp-mint, #28a745);
+  background: var(--drp-success-bg);
+  color: var(--drp-success);
 }
 
 .drp-stat-card__badge--down {
-  background: var(--drp-pink-20, rgba(233, 152, 152, 0.2));
-  color: var(--drp-pink, #dc3545);
+  background: var(--drp-error-bg);
+  color: var(--drp-error-dark);
 }
 
 /* ──────────────────────────────────────────────
@@ -5578,4 +5666,22 @@ body.dark-mode .drp-stat-card__value {
 
 .drp-carousel__dot.active {
   background: var(--drp-purple);
+}
+
+/* ──────────────────────────────────────────────
+   REDUCED MOTION
+   Respect the user's operating system preference
+   for reduced motion — disables all transitions
+   and animations across every component.
+   ────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

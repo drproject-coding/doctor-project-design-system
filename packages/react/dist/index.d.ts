@@ -7,6 +7,14 @@ interface HeadingProps {
     uppercase?: boolean;
     className?: string;
 }
+/**
+ * Semantic heading element (`h1`–`h6`) with DS typography tokens — use `uppercase` for section labels and dashboard module titles that need extra visual weight.
+ * @example
+ * // Page title
+ * <Heading level={1}>Patient Overview</Heading>
+ * // Section label with caps treatment
+ * <Heading level={3} uppercase>Recent Activity</Heading>
+ */
 declare function Heading({ level, children, uppercase, className, }: HeadingProps): react_jsx_runtime.JSX.Element;
 
 type TextSize = "xs" | "sm" | "md" | "lg";
@@ -20,17 +28,39 @@ interface TextProps {
     children: ReactNode;
     className?: string;
 }
+/**
+ * Body copy component with DS type scale and semantic weight variants — use `muted` or `secondary` for supporting text, and `as` to switch the rendered element without losing styling.
+ * @example
+ * // Body paragraph
+ * <Text>Review the patient's records before proceeding with the referral.</Text>
+ * // Supporting caption beneath a field
+ * <Text size="xs" muted as="span">Last updated 2 hours ago</Text>
+ */
 declare function Text({ size, weight, muted, secondary, as: Tag, children, className, }: TextProps): react_jsx_runtime.JSX.Element;
 
-type IconName = "dashboard" | "analytics" | "users" | "orders" | "products" | "settings" | "search" | "bell" | "mail" | "calendar" | "check" | "close" | "plus" | "minus" | "arrow-left" | "arrow-right" | "arrow-up" | "arrow-down" | "edit" | "trash" | "eye" | "eye-off" | "filter" | "download";
+type IconName = "dashboard" | "analytics" | "users" | "orders" | "products" | "settings" | "search" | "bell" | "mail" | "calendar" | "check" | "close" | "plus" | "minus" | "arrow-left" | "arrow-right" | "arrow-up" | "arrow-down" | "edit" | "trash" | "eye" | "eye-off" | "filter" | "download" | "more";
 type IconSize = "sm" | "md" | "lg";
 interface IconProps {
     name: IconName;
     size?: IconSize;
-    color?: string;
+    /** Box background color. Defaults to var(--drp-mint). */
+    bg?: string;
     className?: string;
 }
-declare function Icon({ name, size, color, className, }: IconProps): react_jsx_runtime.JSX.Element;
+/**
+ * Brutalist functional icon — black filled icon inside a colored square with black border and offset shadow.
+ * Matches the Pictogram design language: flat colored box, 1px black border, hard offset shadow, black icon.
+ *
+ * Use `size="sm"` (24px box) in tight UI, `size="md"` (32px box) as default,
+ * and `size="lg"` (48px box) in navigation or feature contexts.
+ * Use `bg` to set the box background color (defaults to var(--drp-mint)).
+ *
+ * @example
+ * <Icon name="search" />
+ * <Icon name="trash" bg="var(--drp-pink)" />
+ * <Icon name="check" size="lg" bg="var(--drp-purple)" />
+ */
+declare function Icon({ name, size, bg, className, }: IconProps): react_jsx_runtime.JSX.Element;
 
 type ButtonVariant = "primary" | "outline" | "ghost" | "ghost-bordered" | "danger" | "secondary" | "dark";
 type ButtonSize = "sm" | "lg";
@@ -51,6 +81,16 @@ type ButtonProps = (ButtonBaseProps & {
     icon: true;
     "aria-label": string;
 });
+/**
+ * Primary interactive element for all user actions — use `variant="primary"` for the main CTA, `variant="danger"` for destructive actions (always pair with a confirmation dialog), and never use raw `<button>` elements.
+ * @example
+ * // Standard form submit
+ * <Button variant="primary" onClick={handleSave}>Save Changes</Button>
+ * // Destructive with icon
+ * <Button variant="danger" iconLeft={<TrashIcon />}>Delete Account</Button>
+ * // Icon-only (aria-label required)
+ * <Button icon aria-label="Close dialog"><XIcon /></Button>
+ */
 declare function Button({ variant, size, block, icon, iconLeft, iconRight, className, children, ...props }: ButtonProps): react_jsx_runtime.JSX.Element;
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -58,6 +98,20 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     error?: string | boolean;
     success?: boolean;
 }
+/**
+ * Standard text input with optional label, validation state, and auto-generated `id` linking — pass `error` as a string to render an inline error message below the field.
+ * @example
+ * // Labeled email field with validation
+ * <Input
+ *   label="Email address"
+ *   type="email"
+ *   value={email}
+ *   onChange={(e) => setEmail(e.target.value)}
+ *   error={emailError}
+ * />
+ * // Success state after verification
+ * <Input label="National ID" value={nid} success />
+ */
 declare function Input({ label, error, success, className, id, spellCheck, type, ...props }: InputProps): react_jsx_runtime.JSX.Element;
 
 interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
@@ -66,12 +120,39 @@ interface SelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
     success?: boolean;
     children: ReactNode;
 }
+/**
+ * Dropdown selector for choosing from a predefined list of options — always pair with a `label` for accessibility and pass `error` as a string to show inline validation messages.
+ * @example
+ * <Select
+ *   label="Appointment type"
+ *   value={type}
+ *   onChange={(e) => setType(e.target.value)}
+ *   error={typeError}
+ * >
+ *   <option value="">Select a type…</option>
+ *   <option value="checkup">General check-up</option>
+ *   <option value="followup">Follow-up</option>
+ *   <option value="urgent">Urgent care</option>
+ * </Select>
+ */
 declare function Select({ label, error, success, className, children, id, ...props }: SelectProps): react_jsx_runtime.JSX.Element;
 
 interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
     label: string;
     dark?: boolean;
 }
+/**
+ * Accessible checkbox input with an associated visible label — use `dark` on dark-background surfaces such as panels with `var(--drp-purple)` fill.
+ * @example
+ * // Consent checkbox in a form
+ * <Checkbox
+ *   label="I agree to the terms and conditions"
+ *   checked={agreed}
+ *   onChange={(e) => setAgreed(e.target.checked)}
+ * />
+ * // Pre-checked option on a dark panel
+ * <Checkbox label="Send appointment reminders via SMS" dark defaultChecked />
+ */
 declare function Checkbox({ label, dark, className, ...props }: CheckboxProps): react_jsx_runtime.JSX.Element;
 
 interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type"> {
@@ -80,6 +161,16 @@ interface RadioProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "type">
     dark?: boolean;
     error?: boolean;
 }
+/**
+ * Single radio button for mutually exclusive option groups — group multiple `Radio` elements under the same `name` attribute and use `error` to surface validation state.
+ * @example
+ * // Appointment type selector
+ * <fieldset>
+ *   <Radio name="apptType" label="In-person visit" value="in-person" color="purple" defaultChecked />
+ *   <Radio name="apptType" label="Video consultation" value="video" color="purple" />
+ *   <Radio name="apptType" label="Phone call" value="phone" color="purple" />
+ * </fieldset>
+ */
 declare function Radio({ label, color, dark, error, className, ...props }: RadioProps): react_jsx_runtime.JSX.Element;
 
 type SwitchBaseProps = Omit<InputHTMLAttributes<HTMLInputElement>, "type">;
@@ -90,6 +181,18 @@ type SwitchProps = (SwitchBaseProps & {
     label?: never;
     "aria-label": string;
 });
+/**
+ * Toggle switch for boolean settings that take effect immediately — provide `label` when a visible text description is present, or `aria-label` when the switch is used without visible text.
+ * @example
+ * // Notification preference with visible label
+ * <Switch
+ *   label="Email appointment reminders"
+ *   checked={emailReminders}
+ *   onChange={(e) => setEmailReminders(e.target.checked)}
+ * />
+ * // Icon-only toggle (aria-label required)
+ * <Switch aria-label="Dark mode" checked={darkMode} onChange={toggleDark} />
+ */
 declare function Switch({ label, ...props }: SwitchProps): react_jsx_runtime.JSX.Element;
 
 interface CounterProps {
@@ -98,6 +201,17 @@ interface CounterProps {
     max?: number;
     onChange?: (value: number) => void;
 }
+/**
+ * Stepper control for selecting a small integer quantity — use when a numeric input alone is error-prone and the valid range is bounded (e.g. number of doses, session slots).
+ * @example
+ * // Appointment slot selector (1–10)
+ * <Counter
+ *   value={slots}
+ *   min={1}
+ *   max={10}
+ *   onChange={(n) => setSlots(n)}
+ * />
+ */
 declare function Counter({ value: controlledValue, min, max, onChange, }: CounterProps): react_jsx_runtime.JSX.Element;
 
 type TagColor = "purple" | "mint" | "pink" | "yellow" | "grey" | "orange" | "light" | "teal" | "black";
@@ -115,6 +229,14 @@ interface TagProps {
     onClose?: () => void;
     className?: string;
 }
+/**
+ * Compact label for categorizing or filtering content — use `closeable`/`onClose` for dismissible filter chips, `dot` or `legend` for color-coded legend items in charts or status lists.
+ * @example
+ * // Dismissible filter chip
+ * <Tag color="purple" filled closeable onClose={() => removeFilter("cardiology")}>Cardiology</Tag>
+ * // Legend item with dot
+ * <Tag color="mint" legend>Completed</Tag>
+ */
 declare function Tag({ children, color, filled, dark, dot, legend, icon, closeable, onClose, className, }: TagProps): react_jsx_runtime.JSX.Element;
 
 type BadgeVariant = "filled" | "primary" | "secondary" | "outline" | "mint" | "pink";
@@ -122,8 +244,17 @@ interface BadgeProps {
     children: ReactNode;
     variant?: BadgeVariant;
     className?: string;
+    "aria-label"?: string;
 }
-declare function Badge({ children, variant, className }: BadgeProps): react_jsx_runtime.JSX.Element;
+/**
+ * Small label used to highlight status, counts, or categorical metadata inline with other content.
+ * @example
+ * // Status badge next to a plan name
+ * <Badge variant="mint">Active</Badge>
+ * // Count indicator
+ * <Badge variant="pink">3 overdue</Badge>
+ */
+declare function Badge({ children, variant, className, "aria-label": ariaLabel, }: BadgeProps): react_jsx_runtime.JSX.Element;
 
 type DotColor = "purple" | "mint" | "pink" | "yellow";
 type StatusDotProps = {
@@ -139,6 +270,14 @@ type StatusDotProps = {
     "aria-label"?: never;
     "aria-hidden": true;
 };
+/**
+ * Small colored dot for conveying status at a glance — use `pulse` for live/active states and always provide either `aria-label` (for standalone use) or `aria-hidden={true}` (when a text label is adjacent).
+ * @example
+ * // Online indicator next to a user's name
+ * <StatusDot color="mint" pulse aria-label="Online" />
+ * // Decorative dot beside a status badge (text already describes the state)
+ * <StatusDot color="pink" aria-hidden={true} /> Offline
+ */
 declare function StatusDot({ color, pulse, className, ...ariaProps }: StatusDotProps): react_jsx_runtime.JSX.Element;
 
 type ProgressColor = "mint" | "pink" | "yellow" | "grey";
@@ -150,6 +289,14 @@ interface ProgressBarProps {
     label?: string;
     className?: string;
 }
+/**
+ * Horizontal progress indicator for completion percentages and loading states — pass `label` to render the metric name and live percentage side-by-side above the bar.
+ * @example
+ * // Onboarding completion tracker
+ * <ProgressBar value={65} color="mint" label="Profile completion" />
+ * // Compact bar without label
+ * <ProgressBar value={40} color="pink" size="sm" />
+ */
 declare function ProgressBar({ value, color, size, label, className, }: ProgressBarProps): react_jsx_runtime.JSX.Element;
 
 type AvatarSize = "sm" | "lg";
@@ -162,6 +309,14 @@ interface AvatarProps {
     "aria-label"?: string;
     className?: string;
 }
+/**
+ * Displays a user's profile image or fallback initials — use `src` when a photo is available, `initials` as a fallback, and always provide `aria-label` on initials-only variants.
+ * @example
+ * // Photo avatar
+ * <Avatar src="/avatars/dr-chen.jpg" alt="Dr. Sarah Chen" size="lg" />
+ * // Initials fallback
+ * <Avatar initials="SC" size="sm" aria-label="Dr. Sarah Chen" />
+ */
 declare function Avatar({ src, alt, size, initials, "aria-label": ariaLabel, className, }: AvatarProps): react_jsx_runtime.JSX.Element;
 
 interface TooltipProps {
@@ -169,6 +324,18 @@ interface TooltipProps {
     children: ReactNode;
     className?: string;
 }
+/**
+ * On-focus tooltip that surfaces supplementary context for an interactive element — wrap a single focusable child (button, link, input) and set `text` to a concise non-essential description.
+ * @example
+ * // Explain an icon-only button
+ * <Tooltip text="Export as CSV">
+ *   <Button icon aria-label="Export"><DownloadIcon /></Button>
+ * </Tooltip>
+ * // Clarify a form field's requirement
+ * <Tooltip text="Must match the name on your insurance card">
+ *   <Input label="Full legal name" value={name} onChange={handleChange} />
+ * </Tooltip>
+ */
 declare function Tooltip({ text, children, className }: TooltipProps): react_jsx_runtime.JSX.Element;
 
 type CardVariant = "raised" | "flat" | "interactive" | "sm";
@@ -183,7 +350,25 @@ interface CardHeaderProps {
     subtitle?: string;
     action?: ReactNode;
 }
+/**
+ * General-purpose content container with brutalist offset-black shadow — use `variant="raised"` for prominent panels, `variant="interactive"` for clickable cards, and `accent` to add a branded left-border stripe.
+ * @example
+ * // Patient summary card
+ * <Card variant="raised" accent="purple">
+ *   <CardHeader title="Maria Gonzalez" subtitle="DOB: 12 Mar 1985" />
+ *   <p>Last visit: 3 days ago</p>
+ * </Card>
+ */
 declare function Card({ variant, accent, className, children, ...props }: CardProps): react_jsx_runtime.JSX.Element;
+/**
+ * Standardized header section for a `Card` — renders a bold title, optional subtitle, and an optional action node (e.g. a Button or Badge) pinned to the right.
+ * @example
+ * <CardHeader
+ *   title="Recent Appointments"
+ *   subtitle="Last 30 days"
+ *   action={<Button variant="ghost" size="sm">View all</Button>}
+ * />
+ */
 declare function CardHeader({ title, subtitle, action }: CardHeaderProps): react_jsx_runtime.JSX.Element;
 
 interface TableColumn<T> {
@@ -197,8 +382,36 @@ interface TableProps<T> {
     className?: string;
     "aria-label"?: string;
     caption?: string;
+    rowKey?: (row: T, index: number) => string | number;
 }
-declare function Table<T extends Record<string, any>>({ columns, data, className, "aria-label": ariaLabel, caption, }: TableProps<T>): react_jsx_runtime.JSX.Element;
+/**
+ * Data table with typed columns and optional custom cell rendering.
+ *
+ * For row actions (edit, delete, view), use `<Icon size="sm">` wrapped in a plain `<button>` —
+ * never use "..." or text-label buttons. This keeps action columns compact and visually consistent.
+ *
+ * @example
+ * // Status badge + icon action buttons
+ * <Table
+ *   aria-label="Recent appointments"
+ *   columns={[
+ *     { key: "patient", header: "Patient" },
+ *     { key: "status", header: "Status", render: (row) => <Badge variant="mint">{row.status}</Badge> },
+ *     { key: "actions", header: "Actions", render: (row) => (
+ *       <div style={{ display: "flex", gap: 8 }}>
+ *         <button aria-label="Edit" style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}>
+ *           <Icon name="edit" size="sm" bg="var(--drp-yellow)" />
+ *         </button>
+ *         <button aria-label="Delete" style={{ background: "none", border: "none", padding: 0, cursor: "pointer" }}>
+ *           <Icon name="trash" size="sm" bg="var(--drp-pink)" />
+ *         </button>
+ *       </div>
+ *     )},
+ *   ]}
+ *   data={appointments}
+ * />
+ */
+declare function Table<T extends Record<string, any>>({ columns, data, className, "aria-label": ariaLabel, caption, rowKey, }: TableProps<T>): react_jsx_runtime.JSX.Element;
 
 interface ModalProps {
     open: boolean;
@@ -207,6 +420,23 @@ interface ModalProps {
     children: ReactNode;
     footer?: ReactNode;
 }
+/**
+ * Accessible focus-trapped dialog for confirmations and multi-step flows — always wire `footer` with at least a Cancel and a primary action button so users have a clear escape path.
+ * @example
+ * <Modal
+ *   open={isOpen}
+ *   onClose={() => setOpen(false)}
+ *   title="Confirm Cancellation"
+ *   footer={
+ *     <>
+ *       <Button variant="outline" onClick={() => setOpen(false)}>Keep Appointment</Button>
+ *       <Button variant="danger" onClick={handleCancel}>Cancel Appointment</Button>
+ *     </>
+ *   }
+ * >
+ *   Are you sure you want to cancel the appointment with Dr. Okafor on 14 Apr?
+ * </Modal>
+ */
 declare function Modal({ open, onClose, title, children, footer }: ModalProps): react_jsx_runtime.JSX.Element | null;
 
 interface TabItem {
@@ -220,6 +450,19 @@ interface TabsProps {
     variant?: "underline";
     className?: string;
 }
+/**
+ * Keyboard-accessible tab bar for switching between content panels — manage active state externally via `activeKey`/`onChange` for controlled use, or let it self-manage for simple cases.
+ * @example
+ * <Tabs
+ *   items={[
+ *     { key: "overview", label: "Overview" },
+ *     { key: "history", label: "Medical History" },
+ *     { key: "billing", label: "Billing" },
+ *   ]}
+ *   activeKey={activeTab}
+ *   onChange={setActiveTab}
+ * />
+ */
 declare function Tabs({ items, activeKey, onChange, variant, className, }: TabsProps): react_jsx_runtime.JSX.Element;
 
 type PaginationVariant = "dark" | "transparent";
@@ -230,7 +473,16 @@ interface PaginationProps {
     variant?: PaginationVariant;
     className?: string;
 }
-declare function Pagination({ currentPage, totalPages, onPageChange, variant, className, }: PaginationProps): react_jsx_runtime.JSX.Element;
+/**
+ * Page navigation control for paginated lists and tables — use `variant="dark"` on surfaces with a dark background, and keep `totalPages` accurate to prevent dead-end states.
+ * @example
+ * <Pagination
+ *   currentPage={page}
+ *   totalPages={totalPages}
+ *   onPageChange={(p) => setPage(p)}
+ * />
+ */
+declare function Pagination({ currentPage, totalPages, onPageChange, variant, className, }: PaginationProps): react_jsx_runtime.JSX.Element | null;
 
 interface AppShellProps {
     sidebar: ReactNode;
@@ -309,6 +561,17 @@ interface BreadcrumbsProps {
     items: BreadcrumbItem[];
     className?: string;
 }
+/**
+ * Landmark navigation trail showing the user's location within the app hierarchy — always include an `href` on all items except the last (current page).
+ * @example
+ * <Breadcrumbs
+ *   items={[
+ *     { label: "Dashboard", href: "/dashboard" },
+ *     { label: "Patients", href: "/patients" },
+ *     { label: "Maria Gonzalez" },
+ *   ]}
+ * />
+ */
 declare function Breadcrumbs({ items, className }: BreadcrumbsProps): react_jsx_runtime.JSX.Element;
 
 type ChartSize = "sm" | "md" | "lg" | "xl";
@@ -396,6 +659,18 @@ interface TextareaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
     error?: string | boolean;
     success?: boolean;
 }
+/**
+ * Multi-line text input for free-form content such as clinical notes or messages — mirrors `Input` API with `label`, `error`, and `success` states, and accepts all native `<textarea>` attributes.
+ * @example
+ * <Textarea
+ *   label="Clinical notes"
+ *   placeholder="Describe symptoms, observations, and treatment plan…"
+ *   rows={6}
+ *   value={notes}
+ *   onChange={(e) => setNotes(e.target.value)}
+ *   error={notesError}
+ * />
+ */
 declare function Textarea({ label, error, success, className, id, ...props }: TextareaProps): react_jsx_runtime.JSX.Element;
 
 type LoaderSize = "sm" | "lg";
@@ -404,6 +679,14 @@ interface LoaderProps {
     label?: string;
     className?: string;
 }
+/**
+ * Spinning indicator for async operations — use `size="sm"` inline within buttons or table cells, `size="lg"` for full-section loading states, and `label` to provide screen-reader context.
+ * @example
+ * // Full-page loading state
+ * <Loader size="lg" label="Loading patient records…" />
+ * // Inline inside a data cell
+ * <Loader size="sm" />
+ */
 declare function Loader({ size, label, className }: LoaderProps): react_jsx_runtime.JSX.Element;
 
 interface SkeletonProps {
@@ -412,6 +695,18 @@ interface SkeletonProps {
     variant?: "text" | "rectangular" | "circular";
     className?: string;
 }
+/**
+ * Shimmering placeholder shown while content is loading — use `variant="circular"` for avatars, `variant="rectangular"` for cards and images, and `variant="text"` for inline copy.
+ * @example
+ * // Loading state for a patient card
+ * <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+ *   <Skeleton variant="circular" width={48} />
+ *   <div>
+ *     <Skeleton variant="text" width={160} />
+ *     <Skeleton variant="text" width={100} />
+ *   </div>
+ * </div>
+ */
 declare function Skeleton({ width, height, variant, className, }: SkeletonProps): react_jsx_runtime.JSX.Element;
 
 type AlertVariant = "info" | "success" | "warning" | "error";
@@ -422,6 +717,16 @@ interface AlertProps {
     onClose?: () => void;
     className?: string;
 }
+/**
+ * Inline feedback banner for system messages — use `variant="error"` for form-level errors, `variant="success"` after a completed action, and `variant="warning"` for non-blocking risks.
+ * @example
+ * // Success confirmation after saving
+ * <Alert variant="success" title="Profile updated" onClose={handleDismiss}>
+ *   Your changes have been saved successfully.
+ * </Alert>
+ * // Error with no title
+ * <Alert variant="error">Payment failed. Please check your card details and try again.</Alert>
+ */
 declare function Alert({ variant, title, children, onClose, className, }: AlertProps): react_jsx_runtime.JSX.Element;
 
 interface EmptyStateProps {
@@ -431,12 +736,30 @@ interface EmptyStateProps {
     action?: ReactNode;
     className?: string;
 }
+/**
+ * Centered placeholder shown when a list or data region has no content — always provide an `action` with a clear next step so users are never left without guidance.
+ * @example
+ * <EmptyState
+ *   icon="📋"
+ *   title="No appointments scheduled"
+ *   description="Book your first appointment to get started."
+ *   action={<Button variant="primary">Schedule Appointment</Button>}
+ * />
+ */
 declare function EmptyState({ icon, title, description, action, className, }: EmptyStateProps): react_jsx_runtime.JSX.Element;
 
 interface DividerProps {
     label?: string;
     className?: string;
 }
+/**
+ * Horizontal rule for visually separating sections — pass a `label` to render a centered uppercase text divider (e.g. "or", "Advanced settings") between two regions.
+ * @example
+ * // Plain separator between form sections
+ * <Divider />
+ * // Labeled separator between login options
+ * <Divider label="or continue with" />
+ */
 declare function Divider({ label, className }: DividerProps): react_jsx_runtime.JSX.Element;
 
 interface TestimonialProps {
@@ -582,6 +905,8 @@ interface CustomersListProps {
     variant?: "v1" | "v2" | "v3" | "details";
 }
 declare const CustomersList: React.FC<CustomersListProps>;
+
+declare const CustomerDetails: React.FC;
 
 interface AccountsListProps {
     theme?: "light" | "dark";
@@ -867,4 +1192,4 @@ declare const chartData: {
 };
 declare const menuItems: MenuItem[];
 
-export { AccountsList, Alert, type AlertProps, AppFooter, AppShell, type AppShellProps, AppSidebar, AppTopBar, Avatar, type AvatarProps, Badge, type BadgeProps, type BreadcrumbItem, Breadcrumbs, type BreadcrumbsProps, Button, type ButtonProps, CalendarEvent, Card, CardHeader, type CardHeaderProps, type CardProps, CaseCard, type CaseCardProps, ChartBarVariant, ChartCard, type ChartCardProps, ChartContainer, type ChartContainerProps, ChartDoubleBarsVariant, ChartGeometricVariant, ChartHorizontalBarsVariant, ChartMiscVariant, ChartPolarVariant, ChartWaveVariant, Checkbox, type CheckboxProps, type Contact, ContactsList, Container, type ContainerProps, Counter, type CounterProps, CtaBanner, type CtaBannerProps, type Customer, CustomersList, Dashboard, DashboardLayout, type DashboardLayoutProps, Divider, type DividerProps, Dropzone, type DropzoneProps, EducationCourses, type EducationCoursesProps, type EducationView, EmptyState, type EmptyStateProps, type FeatureItem, FeatureList, type FeatureListProps, Footer, type FooterColumn, type FooterProps, Heading, type HeadingProps, Hero, type HeroProps, Icon, type IconProps, InboxList, Input, type InputProps, ListScreen, type ListScreenProps, Loader, type LoaderProps, Marquee, type MarqueeProps, type MenuItem, Modal, type ModalProps, Navbar, type NavbarProps, Pagination, type PaginationProps, PasswordReset, type PasswordResetProps, type Payment, PaymentsList, Pictogram, type PictogramName, type PictogramProps, PricingCard, type PricingCardProps, type ProductsListProps as Product, ProductsList, ProfileAccount, ProfileNotifications, ProfileSecurity, ProfileSocial, ProgressBar, type ProgressBarProps, Radio, type RadioProps, ResponsiveGrid, type ResponsiveGridProps, type SalesListProps as Sale, SalesList, Select, type SelectProps, Sidebar, type SidebarNavItem, type SidebarNavSection, type SidebarProps, type SidebarTeamMember, SignIn, SignInWithQR, SignUp, Skeleton, type SkeletonProps, Spinner, type SpinnerProps, Stack, type StackProps, type StatCard, type StatCardProps, StatusDot, type StatusDotProps, SupportHome, Switch, type SwitchProps, type TabItem, Table, type TableColumn, type TableProps, Tabs, type TabsProps, Tag, type TagProps, Testimonial, type TestimonialProps, Text, type TextProps, Textarea, type TextareaProps, Toast, type ToastProps, type ToastVariant, ToolsTrackerAdminPanel, type ToolsTrackerAdminPanelProps, ToolsTrackerAnalytics, type ToolsTrackerAnalyticsProps, ToolsTrackerCatalog, type ToolsTrackerCatalogProps, ToolsTrackerDashboard, ToolsTrackerImport, type ToolsTrackerImportProps, ToolsTrackerLogs, type ToolsTrackerLogsProps, ToolsTrackerProducts, type ToolsTrackerProductsProps, ToolsTrackerReports, type ToolsTrackerReportsProps, ToolsTrackerSettings, type ToolsTrackerSettingsProps, ToolsTrackerSyncJobs, type ToolsTrackerSyncJobsProps, ToolsTrackerTransactions, type ToolsTrackerTransactionsProps, Tooltip, type TooltipProps, TopBar, type TopBarProps, Topbar, type TopbarProps, type Transaction, TransactionsList, type User, chartData, generateChartData, generateMenuItems, generateStats, generateUsers, menuItems, stats, users };
+export { AccountsList, Alert, type AlertProps, AppFooter, AppShell, type AppShellProps, AppSidebar, AppTopBar, Avatar, type AvatarProps, Badge, type BadgeProps, type BreadcrumbItem, Breadcrumbs, type BreadcrumbsProps, Button, type ButtonProps, CalendarEvent, Card, CardHeader, type CardHeaderProps, type CardProps, CaseCard, type CaseCardProps, ChartBarVariant, ChartCard, type ChartCardProps, ChartContainer, type ChartContainerProps, ChartDoubleBarsVariant, ChartGeometricVariant, ChartHorizontalBarsVariant, ChartMiscVariant, ChartPolarVariant, ChartWaveVariant, Checkbox, type CheckboxProps, type Contact, ContactsList, Container, type ContainerProps, Counter, type CounterProps, CtaBanner, type CtaBannerProps, type Customer, CustomerDetails, CustomersList, Dashboard, DashboardLayout, type DashboardLayoutProps, Divider, type DividerProps, Dropzone, type DropzoneProps, EducationCourses, type EducationCoursesProps, type EducationView, EmptyState, type EmptyStateProps, type FeatureItem, FeatureList, type FeatureListProps, Footer, type FooterColumn, type FooterProps, Heading, type HeadingProps, Hero, type HeroProps, Icon, type IconProps, InboxList, Input, type InputProps, ListScreen, type ListScreenProps, Loader, type LoaderProps, Marquee, type MarqueeProps, type MenuItem, Modal, type ModalProps, Navbar, type NavbarProps, Pagination, type PaginationProps, PasswordReset, type PasswordResetProps, type Payment, PaymentsList, Pictogram, type PictogramName, type PictogramProps, PricingCard, type PricingCardProps, type ProductsListProps as Product, ProductsList, ProfileAccount, ProfileNotifications, ProfileSecurity, ProfileSocial, ProgressBar, type ProgressBarProps, Radio, type RadioProps, ResponsiveGrid, type ResponsiveGridProps, type SalesListProps as Sale, SalesList, Select, type SelectProps, Sidebar, type SidebarNavItem, type SidebarNavSection, type SidebarProps, type SidebarTeamMember, SignIn, SignInWithQR, SignUp, Skeleton, type SkeletonProps, Spinner, type SpinnerProps, Stack, type StackProps, type StatCard, type StatCardProps, StatusDot, type StatusDotProps, SupportHome, Switch, type SwitchProps, type TabItem, Table, type TableColumn, type TableProps, Tabs, type TabsProps, Tag, type TagProps, Testimonial, type TestimonialProps, Text, type TextProps, Textarea, type TextareaProps, Toast, type ToastProps, type ToastVariant, ToolsTrackerAdminPanel, type ToolsTrackerAdminPanelProps, ToolsTrackerAnalytics, type ToolsTrackerAnalyticsProps, ToolsTrackerCatalog, type ToolsTrackerCatalogProps, ToolsTrackerDashboard, ToolsTrackerImport, type ToolsTrackerImportProps, ToolsTrackerLogs, type ToolsTrackerLogsProps, ToolsTrackerProducts, type ToolsTrackerProductsProps, ToolsTrackerReports, type ToolsTrackerReportsProps, ToolsTrackerSettings, type ToolsTrackerSettingsProps, ToolsTrackerSyncJobs, type ToolsTrackerSyncJobsProps, ToolsTrackerTransactions, type ToolsTrackerTransactionsProps, Tooltip, type TooltipProps, TopBar, type TopBarProps, Topbar, type TopbarProps, type Transaction, TransactionsList, type User, chartData, generateChartData, generateMenuItems, generateStats, generateUsers, menuItems, stats, users };
